@@ -13,7 +13,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 
 @Component({
-  selector: 'contact-create',
+  selector: 'form2-create',//contact-create
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
@@ -21,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 
 
-export class CreateContacComponent {
+export class Form2Component {
 
   canales = [{value: '', viewValue: 'Canal'}, {value: 'Voz', viewValue: 'Voz'}, {value: 'Chat', viewValue: 'Chat'}, {value: 'WA', viewValue: 'WA'}, ];
   csqs = [{value: '', viewValue: 'Csq'}, {value: 'Val1', viewValue: 'Val1'}, {value: 'Val2', viewValue: 'Val2'}, ];
@@ -45,10 +45,10 @@ export class CreateContacComponent {
   interesFormControl  = new FormControl('', [Validators.required]);
   
   nombreFormControl  = new FormControl('', [Validators.required]);
-
-
-
-
+  referenteFormControl  = new FormControl('', [Validators.required]);
+  apellidoPaternoFormControl = new FormControl('',[Validators.required]);
+  apellidoMaternoFormControl = new FormControl('',[Validators.required]);
+  TelefonoFormControl = new FormControl('',[Validators.required]);
 
 
   matcher = new MyErrorStateMatcher();
