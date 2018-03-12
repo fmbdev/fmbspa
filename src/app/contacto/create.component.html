@@ -1,15 +1,15 @@
-<form (ngSubmit)="onFormSubmit()">
+<form (ngSubmit)="onFormSubmit()" >
 	
 <div class="card-deck mb-3 text-center">
     <div class="card mb-12 box-shadow">
-        <div class="card-header" style="background-color: #1F73B7; color:white;border-radius: 0;">
-            <h6 class="my-0 font-weight-normal text-left">TIPIFICACIÓN</h6>
+        <div class="card-header" style="background-color: #006fba; color:white;border-radius: 0; ">
+            <h6 class="my-0 font-weight-normal text-left gotham-medium">TIPIFICACIÓN</h6>
         </div>
         <div class="card-body">
            <div class="row">
            	<div class="col-md-6">
 				<mat-form-field>
-			        <mat-select [formControl]="canalFormControl" [errorStateMatcher]="matcher" placeholder="Canal *">
+			        <mat-select [formControl]="canalFormControl" [errorStateMatcher]="matcher" placeholder="Canal*">
 			            <mat-option *ngFor="let canal of canales" [value]="canal.value">
 			                {{ canal.viewValue }}
 			            </mat-option>
@@ -27,19 +27,19 @@
 			            </mat-option>
 			        </mat-select>
 			        <mat-error *ngIf="csqFormControl.hasError('required')">
-							    	Elige un Canal
+							    	Elige un CSQ
 					</mat-error>
 			    </mat-form-field>
 			</div> 
 			<div class="col-md-6">
 				<mat-form-field>
 			        <mat-select [formControl]="tipificacionFormControl" [errorStateMatcher]="matcher" placeholder="Tipificación*">
-			            <mat-option *ngFor="let food of foods" [value]="food.value">
-			                {{ food.viewValue }}
+			            <mat-option *ngFor="let default of defaults" [value]="default.value">
+			                {{ default.viewValue }}
 			            </mat-option>
 			        </mat-select>
 			        <mat-error *ngIf="tipificacionFormControl.hasError('required')">
-							    	Elige un Canal
+									Elige una Tipificación
 					</mat-error>
 			    </mat-form-field>
 			</div> 
@@ -51,14 +51,13 @@
 			            </mat-option>
 			        </mat-select>
 			         <mat-error *ngIf="interesFormControl.hasError('required')">
-							    	Elige un Canal
+									Elige un ínteres
 					</mat-error>
 			    </mat-form-field>
 			</div> 
 			<div class="col-md-12">
 				<mat-form-field>
 				  	<textarea matInput placeholder="Notas" matTextareaAutosize matAutosizeMinRows="4"     matAutosizeMaxRows="5"></textarea>
-
 				</mat-form-field>
 			</div>
 			    
@@ -70,34 +69,62 @@
 <div class="card-deck mb-3 text-center">
 
 	<div class="card mb-12 box-shadow">
-        <div class="card-header" style="background-color: #1F73B7; color:white;border-radius: 0;">
-            <h6 class="my-0 font-weight-normal text-left">CONTACTO</h6>
+        <div class="card-header" style="background-color: #006fba; color:white;border-radius: 0;">
+            <h6 class="my-0 font-weight-normal text-left gotham-medium">CONTACTO</h6>
         </div>
         <div class="card-body">
            <div class="row">
            		<div class="col-md-6">
            			<div class="col-md-12">
+						<mat-error style="border-bottom: 1px solid #006fba !important;color: #006fba;margin-bottom: 15px;">
+							PROSPECTO
+						</mat-error>
            				<mat-form-field class="example-full-width">
 				    		<input [formControl]="nombreFormControl" [errorStateMatcher]="matcher" matInput  name="nombre" placeholder="Nombre*" value="">
 							<mat-error *ngIf="nombreFormControl.hasError('required')">
-							    	Por favor ingresa un nombre
+								Por favor ingresa un nombre
+							</mat-error>
+							<mat-error *ngIf="nombreFormControl.hasError('forbiddenName')">
+									Nombre inválido
+							</mat-error>
+							<mat-error *ngIf="nombreFormControl.hasError('letrasName') && !nombreFormControl.hasError('required')">
+										Nombre inválidos
+							</mat-error>
+							
+						</mat-form-field>
+           			</div>
+           			<div class="col-md-12">
+           				<mat-form-field class="example-full-width">
+							<input [formControl]="apellidoPaternoFormControl" [errorStateMatcher]="matcher" matInput placeholder="Apellido Paterno*" value="">
+							<mat-error *ngIf="apellidoPaternoFormControl.hasError('required')">
+								Por favor ingresa un apellido paterno
+							</mat-error>
+							<mat-error *ngIf="apellidoPaternoFormControl.hasError('forbiddenName')">
+								Apellido Paterno inválido
+							</mat-error>
+							<mat-error *ngIf="apellidoPaternoFormControl.hasError('letrasName') && !apellidoPaternoFormControl.hasError('required')">
+									Nombre inválidos
+							</mat-error>
+							
+						</mat-form-field>
+           			</div>
+           			<div class="col-md-12">
+           				<mat-form-field class="example-full-width">
+							<input [formControl]="apellidoMaternoFormControl" [errorStateMatcher]="matcher" matInput placeholder="Apellido Materno*" value="">
+							<mat-error *ngIf="apellidoMaternoFormControl.hasError('required')">
+								Por favor ingresa un apellido materno
+							</mat-error>
+							<mat-error *ngIf="apellidoMaternoFormControl.hasError('forbiddenName')">
+								Apellido Materno inválido
+							</mat-error>
+							<mat-error *ngIf="apellidoMaternoFormControl.hasError('letrasName') && !apellidoMaternoFormControl.hasError('required')">
+									Nombre inválidos
 							</mat-error>
 						</mat-form-field>
            			</div>
            			<div class="col-md-12">
-           				<mat-form-field class="example-full-width">
-				    		<input matInput placeholder="Apellido Paterno*" value="">
-						</mat-form-field>
-           			</div>
-           			<div class="col-md-12">
-           				<mat-form-field class="example-full-width">
-				    		<input matInput placeholder="Apellido Materno*" value="">
-						</mat-form-field>
-           			</div>
-           			<div class="col-md-12">
 						<mat-form-field class="example-full-width">
-						    <input  name="emailFormControl"  matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
-						    <mat-hint>Errors appear instantly!</mat-hint>
+						    <input  name="emailFormControl"  matInput placeholder="Correo Electrónico" [formControl]="emailFormControl" [errorStateMatcher]="matcher">						    
 						    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
 						      Correo Inválido
 						    </mat-error>
@@ -108,49 +135,82 @@
            			</div>
            			<div class="col-md-12">
            				<mat-form-field class="example-full-width">
-				    		<input matInput placeholder="Numero de Celular(10 digitos)*" value="">
+							<input [formControl]="celularFormControl" [errorStateMatcher]="matcher"  matInput placeholder="Numero de Celular(10 digitos)*" value="">
+							<mat-error *ngIf="celularFormControl.hasError('required')">
+							    Ingresa número de Celular
+							</mat-error>
+							<mat-error *ngIf="celularFormControl.hasError('minlength')">
+							    Al menos debe contener 10 dígitos
+							</mat-error>
 						</mat-form-field>
            			</div>
            			<div class="col-md-12">
-           				<mat-form-field class="example-full-width">
-				    		<input matInput placeholder="Teléfono*" value="">
+						<mat-form-field class="example-full-width">
+							<input [formControl]="telefonoFormControl" [errorStateMatcher]="matcher"  matInput placeholder="Teléfono*" value="">
+							<mat-error *ngIf="telefonoFormControl.hasError('required')">
+							    Ingresa número de Teléfono
+							</mat-error>
+							<mat-error *ngIf="telefonoFormControl.hasError('minlength')">
+							    Al menos debe contener 10 dígitos
+							</mat-error>
 						</mat-form-field>
            			</div>
-           			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Género*">
-					            <mat-option *ngFor="let genero of generos" [value]="genero.value">
-					                {{ genero.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
+           			<div class="col-md-12">           								        
+						<mat-form-field>
+							<mat-select name="generoFormControl" [formControl]="generoFormControl" [errorStateMatcher]="matcher" placeholder="Género *">
+								<mat-option *ngFor="let genero of sexos" [value]="genero.value">
+									{{ genero.viewValue }}
+								</mat-option>
+							</mat-select>
+							<mat-error *ngIf="generoFormControl.hasError('required')">
+									Elige un Género
+							</mat-error>
+						</mat-form-field>					    
            			</div>
            			<div class="col-md-12">
            				<mat-form-field>
-					        <mat-select placeholder="Canal Preferido*">
+					        <mat-select name="canalPreferidoFormControl" [formControl]="canalPreferidoFormControl" [errorStateMatcher]="matcher" placeholder="Canal Preferido*">
 					            <mat-option *ngFor="let canal of canales" [value]="canal.value">
 					                {{ canal.viewValue }}
 					            </mat-option>
-					        </mat-select>
+							</mat-select>
+							<mat-error *ngIf="canalPreferidoFormControl.hasError('required')">
+								Elige un Elige un Canal Preferido
+							</mat-error>
 					    </mat-form-field>
            			</div>
-           			<div class="col-md-12">
-      
+           			<div class="col-md-12">      
 					    <mat-form-field>
-						  <input matInput [matDatepicker]="myDatepicker">
-						  <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-						  <mat-datepicker #myDatepicker></mat-datepicker>
+							<input matInput [formControl]="myDatepickerFormControl" [errorStateMatcher]="matcher" placeholder="Selecciona una opciòn" [matDatepicker]="myDatepicker">
+							<mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+							<mat-datepicker #myDatepicker></mat-datepicker>
+
+							<mat-error *ngIf="myDatepickerFormControl.hasError('required')">
+									Ingresa una Fecha de Nacimiento
+							</mat-error>
+
 						</mat-form-field>
            			</div>	
            			<div class="col-md-12">
            				<mat-form-field class="example-full-width">
-				    		<input matInput placeholder="Edad*" value="">
+							<input matInput [formControl]="edadFormControl" [errorStateMatcher]="matcher"  matInput placeholder="Edad*" value="">
+							<mat-error *ngIf="edadFormControl.hasError('required')">
+								Ingresa una Edad
+							</mat-error>	
+							<mat-error *ngIf="edadFormControl.hasError('numeroName')">
+								Ingresa una Edad Valida
+							</mat-error>													
 						</mat-form-field>
+						
+						
            			</div>			
 				</div>
 
 				<div class="col-md-6">
            			<div class="col-md-12">
+							<mat-error class="" style="border-bottom: 1px solid #006fba !important;color: #006fba;margin-bottom: 15px;">
+								¿QUIÉN REGISTRA?
+								</mat-error>
            				<mat-form-field class="example-full-width">
 				    		<input matInput placeholder="Nombre" value="">
 						</mat-form-field>
@@ -198,92 +258,92 @@
 
 <div class="card-deck mb-3 text-center">
     <div class="card mb-12 box-shadow">
-        <div class="card-header" style="background-color: #1F73B7; color:white;border-radius: 0;">
-            <h6 class="my-0 font-weight-normal text-left">ÍNTERES</h6>
+        <div class="card-header" style="background-color: #006fba; color:white;border-radius: 0;">
+            <h6 class="my-0 font-weight-normal text-left gotham-medium">ÍNTERES</h6>
         </div>
         <div class="card-body">
            <div class="row">
            	 	<div class="col-md-6">
            			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Campus*">
-					            <mat-option *ngFor="let campu of campus" [value]="campu.value">
-					                {{ campu.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
-           			</div>
-           			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Nivel*">
-					            <mat-option *ngFor="let nivel of niveles" [value]="nivel.value">
-					                {{ nivel.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
-           			</div>
-           			
-           			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Modalidad*">
-					            <mat-option *ngFor="let modalida of modalidades" [value]="modalida.value">
-					                {{ modalida.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
-           			</div>	
-           			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Carrera*">
-					            <mat-option *ngFor="let food of foods" [value]="food.value">
-					                {{ food.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
-           			</div>	
+			        	<mat-form-field>
+			                <mat-select [formControl]="campusFormControl" [errorStateMatcher]="matcher" placeholder="Campus *">
+			                    <mat-option *ngFor="let campu of campus" [value]="campu.value">
+			                        {{ campu.viewValue }}
+			                    </mat-option>
+			                </mat-select>
+			                <mat-error *ngIf="campusFormControl.hasError('required')">
+			        				    	Elige un Campus
+			        		</mat-error>
+			            </mat-form-field>
+			        </div>
 
+			        <div class="col-md-12">
+			        	<mat-form-field>
+			                <mat-select [formControl]="NivelesFormControl" [errorStateMatcher]="matcher" placeholder="Niveles *">
+			                    <mat-option *ngFor="let nivel of niveles" [value]="nivel.value">
+			                        {{ nivel.viewValue }}
+			                    </mat-option>
+			                </mat-select>
+			                <mat-error *ngIf="NivelesFormControl.hasError('required')">
+									Elige una Área de Interés
+			        		</mat-error>
+			            </mat-form-field>
+			        </div> 
            			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Ciclo*">
-					            <mat-option *ngFor="let ciclo of ciclos" [value]="ciclo.value">
-					                {{ ciclo.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
-           			</div>	
+			        	<mat-form-field>
+			                <mat-select [formControl]="modalidadFormControl" [errorStateMatcher]="matcher" placeholder="Modalidad *">
+			                    <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.value">
+			                        {{ modalidad.viewValue }}
+			                    </mat-option>
+			                </mat-select>
+			                <mat-error *ngIf="modalidadFormControl.hasError('required')">
+			        				    	Elige un Modalidad
+			        		</mat-error>
+			            </mat-form-field>
+			        </div> 
+			        <div class="col-md-12">
+			        	<mat-form-field>
+			                <mat-select [formControl]="carreraFormControl" [errorStateMatcher]="matcher" placeholder="Carreras *">
+			                    <mat-option *ngFor="let programa of programas" [value]="programa.value">
+			                        {{ programa.viewValue }}
+			                    </mat-option>
+			                </mat-select>
+			                <mat-error *ngIf="carreraFormControl.hasError('required')">
+									Elige una Carrera
+			        		</mat-error>
+			            </mat-form-field>
+			        </div>
+			        <div class="col-md-12">
+			        	<mat-form-field>
+			                <mat-select [formControl]="cicloFormControl" [errorStateMatcher]="matcher" placeholder="Ciclo *">
+			                    <mat-option *ngFor="let ciclo of ciclos" [value]="ciclo.value">
+			                        {{ ciclo.viewValue }}
+			                    </mat-option>
+			                </mat-select>
+			                <mat-error *ngIf="carreraFormControl.hasError('required')">
+			        				Indica cuando quieres entrar.
+			        		</mat-error>
+			            </mat-form-field>
+			        </div>
 				</div>
 
 				<div class="col-md-6">
-           			<div class="col-md-12" style="height: 65.5px"> </div>
-           			<div class="col-md-12" style="height: 65.5px"></div>
-           			
+           			<div class="col-md-12 hidden-sm-down" style="height: 72px"> </div>
+           			<div class="col-md-12 hidden-sm-down" style="height: 72px"></div>
            			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Número de Persona">
-					            <mat-option *ngFor="let food of foods" [value]="food.value">
-					                {{ food.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
-           			</div>	
+           				<mat-form-field class="example-full-width">
+				    		<input matInput placeholder="Número de Persona" value="">
+						</mat-form-field>
+           			</div>
            			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Etapa de Venta*">
-					            <mat-option *ngFor="let food of foods" [value]="food.value">
-					                {{ food.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
-           			</div>	
-
+           				<mat-form-field class="example-full-width">
+				    		<input matInput placeholder="Etapa de Venta" value="">
+						</mat-form-field>
+           			</div>
            			<div class="col-md-12">
-           				<mat-form-field>
-					        <mat-select placeholder="Número de Cuenta">
-					            <mat-option *ngFor="let food of foods" [value]="food.value">
-					                {{ food.viewValue }}
-					            </mat-option>
-					        </mat-select>
-					    </mat-form-field>
+           				<mat-form-field class="example-full-width">
+				    		<input matInput placeholder="Número de Cuenta" value="">
+						</mat-form-field>
            			</div>	
 				</div>
 			</div>
@@ -293,26 +353,32 @@
 
 <div class="card-deck mb-3 text-center">
     <div class="card mb-12 box-shadow">
-        <div class="card-header" style="background-color: #1F73B7; color:white;border-radius: 0;">
-            <h6 class="my-0 font-weight-normal text-left">CITA</h6>
+        <div class="card-header" style="background-color: #006fba; color:white;border-radius: 0;">
+            <h6 class="my-0 font-weight-normal text-left gotham-medium">CITA</h6>
         </div>
         <div class="card-body">
            <div class="row">
            	 	<div class="col-md-6">
            			<div class="col-md-12">
            				<mat-form-field>
-					        <mat-select placeholder="Campus	">
+					        <mat-select [formControl]="campus2FormControl" [errorStateMatcher]="matcher" placeholder="Campus">
 					            <mat-option *ngFor="let campu of campus" [value]="campu.value">
 					                {{ campu.viewValue }}
-					            </mat-option>
-					        </mat-select>
+								</mat-option>								
+							</mat-select>
+							<mat-error *ngIf="campus2FormControl.hasError('required')">
+									Elige un Campus
+							</mat-error>
 					    </mat-form-field>
            			</div>
            			<div class="col-md-12">
            				<mat-form-field>
-						  <input matInput [matDatepicker]="myDatepicker2">
+						  <input [formControl]="myDatepicker2FormControl" [errorStateMatcher]="matcher" placeholder="Fecha " matInput [matDatepicker]="myDatepicker2" value="Seleccione una opcion">
 						  <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
 						  <mat-datepicker #myDatepicker2></mat-datepicker>
+						  <mat-error *ngIf="myDatepicker2FormControl.hasError('required')">
+								Ingresa una Fecha de Nacimiento
+							</mat-error>
 						</mat-form-field>
            			</div>
 
@@ -326,24 +392,28 @@
 				</div>
 
 				<div class="col-md-6">
-           			 
-           			
            			<div class="col-md-12">
            				<mat-form-field>
-					        <mat-select placeholder="PI/Equi">
-					            <mat-option *ngFor="let food of foods" [value]="food.value">
-					                {{ food.viewValue }}
+					        <mat-select  [formControl]="equiFormControl" [errorStateMatcher]="matcher" placeholder="PI/Equi">
+					            <mat-option *ngFor="let default of defaults" [value]="default.value">
+					                {{ default.viewValue }}
 					            </mat-option>
-					        </mat-select>
+							</mat-select>
+							<mat-error *ngIf="equiFormControl.hasError('required')">
+									Elige si es PI o EQUI
+							</mat-error>
 					    </mat-form-field>
            			</div>	
            			<div class="col-md-12">
            				<mat-form-field>
-					        <mat-select placeholder="Hora">
-					            <mat-option *ngFor="let food of foods" [value]="food.value">
-					                {{ food.viewValue }}
+					        <mat-select [formControl]="horaFormControl" [errorStateMatcher]="matcher"  placeholder="Hora">
+					            <mat-option *ngFor="let default of defaults" [value]="default.value">
+					                {{ default.viewValue }}
 					            </mat-option>
-					        </mat-select>
+							</mat-select>
+							<mat-error *ngIf="horaFormControl.hasError('required')">
+									Ingresa una hora
+							</mat-error>
 					    </mat-form-field>
            			</div>	
 					<div class="col-md-12">
@@ -359,12 +429,12 @@
 
 <div class="mb-3 text-center">
 	<div class="row">
-        <div class="col-md-6 text-left">
+        <div class="col-md-6 text-left no-m no-p">
             <a href="#" class="p-4 font-weight-bold" >Capturar Referido</a>
         </div>
         <div class="col-md-6">
             <button type="button" class="btn btn-md  col-md-4" style="background-color: #757575; color: white;">CANCELAR</button>
-            	<button type="submit" class="btn btn-md col-md-4" style="background-color: #F28731; color: white;">GUARDAR</button>
+            <button type="submit" class="btn btn-md col-md-4" style="background-color: #F28731; color: white; margin-left:20px;">GUARDAR</button>
             
         </div>
     </div>

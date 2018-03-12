@@ -2,7 +2,7 @@
 <div style="text-align:center">
   <img src="assets/logo.png" style="width: 200px; margin: 30px 0;">
 </div>
-<div class="row p-5" >
+<div class="row p-5" style="display:none;">
  	<ul class="nav">
 	  <li class="nav-item">
 	    <a class="nav-link active" routerLink="nuevo-registro-inbound" routerLinkActive="active"> Nuevo Registro Inbound </a>
@@ -11,8 +11,11 @@
 	    <a class="nav-link active" routerLink="referidos-promotor" routerLinkActive="active"> Referidos Promotor </a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link active" routerLink="referidos-referente" routerLinkActive="active"> Referidos Referente </a>
-	  </li>
+				<a class="nav-link active" routerLink="referidos-referente" routerLinkActive="active"> Referidos Referente </a>
+			</li>	
+			<li class="nav-item">
+					<a class="nav-link active" routerLink="referidos-tlkm" routerLinkActive="active"> Referidos TLMK </a>
+				</li>		
 	</ul>
 </div>
 <router-outlet></router-outlet>

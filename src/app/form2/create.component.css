@@ -2,8 +2,6 @@
 	font-family: 'Gotham-Light' !important;
 	width: 100%;
 } 
-
-
 .example-section {
   display: flex;
   align-content: center;
@@ -17,4 +15,8 @@
 
 button{
 	border-radius: 0;
+}
+
+.mat-checkbox{
+  float: left; margin-left: 20px;
 }

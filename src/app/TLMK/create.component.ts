@@ -41,6 +41,7 @@ function emailDomainValidator(control: FormControl) {
   }
   return null;
 }
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -48,9 +49,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-
 @Component({
-  selector: 'form2-create',//contact-create
+  selector: 'tlkm-create',//contact-create
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
@@ -58,7 +58,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 
 
-export class Form2Component {
+export class TLKMComponent {
 
   defaults = [{value: '', viewValue: 'Selecciona una opción'}, {value: 'va11', viewValue: 'va11'}, {value: 'val2', viewValue: 'val2'}, {value: 'val3', viewValue: 'val3'} ];
 
@@ -88,14 +88,13 @@ export class Form2Component {
   tipificacionFormControl  = new FormControl('', [Validators.required]);
   interesFormControl  = new FormControl('', [Validators.required]);
   
-  TelefonoFormControl = new FormControl('',[Validators.required]);
-  
   nombreFormControl  = new FormControl('', [Validators.required,letrasNameValidator(),forbiddenNameValidator()]);
-  usuarioFormControl  = new FormControl('', [Validators.required,letrasNameValidator(),forbiddenNameValidator()]);
   apellidoPaternoFormControl  = new FormControl('', [Validators.required,letrasNameValidator(),forbiddenNameValidator()]);
   apellidoMaternoFormControl  = new FormControl('', [Validators.required,letrasNameValidator(),forbiddenNameValidator()]);
   
-  
+  TelefonoFormControl = new FormControl('',[Validators.required]);
+
+
   matcher = new MyErrorStateMatcher();
 
   constructor() {}
@@ -103,4 +102,5 @@ export class Form2Component {
   ngOnInit() {}
 
   onFormSubmit(){}
+
 }

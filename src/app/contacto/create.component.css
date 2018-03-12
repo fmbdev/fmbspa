@@ -1,3 +1,10 @@
+*, body{
+    line-height: 1.5;
+}
+.mat-select-value {
+    line-height: 1.5;
+}
+
 .mat-form-field{
 	font-family: 'Gotham-Light' !important;
 	width: 100%;
@@ -17,4 +24,9 @@
 
 button{
 	border-radius: 0;
+}
+button.btn.btn-md.col-md-4 {
+    float: right;
+    padding: 6px 0;
+    margin-right: 24px;
 }
