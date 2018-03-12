@@ -33,7 +33,7 @@ function letrasNameValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
     const name = control.value;
     const no = /[a-zA-Z]/.test(name);
-    return no ? false : { 'letrasName': {name}}  ;
+    return no ? null : { 'letrasName': {name}};
   };
 }
 
@@ -113,7 +113,7 @@ export class CreateContacComponent {
 
   onFormSubmit(){}
 
-  valida(e){
+  /*valida(e){
       tecla = (document.all) ? e.keyCode : e.which;
   
       //Tecla de retroceso para borrar, siempre la permite
@@ -125,6 +125,6 @@ export class CreateContacComponent {
       patron =/[0-9]/;
       tecla_final = String.fromCharCode(tecla);
       return patron.test(tecla_final);
-  }
+  }*/
 
 }
