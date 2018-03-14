@@ -7,6 +7,7 @@ import { Nivel } from '../interfaces/nivel';
 import { Canal } from '../interfaces/canal';
 import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
+import { Equi } from '../interfaces/equi';
 import { Asesor } from '../interfaces/asesor';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
@@ -20,6 +21,7 @@ import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
+import { EquiService } from '../providers/equi.service';
 import { AsesorService } from '../providers/asesor.service';
 import { CarreraService } from '../providers/carrera.service';
 import { InteresService } from '../providers/interes.service';
@@ -28,11 +30,12 @@ import { ParentescoService } from '../providers/parentesco.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 
 @Component({
-  selector: 'app-nuevo-registro',
-  templateUrl: './nuevo-registro.component.html',
-  styleUrls: ['./nuevo-registro.component.scss']
+  selector: 'app-general',
+  templateUrl: './general.component.html',
+  styleUrls: ['./general.component.scss']
 })
-export class NuevoRegistroComponent implements OnInit {
+
+export class ReferidosComponent implements OnInit {
 
   private registerForm: FormGroup;
   private csqs: Csq[] = [];
@@ -41,6 +44,7 @@ export class NuevoRegistroComponent implements OnInit {
   private niveles: Nivel[] = [];
   private canales: Canal[] = [];
   private campus: Campus[] = [];
+  private equis: Equi[] = [];
   private asesores: Asesor[] = [];
   private carreras: Carrera[] = [];
   private intereses: Interes[] = [];
@@ -55,6 +59,7 @@ export class NuevoRegistroComponent implements OnInit {
               private nivelServ: NivelService,
               private cicloServ: CicloService,
               private canalServ: CanalService,
+              private equiServ: EquiService,
               private campusServ: CampusService,
               private asesorServ: AsesorService,
               private carreraServ: CarreraService,
@@ -91,9 +96,14 @@ export class NuevoRegistroComponent implements OnInit {
         )
     // Se obtienen todos los campus
     this.campusServ.getAll()
-        .subscribe(
-          (data: Campus[]) => this.campus = data    
-        )
+      .subscribe(
+        (data: Campus[]) => this.campus = data
+      )
+    // Se obtienen todos los equi
+    this.equiServ.getAll()
+      .subscribe(
+        (data: Equi[]) => this.equis = data
+      )
     // Se obtienen todos los niveles
     this.nivelServ.getAll()
         .subscribe(
@@ -136,20 +146,48 @@ export class NuevoRegistroComponent implements OnInit {
     this.registerForm.reset();
   }
 
-  getErrorMessage(){
-    return this.registerForm.controls['oll_canal'].hasError('required') ? "Elige un canal" : ""
+  onKeydownNumber(event: KeyboardEvent) {
+    var charStr = String.fromCharCode(event.keyCode);
+    if (/[0-9]/i.test(charStr)) {
+      return true;
+    }else{
+      return false;      
+    }
+  }
+
+  onKeydownLetter(event: KeyboardEvent) {
+    var charStr = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z]/i.test(charStr)) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  getErrorMessageTipificacion(){    
+    return this.registerForm.controls['tip_tipificacion'].hasError('required') ? "Elige una Tipificación" : ""
+  }
+  getErrorMessageCsq() {
+    return this.registerForm.controls['tip_csq'].hasError('required') ? "Elige una Csq" : ""
+  }
+  getErrorMessageCanal() {
+    return this.registerForm.controls['tip_csq'].hasError('required') ? "Elige una Csq" : ""
+  }
+  getErrorMessage(control: string, error: string,mensaje:string){
+    return this.registerForm.controls[control].hasError(error) ? mensaje : ""
   }
 
   private initForm(){
+
     this.registerForm = this.formBuilder.group({
-      /*-- Campo Usuario (u) --*/
-      u_name: [''],
-      /*-- Campos para seción Origen Llamada (oll) -- */
-      oll_canal: ['', Validators.required],
-      oll_csq: ['', Validators.required],
-      oll_telefono: ['', Validators.required],
-      oll_interes: ['',Validators.required],
-      /*-- Campos para sección de Contato -- */
+      /*-- Campos para sección de Tipificacion (tip) -- */
+      tip_canal: ['', Validators.required],
+      tip_csq: ['', Validators.required],
+      tip_tipificacion: ['', Validators.required],     
+      tip_interes: ['', Validators.required],
+      tip_notas: ['', Validators.required],
+      
+
       /*-- Prospecto (p) --*/
       p_nombre: ['', Validators.required],
       p_apellido_paterno: ['',Validators.required],
@@ -162,6 +200,7 @@ export class NuevoRegistroComponent implements OnInit {
       p_canal_preferido: ['', Validators.required],
       p_fecha_nacimiento: ['', Validators],
       p_edad: ['', Validators.required],
+
       /* -- Quien registra (q)--*/
       q_nombre: ['', Validators.required],
       q_apellido_paterno: ['',Validators.required],
@@ -176,17 +215,20 @@ export class NuevoRegistroComponent implements OnInit {
       int_modalidad: ['', Validators.required],
       int_carrera: ['', Validators.required],
       int_ciclo: ['', Validators.required],
-      int_interes: ['', Validators.required],
+      int_num_per: ['', Validators.required],
+      int_venta: ['', Validators.required],
+      int_num_cuenta: ['', Validators.required],
+
       /*-- Campos para sección de Cita (cit) -- */
       cit_campus: ['', Validators.required],
       cit_fecha: ['', Validators.required],
-      cit_asesor: ['', Validators.required],
       cit_hora: ['', Validators.required],
+      cit_equi: ['', Validators.required],
+
       cit_prog_llamada: [''],
       cit_transf_line: [''],
-      /*-- Campos para sección de Tipificacion (tip) -- */
-      tip_tipificacion: ['', Validators.required],
-      tip_notas: ['']
+      
+      u_name: [''],
     });
   }
 

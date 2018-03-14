@@ -11,6 +11,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NuevoRegistroComponent } from './nuevo-registro/nuevo-registro.component';
 import { NuevoRegistroSolovinoComponent } from './nuevo-registro-solovino/nuevo-registro-solovino.component';
+import { GeneralComponent } from './general/general.component';
+import { ReferidosComponent } from './referidos-referente/general.component';
+import { ReferidosPromotorComponent } from './referidos-promotor/referidos-promotor.component';
+import { ReferidosTlmkComponent } from './referidos-tlmk/referidos-tlmk.component';
+import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
 
 // Providers
 import { CsqService } from './providers/csq.service';
@@ -19,12 +24,16 @@ import { NivelService } from './providers/nivel.service';
 import { CanalService } from './providers/canal.service';
 import { CicloService } from './providers/ciclo.service';
 import { CampusService } from './providers/campus.service';
+import { EquiService } from './providers/equi.service';
 import { AsesorService } from './providers/asesor.service';
 import { InteresService } from './providers/interes.service';
 import { CarreraService } from './providers/carrera.service';
 import { ModalidadService } from './providers/modalidad.service';
 import { ParentescoService } from './providers/parentesco.service';
 import { TipificacionService } from './providers/tipificacion.service';
+import { ValidationService } from './validations/validation.service'; 
+import { PalabramalaService } from './providers/palabramala.service';
+
 
 // Angular Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -68,7 +77,12 @@ import {
     AppComponent,
     HomeComponent,
     NuevoRegistroComponent,
-    NuevoRegistroSolovinoComponent
+    NuevoRegistroSolovinoComponent,
+    GeneralComponent,
+    ReferidosComponent,
+    ReferidosPromotorComponent,
+    ReferidosTlmkComponent,
+    ReferidosWebComponent
   ],
   imports: [
     HttpModule,
@@ -80,8 +94,8 @@ import {
     BrowserAnimationsModule
   ],
   providers: [CanalService, CsqService, TipificacionService, InteresService,
-              ParentescoService, CampusService, NivelService, ModalidadService,
-              CarreraService, CicloService, AsesorService, HoraService],
+    ParentescoService, ValidationService, CampusService,EquiService, NivelService, ModalidadService,
+    CarreraService, CicloService, AsesorService, HoraService, PalabramalaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
