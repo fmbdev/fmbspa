@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Nivel } from '../interfaces/nivel';
 import { Ciclo } from '../interfaces/ciclo';
+import { Canal } from '../interfaces/canal';
 import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
@@ -10,6 +11,7 @@ import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
  
 import { NivelService } from '../providers/nivel.service';
+import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
@@ -28,6 +30,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
   private ciclos: Ciclo[] = [];
   private niveles: Nivel[] = [];
   private campus: Campus[] = [];
+  private canales: Canal[] = [];
   private carreras: Carrera[] = [];
   private intereses: Interes[] = [];
   private modalidades: Modalidad[] = [];
@@ -37,6 +40,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private nivelServ: NivelService,
     private cicloServ: CicloService,
+    private canalServ: CanalService,
     private campusServ: CampusService,
     private carreraServ: CarreraService,
     private interesServ: InteresService,
@@ -44,6 +48,11 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     private parentescoServ: ParentescoService) { }
 
     ngOnInit() {
+        // Se obtiene todos los canales
+      this.canalServ.getAll()
+      .subscribe(
+        (data: Canal[]) => this.canales = data
+      )   
       // Se obtienen todos los intereses
       this.interesServ.getAll()
           .subscribe(

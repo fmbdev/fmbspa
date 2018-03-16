@@ -92,7 +92,7 @@ export class NuevoRegistroComponent implements OnInit {
     // Se obtienen todos los campus
     this.campusServ.getAll()
         .subscribe(
-          (data: Campus[]) => this.campus = data    
+          (data: Campus[]) => this.campus = data           
         )
     // Se obtienen todos los niveles
     this.nivelServ.getAll()

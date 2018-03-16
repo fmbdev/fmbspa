@@ -144,7 +144,7 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_campus">
-                          <mat-option *ngFor="let campu of campus.campus;" [value]="campu.name">
+                          <mat-option *ngFor="let campu of campus" [value]="campu.name">
                             {{ campu.name }}
                           </mat-option>
                       </mat-select>
@@ -153,7 +153,7 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_nivel">
-                          <mat-option *ngFor="let nivel of niveles.niveles;" [value]="nivel.name">
+                          <mat-option *ngFor="let nivel of niveles" [value]="nivel.name">
                             {{ nivel.name }}
                           </mat-option>
                       </mat-select>
@@ -162,7 +162,7 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_modalidad">
-                          <mat-option *ngFor="let modalidad of modalidades.modalidades;" [value]="modalidad.name">
+                          <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.name">
                             {{ modalidad.name }}
                           </mat-option>
                       </mat-select>
@@ -171,7 +171,7 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_carrera">
-                          <mat-option *ngFor="let carrera of carreras.carreras;" [value]="carrera.name">
+                          <mat-option *ngFor="let carrera of carreras" [value]="carrera.name">
                             {{ carrera.name }}
                           </mat-option>
                       </mat-select>
@@ -180,7 +180,7 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_ciclo">
-                          <mat-option *ngFor="let ciclo of ciclos.ciclos;" [value]="ciclo.name">
+                          <mat-option *ngFor="let ciclo of ciclos" [value]="ciclo.name">
                             {{ ciclo.name }}
                           </mat-option>
                       </mat-select>
