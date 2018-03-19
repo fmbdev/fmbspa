@@ -92,7 +92,11 @@ export class NuevoRegistroComponent implements OnInit {
     // Se obtienen todos los campus
     this.campusServ.getAll()
         .subscribe(
+<<<<<<< HEAD
           (data: Campus[]) => this.campus = data    
+=======
+          (data: Campus[]) => this.campus = data           
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
         )
     // Se obtienen todos los niveles
     this.nivelServ.getAll()
@@ -143,7 +147,11 @@ export class NuevoRegistroComponent implements OnInit {
   private initForm(){
     this.registerForm = this.formBuilder.group({
       /*-- Campo Usuario (u) --*/
+<<<<<<< HEAD
       u_name: [''],
+=======
+      u_name: [{value: 'Ricardo Vargas', disabled: true}],
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
       /*-- Campos para seción Origen Llamada (oll) -- */
       oll_canal: ['', Validators.required],
       oll_csq: ['', Validators.required],
@@ -160,7 +168,11 @@ export class NuevoRegistroComponent implements OnInit {
       p_telefono: [''],
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
+<<<<<<< HEAD
       p_fecha_nacimiento: ['', Validators],
+=======
+      p_fecha_nacimiento: [{value: '', disabled: true}, Validators.required],
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
       p_edad: ['', Validators.required],
       /* -- Quien registra (q)--*/
       q_nombre: ['', Validators.required],
@@ -179,7 +191,11 @@ export class NuevoRegistroComponent implements OnInit {
       int_interes: ['', Validators.required],
       /*-- Campos para sección de Cita (cit) -- */
       cit_campus: ['', Validators.required],
+<<<<<<< HEAD
       cit_fecha: ['', Validators.required],
+=======
+      cit_fecha: [{value: '', disabled: true}, Validators.required],
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
       cit_asesor: ['', Validators.required],
       cit_hora: ['', Validators.required],
       cit_prog_llamada: [''],

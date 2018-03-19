@@ -149,9 +149,15 @@ export class ReferidosPromotorComponent implements OnInit {
   onKeydownNumber(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
     if (/[0-9]/i.test(charStr)) {
+<<<<<<< HEAD
       return true;
     }else{
       return false;      
+=======
+      return false;
+    }else{
+      return true;      
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
     }
   }
 
@@ -195,7 +201,11 @@ export class ReferidosPromotorComponent implements OnInit {
       p_email: ['',Validators.required],
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
+<<<<<<< HEAD
       p_telefono: ['', Validators.required],
+=======
+      p_telefono: [''],
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
       p_fecha_nacimiento: ['', Validators],

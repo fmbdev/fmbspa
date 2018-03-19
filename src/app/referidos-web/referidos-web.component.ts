@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormGroup, FormBuilder,FormControl,ValidatorFn, Validators,AbstractControl,ValidationErrors } from '@angular/forms';
  
+=======
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
 import { Nivel } from '../interfaces/nivel';
@@ -35,8 +40,11 @@ import { TipificacionService } from '../providers/tipificacion.service';
   styleUrls: ['./referidos-web.component.scss']
 })
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
 export class ReferidosWebComponent implements OnInit {
 
   private registerForm: FormGroup;
@@ -156,6 +164,7 @@ export class ReferidosWebComponent implements OnInit {
       return false;      
     }
   }
+<<<<<<< HEAD
 emailWordValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
     const name = control.value; 
@@ -187,6 +196,8 @@ emailWordValidator(): ValidatorFn {
   return null; 
 }
 
+=======
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
 
   onKeydownLetter(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
@@ -223,6 +234,7 @@ emailWordValidator(): ValidatorFn {
       
 
       /*-- Prospecto (p) --*/
+<<<<<<< HEAD
 
       p_nombre: [''],
       p_nombre2: ['', Validators.required],
@@ -238,6 +250,16 @@ emailWordValidator(): ValidatorFn {
       p_telefono: [''],
       p_telefono2: ['', Validators.required],
       p_cuenta: [''],
+=======
+      p_nombre: ['', Validators.required],
+      p_apellido_paterno: ['',Validators.required],
+      p_apellido_materno: ['', Validators.required],
+      p_email: ['', [Validators.required, Validators.email]],
+      p_noemail: [''],
+      p_telefono_mobil: ['', Validators.required],
+      p_telefono: ['', Validators.required],
+      p_cuenta: ['', Validators.required],
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
       p_fecha_nacimiento: ['', Validators],
@@ -247,7 +269,11 @@ emailWordValidator(): ValidatorFn {
       q_nombre: ['', Validators.required],
       q_apellido_paterno: ['',Validators.required],
       q_apellido_materno: ['', Validators.required],
+<<<<<<< HEAD
       q_email: ['',this.emailWordValidator()],
+=======
+      q_email: ['',Validators.required],
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
       q_telefono_mobil: ['', Validators.required],
       q_telefono: [''],
       q_parentesco: ['', Validators.required],
