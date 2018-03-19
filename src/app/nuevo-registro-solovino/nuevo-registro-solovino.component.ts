@@ -52,17 +52,23 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
 
     ngOnInit() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Se obtiene todos los canales
       this.canalServ.getAll()
       .subscribe(
         (data: Canal[]) => this.canales = data
       )  
 =======
+=======
+>>>>>>> developer
         // Se obtiene todos los canales
       this.canalServ.getAll()
       .subscribe(
         (data: Canal[]) => this.canales = data
       )   
+<<<<<<< HEAD
+>>>>>>> developer
+=======
 >>>>>>> developer
       // Se obtienen todos los intereses
       this.interesServ.getAll()
