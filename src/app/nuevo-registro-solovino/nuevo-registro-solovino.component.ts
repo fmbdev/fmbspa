@@ -103,7 +103,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     private initForm(){
       this.registerForm = this.formBuilder.group({
         /*-- Campo Usuario (u) --*/
-        u_name: ['', Validators.required],
+        u_name: [{value: 'Ricardo Vargas', disabled: true}],
         /*-- Campos para sección de Contato -- */
         /*-- Prospecto (p) --*/
         p_nombre: ['', Validators.required],
@@ -115,7 +115,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
         p_telefono: [''],
         p_genero: ['', Validators.required],
         p_canal_preferido: ['', Validators.required],
-        p_fecha_nacimiento: [''],
+        p_fecha_nacimiento: [{value: '', disabled: true}, Validators.required],
         p_edad: ['', Validators.required],
         /* -- Quien registra (q)--*/
         q_nombre: ['', Validators.required],
