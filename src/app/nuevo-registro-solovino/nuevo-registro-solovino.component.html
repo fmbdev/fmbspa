@@ -77,7 +77,7 @@
                           <input matInput [matDatepicker]="myDatepicker" placeholder="Selecciona una opciòn"
                                   formControlName="p_fecha_nacimiento">
                           <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-                          <mat-datepicker #myDatepicker></mat-datepicker>
+                          <mat-datepicker #myDatepicker disabled="false"></mat-datepicker>
                         </mat-form-field>                                                                
                         <mat-form-field>
                           <input matInput placeholder="Edad*"
@@ -144,7 +144,11 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_campus">
+<<<<<<< HEAD
                           <mat-option *ngFor="let campu of campus;" [value]="campu.name">
+=======
+                          <mat-option *ngFor="let campu of campus" [value]="campu.name">
+>>>>>>> developer
                             {{ campu.name }}
                           </mat-option>
                       </mat-select>
@@ -153,7 +157,11 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_nivel">
+<<<<<<< HEAD
                           <mat-option *ngFor="let nivel of niveles;" [value]="nivel.name">
+=======
+                          <mat-option *ngFor="let nivel of niveles" [value]="nivel.name">
+>>>>>>> developer
                             {{ nivel.name }}
                           </mat-option>
                       </mat-select>
@@ -162,7 +170,11 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_modalidad">
+<<<<<<< HEAD
                           <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad.name">
+=======
+                          <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.name">
+>>>>>>> developer
                             {{ modalidad.name }}
                           </mat-option>
                       </mat-select>
@@ -171,7 +183,11 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_carrera">
+<<<<<<< HEAD
                           <mat-option *ngFor="let carrera of carreras;" [value]="carrera.name">
+=======
+                          <mat-option *ngFor="let carrera of carreras" [value]="carrera.name">
+>>>>>>> developer
                             {{ carrera.name }}
                           </mat-option>
                       </mat-select>
@@ -180,7 +196,11 @@
                     <mat-form-field>
                       <mat-select placeholder="Selecciona una opción"
                           formControlName="int_ciclo">
+<<<<<<< HEAD
                           <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo.name">
+=======
+                          <mat-option *ngFor="let ciclo of ciclos" [value]="ciclo.name">
+>>>>>>> developer
                             {{ ciclo.name }}
                           </mat-option>
                       </mat-select>

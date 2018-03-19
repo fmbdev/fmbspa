@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Nivel } from '../interfaces/nivel';
 import { Canal } from '../interfaces/canal';
 import { Ciclo } from '../interfaces/ciclo';
+import { Canal } from '../interfaces/canal';
 import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
@@ -11,6 +12,7 @@ import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
  
 import { NivelService } from '../providers/nivel.service';
+import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
 import { CanalService } from '../providers/canal.service';
 import { CampusService } from '../providers/campus.service';
@@ -31,6 +33,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
   private niveles: Nivel[] = [];
   private canales: Canal[] = [];
   private campus: Campus[] = [];
+  private canales: Canal[] = [];
   private carreras: Carrera[] = [];
   private intereses: Interes[] = [];
   private modalidades: Modalidad[] = [];
@@ -48,11 +51,19 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     private parentescoServ: ParentescoService) { }
 
     ngOnInit() {
+<<<<<<< HEAD
       // Se obtiene todos los canales
       this.canalServ.getAll()
       .subscribe(
         (data: Canal[]) => this.canales = data
       )  
+=======
+        // Se obtiene todos los canales
+      this.canalServ.getAll()
+      .subscribe(
+        (data: Canal[]) => this.canales = data
+      )   
+>>>>>>> developer
       // Se obtienen todos los intereses
       this.interesServ.getAll()
           .subscribe(
@@ -103,7 +114,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     private initForm(){
       this.registerForm = this.formBuilder.group({
         /*-- Campo Usuario (u) --*/
-        u_name: ['', Validators.required],
+        u_name: [{value: 'Ricardo Vargas', disabled: true}],
         /*-- Campos para sección de Contato -- */
         /*-- Prospecto (p) --*/
         p_nombre: ['', Validators.required],
@@ -115,7 +126,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
         p_telefono: [''],
         p_genero: ['', Validators.required],
         p_canal_preferido: ['', Validators.required],
-        p_fecha_nacimiento: [''],
+        p_fecha_nacimiento: [{value: '', disabled: true}, Validators.required],
         p_edad: ['', Validators.required],
         /* -- Quien registra (q)--*/
         q_nombre: ['', Validators.required],
