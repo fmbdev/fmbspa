@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { FormGroup, FormBuilder,FormControl,ValidatorFn, Validators,AbstractControl,ValidationErrors } from '@angular/forms';
+ 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
 import { Nivel } from '../interfaces/nivel';
@@ -34,6 +34,8 @@ import { TipificacionService } from '../providers/tipificacion.service';
   templateUrl: './referidos-web.component.html',
   styleUrls: ['./referidos-web.component.scss']
 })
+
+
 
 export class ReferidosWebComponent implements OnInit {
 
@@ -154,6 +156,37 @@ export class ReferidosWebComponent implements OnInit {
       return false;      
     }
   }
+emailWordValidator(): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} => {
+    const name = control.value; 
+    if(control.value!=""){
+      if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(name)){
+        return  null;
+      }else{
+        return {'emailWord': {name}}
+      }   
+    }   
+                
+  };
+}
+
+
+ 
+ emailDomainValidator(control: FormControl) { 
+  let email = control.value; 
+  if (email && email.indexOf("@") != -1) { 
+    let [_, domain] = email.split("@"); 
+    if (domain !== "codecraft.tv") { 
+      return {
+        emailDomain: {
+          parsedDomain: domain
+        }
+      }
+    }
+  }
+  return null; 
+}
+
 
   onKeydownLetter(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
@@ -190,14 +223,21 @@ export class ReferidosWebComponent implements OnInit {
       
 
       /*-- Prospecto (p) --*/
-      p_nombre: ['', Validators.required],
-      p_apellido_paterno: ['',Validators.required],
-      p_apellido_materno: ['', Validators.required],
-      p_email: ['', [Validators.required, Validators.email]],
+
+      p_nombre: [''],
+      p_nombre2: ['', Validators.required],
+      p_apellido_paterno2: ['', Validators.required],
+      p_apellido_paterno: [''],
+      p_apellido_materno: [''],
+      p_apellido_materno2: ['', Validators.email],
+      int_carrera2: [''],
+      p_email: ['', Validators.email],
+      p_email2: ['', Validators.required,Validators.email],
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
-      p_telefono: ['', Validators.required],
-      p_cuenta: ['', Validators.required],
+      p_telefono: [''],
+      p_telefono2: ['', Validators.required],
+      p_cuenta: [''],
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
       p_fecha_nacimiento: ['', Validators],
@@ -207,7 +247,7 @@ export class ReferidosWebComponent implements OnInit {
       q_nombre: ['', Validators.required],
       q_apellido_paterno: ['',Validators.required],
       q_apellido_materno: ['', Validators.required],
-      q_email: ['',Validators.required],
+      q_email: ['',this.emailWordValidator()],
       q_telefono_mobil: ['', Validators.required],
       q_telefono: [''],
       q_parentesco: ['', Validators.required],

@@ -3,10 +3,16 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="usuario-container">
             <div class="row">
-                <div class="col col-lg-6">
-                    <mat-form-field id="referente">
-                        <input matInput placeholder="Usuario" formControlName="u_name">
-                    </mat-form-field>
+                <div class="col">
+                    <div class="card" style="border: none;">
+                        <div class="card-body">
+                            <div class="col col-lg-6">
+                                <mat-form-field id="referente">
+                                    <input readonly matInput placeholder="Referente" formControlName="u_name" value="Ricardo Vargas">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,15 +64,17 @@
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
-                                    <div class="col-md-12">
-                                        <mat-checkbox class="example-margin col-xs-6">Celular</mat-checkbox>
-                                        <mat-checkbox class="example-margin col-xs-6">Casa</mat-checkbox>
+                                    <div class="col-md-12" style="padding: 0; margin-top:15px; ">
+                                        <mat-radio-group>
+                                            <mat-radio-button value="1" style="margin-right:20px;" class="example-margin col-xs-6">Celular</mat-radio-button>
+                                            <mat-radio-button value="2" class="example-margin col-xs-6">Casa</mat-radio-button>
+                                        </mat-radio-group>
                                     </div>
 
                                 </div>
                                 <div class="col col-lg-6">
-                                    <label for="int_campus" class="hidden">Campus*</label>
                                     <mat-form-field>
+                                        <label class="color-gray" for="int_campus">Campus*</label>
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_campus">
                                             <mat-option *ngFor="let campu of campus;" [value]="campu.name">
                                                 {{ campu.name }}
@@ -76,8 +84,8 @@
                                             Elige un Campus
                                         </mat-error>
                                     </mat-form-field>
-                                    <label for="int_nivel" class="hidden">Nivel*</label>
                                     <mat-form-field>
+                                        <label class="color-gray" for="int_nivel">Nivel*</label>
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_nivel">
                                             <mat-option *ngFor="let nivel of niveles;" [value]="nivel.name">
                                                 {{ nivel.name }}
@@ -87,8 +95,8 @@
                                             Elige una Área de Interés
                                         </mat-error>
                                     </mat-form-field>
-                                    <label for="int_modalidad" class="hidden">Modalidad*</label>
                                     <mat-form-field>
+                                    <label class="color-gray" for="int_modalidad">Modalidad*</label>
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_modalidad">
                                             <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad.name">
                                                 {{ modalidad.name }}
@@ -98,8 +106,8 @@
                                             Elige una Modalidad
                                         </mat-error>
                                     </mat-form-field>
-                                    <label for="int_carrera" class="hidden">Carrera*</label>
                                     <mat-form-field>
+                                        <label class="color-gray" for="int_carrera">Carrera*</label>                                        
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_carrera">
                                             <mat-option *ngFor="let carrera of carreras;" [value]="carrera.name">
                                                 {{ carrera.name }}

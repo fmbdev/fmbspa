@@ -1,7 +1,16 @@
 .mat-error {
     color: #f68b1f !important;
 }
+mat-form-field.mat-form-field-type-mat-select.ng-valid label.mat-form-field-label {
+    display: none !important;
+}
 
+.mat-radio-outer-circle {
+    border-color: rgba(0,0,0,.54) !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #212529 !important;
+}
 .mat-form-field-invalid .mat-input-element,
 .mat-warn .mat-input-element {
     color: #f68b1f !important;
@@ -55,5 +64,13 @@
 }
 
 .hidden {
-    display: block!important;
+    display: block !important;
+    color: #757575 !important;
+}
+
+.color-gray {
+    color: #757575 !important;
+    font-size: 12px;
+    position: absolute;
+    top:-7px;
 }

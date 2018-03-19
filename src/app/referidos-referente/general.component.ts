@@ -195,7 +195,7 @@ export class ReferidosComponent implements OnInit {
       p_email: ['',Validators.required],
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
-      p_telefono: [''],
+      p_telefono: ['', Validators.required],
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
       p_fecha_nacimiento: ['', Validators],
