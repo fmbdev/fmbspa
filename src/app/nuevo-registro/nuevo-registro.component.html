@@ -182,7 +182,7 @@
                                         <mat-datepicker #myDatepicker1></mat-datepicker>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input (keypress)="onKeydownNumber($event)" matInput placeholder="Edad*" formControlName="p_edad">
+                                        <input  (keypress)="onKeydownNumber($event)" matInput placeholder="Edad*" formControlName="p_edad">
                                         <mat-error *ngIf="registerForm.controls['p_edad'].hasError('required')">
                                             Ingresa una Edad
                                         </mat-error>
@@ -230,7 +230,7 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="q_telefono_mobil">
+                                        <input  maxlength="10"  matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="q_telefono_mobil">
                                         <mat-error *ngIf="registerForm.controls['q_telefono_mobil'].hasError('required')">
                                             Ingresa número de Celular
                                         </mat-error>
@@ -239,7 +239,7 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input (keypress)="onKeydownNumber($event)" matInput placeholder="Teléfono*" formControlName="q_telefono">
+                                        <input  maxlength="10"  (keypress)="onKeydownNumber($event)" matInput placeholder="Teléfono*" formControlName="q_telefono">
                                         <mat-error *ngIf="registerForm.controls['q_telefono'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
