@@ -1,9 +1,8 @@
-<div class="general-container">
+    <div class="general-container">
     <!-- Form -->
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="usuario-container">
             <div class="row">
-<<<<<<< HEAD
                 <div class="col">
                     <div class="card" style="border: none;">
                         <div class="card-body">
@@ -14,12 +13,6 @@
                             </div>
                         </div>
                     </div>
-=======
-                <div class="col col-lg-6">
-                    <mat-form-field id="referente">
-                        <input matInput placeholder="Usuario" formControlName="u_name">
-                    </mat-form-field>
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
                 </div>
             </div>
         </div>
@@ -37,20 +30,29 @@
                                 <div class="col col-lg-6">
                                     <mat-form-field>
                                         <input matInput (keypress)="onKeydownLetter($event)" placeholder="Nombre*" formControlName="p_nombre">
-                                        <mat-error *ngIf="registerForm.controls['p_nombre'].invalid">
-                                            {{ getErrorMessage('p_nombre','required','Por favor ingresa un nombre ') }}
+                                        <mat-error *ngIf="registerForm.controls['p_nombre'].hasError('required')">
+                                            Por favor ingresa un nombre 
+                                        </mat-error>
+                                        <mat-error *ngIf="registerForm.controls['p_nombre'].hasError('minlength') && !registerForm.controls['p_nombre'].hasError('required')">
+                                            Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
                                         <input matInput (keypress)="onKeydownLetter($event)" placeholder="Apellido Paterno*" formControlName="p_apellido_paterno">
-                                        <mat-error *ngIf="registerForm.controls['p_apellido_paterno'].invalid">
-                                            {{ getErrorMessage('p_apellido_paterno','required','Por favor ingresa un apellido paterno ') }}
+                                        <mat-error *ngIf="registerForm.controls['p_apellido_paterno'].hasError('required')">
+                                            Por favor ingresa un apellido paterno
+                                        </mat-error>
+                                        <mat-error *ngIf="registerForm.controls['p_apellido_paterno'].hasError('minlength') && !registerForm.controls['p_apellido_paterno'].hasError('required')">
+                                            Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
                                         <input matInput (keypress)="onKeydownLetter($event)" placeholder="Apellido Materno*" formControlName="p_apellido_materno">
-                                        <mat-error *ngIf="registerForm.controls['p_apellido_materno'].invalid">
-                                            {{ getErrorMessage('p_apellido_paterno','required','Por favor ingresa un apellido materno ') }}
+                                        <mat-error *ngIf="registerForm.controls['p_apellido_materno'].hasError('required')">
+                                            Por favor ingresa un apellido materno
+                                        </mat-error>
+                                        <mat-error *ngIf="registerForm.controls['p_apellido_materno'].hasError('minlength') && !registerForm.controls['p_apellido_materno'].hasError('required')">
+                                            Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
@@ -63,7 +65,7 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
+                                        <input maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
                                         <mat-error *ngIf="registerForm.controls['p_telefono'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
@@ -71,28 +73,17 @@
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
-<<<<<<< HEAD
                                     <div class="col-md-12" style="padding: 0; margin-top:15px; ">
                                         <mat-radio-group>
                                             <mat-radio-button value="1" style="margin-right:20px;" class="example-margin col-xs-6">Celular</mat-radio-button>
                                             <mat-radio-button value="2" class="example-margin col-xs-6">Casa</mat-radio-button>
                                         </mat-radio-group>
-=======
-                                    <div class="col-md-12">
-                                        <mat-checkbox class="example-margin col-xs-6">Celular</mat-checkbox>
-                                        <mat-checkbox class="example-margin col-xs-6">Casa</mat-checkbox>
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
                                     </div>
 
                                 </div>
                                 <div class="col col-lg-6">
-<<<<<<< HEAD
                                     <mat-form-field>
                                         <label class="color-gray" for="int_campus">Campus*</label>
-=======
-                                    <label for="int_campus" class="hidden">Campus*</label>
-                                    <mat-form-field>
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_campus">
                                             <mat-option *ngFor="let campu of campus;" [value]="campu.name">
                                                 {{ campu.name }}
@@ -102,13 +93,8 @@
                                             Elige un Campus
                                         </mat-error>
                                     </mat-form-field>
-<<<<<<< HEAD
                                     <mat-form-field>
                                         <label class="color-gray" for="int_nivel">Nivel*</label>
-=======
-                                    <label for="int_nivel" class="hidden">Nivel*</label>
-                                    <mat-form-field>
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_nivel">
                                             <mat-option *ngFor="let nivel of niveles;" [value]="nivel.name">
                                                 {{ nivel.name }}
@@ -118,13 +104,8 @@
                                             Elige una Área de Interés
                                         </mat-error>
                                     </mat-form-field>
-<<<<<<< HEAD
                                     <mat-form-field>
                                     <label class="color-gray" for="int_modalidad">Modalidad*</label>
-=======
-                                    <label for="int_modalidad" class="hidden">Modalidad*</label>
-                                    <mat-form-field>
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_modalidad">
                                             <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad.name">
                                                 {{ modalidad.name }}
@@ -134,13 +115,8 @@
                                             Elige una Modalidad
                                         </mat-error>
                                     </mat-form-field>
-<<<<<<< HEAD
                                     <mat-form-field>
                                         <label class="color-gray" for="int_carrera">Carrera*</label>                                        
-=======
-                                    <label for="int_carrera" class="hidden">Carrera*</label>
-                                    <mat-form-field>
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
                                         <mat-select placeholder="Selecciona una opción" formControlName="int_carrera">
                                             <mat-option *ngFor="let carrera of carreras;" [value]="carrera.name">
                                                 {{ carrera.name }}

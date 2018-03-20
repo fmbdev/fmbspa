@@ -3,10 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Nivel } from '../interfaces/nivel';
 import { Ciclo } from '../interfaces/ciclo';
-<<<<<<< HEAD
-=======
-import { Canal } from '../interfaces/canal';
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
 import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
@@ -14,10 +10,6 @@ import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
  
 import { NivelService } from '../providers/nivel.service';
-<<<<<<< HEAD
-=======
-import { CanalService } from '../providers/canal.service';
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
 import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
@@ -32,27 +24,19 @@ import { ParentescoService } from '../providers/parentesco.service';
 })
 export class NuevoRegistroSolovinoComponent implements OnInit {
 
-  private registerForm: FormGroup;
-  private ciclos: Ciclo[] = [];
-  private niveles: Nivel[] = [];
-  private campus: Campus[] = [];
-<<<<<<< HEAD
-=======
-  private canales: Canal[] = [];
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
-  private carreras: Carrera[] = [];
-  private intereses: Interes[] = [];
-  private modalidades: Modalidad[] = [];
-  private parentescos: Parentesco[] = [];
-  private sexos: [{},{}] = [{"name":"Hombre"},{"name":"Mujer"}];
+  registerForm: FormGroup;
+  ciclos: Ciclo[] = [];
+  niveles: Nivel[] = [];
+  campus: Campus[] = [];
+  carreras: Carrera[] = [];
+  intereses: Interes[] = [];
+  modalidades: Modalidad[] = [];
+  parentescos: Parentesco[] = [];
+  sexos: [{},{}] = [{"name":"Hombre"},{"name":"Mujer"}];
 
   constructor(private formBuilder: FormBuilder,
     private nivelServ: NivelService,
     private cicloServ: CicloService,
-<<<<<<< HEAD
-=======
-    private canalServ: CanalService,
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
     private campusServ: CampusService,
     private carreraServ: CarreraService,
     private interesServ: InteresService,
@@ -60,14 +44,6 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     private parentescoServ: ParentescoService) { }
 
     ngOnInit() {
-<<<<<<< HEAD
-=======
-        // Se obtiene todos los canales
-      this.canalServ.getAll()
-      .subscribe(
-        (data: Canal[]) => this.canales = data
-      )   
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
       // Se obtienen todos los intereses
       this.interesServ.getAll()
           .subscribe(
@@ -118,11 +94,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     private initForm(){
       this.registerForm = this.formBuilder.group({
         /*-- Campo Usuario (u) --*/
-<<<<<<< HEAD
         u_name: ['', Validators.required],
-=======
-        u_name: [{value: 'Ricardo Vargas', disabled: true}],
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
         /*-- Campos para sección de Contato -- */
         /*-- Prospecto (p) --*/
         p_nombre: ['', Validators.required],
@@ -134,11 +106,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
         p_telefono: [''],
         p_genero: ['', Validators.required],
         p_canal_preferido: ['', Validators.required],
-<<<<<<< HEAD
         p_fecha_nacimiento: [''],
-=======
-        p_fecha_nacimiento: [{value: '', disabled: true}, Validators.required],
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
         p_edad: ['', Validators.required],
         /* -- Quien registra (q)--*/
         q_nombre: ['', Validators.required],
