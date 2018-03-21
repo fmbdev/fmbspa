@@ -189,13 +189,13 @@ export class ReferidosComponent implements OnInit {
       
 
       /*-- Prospecto (p) --*/
-      p_nombre: ['', Validators.required],
-      p_apellido_paterno: ['',Validators.required],
-      p_apellido_materno: ['', Validators.required],
-      p_email: ['',Validators.required],
+      p_nombre: ['', [Validators.required,Validators.minLength(3)]],
+      p_apellido_paterno:['', [Validators.required,Validators.minLength(3)]],
+      p_apellido_materno:['', [Validators.required,Validators.minLength(3)]],
+      p_email: ['', [Validators.required,Validators.email]],
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
-      p_telefono: [''],
+      p_telefono: ['', Validators.required],
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
       p_fecha_nacimiento: ['', Validators],

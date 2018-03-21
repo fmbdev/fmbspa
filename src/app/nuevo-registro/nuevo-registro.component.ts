@@ -34,20 +34,20 @@ import { TipificacionService } from '../providers/tipificacion.service';
 })
 export class NuevoRegistroComponent implements OnInit {
 
-  private registerForm: FormGroup;
-  private csqs: Csq[] = [];
-  private horas: Hora[] = [];
-  private ciclos: Ciclo[] = [];
-  private niveles: Nivel[] = [];
-  private canales: Canal[] = [];
-  private campus: Campus[] = [];
-  private asesores: Asesor[] = [];
-  private carreras: Carrera[] = [];
-  private intereses: Interes[] = [];
-  private modalidades: Modalidad[] = [];
-  private parentescos: Parentesco[] = [];
-  private tipificaciones: Tipificacion[] = [];
-  private sexos: [{},{}] = [{"name":"Hombre"},{"name":"Mujer"}]; 
+  registerForm: FormGroup;
+  csqs: Csq[] = [];
+  horas: Hora[] = [];
+  ciclos: Ciclo[] = [];
+  niveles: Nivel[] = [];
+  canales: Canal[] = [];
+  campus: Campus[] = [];
+  asesores: Asesor[] = [];
+  carreras: Carrera[] = [];
+  intereses: Interes[] = [];
+  modalidades: Modalidad[] = [];
+  parentescos: Parentesco[] = [];
+  tipificaciones: Tipificacion[] = [];
+  sexos: [{},{}] = [{"name":"Hombre"},{"name":"Mujer"}]; 
 
   constructor(private formBuilder: FormBuilder,
               private csqServ: CsqService,
@@ -68,7 +68,7 @@ export class NuevoRegistroComponent implements OnInit {
     this.canalServ.getAll()
         .subscribe(
           (data: Canal[]) => this.canales = data
-        )        
+        )
     // Se obtienen todos los csqs
     this.csqServ.getAll()
         .subscribe(
@@ -92,7 +92,7 @@ export class NuevoRegistroComponent implements OnInit {
     // Se obtienen todos los campus
     this.campusServ.getAll()
         .subscribe(
-          (data: Campus[]) => this.campus = data           
+          (data: Campus[]) => this.campus = data      
         )
     // Se obtienen todos los niveles
     this.nivelServ.getAll()
@@ -137,13 +137,31 @@ export class NuevoRegistroComponent implements OnInit {
   }
 
   getErrorMessage(){
-    return this.registerForm.controls['oll_canal'].hasError('required') ? "Elige un canal" : ""
+    return this.registerForm.controls['oll_canal'].hasError('required') ? "Elige un canallll" : ""
+  }
+
+    onKeydownNumber(event: KeyboardEvent) {
+    var charStr = String.fromCharCode(event.keyCode);
+    if (/[0-9]/i.test(charStr)) {
+      return true;
+    }else{
+      return false;      
+    }
+  }
+
+  onKeydownLetter(event: KeyboardEvent) {
+    var charStr = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z]/i.test(charStr)) {
+      return ;
+    }else{
+      return false;
+    }
   }
 
   private initForm(){
     this.registerForm = this.formBuilder.group({
       /*-- Campo Usuario (u) --*/
-      u_name: [{value: 'Ricardo Vargas', disabled: true}],
+      u_name: [''],
       /*-- Campos para seción Origen Llamada (oll) -- */
       oll_canal: ['', Validators.required],
       oll_csq: ['', Validators.required],
@@ -151,24 +169,24 @@ export class NuevoRegistroComponent implements OnInit {
       oll_interes: ['',Validators.required],
       /*-- Campos para sección de Contato -- */
       /*-- Prospecto (p) --*/
-      p_nombre: ['', Validators.required],
-      p_apellido_paterno: ['',Validators.required],
-      p_apellido_materno: ['', Validators.required],
-      p_email: ['',Validators.required],
+      p_nombre: ['', [Validators.required, Validators.minLength(3)]],
+      p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
+      p_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
+      p_email: ['', [Validators.required, Validators.email]],
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
-      p_telefono: [''],
+      p_telefono: ['', Validators.required],
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
-      p_fecha_nacimiento: [{value: '', disabled: true}, Validators.required],
+      p_fecha_nacimiento: ['', Validators],
       p_edad: ['', Validators.required],
       /* -- Quien registra (q)--*/
-      q_nombre: ['', Validators.required],
-      q_apellido_paterno: ['',Validators.required],
-      q_apellido_materno: ['', Validators.required],
-      q_email: ['',Validators.required],
+       q_nombre: ['', [Validators.required, Validators.minLength(3)]],
+      q_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
+      q_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
+      q_email: ['', [Validators.required, Validators.email]],
       q_telefono_mobil: ['', Validators.required],
-      q_telefono: [''],
+      q_telefono: ['', Validators.required],
       q_parentesco: ['', Validators.required],
       /*-- Campos para sección de Interes (int) -- */
       int_campus: ['', Validators.required],
@@ -179,7 +197,7 @@ export class NuevoRegistroComponent implements OnInit {
       int_interes: ['', Validators.required],
       /*-- Campos para sección de Cita (cit) -- */
       cit_campus: ['', Validators.required],
-      cit_fecha: [{value: '', disabled: true}, Validators.required],
+      cit_fecha: ['', Validators.required],
       cit_asesor: ['', Validators.required],
       cit_hora: ['', Validators.required],
       cit_prog_llamada: [''],

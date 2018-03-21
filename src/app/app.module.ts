@@ -17,6 +17,7 @@ import { ReferidosPromotorComponent } from './referidos-promotor/referidos-promo
 import { ReferidosTlmkComponent } from './referidos-tlmk/referidos-tlmk.component';
 import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
 
+
 // Providers
 import { CsqService } from './providers/csq.service';
 import { HoraService } from './providers/hora.service';
@@ -33,7 +34,6 @@ import { ParentescoService } from './providers/parentesco.service';
 import { TipificacionService } from './providers/tipificacion.service';
 import { ValidationService } from './validations/validation.service'; 
 import { PalabramalaService } from './providers/palabramala.service';
-
 
 // Angular Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';

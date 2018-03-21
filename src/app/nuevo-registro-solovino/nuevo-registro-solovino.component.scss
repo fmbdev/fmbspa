@@ -17,8 +17,6 @@ div.nuevo-registro-solovino-container{
             padding: 20px 30px;
             label{
                 margin-bottom: 0;
-                font-size: 12px;
-                color: #757575;
             }
             mat-form-field{
                 width: 100%;
@@ -74,5 +72,19 @@ div.nuevo-registro-solovino-container{
             text-transform: uppercase;
             color: #ffffff;
         }
+    }
+}
+
+div.interes-opcion-container{
+    margin-top: 30px;
+    div.boton-asignar,
+    div.boton-directa,
+    div.boton-grupal{
+        background-color:#757575;
+    }
+    button{
+        width: 100%;
+        text-transform: uppercase;
+        color: #ffffff;
     }
 }

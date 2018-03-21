@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
+/*--- Angular Material Theme ---*/
+=======
 /*-- Angular Material Theme ---*/
+>>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
 @import url(~@angular/material/prebuilt-themes/indigo-pink.css);
 /*--- App Component ---*/
 .mat-error {
@@ -63,3 +67,166 @@
 }
 
 /*--- Home Component ---*/
+/*--- Nuevo Registro Component ---*/
+div.nuevo-registro-container {
+  margin-top: 50px;
+}
+div.nuevo-registro-container div.llamada-container,
+div.nuevo-registro-container div.contacto-container,
+div.nuevo-registro-container div.interes-container,
+div.nuevo-registro-container div.citas-container,
+div.nuevo-registro-container div.tipificacion-container {
+  margin-bottom: 50px;
+}
+div.nuevo-registro-container div.llamada-container div.card-header,
+div.nuevo-registro-container div.contacto-container div.card-header,
+div.nuevo-registro-container div.interes-container div.card-header,
+div.nuevo-registro-container div.citas-container div.card-header,
+div.nuevo-registro-container div.tipificacion-container div.card-header {
+  padding: 8px 0 8px 30px;
+  background-color: #006fba;
+}
+div.nuevo-registro-container div.llamada-container div.card-header h5.card-title,
+div.nuevo-registro-container div.contacto-container div.card-header h5.card-title,
+div.nuevo-registro-container div.interes-container div.card-header h5.card-title,
+div.nuevo-registro-container div.citas-container div.card-header h5.card-title,
+div.nuevo-registro-container div.tipificacion-container div.card-header h5.card-title {
+  font-size: 17px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+div.nuevo-registro-container div.llamada-container div.card-body,
+div.nuevo-registro-container div.contacto-container div.card-body,
+div.nuevo-registro-container div.interes-container div.card-body,
+div.nuevo-registro-container div.citas-container div.card-body,
+div.nuevo-registro-container div.tipificacion-container div.card-body {
+  padding: 20px 30px;
+}
+div.nuevo-registro-container div.llamada-container div.card-body label,
+div.nuevo-registro-container div.contacto-container div.card-body label,
+div.nuevo-registro-container div.interes-container div.card-body label,
+div.nuevo-registro-container div.citas-container div.card-body label,
+div.nuevo-registro-container div.tipificacion-container div.card-body label {
+  margin-bottom: 0;
+}
+div.nuevo-registro-container div.llamada-container div.card-body mat-form-field,
+div.nuevo-registro-container div.contacto-container div.card-body mat-form-field,
+div.nuevo-registro-container div.interes-container div.card-body mat-form-field,
+div.nuevo-registro-container div.citas-container div.card-body mat-form-field,
+div.nuevo-registro-container div.tipificacion-container div.card-body mat-form-field {
+  width: 100%;
+}
+div.nuevo-registro-container div.llamada-container div.card-body #telefono,
+div.nuevo-registro-container div.contacto-container div.card-body #telefono,
+div.nuevo-registro-container div.interes-container div.card-body #telefono,
+div.nuevo-registro-container div.citas-container div.card-body #telefono,
+div.nuevo-registro-container div.tipificacion-container div.card-body #telefono {
+  margin-top: 24px;
+}
+div.nuevo-registro-container div.opcion-container {
+  margin: 50px 0;
+}
+div.nuevo-registro-container div.opcion-container div.boton-guardar {
+  background-color: #f68b1f;
+}
+div.nuevo-registro-container div.opcion-container div.boton-cancelar {
+  background-color: #757575;
+}
+div.nuevo-registro-container div.opcion-container button {
+  width: 100%;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+div.nuevo-registro-container div.contacto-container div.card-body div.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+div.nuevo-registro-container div.contacto-container div.card-body #checkbox_email {
+  margin: 20px 0;
+}
+div.nuevo-registro-container div.usuario-container {
+  margin-bottom: 10px;
+}
+div.nuevo-registro-container div.usuario-container mat-form-field {
+  width: 100%;
+}
+
+/*--- Nuevo Registro Solovino Component ---*/
+div.nuevo-registro-solovino-container {
+  margin-top: 50px;
+}
+div.nuevo-registro-solovino-container div.contacto-container,
+div.nuevo-registro-solovino-container div.interes-container {
+  margin-bottom: 50px;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-header,
+div.nuevo-registro-solovino-container div.interes-container div.card-header {
+  padding: 8px 0 8px 30px;
+  background-color: #006fba;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-header h5.card-title,
+div.nuevo-registro-solovino-container div.interes-container div.card-header h5.card-title {
+  font-size: 17px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-body,
+div.nuevo-registro-solovino-container div.interes-container div.card-body {
+  padding: 20px 30px;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-body label,
+div.nuevo-registro-solovino-container div.interes-container div.card-body label {
+  margin-bottom: 0;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-body mat-form-field,
+div.nuevo-registro-solovino-container div.interes-container div.card-body mat-form-field {
+  width: 100%;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-body #telefono,
+div.nuevo-registro-solovino-container div.interes-container div.card-body #telefono {
+  margin-top: 24px;
+}
+div.nuevo-registro-solovino-container div.opcion-container {
+  margin: 50px 0;
+}
+div.nuevo-registro-solovino-container div.opcion-container div.boton-guardar {
+  background-color: #f68b1f;
+}
+div.nuevo-registro-solovino-container div.opcion-container div.boton-cancelar {
+  background-color: #757575;
+}
+div.nuevo-registro-solovino-container div.opcion-container button {
+  width: 100%;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-body div.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+div.nuevo-registro-solovino-container div.contacto-container div.card-body #checkbox_email {
+  margin: 20px 0;
+}
+div.nuevo-registro-solovino-container div.usuario-container {
+  margin-bottom: 10px;
+}
+div.nuevo-registro-solovino-container div.usuario-container mat-form-field {
+  width: 100%;
+}
+div.nuevo-registro-solovino-container div.interes-opcion-container {
+  margin-top: 30px;
+}
+div.nuevo-registro-solovino-container div.interes-opcion-container div.boton-asignar,
+div.nuevo-registro-solovino-container div.interes-opcion-container div.boton-directa,
+div.nuevo-registro-solovino-container div.interes-opcion-container div.boton-grupal {
+  background-color: #757575;
+}
+div.nuevo-registro-solovino-container div.interes-opcion-container button {
+  width: 100%;
+  text-transform: uppercase;
+  color: #ffffff;
+}
