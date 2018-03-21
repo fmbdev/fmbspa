@@ -133,6 +133,8 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
   }
 
   resetForm(){
+    console.log(this.registerForm.controls['u_name']);
+    console.log("nadaadad");
     this.registerForm.reset();
   }
 
@@ -159,6 +161,8 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
   }
   
     private initForm(){
+
+
     this.registerForm = this.formBuilder.group({
       /*-- Campo Usuario (u) --*/
       u_name: [''],

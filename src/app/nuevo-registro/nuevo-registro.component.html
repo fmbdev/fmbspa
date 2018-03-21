@@ -97,7 +97,7 @@
                                     </div>
                                     <hr>
                                     <mat-form-field>
-                                        <input (keypress)="onKeydownLetter($event)" matInput placeholder="Nombre*" formControlName="p_nombre">
+                                        <input ng-pattern="/^[a-zA-Z\s]*$/" (keypress)="onKeydownLetter($event)" matInput placeholder="Nombre*" formControlName="p_nombre">
                                         <mat-error *ngIf="registerForm.controls['p_nombre'].hasError('required')">
                                             Por favor ingresa un nombre
                                         </mat-error>
@@ -133,10 +133,10 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <div id="checkbox_email">
-                                        <mat-checkbox formControlName="p_noemail">Sin correo electrónico</mat-checkbox>
+                                        <mat-checkbox (change)="addValidation($event)" formControlName="p_noemail">Sin correo electrónico</mat-checkbox>
                                     </div>
                                     <mat-form-field>
-                                        <input minlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="p_telefono_mobil">
+                                        <input type="number" minlength="10" maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="p_telefono_mobil">
                                         <mat-error *ngIf="registerForm.controls['p_telefono_mobil'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
@@ -145,7 +145,7 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input minlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
+                                        <input minlength="10" maxlength="10" type="number"   matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
                                         <mat-error *ngIf="registerForm.controls['p_telefono'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
@@ -172,7 +172,7 @@
                                         <mat-datepicker #myDatepicker1 disabled="false"></mat-datepicker>
                                       </mat-form-field>
                                     <mat-form-field>
-                                        <input  minlength="2" (keypress)="onKeydownNumber($event)" matInput placeholder="Edad*" formControlName="p_edad">
+                                        <input  minlength="2" maxlength="2" (keypress)="onKeydownNumber($event)" matInput placeholder="Edad*" formControlName="p_edad">
                                         <mat-error *ngIf="registerForm.controls['p_edad'].hasError('required')">
                                             Ingresa una Edad
                                         </mat-error>

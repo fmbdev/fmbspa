@@ -124,8 +124,8 @@ export class NuevoRegistroComponent implements OnInit {
         .subscribe(
           (data: Hora[]) => this.horas = data
         )
-
-    this.initForm();
+    
+      this.initForm();    
   }
 
   onSubmit(){
@@ -133,14 +133,26 @@ export class NuevoRegistroComponent implements OnInit {
   }
 
   resetForm(){
-    this.registerForm.reset();
+    //this.registerForm.reset();
   }
 
+  addValidation(isChecked)
+    {
+       if(isChecked){  
+         console.log(isChecked);
+         this.registerForm.controls['p_email'].setValidators([Validators.required,Validators.email]);
+       }else{
+         console.log("ELSE isChecked");
+
+         this.registerForm.controls['p_email'].clearValidators();
+       } 
+        this.registerForm.controls['p_email'].updateValueAndValidity();
+    }
   getErrorMessage(){
     return this.registerForm.controls['oll_canal'].hasError('required') ? "Elige un canallll" : ""
   }
 
-    onKeydownNumber(event: KeyboardEvent) {
+  onKeydownNumber(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
     if (/[0-9]/i.test(charStr)) {
       return true;
@@ -159,53 +171,57 @@ export class NuevoRegistroComponent implements OnInit {
   }
 
   private initForm(){
-    this.registerForm = this.formBuilder.group({
-      /*-- Campo Usuario (u) --*/
-      u_name: [''],
-      /*-- Campos para seción Origen Llamada (oll) -- */
-      oll_canal: ['', Validators.required],
-      oll_csq: ['', Validators.required],
-      oll_telefono: ['', Validators.required],
-      oll_interes: ['',Validators.required],
-      /*-- Campos para sección de Contato -- */
-      /*-- Prospecto (p) --*/
-      p_nombre: ['', [Validators.required, Validators.minLength(3)]],
-      p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
-      p_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-      p_email: ['', [Validators.required, Validators.email]],
-      p_noemail: [''],
-      p_telefono_mobil: ['', Validators.required],
-      p_telefono: ['', Validators.required],
-      p_genero: ['', Validators.required],
-      p_canal_preferido: ['', Validators.required],
-      p_fecha_nacimiento: ['', Validators],
-      p_edad: ['', Validators.required],
-      /* -- Quien registra (q)--*/
-       q_nombre: ['', [Validators.required, Validators.minLength(3)]],
-      q_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
-      q_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-      q_email: ['', [Validators.required, Validators.email]],
-      q_telefono_mobil: ['', Validators.required],
-      q_telefono: ['', Validators.required],
-      q_parentesco: ['', Validators.required],
-      /*-- Campos para sección de Interes (int) -- */
-      int_campus: ['', Validators.required],
-      int_nivel: ['', Validators.required],
-      int_modalidad: ['', Validators.required],
-      int_carrera: ['', Validators.required],
-      int_ciclo: ['', Validators.required],
-      int_interes: ['', Validators.required],
-      /*-- Campos para sección de Cita (cit) -- */
-      cit_campus: ['', Validators.required],
-      cit_fecha: ['', Validators.required],
-      cit_asesor: ['', Validators.required],
-      cit_hora: ['', Validators.required],
-      cit_prog_llamada: [''],
-      cit_transf_line: [''],
-      /*-- Campos para sección de Tipificacion (tip) -- */
-      tip_tipificacion: ['', Validators.required],
-      tip_notas: ['']
-    });
+     
+      this.registerForm = this.formBuilder.group({
+        /*-- Campo Usuario (u) --*/
+        u_name: [''],
+        /*-- Campos para seción Origen Llamada (oll) -- */
+        oll_canal: ['', Validators.required],
+        oll_csq: ['', Validators.required],
+        oll_telefono: ['', Validators.required],
+        oll_interes: ['',Validators.required],
+        /*-- Campos para sección de Contato -- */
+        /*-- Prospecto (p) --*/
+        p_nombre: ['', [Validators.required, Validators.minLength(3)]],
+        p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
+        p_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
+        p_email: ['', [Validators.required, Validators.email]],
+        p_noemail: [''],
+        p_telefono_mobil: ['', [Validators.required, Validators.minLength(3)]],
+        p_telefono: ['', [Validators.required, Validators.minLength(3)]],
+        p_genero: ['', Validators.required],
+        p_canal_preferido: ['', Validators.required],
+        p_fecha_nacimiento: ['', Validators],
+        p_edad: ['', Validators.required],
+        /* -- Quien registra (q)--*/
+         q_nombre: ['', [Validators.required, Validators.minLength(3)]],
+        q_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
+        q_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
+        q_email: ['', [Validators.required, Validators.email]],
+        q_telefono_mobil: ['', Validators.required],
+        q_telefono: ['', [Validators.required, Validators.minLength(10)]],
+        q_parentesco: ['', Validators.required],
+        /*-- Campos para sección de Interes (int) -- */
+        int_campus: ['', Validators.required],
+        int_nivel: ['', Validators.required],
+        int_modalidad: ['', Validators.required],
+        int_carrera: ['', Validators.required],
+        int_ciclo: ['', Validators.required],
+        int_interes: ['', Validators.required],
+        /*-- Campos para sección de Cita (cit) -- */
+        cit_campus: ['', Validators.required],
+        cit_fecha: ['', Validators.required],
+        cit_asesor: ['', Validators.required],
+        cit_hora: ['', Validators.required],
+        cit_prog_llamada: [''],
+        cit_transf_line: [''],
+        /*-- Campos para sección de Tipificacion (tip) -- */
+        tip_tipificacion: ['', Validators.required],
+        tip_notas: ['']
+      });
+     
+
   }
 
+  
 }
