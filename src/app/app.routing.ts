@@ -9,6 +9,8 @@ import { ReferidosComponent } from './referidos-referente/general.component';
 import { ReferidosPromotorComponent } from './referidos-promotor/referidos-promotor.component';
 import { ReferidosTlmkComponent } from './referidos-tlmk/referidos-tlmk.component';
 import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { BusquedaInboundComponent } from './busqueda-inbound/busqueda-inbound.component';
 
 export const APP_ROUTING: Routes = [
     {
@@ -42,6 +44,14 @@ export const APP_ROUTING: Routes = [
     {
         path: 'referidos-web',
         component: ReferidosWebComponent
+    },
+    {
+        path: 'busqueda',
+        component: BusquedaComponent
+    },
+    {
+        path: 'busqueda-inbound',
+        component: BusquedaInboundComponent
     }
 ];
 

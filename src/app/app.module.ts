@@ -16,6 +16,9 @@ import { ReferidosComponent } from './referidos-referente/general.component';
 import { ReferidosPromotorComponent } from './referidos-promotor/referidos-promotor.component';
 import { ReferidosTlmkComponent } from './referidos-tlmk/referidos-tlmk.component';
 import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { BusquedaInboundComponent } from './busqueda-inbound/busqueda-inbound.component';
+ 
 
 
 // Providers
@@ -82,7 +85,9 @@ import {
     ReferidosComponent,
     ReferidosPromotorComponent,
     ReferidosTlmkComponent,
-    ReferidosWebComponent
+    ReferidosWebComponent,
+    BusquedaComponent,
+    BusquedaInboundComponent
   ],
   imports: [
     HttpModule,
