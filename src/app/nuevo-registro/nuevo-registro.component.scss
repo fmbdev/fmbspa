@@ -24,6 +24,9 @@ div.nuevo-registro-container{
             mat-form-field{
                 width: 100%;
             }
+            #dateField.mat-form-field-type-mat-select.ng-valid label.mat-form-field-label {
+                display: none !important;
+            }
             #telefono{
                 margin-top: 24px;
             }

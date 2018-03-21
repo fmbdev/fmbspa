@@ -4,6 +4,19 @@
 mat-form-field.mat-form-field-type-mat-select.ng-valid label.mat-form-field-label {
     display: none !important;
 }
+mat-form-field.datepick.mat-form-field-type-mat-input label.mat-form-field-label {
+                display: none !important;
+            }
+.mat-form-field-disabled .mat-form-field-underline {
+    background-position: 0;
+    background-color: black !important;
+}
+
+.mat-input-element:disabled {
+    color: black;
+}
+
+
 .mat-radio-outer-circle {
     border-color: rgba(0,0,0,.54) !important;
 }
