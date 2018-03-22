@@ -162,7 +162,7 @@ emailWordValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
     const name = control.value; 
     if(control.value!=""){
-      if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(name)){
+      if((/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(name)){
         return  null;
       }else{
         return {'emailWord': {name}}
@@ -192,7 +192,7 @@ emailWordValidator(): ValidatorFn {
 
   onKeydownLetter(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z]/i.test(charStr)) {
+    if (/[a-zA-ZñÑ]/i.test(charStr)) {
       return true;
     }else{
       return false;
@@ -211,7 +211,17 @@ emailWordValidator(): ValidatorFn {
   getErrorMessage(control: string, error: string,mensaje:string){
     return this.registerForm.controls[control].hasError(error) ? mensaje : ""
   }
-
+onKeydownTelefono(event: KeyboardEvent) {
+           let name = this.registerForm.value.p_telefono;  
+                              
+           if(name.length > 9 ){
+                this.registerForm.controls['tipo_telefono'].setValidators([Validators.required]);
+           }else{
+                this.registerForm.controls['tipo_telefono'].clearValidators();
+           }
+               this.registerForm.controls['tipo_telefono'].updateValueAndValidity();/**/
+ 
+  }
   private initForm(){
 
     this.registerForm = this.formBuilder.group({
@@ -234,7 +244,7 @@ emailWordValidator(): ValidatorFn {
       p_apellido_materno: [''],
       int_carrera2: [''],
       p_email: ['', Validators.email],
-      p_email2: ['',[Validators.required, Validators.email]],
+      p_email2: ['',[Validators.required,this.emailWordValidator()]],
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
       p_telefono: [''],
@@ -249,7 +259,7 @@ emailWordValidator(): ValidatorFn {
       q_nombre: ['', Validators.required],
       q_apellido_paterno: ['',Validators.required],
       q_apellido_materno: ['', Validators.required],
-      q_email: ['',this.emailWordValidator()],
+      q_email: ['',[Validators.required,this.emailWordValidator()]],
       q_telefono_mobil: ['', Validators.required],
       q_telefono: [''],
       q_parentesco: ['', Validators.required],
@@ -273,6 +283,9 @@ emailWordValidator(): ValidatorFn {
       cit_transf_line: [''],
       
       u_name: [''],
+
+      tipo_telefono: [''],
+
     });
   }
 

@@ -65,7 +65,7 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input maxlength="10" minlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
+                                        <input  (keyup)="onKeydownTelefono($event)" maxlength="10" minlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
                                         <mat-error *ngIf="registerForm.controls['p_telefono'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
@@ -74,12 +74,14 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <div class="col-md-12" style="padding: 0; margin-top:15px; ">
-                                        <mat-radio-group>
-                                            <mat-radio-button value="1" style="margin-right:20px;" class="example-margin col-xs-6">Celular</mat-radio-button>
-                                            <mat-radio-button value="2" class="example-margin col-xs-6">Casa</mat-radio-button>
-                                        </mat-radio-group>
+                                        <mat-radio-group formControlName="tipo_telefono">
+                                            <mat-radio-button required value="celular" style="margin-right:20px;" class="example-margin col-xs-6">Celular</mat-radio-button>
+                                            <mat-radio-button required value="casa" class="example-margin col-xs-6">Casa</mat-radio-button>
+                                            <mat-error style="font-size:75%;" *ngIf="registerForm.controls['tipo_telefono'].hasError('required')">
+                                                   Por Favor Selecciona el <strong> Tipo de Teléfono</strong>
+                                                </mat-error>
+                                        </mat-radio-group>                                        
                                     </div>
-
                                 </div>
                                 <div class="col col-lg-6">
                                     <mat-form-field>

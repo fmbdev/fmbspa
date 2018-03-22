@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,FormControl,ValidatorFn,AbstractControl } from '@angular/forms';
 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
@@ -48,7 +48,10 @@ export class NuevoRegistroComponent implements OnInit {
   parentescos: Parentesco[] = [];
   tipificaciones: Tipificacion[] = [];
   sexos: [{},{}] = [{"name":"Hombre"},{"name":"Mujer"}]; 
-
+  checked = false;
+  indeterminate = false;
+  align = 'start';
+  disabled = true;
   constructor(private formBuilder: FormBuilder,
               private csqServ: CsqService,
               private horaServ: HoraService,
@@ -137,17 +140,15 @@ export class NuevoRegistroComponent implements OnInit {
   }
 
   addValidation(isChecked)
-    {
-       if(isChecked){  
-         console.log(isChecked);
-         this.registerForm.controls['p_email'].setValidators([Validators.required,Validators.email]);
-       }else{
-         console.log("ELSE isChecked");
+  {
 
-         this.registerForm.controls['p_email'].clearValidators();
-       } 
-        this.registerForm.controls['p_email'].updateValueAndValidity();
-    }
+    if(isChecked.checked){          
+        this.registerForm.controls['p_telefono'].setValidators([Validators.required, Validators.minLength(3),Validators.maxLength(10)]);
+    }else{
+         this.registerForm.controls['p_telefono'].clearValidators();
+    } 
+    this.registerForm.controls['p_telefono'].updateValueAndValidity();/**/
+  }
   getErrorMessage(){
     return this.registerForm.controls['oll_canal'].hasError('required') ? "Elige un canallll" : ""
   }
@@ -161,15 +162,45 @@ export class NuevoRegistroComponent implements OnInit {
     }
   }
 
+  onKeydownEmail(event: KeyboardEvent) {
+           let name = this.registerForm.value.p_email;                     
+           if(name==''){
+                this.registerForm.controls['p_email'].clearValidators();
+           }else{
+                this.registerForm.controls['p_email'].setValidators([Validators.required, this.emailWordValidator()]);
+           }
+               this.registerForm.controls['p_email'].updateValueAndValidity();/**/
+
+        /*var charStr = String.fromCharCode(event.keyCode);
+        if (/[0-9]/i.test(charStr)) {
+          return true;
+        }else{
+          return false;      
+        }*/
+  }
   onKeydownLetter(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z]/i.test(charStr)) {
+    if (/[a-zA-ZñÑ]/i.test(charStr)) {
       return ;
     }else{
       return false;
     }
   }
 
+  emailWordValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      const name = control.value; 
+      if(control.value!=""){
+        if((/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(name)){
+          return  null;
+        }else{
+          return {'emailWord': {name}}
+        }   
+      }   
+                  
+    };
+  }
+  
   private initForm(){
      
       this.registerForm = this.formBuilder.group({
@@ -185,10 +216,10 @@ export class NuevoRegistroComponent implements OnInit {
         p_nombre: ['', [Validators.required, Validators.minLength(3)]],
         p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
         p_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-        p_email: ['', [Validators.required, Validators.email]],
+        p_email: ['',[Validators.required,this.emailWordValidator()]],
         p_noemail: [''],
         p_telefono_mobil: ['', [Validators.required, Validators.minLength(3)]],
-        p_telefono: ['', [Validators.required, Validators.minLength(3)]],
+        p_telefono: [''],
         p_genero: ['', Validators.required],
         p_canal_preferido: ['', Validators.required],
         p_fecha_nacimiento: ['', Validators],
@@ -197,7 +228,7 @@ export class NuevoRegistroComponent implements OnInit {
          q_nombre: ['', [Validators.required, Validators.minLength(3)]],
         q_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
         q_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-        q_email: ['', [Validators.required, Validators.email]],
+        q_email: ['',[Validators.required,this.emailWordValidator()]],
         q_telefono_mobil: ['', Validators.required],
         q_telefono: ['', [Validators.required, Validators.minLength(10)]],
         q_parentesco: ['', Validators.required],

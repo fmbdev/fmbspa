@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,ValidatorFn,AbstractControl } from '@angular/forms';
 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
@@ -157,11 +157,25 @@ export class ReferidosPromotorComponent implements OnInit {
 
   onKeydownLetter(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z]/i.test(charStr)) {
-      return ;
+    if (/[a-zA-ZñÑ]/i.test(charStr)) {
+      return true;
     }else{
       return false;
     }
+  }
+
+  emailWordValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      const name = control.value; 
+      if(control.value!=""){
+        if((/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(name)){
+          return  null;
+        }else{
+          return {'emailWord': {name}}
+        }   
+      }   
+                  
+    };
   }
 
   getErrorMessageTipificacion(){    
@@ -176,23 +190,26 @@ export class ReferidosPromotorComponent implements OnInit {
   getErrorMessage(control: string, error: string,mensaje:string){
     return this.registerForm.controls[control].hasError(error) ? mensaje : ""
   }
-
+onKeydownTelefono(event: KeyboardEvent) {
+           let name = this.registerForm.value.p_telefono;                     
+           if(name.length > 9 ){
+                this.registerForm.controls['tipo_telefono'].setValidators([Validators.required]);
+           }else{
+                this.registerForm.controls['tipo_telefono'].clearValidators();
+           }
+               this.registerForm.controls['tipo_telefono'].updateValueAndValidity();/**/
+ 
+  }
   private initForm(){
 
     this.registerForm = this.formBuilder.group({
-      /*-- Campos para sección de Tipificacion (tip) -- */
-      tip_canal: ['', Validators.required],
-      tip_csq: ['', Validators.required],
-      tip_tipificacion: ['', Validators.required],     
-      tip_interes: ['', Validators.required],
-      tip_notas: ['', Validators.required],
-      
+   
 
       /*-- Prospecto (p) --*/
       p_nombre: ['', [Validators.required,Validators.minLength(3)]],
       p_apellido_paterno:['', [Validators.required,Validators.minLength(3)]],
       p_apellido_materno:['', [Validators.required,Validators.minLength(3)]],
-      p_email: ['', [Validators.required, Validators.email]],
+      p_email: ['',[Validators.required,this.emailWordValidator()]],
        
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
@@ -202,14 +219,7 @@ export class ReferidosPromotorComponent implements OnInit {
       p_fecha_nacimiento: ['', Validators],
       p_edad: ['', Validators.required],
 
-      /* -- Quien registra (q)--*/
-      q_nombre: ['', Validators.required],
-      q_apellido_paterno: ['',Validators.required],
-      q_apellido_materno: ['', Validators.required],
-      q_email: ['',Validators.required],
-      q_telefono_mobil: ['', Validators.required],
-      q_telefono: [''],
-      q_parentesco: ['', Validators.required],
+       
       /*-- Campos para sección de Interes (int) -- */
       int_campus: ['', Validators.required],
       int_nivel: ['', Validators.required],
@@ -220,16 +230,12 @@ export class ReferidosPromotorComponent implements OnInit {
       int_venta: ['', Validators.required],
       int_num_cuenta: ['', Validators.required],
 
-      /*-- Campos para sección de Cita (cit) -- */
-      cit_campus: ['', Validators.required],
-      cit_fecha: ['', Validators.required],
-      cit_hora: ['', Validators.required],
-      cit_equi: ['', Validators.required],
-
-      cit_prog_llamada: [''],
-      cit_transf_line: [''],
+      
       
       u_name: [''],
+
+
+       tipo_telefono: [''],
     });
   }
 

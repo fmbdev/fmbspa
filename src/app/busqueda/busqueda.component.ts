@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,ValidatorFn,AbstractControl } from '@angular/forms';
 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
@@ -157,11 +157,25 @@ export class BusquedaComponent implements OnInit {
 
   onKeydownLetter(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z]/i.test(charStr)) {
+    if (/[a-zA-ZñÑ]/i.test(charStr)) {
       return true;
     }else{
       return false;
     }
+  }
+
+  emailWordValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      const name = control.value; 
+      if(control.value!=""){
+        if((/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(name)){
+          return  null;
+        }else{
+          return {'emailWord': {name}}
+        }   
+      }   
+                  
+    };
   }
 
   getErrorMessageTipificacion(){    
@@ -186,7 +200,7 @@ export class BusquedaComponent implements OnInit {
       p_nombre: ['', [Validators.required,Validators.minLength(3)]],
       p_apellido_paterno:['', [Validators.required,Validators.minLength(3)]],
       p_apellido_materno:['', [Validators.required,Validators.minLength(3)]],
-      p_email: ['',[Validators.required,Validators.email]],
+      p_email: ['',[Validators.required,this.emailWordValidator()]],
       p_telefono: ['', Validators.required],
       p_numero_persona: ['', Validators.required],
       p_numero_cuenta: ['', Validators.required],

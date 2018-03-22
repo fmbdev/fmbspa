@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,ValidatorFn,AbstractControl} from '@angular/forms';
 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
@@ -153,13 +153,25 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
 
   onKeydownLetter(event: KeyboardEvent) {
     var charStr = String.fromCharCode(event.keyCode);
-    if (/[a-zA-Z]/i.test(charStr)) {
+    if (/[a-zA-ZñÑ]/i.test(charStr)) {
       return ;
     }else{
       return false;
     }
   }
-  
+  emailWordValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      const name = control.value; 
+      if(control.value!=""){
+        if((/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(name)){
+          return  null;
+        }else{
+          return {'emailWord': {name}}
+        }   
+      }   
+                  
+    };
+  }
     private initForm(){
 
 
@@ -176,7 +188,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
       p_nombre: ['', [Validators.required, Validators.minLength(3)]],
       p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
       p_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-      p_email: ['', [Validators.required, Validators.email]],
+      p_email: ['', [Validators.required, this.emailWordValidator()]],
       p_noemail: [''],
       p_telefono_mobil: ['', Validators.required],
       p_telefono: ['', Validators.required],
@@ -188,7 +200,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
        q_nombre: ['', [Validators.required, Validators.minLength(3)]],
       q_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
       q_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-      q_email: ['', [Validators.required, Validators.email]],
+      q_email: ['', [Validators.required, this.emailWordValidator()]],
       q_telefono_mobil: ['', Validators.required],
       q_telefono: ['', Validators.required],
       q_parentesco: ['', Validators.required],
