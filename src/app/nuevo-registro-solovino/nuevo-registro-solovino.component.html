@@ -110,7 +110,7 @@
                                         <label class="color-gray" for="p_fecha_nacimiento">Fecha de Nacimiento*</label>
                                         <input matInput [matDatepicker]="myDatepicker1" placeholder="Selecciona una opción" formControlName="p_fecha_nacimiento">
                                         <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
-                                        <mat-datepicker #myDatepicker1></mat-datepicker>
+                                        <mat-datepicker #myDatepicker1 disabled="false"></mat-datepicker>
                                     </mat-form-field>
                                     <mat-form-field>
                                         <input  (keypress)="onKeydownNumber($event)" matInput placeholder="Edad*" formControlName="p_edad">

@@ -161,13 +161,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     private initForm(){
     this.registerForm = this.formBuilder.group({
       /*-- Campo Usuario (u) --*/
-      u_name: [''],
-      /*-- Campos para seción Origen Llamada (oll) -- */
-      oll_canal: ['', Validators.required],
-      oll_csq: ['', Validators.required],
-      oll_telefono: ['', Validators.required],
-      oll_interes: ['',Validators.required],
-      /*-- Campos para sección de Contato -- */
+      u_name: [{value: 'Ricardo Vargas', disabled: true}],
       /*-- Prospecto (p) --*/
       p_nombre: ['', [Validators.required, Validators.minLength(3)]],
       p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
@@ -178,7 +172,7 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
       p_telefono: ['', Validators.required],
       p_genero: ['', Validators.required],
       p_canal_preferido: ['', Validators.required],
-      p_fecha_nacimiento: ['', Validators],
+      p_fecha_nacimiento: [{value: '', disabled: true}, Validators.required],
       p_edad: ['', Validators.required],
       /* -- Quien registra (q)--*/
        q_nombre: ['', [Validators.required, Validators.minLength(3)]],
@@ -195,16 +189,6 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
       int_carrera: ['', Validators.required],
       int_ciclo: ['', Validators.required],
       int_interes: ['', Validators.required],
-      /*-- Campos para sección de Cita (cit) -- */
-      cit_campus: ['', Validators.required],
-      cit_fecha: ['', Validators.required],
-      cit_asesor: ['', Validators.required],
-      cit_hora: ['', Validators.required],
-      cit_prog_llamada: [''],
-      cit_transf_line: [''],
-      /*-- Campos para sección de Tipificacion (tip) -- */
-      tip_tipificacion: ['', Validators.required],
-      tip_notas: ['']
     });
   }
 

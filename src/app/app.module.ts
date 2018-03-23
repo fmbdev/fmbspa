@@ -17,7 +17,6 @@ import { ReferidosPromotorComponent } from './referidos-promotor/referidos-promo
 import { ReferidosTlmkComponent } from './referidos-tlmk/referidos-tlmk.component';
 import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
 
-
 // Providers
 import { CsqService } from './providers/csq.service';
 import { HoraService } from './providers/hora.service';

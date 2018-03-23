@@ -1,13 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-<<<<<<< HEAD
 /*--- Angular Material Theme ---*/
-=======
-/*-- Angular Material Theme ---*/
->>>>>>> 3f2af7accbd309de5a788e6b1de4f9112089c643
 @import url(~@angular/material/prebuilt-themes/indigo-pink.css);
 /*--- App Component ---*/
 .mat-error {
   color: #f68b1f !important;
+}
+
+mat-form-field.mat-form-field-type-mat-select.ng-valid label.mat-form-field-label {
+  display: none !important;
+}
+
+.mat-radio-outer-circle {
+  border-color: rgba(0, 0, 0, 0.54) !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #212529 !important;
 }
 
 .mat-form-field-invalid .mat-input-element,
@@ -64,6 +72,14 @@
 
 .hidden {
   display: block !important;
+  color: #757575 !important;
+}
+
+.color-gray {
+  color: #757575 !important;
+  font-size: 12px;
+  position: absolute;
+  top: -7px;
 }
 
 /*--- Home Component ---*/
@@ -226,6 +242,20 @@ div.nuevo-registro-solovino-container div.interes-opcion-container div.boton-gru
   background-color: #757575;
 }
 div.nuevo-registro-solovino-container div.interes-opcion-container button {
+  width: 100%;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+div.interes-opcion-container {
+  margin-top: 30px;
+}
+div.interes-opcion-container div.boton-asignar,
+div.interes-opcion-container div.boton-directa,
+div.interes-opcion-container div.boton-grupal {
+  background-color: #757575;
+}
+div.interes-opcion-container button {
   width: 100%;
   text-transform: uppercase;
   color: #ffffff;
