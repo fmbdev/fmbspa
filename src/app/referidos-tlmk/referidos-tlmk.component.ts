@@ -237,6 +237,7 @@ onKeydownTelefono(event: KeyboardEvent) {
       int_num_cuenta: ['', Validators.required],
 
       tipo_telefono: [''],
+      p_extension:['', Validators.required],
       
       
       u_name: [''],

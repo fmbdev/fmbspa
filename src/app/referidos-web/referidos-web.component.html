@@ -115,22 +115,31 @@
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input  (keyup)="onKeydownTelefono($event)" maxlength="10" minlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono2">
-                                        <mat-error *ngIf="registerForm.controls['p_telefono2'].hasError('required')">
+                                        <input  (keyup)="onKeydownTelefono($event)" maxlength="10" minlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
+                                        <mat-error *ngIf="registerForm.controls['p_telefono'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['p_telefono2'].hasError('minlength') && !registerForm.controls['p_telefono2'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['p_telefono'].hasError('minlength') && !registerForm.controls['p_telefono'].hasError('required')">
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
-                                    
-                                   <div class="col-md-12" style="padding: 0; margin-top:15px; ">
+                                    <mat-form-field [hidden]="registerForm.value.tipo_telefono!='oficina'">
+                                        <input  (keyup)="onKeydownTelefono($event)" maxlength="10" minlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Extensión*" formControlName="p_extension">
+                                        <mat-error *ngIf="registerForm.controls['p_extension'].hasError('required')">
+                                            Ingresa número de Teléfono
+                                        </mat-error>
+                                        <mat-error *ngIf="registerForm.controls['p_extension'].hasError('minlength') && !registerForm.controls['p_extension'].hasError('required')">
+                                            Al menos debe contener 10 dígitos
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <div class="col-md-12" style="padding: 0; margin-top:15px; ">
                                         <mat-radio-group formControlName="tipo_telefono">
                                             <mat-radio-button required value="celular" style="margin-right:20px;" class="example-margin col-xs-6">Celular</mat-radio-button>
-                                            <mat-radio-button required value="casa" class="example-margin col-xs-6">Casa</mat-radio-button>
+                                            <mat-radio-button required value="casa" style="margin-right:20px;" class="example-margin col-xs-6">Casa</mat-radio-button>
                                             <mat-error style="font-size:75%;" *ngIf="registerForm.controls['tipo_telefono'].hasError('required')">
                                                    Por Favor Selecciona el <strong> Tipo de Teléfono</strong>
                                                 </mat-error>
+                                                 <mat-radio-button required value="oficina" class="example-margin col-xs-6">Oficina</mat-radio-button>
                                         </mat-radio-group>                                        
                                     </div>
 

@@ -285,6 +285,7 @@ onKeydownTelefono(event: KeyboardEvent) {
       u_name: [''],
 
       tipo_telefono: [''],
+      p_extension:['', Validators.required]
 
     });
   }

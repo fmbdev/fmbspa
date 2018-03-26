@@ -218,6 +218,9 @@ onKeydownTelefono(event: KeyboardEvent) {
       p_canal_preferido: ['', Validators.required],
       p_fecha_nacimiento: ['', Validators],
       p_edad: ['', Validators.required],
+      
+      tipo_telefono: [''],
+      p_extension:['', Validators.required],
 
        
       /*-- Campos para sección de Interes (int) -- */
@@ -235,7 +238,6 @@ onKeydownTelefono(event: KeyboardEvent) {
       u_name: [''],
 
 
-       tipo_telefono: [''],
     });
   }
 
