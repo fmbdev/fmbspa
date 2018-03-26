@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http'; 
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
@@ -18,7 +20,15 @@ import { ReferidosTlmkComponent } from './referidos-tlmk/referidos-tlmk.componen
 import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { BusquedaInboundComponent } from './busqueda-inbound/busqueda-inbound.component';
- 
+
+import { LoginComponent } from './login/login.component';
+import { RegistrarPromocionComponent } from './registrar-promocion/registrar-promocion.component';
+import { SearchResultsComponent } from './busqueda-resultados/search-results.component';
+
+
+import { GeneralService } from './services/general.service';
+import { AppConfig } from './services/constants';
+import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 
 
 // Providers
@@ -87,10 +97,14 @@ import {
     ReferidosTlmkComponent,
     ReferidosWebComponent,
     BusquedaComponent,
-    BusquedaInboundComponent
+    BusquedaInboundComponent,
+    LoginComponent,
+    RegistrarPromocionComponent,
+    SearchResultsComponent
   ],
   imports: [
     HttpModule,
+    HttpClientModule,
     AppRouting,
     FormsModule,
     BrowserModule,
@@ -100,7 +114,7 @@ import {
   ],
   providers: [CanalService, CsqService, TipificacionService, InteresService,
     ParentescoService, ValidationService, CampusService,EquiService, NivelService, ModalidadService,
-    CarreraService, CicloService, AsesorService, HoraService, PalabramalaService],
+    CarreraService, CicloService, AsesorService, HoraService, PalabramalaService,AppConfig, GeneralService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,50 @@
+<div class="nuevo-registro-container">
+  <div class="llamada-container">
+      <div class="row">
+          <div class="col">
+              <div class="card">
+                  <div class="card-header">
+                      <h5 class="card-title">RESULTADOS DE BÚSQUEDA</h5>
+                  </div>
+                  <div class="card-body">
+                      <div class="row">
+                        <div class="col col-lg-12">
+                          <div class="tablee mat-elevation-z8">
+                            <mat-grid-list cols="7" rowHeight="50px">
+                              <mat-grid-tile class="headd">Selección</mat-grid-tile>
+                              <mat-grid-tile class="headd">Número de Cuenta</mat-grid-tile>
+                              <mat-grid-tile class="headd">ID Persona</mat-grid-tile>
+                              <mat-grid-tile class="headd">Nombre Completo</mat-grid-tile>
+                              <mat-grid-tile class="headd">Nivel de Ínteres</mat-grid-tile>
+                              <mat-grid-tile class="headd">Correo Electrónico</mat-grid-tile>
+                              <mat-grid-tile class="headd last">Último Asesor Asignado</mat-grid-tile>
+
+                              <ng-container *ngFor="let r of reesults;">
+                                <mat-grid-tile class="data"><mat-checkbox></mat-checkbox></mat-grid-tile>
+                                <mat-grid-tile class="data">{{r.numberA}}</mat-grid-tile>
+                                <mat-grid-tile class="data">{{r.id}}</mat-grid-tile>
+                                <mat-grid-tile class="data">{{r.name}}</mat-grid-tile>
+                                <mat-grid-tile class="data">{{r.interest}}</mat-grid-tile>
+                                <mat-grid-tile class="data">{{r.mail}}</mat-grid-tile>
+                                <mat-grid-tile class="data last">{{r.last}}</mat-grid-tile>
+                              </ng-container>
+                            </mat-grid-list>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="results">
+
+  <div class="btn">
+    <button mat-raised-button color="warn" class="selec">SELECCIONAR</button>
+    <button mat-raised-button color="warn" class="cancel">CANCELAR</button>
+    <button mat-raised-button color="warn">NUEVO</button>
+  </div>
+
+</div>

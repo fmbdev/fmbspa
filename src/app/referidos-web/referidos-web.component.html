@@ -49,7 +49,7 @@
                                          
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label for="int_carrera2" class="color-gray" >Soy</label>
+                                        <label for="int_carrera2" class="color-gray" >Tipo de Referente</label>
                                         <mat-select matInput formControlName="int_carrera2" placeholder="Selecciona una opción">
                                             <mat-option *ngFor="let carrera of carreras;" [value]="carrera.name">
                                                 {{ carrera.name }}
@@ -123,6 +123,7 @@
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
+                                    
                                    <div class="col-md-12" style="padding: 0; margin-top:15px; ">
                                         <mat-radio-group formControlName="tipo_telefono">
                                             <mat-radio-button required value="celular" style="margin-right:20px;" class="example-margin col-xs-6">Celular</mat-radio-button>

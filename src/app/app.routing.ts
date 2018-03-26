@@ -12,6 +12,10 @@ import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { BusquedaInboundComponent } from './busqueda-inbound/busqueda-inbound.component';
 
+import { LoginComponent } from './login/login.component';
+import { RegistrarPromocionComponent } from './registrar-promocion/registrar-promocion.component';
+import { SearchResultsComponent } from './busqueda-resultados/search-results.component';
+
 export const APP_ROUTING: Routes = [
     {
         path: '',
@@ -52,6 +56,18 @@ export const APP_ROUTING: Routes = [
     {
         path: 'busqueda-inbound',
         component: BusquedaInboundComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'registrar-promocion',
+        component: RegistrarPromocionComponent
+    },
+    {
+        path: 'busqueda-resultados',
+        component: SearchResultsComponent
     }
 ];
 

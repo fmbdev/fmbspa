@@ -32,11 +32,11 @@ import { ParentescoService } from '../providers/parentesco.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 
 @Component({
-  selector: 'app-nuevo-registro',
-  templateUrl: './nuevo-registro.component.html',
-  styleUrls: ['./nuevo-registro.component.scss']
+  selector: 'app-registrar-promocion',
+  templateUrl: './registrar-promocion.component.html',
+  styleUrls: ['./registrar-promocion.component.scss']
 })
-export class NuevoRegistroComponent implements OnInit {
+export class RegistrarPromocionComponent implements OnInit {
 
   registerForm: FormGroup;
   csqs: Csq[] = [];
@@ -231,12 +231,7 @@ export class NuevoRegistroComponent implements OnInit {
       this.registerForm = this.formBuilder.group({
         /*-- Campo Usuario (u) --*/
         u_name: [''],
-        /*-- Campos para seción Origen Llamada (oll) -- */
-        oll_canal: ['', Validators.required],
-        oll_csq: ['', Validators.required],
-        oll_telefono: ['', Validators.required],
-        oll_interes: ['',Validators.required],
-        /*-- Campos para sección de Contato -- */
+        
         /*-- Prospecto (p) --*/
         p_nombre: ['', [Validators.required, Validators.minLength(3),this.palabraMalaValidator()]],
         p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
@@ -265,15 +260,15 @@ export class NuevoRegistroComponent implements OnInit {
         int_ciclo: ['', Validators.required],
         int_interes: ['', Validators.required],
         /*-- Campos para sección de Cita (cit) -- */
-        cit_campus: ['', Validators.required],
-        cit_fecha: ['', Validators.required],
-        cit_asesor: ['', Validators.required],
-        cit_hora: ['', Validators.required],
-        cit_prog_llamada: [''],
-        cit_transf_line: [''],
+        u_ejecutivo: ['', Validators.required],
+        tip_sub_tipo_actividad: ['', Validators.required],
+        tip_escuela: ['', Validators.required],
+        tip_sub_sub_tipo_actividad: ['', Validators.required],
+        tip_turno: ['', Validators.required],
+        tip_escuela2: ['', Validators.required],
         /*-- Campos para sección de Tipificacion (tip) -- */
-        tip_tipificacion: ['', Validators.required],
-        tip_notas: ['']
+        tip_calidad: ['', Validators.required],
+        tip_actividad_no_tradicional:[''],
       });
      
 
