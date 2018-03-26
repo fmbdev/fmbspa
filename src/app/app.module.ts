@@ -24,7 +24,8 @@ import { BusquedaInboundComponent } from './busqueda-inbound/busqueda-inbound.co
 import { LoginComponent } from './login/login.component';
 import { RegistrarPromocionComponent } from './registrar-promocion/registrar-promocion.component';
 import { SearchResultsComponent } from './busqueda-resultados/search-results.component';
-
+import { UploadBaseComponent } from './upload-base/upload-base.component';
+import { UploadBaseSisComponent } from './upload-base-sis/upload-base-sis.component';
 
 import { GeneralService } from './services/general.service';
 import { AppConfig } from './services/constants';
@@ -100,7 +101,9 @@ import {
     BusquedaInboundComponent,
     LoginComponent,
     RegistrarPromocionComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    UploadBaseComponent,
+    UploadBaseSisComponent
   ],
   imports: [
     HttpModule,

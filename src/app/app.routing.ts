@@ -15,6 +15,9 @@ import { BusquedaInboundComponent } from './busqueda-inbound/busqueda-inbound.co
 import { LoginComponent } from './login/login.component';
 import { RegistrarPromocionComponent } from './registrar-promocion/registrar-promocion.component';
 import { SearchResultsComponent } from './busqueda-resultados/search-results.component';
+import { UploadBaseComponent } from './upload-base/upload-base.component';
+import { UploadBaseSisComponent } from './upload-base-sis/upload-base-sis.component';
+
 
 export const APP_ROUTING: Routes = [
     {
@@ -68,6 +71,14 @@ export const APP_ROUTING: Routes = [
     {
         path: 'busqueda-resultados',
         component: SearchResultsComponent
+    },
+    {
+        path: 'subir-base',
+        component: UploadBaseComponent
+    },
+    {
+        path: 'subir-base-sis',
+        component: UploadBaseSisComponent
     }
 ];
 
