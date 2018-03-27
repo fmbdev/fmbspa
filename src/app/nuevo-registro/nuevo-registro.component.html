@@ -400,7 +400,7 @@
                                 <div class="col col-lg-6">
                                     <mat-form-field>
                                         <label class="color-gray" for="cit_campus">Campus Cita*</label>
-                                        <mat-select  [disabled]="!registerForm.controls['p_email'].valid || !registerForm.controls['p_telefono'].valid" placeholder="Selecciona una opción" formControlName="cit_campus">
+                                        <mat-select   placeholder="Selecciona una opción" formControlName="cit_campus">
                                             <mat-option *ngFor="let campu of campus;" [value]="campu.name">
                                                 {{ campu.name }}
                                             </mat-option>
@@ -412,22 +412,22 @@
 
                                     <mat-form-field class="datepick" >
                                         <label class="color-gray" for="p_fecha_nacimiento">Fecha de Nacimiento*</label>
-                                        <input  [disabled]="!registerForm.controls['p_email'].valid || !registerForm.controls['p_telefono'].valid" matInput [matDatepicker]="myDatepicker2" placeholder="Selecciona una opción" disabled>
+                                        <input   matInput [matDatepicker]="myDatepicker2" placeholder="Selecciona una opción" disabled>
                                         <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
                                         <mat-datepicker #myDatepicker2 disabled="false"></mat-datepicker>
                                       </mat-form-field>
                                     <div class="col-md-6" style="margin: 0; padding: 0; float: left; ">
-                                        <mat-checkbox  [disabled]="!registerForm.controls['p_email'].valid || !registerForm.controls['p_telefono'].valid" formControlName="cit_prog_llamada">Programación Llamada</mat-checkbox>
+                                        <mat-checkbox   formControlName="cit_prog_llamada">Programación Llamada</mat-checkbox>
                                     </div>
                                     <div class="col-md-6" style="margin: 0; padding: 0; float: left; ">
-                                        <mat-checkbox  [disabled]="!registerForm.controls['p_email'].valid || !registerForm.controls['p_telefono'].valid" formControlName="cit_transf_line">Transferencia en Linea</mat-checkbox>
+                                        <mat-checkbox   formControlName="cit_transf_line">Transferencia en Linea</mat-checkbox>
                                     </div>
                                 </div>
                                 <div class="col col-lg-6">
                                     <div style="height:70px"></div>
                                     <mat-form-field>
                                         <label class="color-gray" for="cit_hora">Hora Cita*</label>
-                                        <mat-select  [disabled]="!registerForm.controls['p_email'].valid || !registerForm.controls['p_telefono'].valid" placeholder="Selecciona una opción" formControlName="cit_hora">
+                                        <mat-select   placeholder="Selecciona una opción" formControlName="cit_hora">
                                             <mat-option *ngFor="let hora of horas;" [value]="hora.hora">
                                                 {{ hora.hora }}
                                             </mat-option>
@@ -438,7 +438,7 @@
                                     </mat-form-field>
                                     <mat-form-field>
                                         <label class="color-gray" for="cit_asesor">Asesor*</label>
-                                        <mat-select  [disabled]="!registerForm.controls['p_email'].valid || !registerForm.controls['p_telefono'].valid" placeholder="Selecciona una opción" formControlName="cit_asesor">
+                                        <mat-select   placeholder="Selecciona una opción" formControlName="cit_asesor">
                                             <mat-option *ngFor="let asesor of asesores;" [value]="asesor.name">
                                                 {{ asesor.name }}
                                             </mat-option>

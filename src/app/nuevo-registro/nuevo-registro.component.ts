@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormControl,ValidatorFn,AbstractControl } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import { Response } from '@angular/http';
+import { Response} from '@angular/http';
 
 import { map } from 'rxjs/operators';
 
@@ -36,6 +36,8 @@ import { TipificacionService } from '../providers/tipificacion.service';
   templateUrl: './nuevo-registro.component.html',
   styleUrls: ['./nuevo-registro.component.scss']
 })
+
+
 export class NuevoRegistroComponent implements OnInit {
 
   registerForm: FormGroup;
@@ -51,11 +53,13 @@ export class NuevoRegistroComponent implements OnInit {
   modalidades: Modalidad[] = [];
   parentescos: Parentesco[] = [];
   tipificaciones: Tipificacion[] = [];
+
   sexos: [{},{}] = [{"name":"Hombre"},{"name":"Mujer"}]; 
   checked = false;
   indeterminate = false;
   align = 'start';
   disabled = true;
+  result = false;
   constructor(private http: HttpClient,private formBuilder: FormBuilder,
               private csqServ: CsqService,
               private horaServ: HoraService,
@@ -86,6 +90,7 @@ export class NuevoRegistroComponent implements OnInit {
         .subscribe(
           (data: Tipificacion[]) => this.tipificaciones = data
         )
+
     // Se obtienen todos los intereses
     this.interesServ.getAll()
         .subscribe(
@@ -131,7 +136,7 @@ export class NuevoRegistroComponent implements OnInit {
         .subscribe(
           (data: Hora[]) => this.horas = data
         )
-    
+
       this.initForm();    
   }
 
@@ -206,23 +211,22 @@ export class NuevoRegistroComponent implements OnInit {
     };
   }
 
+
   palabraMalaValidator(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} => {                
         const name = control.value;        
-        
-        this.http.get('/assets/tipificacion.json')
-                .subscribe(res => {
-                        console.log(res);
-                });
- 
-        if(control.value!=""){
-            if((/lola/i).test(name)){
-              return  null;
-            }else{
-              return {'palabraMala': {name}}
-            }   
-        }  
+        let resultado: boolean = false;
 
+        let url="http://devmx.com.mx/fmbapp/public/api/malas-palabras/"+name;
+            this.http.get(url)
+                .subscribe(res => {  
+                      if(!res){                        
+                        return {'palabraMala': {name}}
+                      }else{
+                        return null
+                      }
+                });
+                return null
     };
   }
   

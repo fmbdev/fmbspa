@@ -15,7 +15,6 @@ import { Interes } from '../interfaces/interes';
 import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
 import { Tipificacion } from '../interfaces/tipificacion';
-import { Palabramala } from '../interfaces/palabramala';
 
 import { CsqService } from '../providers/csq.service'; 
 import { HoraService } from '../providers/hora.service';
@@ -30,7 +29,6 @@ import { InteresService } from '../providers/interes.service';
 import { ModalidadService } from '../providers/modalidad.service'; 
 import { ParentescoService } from '../providers/parentesco.service'; 
 import { TipificacionService } from '../providers/tipificacion.service';
-import { PalabramalaService } from '../providers/palabramala.service';
 
 //Validation Extras
 import { ValidationService } from '../validations/validation.service'; 
@@ -61,7 +59,6 @@ export class GeneralComponent implements OnInit {
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
 
-  private Palabramala: Palabramala[] = [];
   
   constructor(private formBuilder: FormBuilder,
               private validationServ: ValidationService,
@@ -78,24 +75,7 @@ export class GeneralComponent implements OnInit {
               private modalidadServ: ModalidadService,
               private parentescoServ: ParentescoService,
                 private tipicicacionServ: TipificacionService, 
-    private palabramalaServ: PalabramalaService, 
               private http: Http) { }
-
-
-  palabraMalaValidator(control: FormControl) {
-    let name = control.value;
-    this.palabramalaServ.getAll()
-      .subscribe(
-        (data: Palabramala[]) => {
-          data.forEach((item, index) => {
-            const no = name.indexOf(item);
-            return no ? { 'palabraMala': { name } } : null;
-          });
-        }
-      )      
-   
-   
-  }
 
 
   ngOnInit() {
