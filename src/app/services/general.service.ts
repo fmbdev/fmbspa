@@ -65,6 +65,28 @@ export class GeneralService {
     });
   }
 
+  referidoReferente(params){
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'landing/referido-referente', params, this.headerss)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  referidoWeb(params){
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'landing/referido-web', params, this.headerss)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   search(params){
     return new Promise((resolve, reject) => {
       this.http.post(this.apiUrl+'landing/search', params, this.headerss)
@@ -97,5 +119,5 @@ export class GeneralService {
         });
     });
   }
-
+   
 }

@@ -1,123 +1,78 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatGridListModule } from '@angular/material';
+import { MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatRadioModule } from '@angular/material';
 
-// Routes
-import { AppRouting } from './app.routing';
-
-// Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NuevoRegistroComponent } from './nuevo-registro/nuevo-registro.component';
-import { NuevoRegistroSolovinoComponent } from './nuevo-registro-solovino/nuevo-registro-solovino.component';
-import { GeneralComponent } from './general/general.component';
-import { ReferidosComponent } from './referidos-referente/general.component';
-import { ReferidosPromotorComponent } from './referidos-promotor/referidos-promotor.component';
-import { ReferidosTlmkComponent } from './referidos-tlmk/referidos-tlmk.component';
-import { ReferidosWebComponent } from './referidos-web/referidos-web.component';
-import { BusquedaComponent } from './busqueda/busqueda.component';
-import { BusquedaInboundComponent } from './busqueda-inbound/busqueda-inbound.component';
-
-import { LoginComponent } from './login/login.component';
-import { RegistrarPromocionComponent } from './registrar-promocion/registrar-promocion.component';
-import { SearchResultsComponent } from './busqueda-resultados/search-results.component';
+import { NewRegisterPromotionComponent } from './new-register-promotion/new-register-promotion.component';
+import { SearchComponent } from './search/search.component';
 import { UploadBaseComponent } from './upload-base/upload-base.component';
 import { UploadBaseSisComponent } from './upload-base-sis/upload-base-sis.component';
+import { LoginComponent } from './login/login.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { NewRegisterComponent } from './new-register/new-register.component';
+import { NewRegisterSoloComponent } from './new-register-solo/new-register-solo.component';
+import { SearchInboundComponent } from './search-inbound/search-inbound.component';
 
 import { GeneralService } from './services/general.service';
 import { AppConfig } from './services/constants';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
+import { HomeComponent } from './home/home.component';
+import { ReferidoReferenteComponent } from './referido-referente/referido-referente.component';
+import { ReferidoPromotorComponent } from './referido-promotor/referido-promotor.component';
+import { ReferidoTlmkComponent } from './referido-tlmk/referido-tlmk.component';
+import { ReferidoWebComponent } from './referido-web/referido-web.component';
+import { NewRegisterExistingComponent } from './new-register-existing/new-register-existing.component';
+import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
 
-
-// Providers
-import { CsqService } from './providers/csq.service';
-import { HoraService } from './providers/hora.service';
-import { NivelService } from './providers/nivel.service';
-import { CanalService } from './providers/canal.service';
-import { CicloService } from './providers/ciclo.service';
-import { CampusService } from './providers/campus.service';
-import { EquiService } from './providers/equi.service';
-import { AsesorService } from './providers/asesor.service';
-import { InteresService } from './providers/interes.service';
-import { CarreraService } from './providers/carrera.service';
-import { ModalidadService } from './providers/modalidad.service';
-import { ParentescoService } from './providers/parentesco.service';
-import { TipificacionService } from './providers/tipificacion.service';
-import { ValidationService } from './validations/validation.service'; 
-import { PalabramalaService } from './providers/palabramala.service';
-
-// Angular Material
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule
-} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NuevoRegistroComponent,
-    NuevoRegistroSolovinoComponent,
-    GeneralComponent,
-    ReferidosComponent,
-    ReferidosPromotorComponent,
-    ReferidosTlmkComponent,
-    ReferidosWebComponent,
-    BusquedaComponent,
-    BusquedaInboundComponent,
-    LoginComponent,
-    RegistrarPromocionComponent,
-    SearchResultsComponent,
+    NewRegisterPromotionComponent,
+    SearchComponent,
+    SearchInboundComponent,
     UploadBaseComponent,
-    UploadBaseSisComponent
+    UploadBaseSisComponent,
+    LoginComponent,
+    SearchResultsComponent,
+    NewRegisterComponent,
+    NewRegisterSoloComponent,
+    ModalConfirmComponent,
+    HomeComponent,
+    ReferidoReferenteComponent,
+    ReferidoPromotorComponent,
+    ReferidoTlmkComponent,
+    ReferidoWebComponent,
+    NewRegisterExistingComponent,
+    NewRegisterExistingReceptionComponent
   ],
   imports: [
-    HttpModule,
-    HttpClientModule,
-    AppRouting,
-    FormsModule,
     BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
-    [MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule],
-    BrowserAnimationsModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatRadioModule
   ],
-  providers: [CanalService, CsqService, TipificacionService, InteresService,
-    ParentescoService, ValidationService, CampusService,EquiService, NivelService, ModalidadService,
-    CarreraService, CicloService, AsesorService, HoraService, PalabramalaService,AppConfig, GeneralService],
+  providers: [AppConfig, GeneralService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
