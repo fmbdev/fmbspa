@@ -21,6 +21,9 @@ import { NewRegisterSoloComponent } from './new-register-solo/new-register-solo.
 import { SearchInboundComponent } from './search-inbound/search-inbound.component';
 
 import { GeneralService } from './services/general.service';
+import { LandingService } from './services/landing.service';
+
+
 import { AppConfig } from './services/constants';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 import { HomeComponent } from './home/home.component';
@@ -30,6 +33,7 @@ import { ReferidoTlmkComponent } from './referido-tlmk/referido-tlmk.component';
 import { ReferidoWebComponent } from './referido-web/referido-web.component';
 import { NewRegisterExistingComponent } from './new-register-existing/new-register-existing.component';
 import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
+import { FormComponent } from './form/form.component';
 
 
 @NgModule({
@@ -51,7 +55,8 @@ import { NewRegisterExistingReceptionComponent } from './new-register-existing-r
     ReferidoTlmkComponent,
     ReferidoWebComponent,
     NewRegisterExistingComponent,
-    NewRegisterExistingReceptionComponent
+    NewRegisterExistingReceptionComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,7 @@ import { NewRegisterExistingReceptionComponent } from './new-register-existing-r
     MatDialogModule,
     MatRadioModule
   ],
-  providers: [AppConfig, GeneralService],
+  providers: [AppConfig, GeneralService, LandingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

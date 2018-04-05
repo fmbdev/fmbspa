@@ -17,6 +17,7 @@ import { ReferidoTlmkComponent } from './referido-tlmk/referido-tlmk.component';
 import { ReferidoWebComponent } from './referido-web/referido-web.component';
 import { NewRegisterExistingComponent } from './new-register-existing/new-register-existing.component';
 import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
+import { FormComponent } from './form/form.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,11 @@ const routes: Routes = [
     path: 'register',
     component: NewRegisterComponent
   },
+  {
+    path: 'form',
+    component: FormComponent
+  },
+
   {
     path: 'register-existing',
     component: NewRegisterExistingComponent
