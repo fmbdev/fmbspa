@@ -5,8 +5,6 @@ import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, Ng
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 
-import { getJson } from '../services/getJsonService';
-
 import { LandingValidation } from '../validations/landing.validations';
 
 /** Error when invalid control is dirty, touched, or submitted. */
