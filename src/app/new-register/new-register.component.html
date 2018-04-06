@@ -80,8 +80,7 @@
             <mat-grid-tile>
                 <mat-form-field>
                     <input matInput placeholder="Nombre" #name (keyup)="onChange()" [(ngModel)]="user.name" [formControl]="namee" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,namee.value)">
-                    <mat-error *ngIf="namee.hasError('palabraMala')">Nombre Invalido123 {{ user.name | json }}</mat-error>
-                    <mat-error *ngIf="namee.hasError('palabraMalaVacia')">Nombre Invalido 456</mat-error>
+                    <mat-error *ngIf="namee.hasError('palabraMala')">Nombre Invalido</mat-error>
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
