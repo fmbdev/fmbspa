@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/delay';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { catchError, retry } from 'rxjs/operators';
+import { Palabra } from '../interfaces/palabra';
+ 
 
 @Injectable()
 export class LandingService {
+
+  configUrl = "/assets/palabras_basura.json";
+
   constructor(private http: HttpClient) { }
-  checkPalabra(email: string) {
-    return this.http
-      .get('assets/users.json')       
-      .map((res:any) => res.json())
-      .map(users => users.filter(user => user.email === email))
-      .map(users => !users.length);
-  }
+ 
+    getPalabrasMalas() {
+       return this.http.get(this.configUrl)
+         .subscribe(data => {
+             localStorage.getBasuraObs = JSON.stringify(data);
+         });
+    }
+
 }

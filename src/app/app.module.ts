@@ -23,7 +23,6 @@ import { SearchInboundComponent } from './search-inbound/search-inbound.componen
 import { GeneralService } from './services/general.service';
 import { LandingService } from './services/landing.service';
 
-
 import { AppConfig } from './services/constants';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 import { HomeComponent } from './home/home.component';

@@ -7,8 +7,7 @@ import {
 } from '@angular/forms';
 
 import { LandingService } from '../services/landing.service';
-import { LandingValidation } from '../validations/landing.validations';
-
+ 
 
 @Component({
   selector: 'app-form',
@@ -26,8 +25,7 @@ export class FormComponent implements OnInit {
       name: ['', Validators.required],
       email: [
         '',
-        [Validators.required, Validators.email],
-        LandingValidation.emailExistValidator(this.landingService)
+        [Validators.required, Validators.email]         
       ]
     });
   }

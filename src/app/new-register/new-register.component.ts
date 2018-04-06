@@ -5,8 +5,8 @@ import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, Ng
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 
+import { getJson } from '../services/getJsonService';
 
-import { LandingService } from '../services/landing.service';
 import { LandingValidation } from '../validations/landing.validations';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -60,10 +60,10 @@ export class NewRegisterComponent implements OnInit {
   canall = new FormControl('', [Validators.required, this.validCanal.bind(this)]);
   csqq = new FormControl('', [Validators.required, this.validCsq.bind(this)]);
   interess = new FormControl('', [Validators.required, this.validInteres.bind(this)]);
-  namee = new FormControl('', this.validName.bind(this));
+  namee = new FormControl('', LandingValidation.palabraMalaValidator());
   paternn = new FormControl('', this.validPatern.bind(this));
   maternn = new FormControl('', this.validMatern.bind(this));
-  maill = new FormControl('', LandingValidation.emailExistValidator(this.landingService));
+  maill = new FormControl('', LandingValidation.palabraMalaValidator());
   cell = new FormControl('', this.validCel.bind(this));
   phonee = new FormControl('', this.validPhone.bind(this));
   genderr = new FormControl('', this.validGender.bind(this));
@@ -110,11 +110,12 @@ export class NewRegisterComponent implements OnInit {
   phoneRegissTxtError: any = false;
   parentRegissTxtError: any = false;
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2, private landingService: LandingService) {
+  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) {
     this.user.canal = '0'; this.user.interes = '0'; this.user.citaTime='0'; this.user.csq = '0'; this.user.parentRegis = '0'; this.user.gender = '0'
     this.user.interestCampus = '0'; this.user.interestArea = '0'; this.user.interestNivel = '0'; this.user.interestModel = '0'; this.user.interestCareer = '0';
     this.user.interestCycle = '0'; this.user.citaCampus = '0'; this.user.citaAsesor = '0'; this.user.tipificacion = '0';
-
+     
+    
   }
 
   ngOnInit() {
