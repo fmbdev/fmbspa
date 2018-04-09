@@ -1,0 +1,147 @@
+<div class="register">
+  <div class="form no_border">
+  <mat-grid-list class="" cols="2" rowHeight="70px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput placeholder="Referente" value="Ricardo Vargas" readonly>
+      </mat-form-field>
+    </mat-grid-tile> 
+    <mat-grid-tile>
+      &nbsp;
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+</div>
+<div class="register">
+  <div class="head-blue mt">
+   INGRESA LOS DATOS DE TU REFERIDO
+  </div>
+  <div class="form">
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput minlength="10" placeholder="Nombre" required #name [(ngModel)]="user.name" [formControl]="namee" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,namee.value)">
+          <mat-error *ngIf="nameTxtError && !namee.hasError('required')">{{nameTxtError}}</mat-error>
+          <mat-error *ngIf="namee.hasError('required')">Por favor ingresa un nombre</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+       <mat-grid-tile>
+        <mat-form-field>
+          <mat-select placeholder="Campus" required #interestCampus [(ngModel)]="user.interestCampus" [formControl]="interestCampuss" [errorStateMatcher]="matcher">
+            <mat-option value="0">Selecciona una opción</mat-option>
+            <mat-option value="Atizapan">Atizapan</mat-option>
+            <mat-option value="Cuitlahuac">Cuitlahuac</mat-option>
+            <mat-option value="Ecatepec">Ecatepec</mat-option>
+          </mat-select>
+          <mat-error *ngIf="inputError == 'interestCampus' || user.interestCampus == '0'">Elige un Campus</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput minlength="10" placeholder="Apellido Paterno" required #patern [(ngModel)]="user.patern" [formControl]="paternn" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,paternn.value)"> 
+          <mat-error *ngIf="paternTxtError && !paternn.hasError('required')">{{paternTxtError}}</mat-error>
+          <mat-error *ngIf="paternn.hasError('required')">Por favor ingresa un apellido paterno</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-select placeholder="Nivel" required #interestNivel [(ngModel)]="user.interestNivel" [formControl]="interestNivell" [errorStateMatcher]="matcher">
+            <mat-option value="0">Selecciona una opción</mat-option>
+            <mat-option value="Bachillerato">Bachillerato</mat-option>
+            <mat-option value="Licenciatura">Licenciatura</mat-option>
+            <mat-option value="Posgrado">Posgrado</mat-option>
+          </mat-select>
+          <mat-error *ngIf="inputError == 'interestNivel' || user.interestNivel == '0'">Elige una Área de Interés</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput minlength="10" placeholder="Apellido Materno" required #matern [(ngModel)]="user.matern" [formControl]="maternn" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,maternn.value)">
+          <mat-error *ngIf="maternTxtError && !maternn.hasError('required')">{{maternTxtError}}</mat-error>
+          <mat-error *ngIf="maternn.hasError('required')">Por favor ingresa un apellido materno</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+       <mat-grid-tile>
+        <mat-form-field>
+          <mat-select placeholder="Modalidad" [(ngModel)]="user.interestModel" 
+           required #interestModel   [formControl]="interestModell" [errorStateMatcher]="matcher">
+            <mat-option value="0">Selecciona una opción</mat-option>
+            <mat-option value="Presencial">Presencial</mat-option>
+            <mat-option value="En línea">En línea</mat-option>
+            <mat-option value="Mixta">Mixta</mat-option>
+          </mat-select>
+          <mat-error *ngIf="inputError == 'interestModel' || user.interestModel == '0'">Elige una Modalidad</mat-error>
+
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput placeholder="Correo Electrónico" required #mail [(ngModel)]="user.mail" [formControl]="maill" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="mailTxtError && !maill.hasError('required')">{{mailTxtError}}</mat-error>
+          <mat-error *ngIf="maill.hasError('required')">Por favor ingresa un correo válido</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+       <mat-grid-tile>
+        <mat-form-field>
+          <mat-select placeholder="Carrera" [(ngModel)]="user.interestCareer" 
+          required #interestCareer   [formControl]="interestCareerr" [errorStateMatcher]="matcher">
+            <mat-option value="0">Selecciona una opción</mat-option>
+            <mat-option value="Prepa SEP">Prepa SEP</mat-option>
+            <mat-option value="Arquitectura">Arquitectura</mat-option>
+            <mat-option value="Diseño">Diseño</mat-option>
+            <mat-option value="Gastronomía">Gastronomía</mat-option>
+            <mat-option value="Mercadotecnia">Mercadotecnia</mat-option>
+          </mat-select>
+          <mat-error *ngIf="inputError == 'interestCareer' || user.interestCareer == '0'">Elige una Carrera</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>        
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput placeholder="Teléfono" required #phone [(ngModel)]="user.phone" [formControl]="phonee" [errorStateMatcher]="matcher"  maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keyup)="onKeydownPhone($event)" >
+          <mat-error *ngIf="phoneTxtError && !phonee.hasError('required')">{{phoneTxtError}}</mat-error>
+          <mat-error *ngIf="phonee.hasError('required')">Ingresa número de Teléfono</mat-error>         
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+         &nbsp;
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="70px" *ngIf="user.tipo=='Oficina'">
+      <mat-grid-tile>
+        <mat-form-field >
+          <input matInput placeholder="Extension" required #extension [(ngModel)]="user.extension" [formControl]="extensione" [errorStateMatcher]="matcher"  (keypress)="_keyPress($event)">       
+          <mat-error *ngIf="extensione.hasError('required')" style="padding-left: 10px; font-size: 75%;" >Ingresa una extension</mat-error>          
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+         &nbsp;
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="6" rowHeight="70px">
+      <mat-radio-group class="radio-group" #tipo  [(ngModel)]="user.tipo"   [formControl]="tipocel" style="padding-left: 10px; ">
+      <mat-radio-button  value="Celular"> Celular </mat-radio-button>
+      <mat-radio-button  value="Casa"> Casa </mat-radio-button>
+      <mat-radio-button  value="Oficina"> Oficina </mat-radio-button>
+          <mat-error *ngIf="tipocel.hasError('required')" style="padding-left: 10px; font-size: 75%;" >Ingresa tipo de Teléfono</mat-error>          
+    </mat-radio-group>    
+    </mat-grid-list> 
+  </div>
+  <mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
+    <mat-grid-tile class="le">
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="btn">
+        <button mat-raised-button color="warn" class="cancel">CANCELAR</button>
+        <button mat-raised-button color="warn" (click)="save()">GUARDAR</button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,22 @@
+<div class="login">
+  <div class="head-blue">
+    ACCESO A USUARIOS REGISTRADOS
+  </div>
+
+  <div class="form">
+    <mat-form-field>
+      <input #username matInput placeholder="Usuario" [(ngModel)]="user.username" required>
+      <mat-error *ngIf="inputError == 'username'">{{txtError}}</mat-error>
+    </mat-form-field>
+<br>
+    <mat-form-field>
+      <input #password matInput placeholder="Contraseña" type="password" [(ngModel)]="user.password" required>
+      <mat-error *ngIf="inputError == 'password'">{{txtError}}</mat-error>
+    </mat-form-field>
+    <br>
+    <div class="btn">
+      <button mat-raised-button color="warn" (click)="login()">ACCEDER</button>
+    </div>
+  </div>
+
+</div>
