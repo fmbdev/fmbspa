@@ -1,3 +1,5 @@
 export interface Carrera {
-    name: string
+    id: number;
+    productnumber: string;
+    crmit_nombremostrarcliente: string;
 }

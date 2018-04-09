@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { Csq } from '../interfaces/csq';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -7,11 +7,12 @@ import 'rxjs/Rx';
 @Injectable()
 export class CsqService {
 
-  constructor( private http: Http) { 
-  }
+  private headers = new Headers({'Content-Type':'application/json'});
+
+  constructor( private http: Http) {}
 
   getAll() : Observable<Csq[]>{
-    return this.http.get("/assets/csq.json")
+    return this.http.get("http://devmx.com.mx/fmbapp/public/api/csq", {headers: this.headers})
            .map(
               (res: Response) => res.json()
             )

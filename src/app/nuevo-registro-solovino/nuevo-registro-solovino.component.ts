@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
+import 'rxjs/Rx';
+
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
 import { Nivel } from '../interfaces/nivel';
 import { Canal } from '../interfaces/canal';
 import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
+import { Genero } from '../interfaces/genero';
 import { Asesor } from '../interfaces/asesor';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
@@ -16,11 +21,13 @@ import { Tipificacion } from '../interfaces/tipificacion';
 
 import { CsqService } from '../providers/csq.service'; 
 import { HoraService } from '../providers/hora.service';
+import { SendService } from '../providers/send.service';
 import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
 import { AsesorService } from '../providers/asesor.service';
+import { GeneroService } from '../providers/genero.service';
 import { CarreraService } from '../providers/carrera.service';
 import { InteresService } from '../providers/interes.service';
 import { ModalidadService } from '../providers/modalidad.service'; 
@@ -47,16 +54,19 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
   modalidades: Modalidad[] = [];
   parentescos: Parentesco[] = [];
   tipificaciones: Tipificacion[] = [];
-  sexos: [{},{}] = [{"name":"Hombre"},{"name":"Mujer"}]; 
+  generos: Genero[] = [];
 
   constructor(private formBuilder: FormBuilder,
+              private dialog: MatDialog,
               private csqServ: CsqService,
               private horaServ: HoraService,
+              private sendServ: SendService,
               private nivelServ: NivelService,
               private cicloServ: CicloService,
               private canalServ: CanalService,
               private campusServ: CampusService,
               private asesorServ: AsesorService,
+              private generoServ: GeneroService,
               private carreraServ: CarreraService,
               private interesServ: InteresService,
               private modalidadServ: ModalidadService,
@@ -73,6 +83,11 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
     this.csqServ.getAll()
         .subscribe(
           (data: Csq[]) => this.csqs = data
+        )
+    // Se obtienen todos los generos
+    this.generoServ.getAll()
+        .subscribe(
+          (data: Genero[]) => this.generos = data
         )
     // Se obtienen todas las tipificaciones
     this.tipicicacionServ.getAll()
@@ -129,7 +144,16 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.registerForm.value);
+    this.sendServ.sendDataToApi(this.registerForm.value)
+       .subscribe(
+         (res: Response) => {
+           if(res.status == 200){
+             this.showDialog("Los datos se han guardado correctamente.");
+           }else{
+             this.showDialog("Error al realizar el registro.");
+           }
+         }
+       )
   }
 
   resetForm(){
@@ -157,38 +181,47 @@ export class NuevoRegistroSolovinoComponent implements OnInit {
       return false;
     }
   }
+
+  private showDialog(message: string){
+    let dialogRef = this.dialog.open(DialogComponent, {
+      height: '180px',
+      width: '500px',
+      data: {message: message}
+    });
+  }
   
     private initForm(){
     this.registerForm = this.formBuilder.group({
       /*-- Campo Usuario (u) --*/
-      u_name: [{value: 'Ricardo Vargas', disabled: true}],
-      /*-- Prospecto (p) --*/
-      p_nombre: ['', [Validators.required, Validators.minLength(3)]],
-      p_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
-      p_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-      p_email: ['', [Validators.required, Validators.email]],
-      p_noemail: [''],
-      p_telefono_mobil: ['', Validators.required],
-      p_telefono: ['', Validators.required],
-      p_genero: ['', Validators.required],
-      p_canal_preferido: ['', Validators.required],
-      p_fecha_nacimiento: [{value: '', disabled: true}, Validators.required],
-      p_edad: ['', Validators.required],
-      /* -- Quien registra (q)--*/
-       q_nombre: ['', [Validators.required, Validators.minLength(3)]],
-      q_apellido_paterno: ['', [Validators.required, Validators.minLength(3)]],
-      q_apellido_materno: ['', [Validators.required, Validators.minLength(3)]],
-      q_email: ['', [Validators.required, Validators.email]],
-      q_telefono_mobil: ['', Validators.required],
-      q_telefono: ['', Validators.required],
-      q_parentesco: ['', Validators.required],
-      /*-- Campos para sección de Interes (int) -- */
-      int_campus: ['', Validators.required],
-      int_nivel: ['', Validators.required],
-      int_modalidad: ['', Validators.required],
-      int_carrera: ['', Validators.required],
-      int_ciclo: ['', Validators.required],
-      int_interes: ['', Validators.required],
+      Usuario: [{value: 'Ricardo Vargas', disabled: true}],
+      /*-- Campos para sección de Contato -- */
+      /*-- Prospecto --*/
+      Nombre: ['', [Validators.required, Validators.minLength(3)]],
+      ApellidoPaterno: ['', [Validators.required, Validators.minLength(3)]],
+      ApellidoMaterno: ['', [Validators.required, Validators.minLength(3)]],
+      CorreoElectronico: ['', [Validators.required, Validators.email]],
+      SinCorreo: [''],
+      NumeroCelular: ['', Validators.required],
+      Telefono: ['', Validators.required],
+      Genero: ['', Validators.required],
+      CanalPreferido: ['', Validators.required],
+      FechaNacimiento: [{value: '', disabled: true}, Validators.required],
+      Edad: ['', Validators.required],
+      /* -- Quien registra --*/
+      NombreTutor: ['', [Validators.required, Validators.minLength(3)]],
+      ApellidoPaternoTutor: ['', [Validators.required, Validators.minLength(3)]],
+      ApellidoMaternoTutor: ['', [Validators.required, Validators.minLength(3)]],
+      CorreoElectronicoTutor: ['', [Validators.required, Validators.email]],
+      NumeroCelularR: ['', Validators.required],
+      TelefonoTutor: ['', Validators.required],
+      ParentescoTutor: ['', Validators.required],
+      /*-- Campos para sección de Interes -- */
+      Campus: ['', Validators.required],
+      Nivel: ['', Validators.required],
+      Modalidad: ['', Validators.required],
+      Carrera: ['', Validators.required],
+      Ciclo: ['', Validators.required],
+      AreaInteres: ['', Validators.required],
     });
   }
 

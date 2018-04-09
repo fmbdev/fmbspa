@@ -1,3 +1,5 @@
 export interface Nivel {
-    name: string;
+    ID: number;
+    crmit_codigounico: string;
+    crmit_name: string;
 }

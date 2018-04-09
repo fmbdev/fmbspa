@@ -1,3 +1,3 @@
 export interface Asesor {
-    name: string;
+    "Nombre Asesor": string;
 }

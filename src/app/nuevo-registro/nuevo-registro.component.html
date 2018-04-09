@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col col-lg-6 offset-lg-6">
                     <mat-form-field id="telefono">
-                        <input matInput placeholder="Usuario" formControlName="u_name">
+                        <input matInput placeholder="Usuario" formControlName="Usuario">
                     </mat-form-field>
                 </div>
             </div>
@@ -24,26 +24,26 @@
                             <div class="row">
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="oll_canall">Canal*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="oll_canal">
-                                            <mat-option *ngFor="let canal of canales;" [value]="canal.name">
-                                                {{ canal.name }}
+                                        <label class="color-gray" for="Canal">Canal*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Canal">
+                                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_name']">
+                                                {{ canal['crmit_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['oll_canal'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Canal'].hasError('required')">
                                             Elige un Canal
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="oll_csq">CSQ*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="oll_csq">
-                                            <mat-option *ngFor="let csq of csqs;" [value]="csq.name">
-                                                {{ csq.name }}
+                                        <label class="color-gray" for="CSQ">CSQ*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="CSQ">
+                                            <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_name']">
+                                                {{ csq['crmit_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['oll_csq'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['CSQ'].hasError('required')">
                                             Elige un CSQ
                                         </mat-error>
                                     </mat-form-field>
@@ -52,24 +52,24 @@
                             <div class="row">
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <input maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="oll_telefono">
-                                        <mat-error *ngIf="registerForm.controls['oll_telefono'].hasError('required')">
+                                        <input maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="TelefonoCorreo" class="telefono">
+                                        <mat-error *ngIf="registerForm.controls['TelefonoCorreo'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['oll_telefono'].hasError('minlength') && !registerForm.controls['oll_telefono'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['TelefonoCorreo'].hasError('minlength') && !registerForm.controls['TelefonoCorreo'].hasError('required')">
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="oll_interes">Interesa/No Interesa*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="oll_interes">
-                                            <mat-option *ngFor="let interes of intereses;" [value]="interes.name">
-                                                {{ interes.name }}
+                                        <label class="color-gray" for="Interesa">Interesa/No Interesa*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Interesa">
+                                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                                                {{ interes['Área Interes'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['oll_interes'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Interesa'].hasError('required')">
                                             Elige un ínteres
                                         </mat-error>
                                     </mat-form-field>
@@ -97,93 +97,93 @@
                                     </div>
                                     <hr>
                                     <mat-form-field>
-                                        <input matInput placeholder="Nombre*" formControlName="p_nombre">
-                                        <mat-error *ngIf="registerForm.controls['p_nombre'].hasError('required')">
+                                        <input matInput placeholder="Nombre*" formControlName="Nombre">
+                                        <mat-error *ngIf="registerForm.controls['Nombre'].hasError('required')">
                                             Por favor ingresa un nombre
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['p_nombre'].hasError('minlength') && !registerForm.controls['p_nombre'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Nombre'].hasError('minlength') && !registerForm.controls['Nombre'].hasError('required')">
                                             Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="Apellido Paterno*" formControlName="p_apellido_paterno">
-                                        <mat-error *ngIf="registerForm.controls['p_apellido_paterno'].hasError('required')">
+                                        <input matInput placeholder="Apellido Paterno*" formControlName="ApellidoPaterno">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoPaterno'].hasError('required')">
                                             Por favor ingresa un apellido paterno
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['p_apellido_paterno'].hasError('minlength') && !registerForm.controls['p_apellido_paterno'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoPaterno'].hasError('minlength') && !registerForm.controls['ApellidoPaterno'].hasError('required')">
                                             Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="Apellido Materno*" formControlName="p_apellido_materno">
-                                        <mat-error *ngIf="registerForm.controls['p_apellido_materno'].hasError('required')">
+                                        <input matInput placeholder="Apellido Materno*" formControlName="ApellidoMaterno">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoMaterno'].hasError('required')">
                                             Por favor ingresa un apellido paterno
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['p_apellido_materno'].hasError('minlength') && !registerForm.controls['p_apellido_materno'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoMaterno'].hasError('minlength') && !registerForm.controls['ApellidoMaterno'].hasError('required')">
                                             Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="Correo Electrónico*" formControlName="p_email">
-                                        <mat-error *ngIf="registerForm.controls['p_email'].hasError('email') && !registerForm.controls['p_email'].hasError('required')">
+                                        <input matInput placeholder="Correo Electrónico*" formControlName="CorreoElectronico">
+                                        <mat-error *ngIf="registerForm.controls['CorreoElectronico'].hasError('email') && !registerForm.controls['CorreoElectronico'].hasError('required')">
                                             Correo Inválido
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['p_email'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['CorreoElectronico'].hasError('required')">
                                             Por favor ingresa un correo <strong>válido</strong>
                                         </mat-error>
                                     </mat-form-field>
                                     <div id="checkbox_email">
-                                        <mat-checkbox formControlName="p_noemail">Sin correo electrónico</mat-checkbox>
+                                        <mat-checkbox formControlName="SinCorreo">Sin correo electrónico</mat-checkbox>
                                     </div>
                                     <mat-form-field>
-                                        <input maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="p_telefono_mobil">
-                                        <mat-error *ngIf="registerForm.controls['p_telefono_mobil'].hasError('required')">
+                                        <input maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="NumeroCelular">
+                                        <mat-error *ngIf="registerForm.controls['NumeroCelular'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['p_telefono_mobil'].hasError('minlength') && !registerForm.controls['p_telefono_mobil'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['NumeroCelular'].hasError('minlength') && !registerForm.controls['NumeroCelular'].hasError('required')">
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="p_telefono">
-                                        <mat-error *ngIf="registerForm.controls['p_telefono'].hasError('required')">
+                                        <input maxlength="10" matInput (keypress)="onKeydownNumber($event)" placeholder="Teléfono*" formControlName="Telefono">
+                                        <mat-error *ngIf="registerForm.controls['Telefono'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['p_telefono'].hasError('minlength') && !registerForm.controls['oll_telefono'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Telefono'].hasError('minlength') && !registerForm.controls['Telefono'].hasError('required')">
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="p_genero">Genero*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="p_genero">
-                                            <mat-option *ngFor="let sexo of sexos;" [value]="sexo.name">
-                                                {{ sexo.name }}
+                                        <label class="color-gray" for="Genero">Genero*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Genero">
+                                            <mat-option *ngFor="let genero of generos;" [value]="genero['genero']">
+                                                {{ genero['genero'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['p_genero'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Genero'].hasError('required')">
                                             Elige un Género
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="p_canal_preferido">Canal Preferido*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="p_canal_preferido">
-                                            <mat-option *ngFor="let canal of canales;" [value]="canal.name">
-                                                {{ canal.name }}
+                                        <label class="color-gray" for="CanalPreferido">Canal Preferido*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="CanalPreferido">
+                                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_name']">
+                                                {{ canal['crmit_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['p_canal_preferido'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['CanalPreferido'].hasError('required')">
                                             Elige un Canal Preferido
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="p_fecha_nacimiento">Fecha de Nacimiento*</label>
-                                        <input matInput [matDatepicker]="myDatepicker1" placeholder="Selecciona una opción" formControlName="p_fecha_nacimiento">
+                                        <label class="color-gray" for="FechaNacimiento">Fecha de Nacimiento*</label>
+                                        <input matInput [matDatepicker]="myDatepicker1" placeholder="Selecciona una opción" formControlName="FechaNacimiento">
                                         <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
                                         <mat-datepicker #myDatepicker1 disabled="false"></mat-datepicker>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input  (keypress)="onKeydownNumber($event)" matInput placeholder="Edad*" formControlName="p_edad">
-                                        <mat-error *ngIf="registerForm.controls['p_edad'].hasError('required')">
+                                        <input  (keypress)="onKeydownNumber($event)" matInput placeholder="Edad*" formControlName="Edad">
+                                        <mat-error *ngIf="registerForm.controls['Edad'].hasError('required')">
                                             Ingresa una Edad
                                         </mat-error>
                                     </mat-form-field>
@@ -194,67 +194,67 @@
                                     </div>
                                     <hr>
                                     <mat-form-field>
-                                        <input matInput placeholder="Nombre*" formControlName="q_nombre">
-                                        <mat-error *ngIf="registerForm.controls['q_nombre'].hasError('required')">
+                                        <input matInput placeholder="Nombre*" formControlName="NombreTutor">
+                                        <mat-error *ngIf="registerForm.controls['NombreTutor'].hasError('required')">
                                             Por favor ingresa un nombre
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['q_nombre'].hasError('minlength') && !registerForm.controls['q_nombre'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['NombreTutor'].hasError('minlength') && !registerForm.controls['NombreTutor'].hasError('required')">
                                             Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="Apellido Paterno*" formControlName="q_apellido_paterno">
-                                        <mat-error *ngIf="registerForm.controls['q_apellido_paterno'].hasError('required')">
+                                        <input matInput placeholder="Apellido Paterno*" formControlName="ApellidoPaternoTutor">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoPaternoTutor'].hasError('required')">
                                             Por favor ingresa un apellido paterno
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['q_apellido_paterno'].hasError('minlength') && !registerForm.controls['q_apellido_paterno'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoPaternoTutor'].hasError('minlength') && !registerForm.controls['ApellidoPaternoTutor'].hasError('required')">
                                             Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="Apellido Materno*" formControlName="q_apellido_materno">
-                                        <mat-error *ngIf="registerForm.controls['q_apellido_materno'].hasError('required')">
+                                        <input matInput placeholder="Apellido Materno*" formControlName="ApellidoMaternoTutor">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoMaternoTutor'].hasError('required')">
                                             Por favor ingresa un apellido materno
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['q_apellido_materno'].hasError('minlength') && !registerForm.controls['q_apellido_materno'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['ApellidoMaternoTutor'].hasError('minlength') && !registerForm.controls['ApellidoMaternoTutor'].hasError('required')">
                                             Al menos debe contener 3 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="Correo Electrónico*" formControlName="q_email">
-                                        <mat-error *ngIf="registerForm.controls['q_email'].hasError('email') && !registerForm.controls['q_email'].hasError('required')">
+                                        <input matInput placeholder="Correo Electrónico*" formControlName="CorreoElectronicoTutor">
+                                        <mat-error *ngIf="registerForm.controls['CorreoElectronicoTutor'].hasError('email') && !registerForm.controls['CorreoElectronicoTutor'].hasError('required')">
                                             Correo Inválido
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['q_email'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['CorreoElectronicoTutor'].hasError('required')">
                                             Por favor ingresa un correo <strong>válido</strong>
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input  maxlength="10"  matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="q_telefono_mobil">
-                                        <mat-error *ngIf="registerForm.controls['q_telefono_mobil'].hasError('required')">
+                                        <input  maxlength="10"  matInput (keypress)="onKeydownNumber($event)" placeholder="Numero Celular (10 digitos)*" formControlName="NumeroCelularR">
+                                        <mat-error *ngIf="registerForm.controls['NumeroCelularR'].hasError('required')">
                                             Ingresa número de Celular
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['q_telefono_mobil'].hasError('minlength') && !registerForm.controls['q_telefono_mobil'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['NumeroCelularR'].hasError('minlength') && !registerForm.controls['NumeroCelularR'].hasError('required')">
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input  maxlength="10"  (keypress)="onKeydownNumber($event)" matInput placeholder="Teléfono*" formControlName="q_telefono">
-                                        <mat-error *ngIf="registerForm.controls['q_telefono'].hasError('required')">
+                                        <input  maxlength="10"  (keypress)="onKeydownNumber($event)" matInput placeholder="Teléfono*" formControlName="TelefonoTutor">
+                                        <mat-error *ngIf="registerForm.controls['TelefonoTutor'].hasError('required')">
                                             Ingresa número de Teléfono
                                         </mat-error>
-                                        <mat-error *ngIf="registerForm.controls['q_telefono'].hasError('minlength') && !registerForm.controls['q_telefono'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['TelefonoTutor'].hasError('minlength') && !registerForm.controls['TelefonoTutor'].hasError('required')">
                                             Al menos debe contener 10 dígitos
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="q_parentesco">Parentesco*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="q_parentesco">
-                                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco.name">
-                                                {{ parentesco.name }}
+                                        <label class="color-gray" for="ParentescoTutor">Parentesco*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="ParentescoTutor">
+                                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_name']">
+                                                {{ parentesco['crmit_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['q_parentesco'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['ParentescoTutor'].hasError('required')">
                                             Elige un Parentesco
                                         </mat-error>
                                     </mat-form-field>
@@ -278,70 +278,70 @@
                             <div class="row">
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="int_campus">Campus*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="int_campus">
-                                            <mat-option *ngFor="let campu of campus;" [value]="campu.name">
-                                                {{ campu.name }}
+                                        <label class="color-gray" for="Campus">Campus*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Campus">
+                                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmi_name']">
+                                                {{ campu['crmi_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                         <mat-error *ngIf="registerForm.controls['int_campus'].hasError('required')">
+                                         <mat-error *ngIf="registerForm.controls['Campus'].hasError('required')">
                                            Elige un Campus
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="int_nivel">Nivel*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="int_nivel">
-                                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel.name">
-                                                {{ nivel.name }}
+                                        <label class="color-gray" for="Nivel">Nivel*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Nivel">
+                                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_name']">
+                                                {{ nivel['crmit_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['int_nivel'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Nivel'].hasError('required')">
                                            Elige una Área de Interés
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="int_modalidad">Modalidad*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="int_modalidad">
-                                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad.name">
-                                                {{ modalidad.name }}
+                                        <label class="color-gray" for="Modalidad">Modalidad*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Modalidad">
+                                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_name']">
+                                                {{ modalidad['crmit_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['int_modalidad'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Modalidad'].hasError('required')">
                                            Elige una Modalidad
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="int_carrera">Carrera*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="int_carrera">
-                                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera.name">
-                                                {{ carrera.name }}
+                                        <label class="color-gray" for="Carrera">Carrera*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Carrera">
+                                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['productnumber']">
+                                                {{ carrera['productnumber'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['int_carrera'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Carrera'].hasError('required')">
                                            Elige una Carrera
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="int_ciclo">Ciclo*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="int_ciclo">
-                                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo.name">
-                                                {{ ciclo.name }}
+                                        <label class="color-gray" for="Ciclo">Ciclo*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Ciclo">
+                                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
+                                                {{ ciclo['crmit_name'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['int_ciclo'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Ciclo'].hasError('required')">
                                            Indica cuando quieres entrar.
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="int_interes">Interesa/No Interesa*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="int_interes">
-                                            <mat-option *ngFor="let interes of intereses;" [value]="interes.name">
-                                                {{ interes.name }}
+                                        <label class="color-gray" for="AreaInteres">Interesa/No Interesa*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="AreaInteres">
+                                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                                                {{ interes['Área Interes'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['int_interes'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['AreaInteres'].hasError('required')">
                                            Elige un ínteres
                                         </mat-error>
                                     </mat-form-field>
@@ -365,54 +365,54 @@
                             <div class="row">
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="cit_campus">Campus*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="cit_campus">
-                                            <mat-option *ngFor="let campu of campus;" [value]="campu.name">
-                                                {{ campu.name }}
+                                        <label class="color-gray" for="CampusCita">Campus*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="CampusCita">
+                                            <mat-option *ngFor="let campus of campus_citas;" [value]="campus['Nombre de Campus']">
+                                                {{ campus['Nombre de Campus'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['cit_campus'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['CampusCita'].hasError('required')">
                                            Elige un Campus
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="cit_fecha">Fecha*</label>
-                                        <input matInput [matDatepicker]="myDatepicker2" placeholder="Selecciona una opciòn" formControlName="cit_fecha">
+                                        <label class="color-gray" for="FechaCita">Fecha*</label>
+                                        <input matInput [matDatepicker]="myDatepicker2" placeholder="Selecciona una opciòn" formControlName="FechaCita">
                                         <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
                                         <mat-datepicker #myDatepicker2 disabled="false"></mat-datepicker>
-                                         <mat-error *ngIf="registerForm.controls['cit_fecha'].hasError('required')">
+                                         <mat-error *ngIf="registerForm.controls['FechaCita'].hasError('required')">
                                            Elige una fecha
                                         </mat-error>
                                     </mat-form-field>
                                     <div>
-                                        <mat-checkbox formControlName="cit_prog_llamada">Programación Llamada</mat-checkbox>
+                                        <mat-checkbox formControlName="Programacion">Programación Llamada</mat-checkbox>
                                     </div>
                                 </div>
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="cit_asesor">Asesor*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="cit_asesor">
-                                            <mat-option *ngFor="let asesor of asesores;" [value]="asesor.name">
-                                                {{ asesor.name }}
+                                        <label class="color-gray" for="Asesor">Asesor*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Asesor">
+                                            <mat-option *ngFor="let asesor of asesores;" [value]="asesor['Nombre Asesor']">
+                                                {{ asesor['Nombre Asesor'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['cit_asesor'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Asesor'].hasError('required')">
                                            Elige un Asesor
                                         </mat-error>
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <label class="color-gray" for="cit_hora">Hora*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="cit_hora">
+                                        <label class="color-gray" for="HoraCita">Hora*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="HoraCita">
                                             <mat-option *ngFor="let hora of horas;" [value]="hora.hora">
                                                 {{ hora.hora }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['cit_hora'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['HoraCita'].hasError('required')">
                                            Elige una hora
                                         </mat-error>
                                     </mat-form-field>
                                     <div>
-                                        <mat-checkbox formControlName="cit_transf_line">Transferencia en Linea</mat-checkbox>
+                                        <mat-checkbox formControlName="Transferencia">Transferencia en Linea</mat-checkbox>
                                     </div>
                                 </div>
                             </div>
@@ -434,13 +434,13 @@
                             <div class="row">
                                 <div class="col col-lg-6">
                                     <mat-form-field>
-                                        <label class="color-gray" for="tip_tipificacion">Tipificación*</label>
-                                        <mat-select placeholder="Selecciona una opción" formControlName="tip_tipificacion">
-                                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion.name">
-                                                {{ tipificacion.name }}
+                                        <label class="color-gray" for="Tipificacion">Tipificación*</label>
+                                        <mat-select placeholder="Selecciona una opción" formControlName="Tipificacion">
+                                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['Tipificación']">
+                                                {{ tipificacion['Tipificación'] }}
                                             </mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="registerForm.controls['tip_tipificacion'].hasError('required')">
+                                        <mat-error *ngIf="registerForm.controls['Tipificacion'].hasError('required')">
                                            Elige un Asesor
                                         </mat-error>
                                     </mat-form-field>
@@ -449,7 +449,7 @@
                             <div class="row">
                                 <div class="col">
                                     <mat-form-field class="example-full-width">
-                                        <textarea matInput placeholder="Notas" formControlName="tip_notas"></textarea>
+                                        <textarea matInput placeholder="Notas" formControlName="Notas"></textarea>
                                     </mat-form-field>
                                 </div>
                             </div>

@@ -1,3 +1,4 @@
 export interface Modalidad {
-    name: string;
+    crmit_name: string;
+    crmit_codigounico: number;
 }

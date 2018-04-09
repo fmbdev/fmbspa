@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { Canal } from '../interfaces/canal';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -8,10 +8,12 @@ import 'rxjs/Rx';
 @Injectable()
 export class CanalService {
 
+  private headers = new Headers({'Content-Type':'application/json'});
+
   constructor(private http: Http) { }
 
   getAll(): Observable<Canal[]>{
-    return this.http.get("/assets/canal.json")
+    return this.http.get("http://devmx.com.mx/fmbapp/public/api/canales", {headers: this.headers})
            .map(
               (data: Response) => data.json()
            )

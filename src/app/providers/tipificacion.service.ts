@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response} from '@angular/http';
+import { Http, Headers, Response} from '@angular/http';
 import { Tipificacion } from '../interfaces/tipificacion'; 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -7,10 +7,12 @@ import 'rxjs/Rx';
 @Injectable()
 export class TipificacionService {
 
+  private headers = new Headers({'Content-Type':'application/json'});
+
   constructor(private http: Http) { }
 
   getAll() : Observable<Tipificacion[]>{
-    return this.http.get("/assets/tipificacion.json")
+    return this.http.get("http://devmx.com.mx/fmbapp/public/api/tipificacion", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

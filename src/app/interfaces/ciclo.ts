@@ -1,3 +1,5 @@
 export interface Ciclo {
-    name: string;
+    Id: number;
+    crmit_name: string;
+    crmit_codigounico: string;
 }

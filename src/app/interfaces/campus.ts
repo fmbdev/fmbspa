@@ -1,3 +1,6 @@
 export interface Campus {
-    name: string;
+    crmit_tb_campusid: string;
+    crmi_name: string;
+    crmit_codigounico: number; 
+
 }

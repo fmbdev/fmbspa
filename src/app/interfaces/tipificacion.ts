@@ -1,3 +1,4 @@
 export interface Tipificacion {
-    name: string;
+    id: number;
+    Tipificación: string;
 }

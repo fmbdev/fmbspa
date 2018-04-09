@@ -190,7 +190,7 @@ export class ReferidosTlmkComponent implements OnInit {
       
 
       /*-- Prospecto (p) --*/
-            p_nombre: ['', [Validators.required,Validators.minLength(3)]],
+      p_nombre: ['', [Validators.required,Validators.minLength(3)]],
       p_apellido_paterno:['', [Validators.required,Validators.minLength(3)]],
       p_apellido_materno:['', [Validators.required,Validators.minLength(3)]],
       p_email: ['',[Validators.required,Validators.email]],
