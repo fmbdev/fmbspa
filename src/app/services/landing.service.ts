@@ -10,15 +10,20 @@ import { Palabra } from '../interfaces/palabra';
 @Injectable()
 export class LandingService {
 
-  configUrl = "/assets/palabras_basura.json";
+  	configUrl = "/assets/palabras_basura.json";
 
-  constructor(private http: HttpClient) { }
- 
+  	constructor(private http: HttpClient) { }
+
     getPalabrasMalas() {
-       return this.http.get(this.configUrl)
-         .subscribe(data => {
-             localStorage.getBasuraObs = JSON.stringify(data);
-         });
+    	return this.http.get(this.configUrl)
+        	.subscribe(data => {
+        		if(localStorage.getBasuraObs===undefined){
+        			console.log('creando localstorage');        			            
+            		localStorage.getBasuraObs = JSON.stringify(data); 
+        		}else{
+        			console.log('undefined');
+        		}
+        });
     }
 
 }
