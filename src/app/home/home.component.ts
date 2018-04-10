@@ -11,12 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private landingService: LandingService,) { }
 
-<<<<<<< HEAD
-  ngOnInit() {}
-=======
   ngOnInit() {
     this.landingService.getPalabrasMalas();
   }
->>>>>>> developer
 
 }

@@ -15,15 +15,15 @@ export class LandingService {
   	constructor(private http: HttpClient) { }
 
     getPalabrasMalas() {
-    	return this.http.get(this.configUrl)
-        	.subscribe(data => {
-        		if(localStorage.getBasuraObs===undefined){
-        			console.log('creando localstorage');        			            
-            		localStorage.getBasuraObs = JSON.stringify(data); 
-        		}else{
-        			console.log('undefined');
-        		}
-        });
+		if (localStorage.getBasuraObs === undefined) {
+			console.log('creando localstorage');
+			return this.http.get(this.configUrl)
+				.subscribe(data => {
+					localStorage.getBasuraObs = JSON.stringify(data);
+				});
+		} else {
+			return console.log('undefined');
+		}
     }
 
 }
