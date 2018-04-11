@@ -44,7 +44,7 @@ export class ReferidoReferenteComponent implements OnInit {
   interestCarrera: FormControl;
   interestCiclo: FormControl;
   tipificacion: FormControl;
-  mostrarExtension: boolean;
+  public mostrarExtension:boolean = null;
 
   constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) { }
 
@@ -53,7 +53,7 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   formInit() {
-    this.mostrarExtension=true;
+    
     this.form = new FormGroup({
       user: new FormControl({ value: '', disabled: true }, Validators.required),
 
@@ -80,6 +80,7 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   onSubmit() {
+    this.mostrarExtension = true;
     console.log(this.form.value);
   }
 
@@ -100,7 +101,7 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   onChange() {
-    if (this.form.controls.phone.value != '' ) {
+    if (this.form.controls.tipoCel.value == 'Oficina' ) {
       this.mostrarExtension=false;
       /*this.form.controls.citaCampus.reset({ value: '', disabled: false });
       this.form.controls.citaFecha.reset({ value: '', disabled: false });
