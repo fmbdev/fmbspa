@@ -1,4 +1,7 @@
 export interface Turno {
     id: number;
-    Turno: string;
+    turno: string;
+    crmit_codigounico: string;
+    crmit_name: string;
+    crmit_quedefine: string;
 }

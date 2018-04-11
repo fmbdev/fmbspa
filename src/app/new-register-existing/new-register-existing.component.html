@@ -23,9 +23,9 @@
                     <mat-form-field>
                         <mat-select formControlName="canal" id="canal" placeholder="Canal" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Voz">Voz</mat-option>
-                            <mat-option value="Chat">Chat</mat-option>
-                            <mat-option value="WA">WA</mat-option>
+                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_name']">
+                                {{ canal['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.canal.errors?.required">Elige un canal</mat-error>
                     </mat-form-field>
@@ -34,8 +34,9 @@
                     <mat-form-field>
                         <mat-select formControlName="csq" placeholder="CSQ" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="val1">val1</mat-option>
-                            <mat-option value="val2">val2</mat-option>
+                            <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_name']">
+                                {{ csq['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.csq.errors?.required">Elige un CSQ</mat-error>
                     </mat-form-field>
@@ -51,9 +52,9 @@
                     <mat-form-field>
                         <mat-select formControlName="interes" id="interes" placeholder="Interesa/No interesa" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Presencial">Presencial</mat-option>
-                            <mat-option value="En línea">En línea</mat-option>
-                            <mat-option value="Mixta">Mixta</mat-option>
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                                {{ interes['Área Interes'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.interes.errors?.required">Elige un ínteres</mat-error>
                     </mat-form-field>
@@ -107,8 +108,9 @@
                     <mat-form-field>
                         <mat-select formControlName="gender" placeholder="Género" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Hombre">Hombre</mat-option>
-                            <mat-option value="Mujer">Mujer</mat-option>
+                            <mat-option *ngFor="let genero of generos;" [value]="genero['genero']">
+                                {{ genero['genero'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.gender.errors?.required">Elige un Género</mat-error>
 
@@ -166,11 +168,9 @@
                     <mat-form-field>
                         <mat-select formControlName="parentRegis" placeholder="Parentesco">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Papá">Papá</mat-option>
-                            <mat-option value="Mamá">Mamá</mat-option>
-                            <mat-option value="Abuelo(a)">Abuelo(a)</mat-option>
-                            <mat-option value="Tutor">Tutor</mat-option>
-                            <mat-option value="Hermano(a)">Hermano(a)</mat-option>
+                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_name']">
+                                {{ parentesco['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.parentRegis.errors?.required">Elige un Parentesco</mat-error>
                     </mat-form-field>
@@ -187,9 +187,9 @@
                     <mat-form-field>
                         <mat-select formControlName="interestCampus" placeholder="Campus" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Atizapan">Atizapan</mat-option>
-                            <mat-option value="Cuitlahuac">Cuitlahuac</mat-option>
-                            <mat-option value="Ecatepec">Ecatepec</mat-option>
+                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmi_name']">
+                                {{ campu['crmi_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.interestCampus.errors?.required">Elige un Parentesco</mat-error>
                     </mat-form-field>
@@ -198,8 +198,9 @@
                     <mat-form-field>
                         <mat-select formControlName="interestArea" placeholder="Área Ínteres" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="val1">val1</mat-option>
-                            <mat-option value="val2">val2</mat-option>
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                                {{ interes['Área Interes'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.interestArea.errors?.required" required>Elige una Área de Interés</mat-error>
 
@@ -211,9 +212,9 @@
                     <mat-form-field>
                         <mat-select formControlName="interestNivel" placeholder="Nivel" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Bachillerato">Bachillerato</mat-option>
-                            <mat-option value="Licenciatura">Licenciatura</mat-option>
-                            <mat-option value="Posgrado">Posgrado</mat-option>
+                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_name']">
+                                {{ nivel['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.interestNivel.errors?.required">Elige un Campus</mat-error>
                     </mat-form-field>
@@ -229,9 +230,9 @@
                     <mat-form-field>
                         <mat-select formControlName="interestModalidad" placeholder="Modalidad" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Presencial">Presencial</mat-option>
-                            <mat-option value="En línea">En línea</mat-option>
-                            <mat-option value="Mixta">Mixta</mat-option>
+                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_name']">
+                                {{ modalidad['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.interestModalidad.errors?.required">Elige una Modalidad</mat-error>
 
@@ -248,11 +249,9 @@
                     <mat-form-field>
                         <mat-select formControlName="interestCarrera" placeholder="Carrera" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Prepa SEP">Prepa SEP</mat-option>
-                            <mat-option value="Arquitectura">Arquitectura</mat-option>
-                            <mat-option value="Diseño">Diseño</mat-option>
-                            <mat-option value="Gastronomía">Gastronomía</mat-option>
-                            <mat-option value="Mercadotecnia">Mercadotecnia</mat-option>
+                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['productnumber']">
+                                {{ carrera['productnumber'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.interestModalidad.errors?.required">Elige una Carrera</mat-error>
                     </mat-form-field>
@@ -268,9 +267,9 @@
                     <mat-form-field>
                         <mat-select formControlName="interestCiclo" placeholder="Ciclo" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="18-2">18-2</mat-option>
-                            <mat-option value="18-3">18-3</mat-option>
-                            <mat-option value="19-1">19-1</mat-option>
+                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
+                                {{ ciclo['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.interestCiclo.errors?.required">Indica cuando quieres entrar.</mat-error>
                     </mat-form-field>
@@ -289,9 +288,9 @@
                     <mat-form-field>
                         <mat-select formControlName="tipificacion" placeholder="Tipificación" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="val1">val1</mat-option>
-                            <mat-option value="val2">val2</mat-option>
-                            <mat-option value="val2">val3</mat-option>
+                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['Tipificación']">
+                                {{ tipificacion['Tipificación'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.tipificacion.errors?.required">Elige una Tipificación.</mat-error>
 
@@ -314,9 +313,9 @@
                     <mat-form-field>
                         <mat-select formControlName="citaCampus" placeholder="Campus de Cita" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Atizapan">Atizapan</mat-option>
-                            <mat-option value="Cuitlahuac">Cuitlahuac</mat-option>
-                            <mat-option value="Ecatepec">Ecatepec</mat-option>
+                            <mat-option *ngFor="let campus of campus_citas;" [value]="campus['Nombre de Campus']">
+                                {{ campus['Nombre de Campus'] }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </mat-grid-tile>
@@ -336,12 +335,9 @@
                     <mat-form-field>
                         <mat-select formControlName="citaHora" placeholder="Hora de Cita">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="9am">9am</mat-option>
-                            <mat-option value="10am">10am</mat-option>
-                            <mat-option value="11am">11am</mat-option>
-                            <mat-option value="12pm">12pm</mat-option>
-                            <mat-option value="1pm">1pm</mat-option>
-                            <mat-option value="2pm">2pm</mat-option>
+                            <mat-option *ngFor="let hora of horas;" [value]="hora.hora">
+                                {{ hora.hora }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </mat-grid-tile>
@@ -355,8 +351,9 @@
                     <mat-form-field>
                         <mat-select placeholder="Asesor" formControlName="citaAsesor">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Juan Lopez">Juan Lopez</mat-option>
-                            <mat-option value="Javier Guerrero">Javier Guerrero</mat-option>
+                            <mat-option *ngFor="let asesor of asesores;" [value]="asesor['Nombre Asesor']">
+                                {{ asesor['Nombre Asesor'] }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </mat-grid-tile>

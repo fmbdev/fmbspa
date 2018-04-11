@@ -7,6 +7,24 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 
 import { LandingValidation } from '../validations/landing.validations';
 
+import { Nivel } from '../interfaces/nivel';
+import { Canal } from '../interfaces/canal';
+import { Ciclo } from '../interfaces/ciclo';
+import { Campus } from '../interfaces/campus';
+import { Genero } from '../interfaces/genero';
+import { Carrera } from '../interfaces/carrera';
+import { Interes } from '../interfaces/interes';
+import { Modalidad } from '../interfaces/modalidad';
+import { Parentesco } from '../interfaces/parentesco';
+
+import { NivelService } from '../providers/nivel.service';;
+import { CicloService } from '../providers/ciclo.service';
+import { CampusService } from '../providers/campus.service';
+import { GeneroService } from '../providers/genero.service';
+import { CarreraService } from '../providers/carrera.service';
+import { InteresService } from '../providers/interes.service';
+import { ModalidadService } from '../providers/modalidad.service';
+import { ParentescoService } from '../providers/parentesco.service';
 
 @Component({
   selector: 'app-new-register-existing-reception',
@@ -70,9 +88,74 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
   citaAsesor: FormControl;
 
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) { }
+  ciclos: Ciclo[] = [];
+  niveles: Nivel[] = [];
+  campus: Campus[] = [];
+  generos: Genero[] = [];
+  carreras: Carrera[] = [];
+  intereses: Interes[] = [];
+  modalidades: Modalidad[] = [];
+  parentescos: Parentesco[] = [];
+
+  constructor(private gralService: GeneralService, 
+              public dialog: MatDialog, 
+              private renderer: Renderer2,
+              private nivelServ: NivelService,
+              private cicloServ: CicloService,
+              private campusServ: CampusService,
+              private generoServ: GeneroService,
+              private carreraServ: CarreraService,
+              private interesServ: InteresService,
+              private modalidadServ: ModalidadService,
+              private parentescoServ: ParentescoService) { }
 
   ngOnInit() {
+    // Se obtienen todos los intereses
+    this.interesServ.getAll()
+        .subscribe(
+            (data: Interes[]) => this.intereses = data
+        )
+    // Se obtienen todos los generos
+    this.generoServ.getAll()
+        .subscribe(
+            (data: Genero[]) => this.generos = data
+        )
+    // Se obtienen todos los parentescos
+    this.parentescoServ.getAll()
+        .subscribe(
+            (data: Parentesco[]) => this.parentescos = data
+        )
+    // Se obtienen todos los campus
+    this.campusServ.getAll()
+        .subscribe(
+            (data: Campus[]) => this.campus = data
+        )
+    // Se obtienen todos los niveles
+    this.nivelServ.getAll()
+        .subscribe(
+            (data: Nivel[]) => this.niveles = data
+        )
+    // Se obtienen todas las modalidades
+    this.modalidadServ.getAll()
+        .subscribe(
+            (data: Modalidad[]) => this.modalidades = data
+        )
+    // Se obtienen todas las carreras
+    this.carreraServ.getAll()
+        .subscribe(
+            (data: Carrera[]) => this.carreras = data
+        )
+    // Se obtienen los ciclos
+    this.cicloServ.getAll()
+        .subscribe(
+            (data: Ciclo[]) => this.ciclos = data
+        )
+        // Se obtienen todos los intereses
+    this.interesServ.getAll()
+        .subscribe(
+            (data: Interes[]) => this.intereses = data
+        )
+ 
     this.formInit();
   }
 

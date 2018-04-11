@@ -7,6 +7,37 @@ import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 
 import { LandingValidation } from '../validations/landing.validations';
 
+import { Csq } from '../interfaces/csq';
+import { Hora } from '../interfaces/hora';
+import { Nivel } from '../interfaces/nivel';
+import { Canal } from '../interfaces/canal';
+import { Ciclo } from '../interfaces/ciclo';
+import { Campus } from '../interfaces/campus';
+import { Genero } from '../interfaces/genero';
+import { Asesor } from '../interfaces/asesor';
+import { Carrera } from '../interfaces/carrera';
+import { Interes } from '../interfaces/interes';
+import { Modalidad } from '../interfaces/modalidad';
+import { Parentesco } from '../interfaces/parentesco';
+import { CampusCita } from '../interfaces/campus-cita';
+import { Tipificacion } from '../interfaces/tipificacion';
+
+import { PnnService } from '../providers/pnn.service';
+import { CsqService } from '../providers/csq.service'; 
+import { HoraService } from '../providers/hora.service';
+import { NivelService } from '../providers/nivel.service';
+import { CanalService } from '../providers/canal.service';
+import { CicloService } from '../providers/ciclo.service';
+import { CampusService } from '../providers/campus.service';
+import { AsesorService } from '../providers/asesor.service';
+import { GeneroService } from '../providers/genero.service';
+import { CarreraService } from '../providers/carrera.service';
+import { InteresService } from '../providers/interes.service';
+import { ModalidadService } from '../providers/modalidad.service'; 
+import { ParentescoService } from '../providers/parentesco.service';
+import { CampusCitaService } from '../providers/campus-cita.service';
+import { TipificacionService } from '../providers/tipificacion.service';
+
 @Component({
   selector: 'app-new-register',
   templateUrl: './new-register.component.html',
@@ -65,11 +96,118 @@ export class NewRegisterComponent implements OnInit {
     citaTransfer:FormControl;
     citaAsesor:FormControl;
 
+    csqs: Csq[] = [];
+    horas: Hora[] = [];
+    ciclos: Ciclo[] = [];
+    niveles: Nivel[] = [];
+    canales: Canal[] = [];
+    campus: Campus[] = [];
+    generos: Genero[] = [];
+    asesores: Asesor[] = [];
+    carreras: Carrera[] = [];
+    intereses: Interes[] = [];
+    modalidades: Modalidad[] = [];
+    campus_citas: CampusCita[] = [];
+    parentescos: Parentesco[] = [];
+    tipificaciones: Tipificacion[] = [];
 
-    constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) {}
+    constructor(private gralService: GeneralService, 
+                public dialog: MatDialog, 
+                private renderer: Renderer2,
+                private csqServ: CsqService,
+                private horaServ: HoraService,
+                private nivelServ: NivelService,
+                private cicloServ: CicloService,
+                private canalServ: CanalService,
+                private campusServ: CampusService,
+                private asesorServ: AsesorService,
+                private generoServ: GeneroService,
+                private carreraServ: CarreraService,
+                private interesServ: InteresService,
+                private modalidadServ: ModalidadService,
+                private parentescoServ: ParentescoService,
+                private campusCitaServ: CampusCitaService,
+                private tipicicacionServ: TipificacionService) {}
+
 
     ngOnInit() {
-      this.formInit();
+        // Se obtiene todos los canales
+        this.canalServ.getAll()
+        .subscribe(
+            (data: Canal[]) => this.canales = data
+        )
+        // Se obtienen todos los csqs
+        this.csqServ.getAll()
+            .subscribe(
+                (data: Csq[]) => this.csqs = data
+            )
+        // Se obtienen todos los intereses
+        this.interesServ.getAll()
+            .subscribe(
+                (data: Interes[]) => this.intereses = data
+            )
+        // Se obtienen todos los generos
+        this.generoServ.getAll()
+            .subscribe(
+                (data: Genero[]) => this.generos = data
+            )
+        // Se obtienen todos los parentescos
+        this.parentescoServ.getAll()
+            .subscribe(
+                (data: Parentesco[]) => this.parentescos = data
+            )
+        // Se obtienen todos los campus
+        this.campusServ.getAll()
+            .subscribe(
+                (data: Campus[]) => this.campus = data
+            )
+        // Se obtienen todos los niveles
+        this.nivelServ.getAll()
+            .subscribe(
+                (data: Nivel[]) => this.niveles = data
+            )
+        // Se obtienen todas las modalidades
+        this.modalidadServ.getAll()
+            .subscribe(
+                (data: Modalidad[]) => this.modalidades = data
+            )
+        // Se obtienen todas las carreras
+        this.carreraServ.getAll()
+            .subscribe(
+                (data: Carrera[]) => this.carreras = data
+            )
+        // Se obtienen los ciclos
+        this.cicloServ.getAll()
+            .subscribe(
+                (data: Ciclo[]) => this.ciclos = data
+            )
+            // Se obtienen todos los intereses
+        this.interesServ.getAll()
+            .subscribe(
+                (data: Interes[]) => this.intereses = data
+            )
+        // Se obtienen todas las tipificaciones
+        this.tipicicacionServ.getAll()
+            .subscribe(
+                (data: Tipificacion[]) => this.tipificaciones = data
+            )
+        // Se obtienen todos los campus-cita
+        this.campusCitaServ.getAll()
+            .subscribe(
+                (data: CampusCita[]) => this.campus_citas = data
+            )
+        // Se obtienen todas las hora para asignar una cita
+        this.horaServ.getAll()
+            .subscribe(
+                (data: Hora[]) => this.horas = data
+            )
+        // Se obtienen todos lo asesores
+        this.asesorServ.getAll()
+            .subscribe(
+                (data: Asesor[]) => this.asesores = data   
+            )
+
+        this.formInit();
     }
 
     formInit(){

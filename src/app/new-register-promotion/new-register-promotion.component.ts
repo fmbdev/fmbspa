@@ -7,6 +7,33 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 
 import { LandingValidation } from '../validations/landing.validations';
 
+import { Nivel } from '../interfaces/nivel';
+import { Canal } from '../interfaces/canal';
+import { Ciclo } from '../interfaces/ciclo';
+import { Turno } from '../interfaces/turno';
+import { Campus } from '../interfaces/campus';
+import { Asesor } from '../interfaces/asesor';
+import { Genero } from '../interfaces/genero';
+import { Carrera } from '../interfaces/carrera';
+import { Interes } from '../interfaces/interes';
+import { Modalidad } from '../interfaces/modalidad';
+import { Parentesco } from '../interfaces/parentesco';
+import { TipoActividad } from '../interfaces/tipo-actividad';
+import { SubTipoActividad} from '../interfaces/sub-tipo-actividad';
+
+import { NivelService } from '../providers/nivel.service';
+import { CicloService } from '../providers/ciclo.service';
+import { CampusService } from '../providers/campus.service';
+import { TurnoService } from '../providers/turno.service';
+import { GeneroService } from '../providers/genero.service';
+import { AsesorService } from '../providers/asesor.service';
+import { CarreraService } from '../providers/carrera.service';
+import { InteresService } from '../providers/interes.service';
+import { ModalidadService } from '../providers/modalidad.service';
+import { ParentescoService } from '../providers/parentesco.service';
+import { TipoActividadService } from '../providers/tipo-actividad.service';
+import { SubTipoActividadService } from '../providers/sub-tipo-actividad.service';
+
 @Component({
   selector: 'app-new-register-promotion',
   templateUrl: './new-register-promotion.component.html',
@@ -72,10 +99,98 @@ export class NewRegisterPromotionComponent implements OnInit {
   citaTransfer: FormControl;
   citaAsesor: FormControl;
 
+  ciclos: Ciclo[] = [];
+  turnos: Turno[] = [];
+  niveles: Nivel[] = [];
+  campus: Campus[] = [];
+  generos: Genero[] = [];
+  asesores: Asesor[] = [];
+  carreras: Carrera[] = [];
+  intereses: Interes[] = [];
+  modalidades: Modalidad[] = [];
+  parentescos: Parentesco[] = [];
+  tipo_actividades: TipoActividad[] = [];
+  sub_tipo_actividades: SubTipoActividad[] = [];
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) { }
+
+  constructor(private gralService: GeneralService, 
+              public dialog: MatDialog,  
+              private renderer: Renderer2,
+              private turnoServ: TurnoService,
+              private nivelServ: NivelService,
+              private cicloServ: CicloService,
+              private asesorServ: AsesorService,
+              private campusServ: CampusService,
+              private generoServ: GeneroService,
+              private carreraServ: CarreraService,
+              private interesServ: InteresService,
+              private modalidadServ: ModalidadService,
+              private parentescoServ: ParentescoService,
+              private tipoActServ: TipoActividadService,
+              private subTipoActServ: SubTipoActividadService) { }
 
   ngOnInit() {
+    // Se obtiene los tipos de actividades
+    this.tipoActServ.getAll()
+        .subscribe(
+          (data: TipoActividad[]) => this.tipo_actividades = data
+        )
+    // Se obtienen los sub tipos de actividades
+    this.subTipoActServ.getAll()
+        .subscribe(
+          (data: SubTipoActividad[]) => this.sub_tipo_actividades = data
+        )
+    // Se obtienen los turnos
+    this.turnoServ.getAll()
+        .subscribe(
+          (data: Turno[]) => this.turnos = data
+        )
+    // Se obtienen todos los intereses
+    this.interesServ.getAll()
+        .subscribe(
+            (data: Interes[]) => this.intereses = data
+        )
+    // Se obtienen todos los generos
+    this.generoServ.getAll()
+        .subscribe(
+            (data: Genero[]) => this.generos = data
+        )
+    // Se obtienen todos los parentescos
+    this.parentescoServ.getAll()
+        .subscribe(
+            (data: Parentesco[]) => this.parentescos = data
+        )
+    // Se obtienen todos los campus
+    this.campusServ.getAll()
+        .subscribe(
+            (data: Campus[]) => this.campus = data
+        )
+    // Se obtienen todos los niveles
+    this.nivelServ.getAll()
+        .subscribe(
+            (data: Nivel[]) => this.niveles = data
+        )
+    // Se obtienen todas las modalidades
+    this.modalidadServ.getAll()
+        .subscribe(
+            (data: Modalidad[]) => this.modalidades = data
+        )
+    // Se obtienen todas las carreras
+    this.carreraServ.getAll()
+        .subscribe(
+            (data: Carrera[]) => this.carreras = data
+        )
+    // Se obtienen los ciclos
+    this.cicloServ.getAll()
+        .subscribe(
+            (data: Ciclo[]) => this.ciclos = data
+        )
+        // Se obtienen todos los intereses
+    this.interesServ.getAll()
+        .subscribe(
+            (data: Interes[]) => this.intereses = data
+        )
+
     this.formInit();
   }
 
