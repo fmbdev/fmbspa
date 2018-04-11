@@ -1,377 +1,203 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import {GeneralService} from '../services/general.service';
-import {MatDialog, MatSelect} from '@angular/material';
+import { GeneralService } from '../services/general.service';
+import { MatDialog, MatSelect } from '@angular/material';
 import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return !!(control && control.invalid && (control.dirty || control.touched));
-  }
-}
+import { LandingValidation } from '../validations/landing.validations';
+
 
 @Component({
   selector: 'app-new-register-solo',
   templateUrl: './new-register-solo.component.html',
   styleUrls: ['./new-register-solo.component.scss']
 })
+
 export class NewRegisterSoloComponent implements OnInit {
   
-  @ViewChild('canal') canal;
-  @ViewChild('csq') csq;
-  @ViewChild('interes') interes;
-  @ViewChild('name') name: ElementRef;
-  @ViewChild('patern') patern: ElementRef;
-  @ViewChild('matern') matern: ElementRef;
-  @ViewChild('mail') mail: ElementRef;
-  @ViewChild('mailRegis') mailRegis: ElementRef;
-  @ViewChild('cel') cel: ElementRef;
-  @ViewChild('phone') phone: ElementRef;
-  @ViewChild('gender') gender;
-  @ViewChild('birthday') birthday: ElementRef;
-  @ViewChild('age') age: ElementRef;
-  @ViewChild('interestCampus') interestCampus;
-  @ViewChild('interestNivel') interestNivel;
-  @ViewChild('citaCampus') citaCampus;
-  @ViewChild('tipificacion') tipificacion;
+  form: FormGroup;
+  //maxDate = new Date(2018, this.month.getMonth(),12);
+  maxDate = LandingValidation.fechaLimite();
+  startDate = LandingValidation.fechaInicio();
 
-  startDate = new Date(1990, 0, 1);
-  user: any = {};
-  send = false;
-  inputError: any;
-  txtError: any;
-  
-  matcher = new MyErrorStateMatcher();
-
-  
-  namee = new FormControl('', this.validName.bind(this));
-  paternn = new FormControl('', this.validPatern.bind(this));
-  maternn = new FormControl('', this.validMatern.bind(this));
-  maill = new FormControl('', this.validMail.bind(this));
-  cell = new FormControl('', this.validCel.bind(this));
-  phonee = new FormControl('', this.validPhone.bind(this));
-  genderr = new FormControl('', this.validGender.bind(this));
-  birthdayy = new FormControl('', this.validBirthday.bind(this));
-  agee = new FormControl('', this.validAge.bind(this));
-  interestCampuss = new FormControl('', this.validInterestCampus.bind(this));
-  interestNivell = new FormControl('', this.validInterestNivel.bind(this));
-  citaCampuss = new FormControl('', this.validCitaCampus.bind(this));
-  tipificacionn = new FormControl('', this.validTipificacion.bind(this));
-
-  phoneRegiss = new FormControl('');
-  phonerr = new FormControl('');
-
-  nameRegiss = new FormControl('');
-  paternRegiss = new FormControl('');
-  maternRegiss = new FormControl('');
-  mailRegiss = new FormControl('');
-  celRegiss = new FormControl('');
-  notass = new FormControl('');
-  userr = new FormControl('Ricardo Vargas');
+  user: FormControl;
+  canal: FormControl;
+  csq: FormControl;
+  interes: FormControl;
+  phone_email: FormControl;
 
 
-  nameTxtError: any = false;
-  paternTxtError: any = false;
-  maternTxtError: any = false;
-  mailTxtError: any = false;
-  mailRegisTxtError: any = false;
-  phoneTxtError: any = false;
-  tipoTxtError: any = false;
+  name: FormControl;
+  patern: FormControl;
+  matern: FormControl;
+  mail: FormControl;
+  cel: FormControl;
+  phone: FormControl;
+  gender: FormControl;
+  birthday: FormControl;
+  edad: FormControl;
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) {
-    this.user.canal = '0'; this.user.interes = '0'; this.user.csq = '0'; this.user.parent = '0'; this.user.gender = '0';
-    this.user.interestCampus = '0'; this.user.interestArea = '0'; this.user.interestNivel = '0'; this.user.interestModel = '0'; this.user.interestCareer = '0';
-    this.user.interestCycle = '0'; this.user.citaCampus = '0'; this.user.citaAsesor = '0'; this.user.tipificacion = '0';
-  }
+
+  nameRegis: FormControl;
+  paternRegis: FormControl;
+  maternRegis: FormControl;
+  mailRegis: FormControl;
+  celRegis: FormControl;
+  phoneRegis: FormControl;
+  parentRegis: FormControl;
+
+
+  interestCampus: FormControl;
+  interestArea: FormControl;
+  interestNivel: FormControl;
+  interestModalidad: FormControl;
+  interestCarrera: FormControl;
+  interestCiclo: FormControl;
+  numPersona: FormControl;
+  etapaVenta: FormControl;
+  numCuenta: FormControl;
+
+  tipificacion: FormControl;
+  notas: FormControl;
+
+
+  citaFecha: FormControl;
+  citaCampus: FormControl;
+  citaHora: FormControl;
+  citaCall: FormControl;
+  citaTransfer: FormControl;
+  citaAsesor: FormControl;
+
+
+  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) { }
 
   ngOnInit() {
+    this.formInit();
   }
 
-  addValidation(isChecked)
-  {
-    if(isChecked.checked){          
-        this.maill.reset({value: '', disabled: true});        
-    }else{
-        this.maill.reset({value: '', disabled: false});        
-        this.maill.setValidators(this.validMail.bind(this)); 
-    } 
-    this.maill.updateValueAndValidity(); 
+  formInit() {
+    this.form = new FormGroup({
+      user: new FormControl({ value: '', disabled: true }, Validators.required),
+      canal: new FormControl('', Validators.required),
+      csq: new FormControl('', Validators.required),
+      interes: new FormControl('', Validators.required),
+      phone_email: new FormControl('', Validators.required),
+
+      name: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      patern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      matern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      mail: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
+      cel: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      gender: new FormControl('', Validators.required),
+      birthday: new FormControl('', Validators.required),
+      edad: new FormControl('', [Validators.required, Validators.minLength(2)]),
+
+      paternRegis: new FormControl(''),
+      nameRegis: new FormControl(''),
+      maternRegis: new FormControl(''),
+      mailRegis: new FormControl(''),
+      celRegis: new FormControl(''),
+      phoneRegis: new FormControl(''),
+      parentRegis: new FormControl(''),
+
+      interestCampus: new FormControl('', Validators.required),
+      interestArea: new FormControl('', Validators.required),
+      interestNivel: new FormControl('', Validators.required),
+      interestModalidad: new FormControl('', Validators.required),
+      interestCarrera: new FormControl('', Validators.required),
+      interestCiclo: new FormControl('', Validators.required),
+      numPersona: new FormControl(''),
+      etapaVenta: new FormControl('', ),
+      numCuenta: new FormControl('', ),
+
+      tipificacion: new FormControl('', Validators.required),
+      notas: new FormControl(''),
+
+      citaCampus: new FormControl({ value: '', disabled: true }, Validators.required),
+      citaFecha: new FormControl({ value: '', disabled: true }, Validators.required),
+      citaHora: new FormControl({ value: '', disabled: true }, Validators.required),
+      citaCall: new FormControl({ value: '', disabled: true }, Validators.required),
+      citaTransfer: new FormControl({ value: '', disabled: true }, Validators.required),
+      citaAsesor: new FormControl({ value: '', disabled: true }, Validators.required)
+
+    });
   }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+
+  resetForm() {
+    this.form.reset();
+  }
+
   onKeydownEmail(event: KeyboardEvent) {
-    let name = this.nameRegiss.value;  
-    console.log(name);              
-    if(name==''){
-         this.nameRegiss.clearValidators();
-         this.paternRegiss.clearValidators();
-         this.maternRegiss.clearValidators();
-         this.mailRegiss.clearValidators();
-    }else{
-         this.nameRegiss.setValidators([Validators.required]);
-         this.paternRegiss.setValidators([Validators.required]);
-         this.maternRegiss.setValidators([Validators.required]);
-         this.mailRegiss.setValidators([Validators.required, this.validMail2.bind(this)]);
+    let name = this.form.controls.nameRegis.value;
+    if (name == '') {
+      this.form.controls.nameRegis.clearValidators();
+      this.form.controls.paternRegis.clearValidators();
+      this.form.controls.maternRegis.clearValidators();
+      this.form.controls.mailRegis.clearValidators();
+      this.form.controls.celRegis.clearValidators();
+      this.form.controls.phoneRegis.clearValidators();
+      this.form.controls.parentRegis.clearValidators();
+    } else {
+
+      this.form.controls.nameRegis.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
+      this.form.controls.paternRegis.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
+      this.form.controls.maternRegis.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
+      this.form.controls.mailRegis.setValidators([Validators.required, LandingValidation.emailMaloValidator()]);
+      this.form.controls.celRegis.setValidators([Validators.required, Validators.minLength(10)]);
+      this.form.controls.phoneRegis.setValidators([Validators.required, Validators.minLength(10)]);
+      this.form.controls.parentRegis.setValidators([Validators.required]);
     }
-         this.nameRegiss.updateValueAndValidity();
-         this.paternRegiss.updateValueAndValidity();
-         this.maternRegiss.updateValueAndValidity();
-         this.mailRegiss.updateValueAndValidity();
+    this.form.controls.nameRegis.updateValueAndValidity();
+    this.form.controls.paternRegis.updateValueAndValidity();
+    this.form.controls.maternRegis.updateValueAndValidity();
+    this.form.controls.mailRegis.updateValueAndValidity();
+    this.form.controls.celRegis.updateValueAndValidity();
+    this.form.controls.phoneRegis.updateValueAndValidity();
+    this.form.controls.parentRegis.updateValueAndValidity();
   }
 
-  _keyOnly3letter(event:any, name:any){
-      const only3letter = /a{3,10}|b{3,10}|c{3,10}|d{3,10}|e{3,10}|f{3,10}|g{3,10}|h{3,10}|i{3,10}|j{3,10}|k{3,10}|l{3,10}|m{3,10}|n{3,10}|o{3,10}|p{3,10}|q{3,10}|w{3,10}|r{3,10}|s{3,10}|t{3,10}|u{3,10}|v{3,10}|w{3,10}|x{3,10}|y{3,10}|z{3,10}/;      
-      if(only3letter.test(name)){        
-        event.preventDefault();        
-        return false;    
-      } else{        
-        return true;
-      }
-  }
-
-  save() {    
-    if(this.send){
-      return;
-    }
-    this.send = true;
-    this.gralService.registerSolo(this.user).then((data) => {      
-      this.send = false;
-      if(data['success'] == false) {
-        this.inputError =  data['input'];
-        this.txtError = data['msg'];
-
-        switch (data['input']) {
-          case 'name':
-            this.name.nativeElement.focus();
-            break;
-          case 'patern':
-            this.patern.nativeElement.focus();
-            break;
-          case 'matern':
-            this.matern.nativeElement.focus();
-            break;
-          case 'mail':
-            this.mail.nativeElement.focus();
-            break;
-          case 'mailRegis':
-            this.mailRegis.nativeElement.focus();
-            break;
-          case 'cel':
-            this.cel.nativeElement.focus();
-            break;
-          case 'phone':
-            this.phone.nativeElement.focus();
-            break;
-          case 'gender':
-            this.gender.open();
-            this.gender.focus();
-            break;
-          case 'birthday':
-            this.birthday.nativeElement.focus();
-            break;
-          case 'age':
-            this.age.nativeElement.focus();
-            break;
-          case 'interestCampus':
-            this.interestCampus.open();
-            this.interestCampus.focus();
-            break;
-          case 'interestNivel':
-            this.interestNivel.open();
-            this.interestNivel.focus();
-            break;
-          case 'citaCampus':
-            this.citaCampus.open();
-            this.citaCampus.focus();
-            break;
-          case 'tipificacion':
-            this.tipificacion.open();
-            this.tipificacion.focus();
-            break;
-          default:
-        }
-
-        /*const dialogRef = this.dialog.open(ModalConfirmComponent, {
-          minWidth: '50%',
-          data: { type: 'warning', content: data['msg'] }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-          if(result){
-            console.log('The dialog was closed', result);
-          }
-        });*/
-      }
-    }, (err) => {
-      console.warn(err);
-      this.send = false;
-    });
-  }
-  serviceValidInput(type, input, value, control){
-    return this.gralService.validInput({type: type, data: value}).then((data) => {
-      if(data['success'] == false) {
-        this.inputError = input;
-        this.txtError = data['msg'];
-        switch(input) {
-          case 'name':
-            this.nameTxtError = data['msg'];
-            break;
-          case 'patern':
-            this.paternTxtError = data['msg'];
-            break;
-          case 'matern':
-            this.maternTxtError = data['msg'];
-            break;
-          case 'mail':
-            this.mailTxtError = data['msg'];
-            break;
-          case 'mailRegis':
-            this.mailRegisTxtError = data['msg'];
-            break;          
-          case 'phone':
-            this.phoneTxtError = data['msg'];
-            break;
-          case 'tipo':
-            this.tipoTxtError = data['msg'];
-            break;          
-        }
-        return {'error': true};
-      }else{
-        this.inputError =  null;
-        this.txtError = null;
-
-        switch(input) {
-          case 'name':
-            this.nameTxtError = false;
-            break;
-          case 'patern':
-            this.paternTxtError = false;
-            break;
-          case 'matern':
-            this.maternTxtError = false;
-            break;
-          case 'mail':
-            this.mailTxtError = false;
-            break; 
-          case 'mailRegis':
-            this.mailRegisTxtError = false;
-            break;         
-          case 'phone':
-            this.phoneTxtError = false;
-            break;
-          case 'tipo':
-            this.tipoTxtError = false;
-            break;         
-        }
-        control.setErrors(null);
-        return null;
-      }
-    });
-  }
-
-  validName(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('name', 'name', control.value, control);
-    }
-
-    if(this.inputError == 'name'){return {'error': true};}
-    return null;
-  }
-
-  validPatern(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('patern', 'patern', control.value, control);
-    }
-    if(this.inputError == 'patern'){return {'error': true};}
-    return null;
-  }
-
-  validMatern(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('matern', 'matern', control.value, control);
-    }
-    if(this.inputError == 'matern'){return {'error': true};}
-    return null;
-  }
-
-  validMail(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('mail', 'mail', control.value, control);
-    }
-    if(this.inputError == 'mail'){return {'error': true};}
-    return null;
-  }
-
-  validMail2(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('mailRegis', 'mailRegis', control.value, control);
-    }
-    if(this.inputError == 'mailRegis'){return {'error': true};}
-    return null;
-  }
-
-  validCel(control: FormControl){
-    if(this.inputError == 'cel'){return {'error': true};}
-    return null;
-  }
-
-  validPhone(control: FormControl){
-    if(this.inputError == 'phone'){return {'error': true};}
-    return null;
-  }
-
-  validGender(control: FormControl){
-    if(this.user.gender == '0'){return {'error': true};}
-    return null;
-  }
-
-  validBirthday(control: FormControl){
-    if(this.inputError == 'birthday'){return {'error': true};}
-    return null;
-  }
-
-  validAge(control: FormControl){
-    if(this.inputError == 'age'){return {'error': true};}
-    return null;
-  }
-
-  validInterestCampus(control: FormControl){
-    if(this.user.interestCampus == '0'){return {'error': true};}
-    return null;
-  }
-
-  validInterestNivel(control: FormControl){
-    if(this.user.interestNivel == '0'){return {'error': true};}
-    return null;
-  }
-
-  validCitaCampus(control: FormControl){
-    if(this.user.citaCampus == '0'){return {'error': true};}
-    return null;
-  }
-
-  validTipificacion(control: FormControl){
-    if(this.user.tipificacion == '0'){return {'error': true};}
-    return null;
+  _keyOnly3letter(event: any, name: any) {
+    LandingValidation.letterName(event, name);
   }
 
   _keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-    let inputChar = String.fromCharCode(event.charCode);
-
-    if (!pattern.test(inputChar)) {
-      // invalid character, prevent input
-      event.preventDefault();
-    }
+    LandingValidation.onlyNumber(event);
   }
 
   _keyPressTxt(event: any) {
-    const pattern = /[a-zA-Z\ñ\Ñ\ ]/;
-    const inputChar = String.fromCharCode(event.charCode);
+    LandingValidation.onlyLetter(event);
+  }
 
-    if (!pattern.test(inputChar)) {
-      // invalid character, prevent input           
-      event.preventDefault();
+  onChange() {
+    if (this.form.controls.name.value != '' && this.form.controls.patern.value != '' && this.form.controls.matern.value != '' && this.form.controls.mail.value != '' && this.form.controls.cel.value != '' && this.form.controls.phone.value != '') {
+      this.form.controls.citaCampus.reset({ value: '', disabled: false });
+      this.form.controls.citaFecha.reset({ value: '', disabled: false });
+      this.form.controls.citaHora.reset({ value: '', disabled: false });
+      this.form.controls.citaCall.reset({ value: '', disabled: false });
+      this.form.controls.citaTransfer.reset({ value: '', disabled: false });
+      this.form.controls.citaAsesor.reset({ value: '', disabled: false });
+    } else {
+      this.form.controls.citaCampus.reset({ value: '', disabled: true });
+      this.form.controls.citaFecha.reset({ value: '', disabled: true });
+      this.form.controls.citaHora.reset({ value: '', disabled: true });
+      this.form.controls.citaCall.reset({ value: '', disabled: true });
+      this.form.controls.citaTransfer.reset({ value: '', disabled: true });
+      this.form.controls.citaAsesor.reset({ value: '', disabled: true });
     }
+  }
+
+  addValidation(isChecked) {
+    if (isChecked.checked) {
+      this.form.controls.mail.reset({ value: '', disabled: true });
+    } else {
+      this.form.controls.mail.reset({ value: '', disabled: false });
+    }
+    this.form.controls.mail.updateValueAndValidity();
   }
 }
