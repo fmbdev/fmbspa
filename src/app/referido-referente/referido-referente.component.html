@@ -41,15 +41,15 @@
                         <mat-error *ngIf="form.controls.mail.errors?.emailMalo && !form.controls.mail.errors?.required">Correo Inválido </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="phone" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keyup)="onChange()">
+                        <input autocomplete="off" formControlName="phone" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)">
                         <mat-error *ngIf="form.controls.phone.errors?.required">Ingresa número de Teléfono</mat-error>
                         <mat-error *ngIf="form.controls.phone.errors?.minlength && !form.controls.phone.errors?.required">Al menos debe contener 10 dígitos</mat-error>
                     </mat-form-field>
-                    <mat-form-field [hidden]="mostrarExtension">
-                        <input autocomplete="off" formControlName="extension" matInput placeholder="Extension" required type="tel" (keypress)="_keyPress($event)">
+                    <mat-form-field *ngIf="this.form.controls.tipoCel.value=='Oficina'">
+                        <input autocomplete="off" formControlName="extension" matInput placeholder="Extension" type="tel" (keypress)="_keyPress($event)">
                         <mat-error *ngIf="form.controls.extension.errors?.required">Ingresa una extension</mat-error>
                     </mat-form-field>
-                    <mat-radio-group class="radio-group" formControlName="tipoCel" style="padding-left: 10px;">
+                    <mat-radio-group class="radio-group" formControlName="tipoCel" style="padding-left: 10px;" (keyup)="onChange()">
                         <mat-radio-button value="Celular"> Celular </mat-radio-button>
                         <mat-radio-button value="Casa"> Casa </mat-radio-button>
                         <mat-radio-button value="Oficina"> Oficina </mat-radio-button>

@@ -10,13 +10,16 @@ export class LandingValidation {
 
     static palabraMalaValidator(): ValidatorFn {
         return (control: AbstractControl): { [key: string]: any } => {            
-            const name = control.value;            
-            let array = localStorage.getBasuraObs;            
-            if (array.indexOf(name)>-1) {
-                return { 'palabraMala': { name } }
-            }else{
-                return null;
-            }
+            const name = control.value;
+            if(name!=""){
+                let array = localStorage.getBasuraObs;
+                if (array.indexOf(name) > -1) {
+                    return { 'palabraMala': { name } }
+                } else {
+                    return null;
+                }
+            }            
+            
         };
     }
 
