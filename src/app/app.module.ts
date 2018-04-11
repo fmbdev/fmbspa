@@ -20,6 +20,38 @@ import { NewRegisterComponent } from './new-register/new-register.component';
 import { NewRegisterSoloComponent } from './new-register-solo/new-register-solo.component';
 import { SearchInboundComponent } from './search-inbound/search-inbound.component';
 
+// Providers
+import { CsqService } from './providers/csq.service';
+import { PnnService } from './providers/pnn.service'; 
+import { HoraService } from './providers/hora.service';
+import { SendService } from './providers/send.service';
+import { EquiService } from './providers/equi.service';
+import { NivelService } from './providers/nivel.service';
+import { CanalService } from './providers/canal.service';
+import { CicloService } from './providers/ciclo.service';
+import { TurnoService } from './providers/turno.service';
+import { CampusService } from './providers/campus.service';
+import { AsesorService } from './providers/asesor.service';
+import { GeneroService } from './providers/genero.service';
+import { InteresService } from './providers/interes.service';
+import { CarreraService } from './providers/carrera.service';
+import { UsuarioService } from './providers/usuario.service';
+import { ModalidadService } from './providers/modalidad.service';
+import { SinCorreoService } from './providers/sin-correo.service';
+import { ParentescoService } from './providers/parentesco.service';
+import { TerritorioService } from './providers/territorio.service';
+import { CampusCitaService } from './providers/campus-cita.service';
+import { ValidationService } from './validations/validation.service'; 
+import { PalabramalaService } from './providers/palabramala.service';
+import { ProgramacionService } from './providers/programacion.service';
+import { TipificacionService } from './providers/tipificacion.service';
+import { TransferenciaService } from './providers/transferencia.service';
+import { PaginaLandingService } from './providers/pagina-landing.service';
+import { TipoActividadService } from './providers/tipo-actividad.service';
+import { TipoReferenteService } from './providers/tipo-referente.service';
+import { EscuelaEmpresaService } from './providers/escuela-empresa.service';
+import { CitaProspeccionService } from './providers/cita-prospeccion.service';
+import { SubTipoActividadService } from './providers/sub-tipo-actividad.service';
 import { GeneralService } from './services/general.service';
 import { LandingService } from './services/landing.service';
 
@@ -76,7 +108,12 @@ import { FormComponent } from './form/form.component';
     MatDialogModule,
     MatRadioModule
   ],
-  providers: [AppConfig, GeneralService, LandingService],
+  providers: [CanalService, CsqService, TipificacionService, InteresService,
+    ParentescoService, ValidationService, CampusService,EquiService, NivelService, ModalidadService,
+    CarreraService, CicloService, AsesorService, HoraService, PalabramalaService, PnnService, SendService, 
+    CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
+    ProgramacionService, SinCorreoService, SubTipoActividadService, TerritorioService, TipoActividadService,
+    TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
