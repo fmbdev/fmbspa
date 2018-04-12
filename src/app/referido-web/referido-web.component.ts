@@ -8,37 +8,19 @@ import 'rxjs/Rx';
 
 import { LandingValidation } from '../validations/landing.validations';
 
-import { Csq } from '../interfaces/csq';
-//import { Hora } from '../interfaces/hora';
+//Interfaces
+import { Campus } from '../interfaces/campus';
+import { Carrera } from '../interfaces/carrera';
 import { Nivel } from '../interfaces/nivel';
-import { Canal } from '../interfaces/canal';
-//import { Ciclo } from '../interfaces/ciclo';
-//import { Campus } from '../interfaces/campus';
-import { Genero } from '../interfaces/genero';
-import { Asesor } from '../interfaces/asesor';
-//import { Carrera } from '../interfaces/carrera';
-import { Interes } from '../interfaces/interes';
-//import { Modalidad } from '../interfaces/modalidad';
-import { Parentesco } from '../interfaces/parentesco';
-import { CampusCita } from '../interfaces/campus-cita';
-import { Tipificacion } from '../interfaces/tipificacion';
+import { Modalidad } from '../interfaces/modalidad';
+import { TipoReferente } from '../interfaces/tipo-referente';
 
-import { PnnService } from '../providers/pnn.service';
-import { CsqService } from '../providers/csq.service';
-import { SendService } from '../providers/send.service';
-//import { HoraService } from '../providers/hora.service';
+//Servicios
+import { CampusService } from '../providers/campus.service';
+import { CarreraService } from '../providers/carrera.service';
 import { NivelService } from '../providers/nivel.service';
-import { CanalService } from '../providers/canal.service';
-//import { CicloService } from '../providers/ciclo.service';
-//import { CampusService } from '../providers/campus.service';
-import { AsesorService } from '../providers/asesor.service';
-import { GeneroService } from '../providers/genero.service';
-//import { CarreraService } from '../providers/carrera.service';
-import { InteresService } from '../providers/interes.service';
-//import { ModalidadService } from '../providers/modalidad.service';
-import { ParentescoService } from '../providers/parentesco.service';
-//import { CampusCitaService } from '../providers/campus-cita.service';
-import { TipificacionService } from '../providers/tipificacion.service';
+import { ModalidadService } from '../providers/modalidad.service'; 
+import { TipoReferenteService } from '../providers/tipo-referente.service'; 
 
 
 @Component({
@@ -47,27 +29,15 @@ import { TipificacionService } from '../providers/tipificacion.service';
   styleUrls: ['./referido-web.component.scss']
 })
 export class ReferidoWebComponent implements OnInit {
+
   form: FormGroup;
 
-  /*csqs: Csq[] = [];
-  horas: Hora[] = [];
-  ciclos: Ciclo[] = [];
-  niveles: Nivel[] = [];
-  canales: Canal[] = [];
   campus: Campus[] = [];
-  generos: Genero[] = [];
-  asesores: Asesor[] = [];
-  carreras: Carrera[] = [];
+  carreras: Carrera[] = [];  
   modalidades: Modalidad[] = [];
-  campus_citas: CampusCita[] = [];
-  parentescos: Parentesco[] = [];
-  tipificaciones: Tipificacion[] = [];*/
-
-  intereses: Interes[] = [];
+  niveles: Nivel[] = [];
+  tiposReferentes: TipoReferente[] = [];
   
-
-
-
   //maxDate = new Date(2018, this.month.getMonth(),12);
   maxDate = LandingValidation.fechaLimite();
   startDate = LandingValidation.fechaInicio();
@@ -101,31 +71,39 @@ export class ReferidoWebComponent implements OnInit {
   public mostrarExtension: boolean = null;
 
   constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
-    private pnnServ: PnnService,
-    private csqServ: CsqService,
-    //private horaServ: HoraService,
-    private sendServ: SendService,
+     private campusServ: CampusService,
+    private carreraServ: CarreraService,
     private nivelServ: NivelService,
-    //private cicloServ: CicloService,
-    private canalServ: CanalService,
-    //private campusServ: CampusService,
-    private asesorServ: AsesorService,
-    private generoServ: GeneroService,
-    //private carreraServ: CarreraService,
-    private interesServ: InteresService,
-    //private modalidadServ: ModalidadService,
-    private parentescoServ: ParentescoService,
-    //private campusCitaServ: CampusCitaService,
-    private tipicicacionServ: TipificacionService) { }
+    private modalidadServ: ModalidadService,
+    private tipoRefenteServ: TipoReferenteService) { }
 
   ngOnInit() {
      
-    // Se obtienen todos los intereses
-    this.interesServ.getAll()
+    // Se obtienen todos los campus
+        this.campusServ.getAll()
+            .subscribe(
+                (data: Campus[]) => this.campus = data
+            )
+        // Se obtienen todos los niveles
+        this.nivelServ.getAll()
+            .subscribe(
+                (data: Nivel[]) => this.niveles = data
+            )
+        // Se obtienen todas las modalidades
+        this.modalidadServ.getAll()
+            .subscribe(
+                (data: Modalidad[]) => this.modalidades = data
+            )
+    // Se obtienen todas las carreras
+    this.carreraServ.getAll()
       .subscribe(
-        (data: Interes[]) => this.intereses = data
+        (data: Carrera[]) => this.carreras = data
       )
-    // Se obtienen todos los parentescos
+    // Se obtienen todas las carreras
+    this.tipoRefenteServ.getAll()
+      .subscribe(
+        (data: TipoReferente[]) => this.tiposReferentes = data
+      )
  
  
     this.formInit();

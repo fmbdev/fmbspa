@@ -52,49 +52,49 @@ export class NewRegisterComponent implements OnInit {
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();    
     
-    user:FormControl;
-    canal:FormControl;
-    csq:FormControl;
-    interes:FormControl;
-    phone_email:FormControl;
+    Usuario: FormControl;
+    Canal: FormControl;
+    CSQ: FormControl;
+    TelefonoCorreo: FormControl;
+    Interesa: FormControl;
    
 
-    name:FormControl;
-    patern:FormControl;
-    matern:FormControl;
-    mail:FormControl;
-    cel:FormControl;
-    phone:FormControl;
-    gender:FormControl;
-    birthday:FormControl;
-    edad:FormControl;
+    Nombre: FormControl;
+    ApellidoPaterno: FormControl;
+    ApellidoMaterno: FormControl;
+    CorreoElectronico: FormControl;
+    NumeroCelular: FormControl;
+    Telefono: FormControl;
+    Genero: FormControl;
+    FechaNacimiento: FormControl;
+    Edad: FormControl;
 
 
-    nameRegis:FormControl;
-    paternRegis:FormControl;
-    maternRegis:FormControl;
-    mailRegis:FormControl;
-    celRegis:FormControl;
-    phoneRegis:FormControl;
-    parentRegis:FormControl;
+    NombreTutor: FormControl;
+    ApellidoPaternoTutor: FormControl;
+    ApellidoMaternoTutor: FormControl;
+    CorreoElectronicoTutor: FormControl;
+    NumeroCelularR: FormControl;
+    TelefonoTutor: FormControl;
+    ParentescoTutor: FormControl;
 
 
-    interestCampus:FormControl;
-    interestArea:FormControl;
-    interestNivel:FormControl;
-    interestModalidad:FormControl;
-    interestCarrera:FormControl;
-    interestCiclo:FormControl;
-    tipificacion:FormControl;
-    notas:FormControl;
+    Campus:FormControl;
+    AreaInteres:FormControl;
+    Nivel:FormControl;
+    Modalidad:FormControl;
+    Carrera:FormControl;
+    Ciclo:FormControl;
+    Tipificacion:FormControl;
+    Notas:FormControl;
 
 
-    citaFecha:FormControl;
-    citaCampus:FormControl;
-    citaHora:FormControl;
-    citaCall:FormControl;
-    citaTransfer:FormControl;
-    citaAsesor:FormControl;
+    CampusCitas :FormControl;
+    FechaCita :FormControl;
+    HoraCita :FormControl;
+    Programacion :FormControl;
+    Transferencia :FormControl;
+    Asesor :FormControl;
 
     csqs: Csq[] = [];
     horas: Hora[] = [];
@@ -212,45 +212,45 @@ export class NewRegisterComponent implements OnInit {
 
     formInit(){
         this.form = new FormGroup({
-            user: new FormControl({value: '', disabled: true}, Validators.required),
-            canal: new FormControl('', Validators.required),
-            csq: new FormControl('', Validators.required),
-            interes: new FormControl('', Validators.required),
-            phone_email:new FormControl('', Validators.required),
+            Usuario: new FormControl({value: '', disabled: true}, Validators.required),
+            Canal: new FormControl('', Validators.required),
+            CSQ: new FormControl('', Validators.required),
+            TelefonoCorreo: new FormControl('', Validators.required),
+            Interesa:new FormControl(''),
 
-            name: new FormControl('', [Validators.required,LandingValidation.palabraMalaValidator()]),
-            patern: new FormControl('', [Validators.required,LandingValidation.palabraMalaValidator()]),
-            matern: new FormControl('',[Validators.required,LandingValidation.palabraMalaValidator()]),
-            mail: new FormControl('', [Validators.required,LandingValidation.emailMaloValidator()]),
-            cel: new FormControl('', [Validators.required,Validators.minLength(10)]),
-            phone: new FormControl('',[Validators.required,Validators.minLength(10)]),
-            gender: new FormControl('', Validators.required),
-            birthday: new FormControl('', Validators.required),
-            edad: new FormControl('', [Validators.required,Validators.minLength(2)]),
+            Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+            ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+            ApellidoMaterno: new FormControl('',[LandingValidation.palabraMalaValidator()]),
+            CorreoElectronico: new FormControl('', [Validators.required,LandingValidation.emailMaloValidator()]),
+            NumeroCelular: new FormControl('', [Validators.minLength(10)]),
+            Telefono: new FormControl('',[Validators.required,Validators.minLength(10)]),
+            Genero: new FormControl(''),
+            FechaNacimiento: new FormControl(''),
+            Edad: new FormControl('', [Validators.minLength(2)]),
 
-            paternRegis: new FormControl(''),
-            nameRegis: new FormControl(''),            
-            maternRegis: new FormControl(''),
-            mailRegis: new FormControl(''),
-            celRegis: new FormControl(''),
-            phoneRegis: new FormControl(''),
-            parentRegis: new FormControl(''),
+            NombreTutor: new FormControl(''),
+            ApellidoPaternoTutor: new FormControl(''),            
+            ApellidoMaternoTutor: new FormControl(''),
+            CorreoElectronicoTutor: new FormControl(''),
+            NumeroCelularR: new FormControl(''),
+            TelefonoTutor: new FormControl(''),
+            ParentescoTutor: new FormControl(''),
             
-            interestCampus: new FormControl('', Validators.required),
-            interestArea: new FormControl('', Validators.required),
-            interestNivel: new FormControl('', Validators.required),
-            interestModalidad: new FormControl('', Validators.required),
-            interestCarrera: new FormControl('', Validators.required),
-            interestCiclo: new FormControl('', Validators.required),
-            tipificacion: new FormControl('', Validators.required),
-            notas:new FormControl(''),
+            Campus: new FormControl(''),
+            AreaInteres: new FormControl(''),
+            Nivel: new FormControl(''),
+            Modalidad: new FormControl(''),
+            Carrera: new FormControl(''),
+            Ciclo: new FormControl(''),
+            Tipificacion: new FormControl(''),
+            Notas:new FormControl(''),
 
-            citaCampus:new FormControl({value: '', disabled: true}, Validators.required),
-            citaFecha:new FormControl({value: '', disabled: true}, Validators.required),                        
-            citaHora:new FormControl({value: '', disabled: true}, Validators.required),
-            citaCall:new FormControl({value: '', disabled: true}, Validators.required),
-            citaTransfer:new FormControl({value: '', disabled: true}, Validators.required),
-            citaAsesor:new FormControl({value: '', disabled: true}, Validators.required)
+            CampusCitas: new FormControl({value: '', disabled: true}, Validators.required),
+            FechaCita: new FormControl({value: '', disabled: true}, Validators.required),                        
+            HoraCita: new FormControl({value: '', disabled: true}, Validators.required),
+            Programacion: new FormControl({value: '', disabled: true}, Validators.required),
+            Transferencia: new FormControl({value: '', disabled: true}, Validators.required),
+            Asesor: new FormControl({value: '', disabled: true}, Validators.required)
 
         });
     }
@@ -264,32 +264,32 @@ export class NewRegisterComponent implements OnInit {
     }    
 
     onKeydownEmail(event: KeyboardEvent) {
-        let name = this.form.controls.nameRegis.value;  
+        let name = this.form.controls.NombreTutor.value;  
         if(name==''){
-            this.form.controls.nameRegis.clearValidators();
-            this.form.controls.paternRegis.clearValidators();
-            this.form.controls.maternRegis.clearValidators();
-            this.form.controls.mailRegis.clearValidators();
-            this.form.controls.celRegis.clearValidators();
-            this.form.controls.phoneRegis.clearValidators();
-            this.form.controls.parentRegis.clearValidators();
+            this.form.controls.NombreTutor.clearValidators();
+            this.form.controls.ApellidoPaternoTutor.clearValidators();
+            this.form.controls.ApellidoMaternoTutor.clearValidators();
+            this.form.controls.CorreoElectronicoTutor.clearValidators();
+            this.form.controls.NumeroCelularR.clearValidators();
+            this.form.controls.TelefonoTutor.clearValidators();
+            this.form.controls.ParentescoTutor.clearValidators();
         }else{
               
-             this.form.controls.nameRegis.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
-             this.form.controls.paternRegis.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
-             this.form.controls.maternRegis.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
-             this.form.controls.mailRegis.setValidators([Validators.required,LandingValidation.emailMaloValidator()]);
-             this.form.controls.celRegis.setValidators([Validators.required,Validators.minLength(10)]);
-             this.form.controls.phoneRegis.setValidators([Validators.required,Validators.minLength(10)]);
-             this.form.controls.parentRegis.setValidators([Validators.required]); 
+             this.form.controls.NombreTutor.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
+             this.form.controls.ApellidoPaternoTutor.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
+             this.form.controls.ApellidoMaternoTutor.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
+             this.form.controls.CorreoElectronicoTutor.setValidators([Validators.required,LandingValidation.emailMaloValidator()]);
+             this.form.controls.NumeroCelularR.setValidators([Validators.required,Validators.minLength(10)]);
+             this.form.controls.TelefonoTutor.setValidators([Validators.required,Validators.minLength(10)]);
+             this.form.controls.ParentescoTutor.setValidators([Validators.required]); 
         }
-             this.form.controls.nameRegis.updateValueAndValidity();
-             this.form.controls.paternRegis.updateValueAndValidity();
-             this.form.controls.maternRegis.updateValueAndValidity();
-             this.form.controls.mailRegis.updateValueAndValidity();
-             this.form.controls.celRegis.updateValueAndValidity();
-             this.form.controls.phoneRegis.updateValueAndValidity();
-             this.form.controls.parentRegis.updateValueAndValidity();
+             this.form.controls.NombreTutor.updateValueAndValidity();
+             this.form.controls.ApellidoPaternoTutor.updateValueAndValidity();
+             this.form.controls.ApellidoMaternoTutor.updateValueAndValidity();
+             this.form.controls.CorreoElectronicoTutor.updateValueAndValidity();
+             this.form.controls.NumeroCelularR.updateValueAndValidity();
+             this.form.controls.TelefonoTutor.updateValueAndValidity();
+             this.form.controls.ParentescoTutor.updateValueAndValidity();
     }
 
     _keyOnly3letter(event:any, name:any){
@@ -303,33 +303,46 @@ export class NewRegisterComponent implements OnInit {
     _keyPressTxt(event: any) {        
         LandingValidation.onlyLetter(event);
     }
-    
+ 
     onChange(){
-        if(this.form.controls.name.value !=''  && this.form.controls.patern.value !=''  && this.form.controls.matern.value !=''  &&  this.form.controls.mail.value !=''  &&  this.form.controls.cel.value !='' &&  this.form.controls.phone.value !=''){         
-            this.form.controls.citaCampus.reset({value: '', disabled: false});
-            this.form.controls.citaFecha.reset({value: '', disabled: false});
-            this.form.controls.citaHora.reset({value: '', disabled: false});
-            this.form.controls.citaCall.reset({value: '', disabled: false});
-            this.form.controls.citaTransfer.reset({value: '', disabled: false});
-            this.form.controls.citaAsesor.reset({value: '', disabled: false}); 
+        if(this.form.controls.Nombre.value !=''  && this.form.controls.ApellidoPaterno.value !='' && this.form.controls.ApellidoMaterno.value !='' && this.form.controls.CorreoElectronico.value !='' && this.form.controls.NumeroCelular.value !='' && this.form.controls.Telefono.value !=''){
+            this.form.controls.CampusCitas.reset({value: '', disabled: false});
+            this.form.controls.FechaCita.reset({value: '', disabled: false});
+            this.form.controls.HoraCita.reset({value: '', disabled: false});
+            this.form.controls.Programacion.reset({value: '', disabled: false});
+            this.form.controls.Transferencia.reset({value: '', disabled: false});
+            this.form.controls.Asesor.reset({value: '', disabled: false}); 
         }else{
-           this.form.controls.citaCampus.reset({value: '', disabled: true});
-            this.form.controls.citaFecha.reset({value: '', disabled: true});
-            this.form.controls.citaHora.reset({value: '', disabled: true});
-            this.form.controls.citaCall.reset({value: '', disabled: true});
-            this.form.controls.citaTransfer.reset({value: '', disabled: true});
-            this.form.controls.citaAsesor.reset({value: '', disabled: true}); 
+           this.form.controls.CampusCitas.reset({value: '', disabled: true});
+            this.form.controls.FechaCita.reset({value: '', disabled: true});
+            this.form.controls.HoraCita.reset({value: '', disabled: true});
+            this.form.controls.Programacion.reset({value: '', disabled: true});
+            this.form.controls.Transferencia.reset({value: '', disabled: true});
+            this.form.controls.Asesor.reset({value: '', disabled: true}); 
         }
     }
+    onValueCampus(value) {
+        
+        this.form.controls.TelefonoCorreo.clearValidators();
+        if(value==1){
+             this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10),Validators.maxLength(10)]);
+        }else{
+              
+             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
+        }
+             this.form.controls.TelefonoCorreo.updateValueAndValidity();
+    }
+
+
 
     addValidation(isChecked)
     {
         if(isChecked.checked){          
-            this.form.controls.mail.reset({value: '', disabled: true});        
+            this.form.controls.CorreoElectronico.reset({value: '', disabled: true});        
         }else{
-            this.form.controls.mail.reset({value: '', disabled: false});                    
+            this.form.controls.CorreoElectronico.reset({value: '', disabled: false});                    
         } 
-         this.form.controls.mail.updateValueAndValidity(); 
+         this.form.controls.CorreoElectronico.updateValueAndValidity(); 
     }
     
 }

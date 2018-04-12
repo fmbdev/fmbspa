@@ -36,7 +36,7 @@
                         <mat-error *ngIf="form.controls.patern.errors?.palabraMala && !form.controls.patern.errors?.required">Apellido Paterno inválido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="matern" matInput minlength="10" placeholder="Apellido Materno" (keyup)="onChange()" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.matern.value)">
+                        <input autocomplete="off" formControlName="matern" matInput placeholder="Apellido Materno" (keyup)="onChange()" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.matern.value)">
                         <mat-error *ngIf="form.controls.matern.errors?.required">Por favor ingresa un apellido materno</mat-error>
                         <mat-error *ngIf="form.controls.matern.errors?.palabraMala && !form.controls.matern.errors?.required">Apellido Materno inválido</mat-error>
                     </mat-form-field>
@@ -49,7 +49,7 @@
                         <mat-checkbox (change)="addValidation($event)" value="sinmail">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="cel" matInput placeholder="Número Celular (10 dígitos)" required minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)">
+                        <input autocomplete="off" formControlName="cel" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)">
                         <mat-error *ngIf="form.controls.cel.errors?.required">Ingresa número de celular</mat-error>
                         <mat-error *ngIf="form.controls.cel.errors?.minlength && !form.controls.cel.errors?.required">Al menos debe contener 10 dígitos</mat-error>
                     </mat-form-field>
@@ -59,7 +59,7 @@
                         <mat-error *ngIf="form.controls.phone.errors?.minlength && !form.controls.phone.errors?.required">Al menos debe contener 10 dígitos</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-select formControlName="gender" placeholder="Género" required>
+                        <mat-select formControlName="gender" placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let genero of generos;" [value]="genero['genero']">
                                 {{ genero['genero'] }}

@@ -7,6 +7,17 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 
 import { LandingValidation } from '../validations/landing.validations';
 
+//Interfaces
+import { Campus } from '../interfaces/campus';
+import { Carrera } from '../interfaces/carrera';
+import { Nivel } from '../interfaces/nivel';
+import { Modalidad } from '../interfaces/modalidad';
+
+//Servicios
+import { CampusService } from '../providers/campus.service';
+import { CarreraService } from '../providers/carrera.service';
+import { NivelService } from '../providers/nivel.service';
+import { ModalidadService } from '../providers/modalidad.service'; 
 
 
 @Component({
@@ -43,9 +54,40 @@ export class ReferidoTlmkComponent implements OnInit {
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2) { }
+
+  campus: Campus[] = [];
+  carreras: Carrera[] = [];
+  modalidades: Modalidad[] = [];
+  niveles: Nivel[] = [];
+
+
+  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
+    private campusServ: CampusService,
+    private carreraServ: CarreraService,
+    private nivelServ: NivelService,
+    private modalidadServ: ModalidadService) { }
 
   ngOnInit() {
+    // Se obtienen todos los campus
+    this.campusServ.getAll()
+      .subscribe(
+        (data: Campus[]) => this.campus = data
+      )
+    // Se obtienen todos los niveles
+    this.nivelServ.getAll()
+      .subscribe(
+        (data: Nivel[]) => this.niveles = data
+      )
+    // Se obtienen todas las modalidades
+    this.modalidadServ.getAll()
+      .subscribe(
+        (data: Modalidad[]) => this.modalidades = data
+      )
+    // Se obtienen todas las carreras
+    this.carreraServ.getAll()
+      .subscribe(
+        (data: Carrera[]) => this.carreras = data
+      )
     this.formInit();
   }
 
