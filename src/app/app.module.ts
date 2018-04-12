@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http'; 
+import { HttpModule } from '@angular/http';
+
+import { DialogComponent } from './dialog/dialog.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -88,8 +90,12 @@ import { FormComponent } from './form/form.component';
     ReferidoWebComponent,
     NewRegisterExistingComponent,
     NewRegisterExistingReceptionComponent,
-    FormComponent
+    FormComponent,
+    DialogComponent
   ],
+  entryComponents: [
+    DialogComponent
+  ],  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -109,7 +115,7 @@ import { FormComponent } from './form/form.component';
     MatNativeDateModule,
     MatDialogModule,
     MatRadioModule
-  ],
+  ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
     ParentescoService, CampusService, NivelService, ModalidadService,
     CarreraService, CicloService, AsesorService, HoraService, PnnService, SendService, 

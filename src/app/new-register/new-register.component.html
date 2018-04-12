@@ -21,7 +21,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onValueCampus(form.controls.canal.value)" required>
+                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onValueCampus(form.controls.Canal.value)" required>
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let canal of canales;" [value]="canal['id']">
                                 {{ canal['crmit_name'] }}
@@ -298,7 +298,7 @@
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-form-field style="margin-left: 10px;" class="example-full-width">
-                <textarea matInput placeholder="Notas" formControlName="Notas" (keypress)="_keyOnly3letter($event,notass.value)"></textarea>
+                <textarea matInput placeholder="Notas" formControlName="Notas" (keypress)="_keyOnly3letter($event, form.controls.Notas.value)"></textarea>
             </mat-form-field>
         </div>
         <div class="head-blue mt">
