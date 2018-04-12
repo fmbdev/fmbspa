@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import {GeneralService} from '../services/general.service';
-import {MatDialog, MatSelect} from '@angular/material';
 import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
+
+import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
+import 'rxjs/Rx';
 
 import { LandingValidation } from '../validations/landing.validations';
 
@@ -24,6 +27,7 @@ import { Tipificacion } from '../interfaces/tipificacion';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service'; 
+import { SendService } from '../providers/send.service';
 import { HoraService } from '../providers/hora.service';
 import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
@@ -116,6 +120,7 @@ export class NewRegisterComponent implements OnInit {
                 private renderer: Renderer2,
                 private csqServ: CsqService,
                 private horaServ: HoraService,
+                private sendServ: SendService,
                 private nivelServ: NivelService,
                 private cicloServ: CicloService,
                 private canalServ: CanalService,
@@ -256,7 +261,18 @@ export class NewRegisterComponent implements OnInit {
     }
 
     onSubmit(){
-      console.log(this.form.value);
+     this.sendServ.sendDataToApi(this.form.value)
+         .subscribe(
+              (res: any) => {
+                  if(res.status == 200){
+                     this.showDialog("Los datos se han guardado correctamente.");
+                     this.resetForm();
+                  }else{
+                     this.showDialog("Error al realizar el registro.");
+                     this.resetForm();
+                  }
+              }
+            )
     }
 
     resetForm(){
@@ -344,5 +360,13 @@ export class NewRegisterComponent implements OnInit {
         } 
          this.form.controls.CorreoElectronico.updateValueAndValidity(); 
     }
+
+    private showDialog(message: string){
+        let dialogRef = this.dialog.open(DialogComponent, {
+          height: '180px',
+          width: '500px',
+          data: {message: message}
+        });
+      }
     
 }
