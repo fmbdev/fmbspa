@@ -33,24 +33,23 @@ export class ReferidoTlmkComponent implements OnInit {
   maxDate = LandingValidation.fechaLimite();
   startDate = LandingValidation.fechaInicio();
 
-  user: FormControl;
+  Usuario: FormControl;
 
-
-  name: FormControl;
-  patern: FormControl;
-  matern: FormControl;
-  mail: FormControl;
+  Nombre: FormControl;
+  ApellidoPaterno: FormControl;
+  ApellidoMaterno: FormControl;
+  CorreoElectronico: FormControl;
   cel: FormControl;
-  phone: FormControl;
+  Telefono: FormControl;
   extension: FormControl;
   tipoCel: FormControl;
 
-  interestCampus: FormControl;
+  Campus: FormControl;
   //interestArea: FormControl;
-  interestNivel: FormControl;
-  interestModalidad: FormControl;
-  interestCarrera: FormControl;
-  interestCiclo: FormControl;
+  Nivel: FormControl;
+  Modalidad: FormControl;
+  Carrera: FormControl;
+  Ciclo: FormControl;
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
@@ -94,25 +93,24 @@ export class ReferidoTlmkComponent implements OnInit {
   formInit() {
 
     this.form = new FormGroup({
-      user: new FormControl({ value: '', disabled: true }, Validators.required),
 
-      name: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      patern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      matern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      mail: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
+      Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
+
+      Nombre: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      ApellidoPaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      ApellidoMaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
       cel: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      Telefono: new FormControl('', [Validators.required, Validators.minLength(10)]),
       extension: new FormControl(''),
       tipoCel: new FormControl(''),
 
 
-
-      interestCampus: new FormControl('', Validators.required),
-      //interestArea: new FormControl('', Validators.required),
-      interestNivel: new FormControl('', Validators.required),
-      interestModalidad: new FormControl('', Validators.required),
-      interestCarrera: new FormControl('', Validators.required),
-      interestCiclo: new FormControl('', Validators.required),
+      Campus: new FormControl('', Validators.required),
+      Nivel: new FormControl('', Validators.required),
+      Modalidad: new FormControl('', Validators.required),
+      Carrera: new FormControl('', Validators.required),
+      Ciclo: new FormControl('', Validators.required),
       tipificacion: new FormControl('', Validators.required),
 
     });
