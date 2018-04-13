@@ -276,6 +276,7 @@ export class NewRegisterComponent implements OnInit {
     }
 
     resetForm(){
+        this.showDialog("Los datos se han guardado correctamente.");
       this.form.reset();
     }    
 
@@ -337,6 +338,35 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls.Asesor.reset({value: '', disabled: true}); 
         }
     }
+
+    onChangeInteres(value){
+        if(value==''){
+        
+            this.form.controls.Campus.clearValidators();
+            this.form.controls.AreaInteres.clearValidators();
+            this.form.controls.Nivel.clearValidators();
+            this.form.controls.Modalidad.clearValidators();
+            this.form.controls.Carrera.clearValidators();
+            this.form.controls.Ciclo.clearValidators();
+        
+        }else{
+
+             this.form.controls.Campus.setValidators([Validators.required]);
+             this.form.controls.AreaInteres.setValidators([Validators.required]);
+             this.form.controls.Nivel.setValidators([Validators.required]);
+             this.form.controls.Modalidad.setValidators([Validators.required]);
+             this.form.controls.Carrera.setValidators([Validators.required]);
+             this.form.controls.Ciclo.setValidators([Validators.required]); 
+        }
+             this.form.controls.Campus.updateValueAndValidity();
+             this.form.controls.AreaInteres.updateValueAndValidity();
+             this.form.controls.Nivel.updateValueAndValidity();
+             this.form.controls.Modalidad.updateValueAndValidity();
+             this.form.controls.Carrera.updateValueAndValidity();
+             this.form.controls.Ciclo.updateValueAndValidity();
+        
+    }
+
     onValueCampus(value) {
         
         this.form.controls.TelefonoCorreo.clearValidators();
@@ -348,8 +378,6 @@ export class NewRegisterComponent implements OnInit {
         }
              this.form.controls.TelefonoCorreo.updateValueAndValidity();
     }
-
-
 
     addValidation(isChecked)
     {

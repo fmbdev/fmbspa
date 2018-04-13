@@ -188,7 +188,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Campus" placeholder="Campus" required>
+                        <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let campu of campus;" [value]="campu['crmi_name']">
                                 {{ campu['crmi_name'] }}
@@ -199,13 +199,13 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" required>
+                        <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.AreaInteres.errors?.required" required>Elige una Área de Interés</mat-error>
+                        <mat-error *ngIf="form.controls.AreaInteres.errors?.required" >Elige una Área de Interés</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -213,7 +213,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Nivel" placeholder="Nivel" required>
+                        <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_name']">
                                 {{ nivel['crmit_name'] }}
@@ -229,7 +229,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Modalidad" placeholder="Modalidad" required>
+                        <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_name']">
                                 {{ modalidad['crmit_name'] }}
@@ -246,7 +246,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Carrera" placeholder="Carrera" required>
+                        <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let carrera of carreras;" [value]="carrera['productnumber']">
                                 {{ carrera['productnumber'] }}
@@ -262,7 +262,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Ciclo" placeholder="Ciclo" required>
+                        <mat-select formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
                                 {{ ciclo['crmit_name'] }}

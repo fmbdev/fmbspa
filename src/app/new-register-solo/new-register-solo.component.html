@@ -134,41 +134,42 @@
         <div class="head-blue mt">
             ÍNTERES
         </div>
-        <div class="form">
+         <div class="form">
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="interestCampus" placeholder="Campus" required>
+                        <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let campu of campus;" [value]="campu['crmi_name']">
                                 {{ campu['crmi_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.interestCampus.errors?.required">Elige un Campus</mat-error>
+                        <mat-error *ngIf="form.controls.Campus.errors?.required">Elige un Parentesco</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="interestArea" placeholder="Área Ínteres" required>
+                        <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.interestArea.errors?.required" required>Elige una Área de Interés</mat-error>
+                        <mat-error *ngIf="form.controls.AreaInteres.errors?.required" >Elige una Área de Interés</mat-error>
+
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="interestNivel" placeholder="Nivel" required>
+                        <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_name']">
                                 {{ nivel['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.interestNivel.errors?.required">Elige un Campus</mat-error>
+                        <mat-error *ngIf="form.controls.Nivel.errors?.required">Elige un Campus</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
@@ -178,13 +179,13 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="interestModalidad" placeholder="Modalidad" required>
+                        <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_name']">
                                 {{ modalidad['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.interestModalidad.errors?.required">Elige una Modalidad</mat-error>
+                        <mat-error *ngIf="form.controls.Modalidad.errors?.required">Elige una Modalidad</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -195,13 +196,13 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="interestCarrera" placeholder="Carrera" required>
+                        <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let carrera of carreras;" [value]="carrera['productnumber']">
                                 {{ carrera['productnumber'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.interestModalidad.errors?.required">Elige una Carrera</mat-error>
+                        <mat-error *ngIf="form.controls.Carrera.errors?.required">Elige una Carrera</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
@@ -211,25 +212,18 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="interestCiclo" placeholder="Ciclo" required>
+                        <mat-select formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
                                 {{ ciclo['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.interestCiclo.errors?.required">Indica cuando quieres entrar.</mat-error>
+                        <mat-error *ngIf="form.controls.Ciclo.errors?.required">Indica cuando quieres entrar.</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     &nbsp;
                 </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="1" rowHeight="70px">
-                <div class="btns">
-                    <button mat-raised-button color="warn" class="cancel">ASIGNAR</button>
-                    <button mat-raised-button color="warn" class="cancel">DIRECTA</button>
-                    <button mat-raised-button color="warn" class="cancel">GRUPAL</button>
-                </div>
             </mat-grid-list>
         </div>
         <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 50px;">
