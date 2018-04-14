@@ -65,8 +65,8 @@ export class NewRegisterPromotionComponent implements OnInit {
   cel: FormControl;
   phone: FormControl;
   gender: FormControl;
-  birthday: FormControl;
-  edad: FormControl;
+  FechaNacimiento: FormControl;
+  Edad: FormControl;
 
 
   nameRegis: FormControl;
@@ -208,15 +208,15 @@ export class NewRegisterPromotionComponent implements OnInit {
       school: new FormControl(''),
       calidad: new FormControl(''),
 
-      name: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      patern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      matern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      name: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      patern: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      matern: new FormControl('', [LandingValidation.palabraMalaValidator()]),
       mail: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-      cel: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      cel: new FormControl('', [ Validators.minLength(10)]),
       phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      gender: new FormControl('', Validators.required),
-      birthday: new FormControl('', Validators.required),
-      edad: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      gender: new FormControl(''),
+      FechaNacimiento: new FormControl(''),
+      Edad: new FormControl('', [Validators.minLength(2)]),
 
       paternRegis: new FormControl(''),
       nameRegis: new FormControl(''),
@@ -256,7 +256,13 @@ export class NewRegisterPromotionComponent implements OnInit {
   resetForm() {
     this.form.reset();
   }
-
+  onKeyFechaNacimiento() {
+    let edad = this.form.controls.Edad.value;
+    let year = new Date().getFullYear();
+    let fechaNac = year - edad;
+    let fecha = '1/1/' + fechaNac;
+    this.form.controls.FechaNacimiento.setValue(fecha);
+  }
   onKeydownEmail(event: KeyboardEvent) {
     let name = this.form.controls.nameRegis.value;
     if (name == '') {

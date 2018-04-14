@@ -65,8 +65,8 @@ export class NewRegisterExistingComponent implements OnInit {
     cel: FormControl;
     phone: FormControl;
     gender: FormControl;
-    birthday: FormControl;
-    edad: FormControl;
+    FechaNacimiento: FormControl;
+    Edad: FormControl;
 
 
     nameRegis: FormControl;
@@ -228,7 +228,8 @@ export class NewRegisterExistingComponent implements OnInit {
             phone: new FormControl('', [ Validators.minLength(10)]),
             gender: new FormControl(''),
             birthday: new FormControl(''),
-            edad: new FormControl('', Validators.minLength(2)),
+            Edad: new FormControl('', [Validators.minLength(2)]),
+            FechaNacimiento: new FormControl(''),
 
             paternRegis: new FormControl(''),
             nameRegis: new FormControl(''),
@@ -324,6 +325,15 @@ export class NewRegisterExistingComponent implements OnInit {
              this.form.controls.Ciclo.updateValueAndValidity();
         
     }
+    
+    onKeyFechaNacimiento() {
+        let edad = this.form.controls.Edad.value;
+        let year = new Date().getFullYear();
+        let fechaNac = year - edad;
+        let fecha = '1/1/' + fechaNac;
+        this.form.controls.FechaNacimiento.setValue(fecha);
+    }
+    
     _keyOnly3letter(event: any, name: any) {
         LandingValidation.letterName(event, name);
     }

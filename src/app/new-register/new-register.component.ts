@@ -277,9 +277,16 @@ export class NewRegisterComponent implements OnInit {
 
     resetForm(){
         this.showDialog("Los datos se han guardado correctamente.");
-      this.form.reset();
+        this.form.reset();
     }    
-
+    onKeyFechaNacimiento(){
+        let edad = this.form.controls.Edad.value;
+        let year = new Date().getFullYear();
+        let fechaNac = year-edad;
+        let fecha = '1/1/'+fechaNac;        
+        this.form.controls.FechaNacimiento.setValue(fecha);        
+    }
+    
     onKeydownEmail(event: KeyboardEvent) {
         let name = this.form.controls.NombreTutor.value;  
         if(name==''){
@@ -340,8 +347,7 @@ export class NewRegisterComponent implements OnInit {
     }
 
     onChangeInteres(value){
-        if(value==''){
-        
+        if(value==''){        
             this.form.controls.Campus.clearValidators();
             this.form.controls.AreaInteres.clearValidators();
             this.form.controls.Nivel.clearValidators();

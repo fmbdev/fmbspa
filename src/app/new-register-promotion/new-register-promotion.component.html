@@ -153,16 +153,17 @@
                         <mat-error *ngIf="form.controls.gender.errors?.required">Elige un Género</mat-error>
 
                     </mat-form-field>
-                    <mat-form-field>
-                        <input autocomplete="off" formControlName="birthday" matInput [matDatepicker]="pickerB" readonly placeholder="Fecha de Nacimiento">
+                    <!--<mat-form-field>
+                        <input autocomplete="off" formControlName="FechaNacimiento" matInput [matDatepicker]="pickerB" readonly placeholder="Fecha de Nacimiento">
                         <mat-datepicker-toggle matSuffix [for]="pickerB"></mat-datepicker-toggle>
                         <mat-datepicker #pickerB startView="year" [startAt]="startDate" disabled="false"></mat-datepicker>
-                        <mat-error *ngIf="form.controls.birthday.errors?.required">Ingresa una Fecha de Nacimiento </mat-error>
-                    </mat-form-field>
+                        <mat-error *ngIf="form.controls.FechaNacimiento.errors?.required">Ingresa una Fecha de Nacimiento </mat-error>
+                    </mat-form-field>-->
+                    <input formControlName="FechaNacimiento" type="hidden">
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" minlength="2" maxlength="2">
-                        <mat-error *ngIf="form.controls.edad.errors?.required">Ingresa número de Teléfono</mat-error>
-                        <mat-error *ngIf="form.controls.edad.errors?.minlength && !form.controls.edad.errors?.required">Al menos debe contener 2 dígitos</mat-error>
+                        <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2">
+                        <mat-error *ngIf="form.controls.Edad.errors?.required">Ingresa número de Teléfono</mat-error>
+                        <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">Al menos debe contener 2 dígitos</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -170,7 +171,7 @@
                 <div style="width: 100%;float: left;display: block;">
                     <mat-grid-list cols="1" rows="1" rowHeight="40px" class="rol">
                         <mat-grid-tile>
-                            ¿QUIÉN SE REGISTRA?
+                            DATOS DEL PADRE O TUTOR
                         </mat-grid-tile>
                     </mat-grid-list>
                     <mat-form-field>
@@ -242,7 +243,7 @@
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.AreaInteres.errors?.required" >Elige una Área de Interés</mat-error>
+                        <mat-error *ngIf="form.controls.AreaInteres.errors?.required">Elige una Área de Interés</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -317,7 +318,7 @@
 
         <mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
             <mat-grid-tile class="le">
-                Capturar Referido
+                <a routerLink="/referidoPromotor" target="_blank"> Capturar Referido</a>
             </mat-grid-tile>
             <mat-grid-tile>
                 <div class="btn">

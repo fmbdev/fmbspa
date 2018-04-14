@@ -13,7 +13,7 @@ export class LandingValidation {
             const name = control.value;
             if(name!=""){
                 let array = localStorage.getBasuraObs;
-                if (array.indexOf(name) > -1) {
+                if (array.search(new RegExp(name, "i"))) {
                     return { 'palabraMala': { name } }
                 } else {
                     return null;

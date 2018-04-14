@@ -1,56 +1,60 @@
 <div class="search">
-  <div class="head-blue">
-    BÚSQUEDA
-  </div>
+    <div class="head-blue">
+        BÚSQUEDA
+    </div>
 
-  <div class="form">
-    
-    <mat-form-field>
-      <input matInput placeholder="Correo Electrónico" required #mail [formControl]="maill" [errorStateMatcher]="matcher" [(ngModel)]="user.mail" >
-      <mat-error *ngIf="mailTxtError && !maill.hasError('required')">{{mailTxtError}}</mat-error> 
-      <mat-error *ngIf="maill.hasError('required')">Ingresa un correo electrónico</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput placeholder="Teléfono" maxlength="10" minlength="10"  type="tel" #phone [formControl]="phonee" [errorStateMatcher]="matcher" (keypress)="_keyPress($event)" [(ngModel)]="user.phone">
-      <mat-error *ngIf="phoneTxtError && !phonee.hasError('required')">{{phoneTxtError}}</mat-error>     
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput placeholder="Nombre" #name [formControl]="namee" [errorStateMatcher]="matcher" [(ngModel)]="user.name"  (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,namee.value)">
-      <mat-error *ngIf="nameTxtError && !namee.hasError('required')">{{nameTxtError}}</mat-error>     
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput placeholder="Apellido Paterno" #patern [formControl]="paternn" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" [(ngModel)]="user.patern" (keypress)="_keyOnly3letter($event,paternn.value)">
-      <mat-error *ngIf="paternTxtError && !paternn.hasError('required')">{{paternTxtError}}</mat-error>     
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput placeholder="Apellido Materno" #matern [formControl]="maternn" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" [(ngModel)]="user.matern" (keypress)="_keyOnly3letter($event,maternn.value)">
-      <mat-error *ngIf="maternTxtError && !maternn.hasError('required')">{{maternTxtError}}</mat-error>     
-    </mat-form-field>
-    <br>
-    
-    <mat-form-field>
-      <input matInput placeholder="Número de persona" #numPerson [formControl]="numPersonn" [errorStateMatcher]="matcher" (keypress)="_keyPress($event)" [(ngModel)]="user.numPerson">
-      <mat-error *ngIf="numPersonTxtError && !numPersonn.hasError('required')">{{numPersonTxtError}}</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput placeholder="Número de cuenta" #numAcount [formControl]="numAcountt" (keypress)="_keyPress($event)" [(ngModel)]="user.numAcount">
-      <mat-error *ngIf="numAcountTxtError && !numAcountt.hasError('required')">{{numAcountTxtError}}</mat-error>     
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput placeholder="Correo Electrónico del Tutor" #mailTutor [(ngModel)]="user.mailTutor" [formControl]="mailTutorr" [errorStateMatcher]="matcher">
-      <mat-error *ngIf="mailTutorTxtError && !mailTutorr.hasError('required')">{{mailTutorTxtError}}</mat-error>     
-    </mat-form-field>
-    <br>
-  </div>
-  <div class="btn">
-    <button mat-raised-button color="warn" class="cancel">CANCELAR</button>
-    <button mat-raised-button color="warn" (click)="save()">BUSCAR</button>
-  </div>
+    <div class="form">
+
+        <mat-form-field>
+            <input matInput placeholder="Correo Electrónico" required #mail [formControl]="maill" [errorStateMatcher]="matcher" [(ngModel)]="user.mail">
+            <mat-error *ngIf="mailTxtError && !maill.hasError('required')">{{mailTxtError}}</mat-error>
+            <mat-error *ngIf="maill.hasError('required')">Ingresa un correo electrónico</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Número Teléfono" maxlength="10" minlength="10" type="tel" #phone [formControl]="phonee" [errorStateMatcher]="matcher" (keypress)="_keyPress($event)" [(ngModel)]="user.phone">
+            <mat-error *ngIf="phoneTxtError && !phonee.hasError('required')">{{phoneTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Número Celular (10 dígitos)" maxlength="10" minlength="10" type="tel" #celular [formControl]="cell" [errorStateMatcher]="matcher" (keypress)="_keyPress($event)" [(ngModel)]="user.cell">
+            <mat-error *ngIf="cellTxtError && !cell.hasError('required')">{{cellTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Nombre" #name [formControl]="namee" [errorStateMatcher]="matcher" [(ngModel)]="user.name" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,namee.value)">
+            <mat-error *ngIf="nameTxtError && !namee.hasError('required')">{{nameTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Apellido Paterno" #patern [formControl]="paternn" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" [(ngModel)]="user.patern" (keypress)="_keyOnly3letter($event,paternn.value)">
+            <mat-error *ngIf="paternTxtError && !paternn.hasError('required')">{{paternTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Apellido Materno" #matern [formControl]="maternn" [errorStateMatcher]="matcher" (keypress)="_keyPressTxt($event)" [(ngModel)]="user.matern" (keypress)="_keyOnly3letter($event,maternn.value)">
+            <mat-error *ngIf="maternTxtError && !maternn.hasError('required')">{{maternTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+            <input matInput placeholder="Número de persona" #numPerson [formControl]="numPersonn" [errorStateMatcher]="matcher" (keypress)="_keyPress($event)" [(ngModel)]="user.numPerson">
+            <mat-error *ngIf="numPersonTxtError && !numPersonn.hasError('required')">{{numPersonTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Número de cuenta" #numAcount [formControl]="numAcountt" (keypress)="_keyPress($event)" [(ngModel)]="user.numAcount">
+            <mat-error *ngIf="numAcountTxtError && !numAcountt.hasError('required')">{{numAcountTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Correo Electrónico del Tutor" #mailTutor [(ngModel)]="user.mailTutor" [formControl]="mailTutorr" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="mailTutorTxtError && !mailTutorr.hasError('required')">{{mailTutorTxtError}}</mat-error>
+        </mat-form-field>
+        <br>
+    </div>
+    <div class="btn">
+        <button mat-raised-button color="warn" class="cancel">CANCELAR</button>
+        <button mat-raised-button color="warn" (click)="save()">BUSCAR</button>
+    </div>
 </div>
-  
