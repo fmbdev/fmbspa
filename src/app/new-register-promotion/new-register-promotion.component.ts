@@ -206,7 +206,7 @@ export class NewRegisterPromotionComponent implements OnInit {
       SubSubTipoActividad: new FormControl(''),
       turno: new FormControl(''),
       school: new FormControl(''),
-      calidad: new FormControl(''),
+      calidad: new FormControl('', Validators.maxLength(5)),
 
       name: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
       patern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
@@ -232,9 +232,9 @@ export class NewRegisterPromotionComponent implements OnInit {
       interestModalidad: new FormControl('', Validators.required),
       interestCarrera: new FormControl('', Validators.required),
       interestCiclo: new FormControl('', Validators.required),
-      numPersona: new FormControl(''),
-      etapaVenta: new FormControl('', ),
-      numCuenta: new FormControl('', ),
+      numPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
+      etapaVenta: new FormControl('' ),
+      numCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
 
       tipificacion: new FormControl('', Validators.required),
       notas: new FormControl(''),

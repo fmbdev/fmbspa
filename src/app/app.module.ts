@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http';
 
 import { DialogComponent } from './dialog/dialog.component';
 
+import { PapaParseModule } from 'ngx-papaparse';
+
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatGridListModule } from '@angular/material';
@@ -114,7 +116,8 @@ import { FormComponent } from './form/form.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    PapaParseModule
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
     ParentescoService, CampusService, NivelService, ModalidadService,

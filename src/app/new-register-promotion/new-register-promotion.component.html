@@ -72,7 +72,7 @@
                     <mat-form-field>
                         <mat-select placeholder="Turno" formControlName="turno" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let turno of turnos;" [value]="turno['crmit_name']">
+                            <mat-option *ngFor="let turno of turnos;" [value]="turno['id']">
                                 {{ turno['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -93,6 +93,7 @@
                 <mat-grid-tile>
                     <mat-form-field>
                         <input matInput placeholder="Calidad" formControlName="calidad" required>
+                        <mat-error *ngIf="form.controls.calidad.errors?.maxlength">Debe contener como máximo 5 caracteres</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -146,7 +147,7 @@
                     <mat-form-field>
                         <mat-select formControlName="gender" placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let genero of generos;" [value]="genero['genero']">
+                            <mat-option *ngFor="let genero of generos;" [value]="genero['id']">
                                 {{ genero['genero'] }}
                             </mat-option>
                         </mat-select>
@@ -238,7 +239,7 @@
                     <mat-form-field>
                         <mat-select formControlName="interestArea" placeholder="Área Ínteres" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
@@ -261,7 +262,8 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input matInput placeholder="Número de Persona" formControlName="numPersona" value="" readonly>
+                        <input matInput placeholder="Número de Persona" formControlName="numPersona" value="">
+                        <mat-error *ngIf="form.controls.numPersona.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -298,7 +300,8 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input matInput placeholder="Número de Cuenta" formControlName="numCuenta" value="" readonly>
+                        <input matInput placeholder="Número de Cuenta" formControlName="numCuenta" value="">
+                        <mat-error *ngIf="form.controls.numCuenta.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>

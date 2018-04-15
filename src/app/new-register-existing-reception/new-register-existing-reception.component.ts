@@ -191,9 +191,9 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
       interestModalidad: new FormControl('', Validators.required),
       interestCarrera: new FormControl('', Validators.required),
       interestCiclo: new FormControl('', Validators.required),
-      numPersona: new FormControl(''),
-      etapaVenta: new FormControl('', ),
-      numCuenta: new FormControl('', ),
+      numPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
+      etapaVenta: new FormControl(''),
+      numCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
 
       tipificacion: new FormControl('', Validators.required),
       notas: new FormControl(''),

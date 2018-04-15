@@ -55,7 +55,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Interesa" id="interes" placeholder="Interesa/No interesa" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
@@ -111,12 +111,11 @@
                     <mat-form-field>
                         <mat-select formControlName="Genero" placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let genero of generos;" [value]="genero['genero']">
+                            <mat-option *ngFor="let genero of generos;" [value]="genero['id']">
                                 {{ genero['genero'] }}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Genero.errors?.required">Elige un Género</mat-error>
-
                     </mat-form-field>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="FechaNacimiento" matInput [matDatepicker]="pickerB" readonly placeholder="Fecha de Nacimiento">
@@ -201,7 +200,7 @@
                     <mat-form-field>
                         <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
