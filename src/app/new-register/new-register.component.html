@@ -76,35 +76,35 @@
                         </mat-grid-tile>
                     </mat-grid-list>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)">
+                        <input autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)"  (change)="onChange()">
                         <mat-error *ngIf="form.controls.Nombre.errors?.required">Por favor ingresa un nombre </mat-error>
                         <mat-error *ngIf="form.controls.Nombre.errors?.palabraMala && !form.controls.Nombre.errors?.required">Nombre inválido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)">
+                        <input autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.required">Por favor ingresa un apellido paterno</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.palabraMala && !form.controls.ApellidoPaterno.errors?.required">Apellido Paterno inválido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)">
+                        <input autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.required">Por favor ingresa un apellido materno</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.palabraMala && !form.controls.ApellidoMaterno.errors?.required">Apellido Materno inválido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required>
+                        <input autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required (change)="onChange()">
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.required">Por favor ingresa un correo electrónico</mat-error>
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.emailMalo && !form.controls.CorreoElectronico.errors?.required">Correo Inválido </mat-error>
                     </mat-form-field>
-                    <div style="height: 41px; padding-top: 25px;">
+                    <div style="height: 41px; padding-top: 15px;">
                         <mat-checkbox (change)="addValidation($event)" value="SinCorreo">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)">
+                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.required">Ingresa número de celular</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required">Al menos debe contener 10 dígitos</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)">
+                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Telefono.errors?.required">Ingresa número de Teléfono</mat-error>
                         <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required">Al menos debe contener 10 dígitos</mat-error>
                     </mat-form-field>
@@ -126,7 +126,7 @@
                     </mat-form-field>-->
                     <input formControlName="FechaNacimiento" type="hidden">
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2">
+                        <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Edad.errors?.required">Ingresa número de Teléfono</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">Al menos debe contener 2 dígitos</mat-error>
                     </mat-form-field>
