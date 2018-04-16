@@ -132,4 +132,14 @@ export class LandingValidation {
         }
         console.log(event.charCode);
     }
+
+    static limitChar(event: any, word: any){
+        if(word.length > 9){
+            event.preventDefault();
+        }
+    }
+
+    static getMensaje(campo: any){
+        let mensajes = localStorage.getMensajes;        
+    }
 }
