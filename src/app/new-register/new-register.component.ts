@@ -62,7 +62,6 @@ export class NewRegisterComponent implements OnInit {
     TelefonoCorreo: FormControl;
     Interesa: FormControl;
    
-
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
     ApellidoMaterno: FormControl;
@@ -73,7 +72,6 @@ export class NewRegisterComponent implements OnInit {
     FechaNacimiento: FormControl;
     Edad: FormControl;
 
-
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
     ApellidoMaternoTutor: FormControl;
@@ -81,7 +79,6 @@ export class NewRegisterComponent implements OnInit {
     NumeroCelularR: FormControl;
     TelefonoTutor: FormControl;
     ParentescoTutor: FormControl;
-
 
     Campus:FormControl;
     AreaInteres:FormControl;
@@ -251,7 +248,7 @@ export class NewRegisterComponent implements OnInit {
             Notas:new FormControl(''),
 
             CampusCitas: new FormControl({value: '', disabled: true}, Validators.required),
-            FechaCita: new FormControl({value: '', disabled: true}, Validators.required),                        
+            FechaCita: new FormControl({value: ''}, Validators.required),                        
             HoraCita: new FormControl({value: '', disabled: true}, Validators.required),
             Programacion: new FormControl({value: '', disabled: true}, Validators.required),
             Transferencia: new FormControl({value: '', disabled: true}, Validators.required),
@@ -261,6 +258,7 @@ export class NewRegisterComponent implements OnInit {
     }
 
     onSubmit(){
+     this.onKeyFechaNacimiento();
      this.sendServ.sendDataToApi(this.form.value)
          .subscribe(
               (res: any) => {
@@ -272,13 +270,21 @@ export class NewRegisterComponent implements OnInit {
                      this.resetForm();
                   }
               }
-            )
+        )
     }
 
     resetForm(){
-      this.form.reset();
-    }    
-
+        this.showDialog("Los datos se han guardado correctamente.");
+        this.form.reset();
+    }
+    
+    onKeyFechaNacimiento(){
+        let edad = this.form.controls.Edad.value;
+        let year = new Date().getFullYear();
+        let fecha = year-edad;       
+        this.form.controls.FechaNacimiento.setValue(fecha);        
+    }
+    
     onKeydownEmail(event: KeyboardEvent) {
         let name = this.form.controls.NombreTutor.value;  
         if(name==''){
@@ -337,6 +343,34 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls.Asesor.reset({value: '', disabled: true}); 
         }
     }
+
+    onChangeInteres(value){
+        if(value==''){        
+            this.form.controls.Campus.clearValidators();
+            this.form.controls.AreaInteres.clearValidators();
+            this.form.controls.Nivel.clearValidators();
+            this.form.controls.Modalidad.clearValidators();
+            this.form.controls.Carrera.clearValidators();
+            this.form.controls.Ciclo.clearValidators();
+        
+        }else{
+
+             this.form.controls.Campus.setValidators([Validators.required]);
+             this.form.controls.AreaInteres.setValidators([Validators.required]);
+             this.form.controls.Nivel.setValidators([Validators.required]);
+             this.form.controls.Modalidad.setValidators([Validators.required]);
+             this.form.controls.Carrera.setValidators([Validators.required]);
+             this.form.controls.Ciclo.setValidators([Validators.required]); 
+        }
+             this.form.controls.Campus.updateValueAndValidity();
+             this.form.controls.AreaInteres.updateValueAndValidity();
+             this.form.controls.Nivel.updateValueAndValidity();
+             this.form.controls.Modalidad.updateValueAndValidity();
+             this.form.controls.Carrera.updateValueAndValidity();
+             this.form.controls.Ciclo.updateValueAndValidity();
+        
+    }
+
     onValueCampus(value) {
         
         this.form.controls.TelefonoCorreo.clearValidators();
@@ -348,8 +382,6 @@ export class NewRegisterComponent implements OnInit {
         }
              this.form.controls.TelefonoCorreo.updateValueAndValidity();
     }
-
-
 
     addValidation(isChecked)
     {

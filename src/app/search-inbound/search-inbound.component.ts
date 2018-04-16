@@ -29,6 +29,7 @@ export class SearchInboundComponent implements OnInit {
   @ViewChild('patern') patern: ElementRef;
   @ViewChild('matern') matern: ElementRef;
   @ViewChild('phone') phone: ElementRef;
+  @ViewChild('cel') cel: ElementRef;
 
   user: any = {};
   send = false;
@@ -42,6 +43,7 @@ export class SearchInboundComponent implements OnInit {
 
   maill = new FormControl('', this.validMail.bind(this));
   mailTutorr = new FormControl('', this.validMailTutor.bind(this));
+  cell = new FormControl('', [this.validPhone.bind(this)]);
 
   namee = new FormControl('', [this.validName.bind(this)]);
   paternn = new FormControl('', [this.validPatern.bind(this)]);
@@ -58,6 +60,7 @@ export class SearchInboundComponent implements OnInit {
   mailTutorTxtError: any = false;
   phoneTxtError: any = false;
   tipoTxtError: any = false;
+  cellTxtError: any = false;
 
 
   constructor(private gralService: GeneralService, public dialog: MatDialog) { }

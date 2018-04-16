@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
   @ViewChild('numAcount') numAcount: ElementRef;
 
   @ViewChild('mail') mail: ElementRef;
+  @ViewChild('cel') cel: ElementRef;
   @ViewChild('mailTutor') mailTutor: ElementRef;
   @ViewChild('name') name: ElementRef;
   @ViewChild('patern') patern: ElementRef;
@@ -46,6 +47,7 @@ export class SearchComponent implements OnInit {
   paternn = new FormControl('', [this.validPatern.bind(this)]);
   maternn = new FormControl('', [this.validMatern.bind(this)]);
   phonee = new FormControl('', [this.validPhone.bind(this)]);
+  cell = new FormControl('', [this.validPhone.bind(this)]);
   
   numPersonTxtError: any = false;
   numAcountTxtError: any = false;
@@ -56,6 +58,7 @@ export class SearchComponent implements OnInit {
   mailTxtError: any = false;
   mailTutorTxtError: any = false;
   phoneTxtError: any = false;
+  cellTxtError: any = false;
   tipoTxtError: any = false;
 
 
