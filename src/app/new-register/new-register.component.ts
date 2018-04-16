@@ -278,7 +278,8 @@ export class NewRegisterComponent implements OnInit {
     resetForm(){
         this.showDialog("Los datos se han guardado correctamente.");
         this.form.reset();
-    }    
+    }
+        
     onKeyFechaNacimiento(){
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();

@@ -221,7 +221,10 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                     <mat-form-field>
+                        <input matInput placeholder="Número de Persona" formControlName="numPersona" readonly>
+                        <mat-error *ngIf="form.controls.numPersona.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -238,7 +241,10 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                   <mat-form-field>
+                        <input matInput placeholder="Número de Cuenta" formControlName="numCuenta" readonly>
+                        <mat-error *ngIf="form.controls.numCuenta.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -254,7 +260,9 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                    <mat-form-field>
+                         <input matInput placeholder="Etapa de Venta" formControlName="etapaVenta" readonly>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
