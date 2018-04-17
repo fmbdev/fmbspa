@@ -69,9 +69,9 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
   Modalidad:FormControl;
   Carrera:FormControl;
   Ciclo:FormControl;
-  numPersona: FormControl;
+  NumeroPersona: FormControl;
   etapaVenta: FormControl;
-  numCuenta: FormControl;
+  NumeroCuenta: FormControl;
 
   Tipificacion: FormControl;
   Notas: FormControl;
