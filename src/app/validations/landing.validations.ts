@@ -24,13 +24,31 @@ export class LandingValidation {
     }
 
     static requiredSelectValidator(): ValidatorFn {
-        return (control: AbstractControl): { [key: string]: any } => {            
-            const name = control.value;            
-            if(name == ''){
+        return (control: AbstractControl): { [key: string]: any } => {
+            const name = control.value;
+            if (name == '') {
                 return { 'requiredSelect': { name } }
-            }else{
+            } else {
                 return null;
             }
+        };
+    }
+
+    static aceptNumberValidator(): ValidatorFn {
+        return (control: AbstractControl): { [key: string]: any } => {
+            const name = control.value;
+
+            const only5number = /1{5}|2{5}|3{5}|4{5}|5{5}|6{5}|7{5}|8{5}|9{5}|0{5}/;
+            console.log(name);
+            let arrarNum = '["1234567890,2345678901,3456789012,4567890123,5678901234,6789012345,7890123456,8901234567,9012345678"]';
+
+            if (only5number.test(name)) {
+                return { 'aceptNumber': { name } }
+            } else if (arrarNum.search(new RegExp(name, "i")) > 0) {
+                return { 'aceptNumber': { name } }
+            } else {
+                return null;
+            }           
         };
     }
 
@@ -39,52 +57,58 @@ export class LandingValidation {
             
             const name = control.value; 
             let arrayBasura = localStorage.getBasuraObs;
-            
-            if(name.search(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) !== -1){
-            
-            let arrEmail = control.value.split('@');
-            let lenUser  = arrEmail[0].length;
-            let username = arrEmail[0];            
-            let arrDominio = arrEmail[1].split('.');
-            let arrLargo = arrDominio.length;
-            let ddominio =arrDominio[0];
-            
-            console.log(ddominio);
+            if(name==null){
+                console.log('NO ' + name);
 
-                if (arrayBasura.search(new RegExp(username, "i"))>0) {
-                    console.log("mail 1");
-                    return {'emailMalo': {name}} 
-                }else if (arrayBasura.search(new RegExp(ddominio, "i"))>0) {
-                    console.log("mail 2");
-                    return {'emailMalo': {name}}
-                    //Validamos que no existen caracteres especiales en el dominio                                  
-                }else if(username.search(/[^a-zA-Z0-9_.-]/)!=-1){ 
-                    console.log("mail 3");
-                    return {'emailMalo': {name}}
-                    //Validacion de dominios MS                   
-                }else if(ddominio.search(/(hotmail|outlook|live)/i)!= -1 && (arrEmail[0][lenUser-1].search(/\./)!=-1 || arrEmail[0][0].search(/(-|_|\.|[0-9])/)!=-1 || arrEmail[0].search(/\.{2}/g) != -1) ){
-                     console.log("mail 4");
-                     return {'emailMalo': {name}}
-                    //Validacion de dominios gmail                
-                }else if(ddominio.search(/gmail/i)!= -1 && (arrEmail[0][lenUser-1].search(/[^a-zA-Z0-9]/)!=-1 || arrEmail[0][0].search(/(-|_|\.|[0-9])/)!=-1 || arrEmail[0].search(/\.{2}/g) != -1 || arrEmail[0].search(/(-|_)/g) != -1)){
-                    console.log("mail 5");
-                    return {'emailMalo': {name}}
-                    //Validacion de dominios yahoo     
-                } else if(ddominio.search(/yahoo/i)!= -1 && (arrEmail[0][lenUser-1].search(/[^a-zA-Z0-9]/)!=-1 || arrEmail[0][0].search(/(_|\.|[0-9])/)!=-1 || arrEmail[0].search(/(\.|_){2}/g) != -1 || arrEmail[0].search(/-/g)!=-1 ) ){
-                    console.log("mail 6");
-                    return {'emailMalo': {name}}
-                    //Validacion de dominios restantes       
-                }else if(ddominio.search(/(^hotmail|outlook|gmail|live|yahoo)/i) == -1 && ( arrEmail[0][lenUser-1].search(/(-|_|\.)/)!=-1 || arrEmail[0][0].search(/(-|_|\.|[0-9])/)!=-1 || arrEmail[0].search(/(-|_|\.){2}/g) != -1)){
-                    console.log("mail 7");
-                    return {'emailMalo': {name}}
-                     //Validacion de dominios por ejemplo debe tener @mail.com por ejemplo 
-                }else{
-                    return null;
-                }
+                return {'emailMalo': {name}}                                 
             }else{
-                    return {'emailMalo': {name}}
-            }
+                console.log(name);
 
+                if(name.search(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) !== -1){
+                
+                    let arrEmail = control.value.split('@');
+                    let lenUser  = arrEmail[0].length;
+                    let username = arrEmail[0];            
+                    let arrDominio = arrEmail[1].split('.');
+                    let arrLargo = arrDominio.length;
+                    let ddominio =arrDominio[0];
+                    
+                    console.log(ddominio);
+
+                    if (arrayBasura.search(new RegExp(username, "i"))>0) {
+                        console.log("mail 1");
+                        return {'emailMalo': {name}} 
+                    }else if (arrayBasura.search(new RegExp(ddominio, "i"))>0) {
+                        console.log("mail 2");
+                        return {'emailMalo': {name}}
+                        //Validamos que no existen caracteres especiales en el dominio                                  
+                    }else if(username.search(/[^a-zA-Z0-9_.-]/)!=-1){ 
+                        console.log("mail 3");
+                        return {'emailMalo': {name}}
+                        //Validacion de dominios MS                   
+                    }else if(ddominio.search(/(hotmail|outlook|live)/i)!= -1 && (arrEmail[0][lenUser-1].search(/\./)!=-1 || arrEmail[0][0].search(/(-|_|\.|[0-9])/)!=-1 || arrEmail[0].search(/\.{2}/g) != -1) ){
+                         console.log("mail 4");
+                         return {'emailMalo': {name}}
+                        //Validacion de dominios gmail                
+                    }else if(ddominio.search(/gmail/i)!= -1 && (arrEmail[0][lenUser-1].search(/[^a-zA-Z0-9]/)!=-1 || arrEmail[0][0].search(/(-|_|\.|[0-9])/)!=-1 || arrEmail[0].search(/\.{2}/g) != -1 || arrEmail[0].search(/(-|_)/g) != -1)){
+                        console.log("mail 5");
+                        return {'emailMalo': {name}}
+                        //Validacion de dominios yahoo     
+                    } else if(ddominio.search(/yahoo/i)!= -1 && (arrEmail[0][lenUser-1].search(/[^a-zA-Z0-9]/)!=-1 || arrEmail[0][0].search(/(_|\.|[0-9])/)!=-1 || arrEmail[0].search(/(\.|_){2}/g) != -1 || arrEmail[0].search(/-/g)!=-1 ) ){
+                        console.log("mail 6");
+                        return {'emailMalo': {name}}
+                        //Validacion de dominios restantes       
+                    }else if(ddominio.search(/(^hotmail|outlook|gmail|live|yahoo)/i) == -1 && ( arrEmail[0][lenUser-1].search(/(-|_|\.)/)!=-1 || arrEmail[0][0].search(/(-|_|\.|[0-9])/)!=-1 || arrEmail[0].search(/(-|_|\.){2}/g) != -1)){
+                        console.log("mail 7");
+                        return {'emailMalo': {name}}
+                         //Validacion de dominios por ejemplo debe tener @mail.com por ejemplo 
+                    }else{
+                        return null;
+                    }
+                }else{
+                        return {'emailMalo': {name}}
+                }
+            }
         };
     }
 
@@ -111,12 +135,18 @@ export class LandingValidation {
     static onlyNumberIgual(event: any, name: any) {
         const only5number = /1{5}|2{5}|3{5}|4{5}|5{5}|6{5}|7{5}|8{5}|9{5}|0{5}/;
         console.log(name);
+        let arrarNum = '["1234567890,2345678901,3456789012,4567890123,5678901234,6789012345,7890123456,8901234567,9012345678"]';
+       
         if (only5number.test(name)) {
             event.preventDefault();
             return false;
-        } else {
+        } else if (arrarNum.search(new RegExp(name, "i"))>0){
+            
+        }else {
             return true;
         }
+
+        
     }
     static onlyLetter(event: any) {
         const pattern = /[a-zA-Z\ñ\Ñ\ ]/;

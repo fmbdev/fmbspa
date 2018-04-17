@@ -225,8 +225,8 @@ export class NewRegisterComponent implements OnInit {
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('',[LandingValidation.palabraMalaValidator()]),
             CorreoElectronico: new FormControl('', [Validators.required,LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10)]),
-            Telefono: new FormControl('',[Validators.required,Validators.minLength(10)]),
+            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
+            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
             Edad: new FormControl('', [Validators.minLength(2)]),
@@ -250,7 +250,7 @@ export class NewRegisterComponent implements OnInit {
             Notas:new FormControl(''),
 
             CampusCitas: new FormControl({value: '', disabled: true}, Validators.required),
-            FechaCita: new FormControl({value: ''}, Validators.required),                        
+            FechaCita: new FormControl({ value: '', disabled: true}, Validators.required),                        
             HoraCita: new FormControl({value: '', disabled: true}, Validators.required),
             Programacion: new FormControl({value: '', disabled: true}, Validators.required),
             Transferencia: new FormControl({value: '', disabled: true}, Validators.required),
@@ -304,8 +304,8 @@ export class NewRegisterComponent implements OnInit {
              this.form.controls.ApellidoPaternoTutor.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
              this.form.controls.ApellidoMaternoTutor.setValidators([Validators.required,LandingValidation.palabraMalaValidator()]);
              this.form.controls.CorreoElectronicoTutor.setValidators([Validators.required,LandingValidation.emailMaloValidator()]);
-             this.form.controls.NumeroCelularR.setValidators([Validators.required,Validators.minLength(10)]);
-             this.form.controls.TelefonoTutor.setValidators([Validators.required,Validators.minLength(10)]);
+            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
+            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
              this.form.controls.ParentescoTutor.setValidators([Validators.required]); 
         }
              this.form.controls.NombreTutor.updateValueAndValidity();
@@ -336,7 +336,8 @@ export class NewRegisterComponent implements OnInit {
     _keyPressNum(event: any, value: any, word: any){
         if (value == 1) {
             LandingValidation.onlyNumber(event); 
-            LandingValidation.limitChar(event,word);            
+            LandingValidation.limitChar(event,word);  
+            LandingValidation.onlyNumberIgual(event, word);          
         }
     }
  
@@ -383,19 +384,16 @@ export class NewRegisterComponent implements OnInit {
         
     }
 
-    /*onValueCampus(value) {        
+    onFielCanal(value) {        
         this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false }); 
-
-        if(value==1){
-            
-            this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10),Validators.maxLength(10)]);
-        }else{
-              
+        if(value==1){            
+            this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator()]);
+        }else{              
             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
         }
-             this.form.controls.TelefonoCorreo.updateValueAndValidity();
-    }*/
+            this.form.controls.TelefonoCorreo.updateValueAndValidity();
+    }
 
     addValidation(isChecked)
     {
@@ -416,9 +414,11 @@ export class NewRegisterComponent implements OnInit {
         } 
          this.form.controls.Asesor.updateValueAndValidity(); 
     }
+
     showMjs(field: any){        
        return LandingValidation.getMensaje(field);
     }
+    
     private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {
           height: '180px',

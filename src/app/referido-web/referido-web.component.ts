@@ -161,7 +161,19 @@ export class ReferidoWebComponent implements OnInit {
   _keyPressTxt(event: any) {
     LandingValidation.onlyLetter(event);
   }
-
+  showMjs(field: any) {
+    return LandingValidation.getMensaje(field);
+  }
+  _keyPressNum(event: any, value: any, word: any) {
+    if (value == 1) {
+      LandingValidation.onlyNumber(event);
+      LandingValidation.limitChar(event, word);
+      LandingValidation.onlyNumberIgual(event, word);
+    }
+  }
+  _keyPressNumA(event: any, name: any) {
+    LandingValidation.onlyNumberIgual(event, name);
+  }
   onChange() {
     if (this.form.controls.tipoCel.value == 'Oficina') {
       this.mostrarExtension = false;
