@@ -12,7 +12,7 @@ import { Palabra } from '../interfaces/palabra';
 export class LandingService {
 
 	configUrl = "/assets/palabras_basura.json";
-  	mesajesUrl = "/assets/palabras_basura.json";
+	mesajesUrl = "/assets/mensajes_validaciones.json";
 
   	constructor(private http: HttpClient) { }
 
@@ -29,11 +29,11 @@ export class LandingService {
 	}
 
 	getMensajes() {
-		if (localStorage.getMensajes === undefined) {
+		if (localStorage.getMjs === undefined) {
 			console.log('creando MEnsaje localstorage');
 			return this.http.get(this.mesajesUrl)
 				.subscribe(data => {
-					localStorage.getMensajes = JSON.stringify(data);
+					localStorage.getMjs = JSON.stringify(data);
 				});
 		} else {
 			return console.log('undefined Mensajes');

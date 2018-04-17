@@ -108,7 +108,16 @@ export class LandingValidation {
           event.preventDefault();
         }
     }
-
+    static onlyNumberIgual(event: any, name: any) {
+        const only5number = /1{5}|2{5}|3{5}|4{5}|5{5}|6{5}|7{5}|8{5}|9{5}|0{5}/;
+        console.log(name);
+        if (only5number.test(name)) {
+            event.preventDefault();
+            return false;
+        } else {
+            return true;
+        }
+    }
     static onlyLetter(event: any) {
         const pattern = /[a-zA-Z\ñ\Ñ\ ]/;
         const inputChar = String.fromCharCode(event.charCode);
@@ -140,6 +149,10 @@ export class LandingValidation {
     }
 
     static getMensaje(campo: any){
-        let mensajes = localStorage.getMensajes;        
+        let m = campo.split('.');
+        let field = m[0];
+        let mjs = m[1];
+        let object = JSON.parse(localStorage.getMjs);  
+        return object[field][mjs];   
     }
 }
