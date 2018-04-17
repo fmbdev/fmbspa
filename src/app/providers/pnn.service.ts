@@ -2,17 +2,30 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Pnn } from '../interfaces/pnn';
 import { Observable } from 'rxjs/Observable';
+import { PapaParseService } from 'ngx-papaparse';
 import 'rxjs/Rx';
 
 @Injectable()
 export class PnnService {
 
-  private headers = new Headers({'Content-Type':'application/json'});
-  private pnns: Pnn[] = [];
+  /*private headers = new Headers({'Content-Type':'application/json'});
+  private pnns: Pnn[] = [];*/
+  private pnns
 
-  constructor(private http: Http) { }
+  private file_path = "/assets/pnn_publico.csv";
 
-  getAll() {
+  constructor(private http: Http,
+              private papa: PapaParseService) { }
+
+  getAll(){
+    this.papa.parse(this.file_path, {
+      download: true,
+      complete: function(result) {
+      }
+    });
+  }
+
+  /*getAll() {
     this.http.get("http://localhost:8000/api/pnn", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
@@ -20,7 +33,7 @@ export class PnnService {
                .subscribe(
                 (data: Pnn[]) => this.pnns = data
                )
-  }
+  }*/
 
   checkPnnIsValid(value: string) : boolean {
     let serie = value.substr(0,6);
@@ -37,7 +50,8 @@ export class PnnService {
          }
       }
     }
-    return isValid;
-    
+    return isValid; 
   }
 }
+
+

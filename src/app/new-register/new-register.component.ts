@@ -4,7 +4,7 @@ import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, Ng
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 
-import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 
@@ -32,6 +32,7 @@ import { HoraService } from '../providers/hora.service';
 import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
+import { FormatService } from '../providers/format.service';
 import { CampusService } from '../providers/campus.service';
 import { AsesorService } from '../providers/asesor.service';
 import { GeneroService } from '../providers/genero.service';
@@ -62,7 +63,6 @@ export class NewRegisterComponent implements OnInit {
     TelefonoCorreo: FormControl;
     Interesa: FormControl;
    
-
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
     ApellidoMaterno: FormControl;
@@ -73,7 +73,6 @@ export class NewRegisterComponent implements OnInit {
     FechaNacimiento: FormControl;
     Edad: FormControl;
 
-
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
     ApellidoMaternoTutor: FormControl;
@@ -81,7 +80,6 @@ export class NewRegisterComponent implements OnInit {
     NumeroCelularR: FormControl;
     TelefonoTutor: FormControl;
     ParentescoTutor: FormControl;
-
 
     Campus:FormControl;
     AreaInteres:FormControl;
@@ -91,7 +89,6 @@ export class NewRegisterComponent implements OnInit {
     Ciclo:FormControl;
     Tipificacion:FormControl;
     Notas:FormControl;
-
 
     CampusCitas :FormControl;
     FechaCita :FormControl;
@@ -126,6 +123,7 @@ export class NewRegisterComponent implements OnInit {
                 private canalServ: CanalService,
                 private campusServ: CampusService,
                 private asesorServ: AsesorService,
+                private formatServ: FormatService,
                 private generoServ: GeneroService,
                 private carreraServ: CarreraService,
                 private interesServ: InteresService,
@@ -247,11 +245,12 @@ export class NewRegisterComponent implements OnInit {
             Modalidad: new FormControl(''),
             Carrera: new FormControl(''),
             Ciclo: new FormControl(''),
+            
             Tipificacion: new FormControl(''),
             Notas:new FormControl(''),
 
             CampusCitas: new FormControl({value: '', disabled: true}, Validators.required),
-            FechaCita: new FormControl({value: '', disabled: true}, Validators.required),                        
+            FechaCita: new FormControl({value: ''}, Validators.required),                        
             HoraCita: new FormControl({value: '', disabled: true}, Validators.required),
             Programacion: new FormControl({value: '', disabled: true}, Validators.required),
             Transferencia: new FormControl({value: '', disabled: true}, Validators.required),
@@ -261,6 +260,9 @@ export class NewRegisterComponent implements OnInit {
     }
 
     onSubmit(){
+     this.onKeyFechaNacimiento();
+     this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+
      this.sendServ.sendDataToApi(this.form.value)
          .subscribe(
               (res: any) => {
@@ -272,19 +274,17 @@ export class NewRegisterComponent implements OnInit {
                      this.resetForm();
                   }
               }
-            )
+        )
     }
 
     resetForm(){
-        this.showDialog("Los datos se han guardado correctamente.");
         this.form.reset();
     }
 
     onKeyFechaNacimiento(){
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();
-        let fechaNac = year-edad;
-        let fecha = '1/1/'+fechaNac;        
+        let fecha = year-edad;    
         this.form.controls.FechaNacimiento.setValue(fecha);        
     }
     
@@ -379,7 +379,7 @@ export class NewRegisterComponent implements OnInit {
         
     }
 
-    onValueCampus(value) {        
+    /*onValueCampus(value) {        
         this.form.controls.TelefonoCorreo.clearValidators();
         if(value==1){
             this.form.controls.TelefonoCorreo.setValidators({ value: '', disabled: false },[Validators.minLength(10),Validators.maxLength(10)]);
@@ -388,7 +388,7 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls.TelefonoCorreo.setValidators({ value: '', disabled: false },[LandingValidation.emailMaloValidator()]);
         }
              this.form.controls.TelefonoCorreo.updateValueAndValidity();
-    }
+    }*/
 
     addValidation(isChecked)
     {
