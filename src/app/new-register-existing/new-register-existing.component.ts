@@ -266,7 +266,8 @@ export class NewRegisterExistingComponent implements OnInit {
 
     onSubmit(){
         this.onKeyFechaNacimiento();
-        this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+        let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+        this.form.controls['FechaCita'].setValue(fecha_cita);
 
         this.sendServ.sendDataToApi(this.form.value)
             .subscribe(
