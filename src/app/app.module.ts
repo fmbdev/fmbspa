@@ -12,7 +12,7 @@ import { PapaParseModule } from 'ngx-papaparse';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatGridListModule } from '@angular/material';
-import { MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatRadioModule } from '@angular/material';
+import { MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatRadioModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NewRegisterPromotionComponent } from './new-register-promotion/new-register-promotion.component';
@@ -35,6 +35,7 @@ import { NivelService } from './providers/nivel.service';
 import { CanalService } from './providers/canal.service';
 import { CicloService } from './providers/ciclo.service';
 import { TurnoService } from './providers/turno.service';
+import { FormatService } from './providers/format.service';
 import { CampusService } from './providers/campus.service';
 import { AsesorService } from './providers/asesor.service';
 import { GeneroService } from './providers/genero.service';
@@ -120,11 +121,12 @@ import { FormComponent } from './form/form.component';
     PapaParseModule
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
-    ParentescoService, CampusService, NivelService, ModalidadService,
-    CarreraService, CicloService, AsesorService, HoraService, PnnService, SendService, 
-    CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
-    ProgramacionService, SinCorreoService, SubTipoActividadService, TerritorioService, TipoActividadService,
-    TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService],
+              ParentescoService, CampusService, NivelService, ModalidadService,
+              CarreraService, CicloService, AsesorService, HoraService, PnnService, SendService, FormatService,
+              CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
+              ProgramacionService, SinCorreoService, SubTipoActividadService, TerritorioService, TipoActividadService,
+              TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

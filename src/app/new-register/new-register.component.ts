@@ -4,7 +4,7 @@ import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, Ng
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 
-import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 
@@ -32,6 +32,7 @@ import { HoraService } from '../providers/hora.service';
 import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
+import { FormatService } from '../providers/format.service';
 import { CampusService } from '../providers/campus.service';
 import { AsesorService } from '../providers/asesor.service';
 import { GeneroService } from '../providers/genero.service';
@@ -89,7 +90,6 @@ export class NewRegisterComponent implements OnInit {
     Tipificacion:FormControl;
     Notas:FormControl;
 
-
     CampusCitas :FormControl;
     FechaCita :FormControl;
     HoraCita :FormControl;
@@ -123,6 +123,7 @@ export class NewRegisterComponent implements OnInit {
                 private canalServ: CanalService,
                 private campusServ: CampusService,
                 private asesorServ: AsesorService,
+                private formatServ: FormatService,
                 private generoServ: GeneroService,
                 private carreraServ: CarreraService,
                 private interesServ: InteresService,
@@ -217,7 +218,7 @@ export class NewRegisterComponent implements OnInit {
             Usuario: new FormControl({value: '', disabled: true}, Validators.required),
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl('', Validators.required),
-            TelefonoCorreo: new FormControl('', Validators.required),
+            TelefonoCorreo: new FormControl({ value: '', disabled: true }),
             Interesa:new FormControl(''),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -244,6 +245,7 @@ export class NewRegisterComponent implements OnInit {
             Modalidad: new FormControl(''),
             Carrera: new FormControl(''),
             Ciclo: new FormControl(''),
+            
             Tipificacion: new FormControl(''),
             Notas:new FormControl(''),
 
@@ -259,6 +261,8 @@ export class NewRegisterComponent implements OnInit {
 
     onSubmit(){
      this.onKeyFechaNacimiento();
+     this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+
      this.sendServ.sendDataToApi(this.form.value)
          .subscribe(
               (res: any) => {
@@ -274,14 +278,13 @@ export class NewRegisterComponent implements OnInit {
     }
 
     resetForm(){
-        this.showDialog("Los datos se han guardado correctamente.");
         this.form.reset();
     }
-    
+
     onKeyFechaNacimiento(){
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();
-        let fecha = year-edad;       
+        let fecha = year-edad;    
         this.form.controls.FechaNacimiento.setValue(fecha);        
     }
     
@@ -325,6 +328,13 @@ export class NewRegisterComponent implements OnInit {
     _keyPressTxt(event: any) {        
         LandingValidation.onlyLetter(event);
     }
+
+    _keyPressNum(event: any, value: any, word: any){
+        if (value == 1) {
+            LandingValidation.onlyNumber(event); 
+            LandingValidation.limitChar(event,word);            
+        }
+    }
  
     onChange(){
         if(this.form.controls.Nombre.value !=''  && this.form.controls.ApellidoPaterno.value !='' && this.form.controls.ApellidoMaterno.value !='' && this.form.controls.CorreoElectronico.value !='' && this.form.controls.NumeroCelular.value !='' && this.form.controls.Telefono.value !=''){
@@ -332,15 +342,13 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls.FechaCita.reset({value: '', disabled: false});
             this.form.controls.HoraCita.reset({value: '', disabled: false});
             this.form.controls.Programacion.reset({value: '', disabled: false});
-            this.form.controls.Transferencia.reset({value: '', disabled: false});
-            this.form.controls.Asesor.reset({value: '', disabled: false}); 
+            this.form.controls.Transferencia.reset({value: '', disabled: false});            
         }else{
-           this.form.controls.CampusCitas.reset({value: '', disabled: true});
+            this.form.controls.CampusCitas.reset({value: '', disabled: true});
             this.form.controls.FechaCita.reset({value: '', disabled: true});
             this.form.controls.HoraCita.reset({value: '', disabled: true});
             this.form.controls.Programacion.reset({value: '', disabled: true});
-            this.form.controls.Transferencia.reset({value: '', disabled: true});
-            this.form.controls.Asesor.reset({value: '', disabled: true}); 
+            this.form.controls.Transferencia.reset({value: '', disabled: true});            
         }
     }
 
@@ -371,17 +379,16 @@ export class NewRegisterComponent implements OnInit {
         
     }
 
-    onValueCampus(value) {
-        
+    /*onValueCampus(value) {        
         this.form.controls.TelefonoCorreo.clearValidators();
         if(value==1){
-             this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10),Validators.maxLength(10)]);
+            this.form.controls.TelefonoCorreo.setValidators({ value: '', disabled: false },[Validators.minLength(10),Validators.maxLength(10)]);
         }else{
               
-             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
+            this.form.controls.TelefonoCorreo.setValidators({ value: '', disabled: false },[LandingValidation.emailMaloValidator()]);
         }
              this.form.controls.TelefonoCorreo.updateValueAndValidity();
-    }
+    }*/
 
     addValidation(isChecked)
     {
@@ -391,6 +398,16 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls.CorreoElectronico.reset({value: '', disabled: false});                    
         } 
          this.form.controls.CorreoElectronico.updateValueAndValidity(); 
+    }
+
+    addAsesor(isChecked)
+    {
+        if(isChecked.checked){          
+            this.form.controls.Asesor.reset({value: '', disabled: false});        
+        }else{
+            this.form.controls.Asesor.reset({value: '', disabled: true});                    
+        } 
+         this.form.controls.Asesor.updateValueAndValidity(); 
     }
 
     private showDialog(message: string){

@@ -176,6 +176,7 @@ export class NewRegisterSoloComponent implements OnInit {
   }
 
   onSubmit(){
+    this.onKeyFechaNacimiento();
     this.sendServ.sendDataToApi(this.form.value)
         .subscribe(
              (res: any) => {
@@ -197,10 +198,9 @@ export class NewRegisterSoloComponent implements OnInit {
   onKeyFechaNacimiento(){
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();
-        let fechaNac = year-edad;
-        let fecha = '1/1/'+fechaNac;        
+        let fecha = year-edad;       
         this.form.controls.FechaNacimiento.setValue(fecha);        
-  }
+    }
 
   onKeydownEmail(event: KeyboardEvent) {
     let name = this.form.controls.NombreTutor.value;  
@@ -245,6 +245,7 @@ export class NewRegisterSoloComponent implements OnInit {
 
   onChangeInteres(value){
         if(value==''){
+        
             this.form.controls.Campus.clearValidators();
             this.form.controls.AreaInteres.clearValidators();
             this.form.controls.Nivel.clearValidators();
@@ -266,9 +267,9 @@ export class NewRegisterSoloComponent implements OnInit {
              this.form.controls.Nivel.updateValueAndValidity();
              this.form.controls.Modalidad.updateValueAndValidity();
              this.form.controls.Carrera.updateValueAndValidity();
-             this.form.controls.Ciclo.updateValueAndValidity();  
-  }
-  
+             this.form.controls.Ciclo.updateValueAndValidity();
+        
+    }
   addValidation(isChecked) {
     if (isChecked.checked) {
       this.form.controls.mail.reset({ value: '', disabled: true });

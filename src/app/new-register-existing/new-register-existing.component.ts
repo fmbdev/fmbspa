@@ -32,6 +32,7 @@ import { HoraService } from '../providers/hora.service';
 import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
+import { FormatService } from '../providers/format.service';
 import { CampusService } from '../providers/campus.service';
 import { AsesorService } from '../providers/asesor.service';
 import { GeneroService } from '../providers/genero.service';
@@ -85,16 +86,19 @@ export class NewRegisterExistingComponent implements OnInit {
     Modalidad:FormControl;
     Carrera:FormControl;
     Ciclo:FormControl;
+    numPersona:FormControl;
+    etapaVenta: FormControl;
+    numCuenta: FormControl;
 
-    Tipificacion: FormControl;
-    Notas: FormControl;
+    tipificacion: FormControl;
+    notas: FormControl;
 
-    CampusCitas :FormControl;
-    FechaCita :FormControl;
-    HoraCita :FormControl;
-    Programacion :FormControl;
-    Transferencia :FormControl;
-    Asesor :FormControl;
+    citaFecha: FormControl;
+    citaCampus: FormControl;
+    citaHora: FormControl;
+    citaCall: FormControl;
+    citaTransfer: FormControl;
+    citaAsesor: FormControl;
 
     csqs: Csq[] = [];
     horas: Hora[] = [];
@@ -120,6 +124,7 @@ export class NewRegisterExistingComponent implements OnInit {
                 private nivelServ: NivelService,
                 private cicloServ: CicloService,
                 private canalServ: CanalService,
+                private formatServ: FormatService,
                 private campusServ: CampusService,
                 private asesorServ: AsesorService,
                 private generoServ: GeneroService,
@@ -242,11 +247,14 @@ export class NewRegisterExistingComponent implements OnInit {
             Modalidad: new FormControl(''),
             Carrera: new FormControl(''),
             Ciclo: new FormControl(''),
+            NumeroPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
+            etapaVenta: new FormControl(''),
+            NumeroCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
 
             Tipificacion: new FormControl('', Validators.required),
             Notas: new FormControl(''),
 
-            CampusCitas: new FormControl({value: '', disabled: true}, Validators.required),
+            CampusCita: new FormControl({value: '', disabled: true}, Validators.required),
             FechaCita: new FormControl({value: '', disabled: true}, Validators.required),                        
             HoraCita: new FormControl({value: '', disabled: true}, Validators.required),
             Programacion: new FormControl({value: '', disabled: true}, Validators.required),
@@ -257,6 +265,9 @@ export class NewRegisterExistingComponent implements OnInit {
     }
 
     onSubmit(){
+        this.onKeyFechaNacimiento();
+        this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+
         this.sendServ.sendDataToApi(this.form.value)
             .subscribe(
                  (res: any) => {
@@ -303,9 +314,9 @@ export class NewRegisterExistingComponent implements OnInit {
              this.form.controls.TelefonoTutor.updateValueAndValidity();
              this.form.controls.ParentescoTutor.updateValueAndValidity();
     }
-
     onChangeInteres(value){
-        if(value==''){  
+        if(value==''){
+        
             this.form.controls.Campus.clearValidators();
             this.form.controls.AreaInteres.clearValidators();
             this.form.controls.Nivel.clearValidators();
@@ -333,8 +344,7 @@ export class NewRegisterExistingComponent implements OnInit {
     onKeyFechaNacimiento() {
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();
-        let fechaNac = year - edad;
-        let fecha = '1/1/' + fechaNac;
+        let fecha = year - edad;
         this.form.controls.FechaNacimiento.setValue(fecha);
     }
     

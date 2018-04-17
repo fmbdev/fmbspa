@@ -176,9 +176,9 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
       Modalidad: new FormControl(''),
       Carrera: new FormControl(''),
       Ciclo: new FormControl(''),
-      numPersona: new FormControl(''),
-      etapaVenta: new FormControl('', ),
-      numCuenta: new FormControl('', ),
+      NumeroPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
+      etapaVenta: new FormControl(''),
+      NumeroCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
 
       Tipificacion: new FormControl('', Validators.required),
       Notas: new FormControl(''),
@@ -186,6 +186,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
   }
 
   onSubmit(){
+    this.onKeyFechaNacimiento();
     this.sendServ.sendDataToApi(this.form.value)
         .subscribe(
              (res: any) => {
@@ -207,8 +208,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
   onKeyFechaNacimiento() {
     let edad = this.form.controls.Edad.value;
     let year = new Date().getFullYear();
-    let fechaNac = year - edad;
-    let fecha = '1/1/' + fechaNac;
+    let fecha = year - edad;
     this.form.controls.FechaNacimiento.setValue(fecha);
   }
 
@@ -240,9 +240,9 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
          this.form.controls.TelefonoTutor.updateValueAndValidity();
          this.form.controls.ParentescoTutor.updateValueAndValidity();
   }
-
   onChangeInteres(value){
-        if(value==''){  
+        if(value==''){
+        
             this.form.controls.Campus.clearValidators();
             this.form.controls.AreaInteres.clearValidators();
             this.form.controls.Nivel.clearValidators();

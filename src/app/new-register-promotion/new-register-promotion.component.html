@@ -70,7 +70,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Turno" formControlName="turno" required>
+                        <mat-select placeholder="Turno" formControlName="Turno" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let turno of turnos;" [value]="turno['id']">
                                 {{ turno['crmit_name'] }}
@@ -92,8 +92,8 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input matInput placeholder="Calidad" formControlName="calidad" required>
-                        <mat-error *ngIf="form.controls.calidad.errors?.maxlength">Debe contener como máximo 5 caracteres</mat-error>
+                        <input matInput placeholder="calidad" formControlName="Calidad" required>
+                        <mat-error *ngIf="form.controls.Calidad.errors?.maxlength">Debe contener como máximo 5 caracteres</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -323,7 +323,7 @@
             </mat-grid-tile>
             <mat-grid-tile>
                 <div class="btn">
-                    <button mat-raised-button color="warn" class="cancel">CANCELAR</button>
+                    <button mat-raised-button color="warn" class="cancel" (click)="resetForm()">CANCELAR</button>
                     <button mat-raised-button color="warn" (click)="onSubmit()">GUARDAR</button>
                 </div>
             </mat-grid-tile>

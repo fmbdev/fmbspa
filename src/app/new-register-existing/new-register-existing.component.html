@@ -221,7 +221,10 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                     <mat-form-field>
+                        <input matInput placeholder="Número de Persona" formControlName="NumeroPersona">
+                        <mat-error *ngIf="form.controls.NumeroPersona.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -238,7 +241,10 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                   <mat-form-field>
+                        <input matInput placeholder="Número de Cuenta" formControlName="NumeroCuenta">
+                        <mat-error *ngIf="form.controls.NumeroCuenta.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -254,7 +260,9 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                    <mat-form-field>
+                         <input matInput placeholder="Etapa de Venta" formControlName="etapaVenta" readonly>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -296,7 +304,7 @@
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-form-field style="margin-left: 10px;" class="example-full-width">
-                <textarea matInput placeholder="Notas" formControlName="notas" (keypress)="_keyOnly3letter($event,notass.value)"></textarea>
+                <textarea matInput placeholder="Notas" formControlName="Notas" (keypress)="_keyOnly3letter($event,Notas.value)"></textarea>
             </mat-form-field>
         </div>
         <div class="head-blue mt">
@@ -344,7 +352,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Asesor" formControlName="citaAsesor">
+                        <mat-select placeholder="Asesor" formControlName="Asesor">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let asesor of asesores;" [value]="asesor['Nombre Asesor']">
                                 {{ asesor['Nombre Asesor'] }}

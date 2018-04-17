@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.landingService.getPalabrasMalas();
+    this.landingService.getMensajes();
   }
 
 }

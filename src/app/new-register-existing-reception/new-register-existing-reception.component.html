@@ -7,7 +7,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input autocomplete="off" matInput placeholder="Usuario" formControlName="user" value="Ricardo Vargas" readonly>
+                        <input autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario" value="Ricardo Vargas" readonly>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -174,7 +174,10 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                     <mat-form-field>
+                        <input matInput placeholder="Número de Persona" formControlName="NumeroPersona">
+                        <mat-error *ngIf="form.controls.NumeroPersona.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -191,7 +194,10 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                    <mat-form-field>
+                        <input matInput placeholder="Número de Cuenta" formControlName="NumeroCuenta">
+                        <mat-error *ngIf="form.controls.NumeroCuenta.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -207,7 +213,9 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+                   <mat-form-field>
+                         <input matInput placeholder="Etapa de Venta" formControlName="etapaVenta" readonly>
+                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">

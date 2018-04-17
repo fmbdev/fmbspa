@@ -1,0 +1,14 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class FormatService {
+
+  constructor(){}
+
+  changeFormatFechaCita(value: string) : string {
+    var date = new Date(value),
+        mnth = ("0" + (date.getMonth()+1)).slice(-2),
+        day  = ("0" + date.getDate()).slice(-2);
+    return [day, mnth, date.getFullYear()].join("/");
+  }
+}

@@ -60,7 +60,7 @@ export class NewRegisterPromotionComponent implements OnInit {
   SubSubTipoActividad: FormControl;
   turno: FormControl;
   school: FormControl;
-  calidad: FormControl;
+  Calidad: FormControl;
 
 
   Nombre: FormControl;
@@ -196,9 +196,9 @@ export class NewRegisterPromotionComponent implements OnInit {
       subTipoActividad: new FormControl(''),
       company: new FormControl(''),
       SubSubTipoActividad: new FormControl(''),
-      turno: new FormControl(''),
+      Turno: new FormControl(''),
       school: new FormControl(''),
-      calidad: new FormControl('', Validators.maxLength(5)),
+      Calidad: new FormControl('', Validators.maxLength(5)),
 
       Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
       ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -224,14 +224,11 @@ export class NewRegisterPromotionComponent implements OnInit {
       Modalidad: new FormControl(''),
       Carrera: new FormControl(''),
       Ciclo: new FormControl(''),
-      numPersona: new FormControl(''),
-      etapaVenta: new FormControl('', ),
-      numCuenta: new FormControl('', ),
-
     });
   }
 
   onSubmit(){
+    this.onKeyFechaNacimiento()
     this.sendServ.sendDataToApi(this.form.value)
         .subscribe(
              (res: any) => {
@@ -253,8 +250,7 @@ export class NewRegisterPromotionComponent implements OnInit {
   onKeyFechaNacimiento() {
     let edad = this.form.controls.Edad.value;
     let year = new Date().getFullYear();
-    let fechaNac = year - edad;
-    let fecha = '1/1/' + fechaNac;
+    let fecha = year - edad;
     this.form.controls.FechaNacimiento.setValue(fecha);
   }
 

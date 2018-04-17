@@ -11,11 +11,12 @@ import { Palabra } from '../interfaces/palabra';
 @Injectable()
 export class LandingService {
 
-  	configUrl = "/assets/palabras_basura.json";
+	configUrl = "/assets/palabras_basura.json";
+  	mesajesUrl = "/assets/palabras_basura.json";
 
   	constructor(private http: HttpClient) { }
 
-    getPalabrasMalas() {
+	getPalabrasMalas() {
 		if (localStorage.getBasuraObs === undefined) {
 			console.log('creando localstorage');
 			return this.http.get(this.configUrl)
@@ -25,6 +26,18 @@ export class LandingService {
 		} else {
 			return console.log('undefined');
 		}
-    }
+	}
+
+	getMensajes() {
+		if (localStorage.getMensajes === undefined) {
+			console.log('creando MEnsaje localstorage');
+			return this.http.get(this.mesajesUrl)
+				.subscribe(data => {
+					localStorage.getMensajes = JSON.stringify(data);
+				});
+		} else {
+			return console.log('undefined Mensajes');
+		}
+	}
 
 }
