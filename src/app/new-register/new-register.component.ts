@@ -323,9 +323,13 @@ export class NewRegisterComponent implements OnInit {
     }
 
     _keyPress(event: any) {         
-       LandingValidation.onlyNumber(event);        
+        LandingValidation.onlyNumber(event);        
     }
 
+    _keyPressNumA(event: any,name:any)
+    {
+        LandingValidation.onlyNumberIgual(event,name);
+    }
     _keyPressTxt(event: any) {        
         LandingValidation.onlyLetter(event);
     }
@@ -382,11 +386,14 @@ export class NewRegisterComponent implements OnInit {
 
     /*onValueCampus(value) {        
         this.form.controls.TelefonoCorreo.clearValidators();
+        this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false }); 
+
         if(value==1){
-            this.form.controls.TelefonoCorreo.setValidators({ value: '', disabled: false },[Validators.minLength(10),Validators.maxLength(10)]);
+            
+            this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10),Validators.maxLength(10)]);
         }else{
               
-            this.form.controls.TelefonoCorreo.setValidators({ value: '', disabled: false },[LandingValidation.emailMaloValidator()]);
+            this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
         }
              this.form.controls.TelefonoCorreo.updateValueAndValidity();
     }*/
@@ -410,7 +417,9 @@ export class NewRegisterComponent implements OnInit {
         } 
          this.form.controls.Asesor.updateValueAndValidity(); 
     }
-
+    showMjs(field: any){        
+       return LandingValidation.getMensaje(field);
+    }
     private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {
           height: '180px',

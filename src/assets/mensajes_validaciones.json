@@ -29,6 +29,9 @@
     "genero": {
         "m1": "Elige tu género"
     },
+    "edad": {
+        "m1": "Al menos debe contener 2 dígitos"
+    },
     "cana_preferido": {
         "m1": "Elige un canal preferido"
     },
@@ -50,6 +53,9 @@
     },
     "ciclo": {
         "m1": "Indica cuándo deseas ingresar"
+    },
+    "nivel": {
+        "m1": "Elige un nivel"
     },
     "resultado_admision": {
         "m1": "Selecciona si te encuentras en un proceso de exámen de admisión"
@@ -83,5 +89,8 @@
     "hora_cita": {
         "m1": "Ingresa una hora",
         "m2": "Hora inválida"
+    },
+    "asesor": {
+        "m1": "Elige un asesor"
     }
 }
