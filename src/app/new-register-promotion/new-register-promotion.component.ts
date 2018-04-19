@@ -52,13 +52,13 @@ import { TurnoService } from '../providers/turno.service';
 
 
 @Component({
-  selector: 'app-new-register-promotion',
-  templateUrl: './new-register-promotion.component.html',
-  styleUrls: ['./new-register-promotion.component.scss']
+    selector: 'app-new-register-promotion',
+    templateUrl: './new-register-promotion.component.html',
+    styleUrls: ['./new-register-promotion.component.scss']
 })
 
-export class NewRegisterPromotionComponent implements OnInit { 
-    
+export class NewRegisterPromotionComponent implements OnInit {
+
     form: FormGroup;
 
     //maxDate = new Date(2018, this.month.getMonth(),12);
@@ -272,7 +272,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             SubSubTipoActividad: new FormControl(''),
             Turno: new FormControl(''),
             school: new FormControl(''),
-            Calidad: new FormControl('', Validators.maxLength(5)),
+            Calidad: new FormControl('', [Validators.required, Validators.maxLength(5)] ),
 
 
 
@@ -285,8 +285,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
-            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
+            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
             Edad: new FormControl('', [Validators.minLength(2)]),
@@ -368,8 +368,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls.ApellidoPaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.ApellidoMaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.CorreoElectronicoTutor.setValidators([Validators.required, LandingValidation.emailMaloValidator()]);
-            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
-            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
+            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
             this.form.controls.ParentescoTutor.setValidators([Validators.required]);
         }
         this.form.controls.NombreTutor.updateValueAndValidity();
@@ -419,7 +419,20 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls.Transferencia.reset({ value: '', disabled: true });
         }
     }
-
+    addTradicional(isChecked) {
+        if (isChecked.checked) {
+            this.form.controls.subTipoActividad.reset({ value: '', disabled: true });
+            this.form.controls.company.reset({ value: '', disabled: true });
+            this.form.controls.SubSubTipoActividad.reset({ value: '', disabled: true });
+        } else {
+            this.form.controls.subTipoActividad.reset({ value: '', disabled: false });
+            this.form.controls.company.reset({ value: '', disabled: false });
+            this.form.controls.SubSubTipoActividad.reset({ value: '', disabled: false });
+        }
+        this.form.controls.subTipoActividad.updateValueAndValidity();
+        this.form.controls.company.updateValueAndValidity();
+        this.form.controls.SubSubTipoActividad.updateValueAndValidity();
+    }
     onChangeInteres(value) {
         if (value == '') {
             this.form.controls.Campus.clearValidators();

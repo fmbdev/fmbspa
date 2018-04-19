@@ -7,7 +7,8 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 import 'rxjs/Rx';
 
 import { LandingValidation } from '../validations/landing.validations';
-
+import { DialogComponent } from '../dialog/dialog.component';
+import 'rxjs/Rx';
 //Interfaces
 import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
@@ -22,6 +23,7 @@ import { NivelService } from '../providers/nivel.service';
 import { ModalidadService } from '../providers/modalidad.service'; 
 import { TipoReferenteService } from '../providers/tipo-referente.service'; 
 
+import { SendService } from '../providers/send.service';
 
 @Component({
   selector: 'app-referido-web',
@@ -52,21 +54,21 @@ export class ReferidoWebComponent implements OnInit {
   phone_ref: FormControl;
 
 
-  name: FormControl;
-  patern: FormControl;
-  matern: FormControl;
-  mail: FormControl;
+  Nombre: FormControl;
+  ApellidoPaterno: FormControl;
+  ApellidoMaterno: FormControl;
+  CorreoElectronico: FormControl;
   cel: FormControl;
-  phone: FormControl;
+  Telefono: FormControl;
   extension: FormControl;
   tipoCel: FormControl;
 
-  interestCampus: FormControl;
+  Campus: FormControl;
   //interestArea: FormControl;
-  interestNivel: FormControl;
-  interestModalidad: FormControl;
-  interestCarrera: FormControl;
-  interestCiclo: FormControl;
+  Nivel: FormControl;
+  Modalidad: FormControl;
+  Carrera: FormControl;
+  Ciclo: FormControl;
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
@@ -75,6 +77,8 @@ export class ReferidoWebComponent implements OnInit {
     private carreraServ: CarreraService,
     private nivelServ: NivelService,
     private modalidadServ: ModalidadService,
+     private sendServ: SendService,
+
     private tipoRefenteServ: TipoReferenteService) { }
 
   ngOnInit() {
@@ -121,33 +125,46 @@ export class ReferidoWebComponent implements OnInit {
       cuenta_ref: new FormControl(''),
 
 
-      name: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      patern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      matern: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      mail: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-      cel: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
+      cel: new FormControl('', [Validators.minLength(10)]),
+      Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
       extension: new FormControl(''),
       tipoCel: new FormControl(''),
 
-      interestCampus: new FormControl('', Validators.required),
-      //interestArea: new FormControl('', Validators.required),
-      interestNivel: new FormControl('', Validators.required),
-      interestModalidad: new FormControl('', Validators.required),
-      interestCarrera: new FormControl('', Validators.required),
-      interestCiclo: new FormControl('', Validators.required),
-      tipificacion: new FormControl('', Validators.required),
+
+
+      Campus: new FormControl(''),
+      Nivel: new FormControl(''),
+      Modalidad: new FormControl(''),
+      Carrera: new FormControl(''),
+      Ciclo: new FormControl(''),
+      tipificacion: new FormControl(''),
 
     });
   }
 
   onSubmit() {
     this.mostrarExtension = true;
-    console.log(this.form.value);
+    this.sendServ.sendDataToApi(this.form.value)
+         .subscribe(
+              (res: any) => {
+                  if(res.status == 200){
+                     this.showDialog("Los datos se han guardado correctamente.");
+                     this.resetForm();
+                  }else{
+                     this.showDialog("Error al realizar el registro.");
+                     this.resetForm();
+                  }
+              }
+        )
   }
 
   resetForm() {
     this.form.reset();
+    
   }
 
   _keyOnly3letter(event: any, name: any) {
@@ -194,6 +211,12 @@ export class ReferidoWebComponent implements OnInit {
       this.form.controls.citaAsesor.reset({ value: '', disabled: true });*/
     }
   }
-
+ private showDialog(message: string){
+        let dialogRef = this.dialog.open(DialogComponent, {
+          height: '180px',
+          width: '500px',
+          data: {message: message}
+        });
+      }
 
 }

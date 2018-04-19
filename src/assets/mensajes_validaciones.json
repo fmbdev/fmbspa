@@ -20,11 +20,13 @@
     },
     "celular": {
         "m1": "Ingresa tu número de celular",
-        "m2": "Al menos debe contener 10 dígitos"
+        "m2": "Al menos debe contener 10 dígitos",
+        "m3": "Número inválido"
     },
     "telefono": {
         "m1": "Ingresa tu número de teléfono",
-        "m2": "Al menos debe contener 10 dígitos"
+        "m2": "Al menos debe contener 10 dígitos",
+        "m3": "Número inválido"        
     },
     "genero": {
         "m1": "Elige tu género"
@@ -56,6 +58,9 @@
     },
     "nivel": {
         "m1": "Elige un nivel"
+    },
+    "carrera": {
+        "m1": "Elige una carrera"
     },
     "resultado_admision": {
         "m1": "Selecciona si te encuentras en un proceso de exámen de admisión"

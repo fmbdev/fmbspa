@@ -29,11 +29,11 @@ export class LandingService {
 	}
 
 	getMensajes() {
-		if (localStorage.getMjs === undefined) {
+		if (localStorage.getMgss === undefined) {
 			console.log('creando MEnsaje localstorage');
 			return this.http.get(this.mesajesUrl)
 				.subscribe(data => {
-					localStorage.getMjs = JSON.stringify(data);
+					localStorage.getMgss = JSON.stringify(data);
 				});
 		} else {
 			return console.log('undefined Mensajes');

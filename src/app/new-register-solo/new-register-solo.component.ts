@@ -265,7 +265,7 @@ export class NewRegisterSoloComponent implements OnInit {
         this.form = new FormGroup({
 
 
-            Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
+            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: true }, Validators.required),
             ejecutivo: new FormControl(''),
 
             actvidadNoTradicional: new FormControl(''),
@@ -287,8 +287,8 @@ export class NewRegisterSoloComponent implements OnInit {
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
-            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
+            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
             Edad: new FormControl('', [Validators.minLength(2)]),
@@ -370,8 +370,8 @@ export class NewRegisterSoloComponent implements OnInit {
             this.form.controls.ApellidoPaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.ApellidoMaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.CorreoElectronicoTutor.setValidators([Validators.required, LandingValidation.emailMaloValidator()]);
-            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
-            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
+            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
             this.form.controls.ParentescoTutor.setValidators([Validators.required]);
         }
         this.form.controls.NombreTutor.updateValueAndValidity();

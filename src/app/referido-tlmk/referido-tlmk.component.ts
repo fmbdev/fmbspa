@@ -6,7 +6,8 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 
 import { LandingValidation } from '../validations/landing.validations';
-
+import { DialogComponent } from '../dialog/dialog.component';
+import 'rxjs/Rx';
 //Interfaces
 import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
@@ -19,6 +20,7 @@ import { CarreraService } from '../providers/carrera.service';
 import { NivelService } from '../providers/nivel.service';
 import { ModalidadService } from '../providers/modalidad.service'; 
 
+import { SendService } from '../providers/send.service';
 
 @Component({
   selector: 'app-referido-tlmk',
@@ -64,6 +66,8 @@ export class ReferidoTlmkComponent implements OnInit {
     private campusServ: CampusService,
     private carreraServ: CarreraService,
     private nivelServ: NivelService,
+     private sendServ: SendService,
+    
     private modalidadServ: ModalidadService) { }
 
   ngOnInit() {
@@ -93,38 +97,68 @@ export class ReferidoTlmkComponent implements OnInit {
   formInit() {
 
     this.form = new FormGroup({
-
       Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
 
-      Nombre: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      ApellidoPaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-      ApellidoMaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+      Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
       CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-      cel: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      Telefono: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      cel: new FormControl('', [Validators.minLength(10)]),
+      Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
       extension: new FormControl(''),
       tipoCel: new FormControl(''),
 
 
-      Campus: new FormControl('', Validators.required),
-      Nivel: new FormControl('', Validators.required),
-      Modalidad: new FormControl('', Validators.required),
-      Carrera: new FormControl('', Validators.required),
-      Ciclo: new FormControl('', Validators.required),
-      tipificacion: new FormControl('', Validators.required),
+
+      Campus: new FormControl(''),
+      Nivel: new FormControl(''),
+      Modalidad: new FormControl(''),
+      Carrera: new FormControl(''),
+      Ciclo: new FormControl(''),
+      tipificacion: new FormControl(''),
 
     });
   }
 
   onSubmit() {
     this.mostrarExtension = true;
-    console.log(this.form.value);
+   this.sendServ.sendDataToApi(this.form.value)
+         .subscribe(
+              (res: any) => {
+                  if(res.status == 200){
+                     this.showDialog("Los datos se han guardado correctamente.");
+                     this.resetForm();
+                  }else{
+                     this.showDialog("Error al realizar el registro.");
+                     this.resetForm();
+                  }
+              }
+        )
   }
 
   resetForm() {
     this.form.reset();
   }
+  onChangeInteres(value) {
+    if (value == '') {
+      this.form.controls.Campus.clearValidators();
+      this.form.controls.Nivel.clearValidators();
+      this.form.controls.Modalidad.clearValidators();
+      this.form.controls.Carrera.clearValidators();
 
+    } else {
+
+      this.form.controls.Campus.setValidators([Validators.required]);
+      this.form.controls.Nivel.setValidators([Validators.required]);
+      this.form.controls.Modalidad.setValidators([Validators.required]);
+      this.form.controls.Carrera.setValidators([Validators.required]);
+    }
+    this.form.controls.Campus.updateValueAndValidity();
+    this.form.controls.Nivel.updateValueAndValidity();
+    this.form.controls.Modalidad.updateValueAndValidity();
+    this.form.controls.Carrera.updateValueAndValidity();
+
+  }
   _keyOnly3letter(event: any, name: any) {
     LandingValidation.letterName(event, name);
   }
@@ -169,6 +203,12 @@ export class ReferidoTlmkComponent implements OnInit {
       this.form.controls.citaAsesor.reset({ value: '', disabled: true });*/
     }
   }
-
+ private showDialog(message: string){
+        let dialogRef = this.dialog.open(DialogComponent, {
+          height: '180px',
+          width: '500px',
+          data: {message: message}
+        });
+      }
 
 }

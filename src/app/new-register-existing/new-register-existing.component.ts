@@ -43,6 +43,11 @@ import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 
+/*export class MyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        return !!(control && control.invalid && (control.dirty || control.touched));
+    }
+}*/
 
 @Component({
   selector: 'app-new-register-existing',
@@ -118,6 +123,8 @@ export class NewRegisterExistingComponent implements OnInit {
     campus_citas: CampusCita[] = [];
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
+
+    //matcher = new MyErrorStateMatcher();   
 
     constructor(private gralService: GeneralService,
         public dialog: MatDialog,
@@ -232,8 +239,8 @@ export class NewRegisterExistingComponent implements OnInit {
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
-            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
+            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
             Edad: new FormControl('', [Validators.minLength(2)]),
@@ -252,11 +259,11 @@ export class NewRegisterExistingComponent implements OnInit {
             Modalidad: new FormControl(''),
             Carrera: new FormControl(''),
             Ciclo: new FormControl(''),
-            NumeroPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
-            etapaVenta: new FormControl(''),
-            NumeroCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
             
-
+            NumeroPersona: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
+            etapaVenta: new FormControl('Registro'),
+            NumeroCuenta: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
+            
             Tipificacion: new FormControl(''),
             Notas: new FormControl(''),
 
@@ -289,7 +296,24 @@ export class NewRegisterExistingComponent implements OnInit {
     }
 
     resetForm() {
-        this.form.reset();
+        this.form.reset({
+            'CorreoElectronico': '',
+            'Canal': '',
+            'CSQ': '',
+            'Campus': '',
+            'AreaInteres': '',
+            'Nivel': '',
+            'Modalidad': '',
+            'Carrera': '',
+            'Ciclo': '',
+            'ParentescoTutor': '',
+            'Interesa': '',
+            'CampusCitas': '',
+            'HoraCita': '',
+            'Asesor': '',
+            'Tipificacion': ''
+        });
+        //this.form.reset();
     }
 
     onKeyFechaNacimiento() {
@@ -310,13 +334,12 @@ export class NewRegisterExistingComponent implements OnInit {
             this.form.controls.TelefonoTutor.clearValidators();
             this.form.controls.ParentescoTutor.clearValidators();
         } else {
-
             this.form.controls.NombreTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.ApellidoPaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.ApellidoMaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.CorreoElectronicoTutor.setValidators([Validators.required, LandingValidation.emailMaloValidator()]);
-            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
-            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
+            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
             this.form.controls.ParentescoTutor.setValidators([Validators.required]);
         }
         this.form.controls.NombreTutor.updateValueAndValidity();
@@ -398,7 +421,7 @@ export class NewRegisterExistingComponent implements OnInit {
         this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
         if (value == 1) {
-            this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator()]);
+            this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
         } else {
             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
         }

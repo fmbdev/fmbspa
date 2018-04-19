@@ -230,8 +230,8 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
-            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]),
+            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
             Edad: new FormControl('', [Validators.minLength(2)]),
@@ -250,9 +250,9 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             Modalidad: new FormControl(''),
             Carrera: new FormControl(''),
             Ciclo: new FormControl(''),
-            NumeroPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
-            etapaVenta: new FormControl(''),
-            NumeroCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
+            NumeroPersona: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
+            etapaVenta: new FormControl('Registro'),
+            NumeroCuenta: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
 
 
             Tipificacion: new FormControl(''),
@@ -287,7 +287,24 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
     }
 
     resetForm() {
-        this.form.reset();
+        this.form.reset({
+            'CorreoElectronico': '',
+            'Canal': '',
+            'CSQ': '',
+            'Campus': '',
+            'AreaInteres': '',
+            'Nivel': '',
+            'Modalidad': '',
+            'Carrera': '',
+            'Ciclo': '',
+            'ParentescoTutor': '',
+            'Interesa': '',
+            'CampusCitas': '',
+            'HoraCita': '',
+            'Asesor': '',
+            'Tipificacion': ''
+        });
+        //this.form.reset();
     }
 
     onKeyFechaNacimiento() {
@@ -313,8 +330,8 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             this.form.controls.ApellidoPaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.ApellidoMaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.CorreoElectronicoTutor.setValidators([Validators.required, LandingValidation.emailMaloValidator()]);
-            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
-            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator()]);
+            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
             this.form.controls.ParentescoTutor.setValidators([Validators.required]);
         }
         this.form.controls.NombreTutor.updateValueAndValidity();
@@ -348,7 +365,6 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             LandingValidation.onlyNumberIgual(event, word);
         }
     }
-
     onChange() {
         if (this.form.controls.Nombre.value != '' && this.form.controls.ApellidoPaterno.value != '' && this.form.controls.ApellidoMaterno.value != '' && this.form.controls.CorreoElectronico.value != '' && this.form.controls.NumeroCelular.value != '' && this.form.controls.Telefono.value != '') {
             this.form.controls.CampusCitas.reset({ value: '', disabled: false });

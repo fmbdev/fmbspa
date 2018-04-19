@@ -21,7 +21,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)" required>
+                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let canal of canales;" [value]="canal['id']">
                                 {{ canal['crmit_name'] }}
@@ -32,7 +32,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="CSQ" placeholder="Departamento" required>
+                        <mat-select formControlName="CSQ" placeholder="Departamento">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let csq of csqs;" [value]="csq['id']">
                                 {{ csq['crmit_name'] }}
@@ -47,13 +47,14 @@
                     <mat-form-field>
                         <input autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Teléfono o Correo Electrónico" (keypress)="_keyPressNum($event,form.controls.Canal.value,form.controls.TelefonoCorreo.value)">
                         <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.emailMalo && !form.controls.TelefonoCorreo.errors?.required">{{showMjs('correo.m2')}} </mat-error>
-                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.minlength && !form.controls.TelefonoCorreo.errors?.required">{{showMjs('celular.m2')}}</mat-error>
-                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.aceptNumber  &&  !form.controls.TelefonoCorreo.errors?.minlength">{{showMjs('celular.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.minlength && !form.controls.TelefonoCorreo.errors?.required  && !form.controls.TelefonoCorreo.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.aceptNumber  && !form.controls.TelefonoCorreo.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.numberCon  &&  form.controls.TelefonoCorreo.errors?.minlength && !form.controls.TelefonoCorreo.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Interesa" id="interes" placeholder="Interesa/No interesa" required>
+                        <mat-select formControlName="Interesa" id="interes" placeholder="Interesa/No interesa">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
                                 {{ interes['Área Interes'] }}
@@ -101,14 +102,16 @@
                     <mat-form-field>
                         <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.required">{{showMjs('celular.m1')}}</mat-error>
-                        <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required">{{showMjs('celular.m2')}}</mat-error>
-                        <mat-error *ngIf="form.controls.NumeroCelular.errors?.aceptNumber  &&  !form.controls.NumeroCelular.errors?.minlength">{{showMjs('celular.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required  && !form.controls.NumeroCelular.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelular.errors?.aceptNumber  && !form.controls.NumeroCelular.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelular.errors?.numberCon  &&  form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Telefono.errors?.required">{{showMjs('telefono.m1')}}</mat-error>
-                        <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required">{{showMjs('telefono.m2')}}</mat-error>
-                        <mat-error *ngIf="form.controls.Telefono.errors?.aceptNumber  && !form.controls.Telefono.errors?.minlength">{{showMjs('telefono.m1')}} </mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required  && !form.controls.Telefono.errors?.numberCon">{{showMjs('telefono.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.aceptNumber  && !form.controls.Telefono.errors?.minlength">{{showMjs('telefono.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.numberCon  &&  form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-select formControlName="Genero" placeholder="Género">
@@ -164,14 +167,16 @@
                     <mat-form-field>
                         <input autocomplete="off" formControlName="NumeroCelularR" matInput placeholder="Número Celular (10 dígitos)" maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelularR.value)">
                         <mat-error *ngIf="form.controls.NumeroCelularR.errors?.required">{{showMjs('celular.m1')}}</mat-error>
-                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.minlength && !form.controls.NumeroCelularR.errors?.required">{{showMjs('celular.m2')}}</mat-error>
-                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.aceptNumber  &&  !form.controls.NumeroCelularR.errors?.minlength">{{showMjs('celular.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.minlength && !form.controls.NumeroCelularR.errors?.required  && !form.controls.NumeroCelularR.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.aceptNumber  && !form.controls.NumeroCelularR.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.numberCon  &&  form.controls.NumeroCelularR.errors?.minlength && !form.controls.NumeroCelularR.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="TelefonoTutor" matInput placeholder="Teléfono" maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.TelefonoTutor.value)">
                         <mat-error *ngIf="form.controls.TelefonoTutor.errors?.required">{{showMjs('telefono.m1')}}</mat-error>
-                        <mat-error *ngIf="form.controls.TelefonoTutor.errors?.minlength && !form.controls.TelefonoTutor.errors?.required">{{showMjs('telefono.m2')}}</mat-error>
-                        <mat-error *ngIf="form.controls.TelefonoTutor.errors?.aceptNumber  && !form.controls.TelefonoTutor.errors?.minlength">{{showMjs('telefono.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.TelefonoTutor.errors?.minlength && !form.controls.TelefonoTutor.errors?.required  && !form.controls.TelefonoTutor.errors?.numberCon">{{showMjs('telefono.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.TelefonoTutor.errors?.aceptNumber  && !form.controls.TelefonoTutor.errors?.minlength">{{showMjs('telefono.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.TelefonoTutor.errors?.numberCon  &&  form.controls.TelefonoTutor.errors?.minlength && !form.controls.TelefonoTutor.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-select formControlName="ParentescoTutor" placeholder="Parentesco">
@@ -227,7 +232,7 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -243,7 +248,7 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -259,7 +264,7 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    &nbsp;
+
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -292,7 +297,7 @@
                                 {{ tipificacion['Tipificación'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Tipificacion.errors?.required">{{showMjs( 'tipificacion.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Tipificacion.errors?.required">{{showMjs('tipificacion.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -317,7 +322,7 @@
                                 {{ campus['Nombre de Campus'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.CampusCitas.errors?.required">{{showMjs( 'campus.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.CampusCitas.errors?.required">{{showMjs('campus.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -331,7 +336,7 @@
                         <input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
                         <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'fecha_cita.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs('fecha_cita.m1')}}</mat-error>
                     </mat-form-field>
 
                 </mat-grid-tile>
@@ -343,7 +348,7 @@
                                 {{ hora.hora }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.HoraCita.errors?.required">{{showMjs( 'hora_cita.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.HoraCita.errors?.required">{{showMjs('hora_cita.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -361,7 +366,7 @@
                                 {{ asesor['Nombre Asesor'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Asesor.errors?.required">{{showMjs( 'asesor.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Asesor.errors?.required">{{showMjs('asesor.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -379,4 +384,3 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-</form>
