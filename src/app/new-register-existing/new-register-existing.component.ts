@@ -284,6 +284,7 @@ export class NewRegisterExistingComponent implements OnInit {
        }
 
     resetForm() {
+        console.log("Llego");
         this.form.reset();
     }
 

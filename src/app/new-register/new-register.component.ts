@@ -221,10 +221,10 @@ export class NewRegisterComponent implements OnInit {
             TelefonoCorreo: new FormControl({ value: '', disabled: true }),
             Interesa:new FormControl(''),
 
-            Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoMaterno: new FormControl('',[LandingValidation.palabraMalaValidator()]),
-            CorreoElectronico: new FormControl('', [Validators.required,LandingValidation.emailMaloValidator()]),
+            Nombre: new FormControl(''),
+            ApellidoPaterno: new FormControl(''),
+            ApellidoMaterno: new FormControl(''),
+            CorreoElectronico: new FormControl('', [Validators.required]),
             NumeroCelular: new FormControl('', [Validators.minLength(10)]),
             Telefono: new FormControl('',[Validators.required,Validators.minLength(10)]),
             Genero: new FormControl(''),
@@ -417,9 +417,11 @@ export class NewRegisterComponent implements OnInit {
         } 
          this.form.controls.Asesor.updateValueAndValidity(); 
     }
+
     showMjs(field: any){        
        return LandingValidation.getMensaje(field);
     }
+    
     private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {
           height: '180px',

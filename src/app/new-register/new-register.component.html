@@ -205,12 +205,7 @@
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
-<<<<<<< HEAD
-                        <mat-error *ngIf="form.controls.AreaInteres.errors?.required">{{showMjs('area_interes.m1')}}</mat-error>
-
-=======
                         <mat-error *ngIf="form.controls.AreaInteres.errors?.required">Elige una área de interés</mat-error>
->>>>>>> 646700f741f55b7d0b2268ff822a81ae9690c9c4
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -293,7 +288,6 @@
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Tipificacion.errors?.required">{{showMjs( 'tipificacion.m1')}}</mat-error>
-
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
@@ -318,11 +312,7 @@
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.CampusCitas.errors?.required">{{showMjs( 'campus.m1')}}</mat-error>
-
                     </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
@@ -331,9 +321,8 @@
                         <input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
                         <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'fecha_cita.m1')}}</mat-error>
                     </mat-form-field>
-                    <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'fecha_cita.m1')}}</mat-error>
-
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
@@ -342,9 +331,8 @@
                             <mat-option *ngFor="let hora of horas;" [value]="hora.hora">
                                 {{ hora.hora }}
                             </mat-option>
+                            <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'hora_cita.m1')}}</mat-error>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'hora_cita.m1')}}</mat-error>
-
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -361,8 +349,8 @@
                                 {{ asesor['Nombre Asesor'] }}
                             </mat-option>
                         </mat-select>
+                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'asesor.m1')}}</mat-error>
                     </mat-form-field>
-                    <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'asesor.m1')}}</mat-error>
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
