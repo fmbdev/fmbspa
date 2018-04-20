@@ -1,16 +1,49 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import {GeneralService} from '../services/general.service';
-import {MatDialog, MatSelect} from '@angular/material';
+import { GeneralService } from '../services/general.service';
 import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
+import {Router} from '@angular/router';
 
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return !!(control && control.invalid && (control.dirty || control.touched));
-  }
-}
+import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
+
+import 'rxjs/Rx';
+
+import { LandingValidation } from '../validations/landing.validations';
+
+import { Csq } from '../interfaces/csq';
+import { Hora } from '../interfaces/hora';
+import { Nivel } from '../interfaces/nivel';
+import { Canal } from '../interfaces/canal';
+import { Ciclo } from '../interfaces/ciclo';
+import { Campus } from '../interfaces/campus';
+import { Genero } from '../interfaces/genero';
+import { Asesor } from '../interfaces/asesor';
+import { Carrera } from '../interfaces/carrera';
+import { Interes } from '../interfaces/interes';
+import { Modalidad } from '../interfaces/modalidad';
+import { Parentesco } from '../interfaces/parentesco';
+import { CampusCita } from '../interfaces/campus-cita';
+import { Tipificacion } from '../interfaces/tipificacion';
+
+import { PnnService } from '../providers/pnn.service';
+import { CsqService } from '../providers/csq.service';
+import { SendService } from '../providers/send.service';
+import { HoraService } from '../providers/hora.service';
+import { NivelService } from '../providers/nivel.service';
+import { CanalService } from '../providers/canal.service';
+import { CicloService } from '../providers/ciclo.service';
+import { FormatService } from '../providers/format.service';
+import { CampusService } from '../providers/campus.service';
+import { AsesorService } from '../providers/asesor.service';
+import { GeneroService } from '../providers/genero.service';
+import { CarreraService } from '../providers/carrera.service';
+import { InteresService } from '../providers/interes.service';
+import { ModalidadService } from '../providers/modalidad.service';
+import { ParentescoService } from '../providers/parentesco.service';
+import { CampusCitaService } from '../providers/campus-cita.service';
+import { TipificacionService } from '../providers/tipificacion.service';
 
 @Component({
   selector: 'app-search',
@@ -19,228 +52,335 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SearchComponent implements OnInit {
   
-  @ViewChild('numPerson') numPerson: ElementRef;
-  @ViewChild('numAcount') numAcount: ElementRef;
+  form: FormGroup;
+  Route: Router;
+  //maxDate = new Date(2018, this.month.getMonth(),12);
+  maxDate = LandingValidation.fechaLimite();
+  startDate = LandingValidation.fechaInicio();
 
-  @ViewChild('mail') mail: ElementRef;
-  @ViewChild('cel') cel: ElementRef;
-  @ViewChild('mailTutor') mailTutor: ElementRef;
-  @ViewChild('name') name: ElementRef;
-  @ViewChild('patern') patern: ElementRef;
-  @ViewChild('matern') matern: ElementRef;
-  @ViewChild('phone') phone: ElementRef;
+  Usuario: FormControl;
+  Canal: FormControl;
+  CSQ: FormControl;
+  TelefonoCorreo: FormControl;
+  Interesa: FormControl;
 
-  user: any = {};
-  send = false;
-  inputError: any;
-  txtError: any;
+  Nombre: FormControl;
+  ApellidoPaterno: FormControl;
+  ApellidoMaterno: FormControl;
+  CorreoElectronico: FormControl;
+  NumeroCelular: FormControl;
+  Telefono: FormControl;
+  Genero: FormControl;
+  FechaNacimiento: FormControl;
+  Edad: FormControl;
 
-  matcher = new MyErrorStateMatcher();
+  NombreTutor: FormControl;
+  ApellidoPaternoTutor: FormControl;
+  ApellidoMaternoTutor: FormControl;
+  CorreoElectronicoTutor: FormControl;
+  NumeroCelularR: FormControl;
+  TelefonoTutor: FormControl;
+  ParentescoTutor: FormControl;
 
-  numPersonn  = new FormControl('', this.validNumPerson.bind(this));
-  numAcountt  = new FormControl('', this.validNumAcount.bind(this));
+  NumeroPersona: FormControl;
+  etapaVenta: FormControl;
+  NumeroCuenta: FormControl;
 
-  maill = new FormControl('', this.validMail.bind(this));
-  mailTutorr = new FormControl('', this.validMailTutor.bind(this));
+  Campus: FormControl;
+  AreaInteres: FormControl;
+  Nivel: FormControl;
+  Modalidad: FormControl;
+  Carrera: FormControl;
+  Ciclo: FormControl;
+  Tipificacion: FormControl;
+  Notas: FormControl;
 
-  namee = new FormControl('', [this.validName.bind(this)]);
-  paternn = new FormControl('', [this.validPatern.bind(this)]);
-  maternn = new FormControl('', [this.validMatern.bind(this)]);
-  phonee = new FormControl('', [this.validPhone.bind(this)]);
-  cell = new FormControl('', [this.validPhone.bind(this)]);
+  CampusCitas: FormControl;
+  FechaCita: FormControl;
+  HoraCita: FormControl;
+  Programacion: FormControl;
+  Transferencia: FormControl;
+  Asesor: FormControl;
+
+  csqs: Csq[] = [];
+  horas: Hora[] = [];
+  ciclos: Ciclo[] = [];
+  niveles: Nivel[] = [];
+  canales: Canal[] = [];
+  campus: Campus[] = [];
+  generos: Genero[] = [];
+  asesores: Asesor[] = [];
+  carreras: Carrera[] = [];
+  intereses: Interes[] = [];
+  modalidades: Modalidad[] = [];
+  campus_citas: CampusCita[] = [];
+  parentescos: Parentesco[] = [];
+  tipificaciones: Tipificacion[] = [];
+
   
-  numPersonTxtError: any = false;
-  numAcountTxtError: any = false;
 
-  nameTxtError: any = false;
-  paternTxtError: any = false;
-  maternTxtError: any = false;
-  mailTxtError: any = false;
-  mailTutorTxtError: any = false;
-  phoneTxtError: any = false;
-  cellTxtError: any = false;
-  tipoTxtError: any = false;
+  constructor(private gralService: GeneralService,
+    private router: Router,
+    public dialog: MatDialog,
+    private renderer: Renderer2,
+    private csqServ: CsqService,
+    private horaServ: HoraService,
+    private sendServ: SendService,
+    private nivelServ: NivelService,
+    private cicloServ: CicloService,
+    private canalServ: CanalService,
+    private campusServ: CampusService,
+    private asesorServ: AsesorService,
+    private formatServ: FormatService,
+    private generoServ: GeneroService,
+    private carreraServ: CarreraService,
+    private interesServ: InteresService,
+    private modalidadServ: ModalidadService,
+    private parentescoServ: ParentescoService,
+    private campusCitaServ: CampusCitaService,
+    private tipicicacionServ: TipificacionService) { }
 
-
-  constructor(private gralService: GeneralService, public dialog: MatDialog) { }
 
   ngOnInit() {
+    // Se obtiene todos los canales
+    this.canalServ.getAll()
+      .subscribe(
+        (data: Canal[]) => this.canales = data
+      )
+    // Se obtienen todos los csqs
+    this.csqServ.getAll()
+      .subscribe(
+        (data: Csq[]) => this.csqs = data
+      )
+    // Se obtienen todos los intereses
+    this.interesServ.getAll()
+      .subscribe(
+        (data: Interes[]) => this.intereses = data
+      )
+    // Se obtienen todos los generos
+    this.generoServ.getAll()
+      .subscribe(
+        (data: Genero[]) => this.generos = data
+      )
+    // Se obtienen todos los parentescos
+    this.parentescoServ.getAll()
+      .subscribe(
+        (data: Parentesco[]) => this.parentescos = data
+      )
+    // Se obtienen todos los campus
+    this.campusServ.getAll()
+      .subscribe(
+        (data: Campus[]) => this.campus = data
+      )
+    // Se obtienen todos los niveles
+    this.nivelServ.getAll()
+      .subscribe(
+        (data: Nivel[]) => this.niveles = data
+      )
+    // Se obtienen todas las modalidades
+    this.modalidadServ.getAll()
+      .subscribe(
+        (data: Modalidad[]) => this.modalidades = data
+      )
+    // Se obtienen todas las carreras
+    this.carreraServ.getAll()
+      .subscribe(
+        (data: Carrera[]) => this.carreras = data
+      )
+    // Se obtienen los ciclos
+    this.cicloServ.getAll()
+      .subscribe(
+        (data: Ciclo[]) => this.ciclos = data
+      )
+    // Se obtienen todos los intereses
+    this.interesServ.getAll()
+      .subscribe(
+        (data: Interes[]) => this.intereses = data
+      )
+    // Se obtienen todas las tipificaciones
+    this.tipicicacionServ.getAll()
+      .subscribe(
+        (data: Tipificacion[]) => this.tipificaciones = data
+      )
+    // Se obtienen todos los campus-cita
+    this.campusCitaServ.getAll()
+      .subscribe(
+        (data: CampusCita[]) => this.campus_citas = data
+      )
+    // Se obtienen todas las hora para asignar una cita
+    this.horaServ.getAll()
+      .subscribe(
+        (data: Hora[]) => this.horas = data
+      )
+    // Se obtienen todos lo asesores
+    this.asesorServ.getAll()
+      .subscribe(
+        (data: Asesor[]) => this.asesores = data
+      )
+
+    this.formInit();
   }
-  
-  _keyOnly3letter(event:any, name:any){
-      const only3letter = /a{3,10}|b{3,10}|c{3,10}|d{3,10}|e{3,10}|f{3,10}|g{3,10}|h{3,10}|i{3,10}|j{3,10}|k{3,10}|l{3,10}|m{3,10}|n{3,10}|o{3,10}|p{3,10}|q{3,10}|w{3,10}|r{3,10}|s{3,10}|t{3,10}|u{3,10}|v{3,10}|w{3,10}|x{3,10}|y{3,10}|z{3,10}/;      
-      if(only3letter.test(name)){        
-        event.preventDefault();        
-        return false;    
-      } else{        
-        return true;
-      }
-  }
-  save() {
-    console.log(this.user);
-    if(this.send){
-      return;
-    }
-    this.send = true;
 
-    this.gralService.search(this.user).then((data) => {
-      console.log(data['msg']);
-      this.send = false;
+  formInit() {
+    this.form = new FormGroup({
+      Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
+      Canal: new FormControl('', Validators.required),
+      CSQ: new FormControl('', Validators.required),
+      TelefonoCorreo: new FormControl({ value: '', disabled: true }),
+      Interesa: new FormControl(''),
 
-      if(data['success'] == false) {
-        this.inputError =  data['input'];
-        this.txtError = data['msg'];
+      Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+      CorreoElectronico: new FormControl('', [LandingValidation.emailMaloValidator()]),
+     NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Telefono: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+      Genero: new FormControl(''),
+      FechaNacimiento: new FormControl(''),
+      Edad: new FormControl('', [Validators.minLength(2)]),
 
-        switch (data['input']) {
-          case 'mail':
-            this.mail.nativeElement.focus();
-            break;
-          case 'mailTutor':
-            this.mailTutor.nativeElement.focus();
-            break;
-          default:
-        }
 
-      }
-    }, (err) => {
-      console.warn(err);
-      this.send = false;
+      NumeroPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
+      etapaVenta: new FormControl(''),
+      NumeroCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
+
+      NombreTutor: new FormControl(''),
+      ApellidoPaternoTutor: new FormControl(''),
+      ApellidoMaternoTutor: new FormControl(''),
+      CorreoElectronicoTutor: new FormControl('', [LandingValidation.emailMaloValidator()]),
+      NumeroCelularR: new FormControl(''),
+      TelefonoTutor: new FormControl(''),
+      ParentescoTutor: new FormControl(''),
+
+      Campus: new FormControl(''),
+      AreaInteres: new FormControl(''),
+      Nivel: new FormControl(''),
+      Modalidad: new FormControl(''),
+      Carrera: new FormControl(''),
+      Ciclo: new FormControl(''),
+
+      Tipificacion: new FormControl(''),
+      Notas: new FormControl(''),
+
+      CampusCitas: new FormControl({ value: '', disabled: true }, Validators.required),
+      FechaCita: new FormControl({ value: '', disabled: true }, Validators.required),
+      HoraCita: new FormControl({ value: '', disabled: true }, Validators.required),
+      Programacion: new FormControl({ value: '', disabled: true }, Validators.required),
+      Transferencia: new FormControl({ value: '', disabled: true }, Validators.required),
+      Asesor: new FormControl({ value: '', disabled: true }, Validators.required)
+
     });
   }
-  serviceValidInput(type, input, value, control){
-    return this.gralService.validInput({type: type, data: value}).then((data) => {
-      if(data['success'] == false) {
-        this.inputError = input;
-        this.txtError = data['msg'];
-        switch(input) {
-          case 'name':
-            this.nameTxtError = data['msg'];
-            break;
-          case 'patern':
-            this.paternTxtError = data['msg'];
-            break;
-          case 'matern':
-            this.maternTxtError = data['msg'];
-            break;
-          case 'mail':
-            this.mailTxtError = data['msg'];
-            break;          
-          case 'phone':
-            this.phoneTxtError = data['msg'];
-            break;
-          case 'mailTutor':
-            this.mailTutorTxtError = data['msg'];
-            break; 
-        }
-        return {'error': true};
-      }else{
-        this.inputError =  null;
-        this.txtError = null;
-        switch(input) {
-          case 'name':
-            this.nameTxtError = false;
-            break;
-          case 'patern':
-            this.paternTxtError = false;
-            break;
-          case 'matern':
-            this.maternTxtError = false;
-            break;
-          case 'mail':
-            this.mailTxtError = false;
-            break;         
-          case 'phone':
-            this.phoneTxtError = false;
-            break;
-          case 'mailTutor':
-            this.mailTutorTxtError = false;  
-        }
-        control.setErrors(null);
-        return null;
-      }
-    });
-  }
-  validMailTutor(control: FormControl){
-    if(this.inputError == 'mailTutor'){return {'error': true};}
-    return null;
+
+  onSubmit() {
+    this.onKeyFechaNacimiento();
+    let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+    this.form.controls['FechaCita'].setValue(fecha_cita);
+     this.router.navigate(['/results']);
   }
 
-  validName(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('name', 'name', control.value, control);
-    }
-    if(this.inputError == 'name'){return {'error': true};}
-    return null;
+  resetForm() {
+    this.form.reset();
   }
 
-  validPatern(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('patern', 'patern', control.value, control);
-    }
-    if(this.inputError == 'patern'){return {'error': true};}
-    return null;
+  onKeyFechaNacimiento() {
+    let edad = this.form.controls.Edad.value;
+    let year = new Date().getFullYear();
+    let fecha = year - edad;
+    this.form.controls.FechaNacimiento.setValue(fecha);
   }
 
-  validMatern(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('matern', 'matern', control.value, control);
-    }
-    if(this.inputError == 'matern'){return {'error': true};}
-    return null;
+ 
+  _keyOnly3letter(event: any, name: any) {
+    LandingValidation.letterName(event, name);
   }
-
-  validMail(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('mail', 'mail', control.value, control);
-    }
-    if(this.inputError == 'mail'){return {'error': true};}
-    return null;
-  }
-  
-
-  validPhone(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('phone', 'phone', control.value, control);
-    }
-    if(this.inputError == 'phone'){return {'error': true};}
-    return null;
-  }
-
-  validNumAcount(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('numAcount', 'numAcount', control.value, control);
-    }
-    if(this.inputError == 'numAcount'){return {'error': true};}
-    return null;
-  }
-
-  validNumPerson(control: FormControl){
-    if(control.value){
-      return this.serviceValidInput('numPerson', 'numPerson', control.value, control);
-    }
-    if(this.inputError == 'numPerson'){return {'error': true};}
-    return null;
-  }
-
 
   _keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-    const inputChar = String.fromCharCode(event.charCode);
+    LandingValidation.onlyNumber(event);
+  }
 
-    if (!pattern.test(inputChar)) {
-      // invalid character, prevent input
-      event.preventDefault();
+  _keyPressNumA(event: any, name: any) {
+    LandingValidation.onlyNumberIgual(event, name);
+  }
+  _keyPressTxt(event: any) {
+    LandingValidation.onlyLetter(event);
+  }
+
+  _keyPressNum(event: any, value: any, word: any) {
+    if (value == 1) {
+      LandingValidation.onlyNumber(event);
+      LandingValidation.limitChar(event, word);
+      LandingValidation.onlyNumberIgual(event, word);
     }
   }
 
-  _keyPressTxt(event: any) {
-    const pattern = /[a-zA-Z\ñ\Ñ\ ]/;
-    const inputChar = String.fromCharCode(event.charCode);
+   
+  onChangeInteres(value) {
+    if (value == '') {
+      this.form.controls.Campus.clearValidators();
+      this.form.controls.AreaInteres.clearValidators();
+      this.form.controls.Nivel.clearValidators();
+      this.form.controls.Modalidad.clearValidators();
+      this.form.controls.Carrera.clearValidators();
+      this.form.controls.Ciclo.clearValidators();
 
-    if (!pattern.test(inputChar)) {
-      // invalid character, prevent input
-      event.preventDefault();
+    } else {
+
+      this.form.controls.Campus.setValidators([Validators.required]);
+      this.form.controls.AreaInteres.setValidators([Validators.required]);
+      this.form.controls.Nivel.setValidators([Validators.required]);
+      this.form.controls.Modalidad.setValidators([Validators.required]);
+      this.form.controls.Carrera.setValidators([Validators.required]);
+      this.form.controls.Ciclo.setValidators([Validators.required]);
     }
+    this.form.controls.Campus.updateValueAndValidity();
+    this.form.controls.AreaInteres.updateValueAndValidity();
+    this.form.controls.Nivel.updateValueAndValidity();
+    this.form.controls.Modalidad.updateValueAndValidity();
+    this.form.controls.Carrera.updateValueAndValidity();
+    this.form.controls.Ciclo.updateValueAndValidity();
+
+  }
+
+  onFielCanal(value) {
+    this.form.controls.TelefonoCorreo.clearValidators();
+    this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
+    if (value == 1) {
+      this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator()]);
+    } else {
+      this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
+    }
+    this.form.controls.TelefonoCorreo.updateValueAndValidity();
+  }
+
+  addValidation(isChecked) {
+    if (isChecked.checked) {
+      this.form.controls.CorreoElectronico.reset({ value: '', disabled: true });
+    } else {
+      this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
+    }
+    this.form.controls.CorreoElectronico.updateValueAndValidity();
+  }
+
+  addAsesor(isChecked) {
+    if (isChecked.checked) {
+      this.form.controls.Asesor.reset({ value: '', disabled: false });
+    } else {
+      this.form.controls.Asesor.reset({ value: '', disabled: true });
+    }
+    this.form.controls.Asesor.updateValueAndValidity();
+  }
+
+  showMjs(field: any) {
+    return LandingValidation.getMensaje(field);
+  }
+
+  private showDialog(message: string) {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      height: '180px',
+      width: '500px',
+      data: { message: message }
+    });
   }
 
 }

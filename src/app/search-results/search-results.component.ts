@@ -17,11 +17,7 @@ export class SearchResultsComponent implements OnInit {
     this.reesults = [
       {numberA: 99866445, id: 60189098, name: 'Hydrogen', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
       {numberA: 99866445, id: 60189098, name: 'Helium', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-      {numberA: 99866445, id: 60189098, name: 'Lithium', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-      {numberA: 99866445, id: 60189098, name: 'Beryllium', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-      {numberA: 99866445, id: 60189098, name: 'Boron', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-      {numberA: 99866445, id: 60189098, name: 'Carbon', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-      {numberA: 99866445, id: 60189098, name: 'Nitrogen', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
+      {numberA: 99866445, id: 60189098, name: 'Lithium', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},      
     ];
   }
 

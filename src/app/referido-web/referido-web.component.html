@@ -9,13 +9,13 @@
                 <mat-grid-tile>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="name_ref" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.name_ref.value)">
-                        <mat-error *ngIf="form.controls.name_ref.errors?.palabraMala">Nombre inválido</mat-error>
+                        <mat-error *ngIf="form.controls.name_ref.errors?.palabraMala">{{showMjs('nombre.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="patern_ref" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.patern_ref.value)">
-                        <mat-error *ngIf="form.controls.patern_ref.errors?.palabraMala">Apellido Paterno inválido</mat-error>
+                        <mat-error *ngIf="form.controls.patern_ref.errors?.palabraMala">{{showMjs('paterno.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -23,7 +23,7 @@
                 <mat-grid-tile>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="matern_ref" matInput minlength="10" placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.matern_ref.value)">
-                        <mat-error *ngIf="form.controls.matern_ref.errors?.palabraMala">Apellido Materno inválido</mat-error>
+                        <mat-error *ngIf="form.controls.matern_ref.errors?.palabraMala">{{showMjs('materno.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
@@ -75,29 +75,31 @@
             <div style="width: 50%;float: left;display: block;">
                 <div style="width: 96%;float: left;display: block;">
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="name" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.name.value)">
-                        <mat-error *ngIf="form.controls.name.errors?.required">Por favor ingresa un nombre </mat-error>
-                        <mat-error *ngIf="form.controls.name.errors?.palabraMala && !form.controls.name.errors?.required">Nombre inválido</mat-error>
+                        <input autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
+                        <mat-error *ngIf="form.controls.Nombre.errors?.required">{{showMjs('nombre.m1')}} </mat-error>
+                        <mat-error *ngIf="form.controls.Nombre.errors?.palabraMala && !form.controls.Nombre.errors?.required">{{showMjs('nombre.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="patern" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.patern.value)">
-                        <mat-error *ngIf="form.controls.patern.errors?.required">Por favor ingresa un apellido paterno</mat-error>
-                        <mat-error *ngIf="form.controls.patern.errors?.palabraMala && !form.controls.patern.errors?.required">Apellido Paterno inválido</mat-error>
+                        <input autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
+                        <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.palabraMala && !form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="matern" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.matern.value)">
-                        <mat-error *ngIf="form.controls.matern.errors?.required">Por favor ingresa un apellido materno</mat-error>
-                        <mat-error *ngIf="form.controls.matern.errors?.palabraMala && !form.controls.matern.errors?.required">Apellido Materno inválido</mat-error>
+                        <input autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
+                        <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.palabraMala && !form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="mail" matInput placeholder="Correo Electrónico" required>
-                        <mat-error *ngIf="form.controls.mail.errors?.required">Por favor ingresa un correo electrónico</mat-error>
-                        <mat-error *ngIf="form.controls.mail.errors?.emailMalo && !form.controls.mail.errors?.required">Correo Inválido </mat-error>
+                        <input autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required (change)="onChange()">
+                        <mat-error *ngIf="form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.CorreoElectronico.errors?.emailMalo && !form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="phone" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)">
-                        <mat-error *ngIf="form.controls.phone.errors?.required">Ingresa número de Teléfono</mat-error>
-                        <mat-error *ngIf="form.controls.phone.errors?.minlength && !form.controls.phone.errors?.required">Al menos debe contener 10 dígitos</mat-error>
+                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()">
+                        <mat-error *ngIf="form.controls.Telefono.errors?.required">{{showMjs('telefono.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required  && !form.controls.Telefono.errors?.numberCon">{{showMjs('telefono.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.aceptNumber  && !form.controls.Telefono.errors?.minlength">{{showMjs('telefono.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.numberCon  &&  form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field *ngIf="this.form.controls.tipoCel.value=='Oficina'">
                         <input autocomplete="off" formControlName="extension" matInput placeholder="Extension" type="tel" (keypress)="_keyPress($event)">
@@ -113,40 +115,40 @@
             </div>
             <div style="width: 50%;float: left;display: block;">
                 <mat-form-field>
-                    <mat-select formControlName="interestCampus" placeholder="Campus" required>
+                    <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
                         <mat-option *ngFor="let campu of campus;" [value]="campu['crmi_name']">
                             {{ campu['crmi_name'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.interestCampus.errors?.required">Elige un Campus</mat-error>
+                    <mat-error *ngIf="form.controls.Campus.errors?.required">Elige un Campus</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-select formControlName="interestNivel" placeholder="Nivel" required>
+                    <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
                         <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_name']">
                             {{ nivel['crmit_name'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.interestNivel.errors?.required">Elige un Nivel</mat-error>
+                    <mat-error *ngIf="form.controls.Nivel.errors?.required">Elige un Nivel</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-select formControlName="interestModalidad" placeholder="Modalidad" required>
+                    <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
                         <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_name']">
                             {{ modalidad['crmit_name'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.interestModalidad.errors?.required">Elige una Modalidad</mat-error>
+                    <mat-error *ngIf="form.controls.Modalidad.errors?.required">Elige una Modalidad</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-select formControlName="interestCarrera" placeholder="Carrera" required>
+                    <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
                         <mat-option *ngFor="let carrera of carreras;" [value]="carrera['productnumber']">
                             {{ carrera['productnumber'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.interestModalidad.errors?.required">Elige una Carrera</mat-error>
+                    <mat-error *ngIf="form.controls.Carrera.errors?.required">Elige una Carrera</mat-error>
                 </mat-form-field>
             </div>
             <div style="clear: both; height: 0; display: block;"></div>
@@ -156,7 +158,7 @@
             </mat-grid-tile>
             <mat-grid-tile>
                 <div class="btn">
-                    <button mat-raised-button color="warn" class="cancel">CANCELAR</button>
+                    <button mat-raised-button color="warn" class="cancel" (click)="resetForm()">CANCELAR</button>
                     <button mat-raised-button color="warn" (click)="onSubmit()">GUARDAR</button>
                 </div>
             </mat-grid-tile>
