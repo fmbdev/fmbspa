@@ -344,6 +344,7 @@ export class NewRegisterSoloComponent implements OnInit {
     }
 
     resetForm() {
+        window.location.href = "/registerSolo";
         this.form.reset();
     }
 

@@ -280,6 +280,8 @@ export class SearchComponent implements OnInit {
   }
 
   resetForm() {
+    window.location.href = "/search";
+    
     this.form.reset();
   }
 
