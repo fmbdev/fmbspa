@@ -315,6 +315,7 @@ export class NewRegisterComponent implements OnInit {
     }
 
     resetForm(){
+        window.location.href = "/register";
          this.form.reset();
           /*Object.keys(this.form.controls).forEach(key => {
               this.form.controls[key].setErrors(null)

@@ -27,7 +27,10 @@
                                 {{ canal['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Canal.errors?.required">{{showMjs('canal.m1')}}</mat-error>
+
+                        <mat-error *ngIf="form.controls.Canal.errors?.required && form.controls.Canal.invalid">{{showMjs('canal.m1')}}</mat-error>
+
+
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>

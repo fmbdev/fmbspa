@@ -137,6 +137,8 @@ export class ReferidoTlmkComponent implements OnInit {
   }
 
   resetForm() {
+    window.location.href = "/referidoTlmk";
+    
     this.form.reset();
   }
   onChangeInteres(value) {

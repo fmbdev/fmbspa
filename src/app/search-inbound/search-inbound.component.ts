@@ -278,6 +278,8 @@ export class SearchInboundComponent implements OnInit {
   }
 
   resetForm() {
+    window.location.href = "/searchInbound";
+    
     this.form.reset();
   }
 

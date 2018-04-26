@@ -7,6 +7,9 @@ import { HttpModule } from '@angular/http';
 
 import { DialogComponent } from './dialog/dialog.component';
 
+import * as $ from 'jquery';
+import * as XLSX from 'xlsx';
+
 import { PapaParseModule } from 'ngx-papaparse';
 
 import { AppRoutingModule } from './app-routing.module';
