@@ -9,8 +9,11 @@ import { DialogComponent } from './dialog/dialog.component';
 
 import * as $ from 'jquery';
 import * as XLSX from 'xlsx';
+<<<<<<< HEAD
 
 import { PapaParseModule } from 'ngx-papaparse';
+=======
+>>>>>>> hags_developer
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -120,8 +123,7 @@ import { FormComponent } from './form/form.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatRadioModule,
-    PapaParseModule
+    MatRadioModule
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
               ParentescoService, CampusService, NivelService, ModalidadService,
