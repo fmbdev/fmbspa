@@ -8,6 +8,8 @@ import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter 
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 
+import * as $ from 'jquery';
+
 import { LandingValidation } from '../validations/landing.validations';
 
 import { Csq } from '../interfaces/csq';
@@ -122,6 +124,7 @@ export class NewRegisterComponent implements OnInit {
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
 
+<<<<<<< HEAD
 
     //matcher = new MyErrorStateMatcher();
 
@@ -145,6 +148,28 @@ export class NewRegisterComponent implements OnInit {
         private parentescoServ: ParentescoService,
         private campusCitaServ: CampusCitaService,
         private tipicicacionServ: TipificacionService) { }
+=======
+    constructor(private gralService: GeneralService, 
+                public dialog: MatDialog, 
+                private renderer: Renderer2,
+                private pnnServ: PnnService,
+                private csqServ: CsqService,
+                private horaServ: HoraService,
+                private sendServ: SendService,
+                private nivelServ: NivelService,
+                private cicloServ: CicloService,
+                private canalServ: CanalService,
+                private campusServ: CampusService,
+                private asesorServ: AsesorService,
+                private formatServ: FormatService,
+                private generoServ: GeneroService,
+                private carreraServ: CarreraService,
+                private interesServ: InteresService,
+                private modalidadServ: ModalidadService,
+                private parentescoServ: ParentescoService,
+                private campusCitaServ: CampusCitaService,
+                private tipicicacionServ: TipificacionService) {}
+>>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
 
 
     ngOnInit() {
@@ -234,14 +259,25 @@ export class NewRegisterComponent implements OnInit {
             } else if (control instanceof FormGroup) {        //{5}
                 this.validateAllFormFields(control);            //{6}
             }
+<<<<<<< HEAD
         });
     }
     formInit() {
+=======
+          });
+        }
+
+    formInit(){
+>>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
         this.form = new FormGroup({
             Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }),
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl('', Validators.required),
+<<<<<<< HEAD
             TelefonoCorreo: new FormControl({ value: '', disabled: true }),
+=======
+            TelefonoCorreo: new FormControl('', Validators.required),
+>>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
             Interesa_NoInteresa: new FormControl('', Validators.required),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -285,6 +321,7 @@ export class NewRegisterComponent implements OnInit {
         });
     }
 
+<<<<<<< HEAD
     onSubmit() {
         this.onKeyFechaNacimiento();
 
@@ -314,6 +351,48 @@ export class NewRegisterComponent implements OnInit {
             this.showDialog("Error al realizar el registro *");
         }
 
+=======
+    onSubmit(){
+        let form = this.form;
+        let pnnServ = this.pnnServ;
+
+        $('form').find(':input').each(function(){
+            if($(this).hasClass('validPhoneNumber')){
+                let name = $(this).attr('formControlName');
+                if(form.controls[name].value != '' && form.controls[name].value != null){
+                    if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
+                        form.controls[name].setErrors({'numInvalid': true});
+                    }else{
+                        form.controls[name].setErrors({'numInvalid': false});
+                        form.controls[name].updateValueAndValidity();
+                    }
+                }else{
+                    form.controls[name].setErrors({'numInvalid': false});
+                    form.controls[name].reset();
+                }               
+            }
+        })
+        
+        this.onKeyFechaNacimiento();
+        let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+        this.form.controls['FechaCita'].setValue(fecha_cita);
+
+        if(this.form.valid){
+            this.sendServ.sendDataToApi(this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        if(res.status == 200){
+                            this.showDialog("Los datos se han guardado correctamente.");
+                            this.resetForm();
+                        }else{
+                            this.showDialog("Error al realizar el registro.");
+                            this.resetForm();
+                        }
+                    }
+                )
+        }
+        
+>>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
     }
 
     resetForm() {
