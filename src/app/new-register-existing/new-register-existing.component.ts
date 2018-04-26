@@ -8,6 +8,8 @@ import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter 
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 
+import * as $ from 'jquery';
+
 import { LandingValidation } from '../validations/landing.validations';
 
 import { Csq } from '../interfaces/csq';
@@ -68,7 +70,7 @@ export class NewRegisterExistingComponent implements OnInit {
     Canal: FormControl;
     CSQ: FormControl;
     TelefonoCorreo: FormControl;
-    Interesa: FormControl;
+    Interesa_NoInteresa: FormControl;
 
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
@@ -129,6 +131,7 @@ export class NewRegisterExistingComponent implements OnInit {
     constructor(private gralService: GeneralService,
         public dialog: MatDialog,
         private renderer: Renderer2,
+        private pnnServ: PnnService,
         private csqServ: CsqService,
         private horaServ: HoraService,
         private sendServ: SendService,
@@ -232,8 +235,8 @@ export class NewRegisterExistingComponent implements OnInit {
             Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl('', Validators.required),
-            TelefonoCorreo: new FormControl({ value: '', disabled: true }),
-            Interesa: new FormControl(''),
+            TelefonoCorreo: new FormControl(''),
+            Interesa_NoInteresa: new FormControl(''),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -278,21 +281,44 @@ export class NewRegisterExistingComponent implements OnInit {
     }
 
     onSubmit() {
-        this.onKeyFechaNacimiento();
-        this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+        let form = this.form;
+        let pnnServ = this.pnnServ;
 
-        this.sendServ.sendDataToApi(this.form.value)
-            .subscribe(
-                (res: any) => {
-                    if (res.status == 200) {
-                        this.showDialog("Los datos se han guardado correctamente.");
-                        this.resetForm();
-                    } else {
-                        this.showDialog("Error al realizar el registro.");
-                        this.resetForm();
+        $('form').find(':input').each(function(){
+            if($(this).hasClass('validPhoneNumber')){
+                let name = $(this).attr('formControlName');
+                if(form.controls[name].value != '' && form.controls[name].value != null){
+                    if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
+                        form.controls[name].setErrors({'numInvalid': true});
+                    }else{
+                        form.controls[name].setErrors({'numInvalid': false});
+                        form.controls[name].updateValueAndValidity();
                     }
-                }
-            )
+                }else{
+                    form.controls[name].setErrors({'numInvalid': false});
+                    form.controls[name].reset();
+                }               
+            }
+        })
+        
+        this.onKeyFechaNacimiento();
+        let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+        this.form.controls['FechaCita'].setValue(fecha_cita);
+
+        if(this.form.valid){
+            this.sendServ.sendDataToApi(this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        if(res.status == 200){
+                            this.showDialog("Los datos se han guardado correctamente.");
+                            this.resetForm();
+                        }else{
+                            this.showDialog("Error al realizar el registro.");
+                            this.resetForm();
+                        }
+                    }
+                )
+        }
     }
 
     resetForm() {

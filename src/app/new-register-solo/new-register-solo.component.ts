@@ -8,6 +8,8 @@ import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter 
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 
+import * as $ from 'jquery';
+
 import { LandingValidation } from '../validations/landing.validations';
 
 import { Csq } from '../interfaces/csq';
@@ -76,12 +78,11 @@ export class NewRegisterSoloComponent implements OnInit {
     school: FormControl;
     Calidad: FormControl;
 
-
     Usuario: FormControl;
     Canal: FormControl;
     CSQ: FormControl;
     TelefonoCorreo: FormControl;
-    Interesa: FormControl;
+    Interesa_NoInteresa: FormControl;
 
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
@@ -114,7 +115,6 @@ export class NewRegisterSoloComponent implements OnInit {
     etapaVenta: FormControl;
     NumeroCuenta: FormControl;
 
-
     CampusCitas: FormControl;
     FechaCita: FormControl;
     HoraCita: FormControl;
@@ -144,6 +144,7 @@ export class NewRegisterSoloComponent implements OnInit {
     constructor(private gralService: GeneralService,
         public dialog: MatDialog,
         private renderer: Renderer2,
+        private pnnServ: PnnService,
         private csqServ: CsqService,
         private horaServ: HoraService,
         private sendServ: SendService,
@@ -263,8 +264,6 @@ export class NewRegisterSoloComponent implements OnInit {
 
     formInit() {
         this.form = new FormGroup({
-
-
             Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: true }, Validators.required),
             ejecutivo: new FormControl(''),
 
@@ -275,8 +274,6 @@ export class NewRegisterSoloComponent implements OnInit {
             Turno: new FormControl(''),
             school: new FormControl(''),
             Calidad: new FormControl('', Validators.maxLength(5)),
-
-
 
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl('', Validators.required),
@@ -311,7 +308,6 @@ export class NewRegisterSoloComponent implements OnInit {
             etapaVenta: new FormControl(''),
             NumeroCuenta: new FormControl('', Validators.pattern('^[0-9]+$')),
 
-
             Tipificacion: new FormControl(''),
             Notas: new FormControl(''),
 
@@ -321,26 +317,48 @@ export class NewRegisterSoloComponent implements OnInit {
             Programacion: new FormControl({ value: '', disabled: true }, Validators.required),
             Transferencia: new FormControl({ value: '', disabled: true }, Validators.required),
             Asesor: new FormControl({ value: '', disabled: true }, Validators.required)
-
         });
     }
 
     onSubmit() {
-        this.onKeyFechaNacimiento();
-        this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+        let form = this.form;
+        let pnnServ = this.pnnServ;
 
-        this.sendServ.sendDataToApi(this.form.value)
-            .subscribe(
-                (res: any) => {
-                    if (res.status == 200) {
-                        this.showDialog("Los datos se han guardado correctamente.");
-                        this.resetForm();
-                    } else {
-                        this.showDialog("Error al realizar el registro.");
-                        this.resetForm();
+        $('form').find(':input').each(function(){
+            if($(this).hasClass('validPhoneNumber')){
+                let name = $(this).attr('formControlName');
+                if(form.controls[name].value != '' && form.controls[name].value != null){
+                    if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
+                        form.controls[name].setErrors({'numInvalid': true});
+                    }else{
+                        form.controls[name].setErrors({'numInvalid': false});
+                        form.controls[name].updateValueAndValidity();
                     }
-                }
-            )
+                }else{
+                    form.controls[name].setErrors({'numInvalid': false});
+                    form.controls[name].reset();
+                }               
+            }
+        })
+        
+        this.onKeyFechaNacimiento();
+        let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+        this.form.controls['FechaCita'].setValue(fecha_cita);
+
+        if(this.form.valid){
+            this.sendServ.sendDataToApi(this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        if(res.status == 200){
+                            this.showDialog("Los datos se han guardado correctamente.");
+                            this.resetForm();
+                        }else{
+                            this.showDialog("Error al realizar el registro.");
+                            this.resetForm();
+                        }
+                    }
+                )
+        }
     }
 
     resetForm() {

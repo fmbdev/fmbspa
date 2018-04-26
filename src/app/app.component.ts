@@ -11,6 +11,6 @@ export class AppComponent implements OnInit{
   constructor(private pnnServ: PnnService){}
 
   ngOnInit(){
-    //this.pnnServ.getAll();
+    this.pnnServ.getAll();
   }
 }
