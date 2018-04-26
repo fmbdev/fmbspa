@@ -15,7 +15,8 @@ import { PapaParseModule } from 'ngx-papaparse';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatGridListModule } from '@angular/material';
-import { MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatRadioModule} from '@angular/material';
+import { MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatRadioModule } from '@angular/material';
+import { MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatListModule, MatMenuModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NewRegisterPromotionComponent } from './new-register-promotion/new-register-promotion.component';
@@ -97,7 +98,8 @@ import { FormComponent } from './form/form.component';
     NewRegisterExistingComponent,
     NewRegisterExistingReceptionComponent,
     FormComponent,
-    DialogComponent
+    DialogComponent,
+    
   ],
   entryComponents: [
     DialogComponent
@@ -121,6 +123,14 @@ import { FormComponent } from './form/form.component';
     MatNativeDateModule,
     MatDialogModule,
     MatRadioModule,
+    MatGridListModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatListModule, 
+    MatMenuModule,
     PapaParseModule
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,

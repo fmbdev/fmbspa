@@ -17,6 +17,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   @ViewChild('username') usernameInput: ElementRef;
   @ViewChild('password') passwordInput: ElementRef;
@@ -44,9 +45,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    
     if(this.send){
       return;
     }
+
     this.send = true;
 
     this.gralService.login(this.user).then((data) => {

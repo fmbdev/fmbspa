@@ -9,12 +9,11 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Ejecutivo" formControlName="ejecutivo">
+                        <mat-select placeholder="Ejecutivo" >
                             <mat-option *ngFor="let asesor of asesores;" [value]="asesor['Nombre Asesor']">
                                 {{ asesor['Nombre Asesor'] }}
                             </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.controls.ejecutivo.errors?.required">Por favor elige un ejecutivo </mat-error>
+                        </mat-select>                    
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -38,24 +37,24 @@
             <mat-grid-list cols="2" rowHeight="70px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Sub Tipo de Actividad" formControlName="subTipoActividad" required>
+                        <mat-select placeholder="Sub Tipo de Actividad" formControlName="SubTipoActividad" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let tipo_actividad of tipo_actividades;" [value]="tipo_actividad['crmit_name']">
                                 {{ tipo_actividad['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.subTipoActividad.errors?.required">Por favor elige un sub tipo de actividad </mat-error>
+                        <mat-error *ngIf="form.controls.SubTipoActividad.errors?.required">Por favor elige un sub tipo de actividad </mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Actividad de Agenda" formControlName="company" required>
+                        <mat-select placeholder="Actividad de Agenda" formControlName="ActividadAgenda" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let tipo_actividad of tipo_actividades;" [value]="tipo_actividad['crmit_name']">
                                 {{ tipo_actividad['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.company.errors?.required">Por favor elige una actividad de agenda</mat-error>
+                        <mat-error *ngIf="form.controls.ActividadAgenda.errors?.required">Por favor elige una actividad de agenda</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -88,12 +87,12 @@
             <mat-grid-list cols="2" rowHeight="70px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Escuela/Empresa" formControlName="school" required>
+                        <mat-select placeholder="Escuela/Empresa" formControlName="EscuelaEmpresa" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
                             <mat-option value="val1">val1</mat-option>
                             <mat-option value="val2">val2</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.school.errors?.required">Por favor elige una escuela/empresa</mat-error>
+                        <mat-error *ngIf="form.controls.EscuelaEmpresa.errors?.required">Por favor elige una escuela/empresa</mat-error>
 
                     </mat-form-field>
 
@@ -136,12 +135,12 @@
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.palabraMala && !form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required (change)="onChange()">
+                        <input autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required (change)="onChange()" [readonly]="sinEmail">
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.emailMalo && !form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
                     <div style="height: 41px; padding-top: 15px;">
-                        <mat-checkbox (change)="addValidation($event)" value="SinCorreo">Sin Correo Electrónico</mat-checkbox>
+                        <mat-checkbox formControlName="SinCorreo" (change)="addValidation($event)" value="ok">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()">
@@ -209,11 +208,11 @@
                         <mat-error *ngIf="form.controls.CorreoElectronicoTutor.errors?.emailMalo && !form.controls.CorreoElectronicoTutor.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelularR" matInput placeholder="Número Celular (10 dígitos)" maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelularR.value)">
-                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.required">{{showMjs('celular.m1')}}</mat-error>
-                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.minlength && !form.controls.NumeroCelularR.errors?.required  && !form.controls.NumeroCelularR.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
-                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.aceptNumber  && !form.controls.NumeroCelularR.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
-                        <mat-error *ngIf="form.controls.NumeroCelularR.errors?.numberCon  &&  form.controls.NumeroCelularR.errors?.minlength && !form.controls.NumeroCelularR.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
+                        <input autocomplete="off" formControlName="NumeroCelularTutor" matInput placeholder="Número Celular (10 dígitos)" maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelularTutor.value)">
+                        <mat-error *ngIf="form.controls.NumeroCelularTutor.errors?.required">{{showMjs('celular.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelularTutor.errors?.minlength && !form.controls.NumeroCelularTutor.errors?.required  && !form.controls.NumeroCelularTutor.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelularTutor.errors?.aceptNumber  && !form.controls.NumeroCelularTutor.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.NumeroCelularTutor.errors?.numberCon  &&  form.controls.NumeroCelularTutor.errors?.minlength && !form.controls.NumeroCelularTutor.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="TelefonoTutor" matInput placeholder="Teléfono" maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.TelefonoTutor.value)">
