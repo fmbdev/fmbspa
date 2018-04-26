@@ -322,6 +322,7 @@ export class NewRegisterExistingComponent implements OnInit {
     }
 
     resetForm() {
+        window.location.href = "/register-existing";
         this.form.reset({
             'CorreoElectronico': '',
             'Canal': '',
@@ -340,6 +341,10 @@ export class NewRegisterExistingComponent implements OnInit {
             'Tipificacion': ''
         });
         //this.form.reset();
+        Object.keys(this.form.controls).forEach(key => {
+            console.log(key);
+            this.form.controls[key].setErrors(null)
+        });
     }
 
     onKeyFechaNacimiento() {

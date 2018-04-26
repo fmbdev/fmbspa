@@ -313,6 +313,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
     }
 
     resetForm() {
+        window.location.href = "/register-existing-reception";
         this.form.reset({
             'CorreoElectronico': '',
             'Canal': '',

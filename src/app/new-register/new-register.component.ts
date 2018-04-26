@@ -330,7 +330,12 @@ export class NewRegisterComponent implements OnInit {
     }
 
     resetForm(){
-         this.formInit();
+        window.location.href = "/register";
+         this.form.reset();
+          /*Object.keys(this.form.controls).forEach(key => {
+              this.form.controls[key].setErrors(null)
+            });*/
+        //this.form.reset();
     }
 
     onKeyFechaNacimiento(){

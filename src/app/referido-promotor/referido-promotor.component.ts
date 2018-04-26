@@ -136,6 +136,7 @@ export class ReferidoPromotorComponent implements OnInit {
   }
 
   resetForm() {
+    window.location.href = "/registerPromotion";
     this.form.reset();
   }
 
