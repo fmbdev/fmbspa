@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { GeneralService } from '../services/general.service';
-import { MatDialog, MatSelect } from '@angular/material';
+import { MatDialog, MatSelect, MatInputModule } from '@angular/material';
 import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
@@ -148,18 +148,23 @@ export class ReferidoWebComponent implements OnInit {
 
   onSubmit() {
     this.mostrarExtension = true;
-    this.sendServ.sendDataToApi(this.form.value)
-         .subscribe(
-              (res: any) => {
-                  if(res.status == 200){
-                     this.showDialog("Los datos se han guardado correctamente.");
-                     this.resetForm();
-                  }else{
-                     this.showDialog("Error al realizar el registro.");
-                     this.resetForm();
-                  }
-              }
+    if (this.form.valid) {
+      this.sendServ.sendDataToApi(this.form.value)
+        .subscribe(
+          (res: any) => {
+            if (res.status == 200) {
+              this.showDialog("Los datos se han guardado correctamente.");
+              this.resetForm();
+            } else {
+              this.showDialog("Error al realizar el registro.");
+              this.resetForm();
+            }
+          }
         )
+    } else {
+      this.showDialog("Error al realizar el registro *");
+    }
+    
   }
 
   resetForm() {

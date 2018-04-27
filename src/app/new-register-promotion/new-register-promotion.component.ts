@@ -62,26 +62,24 @@ import { TurnoService } from '../providers/turno.service';
 export class NewRegisterPromotionComponent implements OnInit {
 
     form: FormGroup;
-
+    sinEmail = false;
     //maxDate = new Date(2018, this.month.getMonth(),12);
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
-
-    ejecutivo: FormControl;
-    actvidadNoTradicional: FormControl;
-    subTipoActividad: FormControl;
-    company: FormControl;
-    SubSubTipoActividad: FormControl;
-    turno: FormControl;
-    school: FormControl;
-    Calidad: FormControl;
-
-
     Usuario: FormControl;
-    Canal: FormControl;
-    CSQ: FormControl;
-    TelefonoCorreo: FormControl;
-    Interesa_NoInteresa: FormControl;
+    //Asesor: FormControl;
+    SinCorreo: FormControl;
+
+    actvidadNoTradicional: FormControl;
+
+
+    ActividadAgenda: FormControl;
+    SubTipoActividad: FormControl;
+    SubSubTipoActividad: FormControl;
+    EscuelaEmpresa: FormControl;
+    Turno: FormControl; 
+    Calidad: FormControl;          
+
 
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
@@ -97,7 +95,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     ApellidoPaternoTutor: FormControl;
     ApellidoMaternoTutor: FormControl;
     CorreoElectronicoTutor: FormControl;
-    NumeroCelularR: FormControl;
+    NumeroCelularTutor: FormControl;
     TelefonoTutor: FormControl;
     ParentescoTutor: FormControl;
 
@@ -115,12 +113,6 @@ export class NewRegisterPromotionComponent implements OnInit {
     NumeroCuenta: FormControl;
 
 
-    CampusCitas: FormControl;
-    FechaCita: FormControl;
-    HoraCita: FormControl;
-    Programacion: FormControl;
-    Transferencia: FormControl;
-    Asesor: FormControl;
 
     csqs: Csq[] = [];
     horas: Hora[] = [];
@@ -264,21 +256,20 @@ export class NewRegisterPromotionComponent implements OnInit {
 
     formInit() {
         this.form = new FormGroup({
-            Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
-            ejecutivo: new FormControl(''),
 
+
+            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }, Validators.required),
+            //Asesor: new FormControl(''),
+            
             actvidadNoTradicional: new FormControl(''),
-            subTipoActividad: new FormControl(''),
-            company: new FormControl(''),
+            
+            ActividadAgenda: new FormControl(''),
+            SubTipoActividad: new FormControl(''),
             SubSubTipoActividad: new FormControl(''),
+            EscuelaEmpresa: new FormControl(''),
             Turno: new FormControl(''),
-            school: new FormControl(''),
-            Calidad: new FormControl('', [Validators.required, Validators.maxLength(5)] ),
-
-            Canal: new FormControl('', Validators.required),
-            CSQ: new FormControl('', Validators.required),
-            TelefonoCorreo: new FormControl({ value: '', disabled: true }),
-            Interesa: new FormControl(''),
+            Calidad: new FormControl('', [Validators.required, Validators.maxLength(5)]),
+            SinCorreo:new FormControl(''),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -294,7 +285,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             ApellidoPaternoTutor: new FormControl(''),
             ApellidoMaternoTutor: new FormControl(''),
             CorreoElectronicoTutor: new FormControl(''),
-            NumeroCelularR: new FormControl(''),
+            NumeroCelularTutor: new FormControl(''),
             TelefonoTutor: new FormControl(''),
             ParentescoTutor: new FormControl(''),
 
@@ -310,13 +301,6 @@ export class NewRegisterPromotionComponent implements OnInit {
 
             Tipificacion: new FormControl(''),
             Notas: new FormControl(''),
-
-            CampusCitas: new FormControl({ value: '', disabled: true }, Validators.required),
-            FechaCita: new FormControl({ value: '', disabled: true }, Validators.required),
-            HoraCita: new FormControl({ value: '', disabled: true }, Validators.required),
-            Programacion: new FormControl({ value: '', disabled: true }, Validators.required),
-            Transferencia: new FormControl({ value: '', disabled: true }, Validators.required),
-            Asesor: new FormControl({ value: '', disabled: true }, Validators.required)
 
         });
     }
@@ -343,23 +327,31 @@ export class NewRegisterPromotionComponent implements OnInit {
         })
         
         this.onKeyFechaNacimiento();
-        let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
-        this.form.controls['FechaCita'].setValue(fecha_cita);
 
-        if(this.form.valid){
+        if (this.form.valid) {
+            
+            if (this.sinEmail) {
+                let tel = this.form.controls['Telefono'].value;
+                this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+            }
+
             this.sendServ.sendDataToApi(this.form.value)
                 .subscribe(
                     (res: any) => {
-                        if(res.status == 200){
+                        if (res.status == 200) {
+
                             this.showDialog("Los datos se han guardado correctamente.");
-                            this.resetForm();
-                        }else{
+
+                        } else {
+
                             this.showDialog("Error al realizar el registro.");
-                            this.resetForm();
                         }
                     }
                 )
+        } else {
+            this.showDialog("Error al realizar el registro *");
         }
+
     }
 
     resetForm() {
@@ -381,7 +373,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls.ApellidoPaternoTutor.clearValidators();
             this.form.controls.ApellidoMaternoTutor.clearValidators();
             this.form.controls.CorreoElectronicoTutor.clearValidators();
-            this.form.controls.NumeroCelularR.clearValidators();
+            this.form.controls.NumeroCelularTutor.clearValidators();
             this.form.controls.TelefonoTutor.clearValidators();
             this.form.controls.ParentescoTutor.clearValidators();
         } else {
@@ -390,7 +382,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls.ApellidoPaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.ApellidoMaternoTutor.setValidators([Validators.required, LandingValidation.palabraMalaValidator()]);
             this.form.controls.CorreoElectronicoTutor.setValidators([Validators.required, LandingValidation.emailMaloValidator()]);
-            this.form.controls.NumeroCelularR.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            this.form.controls.NumeroCelularTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
             this.form.controls.TelefonoTutor.setValidators([Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
             this.form.controls.ParentescoTutor.setValidators([Validators.required]);
         }
@@ -398,7 +390,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.form.controls.ApellidoPaternoTutor.updateValueAndValidity();
         this.form.controls.ApellidoMaternoTutor.updateValueAndValidity();
         this.form.controls.CorreoElectronicoTutor.updateValueAndValidity();
-        this.form.controls.NumeroCelularR.updateValueAndValidity();
+        this.form.controls.NumeroCelularTutor.updateValueAndValidity();
         this.form.controls.TelefonoTutor.updateValueAndValidity();
         this.form.controls.ParentescoTutor.updateValueAndValidity();
     }
@@ -427,34 +419,24 @@ export class NewRegisterPromotionComponent implements OnInit {
     }
 
     onChange() {
-        if (this.form.controls.Nombre.value != '' && this.form.controls.ApellidoPaterno.value != '' && this.form.controls.ApellidoMaterno.value != '' && this.form.controls.CorreoElectronico.value != '' && this.form.controls.NumeroCelular.value != '' && this.form.controls.Telefono.value != '') {
-            this.form.controls.CampusCitas.reset({ value: '', disabled: false });
-            this.form.controls.FechaCita.reset({ value: '', disabled: false });
-            this.form.controls.HoraCita.reset({ value: '', disabled: false });
-            this.form.controls.Programacion.reset({ value: '', disabled: false });
-            this.form.controls.Transferencia.reset({ value: '', disabled: false });
-        } else {
-            this.form.controls.CampusCitas.reset({ value: '', disabled: true });
-            this.form.controls.FechaCita.reset({ value: '', disabled: true });
-            this.form.controls.HoraCita.reset({ value: '', disabled: true });
-            this.form.controls.Programacion.reset({ value: '', disabled: true });
-            this.form.controls.Transferencia.reset({ value: '', disabled: true });
-        }
+         
     }
     addTradicional(isChecked) {
         if (isChecked.checked) {
-            this.form.controls.subTipoActividad.reset({ value: '', disabled: true });
-            this.form.controls.company.reset({ value: '', disabled: true });
+            this.form.controls.SubTipoActividad.reset({ value: '', disabled: true });
+            this.form.controls.ActividadAgenda.reset({ value: '', disabled: true });
             this.form.controls.SubSubTipoActividad.reset({ value: '', disabled: true });
         } else {
-            this.form.controls.subTipoActividad.reset({ value: '', disabled: false });
-            this.form.controls.company.reset({ value: '', disabled: false });
+            this.form.controls.SubTipoActividad.reset({ value: '', disabled: false });
+            this.form.controls.ActividadAgenda.reset({ value: '', disabled: false });
             this.form.controls.SubSubTipoActividad.reset({ value: '', disabled: false });
         }
-        this.form.controls.subTipoActividad.updateValueAndValidity();
-        this.form.controls.company.updateValueAndValidity();
+        this.form.controls.SubTipoActividad.updateValueAndValidity();
+        this.form.controls.ActividadAgenda.updateValueAndValidity();
         this.form.controls.SubSubTipoActividad.updateValueAndValidity();
     }
+
+
     onChangeInteres(value) {
         if (value == '') {
             this.form.controls.Campus.clearValidators();
@@ -495,20 +477,18 @@ export class NewRegisterPromotionComponent implements OnInit {
 
     addValidation(isChecked) {
         if (isChecked.checked) {
-            this.form.controls.CorreoElectronico.reset({ value: '', disabled: true });
+            this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
+            this.sinEmail = true;
+
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
+            this.sinEmail = false;
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();
     }
 
     addAsesor(isChecked) {
-        if (isChecked.checked) {
-            this.form.controls.Asesor.reset({ value: '', disabled: false });
-        } else {
-            this.form.controls.Asesor.reset({ value: '', disabled: true });
-        }
-        this.form.controls.Asesor.updateValueAndValidity();
+        
     }
 
     showMjs(field: any) {

@@ -12,7 +12,7 @@ export class LandingValidation {
         return (control: AbstractControl): { [key: string]: any } => {            
             const name = control.value;
             if(name!=""){
-                let array = localStorage.getBasuraObs;
+                let array = localStorage.getBasuraObss;
                 if (array.search(new RegExp(name, "i"))>0) {
                     return { 'palabraMala': { name } }
                 } else {
@@ -64,7 +64,7 @@ export class LandingValidation {
         return (control: AbstractControl): { [key: string]: any } => {            
             
             const name = control.value; 
-            let arrayBasura = localStorage.getBasuraObs;
+            let arrayBasura = localStorage.getBasuraObss;
                 if (name === "") {
                 }else if(name===null){
 
