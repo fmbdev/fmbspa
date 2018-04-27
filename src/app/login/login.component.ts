@@ -5,6 +5,8 @@ import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, Ng
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 
+import { AuthService } from '../providers/auth.service';
+
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog) { }
+  constructor(private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService) { }
 
   ngOnInit() {
     this.email = new FormControl('', this.validUsuario.bind(this));
@@ -76,6 +78,9 @@ export class LoginComponent implements OnInit {
       console.warn(err);
       this.send = false;
     });
+  }
+  onLogin() {
+    this.authService.login();
   }
 
 }

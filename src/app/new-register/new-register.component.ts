@@ -124,31 +124,6 @@ export class NewRegisterComponent implements OnInit {
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
 
-<<<<<<< HEAD
-
-    //matcher = new MyErrorStateMatcher();
-
-
-    constructor(private gralService: GeneralService,
-        public dialog: MatDialog,
-        private renderer: Renderer2,
-        private csqServ: CsqService,
-        private horaServ: HoraService,
-        private sendServ: SendService,
-        private nivelServ: NivelService,
-        private cicloServ: CicloService,
-        private canalServ: CanalService,
-        private campusServ: CampusService,
-        private asesorServ: AsesorService,
-        private formatServ: FormatService,
-        private generoServ: GeneroService,
-        private carreraServ: CarreraService,
-        private interesServ: InteresService,
-        private modalidadServ: ModalidadService,
-        private parentescoServ: ParentescoService,
-        private campusCitaServ: CampusCitaService,
-        private tipicicacionServ: TipificacionService) { }
-=======
     constructor(private gralService: GeneralService, 
                 public dialog: MatDialog, 
                 private renderer: Renderer2,
@@ -169,7 +144,6 @@ export class NewRegisterComponent implements OnInit {
                 private parentescoServ: ParentescoService,
                 private campusCitaServ: CampusCitaService,
                 private tipicicacionServ: TipificacionService) {}
->>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
 
 
     ngOnInit() {
@@ -259,25 +233,14 @@ export class NewRegisterComponent implements OnInit {
             } else if (control instanceof FormGroup) {        //{5}
                 this.validateAllFormFields(control);            //{6}
             }
-<<<<<<< HEAD
         });
     }
     formInit() {
-=======
-          });
-        }
-
-    formInit(){
->>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
         this.form = new FormGroup({
             Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }),
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl('', Validators.required),
-<<<<<<< HEAD
-            TelefonoCorreo: new FormControl({ value: '', disabled: true }),
-=======
             TelefonoCorreo: new FormControl('', Validators.required),
->>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
             Interesa_NoInteresa: new FormControl('', Validators.required),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -321,37 +284,6 @@ export class NewRegisterComponent implements OnInit {
         });
     }
 
-<<<<<<< HEAD
-    onSubmit() {
-        this.onKeyFechaNacimiento();
-
-        if (this.form.valid) {
-            let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
-            this.form.controls['FechaCita'].setValue(fecha_cita);
-            
-            if(this.form.controls['SinCorreo'].value=='ok'){
-                let tel = this.form.controls['Telefono'].value;
-                this.form.controls['CorreoElectronico'].reset({ value: tel+'@unitec.edu.mx', disabled: false });
-            }
-
-            this.sendServ.sendDataToApi(this.form.value)
-                .subscribe(
-                    (res: any) => {
-                        if (res.status == 200) {
-                            
-                            this.showDialog("Los datos se han guardado correctamente.");
-
-                        } else {
-                             
-                            this.showDialog("Error al realizar el registro.");
-                        }
-                    }
-                )
-        } else {
-            this.showDialog("Error al realizar el registro *");
-        }
-
-=======
     onSubmit(){
         let form = this.form;
         let pnnServ = this.pnnServ;
@@ -377,22 +309,32 @@ export class NewRegisterComponent implements OnInit {
         let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
         this.form.controls['FechaCita'].setValue(fecha_cita);
 
-        if(this.form.valid){
+        if (this.form.valid) {
+            let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+            this.form.controls['FechaCita'].setValue(fecha_cita);
+
+            if(this.form.controls['SinCorreo'].value=='ok'){
+                let tel = this.form.controls['Telefono'].value;
+                this.form.controls['CorreoElectronico'].reset({ value: tel+'@unitec.edu.mx', disabled: false });
+            }
+
             this.sendServ.sendDataToApi(this.form.value)
                 .subscribe(
                     (res: any) => {
-                        if(res.status == 200){
+                        if (res.status == 200) {
+
                             this.showDialog("Los datos se han guardado correctamente.");
-                            this.resetForm();
-                        }else{
+
+                        } else {
+
                             this.showDialog("Error al realizar el registro.");
-                            this.resetForm();
                         }
                     }
                 )
+        } else {
+            this.showDialog("Error al realizar el registro *");
         }
         
->>>>>>> 58b832a6a159c4fffba8fafcbd4f956dc0b74ff4
     }
 
     resetForm() {

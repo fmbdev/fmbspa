@@ -76,6 +76,10 @@ import { NewRegisterExistingComponent } from './new-register-existing/new-regist
 import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
 import { FormComponent } from './form/form.component';
 
+import { HttpService } from './providers/http.service';
+import { AuthService } from './providers/auth.service';
+import { HomeService } from './providers/home.service';
+
 
 @NgModule({
   declarations: [
@@ -138,7 +142,8 @@ import { FormComponent } from './form/form.component';
               CarreraService, CicloService, AsesorService, HoraService, PnnService, SendService, FormatService,
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, SubTipoActividadService, TerritorioService, TipoActividadService,
-              TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService
+              TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,
+              HttpService, AuthService, HomeService
             ],
   bootstrap: [AppComponent]
 })
