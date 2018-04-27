@@ -9,11 +9,6 @@ import { DialogComponent } from './dialog/dialog.component';
 
 import * as $ from 'jquery';
 import * as XLSX from 'xlsx';
-<<<<<<< HEAD
-=======
-
-import { PapaParseModule } from 'ngx-papaparse';
->>>>>>> 6e8d6f5116f0f87d054a5a890c03c039b1a7f419
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -137,8 +132,7 @@ import { HomeService } from './providers/home.service';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatListModule, 
-    MatMenuModule,
-    PapaParseModule
+    MatMenuModule
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
               ParentescoService, CampusService, NivelService, ModalidadService,

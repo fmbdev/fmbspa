@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "name": "spa",
   "version": "0.0.0",
   "license": "MIT",
@@ -55,6 +56,8 @@
     "typescript": "~2.5.3"
   }
 =======
+=======
+>>>>>>> 6e8d6f5116f0f87d054a5a890c03c039b1a7f419
     "name": "spa",
     "version": "0.0.0",
     "license": "MIT",
@@ -113,5 +116,8 @@
         "tslint": "~5.9.1",
         "typescript": "~2.5.3"
     }
+<<<<<<< HEAD
+>>>>>>> 6e8d6f5116f0f87d054a5a890c03c039b1a7f419
+=======
 >>>>>>> 6e8d6f5116f0f87d054a5a890c03c039b1a7f419
 }
