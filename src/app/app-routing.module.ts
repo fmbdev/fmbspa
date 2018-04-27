@@ -23,6 +23,10 @@ import { FormComponent } from './form/form.component';
 const routes: Routes = [
   {
     path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'home',
     component: HomeComponent
   },
   {
@@ -42,14 +46,6 @@ const routes: Routes = [
     path: 'register-existing-reception',
     component: NewRegisterExistingReceptionComponent
   },
-
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-
-  
-
   {
     path: 'referidoReferente',
     component: ReferidoReferenteComponent

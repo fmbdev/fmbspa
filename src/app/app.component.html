@@ -1,4 +1,30 @@
-<div class="logo">
-  <a routerLink="/"><img src="assets/imgs/logo.png"></a>
-</div>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <ul class="menus2">
+            <li><a routerLink="register">Nuevo Registro Inbound</a></li>
+            <li><a routerLink="register-existing">Registro Existente</a></li>
+            <li><a routerLink="register-existing-reception">Registro Existente Recepción</a></li>
+            <li><a routerLink="registerSolo">Nuevo Registro Solovino</a></li>
+            <li><a routerLink="registerPromotion">Nuevo Registro (Promotor y Capturista)</a></li>
+            <li><a routerLink="referidoReferente">Referidos Onboarding</a></li>
+            <li><a routerLink="referidoPromotor">Referidos Promotor</a></li>
+            <li><a routerLink="referidoTlmk">Referidos TLMK</a></li>
+            <li><a routerLink="referidoWeb">Referido web y empleados</a></li>
+            <li><a routerLink="searchInbound">Búsqueda Registro Inbound</a></li>
+            <li><a routerLink="search">Búsqueda Registro Recepción</a></li>
+            <li><a routerLink="results">Resultados Registro</a></li>
+            <li><a routerLink="login">Acceso</a></li>
+            <li><a routerLink="upload">Carga de base</a></li>
+            <li><a routerLink="upload-sis">Carga de base SIS</a></li>
+            <li><a routerLink="/logout">Cerrar Sesion</a></li>
+        </ul>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="logo">
+            <a (click)="sidenav.toggle()"><img src="assets/imgs/logo.png"></a>
+        </div>
+        <p><button mat-button (click)="sidenav.toggle()">Menu</button></p>
+
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

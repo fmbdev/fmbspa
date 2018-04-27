@@ -22,7 +22,7 @@
             <mat-grid-list cols="2" rowHeight="70px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="matern_ref" matInput minlength="10" placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.matern_ref.value)">
+                        <input autocomplete="off" formControlName="matern_ref" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.matern_ref.value)">
                         <mat-error *ngIf="form.controls.matern_ref.errors?.palabraMala">{{showMjs('materno.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>

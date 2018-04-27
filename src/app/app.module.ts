@@ -9,11 +9,17 @@ import { DialogComponent } from './dialog/dialog.component';
 
 import * as $ from 'jquery';
 import * as XLSX from 'xlsx';
+<<<<<<< HEAD
+=======
+
+import { PapaParseModule } from 'ngx-papaparse';
+>>>>>>> 6e8d6f5116f0f87d054a5a890c03c039b1a7f419
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatGridListModule } from '@angular/material';
-import { MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatRadioModule} from '@angular/material';
+import { MatTableModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule, MatRadioModule } from '@angular/material';
+import { MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatListModule, MatMenuModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NewRegisterPromotionComponent } from './new-register-promotion/new-register-promotion.component';
@@ -73,6 +79,10 @@ import { NewRegisterExistingComponent } from './new-register-existing/new-regist
 import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
 import { FormComponent } from './form/form.component';
 
+import { HttpService } from './providers/http.service';
+import { AuthService } from './providers/auth.service';
+import { HomeService } from './providers/home.service';
+
 
 @NgModule({
   declarations: [
@@ -95,7 +105,8 @@ import { FormComponent } from './form/form.component';
     NewRegisterExistingComponent,
     NewRegisterExistingReceptionComponent,
     FormComponent,
-    DialogComponent
+    DialogComponent,
+    
   ],
   entryComponents: [
     DialogComponent
@@ -118,14 +129,24 @@ import { FormComponent } from './form/form.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatListModule, 
+    MatMenuModule,
+    PapaParseModule
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
               ParentescoService, CampusService, NivelService, ModalidadService,
               CarreraService, CicloService, AsesorService, HoraService, PnnService, SendService, FormatService,
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, SubTipoActividadService, TerritorioService, TipoActividadService,
-              TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService
+              TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,
+              HttpService, AuthService, HomeService
             ],
   bootstrap: [AppComponent]
 })
