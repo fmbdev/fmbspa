@@ -143,6 +143,7 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   resetForm() {
+    window.location.href = "/referidoReferente";
     this.form.reset();
   }
 

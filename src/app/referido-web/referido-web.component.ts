@@ -163,6 +163,8 @@ export class ReferidoWebComponent implements OnInit {
   }
 
   resetForm() {
+    window.location.href = "/referidoWeb";
+    
     this.form.reset();
     
   }

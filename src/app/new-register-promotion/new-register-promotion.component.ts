@@ -363,6 +363,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     }
 
     resetForm() {
+        window.location.href = "/registerPromotion";
         this.form.reset();
     }
 
