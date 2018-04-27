@@ -27,7 +27,7 @@ export class PnnService {
     let serie = value.substr(0,6);
 
     for(let i = 0; i < this.pnns.length; i++){
-      if(serie == this.pnns[i]._serie){
+      if(serie == this.pnns[i].serie){
            this.isValid = true; 
          }
     }
