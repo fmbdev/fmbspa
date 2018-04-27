@@ -310,9 +310,6 @@ export class NewRegisterComponent implements OnInit {
         this.form.controls['FechaCita'].setValue(fecha_cita);
 
         if (this.form.valid) {
-            let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
-            this.form.controls['FechaCita'].setValue(fecha_cita);
-
             if(this.form.controls['SinCorreo'].value=='ok'){
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel+'@unitec.edu.mx', disabled: false });
