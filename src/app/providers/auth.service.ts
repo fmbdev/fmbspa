@@ -22,37 +22,29 @@ export class AuthService {
     private router: Router
   ) { }
 
-  initAuth() {
-    hello.init({
-        msft: {
-          id: '33ba67a4-5163-4eba-b193-325b549b1b66',
-          oauth: {
-            version: 2,
-            auth: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
-          },
-          scope_delim: ' ',
-          form: false
-        },
-      },
-      { redirect_uri: window.location.href }
-    );
-  }
 
   login() {
     hello.init({
       msft: {
-        id: '33ba67a4-5163-4eba-b193-325b549b1b66',
+        id: '8b121322-84ec-4bb9-8929-6c64333775f6',
         oauth: {
           version: 2,
-          auth: 'https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize'
+          //auth: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
+          auth: 'https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize',
         },
         scope_delim: ' ',
         form: false
       },
     },
-      { redirect_uri: window.location.href }
+      { redirect_uri: window.location.href, response_type: 'code' }
     );
-    hello('msft').login({ scope: 'User.Read Mail.Send' }).then(
+     
+    hello('msft').login({ 
+      scope: 'User.Read Mail.Send',
+      response_type: 'code',
+      display:'page',
+      redirect_uri:'http://app.devmx.com.mx/'
+     }).then(
       () => {
         this.zone.run(() => {
           this.router.navigate(['/home']);

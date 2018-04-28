@@ -12,7 +12,7 @@ export class TipoActividadService {
   constructor(private http: Http) { }
 
   getAll() : Observable<TipoActividad[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/tipo_actividad", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/tipo_actividad", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

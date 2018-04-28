@@ -12,7 +12,7 @@ export class InteresService {
   constructor(private http: Http) { }
 
   getAll() : Observable<Interes[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/area_interes", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/area_interes", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

@@ -12,7 +12,7 @@ export class ParentescoService {
   constructor(private http: Http) { }
 
   getAll() : Observable<Parentesco[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/parentesco", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/parentesco", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

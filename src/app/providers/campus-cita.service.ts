@@ -12,7 +12,7 @@ export class CampusCitaService {
   constructor(private http: Http) { }
 
   getAll(): Observable<CampusCita[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/campus_cita", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/campus_cita", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

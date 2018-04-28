@@ -6,6 +6,8 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 
 import { LandingValidation } from '../validations/landing.validations';
+import { LandingService } from '../services/landing.service';
+
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 //Interfaces
@@ -62,7 +64,7 @@ export class ReferidoTlmkComponent implements OnInit {
   niveles: Nivel[] = [];
 
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
+  constructor(private landingService: LandingService,private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
     private campusServ: CampusService,
     private carreraServ: CarreraService,
     private nivelServ: NivelService,
@@ -71,6 +73,9 @@ export class ReferidoTlmkComponent implements OnInit {
     private modalidadServ: ModalidadService) { }
 
   ngOnInit() {
+    
+    this.landingService.getInit();    
+    
     // Se obtienen todos los campus
     this.campusServ.getAll()
       .subscribe(

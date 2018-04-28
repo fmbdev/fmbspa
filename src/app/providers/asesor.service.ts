@@ -10,7 +10,7 @@ export class AsesorService {
   constructor(private http: Http) { }
 
   getAll() : Observable<Asesor[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/asesor")
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/asesor")
                .map(
                  (res: Response) => res.json()
                )

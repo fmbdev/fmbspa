@@ -12,7 +12,7 @@ export class GeneroService {
   constructor( private http: Http) {}
 
   getAll() : Observable<Genero[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/genero", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/genero", {headers: this.headers})
            .map(
               (res: Response) => res.json()
             )

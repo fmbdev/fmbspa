@@ -11,6 +11,7 @@ import 'rxjs/Rx';
 import * as $ from 'jquery';
 
 import { LandingValidation } from '../validations/landing.validations';
+import { LandingService } from '../services/landing.service';
 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
@@ -139,7 +140,8 @@ export class NewRegisterSoloComponent implements OnInit {
     turnos: Turno[] = [];
     
 
-    constructor(private gralService: GeneralService,
+    constructor(private landingService: LandingService,
+        private gralService: GeneralService,
         public dialog: MatDialog,
         private renderer: Renderer2,
         private pnnServ: PnnService,
@@ -165,6 +167,9 @@ export class NewRegisterSoloComponent implements OnInit {
 
 
     ngOnInit() {
+        
+        this.landingService.getInit();
+
         // Se obtiene los tipos de actividades
         this.tipoActServ.getAll()
             .subscribe(

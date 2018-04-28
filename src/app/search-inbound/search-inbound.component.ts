@@ -10,6 +10,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 
 import { LandingValidation } from '../validations/landing.validations';
+import { LandingService } from '../services/landing.service';
 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
@@ -117,7 +118,7 @@ export class SearchInboundComponent implements OnInit {
 
 
 
-  constructor(private gralService: GeneralService,
+  constructor(private landingService: LandingService,private gralService: GeneralService,
     public dialog: MatDialog,
     private renderer: Renderer2,
     private router: Router,
@@ -140,6 +141,9 @@ export class SearchInboundComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.landingService.getInit();
+    
     // Se obtiene todos los canales
     this.canalServ.getAll()
       .subscribe(

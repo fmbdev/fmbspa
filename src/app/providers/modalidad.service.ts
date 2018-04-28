@@ -12,7 +12,7 @@ export class ModalidadService {
   constructor(private http: Http) { }
 
   getAll(): Observable<Modalidad[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/modalidad", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/modalidad", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )
