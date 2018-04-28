@@ -7,6 +7,8 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 import 'rxjs/Rx';
 
 import { LandingValidation } from '../validations/landing.validations';
+import { LandingService } from '../services/landing.service';
+
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 //Interfaces
@@ -72,7 +74,7 @@ export class ReferidoWebComponent implements OnInit {
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
-  constructor(private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
+  constructor(private landingService: LandingService,private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
      private campusServ: CampusService,
     private carreraServ: CarreraService,
     private nivelServ: NivelService,
@@ -82,7 +84,9 @@ export class ReferidoWebComponent implements OnInit {
     private tipoRefenteServ: TipoReferenteService) { }
 
   ngOnInit() {
-     
+
+        this.landingService.getInit();
+
     // Se obtienen todos los campus
         this.campusServ.getAll()
             .subscribe(

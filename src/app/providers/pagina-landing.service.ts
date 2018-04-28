@@ -12,7 +12,7 @@ export class PaginaLandingService {
   constructor(private http: Http) { }
 
   getAll() : Observable<PaginaLanding[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/paginas_landing", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/paginas_landing", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

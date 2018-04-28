@@ -12,7 +12,7 @@ export class SinCorreoService {
   constructor(private http: Http) { }
 
   getAll() : Observable<SinCorreo[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/sin_correo", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/sin_correo", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

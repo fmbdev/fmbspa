@@ -12,7 +12,7 @@ export class EscuelaEmpresaService {
   constructor( private http: Http) {}
 
   getAll() : Observable<EscuelaEmpresa[]>{
-    return this.http.get("http://devmx.com.mx/fmbapp/public/api/escuela_empresa", {headers: this.headers})
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/escuela_empresa", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )

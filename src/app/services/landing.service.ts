@@ -11,8 +11,8 @@ import { Palabra } from '../interfaces/palabra';
 @Injectable()
 export class LandingService {
 
-	configUrl = "/assets/palabras_basura.json";
-	mesajesUrl = "/assets/mensajes_validaciones.json";
+	configUrl = "https://app.devmx.com.mx/assets/palabras_basura.json";
+	mesajesUrl = "https://app.devmx.com.mx/assets/mensajes_validaciones.json";
 
   	constructor(private http: HttpClient) { }
 	
@@ -39,6 +39,12 @@ export class LandingService {
 		} else {
 			return console.log('undefined Mensajes');
 		}
+	}
+
+
+	getInit(){
+		this.getMensajes();
+		this.getPalabrasMalas();
 	}
 
 }

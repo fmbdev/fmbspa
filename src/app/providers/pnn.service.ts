@@ -13,7 +13,7 @@ export class PnnService {
   constructor(private http: Http) { }
 
   getAll() {
-    this.http.get("/assets/pnnpublico.json")
+    this.http.get("https://app.devmx.com.mx/assets/pnnpublico.json")
         .map(
           (res: Response) => res.json()
         )

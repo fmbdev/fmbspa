@@ -9,11 +9,11 @@ import { LandingService } from '../services/landing.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private landingService: LandingService,) { }
+  constructor(private landingService: LandingService) { }
 
   ngOnInit() {
-    this.landingService.getPalabrasMalas();
-    this.landingService.getMensajes();
+    this.landingService.getInit();
+     
   }
 
 }

@@ -11,6 +11,7 @@ import 'rxjs/Rx';
 import * as $ from 'jquery';
 
 import { LandingValidation } from '../validations/landing.validations';
+import { LandingService } from '../services/landing.service';
 
 import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
@@ -119,7 +120,8 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
 
-    constructor(private gralService: GeneralService,
+    constructor(private landingService: LandingService,
+        private gralService: GeneralService,
         public dialog: MatDialog,
         private renderer: Renderer2,
         private pnnServ: PnnService,
@@ -142,6 +144,9 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
 
 
     ngOnInit() {
+        
+        this.landingService.getInit();
+
         // Se obtiene todos los canales
         this.canalServ.getAll()
             .subscribe(
