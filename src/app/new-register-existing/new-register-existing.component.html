@@ -203,9 +203,9 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)">
+                        <mat-select [errorStateMatcher]="matcher" formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmi_name']">
+                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']">
                                 {{ campu['crmi_name'] }}
                             </mat-option>
                         </mat-select>
@@ -227,15 +227,15 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)">
+                        <mat-select [errorStateMatcher]="matcher" matInput formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)" (change)="onChangeCarrera(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_name']">
-                                {{ nivel['crmit_name'] }}
+                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']">
+                                {{ carrera['name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Nivel.errors?.required">{{showMjs('nivel.m1')}}</mat-error>
+                         <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs( 'carrera.m1')}}</mat-error>
                     </mat-form-field>
-                </mat-grid-tile>
+                </mat-grid-tile>                              
                 <mat-grid-tile>
                     <mat-form-field>
                         <input matInput placeholder="Número de Persona" [errorStateMatcher]="matcher" formControlName="NumeroPersona" readonly>
@@ -248,7 +248,7 @@
                     <mat-form-field>
                         <mat-select [errorStateMatcher]="matcher" formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_name']">
+                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']">
                                 {{ modalidad['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -265,15 +265,15 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" matInput formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
+                        <mat-select [errorStateMatcher]="matcher" formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['productnumber']">
-                                {{ carrera['productnumber'] }}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs( 'carrera.m1')}}</mat-error>
+                                <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_name']">
+                                    {{ nivel['crmit_name'] }}
+                                </mat-option>
+                            </mat-select>
+                        <mat-error *ngIf="form.controls.Nivel.errors?.required">{{showMjs('nivel.m1')}}</mat-error>
                     </mat-form-field>
-                </mat-grid-tile>
+                </mat-grid-tile> 
                 <mat-grid-tile>
                     <mat-form-field>
                         <input matInput placeholder="Etapa de Venta" formControlName="etapaVenta" readonly>

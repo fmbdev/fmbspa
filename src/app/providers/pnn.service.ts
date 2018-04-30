@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { Pnn } from '../interfaces/pnn';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -10,16 +10,25 @@ export class PnnService {
   private pnns: Pnn[] = [];
   private isValid: boolean;
 
+  private headers = new Headers({'Content-Type':'application/json'});
+
   constructor(private http: Http) { }
 
   getAll() {
-    this.http.get("https://app.devmx.com.mx/assets/pnnpublico.json")
+    this.http.get("/assets/pnnpublico.json")
         .map(
           (res: Response) => res.json()
         )
         .subscribe(
           (data: Pnn[]) => this.pnns = data
+    )
+    /*this.http.get("https://app.devmx.com.mx/assets/pnnpublico.json", {headers: this.headers})
+        .map(
+          (res: Response) => res.json()
         )
+        .subscribe(
+          (data: Pnn[]) => this.pnns = data
+        )*/
   }
 
   checkPnnIsValid(value: string) : boolean {

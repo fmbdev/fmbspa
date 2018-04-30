@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class NivelService {
 
   private headers = new Headers({'Content-Type':'application/json'});
+  private niveles: Nivel[] = [];
 
   constructor(private http: Http) { }
 
@@ -16,6 +17,13 @@ export class NivelService {
                .map(
                  (res: Response) => res.json()
                )
+               .do(
+                 (data: Nivel[]) => this.niveles = data
+               )
+  }
+
+  getNiveles() : Nivel[] {
+    return this.niveles;
   }
 
 }

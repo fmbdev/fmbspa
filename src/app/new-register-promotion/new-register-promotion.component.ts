@@ -36,6 +36,7 @@ import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
 import { SendService } from '../providers/send.service';
 import { HoraService } from '../providers/hora.service';
+import { TurnoService } from '../providers/turno.service';
 import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
@@ -51,7 +52,7 @@ import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { SubTipoActividadService } from '../providers/sub-tipo-actividad.service';
-import { TurnoService } from '../providers/turno.service';
+import { CampusNivelService } from '../providers/campus-nivel.service';
 
 
 @Component({
@@ -144,6 +145,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         private sendServ: SendService,
         private nivelServ: NivelService,
         private cicloServ: CicloService,
+        private turnoServ: TurnoService,
         private canalServ: CanalService,
         private campusServ: CampusService,
         private asesorServ: AsesorService,
@@ -153,10 +155,10 @@ export class NewRegisterPromotionComponent implements OnInit {
         private interesServ: InteresService,
         private modalidadServ: ModalidadService,
         private parentescoServ: ParentescoService,
-        private campusCitaServ: CampusCitaService,
-        private tipicicacionServ: TipificacionService,
         private tipoActServ: TipoActividadService,
-        private turnoServ: TurnoService,
+        private campusCitaServ: CampusCitaService,
+        private campusNivelServ: CampusNivelService,
+        private tipicicacionServ: TipificacionService,
         private subTipoActServ: SubTipoActividadService) { }
 
 
@@ -296,9 +298,9 @@ export class NewRegisterPromotionComponent implements OnInit {
 
             Campus: new FormControl(''),
             AreaInteres: new FormControl(''),
-            Nivel: new FormControl(''),
-            Modalidad: new FormControl(''),
-            Carrera: new FormControl(''),
+            Nivel: new FormControl({ value: '', disabled: true }),
+            Modalidad: new FormControl({ value: '', disabled: true }),
+            Carrera: new FormControl({ value: '', disabled: true }),
             Ciclo: new FormControl(''),
             NumeroPersona: new FormControl('', Validators.pattern('^[0-9]+$')),
             etapaVenta: new FormControl(''),
@@ -423,9 +425,8 @@ export class NewRegisterPromotionComponent implements OnInit {
         }
     }
 
-    onChange() {
-         
-    }
+    onChange() {}
+
     addTradicional(isChecked) {
         if (isChecked.checked) {
             this.form.controls.SubTipoActividad.reset({ value: '', disabled: true });
@@ -450,9 +451,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls.Modalidad.clearValidators();
             this.form.controls.Carrera.clearValidators();
             this.form.controls.Ciclo.clearValidators();
-
         } else {
-
             this.form.controls.Campus.setValidators([Validators.required]);
             this.form.controls.AreaInteres.setValidators([Validators.required]);
             this.form.controls.Nivel.setValidators([Validators.required]);
@@ -466,7 +465,42 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.form.controls.Modalidad.updateValueAndValidity();
         this.form.controls.Carrera.updateValueAndValidity();
         this.form.controls.Ciclo.updateValueAndValidity();
+    }
 
+    onChangeCampus(value: string){
+        if(this.form.controls['Carrera'].disabled){
+            this.form.controls['Carrera'].enable();
+        }else{
+            this.form.controls['Carrera'].setValue('');
+            this.form.controls['Carrera'].markAsUntouched();
+        }
+
+        this.carreras = this.campusNivelServ.getCarrearasByCampus(value); 
+
+        if(this.form.controls['Modalidad'].enabled){
+            this.form.controls['Modalidad'].setValue('');
+            this.form.controls['Modalidad'].markAsUntouched();
+            this.form.controls['Modalidad'].disable();      
+        }
+
+        if(this.form.controls['Nivel'].enabled){
+            this.form.controls['Nivel'].setValue('');
+            this.form.controls['Nivel'].markAsUntouched();
+            this.form.controls['Nivel'].disable();     
+        }
+    }
+
+    onChangeCarrera(value: string){
+        if(this.form.controls['Modalidad'].disabled){
+            this.form.controls['Modalidad'].enable();
+        }
+
+        if(this.form.controls['Nivel'].disabled){
+            this.form.controls['Nivel'].enable();
+        }
+
+        this.modalidades = this.campusNivelServ.getModalidadByCarrera(value);
+        this.niveles = this.campusNivelServ.getNivelByCarrera(value);
     }
 
     onFielCanal(value) {

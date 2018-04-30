@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PnnService } from './providers/pnn.service';
+import { CampusNivelService } from './providers/campus-nivel.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,11 @@ import { PnnService } from './providers/pnn.service';
 })
 export class AppComponent implements OnInit{
   
-  constructor(private pnnServ: PnnService){}
+  constructor(private pnnServ: PnnService,
+              private campusNivelServ: CampusNivelService){}
 
   ngOnInit(){
+    this.campusNivelServ.getAll();
     this.pnnServ.getAll();
   }
 }

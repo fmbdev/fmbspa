@@ -1,5 +1,9 @@
 export interface Carrera {
     id: number;
-    productnumber: string;
-    crmit_nombremostrarcliente: string;
+    codigounico: string;
+    name: string;
+    ofertaeducativaname: string;
+    ofertaeducativaid: string;
+    planestudiosname: string;
+    planestudiosid: string;
 }

@@ -8,14 +8,21 @@ import 'rxjs/Rx';
 export class CampusService {
 
   private headers = new Headers({'Content-Type':'application/json'});
+  private campus: Campus[] = [];
 
   constructor(private http: Http) { }
 
-  getAll(): Observable<Campus[]>{
+  getAll() : Observable<Campus[]> {
     return this.http.get("https://devmx.com.mx/fmbapp/public/api/campus", {headers: this.headers})
-               .map(
-                 (res: Response) => res.json()
-               )
+        .map(
+            (res: Response) => res.json()
+        )
+        .do(
+          (data: Campus[]) => this.campus = data
+        )
   }
 
+  getCampus() : Campus[]{
+    return this.campus;
+  }
 }

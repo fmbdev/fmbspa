@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class ModalidadService {
 
   private headers = new Headers({'Content-Type':'application/json'});
+  private modalidades: Modalidad[] = [];
 
   constructor(private http: Http) { }
 
@@ -16,6 +17,13 @@ export class ModalidadService {
                .map(
                  (res: Response) => res.json()
                )
+               .do(
+                 (data: Modalidad[]) => this.modalidades = data
+               )
+  }
+
+  getModalidades(): Modalidad[]{
+    return this.modalidades;
   }
 
 }

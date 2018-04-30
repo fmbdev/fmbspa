@@ -11,10 +11,15 @@ export class HoraService {
   }
 
   getAll() : Observable<Hora[]>{
-    return this.http.get("https://app.devmx.com.mx/assets/hora.json")
+    return this.http.get("/assets/hora.json")
            .map(
               (res: Response) => res.json()
             )
+            
+    /*return this.http.get("https://app.devmx.com.mx/assets/hora.json")
+           .map(
+              (res: Response) => res.json()
+            )*/
   }
 
 }

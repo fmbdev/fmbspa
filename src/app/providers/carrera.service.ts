@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class CarreraService {
 
   private headers = new Headers({'Content-Type':'application/json'});
+  private carreras: Carrera[] = [];
 
   constructor(private http: Http) { }
 
@@ -16,6 +17,13 @@ export class CarreraService {
                .map(
                  (res: Response) => res.json()
                )
+               .do(
+                 (data: Carrera[]) => this.carreras = data
+               )
+  }
+
+  getCarreras(): Carrera[]{
+    return this.carreras;
   }
 
 }
