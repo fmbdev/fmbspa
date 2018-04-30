@@ -39,6 +39,7 @@ import { HoraService } from '../providers/hora.service';
 import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
+import { TurnoService } from '../providers/turno.service';
 import { FormatService } from '../providers/format.service';
 import { CampusService } from '../providers/campus.service';
 import { AsesorService } from '../providers/asesor.service';
@@ -51,7 +52,7 @@ import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { SubTipoActividadService } from '../providers/sub-tipo-actividad.service';
-import { TurnoService } from '../providers/turno.service';
+import { CampusNivelService } from '../providers/campus-nivel.service';
 
 
 
@@ -150,6 +151,7 @@ export class NewRegisterSoloComponent implements OnInit {
         private sendServ: SendService,
         private nivelServ: NivelService,
         private cicloServ: CicloService,
+        private turnoServ: TurnoService,
         private canalServ: CanalService,
         private campusServ: CampusService,
         private asesorServ: AsesorService,
@@ -159,10 +161,10 @@ export class NewRegisterSoloComponent implements OnInit {
         private interesServ: InteresService,
         private modalidadServ: ModalidadService,
         private parentescoServ: ParentescoService,
+        private tipoActServ: TipoActividadService,
         private campusCitaServ: CampusCitaService,
         private tipicicacionServ: TipificacionService,
-        private tipoActServ: TipoActividadService,
-        private turnoServ: TurnoService,
+        private campusNivelServ: CampusNivelService,
         private subTipoActServ: SubTipoActividadService) { }
 
 
@@ -295,13 +297,10 @@ export class NewRegisterSoloComponent implements OnInit {
 
             Campus: new FormControl(''),
             AreaInteres: new FormControl(''),
-            Nivel: new FormControl(''),
-            Modalidad: new FormControl(''),
-            Carrera: new FormControl(''),
-            Ciclo: new FormControl(''),
-           
-            
-
+            Nivel: new FormControl({ value: '', disabled: true }),
+            Modalidad: new FormControl({ value: '', disabled: true }),
+            Carrera: new FormControl({ value: '', disabled: true }),
+            Ciclo: new FormControl(''), 
         });
     }
 
@@ -414,9 +413,7 @@ export class NewRegisterSoloComponent implements OnInit {
         }
     }
 
-    onChange() {
-        
-    }
+    onChange() {}
 
     onChangeInteres(value) {
         if (value == '') {
@@ -426,9 +423,7 @@ export class NewRegisterSoloComponent implements OnInit {
             this.form.controls.Modalidad.clearValidators();
             this.form.controls.Carrera.clearValidators();
             this.form.controls.Ciclo.clearValidators();
-
         } else {
-
             this.form.controls.Campus.setValidators([Validators.required]);
             this.form.controls.AreaInteres.setValidators([Validators.required]);
             this.form.controls.Nivel.setValidators([Validators.required]);
@@ -442,7 +437,42 @@ export class NewRegisterSoloComponent implements OnInit {
         this.form.controls.Modalidad.updateValueAndValidity();
         this.form.controls.Carrera.updateValueAndValidity();
         this.form.controls.Ciclo.updateValueAndValidity();
+    }
 
+    onChangeCampus(value: string){
+        if(this.form.controls['Carrera'].disabled){
+            this.form.controls['Carrera'].enable();
+        }else{
+            this.form.controls['Carrera'].setValue('');
+            this.form.controls['Carrera'].markAsUntouched();
+        }
+
+        this.carreras = this.campusNivelServ.getCarrearasByCampus(value); 
+
+        if(this.form.controls['Modalidad'].enabled){
+            this.form.controls['Modalidad'].setValue('');
+            this.form.controls['Modalidad'].markAsUntouched();
+            this.form.controls['Modalidad'].disable();      
+        }
+
+        if(this.form.controls['Nivel'].enabled){
+            this.form.controls['Nivel'].setValue('');
+            this.form.controls['Nivel'].markAsUntouched();
+            this.form.controls['Nivel'].disable();     
+        }
+    }
+
+    onChangeCarrera(value: string){
+        if(this.form.controls['Modalidad'].disabled){
+            this.form.controls['Modalidad'].enable();
+        }
+
+        if(this.form.controls['Nivel'].disabled){
+            this.form.controls['Nivel'].enable();
+        }
+
+        this.modalidades = this.campusNivelServ.getModalidadByCarrera(value);
+        this.niveles = this.campusNivelServ.getNivelByCarrera(value);
     }
 
     onFielCanal(value) {

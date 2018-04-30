@@ -60,6 +60,7 @@ import { TipoReferenteService } from './providers/tipo-referente.service';
 import { EscuelaEmpresaService } from './providers/escuela-empresa.service';
 import { CitaProspeccionService } from './providers/cita-prospeccion.service';
 import { SubTipoActividadService } from './providers/sub-tipo-actividad.service';
+import { CampusNivelService } from './providers/campus-nivel.service';
 import { GeneralService } from './services/general.service';
 import { LandingService } from './services/landing.service';
 
@@ -140,7 +141,7 @@ import { HomeService } from './providers/home.service';
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, SubTipoActividadService, TerritorioService, TipoActividadService,
               TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,
-              HttpService, AuthService, HomeService
+              HttpService, AuthService, HomeService, CampusNivelService
             ],
   bootstrap: [AppComponent]
 })

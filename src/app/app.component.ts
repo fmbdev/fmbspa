@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PnnService } from './providers/pnn.service';
 import { AuthService } from './providers/auth.service';
+import { CampusNivelService } from './providers/campus-nivel.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,11 @@ import { AuthService } from './providers/auth.service';
 })
 export class AppComponent implements OnInit{
   
-  constructor(private pnnServ: PnnService, private authServ:AuthService){}
+  constructor(private pnnServ: PnnService, private authServ:AuthService, private campusNivelServ: CampusNivelService){}
 
   ngOnInit(){
-    this.pnnServ.getAll();  	
+    this.campusNivelServ.getAll();
+    this.pnnServ.getAll(); 	
   }
 
   onLogout() {

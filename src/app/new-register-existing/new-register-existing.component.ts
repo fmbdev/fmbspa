@@ -45,6 +45,7 @@ import { ModalidadService } from '../providers/modalidad.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
+import { CampusNivelService } from '../providers/campus-nivel.service';
 
 /*export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -149,6 +150,7 @@ export class NewRegisterExistingComponent implements OnInit {
         private modalidadServ: ModalidadService,
         private parentescoServ: ParentescoService,
         private campusCitaServ: CampusCitaService,
+        private campusNivelServ: CampusNivelService,
         private tipicicacionServ: TipificacionService) { }
 
 
@@ -263,9 +265,9 @@ export class NewRegisterExistingComponent implements OnInit {
 
             Campus: new FormControl(''),
             AreaInteres: new FormControl(''),
-            Nivel: new FormControl(''),
-            Modalidad: new FormControl(''),
-            Carrera: new FormControl(''),
+            Nivel: new FormControl({ value: '', disabled: true }),
+            Modalidad: new FormControl({ value: '', disabled: true }),
+            Carrera: new FormControl({ value: '', disabled: true }),
             Ciclo: new FormControl(''),
             
             NumeroPersona: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
@@ -451,6 +453,42 @@ export class NewRegisterExistingComponent implements OnInit {
         this.form.controls.Carrera.updateValueAndValidity();
         this.form.controls.Ciclo.updateValueAndValidity();
 
+    }
+
+    onChangeCampus(value: string){
+        if(this.form.controls['Carrera'].disabled){
+            this.form.controls['Carrera'].enable();
+        }else{
+            this.form.controls['Carrera'].setValue('');
+            this.form.controls['Carrera'].markAsUntouched();
+        }
+
+        this.carreras = this.campusNivelServ.getCarrearasByCampus(value); 
+
+        if(this.form.controls['Modalidad'].enabled){
+            this.form.controls['Modalidad'].setValue('');
+            this.form.controls['Modalidad'].markAsUntouched();
+            this.form.controls['Modalidad'].disable();      
+        }
+
+        if(this.form.controls['Nivel'].enabled){
+            this.form.controls['Nivel'].setValue('');
+            this.form.controls['Nivel'].markAsUntouched();
+            this.form.controls['Nivel'].disable();     
+        }
+    }
+
+    onChangeCarrera(value: string){
+        if(this.form.controls['Modalidad'].disabled){
+            this.form.controls['Modalidad'].enable();
+        }
+
+        if(this.form.controls['Nivel'].disabled){
+            this.form.controls['Nivel'].enable();
+        }
+
+        this.modalidades = this.campusNivelServ.getModalidadByCarrera(value);
+        this.niveles = this.campusNivelServ.getNivelByCarrera(value);
     }
 
     onFielCanal(value) {
