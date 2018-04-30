@@ -11,7 +11,8 @@ import * as hello from 'hellojs/dist/hello.all.js';
 export class HttpService {
   getAccessToken() {
     const msft = hello('msft').getAuthResponse();
-    const accessToken = msft.access_token;
+    var rick = JSON.parse(localStorage.hello);		
+    const accessToken = rick.msft.access_token;
     return accessToken;
   }
 }

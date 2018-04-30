@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PnnService } from './providers/pnn.service';
+import { AuthService } from './providers/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,26 @@ import { PnnService } from './providers/pnn.service';
 })
 export class AppComponent implements OnInit{
   
-  constructor(private pnnServ: PnnService){}
+  constructor(private pnnServ: PnnService, private authServ:AuthService){}
 
   ngOnInit(){
-    this.pnnServ.getAll();
+    this.pnnServ.getAll();  	
   }
+
+  onLogout() {
+    this.authServ.logout();
+  }
+  
+  onMenu(){
+	  	if(localStorage.hello){
+	  		var rick = JSON.parse(localStorage.hello);
+	  		if(rick.msft){
+	  		 	return "access_token";
+	  		}else{
+	  			return "no";
+	  		}	  		
+	  	}else{
+	  		return "no";
+	  	} 
+ 	}
 }

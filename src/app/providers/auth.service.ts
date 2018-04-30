@@ -42,8 +42,8 @@ export class AuthService {
     hello('msft').login({ 
       scope: 'User.Read Mail.Send',
       response_type: 'code',
-      display:'page',
-      redirect_uri:'http://app.devmx.com.mx/'
+      //display:'page',
+      redirect_uri:'https://app.devmx.com.mx/'
      }).then(
       () => {
         this.zone.run(() => {

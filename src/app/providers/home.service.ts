@@ -32,6 +32,8 @@ export class HomeService {
           done(null, this.httpService.getAccessToken()); //first parameter takes an error if you can't get an access token
       }
     });
+    console.log('client ok');
+    console.log(client);
     return client;
   }
 
@@ -43,6 +45,7 @@ export class HomeService {
     .select("displayName, mail, userPrincipalName")
     .get()
     .then ((res => {
+      localStorage.res = res;
       return res;
     } ) )
     );
