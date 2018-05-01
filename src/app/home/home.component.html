@@ -1,19 +1,17 @@
-<h4>Hola: {{ me.displayName }}</h4>
-<h4><a (click)="onLogout()">Salir</a></h4>
 <ul class="menus">
-  <li><a href="register">Nuevo Registro Inbound</a></li>
-  <li><a href="register-existing">Registro Existente</a></li>
-  <li><a href="register-existing-reception">Registro Existente Recepción</a></li>
-  <li><a href="registerSolo">Nuevo Registro Solovino</a></li>
-  <li><a href="registerPromotion">Nuevo Registro (Promotor y Capturista)</a></li>
-  <li><a href="referidoReferente">Referidos Onboarding</a></li>
-  <li><a href="referidoPromotor">Referidos Promotor</a></li>
-  <li><a href="referidoTlmk">Referidos TLMK</a></li>
-  <li><a href="referidoWeb">Referido web y empleados</a></li>
-  <li><a href="searchInbound">Búsqueda Registro Inbound</a></li>
-  <li><a href="search">Búsqueda Registro Recepción</a></li>
-  <li><a href="results">Resultados Registro</a></li>  
-  <li><a href="login">Acceso</a></li>  
-  <li><a href="upload">Carga de base</a></li>
-  <li><a href="upload-sis">Carga de base SIS</a></li>
+  <h4 style="text-align: right; font-size: 14px; font-weight: 900; color: #006fba;">Hola: {{ me.displayName }}</h4>  
+  <li><a (click)="onGoto('/register')">Nuevo Registro Inbound</a></li>
+  <li><a (click)="onGoto('/register-existing')">Registro Existente</a></li>
+  <li><a (click)="onGoto('/register-existing-reception')">Registro Existente Recepción</a></li>
+  <li><a (click)="onGoto('/registerSolo')">Nuevo Registro Solovino</a></li>
+  <li><a (click)="onGoto('/registerPromotion')">Nuevo Registro (Promotor y Capturista)</a></li>
+  <li><a (click)="onGoto('/referidoReferente')">Referidos Onboarding</a></li>
+  <li><a (click)="onGoto('/referidoPromotor')">Referidos Promotor</a></li>
+  <li><a (click)="onGoto('/referidoTlmk')">Referidos TLMK</a></li>
+  <li><a (click)="onGoto('/referidoWeb')">Referido web y empleados</a></li>
+  <li><a (click)="onGoto('/searchInbound')">Búsqueda Registro Inbound</a></li>
+  <li><a (click)="onGoto('/search')">Búsqueda Registro Recepción</a></li>
+  <li><a (click)="onGoto('/results')">Resultados Registro</a></li>  
+  <li><a (click)="onGoto('/upload')">Carga de base</a></li>
+  <li><a (click)="onGoto('/upload-sis')">Carga de base SIS</a></li>
 </ul>

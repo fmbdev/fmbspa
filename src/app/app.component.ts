@@ -15,7 +15,31 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.campusNivelServ.getAll();
-    this.pnnServ.getAll(); 	
+    this.pnnServ.getAll(); 
+    if(window.location.pathname!='/'){
+      if(localStorage.hello){
+        var rick = JSON.parse(localStorage.hello);
+        if(rick.msft){
+           return "access_token";
+        }else{
+          window.location.href="/";
+        }        
+      }else{
+        window.location.href="/";
+      }
+    }else{
+      if(localStorage.hello){
+        var rick = JSON.parse(localStorage.hello);
+        if(rick.msft){
+          window.location.href="/home";
+        }else{
+          //cargara
+        }        
+      }else{
+        //cargara
+      }
+    }
+     	
   }
 
   onLogout() {

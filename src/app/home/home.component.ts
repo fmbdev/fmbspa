@@ -6,6 +6,7 @@ import * as MicrosoftGraph from "@microsoft/microsoft-graph-types"
 
 import { HomeService } from '../providers/home.service';
 import { AuthService } from '../providers/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -26,16 +27,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
   	private landingService: LandingService,  
   	private homeService: HomeService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.landingService.getInit();         
     this.subsGetMe = this.homeService.getMe().subscribe(me => this.me = me);     
-    console.log(this.me);   
   }
 
   ngOnDestroy() {
-    this.subsGetUsers.unsubscribe();
+   // this.subsGetUsers.unsubscribe();
   }
 
   onLogout() {
@@ -46,4 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.authService.login();
   }
 
+  onGoto(url:string){
+    this.router.navigate([url]);
+  }
 }

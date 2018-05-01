@@ -13,17 +13,16 @@
             <li><a routerLink="searchInbound">Búsqueda Registro Inbound</a></li>
             <li><a routerLink="search">Búsqueda Registro Recepción</a></li>
             <li><a routerLink="results">Resultados Registro</a></li>
-            <li><a routerLink="login">Acceso</a></li>
             <li><a routerLink="upload">Carga de base</a></li>
             <li><a routerLink="upload-sis">Carga de base SIS</a></li>
-            <li><a (click)="onLogout()">Cerrar Sesion</a></li>
+            <li><a  (click)="onLogout()">Cerrar Sesion</a></li>
         </ul>
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="logo">
-            <a (click)="sidenav.toggle()"><img src="assets/imgs/logo.png"></a>
+            <a (click)="sidenav.toggle()"><img src="/assets/imgs/logo.png"></a>
         </div>
-        <p *ngIf="onMenu()!='no'"><button mat-button (click)="sidenav.toggle()">Menu</button></p>
+        <p *ngIf="onMenu()!='no'"><button style="background: #006fba !important; color: #fff !important;" mat-button (click)="sidenav.toggle()">Menu</button></p>
 
         <router-outlet></router-outlet>
     </mat-sidenav-content>

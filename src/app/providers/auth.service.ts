@@ -28,22 +28,22 @@ export class AuthService {
       msft: {
         id: '8b121322-84ec-4bb9-8929-6c64333775f6',
         oauth: {
-          version: 2,
-          //auth: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
+          version: 2,          
           auth: 'https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize',
         },
         scope_delim: ' ',
         form: false
       },
     },
-      { redirect_uri: window.location.href, response_type: 'code' }
+      { redirect_uri: 'https://app.devmx.com.mx/', response_type: 'code' }
     );
      
+
     hello('msft').login({ 
       scope: 'User.Read Mail.Send',
       response_type: 'code',
       //display:'page',
-      redirect_uri:'https://app.devmx.com.mx/'
+      redirect_uri:'https://app.devmx.com.mx'
      }).then(
       () => {
         this.zone.run(() => {
