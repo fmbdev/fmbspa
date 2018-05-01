@@ -36,70 +36,70 @@ export class CampusNivelService {
         )
   }
 
-  getCarrearasByCampus(campusId: string) : Carrera[] {
+  getNivelesByCampus(campusId: string) : Nivel[]{
     let carreraId: string[] = [];
 
     for(let i = 0; i < this.campusNivel.length; i++){
       if(campusId == this.campusNivel[i].campus_crmit_codigounico){
-        carreraId.push(this.campusNivel[i].carrera_codigounico);
+        carreraId.push(this.campusNivel[i].nivelestudios_crmit_codigounico);
       }
     }
-
-    let carreras = this.carreraServ.getCarreras();
-    let carrerasByCampus: Carrera[] = [];
+    
+    let niveles = this.nivelServ.getNiveles();
+    let nivelesByCampus: Nivel[] = [];
 
     for(let i = 0; i < carreraId.length; i++){
-      for(let j = 0; j < carreras.length; j++){
-        if(carreraId[i] == carreras[j].codigounico){
-          carrerasByCampus.push(carreras[j]);
+      for(let j = 0; j < niveles.length; j++){
+        if(carreraId[i] == niveles[j].crmit_codigounico){
+          nivelesByCampus.push(niveles[j]);
         }
       }
     }
-    return carrerasByCampus;
+    return nivelesByCampus;
   }
 
-  getModalidadByCarrera(carreraId: string) {
+  getModalidadByNivel(nivelId: string) : Modalidad[] {
     let modalidadId: string[] = [];
 
     for(let i = 0; i < this.campusNivel.length; i++){
-      if(carreraId == this.campusNivel[i].carrera_codigounico ){
+      if(nivelId == this.campusNivel[i].nivelestudios_crmit_codigounico){
         modalidadId.push(this.campusNivel[i].modalidad_crmit_codigounico);
       }
     }
 
     let modalidades = this.modalidadServ.getModalidades();
-    let modalidadesByCarerra: Modalidad[] = [];
+    let modalidadesByNivel: Modalidad[] = [];
 
     for(let i = 0; i < modalidadId.length; i++){
       for(let j = 0; j < modalidades.length; j++){
         if(modalidadId[i] == modalidades[j].crmit_codigounico){
-          modalidadesByCarerra.push(modalidades[j]);
+          modalidadesByNivel.push(modalidades[j]);
         }
       }
     }
-    return modalidadesByCarerra;
+    return modalidadesByNivel;
   }
 
-  getNivelByCarrera(carreraId: string){
-    let nivelId: string[] = [];
+  getCarreraByModalidad(modalidadId: string) : Carrera[] {
+    let carreraId: string[] = [];
 
     for(let i = 0; i < this.campusNivel.length; i++){
-      if(carreraId == this.campusNivel[i].carrera_codigounico){
-        nivelId.push(this.campusNivel[i].nivelestudios_crmit_codigounico);
+      if(modalidadId == this.campusNivel[i].modalidad_crmit_codigounico){
+        carreraId.push(this.campusNivel[i].carrera_codigounico);
       }
     }
 
-    let niveles = this.nivelServ.getNiveles();
-    let nivelesByCarrera: Nivel[] = [];
+    let carreras = this.carreraServ.getCarreras();
+    let carrerasByModalidad: Carrera[] = [];
 
-    for(let i = 0; i < nivelId.length; i++){
-      for(let j = 0; j < niveles.length; j++){
-        if(nivelId[i] == niveles[j].crmit_codigounico){
-          nivelesByCarrera.push(niveles[j]);
+    for(let i = 0; i < carreraId.length; i++){
+      for(let j = 0; j < carreras.length; j++){
+        if(carreraId[i] == carreras[j].codigounico){
+          carrerasByModalidad.push(carreras[j]);
         }
       }
     }
-    return nivelesByCarrera;
+    return carrerasByModalidad;
   }
 
 }

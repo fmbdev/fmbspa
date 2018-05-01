@@ -454,14 +454,12 @@ export class NewRegisterComponent implements OnInit {
     }
 
     onChangeCampus(value: string){
-        if(this.form.controls['Carrera'].disabled){
-            this.form.controls['Carrera'].enable();
+        if(this.form.controls['Nivel'].disabled){
+            this.form.controls['Nivel'].enable();
         }else{
-            this.form.controls['Carrera'].setValue('');
-            this.form.controls['Carrera'].markAsUntouched();
+            this.form.controls['Nivel'].setValue('');
+            this.form.controls['Nivel'].markAsUntouched();
         }
-
-        this.carreras = this.campusNivelServ.getCarrearasByCampus(value); 
 
         if(this.form.controls['Modalidad'].enabled){
             this.form.controls['Modalidad'].setValue('');
@@ -469,24 +467,38 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls['Modalidad'].disable();      
         }
 
-        if(this.form.controls['Nivel'].enabled){
-            this.form.controls['Nivel'].setValue('');
-            this.form.controls['Nivel'].markAsUntouched();
-            this.form.controls['Nivel'].disable();     
+        if(this.form.controls['Carrera'].enabled){
+            this.form.controls['Carrera'].setValue('');
+            this.form.controls['Carrera'].markAsUntouched();
+            this.form.controls['Carrera'].disable();      
         }
+        this.niveles = this.campusNivelServ.getNivelesByCampus(value);
     }
 
-    onChangeCarrera(value: string){
+    onChangeNivel(value: string){
         if(this.form.controls['Modalidad'].disabled){
             this.form.controls['Modalidad'].enable();
+        }else{
+            this.form.controls['Modalidad'].setValue('');
+            this.form.controls['Modalidad'].markAsUntouched();
         }
 
-        if(this.form.controls['Nivel'].disabled){
-            this.form.controls['Nivel'].enable();
+        if(this.form.controls['Carrera'].enabled){
+            this.form.controls['Carrera'].setValue('');
+            this.form.controls['Carrera'].markAsUntouched();
+            this.form.controls['Carrera'].disable();      
         }
+        this.modalidades = this.campusNivelServ.getModalidadByNivel(value);   
+    }
 
-        this.modalidades = this.campusNivelServ.getModalidadByCarrera(value);
-        this.niveles = this.campusNivelServ.getNivelByCarrera(value);
+    onChangeModalidad(value: string){
+        if(this.form.controls['Carrera'].disabled){
+            this.form.controls['Carrera'].enable();
+        }else{
+            this.form.controls['Carrera'].setValue('');
+            this.form.controls['Carrera'].markAsUntouched();
+        }
+        this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
     }
 
     onFielCanal(value) {
