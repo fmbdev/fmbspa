@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PnnService } from './providers/pnn.service';
 import { AuthService } from './providers/auth.service';
 import { CampusNivelService } from './providers/campus-nivel.service';
+import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,16 @@ import { CampusNivelService } from './providers/campus-nivel.service';
 })
 export class AppComponent implements OnInit{
   
-  constructor(private pnnServ: PnnService, private authServ:AuthService, private campusNivelServ: CampusNivelService){}
+  constructor(private pnnServ: PnnService, 
+              private authServ:AuthService, 
+              private campusNivelServ: CampusNivelService,
+             private subSubServ: SubsubtipoActividadService){}
 
   ngOnInit(){
-    this.campusNivelServ.getAll();
     this.pnnServ.getAll(); 
+    this.campusNivelServ.getAll();
+    this.subSubServ.getSubSubTiposActividad();
+
     if(window.location.pathname!='/'){
       if(localStorage.hello){
         var rick = JSON.parse(localStorage.hello);

@@ -28,7 +28,6 @@ import { Parentesco } from '../interfaces/parentesco';
 import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { TipoActividad } from '../interfaces/tipo-actividad';
-import { SubTipoActividad } from '../interfaces/sub-tipo-actividad';
 import { Turno } from '../interfaces/turno';
 
 
@@ -51,7 +50,6 @@ import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
-import { SubTipoActividadService } from '../providers/sub-tipo-actividad.service';
 import { CampusNivelService } from '../providers/campus-nivel.service';
 
 
@@ -137,7 +135,6 @@ export class NewRegisterSoloComponent implements OnInit {
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
     tipo_actividades: TipoActividad[] = [];
-    sub_tipo_actividades: SubTipoActividad[] = [];
     turnos: Turno[] = [];
     
 
@@ -164,8 +161,7 @@ export class NewRegisterSoloComponent implements OnInit {
         private tipoActServ: TipoActividadService,
         private campusCitaServ: CampusCitaService,
         private tipicicacionServ: TipificacionService,
-        private campusNivelServ: CampusNivelService,
-        private subTipoActServ: SubTipoActividadService) { }
+        private campusNivelServ: CampusNivelService) { }
 
 
     ngOnInit() {
@@ -176,11 +172,6 @@ export class NewRegisterSoloComponent implements OnInit {
         this.tipoActServ.getAll()
             .subscribe(
                 (data: TipoActividad[]) => this.tipo_actividades = data
-            )
-        // Se obtienen los sub tipos de actividades
-        this.subTipoActServ.getAll()
-            .subscribe(
-                (data: SubTipoActividad[]) => this.sub_tipo_actividades = data
             )
         // Se obtienen los turnos
         this.turnoServ.getAll()
