@@ -277,12 +277,12 @@ export class NewRegisterExistingComponent implements OnInit {
             Tipificacion: new FormControl(''),
             Notas: new FormControl(''),
 
-            CampusCitas: new FormControl({ value: '', disabled: true }, Validators.required),
-            FechaCita: new FormControl({ value: '', disabled: true }, Validators.required),
-            HoraCita: new FormControl({ value: '', disabled: true }, Validators.required),
-            Programacion: new FormControl({ value: '', disabled: true }, Validators.required),
-            Transferencia: new FormControl({ value: '', disabled: true }, Validators.required),
-            Asesor: new FormControl({ value: '', disabled: true }, Validators.required)
+            CampusCitas: new FormControl({ value: '', disabled: true }),
+            FechaCita: new FormControl({ value: '', disabled: true }),
+            HoraCita: new FormControl({ value: '', disabled: true }),
+            Programacion: new FormControl({ value: '', disabled: true }),
+            Transferencia: new FormControl({ value: '', disabled: true }),
+            Asesor: new FormControl({ value: '', disabled: true })
 
         });
     }
