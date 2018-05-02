@@ -17,6 +17,7 @@ import { Csq } from '../interfaces/csq';
 import { Hora } from '../interfaces/hora';
 import { Nivel } from '../interfaces/nivel';
 import { Canal } from '../interfaces/canal';
+import { Turno } from '../interfaces/turno';
 import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
 import { Genero } from '../interfaces/genero';
@@ -28,9 +29,8 @@ import { Parentesco } from '../interfaces/parentesco';
 import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { TipoActividad } from '../interfaces/tipo-actividad';
+import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 import { SubTipoActividad } from '../interfaces/sub-tipo-actividad';
-import { Turno } from '../interfaces/turno';
-
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -49,11 +49,11 @@ import { InteresService } from '../providers/interes.service';
 import { ModalidadService } from '../providers/modalidad.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
+import { CampusNivelService } from '../providers/campus-nivel.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
+import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
 import { SubTipoActividadService } from '../providers/sub-tipo-actividad.service';
-import { CampusNivelService } from '../providers/campus-nivel.service';
-
 
 @Component({
     selector: 'app-new-register-promotion',
@@ -119,6 +119,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     csqs: Csq[] = [];
     horas: Hora[] = [];
     ciclos: Ciclo[] = [];
+    turnos: Turno[] = [];
     niveles: Nivel[] = [];
     canales: Canal[] = [];
     campus: Campus[] = [];
@@ -131,9 +132,8 @@ export class NewRegisterPromotionComponent implements OnInit {
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
     tipo_actividades: TipoActividad[] = [];
+    escuelas_empresas: EscuelaEmpresa[] = [];
     sub_tipo_actividades: SubTipoActividad[] = [];
-    turnos: Turno[] = [];
-
 
     constructor(private landingService: LandingService,
         private gralService: GeneralService,
@@ -159,7 +159,8 @@ export class NewRegisterPromotionComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusNivelServ: CampusNivelService,
         private tipicicacionServ: TipificacionService,
-        private subTipoActServ: SubTipoActividadService) { }
+        private subTipoActServ: SubTipoActividadService,
+        private escuelaEmpresaServ: EscuelaEmpresaService) { }
 
 
     ngOnInit() {
@@ -256,6 +257,11 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.asesorServ.getAll()
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
+            )
+        //Se obtienen todas las esculas empresas
+        this.escuelaEmpresaServ.getAll()
+            .subscribe(
+                (data: EscuelaEmpresa[]) => this.escuelas_empresas = data
             )
 
         this.formInit();
