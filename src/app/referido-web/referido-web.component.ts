@@ -16,6 +16,7 @@ import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
 import { Nivel } from '../interfaces/nivel';
 import { Modalidad } from '../interfaces/modalidad';
+import { Parentesco } from '../interfaces/parentesco';
 import { TipoReferente } from '../interfaces/tipo-referente';
 
 //Servicios
@@ -24,8 +25,9 @@ import { CarreraService } from '../providers/carrera.service';
 import { NivelService } from '../providers/nivel.service';
 import { ModalidadService } from '../providers/modalidad.service'; 
 import { TipoReferenteService } from '../providers/tipo-referente.service'; 
-
 import { SendService } from '../providers/send.service';
+import { ParentescoService } from '../providers/parentesco.service';
+import { CampusNivelService } from '../providers/campus-nivel.service';
 
 @Component({
   selector: 'app-referido-web',
@@ -41,6 +43,7 @@ export class ReferidoWebComponent implements OnInit {
   modalidades: Modalidad[] = [];
   niveles: Nivel[] = [];
   tiposReferentes: TipoReferente[] = [];
+  parentescos: Parentesco[] = [];
   
   //maxDate = new Date(2018, this.month.getMonth(),12);
   maxDate = LandingValidation.fechaLimite();
@@ -79,8 +82,9 @@ export class ReferidoWebComponent implements OnInit {
     private carreraServ: CarreraService,
     private nivelServ: NivelService,
     private modalidadServ: ModalidadService,
-     private sendServ: SendService,
-
+    private sendServ: SendService,
+    private parentescoServ: ParentescoService,
+    private campusNivelServ: CampusNivelService,
     private tipoRefenteServ: TipoReferenteService) { }
 
   ngOnInit() {
@@ -88,20 +92,20 @@ export class ReferidoWebComponent implements OnInit {
         this.landingService.getInit();
 
     // Se obtienen todos los campus
-        this.campusServ.getAll()
-            .subscribe(
-                (data: Campus[]) => this.campus = data
-            )
-        // Se obtienen todos los niveles
-        this.nivelServ.getAll()
-            .subscribe(
-                (data: Nivel[]) => this.niveles = data
-            )
-        // Se obtienen todas las modalidades
-        this.modalidadServ.getAll()
-            .subscribe(
-                (data: Modalidad[]) => this.modalidades = data
-            )
+    this.campusServ.getAll()
+        .subscribe(
+          (data: Campus[]) => this.campus = data
+        )
+    // Se obtienen todos los niveles
+    this.nivelServ.getAll()
+        .subscribe(
+          (data: Nivel[]) => this.niveles = data
+        )
+    // Se obtienen todas las modalidades
+    this.modalidadServ.getAll()
+        .subscribe(
+          (data: Modalidad[]) => this.modalidades = data
+        )
     // Se obtienen todas las carreras
     this.carreraServ.getAll()
       .subscribe(
@@ -112,6 +116,11 @@ export class ReferidoWebComponent implements OnInit {
       .subscribe(
         (data: TipoReferente[]) => this.tiposReferentes = data
       )
+    // Se obtienen todos los parentescos
+    this.parentescoServ.getAll()
+    .subscribe(
+        (data: Parentesco[]) => this.parentescos = data
+    )
  
  
     this.formInit();
@@ -138,12 +147,10 @@ export class ReferidoWebComponent implements OnInit {
       extension: new FormControl(''),
       tipoCel: new FormControl(''),
 
-
-
       Campus: new FormControl(''),
-      Nivel: new FormControl(''),
-      Modalidad: new FormControl(''),
-      Carrera: new FormControl(''),
+      Nivel: new FormControl({ value: '', disabled: true }),
+      Modalidad: new FormControl({ value: '', disabled: true }),
+      Carrera: new FormControl({ value: '', disabled: true }),
       Ciclo: new FormControl(''),
       tipificacion: new FormControl(''),
 
@@ -222,6 +229,55 @@ export class ReferidoWebComponent implements OnInit {
       this.form.controls.citaAsesor.reset({ value: '', disabled: true });*/
     }
   }
+
+  onChangeCampus(value: string){
+    if(this.form.controls['Nivel'].disabled){
+        this.form.controls['Nivel'].enable();
+    }else{
+        this.form.controls['Nivel'].setValue('');
+        this.form.controls['Nivel'].markAsUntouched();
+    }
+
+    if(this.form.controls['Modalidad'].enabled){
+        this.form.controls['Modalidad'].setValue('');
+        this.form.controls['Modalidad'].markAsUntouched();
+        this.form.controls['Modalidad'].disable();      
+    }
+
+    if(this.form.controls['Carrera'].enabled){
+        this.form.controls['Carrera'].setValue('');
+        this.form.controls['Carrera'].markAsUntouched();
+        this.form.controls['Carrera'].disable();      
+    }
+    this.niveles = this.campusNivelServ.getNivelesByCampus(value);
+  }
+
+onChangeNivel(value: string){
+    if(this.form.controls['Modalidad'].disabled){
+        this.form.controls['Modalidad'].enable();
+    }else{
+        this.form.controls['Modalidad'].setValue('');
+        this.form.controls['Modalidad'].markAsUntouched();
+    }
+
+    if(this.form.controls['Carrera'].enabled){
+        this.form.controls['Carrera'].setValue('');
+        this.form.controls['Carrera'].markAsUntouched();
+        this.form.controls['Carrera'].disable();      
+    }
+    this.modalidades = this.campusNivelServ.getModalidadByNivel(value);   
+}
+
+onChangeModalidad(value: string){
+    if(this.form.controls['Carrera'].disabled){
+        this.form.controls['Carrera'].enable();
+    }else{
+        this.form.controls['Carrera'].setValue('');
+        this.form.controls['Carrera'].markAsUntouched();
+    }
+    this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
+}
+
  private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {
           height: '180px',

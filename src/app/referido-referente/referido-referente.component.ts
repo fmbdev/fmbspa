@@ -21,7 +21,8 @@ import { SendService } from '../providers/send.service';
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
 import { NivelService } from '../providers/nivel.service';
-import { ModalidadService } from '../providers/modalidad.service'; 
+import { ModalidadService } from '../providers/modalidad.service';
+import { CampusNivelService } from '../providers/campus-nivel.service';
 
 
 @Component({
@@ -76,7 +77,8 @@ export class ReferidoReferenteComponent implements OnInit {
     private carreraServ: CarreraService,
     private nivelServ: NivelService,
     private sendServ: SendService,
-    private modalidadServ: ModalidadService) { }
+    private modalidadServ: ModalidadService,
+    private campusNivelServ: CampusNivelService) { }
 
   ngOnInit() {
 
@@ -123,9 +125,9 @@ export class ReferidoReferenteComponent implements OnInit {
 
 
       Campus: new FormControl(''),
-      Nivel: new FormControl(''),
-      Modalidad: new FormControl(''),
-      Carrera: new FormControl(''),
+      Nivel: new FormControl({ value: '', disabled: true }),
+      Modalidad: new FormControl({ value: '', disabled: true }),
+      Carrera: new FormControl({ value: '', disabled: true }),
       Ciclo: new FormControl(''),
       tipificacion: new FormControl(''),
 
@@ -218,6 +220,56 @@ export class ReferidoReferenteComponent implements OnInit {
       this.form.controls.citaAsesor.reset({ value: '', disabled: true });*/
     }
   }
+
+  onChangeCampus(value: string){
+    if(this.form.controls['Nivel'].disabled){
+        this.form.controls['Nivel'].enable();
+    }else{
+        this.form.controls['Nivel'].setValue('');
+        this.form.controls['Nivel'].markAsUntouched();
+    }
+
+    if(this.form.controls['Modalidad'].enabled){
+        this.form.controls['Modalidad'].setValue('');
+        this.form.controls['Modalidad'].markAsUntouched();
+        this.form.controls['Modalidad'].disable();      
+    }
+
+    if(this.form.controls['Carrera'].enabled){
+        this.form.controls['Carrera'].setValue('');
+        this.form.controls['Carrera'].markAsUntouched();
+        this.form.controls['Carrera'].disable();      
+    }
+    this.niveles = this.campusNivelServ.getNivelesByCampus(value);
+}
+
+onChangeNivel(value: string){
+    if(this.form.controls['Modalidad'].disabled){
+        this.form.controls['Modalidad'].enable();
+    }else{
+        this.form.controls['Modalidad'].setValue('');
+        this.form.controls['Modalidad'].markAsUntouched();
+    }
+
+    if(this.form.controls['Carrera'].enabled){
+        this.form.controls['Carrera'].setValue('');
+        this.form.controls['Carrera'].markAsUntouched();
+        this.form.controls['Carrera'].disable();      
+    }
+    this.modalidades = this.campusNivelServ.getModalidadByNivel(value);   
+}
+
+onChangeModalidad(value: string){
+    if(this.form.controls['Carrera'].disabled){
+        this.form.controls['Carrera'].enable();
+    }else{
+        this.form.controls['Carrera'].setValue('');
+        this.form.controls['Carrera'].markAsUntouched();
+    }
+    this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
+}
+
+
   private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {
           height: '180px',
