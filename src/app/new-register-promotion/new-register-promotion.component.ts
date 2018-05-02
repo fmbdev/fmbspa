@@ -30,7 +30,6 @@ import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { TipoActividad } from '../interfaces/tipo-actividad';
 import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
-import { SubTipoActividad } from '../interfaces/sub-tipo-actividad';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -53,7 +52,7 @@ import { CampusNivelService } from '../providers/campus-nivel.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
-import { SubTipoActividadService } from '../providers/sub-tipo-actividad.service';
+
 
 @Component({
     selector: 'app-new-register-promotion',
@@ -133,7 +132,6 @@ export class NewRegisterPromotionComponent implements OnInit {
     tipificaciones: Tipificacion[] = [];
     tipo_actividades: TipoActividad[] = [];
     escuelas_empresas: EscuelaEmpresa[] = [];
-    sub_tipo_actividades: SubTipoActividad[] = [];
 
     constructor(private landingService: LandingService,
         private gralService: GeneralService,
@@ -159,7 +157,6 @@ export class NewRegisterPromotionComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusNivelServ: CampusNivelService,
         private tipicicacionServ: TipificacionService,
-        private subTipoActServ: SubTipoActividadService,
         private escuelaEmpresaServ: EscuelaEmpresaService) { }
 
 
@@ -171,11 +168,6 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.tipoActServ.getAll()
             .subscribe(
                 (data: TipoActividad[]) => this.tipo_actividades = data
-            )
-        // Se obtienen los sub tipos de actividades
-        this.subTipoActServ.getAll()
-            .subscribe(
-                (data: SubTipoActividad[]) => this.sub_tipo_actividades = data
             )
         // Se obtienen los turnos
         this.turnoServ.getAll()

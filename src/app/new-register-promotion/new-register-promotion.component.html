@@ -64,9 +64,10 @@
                     <mat-form-field>
                         <mat-select placeholder="Sub Sub Tipo de Actividad" formControlName="SubSubTipoActividad" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let sub_tipo_actividad of sub_tipo_actividades;" [value]="sub_tipo_actividad['Sub tipo de actividad']">
+                            <mat-option value="1">CONSULTAR PADRES O TUTOR</mat-option>
+                            <!--<mat-option *ngFor="let sub_tipo_actividad of sub_tipo_actividades;" [value]="sub_tipo_actividad['Sub tipo de actividad']">
                                 {{ sub_tipo_actividad['Sub tipo de actividad'] }}
-                            </mat-option>
+                            </mat-option>-->
                         </mat-select>
                         <mat-error *ngIf="form.controls.SubSubTipoActividad.errors?.required">Por favor elige un sub sub tipo de actividad</mat-error>
                     </mat-form-field>
