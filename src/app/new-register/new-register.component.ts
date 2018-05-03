@@ -64,7 +64,7 @@ export class NewRegisterComponent implements OnInit {
 
     form: FormGroup;
     sinEmail = false;
-    //maxDate = new Date(2018, this.month.getMonth(),12);
+    minDate = new Date(new Date().setDate(new Date().getDate() - 1));
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
 

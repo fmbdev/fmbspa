@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
     this.campusNivelServ.getAll();
     this.subSubServ.getSubSubTiposActividad();
 
-    if(window.location.pathname!='/'){
+    /*if(window.location.pathname!='/'){
       if(localStorage.hello){
         var rick = JSON.parse(localStorage.hello);
         if(rick.msft){
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
       }else{
         //cargara
       }
-    }
+    }*/
      	
   }
 
