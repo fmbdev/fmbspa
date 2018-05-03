@@ -15,37 +15,12 @@ export class AppComponent implements OnInit{
   constructor(private pnnServ: PnnService, 
               private authServ:AuthService, 
               private campusNivelServ: CampusNivelService,
-             private subSubServ: SubsubtipoActividadService){}
+              private subSubServ: SubsubtipoActividadService){}
 
   ngOnInit(){
     this.pnnServ.getAll(); 
     this.campusNivelServ.getAll();
     this.subSubServ.getSubSubTiposActividad();
-
-    if(window.location.pathname!='/'){
-      if(localStorage.hello){
-        var rick = JSON.parse(localStorage.hello);
-        if(rick.msft){
-           return "access_token";
-        }else{
-          window.location.href="/";
-        }        
-      }else{
-        window.location.href="/";
-      }
-    }else{
-      if(localStorage.hello){
-        var rick = JSON.parse(localStorage.hello);
-        if(rick.msft){
-          window.location.href="/home";
-        }else{
-          //cargara
-        }        
-      }else{
-        //cargara
-      }
-    }
-     	
   }
 
   onLogout() {
