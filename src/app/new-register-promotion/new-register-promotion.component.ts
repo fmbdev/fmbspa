@@ -23,12 +23,13 @@ import { Campus } from '../interfaces/campus';
 import { Genero } from '../interfaces/genero';
 import { Asesor } from '../interfaces/asesor';
 import { Carrera } from '../interfaces/carrera';
+import { SubTipo } from '../interfaces/sub-tipo';
 import { Interes } from '../interfaces/interes';
 import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
+import { SubsubTipo } from '../interfaces/subsub-tipo';
 import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
-import { TipoActividad } from '../interfaces/tipo-actividad';
 import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 
 import { PnnService } from '../providers/pnn.service';
@@ -52,6 +53,7 @@ import { CampusNivelService } from '../providers/campus-nivel.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
+import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
 
 
 @Component({
@@ -73,14 +75,12 @@ export class NewRegisterPromotionComponent implements OnInit {
 
     actvidadNoTradicional: FormControl;
 
-
     ActividadAgenda: FormControl;
     SubTipoActividad: FormControl;
     SubSubTipoActividad: FormControl;
     EscuelaEmpresa: FormControl;
     Turno: FormControl; 
     Calidad: FormControl;          
-
 
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
@@ -113,8 +113,6 @@ export class NewRegisterPromotionComponent implements OnInit {
     etapaVenta: FormControl;
     NumeroCuenta: FormControl;
 
-
-
     csqs: Csq[] = [];
     horas: Hora[] = [];
     ciclos: Ciclo[] = [];
@@ -124,13 +122,15 @@ export class NewRegisterPromotionComponent implements OnInit {
     campus: Campus[] = [];
     generos: Genero[] = [];
     asesores: Asesor[] = [];
+    sub_tipos: SubTipo[] = [];
     carreras: Carrera[] = [];
+    subtipos: SubTipo[] = [];
     intereses: Interes[] = [];
     modalidades: Modalidad[] = [];
+    subsub_tipos: SubsubTipo[] = [];
     campus_citas: CampusCita[] = [];
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
-    tipo_actividades: TipoActividad[] = [];
     escuelas_empresas: EscuelaEmpresa[] = [];
 
     constructor(private landingService: LandingService,
@@ -157,18 +157,19 @@ export class NewRegisterPromotionComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusNivelServ: CampusNivelService,
         private tipicicacionServ: TipificacionService,
+        private subSubServ: SubsubtipoActividadService,
         private escuelaEmpresaServ: EscuelaEmpresaService) { }
 
 
     ngOnInit() {
-        
         this.landingService.getInit();
 
-        // Se obtiene los tipos de actividades
-        this.tipoActServ.getAll()
-            .subscribe(
-                (data: TipoActividad[]) => this.tipo_actividades = data
-            )
+        // Se obtienes los Subtipos de actividades
+        this.sub_tipos = this.subSubServ.getAllSubTipo();
+
+        // Se obtienes los Subsubtipos de actividades
+        this.subsub_tipos = this.subSubServ.getAllSubSubTipo();
+
         // Se obtienen los turnos
         this.turnoServ.getAll()
             .subscribe(
@@ -255,7 +256,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             .subscribe(
                 (data: EscuelaEmpresa[]) => this.escuelas_empresas = data
             )
-
+    
         this.formInit();
     }
 
@@ -270,7 +271,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             
             ActividadAgenda: new FormControl(''),
             SubTipoActividad: new FormControl(''),
-            SubSubTipoActividad: new FormControl(''),
+            SubSubTipoActividad: new FormControl({ value: '', disabled: true }),
             EscuelaEmpresa: new FormControl(''),
             Turno: new FormControl(''),
             Calidad: new FormControl('', [Validators.required, Validators.maxLength(5)]),
@@ -511,6 +512,17 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['Carrera'].markAsUntouched();
         }
         this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
+    }
+
+    onChangeSubTipo(value: string){
+        if(this.form.controls['SubSubTipoActividad'].disabled){
+            this.form.controls['SubSubTipoActividad'].enable();
+        }else{
+            this.form.controls['SubSubTipoActividad'].setValue('');
+            this.form.controls['SubSubTipoActividad'].markAsUntouched();
+        }
+        this.subsub_tipos = this.subSubServ.getSubSubTiposBySubTipo(value);
+
     }
 
     onFielCanal(value) {

@@ -17,13 +17,38 @@ export class SubsubtipoActividadService {
   getSubSubTiposActividad(){
     this.http.get("https://devmx.com.mx/fmbapp/public/api/subsubtipo_actividad", {headers: this.headers})
         .map(
-          (res: Response) => res.json
+          (res: Response) => res.json()
         )
         .subscribe(
           (data: any) => {
-            console.log(data);
+            for(let i = 0; i < data.length; i++){
+              let st = {id: data[i].id, crmit_codigounico: data[i].crmit_codigounico, crmit_subname: data[i].crmit_subname};
+              this.subTipo.push(st);
+              
+              let sst = {id: data[i].id, crmit_subtipoactividadid: data[i].crmit_subtipoactividadid, crmit_subsubname: data[i].crmit_subsubname};
+              this.subSubTipo.push(sst);              
+            }
           }
         )
+  }
+
+  getAllSubTipo() : SubTipo[] {
+    return this.subTipo;
+  }
+
+  getAllSubSubTipo() : SubsubTipo[] {
+    return this.subSubTipo;
+  }
+
+  getSubSubTiposBySubTipo(subTipoId: string) : SubsubTipo[] {
+    let subsub_tipos: SubsubTipo[] = [];
+
+    for(let i = 0; i < this.subSubTipo.length; i++){
+      if(subTipoId == this.subSubTipo[i].crmit_subtipoactividadid){
+        subsub_tipos.push(this.subSubTipo[i])
+      }
+    }
+    return subsub_tipos;
   }
 
 }

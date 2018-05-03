@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   constructor(private pnnServ: PnnService, 
               private authServ:AuthService, 
               private campusNivelServ: CampusNivelService,
-             private subSubServ: SubsubtipoActividadService){}
+              private subSubServ: SubsubtipoActividadService){}
 
   ngOnInit(){
     this.pnnServ.getAll(); 

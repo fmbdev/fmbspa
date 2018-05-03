@@ -64,7 +64,7 @@ export class NewRegisterComponent implements OnInit {
 
     form: FormGroup;
     sinEmail = false;
-    minDate = new Date(new Date().setDate(new Date().getDate() - 1));
+    minDate = new Date(new Date().setDate(new Date().getDate()));
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
 
@@ -84,7 +84,6 @@ export class NewRegisterComponent implements OnInit {
     FechaNacimiento: FormControl;
     Edad: FormControl;
     SinCorreo: FormControl;
-
 
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
@@ -233,20 +232,10 @@ export class NewRegisterComponent implements OnInit {
             )
 
         this.formInit();
-    }
-
-    validateAllFormFields(formGroup: FormGroup) {         //{1}
-        Object.keys(formGroup.controls).forEach(field => {  //{2}
-            const control = formGroup.get(field);             //{3}
-            if (control instanceof FormControl) {             //{4}
-                control.markAsTouched({ onlySelf: true });
-            } else if (control instanceof FormGroup) {        //{5}
-                this.validateAllFormFields(control);            //{6}
-            }
-        });
-    }
+    }    
 
     formInit() {
+        let userName = ;
         this.form = new FormGroup({
             Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }),
             Canal: new FormControl('', Validators.required),
@@ -315,11 +304,12 @@ export class NewRegisterComponent implements OnInit {
             }
         })
         
-        this.onKeyFechaNacimiento();
-        let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
-        this.form.controls['FechaCita'].setValue(fecha_cita);
+        
 
         if (this.form.valid) {
+            this.onKeyFechaNacimiento();
+            let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+            this.form.controls['FechaCita'].setValue(fecha_cita);
             if(this.form.controls['SinCorreo'].value=='ok'){
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel+'@unitec.edu.mx', disabled: false });

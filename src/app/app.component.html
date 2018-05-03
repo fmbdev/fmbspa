@@ -1,10 +1,10 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
         <ul class="menus2">
-            <li><a routerLink="register">Nuevo Registro Inbound</a></li>
-            <li><a routerLink="register-existing">Registro Existente</a></li>
-            <li><a routerLink="register-existing-reception">Registro Existente Recepción</a></li>
-            <li><a routerLink="registerSolo">Nuevo Registro Solovino</a></li>
+            <li><a (click)="sidenav.close()" routerLink="register">Nuevo Registro Inbound</a></li>
+            <li><a (click)="sidenav.close()" routerLink="register-existing">Registro Existente</a></li>
+            <li><a (click)="sidenav.close()" routerLink="register-existing-reception">Registro Existente Recepción</a></li>
+            <li><a (click)="sidenav.close()" routerLink="registerSolo">Nuevo Registro Solovino</a></li>
             <li><a routerLink="registerPromotion">Nuevo Registro (Promotor y Capturista)</a></li>
             <li><a routerLink="referidoReferente">Referidos Onboarding</a></li>
             <li><a routerLink="referidoPromotor">Referidos Promotor</a></li>
@@ -15,7 +15,7 @@
             <li><a routerLink="results">Resultados Registro</a></li>
             <li><a routerLink="upload">Carga de base</a></li>
             <li><a routerLink="upload-sis">Carga de base SIS</a></li>
-            <li><a  (click)="onLogout()">Cerrar Sesion</a></li>
+            <li><a (click)="onLogout()">Cerrar Sesion</a></li>
         </ul>
     </mat-sidenav>
     <mat-sidenav-content>

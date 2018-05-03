@@ -3,6 +3,7 @@ import { LandingService } from '../services/landing.service';
 
 import { Subscription } from 'rxjs/Subscription';
 import * as MicrosoftGraph from "@microsoft/microsoft-graph-types"
+import * as $ from 'jquery';
 
 import { HomeService } from '../providers/home.service';
 import { AuthService } from '../providers/auth.service';
@@ -31,7 +32,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit() {
-    this.landingService.getInit();         
+    this.landingService.getInit();
+    $.get("https://laulatammxdev.api.crm.dynamics.com/api/data/v8.2/WhoAmI", function (data) {
+      localStorage.user = data;
+    });
     this.subsGetMe = this.homeService.getMe().subscribe(me => this.me = me);     
   }
 

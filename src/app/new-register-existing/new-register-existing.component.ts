@@ -64,7 +64,7 @@ export class NewRegisterExistingComponent implements OnInit {
 
     form: FormGroup;
 
-    //maxDate = new Date(2018, this.month.getMonth(),12);
+    minDate = new Date(new Date().setDate(new Date().getDate()));
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
 
@@ -308,11 +308,14 @@ export class NewRegisterExistingComponent implements OnInit {
             }
         })
         
-        this.onKeyFechaNacimiento();
-        let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
-        this.form.controls['FechaCita'].setValue(fecha_cita);
+       
 
         if(this.form.valid){
+
+            this.onKeyFechaNacimiento();
+            let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+            this.form.controls['FechaCita'].setValue(fecha_cita);
+            
             this.sendServ.sendDataToApi(this.form.value)
                 .subscribe(
                     (res: any) => {
