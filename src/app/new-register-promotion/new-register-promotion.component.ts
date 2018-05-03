@@ -427,17 +427,17 @@ export class NewRegisterPromotionComponent implements OnInit {
 
     addTradicional(isChecked) {
         if (isChecked.checked) {
-            this.form.controls.SubTipoActividad.reset({ value: '', disabled: true });
-            this.form.controls.ActividadAgenda.reset({ value: '', disabled: true });
-            this.form.controls.SubSubTipoActividad.reset({ value: '', disabled: true });
+            this.form.controls.EscuelaEmpresa.reset({ value: '', disabled: true });
+            this.form.controls.Turno.reset({ value: '', disabled: true });
+            this.form.controls.Calidad.reset({ value: '', disabled: true });
         } else {
-            this.form.controls.SubTipoActividad.reset({ value: '', disabled: false });
-            this.form.controls.ActividadAgenda.reset({ value: '', disabled: false });
-            this.form.controls.SubSubTipoActividad.reset({ value: '', disabled: false });
+            this.form.controls.EscuelaEmpresa.reset({ value: '', disabled: false });
+            this.form.controls.Turno.reset({ value: '', disabled: false });
+            this.form.controls.Calidad.reset({ value: '', disabled: false });
         }
-        this.form.controls.SubTipoActividad.updateValueAndValidity();
-        this.form.controls.ActividadAgenda.updateValueAndValidity();
-        this.form.controls.SubSubTipoActividad.updateValueAndValidity();
+        this.form.controls.EscuelaEmpresa.updateValueAndValidity();
+        this.form.controls.Turno.updateValueAndValidity();
+        this.form.controls.Calidad.updateValueAndValidity();
     }
 
 
