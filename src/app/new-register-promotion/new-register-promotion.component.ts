@@ -124,6 +124,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     asesores: Asesor[] = [];
     sub_tipos: SubTipo[] = [];
     carreras: Carrera[] = [];
+    subtipos: SubTipo[] = [];
     intereses: Interes[] = [];
     modalidades: Modalidad[] = [];
     subsub_tipos: SubsubTipo[] = [];
