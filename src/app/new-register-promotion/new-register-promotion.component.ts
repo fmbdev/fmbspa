@@ -24,11 +24,12 @@ import { Genero } from '../interfaces/genero';
 import { Asesor } from '../interfaces/asesor';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
+import { SubTipo } from '../interfaces/sub-tipo';
 import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
 import { CampusCita } from '../interfaces/campus-cita';
+import { SubsubTipo } from '../interfaces/subsub-tipo';
 import { Tipificacion } from '../interfaces/tipificacion';
-import { TipoActividad } from '../interfaces/tipo-actividad';
 import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 
 import { PnnService } from '../providers/pnn.service';
@@ -52,6 +53,7 @@ import { CampusNivelService } from '../providers/campus-nivel.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
+import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
 
 
 @Component({
@@ -125,12 +127,13 @@ export class NewRegisterPromotionComponent implements OnInit {
     generos: Genero[] = [];
     asesores: Asesor[] = [];
     carreras: Carrera[] = [];
+    subtipos: SubTipo[] = [];
     intereses: Interes[] = [];
     modalidades: Modalidad[] = [];
+    subsubtipos: SubsubTipo[] = [];
     campus_citas: CampusCita[] = [];
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
-    tipo_actividades: TipoActividad[] = [];
     escuelas_empresas: EscuelaEmpresa[] = [];
 
     constructor(private landingService: LandingService,
@@ -157,6 +160,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusNivelServ: CampusNivelService,
         private tipicicacionServ: TipificacionService,
+        private subSubServ: SubsubtipoActividadService,
         private escuelaEmpresaServ: EscuelaEmpresaService) { }
 
 
@@ -164,11 +168,12 @@ export class NewRegisterPromotionComponent implements OnInit {
         
         this.landingService.getInit();
 
-        // Se obtiene los tipos de actividades
-        this.tipoActServ.getAll()
-            .subscribe(
-                (data: TipoActividad[]) => this.tipo_actividades = data
-            )
+        // Se obitenen todos los subtipos
+        this.subtipos = this.subSubServ.getAllSubtipo();
+
+        // Se obitenen todos los subsubtipos
+        this.subsubtipos = this.subSubServ.getAllSubSubTipo();
+
         // Se obtienen los turnos
         this.turnoServ.getAll()
             .subscribe(
@@ -270,7 +275,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             
             ActividadAgenda: new FormControl(''),
             SubTipoActividad: new FormControl(''),
-            SubSubTipoActividad: new FormControl(''),
+            SubSubTipoActividad: new FormControl({ value: '', disabled: true }),
             EscuelaEmpresa: new FormControl(''),
             Turno: new FormControl(''),
             Calidad: new FormControl('', [Validators.required, Validators.maxLength(5)]),
@@ -511,6 +516,16 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['Carrera'].markAsUntouched();
         }
         this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
+    }
+
+    onChangeSubTipo(value: string){
+        if(this.form.controls['SubSubTipoActividad'].disabled){
+            this.form.controls['SubSubTipoActividad'].enable();
+        }else{
+            this.form.controls['SubSubTipoActividad'].setValue('');
+            this.form.controls['SubSubTipoActividad'].markAsUntouched();
+        }
+        this.subsubtipos = this.subSubServ.getSubSubtTipoBySubTipo(value);
     }
 
     onFielCanal(value) {
