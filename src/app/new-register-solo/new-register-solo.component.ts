@@ -30,12 +30,10 @@ import { Tipificacion } from '../interfaces/tipificacion';
 import { TipoActividad } from '../interfaces/tipo-actividad';
 import { Turno } from '../interfaces/turno';
 
-
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
 import { SendService } from '../providers/send.service';
 import { HoraService } from '../providers/hora.service';
-import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
 import { TurnoService } from '../providers/turno.service';
@@ -51,8 +49,6 @@ import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { CampusNivelService } from '../providers/campus-nivel.service';
-
-
 
 
 @Component({
@@ -137,7 +133,6 @@ export class NewRegisterSoloComponent implements OnInit {
     tipo_actividades: TipoActividad[] = [];
     turnos: Turno[] = [];
     
-
     constructor(private landingService: LandingService,
         private gralService: GeneralService,
         public dialog: MatDialog,
@@ -146,7 +141,6 @@ export class NewRegisterSoloComponent implements OnInit {
         private csqServ: CsqService,
         private horaServ: HoraService,
         private sendServ: SendService,
-        private nivelServ: NivelService,
         private cicloServ: CicloService,
         private turnoServ: TurnoService,
         private canalServ: CanalService,
@@ -164,8 +158,7 @@ export class NewRegisterSoloComponent implements OnInit {
         private campusNivelServ: CampusNivelService) { }
 
 
-    ngOnInit() {
-        
+    ngOnInit() {     
         this.landingService.getInit();
 
         // Se obtiene los tipos de actividades
@@ -210,15 +203,11 @@ export class NewRegisterSoloComponent implements OnInit {
                 (data: Campus[]) => this.campus = data
             )
         // Se obtienen todos los niveles
-        this.nivelServ.getAll()
-            .subscribe(
-                (data: Nivel[]) => this.niveles = data
-            )
+        this.niveles = this.modalidadServ.getNiveles();
+
         // Se obtienen todas las modalidades
-        this.modalidadServ.getAll()
-            .subscribe(
-                (data: Modalidad[]) => this.modalidades = data
-            )
+        this.modalidades = this.modalidadServ.getModalidades();
+
         // Se obtienen todas las carreras
         this.carreraServ.getAll()
             .subscribe(
@@ -261,13 +250,10 @@ export class NewRegisterSoloComponent implements OnInit {
     formInit() {
         this.form = new FormGroup({
 
-
             Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: true }),
  
-
             SinCorreo: new FormControl(''),
-            
-
+        
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),

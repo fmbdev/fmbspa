@@ -177,8 +177,8 @@
                     <mat-form-field>
                         <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                                <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']">
-                                    {{ nivel['crmit_name'] }}
+                                <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_nivelinteresid']">
+                                    {{ nivel['crmit_nivelinteresidname'] }}
                                 </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Nivel.errors?.required">{{showMjs('nivel.m1')}}</mat-error>
@@ -213,7 +213,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)" (change)="onChangeCarrera(form.controls.Carrera.value)">
+                        <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                                 <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']">
                                     {{ carrera['name'] }}

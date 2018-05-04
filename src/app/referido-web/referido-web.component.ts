@@ -22,7 +22,6 @@ import { TipoReferente } from '../interfaces/tipo-referente';
 //Servicios
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
-import { NivelService } from '../providers/nivel.service';
 import { ModalidadService } from '../providers/modalidad.service'; 
 import { TipoReferenteService } from '../providers/tipo-referente.service'; 
 import { SendService } from '../providers/send.service';
@@ -58,7 +57,6 @@ export class ReferidoWebComponent implements OnInit {
   cuenta_ref: FormControl;
   phone_ref: FormControl;
 
-
   Nombre: FormControl;
   ApellidoPaterno: FormControl;
   ApellidoMaterno: FormControl;
@@ -80,7 +78,6 @@ export class ReferidoWebComponent implements OnInit {
   constructor(private landingService: LandingService,private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
      private campusServ: CampusService,
     private carreraServ: CarreraService,
-    private nivelServ: NivelService,
     private modalidadServ: ModalidadService,
     private sendServ: SendService,
     private parentescoServ: ParentescoService,
@@ -97,15 +94,11 @@ export class ReferidoWebComponent implements OnInit {
           (data: Campus[]) => this.campus = data
         )
     // Se obtienen todos los niveles
-    this.nivelServ.getAll()
-        .subscribe(
-          (data: Nivel[]) => this.niveles = data
-        )
+    this.niveles = this.modalidadServ.getNiveles();
+
     // Se obtienen todas las modalidades
-    this.modalidadServ.getAll()
-        .subscribe(
-          (data: Modalidad[]) => this.modalidades = data
-        )
+    this.modalidades = this.modalidadServ.getModalidades();
+
     // Se obtienen todas las carreras
     this.carreraServ.getAll()
       .subscribe(
@@ -137,7 +130,6 @@ export class ReferidoWebComponent implements OnInit {
       phone_ref: new FormControl(''),
       cuenta_ref: new FormControl(''),
 
-
       Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
       ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
       ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -153,7 +145,6 @@ export class ReferidoWebComponent implements OnInit {
       Carrera: new FormControl({ value: '', disabled: true }),
       Ciclo: new FormControl(''),
       tipificacion: new FormControl(''),
-
     });
   }
 
