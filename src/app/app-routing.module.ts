@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, CanActivate, RouterModule } from '@angular/router';
 import { NewRegisterPromotionComponent } from './new-register-promotion/new-register-promotion.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -63,8 +63,6 @@ const routes: Routes = [
     path: 'referidoWeb',
     component: ReferidoWebComponent
   },
-
-
   {
     path: 'registerPromotion',
     component: NewRegisterPromotionComponent

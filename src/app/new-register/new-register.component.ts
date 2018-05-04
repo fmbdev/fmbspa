@@ -235,7 +235,7 @@ export class NewRegisterComponent implements OnInit {
     }    
 
     formInit() {
-        let userName = ;
+        let userName = '';
         this.form = new FormGroup({
             Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }),
             Canal: new FormControl('', Validators.required),

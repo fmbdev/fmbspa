@@ -35,7 +35,7 @@ export class AuthService {
         form: false
       },
     },
-      { redirect_uri: 'https://app.devmx.com.mx/', response_type: 'code' }
+      { redirect_uri: 'https://landing.devmx.com.mx/', response_type: 'code' }
     );
      
 
@@ -43,7 +43,7 @@ export class AuthService {
       scope: 'User.Read Mail.Send',
       response_type: 'code',
       //display:'page',
-      redirect_uri:'https://app.devmx.com.mx'
+      redirect_uri:'https://landing.devmx.com.mx'
      }).then(
       () => {
         this.zone.run(() => {
