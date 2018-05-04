@@ -35,7 +35,7 @@ export class AuthService {
         form: false
       },
     },
-      { redirect_uri: 'https://landing.devmx.com.mx/', response_type: 'code' }
+      { redirect_uri: window.location.href, response_type: 'code' }
     );
      
 
@@ -43,7 +43,7 @@ export class AuthService {
       scope: 'User.Read Mail.Send',
       response_type: 'code',
       //display:'page',
-      redirect_uri:'https://landing.devmx.com.mx'
+      redirect_uri:window.location.href
      }).then(
       () => {
         this.zone.run(() => {
@@ -59,5 +59,17 @@ export class AuthService {
       () => window.location.href = '/',
       e => console.log(e.error.message)
     );
+  }
+
+  isAuthenticated() {
+        if(localStorage.hello){
+
+          var rick = JSON.parse(localStorage.hello);
+          if(rick.msft.access_token){
+            return true;
+          }else{
+            return false;
+          }      
+        }       
   }
 }

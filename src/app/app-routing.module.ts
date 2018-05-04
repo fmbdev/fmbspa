@@ -18,7 +18,9 @@ import { ReferidoWebComponent } from './referido-web/referido-web.component';
 import { NewRegisterExistingComponent } from './new-register-existing/new-register-existing.component';
 import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
 import { FormComponent } from './form/form.component';
-
+import { 
+  AuthGuardService as AuthGuard 
+} from './providers/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -28,10 +30,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+    //canActivate: [AuthGuard] 
   },
   {
     path: 'register',
     component: NewRegisterComponent
+    //canActivate: [AuthGuard]
   },
   {
     path: 'form',

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule,CanActivate  } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
@@ -78,6 +78,7 @@ import { FormComponent } from './form/form.component';
 import { HttpService } from './providers/http.service';
 import { AuthService } from './providers/auth.service';
 import { HomeService } from './providers/home.service';
+import {AuthGuardService } from './providers/auth-guard.service';
 
 
 @NgModule({
@@ -141,7 +142,7 @@ import { HomeService } from './providers/home.service';
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService,
               TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,
-              HttpService, AuthService, HomeService, CampusNivelService
+              HttpService, AuthService, HomeService, CampusNivelService,AuthGuardService
             ],
   bootstrap: [AppComponent]
 })

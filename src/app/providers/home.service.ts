@@ -46,20 +46,10 @@ export class HomeService {
     .api('me')
     .select("displayName, mail, userPrincipalName")
     .get()
-    .then ((res => {
-      localStorage.res = res;
+    .then ((res => {      
       return res;
     } ) )
     );
   }
-
-  sendMail(mail: MicrosoftGraph.Message) {
-    var client = this.getClient();
-    return Observable.fromPromise(client
-    .api('me/sendmail')
-    .post({message: mail})
-  );
-  } 
-
 
 }
