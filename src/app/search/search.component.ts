@@ -182,11 +182,7 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (data: Nivel[]) => this.niveles = data
       )
-    // Se obtienen todas las modalidades
-    this.modalidadServ.getAll()
-      .subscribe(
-        (data: Modalidad[]) => this.modalidades = data
-      )
+    
     // Se obtienen todas las carreras
     this.carreraServ.getAll()
       .subscribe(
