@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PnnService } from './providers/pnn.service';
 import { AuthService } from './providers/auth.service';
 import { CampusNivelService } from './providers/campus-nivel.service';
+import { ModalidadService } from './providers/modalidad.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
 
 @Component({
@@ -14,12 +15,14 @@ export class AppComponent implements OnInit{
   
   constructor(private pnnServ: PnnService, 
               private authServ:AuthService, 
+              private modalidadServ: ModalidadService,
               private campusNivelServ: CampusNivelService,
               private subSubServ: SubsubtipoActividadService){}
 
   ngOnInit(){
     this.pnnServ.getAll(); 
     this.campusNivelServ.getAll();
+    this.modalidadServ.getModalidadNivel();
     this.subSubServ.getSubSubTiposActividad();
   }
 

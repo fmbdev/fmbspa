@@ -32,7 +32,6 @@ import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
 import { SendService } from '../providers/send.service';
 import { HoraService } from '../providers/hora.service';
-import { NivelService } from '../providers/nivel.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
 import { FormatService } from '../providers/format.service';
@@ -105,7 +104,6 @@ export class NewRegisterExistingComponent implements OnInit {
     etapaVenta: FormControl;
     NumeroCuenta: FormControl;
 
-
     CampusCitas: FormControl;
     FechaCita: FormControl;
     HoraCita: FormControl;
@@ -138,7 +136,6 @@ export class NewRegisterExistingComponent implements OnInit {
         private csqServ: CsqService,
         private horaServ: HoraService,
         private sendServ: SendService,
-        private nivelServ: NivelService,
         private cicloServ: CicloService,
         private canalServ: CanalService,
         private campusServ: CampusService,
@@ -188,16 +185,13 @@ export class NewRegisterExistingComponent implements OnInit {
             .subscribe(
                 (data: Campus[]) => this.campus = data
             )
+
         // Se obtienen todos los niveles
-        this.nivelServ.getAll()
-            .subscribe(
-                (data: Nivel[]) => this.niveles = data
-            )
+        this.niveles = this.modalidadServ.getNiveles();
+
         // Se obtienen todas las modalidades
-        this.modalidadServ.getAll()
-            .subscribe(
-                (data: Modalidad[]) => this.modalidades = data
-            )
+        this.modalidades = this.modalidadServ.getModalidades();
+
         // Se obtienen todas las carreras
         this.carreraServ.getAll()
             .subscribe(

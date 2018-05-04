@@ -20,18 +20,14 @@ import { SendService } from '../providers/send.service';
 //Servicios
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
-import { NivelService } from '../providers/nivel.service';
 import { ModalidadService } from '../providers/modalidad.service';
 import { CampusNivelService } from '../providers/campus-nivel.service';
-
 
 @Component({
   selector: 'app-referido-referente',
   templateUrl: './referido-referente.component.html',
   styleUrls: ['./referido-referente.component.scss']
 })
-
-
 
 export class ReferidoReferenteComponent implements OnInit {
 
@@ -62,12 +58,10 @@ export class ReferidoReferenteComponent implements OnInit {
 
   public mostrarExtension: boolean = null;
 
-
   campus: Campus[] = [];
   carreras: Carrera[] = [];
   modalidades: Modalidad[] = [];
   niveles: Nivel[] = [];
-
 
   constructor(private landingService: LandingService,
     private gralService: GeneralService, 
@@ -75,7 +69,6 @@ export class ReferidoReferenteComponent implements OnInit {
     private renderer: Renderer2,
     private campusServ: CampusService,
     private carreraServ: CarreraService,
-    private nivelServ: NivelService,
     private sendServ: SendService,
     private modalidadServ: ModalidadService,
     private campusNivelServ: CampusNivelService) { }
@@ -90,15 +83,11 @@ export class ReferidoReferenteComponent implements OnInit {
         (data: Campus[]) => this.campus = data
       )
     // Se obtienen todos los niveles
-    this.nivelServ.getAll()
-      .subscribe(
-        (data: Nivel[]) => this.niveles = data
-      )
+    this.niveles = this.modalidadServ.getNiveles();
+
     // Se obtienen todas las modalidades
-    this.modalidadServ.getAll()
-      .subscribe(
-        (data: Modalidad[]) => this.modalidades = data
-      )
+    this.modalidades = this.modalidadServ.getModalidades();
+
     // Se obtienen todas las carreras
     this.carreraServ.getAll()
       .subscribe(
@@ -121,8 +110,6 @@ export class ReferidoReferenteComponent implements OnInit {
       Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
       extension: new FormControl(''),
       tipoCel: new FormControl(''),
-
-
 
       Campus: new FormControl(''),
       Nivel: new FormControl({ value: '', disabled: true }),
