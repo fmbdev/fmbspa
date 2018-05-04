@@ -37,20 +37,20 @@ export class CampusNivelService {
   }
 
   getNivelesByCampus(campusId: string) : Nivel[]{
-    let carreraId: string[] = [];
+    let nivelId: string[] = [];
 
     for(let i = 0; i < this.campusNivel.length; i++){
       if(campusId == this.campusNivel[i].campus_crmit_codigounico){
-        carreraId.push(this.campusNivel[i].nivelestudios_crmit_codigounico);
+        nivelId.push(this.campusNivel[i].nivelestudios_crmit_codigounico);
       }
     }
     
-    let niveles = this.nivelServ.getNiveles();
+    let niveles = this.modalidadServ.getNiveles();
     let nivelesByCampus: Nivel[] = [];
 
-    for(let i = 0; i < carreraId.length; i++){
+    for(let i = 0; i < nivelId.length; i++){
       for(let j = 0; j < niveles.length; j++){
-        if(carreraId[i] == niveles[j].crmit_codigounico){
+        if(nivelId[i] == niveles[j].crmit_nivelinteresid){
           nivelesByCampus.push(niveles[j]);
         }
       }
