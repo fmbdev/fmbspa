@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { PnnService } from './providers/pnn.service';
 import { AuthService } from './providers/auth.service';
-import { CampusNivelService } from './providers/campus-nivel.service';
+import { NivelService } from './providers/nivel.service';
+import { CarreraService } from './providers/carrera.service';
 import { ModalidadService } from './providers/modalidad.service';
+import { CampusCarreraService } from './providers/campus-carrera.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
 
 @Component({
@@ -14,16 +16,19 @@ import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.ser
 export class AppComponent implements OnInit{
   
   constructor(private pnnServ: PnnService, 
-              private authServ:AuthService, 
-              private modalidadServ: ModalidadService,
-              private campusNivelServ: CampusNivelService,
-              private subSubServ: SubsubtipoActividadService){}
+              private authServ:AuthService,
+              private nivelServ: NivelService,
+              private carreraServ: CarreraService,
+              private modalidadServ: ModalidadService,              
+              private subSubServ: SubsubtipoActividadService,
+              private campusCarreraServ: CampusCarreraService){}
 
   ngOnInit(){
-    this.pnnServ.getAll(); 
-    this.campusNivelServ.getAll();
-    this.modalidadServ.getModalidadNivel();
-    this.subSubServ.getSubSubTiposActividad();
+    this.pnnServ.getAll();
+    this.nivelServ.getAll();
+    this.carreraServ.getAll();
+    this.modalidadServ.getAll();
+    this.campusCarreraServ.getAll();
 
     if(window.location.pathname!='/'){
       if(localStorage.hello){

@@ -26,7 +26,7 @@ import { ModalidadService } from '../providers/modalidad.service';
 import { TipoReferenteService } from '../providers/tipo-referente.service'; 
 import { SendService } from '../providers/send.service';
 import { ParentescoService } from '../providers/parentesco.service';
-import { CampusNivelService } from '../providers/campus-nivel.service';
+import { CampusCarreraService } from '../providers/campus-carrera.service';
 
 @Component({
   selector: 'app-referido-web',
@@ -81,7 +81,7 @@ export class ReferidoWebComponent implements OnInit {
     private modalidadServ: ModalidadService,
     private sendServ: SendService,
     private parentescoServ: ParentescoService,
-    private campusNivelServ: CampusNivelService,
+    private campusCarreraServ: CampusCarreraService,
     private tipoRefenteServ: TipoReferenteService) { }
 
   ngOnInit() {
@@ -93,17 +93,6 @@ export class ReferidoWebComponent implements OnInit {
         .subscribe(
           (data: Campus[]) => this.campus = data
         )
-    // Se obtienen todos los niveles
-    this.niveles = this.modalidadServ.getNiveles();
-
-    // Se obtienen todas las modalidades
-    this.modalidades = this.modalidadServ.getModalidades();
-
-    // Se obtienen todas las carreras
-    this.carreraServ.getAll()
-      .subscribe(
-        (data: Carrera[]) => this.carreras = data
-      )
     // Se obtienen todas las carreras
     this.tipoRefenteServ.getAll()
       .subscribe(
@@ -114,7 +103,6 @@ export class ReferidoWebComponent implements OnInit {
     .subscribe(
         (data: Parentesco[]) => this.parentescos = data
     )
- 
  
     this.formInit();
   }
@@ -240,7 +228,7 @@ export class ReferidoWebComponent implements OnInit {
         this.form.controls['Carrera'].markAsUntouched();
         this.form.controls['Carrera'].disable();      
     }
-    this.niveles = this.campusNivelServ.getNivelesByCampus(value);
+    this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
   }
 
 onChangeNivel(value: string){
@@ -256,7 +244,7 @@ onChangeNivel(value: string){
         this.form.controls['Carrera'].markAsUntouched();
         this.form.controls['Carrera'].disable();      
     }
-    this.modalidades = this.campusNivelServ.getModalidadByNivel(value);   
+    this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
 }
 
 onChangeModalidad(value: string){
@@ -266,7 +254,7 @@ onChangeModalidad(value: string){
         this.form.controls['Carrera'].setValue('');
         this.form.controls['Carrera'].markAsUntouched();
     }
-    this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
+    this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
 }
 
  private showDialog(message: string){

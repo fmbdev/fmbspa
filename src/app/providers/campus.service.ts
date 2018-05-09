@@ -25,4 +25,5 @@ export class CampusService {
   getCampus() : Campus[]{
     return this.campus;
   }
+  
 }

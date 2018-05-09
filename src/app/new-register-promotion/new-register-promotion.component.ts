@@ -48,7 +48,7 @@ import { InteresService } from '../providers/interes.service';
 import { ModalidadService } from '../providers/modalidad.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
-import { CampusNivelService } from '../providers/campus-nivel.service';
+import { CampusCarreraService } from '../providers/campus-carrera.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
@@ -153,7 +153,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         private parentescoServ: ParentescoService,
         private tipoActServ: TipoActividadService,
         private campusCitaServ: CampusCitaService,
-        private campusNivelServ: CampusNivelService,
+        private campusCarreraServ: CampusCarreraService,
         private tipicicacionServ: TipificacionService,
         private subSubServ: SubsubtipoActividadService,
         private escuelaEmpresaServ: EscuelaEmpresaService) { }
@@ -203,18 +203,6 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.campusServ.getAll()
             .subscribe(
                 (data: Campus[]) => this.campus = data
-            )
-
-        // Se obtienen todos los niveles
-        this.niveles = this.modalidadServ.getNiveles();
-
-        // Se obtienen todas las modalidades
-        this.modalidades = this.modalidadServ.getModalidades();
-
-        // Se obtienen todas las carreras
-        this.carreraServ.getAll()
-            .subscribe(
-                (data: Carrera[]) => this.carreras = data
             )
         // Se obtienen los ciclos
         this.cicloServ.getAll()
@@ -480,7 +468,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['Carrera'].markAsUntouched();
             this.form.controls['Carrera'].disable();      
         }
-        this.niveles = this.campusNivelServ.getNivelesByCampus(value);
+        this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
 
     onChangeNivel(value: string){
@@ -496,7 +484,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['Carrera'].markAsUntouched();
             this.form.controls['Carrera'].disable();      
         }
-        this.modalidades = this.campusNivelServ.getModalidadByNivel(value);   
+        this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
     }
 
     onChangeModalidad(value: string){
@@ -506,7 +494,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
         }
-        this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
+        this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
     }
 
     onChangeSubTipo(value: string){
@@ -517,7 +505,6 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['SubSubTipoActividad'].markAsUntouched();
         }
         this.subsub_tipos = this.subSubServ.getSubSubTiposBySubTipo(value);
-
     }
 
     onFielCanal(value) {

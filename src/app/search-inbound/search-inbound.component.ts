@@ -175,7 +175,7 @@ export class SearchInboundComponent implements OnInit {
         (data: Campus[]) => this.campus = data
       )
     // Se obtienen todos los niveles
-    this.nivelServ.getAll()
+    /*this.nivelServ.getAll()
       .subscribe(
         (data: Nivel[]) => this.niveles = data
       )  
@@ -183,7 +183,7 @@ export class SearchInboundComponent implements OnInit {
     this.carreraServ.getAll()
       .subscribe(
         (data: Carrera[]) => this.carreras = data
-      )
+      )*/
     // Se obtienen los ciclos
     this.cicloServ.getAll()
       .subscribe(
