@@ -78,8 +78,8 @@ export class NewRegisterPromotionComponent implements OnInit {
     SubTipoActividad: FormControl;
     SubSubTipoActividad: FormControl;
     EscuelaEmpresa: FormControl;
-    Turno: FormControl; 
-    Calidad: FormControl;          
+    Turno: FormControl;
+    Calidad: FormControl;
 
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
@@ -239,7 +239,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             .subscribe(
                 (data: EscuelaEmpresa[]) => this.escuelas_empresas = data
             )
-    
+
         this.formInit();
     }
 
@@ -249,9 +249,9 @@ export class NewRegisterPromotionComponent implements OnInit {
 
             Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }, Validators.required),
             //Asesor: new FormControl(''),
-            
+
             actvidadNoTradicional: new FormControl(''),
-            
+
             ActividadAgenda: new FormControl(''),
             SubTipoActividad: new FormControl(''),
             SubSubTipoActividad: new FormControl({ value: '', disabled: true }),
@@ -311,18 +311,48 @@ export class NewRegisterPromotionComponent implements OnInit {
                 }else{
                     form.controls[name].setErrors({'numInvalid': false});
                     form.controls[name].reset();
-                }               
+                }
             }
         })
-        
+
         this.onKeyFechaNacimiento();
 
         if (this.form.valid) {
-            
+
             if (this.sinEmail) {
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
             }
+
+          // -------------------------------- Predictivo  ----------------------------------
+
+          const predCel = this.form.value.NumeroCelular.substring(0,2);
+          const predCelTutor = this.form.value.NumeroCelularTutor.substring(0,2);
+          const predTel = this.form.value.Telefono.substring(0,2);
+          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
+          this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
+          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularTutor;
+          this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+          this.form.value.TelefonoPredictivoTutor = '901'+this.form.value.TelefonoTutor;
+          this.form.value.Banner = window.location.href;
+
+          if(predCel == 55){
+            this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
+          }
+
+          if(predCelTutor == 55){
+            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularTutor;
+          }
+
+          if(predTel == 55){
+            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+          }
+
+          if(predTelTutor == 55){
+            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
+          }
+
+          // -------------------------------- Predictivo  ----------------------------------
 
             this.sendServ.sendDataToApi(this.form.value)
                 .subscribe(
@@ -460,13 +490,13 @@ export class NewRegisterPromotionComponent implements OnInit {
         if(this.form.controls['Modalidad'].enabled){
             this.form.controls['Modalidad'].setValue('');
             this.form.controls['Modalidad'].markAsUntouched();
-            this.form.controls['Modalidad'].disable();      
+            this.form.controls['Modalidad'].disable();
         }
 
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
+            this.form.controls['Carrera'].disable();
         }
         this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
@@ -482,7 +512,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
+            this.form.controls['Carrera'].disable();
         }
         this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
     }
@@ -531,7 +561,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     }
 
     addAsesor(isChecked) {
-        
+
     }
 
     showMjs(field: any) {

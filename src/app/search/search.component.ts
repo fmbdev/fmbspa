@@ -52,7 +52,7 @@ import { TipificacionService } from '../providers/tipificacion.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  
+
   form: FormGroup;
   Route: Router;
   //maxDate = new Date(2018, this.month.getMonth(),12);
@@ -118,9 +118,9 @@ export class SearchComponent implements OnInit {
   parentescos: Parentesco[] = [];
   tipificaciones: Tipificacion[] = [];
 
-  
 
-  constructor(private landingService: LandingService,    
+
+  constructor(private landingService: LandingService,
     private gralService: GeneralService,
     private router: Router,
     public dialog: MatDialog,
@@ -144,7 +144,7 @@ export class SearchComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
     this.landingService.getInit();
 
     // Se obtiene todos los canales
@@ -182,7 +182,7 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (data: Nivel[]) => this.niveles = data
       )
-    
+
     // Se obtienen todas las carreras
     this.carreraServ.getAll()
       .subscribe(
@@ -274,6 +274,23 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
+    // -------------------------------- Predictivo  ----------------------------------
+
+    const predCel = this.form.value.NumeroCelular.substring(0,2);
+    const predTel = this.form.value.Telefono.substring(0,2);
+    this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
+    this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+    this.form.value.Banner = window.location.href;
+
+    if(predCel == 55){
+      this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
+    }
+
+    if(predTel == 55){
+      this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+    }
+
+    // -------------------------------- Predictivo  ----------------------------------
     this.onKeyFechaNacimiento();
     let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
     this.form.controls['FechaCita'].setValue(fecha_cita);
@@ -292,7 +309,7 @@ export class SearchComponent implements OnInit {
     this.form.controls.FechaNacimiento.setValue(fecha);
   }
 
- 
+
   _keyOnly3letter(event: any, name: any) {
     LandingValidation.letterName(event, name);
   }
@@ -316,7 +333,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-   
+
   onChangeInteres(value) {
     if (value == '') {
       this.form.controls.Campus.clearValidators();

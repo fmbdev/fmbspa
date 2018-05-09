@@ -62,16 +62,23 @@ export class ReferidoReferenteComponent implements OnInit {
   carreras: Carrera[] = [];
   modalidades: Modalidad[] = [];
   niveles: Nivel[] = [];
+  rows = [];
+  campusTxt: any;
+  nivelTxt: any;
 
   constructor(private landingService: LandingService,
-    private gralService: GeneralService, 
-    public dialog: MatDialog, 
+    private gralService: GeneralService,
+    public dialog: MatDialog,
     private renderer: Renderer2,
     private campusServ: CampusService,
     private carreraServ: CarreraService,
     private sendServ: SendService,
     private modalidadServ: ModalidadService,
-    private campusCarreraServ: CampusCarreraService) { }
+    private campusCarreraServ: CampusCarreraService) {
+    this.fetch((data) => {
+      this.rows = data;
+    });
+  }
 
   ngOnInit() {
 
@@ -82,12 +89,21 @@ export class ReferidoReferenteComponent implements OnInit {
       .subscribe(
         (data: Campus[]) => this.campus = data
       )
-        
+
     this.formInit();
   }
 
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/referidos.json`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
   formInit() {
-    
+
     this.form = new FormGroup({
       Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
 
@@ -111,20 +127,54 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   onSubmit() {
-    this.sendServ.sendDataToApi(this.form.value)
-         .subscribe(
-              (res: any) => {
-                  if(res.status == 200){
-                     this.showDialog("Los datos se han guardado correctamente.");
-                     this.resetForm();
-                  }else{
-                     this.showDialog("Error al realizar el registro.");
-                     this.resetForm();
+    // -------------------------------- Predictivo  ----------------------------------
+
+    const predTel = this.form.value.Telefono.substring(0,2);
+    this.form.value.Banner = window.location.href;
+
+    if(this.form.value.tipoCel == "Celular"){
+      if(predTel == 55){
+        this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.Telefono;
+      }else{
+        this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.Telefono;
+      }
+    }
+
+    if(this.form.value.tipoCel == "Casa"){
+      if(predTel == 55){
+        this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+      }else{
+        this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+      }
+    }
+
+    for(let i=0;i < this.rows.length; i++){
+      if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
+        this.form.value.Team = this.rows[i].TEAM;
+        this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+        this.form.value.Attemp = this.rows[i].ATTEMP;
+      }
+    }
+
+    /*setTimeout(() => {
+      console.log(this.form.value);
+    }, 1000);*/
+
+    // -------------------------------- Predictivo  ----------------------------------
+
+        this.sendServ.sendDataToApi(this.form.value)
+             .subscribe(
+                  (res: any) => {
+                      if(res.status == 200){
+                         this.showDialog("Los datos se han guardado correctamente.");
+                         this.resetForm();
+                      }else{
+                         this.showDialog("Error al realizar el registro.");
+                         this.resetForm();
+                      }
                   }
-              }
-        )
-    this.mostrarExtension = true;
-    console.log(this.form.value);
+            )
+        this.mostrarExtension = true;
   }
 
   resetForm() {
@@ -187,7 +237,7 @@ export class ReferidoReferenteComponent implements OnInit {
       this.form.controls.citaAsesor.reset({ value: '', disabled: false });*/
     } else {
       this.mostrarExtension = true;
-      
+
       /*this.form.controls.citaCampus.reset({ value: '', disabled: true });
       this.form.controls.citaFecha.reset({ value: '', disabled: true });
       this.form.controls.citaHora.reset({ value: '', disabled: true });
@@ -198,6 +248,13 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   onChangeCampus(value: string){
+    for(let i=0;i < this.campus.length; i++){
+      if(this.campus[i].crmit_tb_campusid == value){
+        this.campusTxt = this.campus[i].crmi_name;
+      }
+    }
+
+
     if(this.form.controls['Nivel'].disabled){
         this.form.controls['Nivel'].enable();
     }else{
@@ -208,18 +265,24 @@ export class ReferidoReferenteComponent implements OnInit {
     if(this.form.controls['Modalidad'].enabled){
         this.form.controls['Modalidad'].setValue('');
         this.form.controls['Modalidad'].markAsUntouched();
-        this.form.controls['Modalidad'].disable();      
+        this.form.controls['Modalidad'].disable();
     }
 
     if(this.form.controls['Carrera'].enabled){
         this.form.controls['Carrera'].setValue('');
         this.form.controls['Carrera'].markAsUntouched();
-        this.form.controls['Carrera'].disable();      
-    } 
-    this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);  
+        this.form.controls['Carrera'].disable();
+    }
+    this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
 }
 
 onChangeNivel(value: string){
+  for(let i=0;i < this.niveles.length; i++){
+    if(this.niveles[i].crmit_codigounico == value){
+      this.nivelTxt = this.niveles[i].crmit_name;
+    }
+  }
+
     if(this.form.controls['Modalidad'].disabled){
         this.form.controls['Modalidad'].enable();
     }else{
@@ -230,8 +293,8 @@ onChangeNivel(value: string){
     if(this.form.controls['Carrera'].enabled){
         this.form.controls['Carrera'].setValue('');
         this.form.controls['Carrera'].markAsUntouched();
-        this.form.controls['Carrera'].disable();      
-    } 
+        this.form.controls['Carrera'].disable();
+    }
     this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
 }
 

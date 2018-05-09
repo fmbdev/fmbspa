@@ -126,7 +126,7 @@ export class NewRegisterExistingComponent implements OnInit {
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
 
-    //matcher = new MyErrorStateMatcher();   
+    //matcher = new MyErrorStateMatcher();
 
     constructor(private landingService: LandingService,
         private gralService: GeneralService,
@@ -154,7 +154,7 @@ export class NewRegisterExistingComponent implements OnInit {
     ngOnInit() {
 
         this.landingService.getInit();
-        
+
         // Se obtiene todos los canales
         this.canalServ.getAll()
             .subscribe(
@@ -251,11 +251,11 @@ export class NewRegisterExistingComponent implements OnInit {
             Modalidad: new FormControl({ value: '', disabled: true }),
             Carrera: new FormControl({ value: '', disabled: true }),
             Ciclo: new FormControl(''),
-            
+
             NumeroPersona: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
             etapaVenta: new FormControl('Registro'),
             NumeroCuenta: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
-            
+
             Tipificacion: new FormControl(''),
             Notas: new FormControl(''),
 
@@ -286,18 +286,53 @@ export class NewRegisterExistingComponent implements OnInit {
                 }else{
                     form.controls[name].setErrors({'numInvalid': false});
                     form.controls[name].reset();
-                }               
+                }
             }
         })
-        
-       
+
+
 
         if(this.form.valid){
 
             this.onKeyFechaNacimiento();
             let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
             this.form.controls['FechaCita'].setValue(fecha_cita);
-            
+
+          // -------------------------------- Predictivo  ----------------------------------
+
+          const predCel = this.form.value.NumeroCelular.substring(0,2);
+          const predCelTutor = this.form.value.NumeroCelularR.substring(0,2);
+          const predTel = this.form.value.Telefono.substring(0,2);
+          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
+          this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
+          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularR;
+          this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+          this.form.value.TelefonoPredictivoTutor = '901'+this.form.value.TelefonoTutor;
+          this.form.value.Banner = window.location.href;
+          this.form.value.CanalPreferido = 'Voz';
+
+          if(predCel == 55){
+            this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
+          }
+
+          if(predCelTutor == 55){
+            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularR;
+          }
+
+          if(predTel == 55){
+            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+          }
+
+          if(predTelTutor == 55){
+            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
+          }
+
+          if(this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS'){
+            this.form.value.CanalPreferido = 'Redes Sociales';
+          }
+
+          // -------------------------------- Predictivo  ----------------------------------
+
             this.sendServ.sendDataToApi(this.form.value)
                 .subscribe(
                     (res: any) => {
@@ -451,15 +486,15 @@ export class NewRegisterExistingComponent implements OnInit {
         if(this.form.controls['Modalidad'].enabled){
             this.form.controls['Modalidad'].setValue('');
             this.form.controls['Modalidad'].markAsUntouched();
-            this.form.controls['Modalidad'].disable();      
+            this.form.controls['Modalidad'].disable();
         }
 
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
+            this.form.controls['Carrera'].disable();
         }
-        this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);  
+        this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
 
     onChangeNivel(value: string){
@@ -473,7 +508,7 @@ export class NewRegisterExistingComponent implements OnInit {
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
+            this.form.controls['Carrera'].disable();
         }
         this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
     }
@@ -487,7 +522,7 @@ export class NewRegisterExistingComponent implements OnInit {
         }
         this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
     }
-    
+
 
     onFielCanal(value) {
         this.form.controls.TelefonoCorreo.clearValidators();

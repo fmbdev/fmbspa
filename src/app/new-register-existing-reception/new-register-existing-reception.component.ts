@@ -53,7 +53,7 @@ import { CampusCarreraService } from '../providers/campus-carrera.service';
 })
 
 export class NewRegisterExistingReceptionComponent implements OnInit {
-  
+
     form: FormGroup;
 
     //maxDate = new Date(2018, this.month.getMonth(),12);
@@ -144,7 +144,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
 
 
     ngOnInit() {
-        
+
         this.landingService.getInit();
 
         // Se obtiene todos los canales
@@ -278,15 +278,46 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
                 }else{
                     form.controls[name].setErrors({'numInvalid': false});
                     form.controls[name].reset();
-                }               
+                }
             }
         })
-        
+
         this.onKeyFechaNacimiento();
         let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
         this.form.controls['FechaCita'].setValue(fecha_cita);
 
         if(this.form.valid){
+
+          // -------------------------------- Predictivo  ----------------------------------
+
+          const predCel = this.form.value.NumeroCelular.substring(0,2);
+          const predCelTutor = this.form.value.NumeroCelularR.substring(0,2);
+          const predTel = this.form.value.Telefono.substring(0,2);
+          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
+          this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
+          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularR;
+          this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+          this.form.value.TelefonoPredictivoTutor = '901'+this.form.value.TelefonoTutor;
+          this.form.value.Banner = window.location.href;
+
+          if(predCel == 55){
+            this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
+          }
+
+          if(predCelTutor == 55){
+            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularR;
+          }
+
+          if(predTel == 55){
+            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+          }
+
+          if(predTelTutor == 55){
+            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
+          }
+
+          // -------------------------------- Predictivo  ----------------------------------
+
             this.sendServ.sendDataToApi(this.form.value)
                 .subscribe(
                     (res: any) => {
@@ -435,15 +466,15 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
         if(this.form.controls['Modalidad'].enabled){
             this.form.controls['Modalidad'].setValue('');
             this.form.controls['Modalidad'].markAsUntouched();
-            this.form.controls['Modalidad'].disable();      
+            this.form.controls['Modalidad'].disable();
         }
 
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
+            this.form.controls['Carrera'].disable();
         }
-        this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);    
+        this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
 
     onChangeNivel(value: string){
@@ -457,8 +488,8 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
-        } 
+            this.form.controls['Carrera'].disable();
+        }
         this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
     }
 

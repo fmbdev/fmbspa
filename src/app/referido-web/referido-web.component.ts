@@ -22,8 +22,8 @@ import { TipoReferente } from '../interfaces/tipo-referente';
 //Servicios
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
-import { ModalidadService } from '../providers/modalidad.service'; 
-import { TipoReferenteService } from '../providers/tipo-referente.service'; 
+import { ModalidadService } from '../providers/modalidad.service';
+import { TipoReferenteService } from '../providers/tipo-referente.service';
 import { SendService } from '../providers/send.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
@@ -38,12 +38,15 @@ export class ReferidoWebComponent implements OnInit {
   form: FormGroup;
 
   campus: Campus[] = [];
-  carreras: Carrera[] = [];  
+  carreras: Carrera[] = [];
   modalidades: Modalidad[] = [];
   niveles: Nivel[] = [];
   tiposReferentes: TipoReferente[] = [];
   parentescos: Parentesco[] = [];
-  
+  rows = [];
+  campusTxt: any;
+  nivelTxt: any;
+
   //maxDate = new Date(2018, this.month.getMonth(),12);
   maxDate = LandingValidation.fechaLimite();
   startDate = LandingValidation.fechaInicio();
@@ -82,7 +85,11 @@ export class ReferidoWebComponent implements OnInit {
     private sendServ: SendService,
     private parentescoServ: ParentescoService,
     private campusCarreraServ: CampusCarreraService,
-    private tipoRefenteServ: TipoReferenteService) { }
+    private tipoRefenteServ: TipoReferenteService) {
+    this.fetch((data) => {
+      this.rows = data;
+    });
+  }
 
   ngOnInit() {
 
@@ -103,8 +110,17 @@ export class ReferidoWebComponent implements OnInit {
     .subscribe(
         (data: Parentesco[]) => this.parentescos = data
     )
- 
+
     this.formInit();
+  }
+
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/referidos.json`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
   }
 
   formInit() {
@@ -139,6 +155,37 @@ export class ReferidoWebComponent implements OnInit {
   onSubmit() {
     this.mostrarExtension = true;
     if (this.form.valid) {
+
+      // -------------------------------- Predictivo  ----------------------------------
+
+      const predTel = this.form.value.Telefono.substring(0,2);
+      this.form.value.Banner = window.location.href;
+
+      if(this.form.value.tipoCel == "Celular"){
+        if(predTel == 55){
+          this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.Telefono;
+        }else{
+          this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.Telefono;
+        }
+      }
+
+      if(this.form.value.tipoCel == "Casa"){
+        if(predTel == 55){
+          this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+        }else{
+          this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+        }
+      }
+
+      for(let i=0;i < this.rows.length; i++){
+        if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
+          this.form.value.Team = this.rows[i].TEAM;
+          this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+          this.form.value.Attemp = this.rows[i].ATTEMP;
+        }
+      }
+      // -------------------------------- Predictivo  ----------------------------------
+
       this.sendServ.sendDataToApi(this.form.value)
         .subscribe(
           (res: any) => {
@@ -154,14 +201,14 @@ export class ReferidoWebComponent implements OnInit {
     } else {
       this.showDialog("Error al realizar el registro *");
     }
-    
+
   }
 
   resetForm() {
     window.location.href = "/referidoWeb";
-    
+
     this.form.reset();
-    
+
   }
 
   _keyOnly3letter(event: any, name: any) {
@@ -210,6 +257,12 @@ export class ReferidoWebComponent implements OnInit {
   }
 
   onChangeCampus(value: string){
+    for(let i=0;i < this.campus.length; i++){
+      if(this.campus[i].crmit_tb_campusid == value){
+        this.campusTxt = this.campus[i].crmi_name;
+      }
+    }
+
     if(this.form.controls['Nivel'].disabled){
         this.form.controls['Nivel'].enable();
     }else{
@@ -220,18 +273,23 @@ export class ReferidoWebComponent implements OnInit {
     if(this.form.controls['Modalidad'].enabled){
         this.form.controls['Modalidad'].setValue('');
         this.form.controls['Modalidad'].markAsUntouched();
-        this.form.controls['Modalidad'].disable();      
+        this.form.controls['Modalidad'].disable();
     }
 
     if(this.form.controls['Carrera'].enabled){
         this.form.controls['Carrera'].setValue('');
         this.form.controls['Carrera'].markAsUntouched();
-        this.form.controls['Carrera'].disable();      
+        this.form.controls['Carrera'].disable();
     }
     this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
   }
 
 onChangeNivel(value: string){
+  for(let i=0;i < this.niveles.length; i++){
+    if(this.niveles[i].crmit_codigounico == value){
+      this.nivelTxt = this.niveles[i].crmit_name;
+    }
+  }
     if(this.form.controls['Modalidad'].disabled){
         this.form.controls['Modalidad'].enable();
     }else{
@@ -242,7 +300,7 @@ onChangeNivel(value: string){
     if(this.form.controls['Carrera'].enabled){
         this.form.controls['Carrera'].setValue('');
         this.form.controls['Carrera'].markAsUntouched();
-        this.form.controls['Carrera'].disable();      
+        this.form.controls['Carrera'].disable();
     }
     this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
 }
