@@ -180,10 +180,10 @@ export class SearchInboundComponent implements OnInit {
         (data: Nivel[]) => this.niveles = data
       )
     // Se obtienen todas las modalidades
-    this.modalidadServ.getAll()
+    /*this.modalidadServ.getAll()
       .subscribe(
         (data: Modalidad[]) => this.modalidades = data
-      )
+      )*/
     // Se obtienen todas las carreras
     this.carreraServ.getAll()
       .subscribe(
