@@ -24,9 +24,16 @@ import * as $ from 'jquery';
 })
 
 export class AppComponent implements OnInit{
-  
-  constructor(private pnnServ: PnnService,
-              private csqServ: CsqService,
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  shows:boolean = false;
+  landings: any = [];
+
+  constructor(
+              private router: Router,
+              private landingService: LandingService,
+              private csqServ: CsqService,         
+              private homeService: HomeService,
+              private pnnServ: PnnService,              
               private authServ:AuthService,
               private nivelServ: NivelService,
               private carreraServ: CarreraService,
@@ -42,15 +49,16 @@ export class AppComponent implements OnInit{
     this.carreraServ.getAll();
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
+    let userLocal = localStorage.getItem('user');
+    let datos = JSON.parse(userLocal);    
+   // this.subsGetMe = this.homeService.getMe(  ).subscribe(me => this.meget = me);   
+    
+    console.log(datos);
+    if(window.location.pathname!='/'){
+      if(datos===null){
+        this.homeService.getInit();  
+         this.shows = false;
 
-    /*if(window.location.pathname!='/'){
-      if(localStorage.hello){
-        var rick = JSON.parse(localStorage.hello);
-        if(rick.msft){
-           return "access_token";
-        }else{
-          window.location.href="/";
-        }        
       }else{
          this.shows = true;
         $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+datos.domainname,
@@ -71,18 +79,12 @@ export class AppComponent implements OnInit{
     let land = JSON.parse(userLanding);  
     this.landings = land; 
     }else{
-      if(localStorage.hello){
-        var rick = JSON.parse(localStorage.hello);
-        if(rick.msft){
-          window.location.href="/home";
-        }else{
-          //cargara
-        }        
-      }else{
-        //cargara
-      }
-    }*/
-     	
+     this.shows = true; 
+      let userLanding = localStorage.getItem('landings');
+      let land = JSON.parse(userLanding);  
+       this.landings = land; 
+    }
+         	
   }
 
   /*onLogout() {
