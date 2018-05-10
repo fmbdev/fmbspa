@@ -1,15 +1,7 @@
-<form [formGroup]="myForm">
-    <input type="text" formControlName="name">
-    <input type="email" formControlName="email">
-
-    <div *ngIf="myForm.get('email').status === 'PENDING'">
-        Checking...
-    </div>
-    <div *ngIf="myForm.get('email').status === 'VALID'">
-        😺 Email is available!
-    </div>
-
-    <div *ngIf="myForm.get('email').errors && myForm.get('email').errors.emailTaken">
-        😢 Oh noes, this email is already taken!
-    </div>
-</form>
+<ul class="menus">
+    <h4 style="text-align: right; font-size: 14px; font-weight: 900; color: #006fba;">Hola: {{ me.fullname }}</h4>
+    <li *ngFor="let lan of landings;" (click)="onGoto(lan.landing_url)">
+         <a>{{ lan.landing }}</a>
+    </li>
+    <li><a (click)="onLogout()">Cerrar Sesion</a></li>              
+</ul>

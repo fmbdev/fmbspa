@@ -248,9 +248,13 @@ export class NewRegisterSoloComponent implements OnInit {
     }
 
     formInit() {
+
+        let userLocal = localStorage.getItem('user');
+        let datos = JSON.parse(userLocal);
+        
         this.form = new FormGroup({
 
-            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: true }),
+            Usuario: new FormControl({ value: datos.fullname, disabled: true }),
  
             SinCorreo: new FormControl(''),
         

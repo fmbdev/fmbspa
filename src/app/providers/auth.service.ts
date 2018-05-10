@@ -11,6 +11,9 @@
 
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+
+import * as $ from 'jquery';
+
 import * as hello from 'hellojs/dist/hello.all.js';
 
 import { Configs } from '../providers/configs';
@@ -22,6 +25,21 @@ export class AuthService {
     private router: Router
   ) { }
 
+  initAuth() {
+    hello.init({
+      msft: {
+        id: '8b121322-84ec-4bb9-8929-6c64333775f6',
+        oauth: {
+          version: 2,          
+          auth: 'https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/v2.0/authorize',
+        },
+        scope_delim: ' ',
+        form: false
+      },
+    },
+      { redirect_uri: window.location.href, response_type: 'code' }
+    );
+  }
 
   login() {
     hello.init({
@@ -29,7 +47,7 @@ export class AuthService {
         id: '8b121322-84ec-4bb9-8929-6c64333775f6',
         oauth: {
           version: 2,          
-          auth: 'https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize',
+          auth: 'https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/v2.0/authorize',
         },
         scope_delim: ' ',
         form: false
@@ -42,12 +60,25 @@ export class AuthService {
     hello('msft').login({ 
       scope: 'User.Read Mail.Send',
       response_type: 'code',
-      //display:'page',
-      redirect_uri:window.location.href
+      //resource:'https://laulatammxqa.crm.dynamics.com',
+      redirect_uri: window.location.href
      }).then(
       () => {
-        this.zone.run(() => {
+        this.zone.run(() => {          
           this.router.navigate(['/home']);
+          let userLocal = localStorage.getItem('user');
+          let datos = JSON.parse(userLocal); 
+          $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+datos.mail,
+          {
+             //data: {user_id:''},
+              contentType: 'application/json',
+              type: 'GET',
+              success: function(result) {
+                  console.log(result);
+                  let dat = JSON.stringify(result);
+                  localStorage.setItem('landings123', dat);
+              }
+          });
         });
       },
       e => console.log(e.error.message)
@@ -62,14 +93,21 @@ export class AuthService {
   }
 
   isAuthenticated() {
-        if(localStorage.hello){
+        if(localStorage.user || localStorage.user==undefined){
+          return false; 
+        }else{
+          return true;
 
-          var rick = JSON.parse(localStorage.hello);
+          /*
+          var rick = JSON.parse(localStorage.user);
           if(rick.msft.access_token){
+            
+            //$.ajax('', {data: {user_id:''}, contentType: 'application/json', type: 'POST'});
             return true;
           }else{
             return false;
-          }      
-        }       
+          }   
+          */  
+        }
   }
 }

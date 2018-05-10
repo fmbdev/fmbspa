@@ -256,10 +256,13 @@ export class NewRegisterPromotionComponent implements OnInit {
     }
 
     formInit() {
+        let userLocal = localStorage.getItem('user');
+        let datos = JSON.parse(userLocal);
+        
         this.form = new FormGroup({
 
 
-            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }, Validators.required),
+            Usuario: new FormControl({ value: datos.fullname, disabled: false }, Validators.required),
             //Asesor: new FormControl(''),
             
             actvidadNoTradicional: new FormControl(''),

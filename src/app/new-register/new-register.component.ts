@@ -228,9 +228,11 @@ export class NewRegisterComponent implements OnInit {
     }    
 
     formInit() {
-        let userName = '';
+        let userLocal = localStorage.getItem('user');
+        let datos = JSON.parse(userLocal);
+
         this.form = new FormGroup({
-            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }),
+            Usuario: new FormControl({ value: datos.fullname, disabled: false }),
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl('', Validators.required),
             TelefonoCorreo: new FormControl('', Validators.required),

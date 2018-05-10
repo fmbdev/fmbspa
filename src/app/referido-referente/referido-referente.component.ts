@@ -98,9 +98,10 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   formInit() {
-    
+    let userLocal = localStorage.getItem('user');
+        let datos = JSON.parse(userLocal);
     this.form = new FormGroup({
-      Usuario: new FormControl({ value: '', disabled: true }, Validators.required),
+      Usuario: new FormControl({ value: datos.fullname, disabled: true }, Validators.required),
 
       Nombre: new FormControl('', [ LandingValidation.palabraMalaValidator()]),
       ApellidoPaterno: new FormControl('', [ LandingValidation.palabraMalaValidator()]),

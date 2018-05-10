@@ -8,6 +8,9 @@ import * as $ from 'jquery';
 import { HomeService } from '../providers/home.service';
 import { AuthService } from '../providers/auth.service';
 import {Router} from "@angular/router";
+import { ModalidadService } from '../providers/modalidad.service';
+
+import { Landing } from '../interfaces/landing';
 
 @Component({
   selector: 'app-home',
@@ -17,30 +20,61 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit, OnDestroy {
 
   events: MicrosoftGraph.Event[];
+  meget: MicrosoftGraph.User;
   me: MicrosoftGraph.User;
   message: MicrosoftGraph.Message;
   emailSent: Boolean;
   subsGetUsers: Subscription;
   subsGetMe: Subscription;
   subsSendMail: Subscription;
-
+  show:boolean = false;
+  
+  landings: any = [];
 
   constructor(
   	private landingService: LandingService,  
   	private homeService: HomeService,
     private authService: AuthService,
+    private modalidadServ: ModalidadService,
     private router: Router) { }
 
   ngOnInit() {
-    this.landingService.getInit();
-    $.get("https://laulatammxdev.api.crm.dynamics.com/api/data/v8.2/WhoAmI", function (data) {
-      localStorage.user = data;
-    });
-    this.subsGetMe = this.homeService.getMe().subscribe(me => this.me = me);     
+    
+    
+    //this.homeService.getInit();   
+
+    let userLocal = localStorage.getItem('user');
+    let datos = JSON.parse(userLocal);  
+
+       
+    
+    console.log(datos);
+    let userLanding = localStorage.getItem('landings');
+    let land = JSON.parse(userLanding);  
+    this.landings = land; 
+    if(datos===null){
+     this.homeService.getInit();
+     setTimeout(()=>{    
+        window.location.href='/home';
+     },400);
+     // window.location.href='/home';
+     let userLanding = localStorage.getItem('landings');
+    let land = JSON.parse(userLanding);  
+    this.landings = land; 
+    }else{
+      let userLanding = localStorage.getItem('landings');
+    let land = JSON.parse(userLanding);  
+    this.landings = land; 
+      this.show = true;
+    }
+    console.log(this.landings);
+    
+    this.me = datos; 
+  
   }
 
   ngOnDestroy() {
-   // this.subsGetUsers.unsubscribe();
+    // this.subsGetUsers.unsubscribe();
   }
 
   onLogout() {

@@ -26,7 +26,42 @@ export class HomeService {
     private http: Http,
     private httpService: HttpService) {
   }
+  getInit(){
 
+    var client = MicrosoftGraphClient.Client.init({
+      authProvider: (done) => {
+        done(null, this.httpService.getAccessToken()); //first parameter takes an error if you can't get an access token
+      }
+    });
+
+    console.log('GOOOOOOOOOOOOOOOO 12345678');
+    console.log(client);
+
+    Observable.fromPromise(client
+      .api('me')
+      .select("mail, displayName")
+      .get()
+      .then((res => {
+        console.log('ssss22222222222');
+        let datos = JSON.stringify(res);
+        localStorage.setItem('user', datos);
+        $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+res.mail,
+        {
+           //data: {user_id:''},
+            contentType: 'application/json',
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                let dat = JSON.stringify(result);
+                localStorage.setItem('landings0000', dat);
+            }
+        });
+      }))
+    );
+
+    
+  }
+  
   getClient(): MicrosoftGraphClient.Client
   {
     var client = MicrosoftGraphClient.Client.init({
@@ -34,19 +69,21 @@ export class HomeService {
           done(null, this.httpService.getAccessToken()); //first parameter takes an error if you can't get an access token
       }
     });
+
     console.log('client ok');
     console.log(client);
+
     return client;
   }
 
   getMe(): Observable<MicrosoftGraph.User>
   {
-    var client = this.getClient();
+    var client = this.getClient();    
     return Observable.fromPromise(client
     .api('me')
-    .select("displayName, mail, userPrincipalName")
+    .select("id, displayName, mail, userPrincipalName")
     .get()
-    .then ((res => {      
+    .then ((res => {    
       return res;
     } ) )
     );

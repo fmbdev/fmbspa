@@ -7,7 +7,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario" value="Ricardo Vargas" readonly>
+                        <input [errorStateMatcher]="matcher" autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario"  readonly>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -55,11 +55,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Interesa_NoInteresa" id="interes" placeholder="Interesa/No interesa" required>
+                       <mat-select formControlName="Interesa_NoInteresa" id="interes" placeholder="Interesa/No interesa">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
-                                {{ interes['Área Interes'] }}
-                            </mat-option>
+                            <mat-option value="Interesa">Interesa</mat-option>
+                            <mat-option value="No Interesa">No Interesa</mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Interesa_NoInteresa.errors?.required">{{showMjs('area_interes.m1')}}</mat-error>
                     </mat-form-field>

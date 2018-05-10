@@ -5,7 +5,6 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import {Router} from '@angular/router';
 import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
-import { DialogComponent } from '../dialog/dialog.component';
 
 import 'rxjs/Rx';
 
@@ -44,6 +43,22 @@ import { ModalidadService } from '../providers/modalidad.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
+
+
+import { DialogComponent } from '../dialog/dialog.component';
+import * as $ from 'jquery';
+
+export interface Search {
+  numPerson: String;
+  numCuenta: String;
+  correo: String;
+  nombre: String;
+  apellido: String;
+  materno: String;
+  numCel: String;
+  telCel: String;
+  emailTuto: String;
+}
 
 @Component({
   selector: 'app-search-inbound',
@@ -273,7 +288,126 @@ export class SearchInboundComponent implements OnInit {
     this.onKeyFechaNacimiento();
     let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
     this.form.controls['FechaCita'].setValue(fecha_cita);
-     this.router.navigate(['/results']);
+    
+
+    let busqueda: Search = {
+      numPerson:  this.form.controls['NumeroPersona'].value,
+      numCuenta:  this.form.controls['NumeroCuenta'].value,
+      correo: this.form.controls['CorreoElectronico'].value,
+      nombre: this.form.controls['Nombre'].value,
+      apellido:  this.form.controls['ApellidoPaterno'].value,
+      materno:  this.form.controls['ApellidoMaterno'].value,
+      numCel:  this.form.controls['NumeroCelular'].value,
+      telCel:  this.form.controls['Telefono'].value,
+      emailTuto:  this.form.controls['CorreoElectronicoTutor'].value,
+    };
+
+    if(this.form.controls['Telefono'].value=='' || this.form.controls['CorreoElectronico'].value==''){
+      this.showDialog("Datos requerido");
+      return;
+    }
+
+    let bus = JSON.stringify(busqueda);
+
+    localStorage.setItem('search', bus);
+    console.log(bus);
+    let es = this;
+     let searchL = localStorage.getItem('search');
+    let s = JSON.parse(searchL);
+    let filter = '&$filter=';
+
+     if(s.telCel!=''){
+      if(s.correo == '' && s.apellido =="" && s.emailTuto == "" && s.materno =="" && s.numCel == "" && s.numCuenta == "" && s.numPerson =="" && s.nombre ==""){
+        filter = filter + "telephone1 eq '"+s.telCel+"'";
+      
+      }else{
+         filter = filter + "telephone1 eq '"+s.telCel+"'";
+
+      }
+    }
+
+
+    if(s.nombre!=''){
+      if(s.correo == '' && s.apellido =="" && s.emailTuto == "" && s.materno =="" && s.numCel == "" && s.numCuenta == "" && s.numPerson =="" && s.telCel ==""){
+        filter = filter + "contains(fullname,'"+s.nombre+"')";        
+      }else{
+        filter = filter + " and contains(fullname,'"+s.nombre+"')";
+      }
+    }
+
+    if(s.apellido!=''){
+      if(s.correo == '' && s.nombre =="" && s.emailTuto == "" && s.materno =="" && s.numCel == "" && s.numCuenta == "" && s.numPerson =="" && s.telCel ==""){
+        filter = filter + "contains(fullname,'"+s.apellido+"')";        
+      }else{
+        filter = filter + " and contains(fullname,'"+s.apellido+"')";
+      }
+    }
+
+    if(s.materno!=''){
+      if(s.correo == '' && s.nombre =="" && s.emailTuto == "" && s.apellido =="" && s.numCel == "" && s.numCuenta == "" && s.numPerson =="" && s.telCel ==""){
+        filter = filter + "contains(fullname,'"+s.materno+"')";        
+      }else{
+        filter = filter + " and contains(fullname,'"+s.materno+"')";
+      }
+    }
+
+    if(s.correo!=''){
+      if(s.nombre == '' && s.apellido =="" && s.emailTuto == "" && s.materno =="" && s.numCel == "" && s.numCuenta == "" && s.numPerson =="" && s.telCel ==""){
+        filter = filter + "emailaddress1 eq '"+s.correo+"'";
+      }else{
+        filter = filter + " and emailaddress1 eq '"+s.correo+"'";
+      }
+    }
+
+    if(s.numCuenta!=''){
+      if(s.nombre == '' && s.apellido =="" && s.emailTuto == "" && s.materno =="" && s.numCel == "" && s.correo == "" && s.numPerson =="" && s.telCel ==""){
+        filter = filter + "crmit_nocuentasis  eq '"+s.numCuenta+"'";
+      }else{
+        filter = filter + " and crmit_nocuentasis  eq '"+s.numCuenta+"'";
+      }
+    }
+
+    if(s.numPerson!=''){
+      if(s.nombre == '' && s.apellido =="" && s.emailTuto == "" && s.materno =="" && s.numCel == "" && s.correo == "" && s.numCuenta =="" && s.telCel ==""){
+        filter = filter + "crmit_nopersona eq '"+s.numPerson+"'";
+      }else{
+        filter = filter + "and crmit_nopersona eq "+s.numPerson;
+      }
+    }
+
+
+
+    let url = "https://laulatammxqa.api.crm.dynamics.com/api/data/v8.2/leads?$select=crmit_nocuentasis,crmit_nopersona,emailaddress1,fullname,_crmit_nivelinteresid_value,_crmit_asesorlineaid_value,telephone1,crmit_emailtutor"+filter+"&$top=3";
+    
+
+
+     
+   console.log("FILTER");
+   console.log(filter);
+
+
+        //let url = "https://laulatammxqa.api.crm.dynamics.com/api/data/v8.2/systemusers?$select=fullname,domainname&$filter=contains(fullname,'ana')";
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": url,
+            "method": "GET",
+            "headers": {
+              "authorization": "Bearer "+localStorage.getItem('access_token'),
+              "content-type": "application/json",
+              "odata.metadata": "minimal",              
+            }
+          }
+
+          $.ajax(settings).done(function (response) {
+            console.log(response.value);
+            let jj = JSON.stringify(response.value);
+            localStorage.setItem('search_value',jj);
+            this.reesults = response.value;
+             es.router.navigate(['/results']);
+          }); 
+
+
   }
 
   resetForm() {

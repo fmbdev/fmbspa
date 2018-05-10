@@ -39,7 +39,7 @@
             </mat-form-field>
             <br>
             <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" >
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.required">{{showMjs('celular.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required  && !form.controls.NumeroCelular.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.aceptNumber  && !form.controls.NumeroCelular.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
@@ -47,7 +47,7 @@
                     </mat-form-field>
             <br>
             <mat-form-field>
-                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" >
                         <mat-error *ngIf="form.controls.Telefono.errors?.required">{{showMjs('telefono.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required  && !form.controls.Telefono.errors?.numberCon">{{showMjs('telefono.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.Telefono.errors?.aceptNumber  && !form.controls.Telefono.errors?.minlength">{{showMjs('telefono.m3')}}</mat-error>
