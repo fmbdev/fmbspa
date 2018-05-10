@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CsqService } from './providers/csq.service';
 import { PnnService } from './providers/pnn.service';
 import { AuthService } from './providers/auth.service';
 import { NivelService } from './providers/nivel.service';
@@ -15,7 +16,8 @@ import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.ser
 })
 export class AppComponent implements OnInit{
   
-  constructor(private pnnServ: PnnService, 
+  constructor(private pnnServ: PnnService,
+              private csqServ: CsqService,
               private authServ:AuthService,
               private nivelServ: NivelService,
               private carreraServ: CarreraService,
@@ -25,12 +27,13 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.pnnServ.getAll();
+    this.csqServ.getAll();
     this.nivelServ.getAll();
     this.carreraServ.getAll();
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
 
-    if(window.location.pathname!='/'){
+    /*if(window.location.pathname!='/'){
       if(localStorage.hello){
         var rick = JSON.parse(localStorage.hello);
         if(rick.msft){
@@ -52,7 +55,7 @@ export class AppComponent implements OnInit{
       }else{
         //cargara
       }
-    }
+    }*/
      	
   }
 

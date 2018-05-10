@@ -167,22 +167,16 @@ export class NewRegisterPromotionComponent implements OnInit {
 
         // Se obtienes los Subsubtipos de actividades
         this.subsub_tipos = this.subSubServ.getAllSubSubTipo();
-
+        
         // Se obtienen los turnos
         this.turnoServ.getAll()
             .subscribe(
                 (data: Turno[]) => this.turnos = data
             )
-
         // Se obtiene todos los canales
         this.canalServ.getAll()
             .subscribe(
                 (data: Canal[]) => this.canales = data
-            )
-        // Se obtienen todos los csqs
-        this.csqServ.getAll()
-            .subscribe(
-                (data: Csq[]) => this.csqs = data
             )
         // Se obtienen todos los intereses
         this.interesServ.getAll()

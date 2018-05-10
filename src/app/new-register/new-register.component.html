@@ -21,9 +21,9 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)">
+                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)" (change)="onChangeCanal(form.controls.Canal.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_name']">
+                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_canales']">
                                 {{ canal['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -37,7 +37,7 @@
                     <mat-form-field>
                         <mat-select formControlName="CSQ" placeholder="Departamento">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_name']">
+                            <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_csq']">
                                 {{ csq['crmit_name'] }}
                             </mat-option>
                         </mat-select>

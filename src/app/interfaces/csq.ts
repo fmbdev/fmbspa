@@ -1,6 +1,5 @@
 export interface Csq {
-    id: number;
+    crmit_csq: string;
     crmit_name: string;
-    crmit_codigounico: string;
-    crmit_quedefine: string;
+    canalId: string
 }
