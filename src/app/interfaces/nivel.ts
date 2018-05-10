@@ -1,4 +1,4 @@
 export interface Nivel {
-    crmit_nivelinteresid: string;
-    crmit_nivelinteresidname: string;
+    crmit_codigounico: string;
+    crmit_name: string;
 }

@@ -12,14 +12,14 @@ export class CarreraService {
 
   constructor(private http: Http) { }
 
-  getAll(): Observable<Carrera[]>{
-    return this.http.get("https://devmx.com.mx/fmbapp/public/api/carrera", {headers: this.headers})
-               .map(
-                 (res: Response) => res.json()
-               )
-               .do(
-                 (data: Carrera[]) => this.carreras = data
-               )
+  getAll() {
+    this.http.get("https://devmx.com.mx/fmbapp/public/api/carrera", {headers: this.headers})
+        .map(
+          (res: Response) => res.json()
+        )
+        .subscribe(
+          (data: Carrera[]) => this.carreras = data
+        )
   }
 
   getCarreras(): Carrera[]{

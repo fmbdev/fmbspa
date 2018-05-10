@@ -65,7 +65,7 @@ export interface Search {
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  
+
   form: FormGroup;
   Route: Router;
   serach: Search;
@@ -133,7 +133,6 @@ export class SearchComponent implements OnInit {
   parentescos: Parentesco[] = [];
   tipificaciones: Tipificacion[] = [];
 
-  
 
   constructor(
     private landingService: LandingService,    
@@ -161,82 +160,82 @@ export class SearchComponent implements OnInit {
 
  
   ngOnInit() {
-    
-      this.landingService.getInit();
 
-      // Se obtiene todos los canales
-      this.canalServ.getAll()
-        .subscribe(
-          (data: Canal[]) => this.canales = data
-        )
-      // Se obtienen todos los csqs
-      this.csqServ.getAll()
-        .subscribe(
-          (data: Csq[]) => this.csqs = data
-        )
-      // Se obtienen todos los intereses
-      this.interesServ.getAll()
-        .subscribe(
-          (data: Interes[]) => this.intereses = data
-        )
-      // Se obtienen todos los generos
-      this.generoServ.getAll()
-        .subscribe(
-          (data: Genero[]) => this.generos = data
-        )
-      // Se obtienen todos los parentescos
-      this.parentescoServ.getAll()
-        .subscribe(
-          (data: Parentesco[]) => this.parentescos = data
-        )
-      // Se obtienen todos los campus
-      this.campusServ.getAll()
-        .subscribe(
-          (data: Campus[]) => this.campus = data
-        )
-      // Se obtienen todos los niveles
-      this.nivelServ.getAll()
-        .subscribe(
-          (data: Nivel[]) => this.niveles = data
-        )
-      
-      // Se obtienen todas las carreras
-      this.carreraServ.getAll()
-        .subscribe(
-          (data: Carrera[]) => this.carreras = data
-        )
-      // Se obtienen los ciclos
-      this.cicloServ.getAll()
-        .subscribe(
-          (data: Ciclo[]) => this.ciclos = data
-        )
-      // Se obtienen todos los intereses
-      this.interesServ.getAll()
-        .subscribe(
-          (data: Interes[]) => this.intereses = data
-        )
-      // Se obtienen todas las tipificaciones
-      this.tipicicacionServ.getAll()
-        .subscribe(
-          (data: Tipificacion[]) => this.tipificaciones = data
-        )
-      // Se obtienen todos los campus-cita
-      this.campusCitaServ.getAll()
-        .subscribe(
-          (data: CampusCita[]) => this.campus_citas = data
-        )
-      // Se obtienen todas las hora para asignar una cita
-      this.horaServ.getAll()
-        .subscribe(
-          (data: Hora[]) => this.horas = data
-        )
-      // Se obtienen todos lo asesores
-      this.asesorServ.getAll()
-        .subscribe(
-          (data: Asesor[]) => this.asesores = data
-        )
+    this.landingService.getInit();
 
-      this.formInit();
+    // Se obtiene todos los canales
+    this.canalServ.getAll()
+      .subscribe(
+        (data: Canal[]) => this.canales = data
+      )
+    // Se obtienen todos los csqs
+    this.csqServ.getAll()
+      .subscribe(
+        (data: Csq[]) => this.csqs = data
+      )
+    // Se obtienen todos los intereses
+    this.interesServ.getAll()
+      .subscribe(
+        (data: Interes[]) => this.intereses = data
+      )
+    // Se obtienen todos los generos
+    this.generoServ.getAll()
+      .subscribe(
+        (data: Genero[]) => this.generos = data
+      )
+    // Se obtienen todos los parentescos
+    this.parentescoServ.getAll()
+      .subscribe(
+        (data: Parentesco[]) => this.parentescos = data
+      )
+    // Se obtienen todos los campus
+    this.campusServ.getAll()
+      .subscribe(
+        (data: Campus[]) => this.campus = data
+      )
+    // Se obtienen todos los niveles
+    /*this.nivelServ.getAll()
+      .subscribe(
+        (data: Nivel[]) => this.niveles = data
+      )
+
+    // Se obtienen todas las carreras
+    this.carreraServ.getAll()
+      .subscribe(
+        (data: Carrera[]) => this.carreras = data
+      )*/
+    // Se obtienen los ciclos
+    this.cicloServ.getAll()
+      .subscribe(
+        (data: Ciclo[]) => this.ciclos = data
+      )
+    // Se obtienen todos los intereses
+    this.interesServ.getAll()
+      .subscribe(
+        (data: Interes[]) => this.intereses = data
+      )
+    // Se obtienen todas las tipificaciones
+    this.tipicicacionServ.getAll()
+      .subscribe(
+        (data: Tipificacion[]) => this.tipificaciones = data
+      )
+    // Se obtienen todos los campus-cita
+    this.campusCitaServ.getAll()
+      .subscribe(
+        (data: CampusCita[]) => this.campus_citas = data
+      )
+    // Se obtienen todas las hora para asignar una cita
+    this.horaServ.getAll()
+      .subscribe(
+        (data: Hora[]) => this.horas = data
+      )
+    // Se obtienen todos lo asesores
+    this.asesorServ.getAll()
+      .subscribe(
+        (data: Asesor[]) => this.asesores = data
+      )
+
+    this.formInit();
   }
 
   formInit() {
@@ -291,6 +290,23 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
+    // -------------------------------- Predictivo  ----------------------------------
+
+    const predCel = this.form.value.NumeroCelular.substring(0,2);
+    const predTel = this.form.value.Telefono.substring(0,2);
+    this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
+    this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+    this.form.value.Banner = window.location.href;
+
+    if(predCel == 55){
+      this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
+    }
+
+    if(predTel == 55){
+      this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+    }
+
+    // -------------------------------- Predictivo  ----------------------------------
     this.onKeyFechaNacimiento();
     let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
     this.form.controls['FechaCita'].setValue(fecha_cita);
@@ -426,7 +442,7 @@ export class SearchComponent implements OnInit {
     this.form.controls.FechaNacimiento.setValue(fecha);
   }
 
- 
+
   _keyOnly3letter(event: any, name: any) {
     LandingValidation.letterName(event, name);
   }
@@ -450,7 +466,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-   
+
   onChangeInteres(value) {
     if (value == '') {
       this.form.controls.Campus.clearValidators();

@@ -65,7 +65,7 @@ export interface Search {
   templateUrl: './search-inbound.component.html',
   styleUrls: ['./search-inbound.component.scss']
 })
-export class SearchInboundComponent implements OnInit { 
+export class SearchInboundComponent implements OnInit {
   form: FormGroup;
 
   //maxDate = new Date(2018, this.month.getMonth(),12);
@@ -158,7 +158,7 @@ export class SearchInboundComponent implements OnInit {
   ngOnInit() {
 
     this.landingService.getInit();
-    
+
     // Se obtiene todos los canales
     this.canalServ.getAll()
       .subscribe(
@@ -190,15 +190,15 @@ export class SearchInboundComponent implements OnInit {
         (data: Campus[]) => this.campus = data
       )
     // Se obtienen todos los niveles
-    this.nivelServ.getAll()
+    /*this.nivelServ.getAll()
       .subscribe(
         (data: Nivel[]) => this.niveles = data
-      )  
+      )
     // Se obtienen todas las carreras
     this.carreraServ.getAll()
       .subscribe(
         (data: Carrera[]) => this.carreras = data
-      )
+      )*/
     // Se obtienen los ciclos
     this.cicloServ.getAll()
       .subscribe(
@@ -285,6 +285,23 @@ export class SearchInboundComponent implements OnInit {
   }
 
   onSubmit() {
+    // -------------------------------- Predictivo  ----------------------------------
+
+    const predCel = this.form.value.NumeroCelular.substring(0,2);
+    const predTel = this.form.value.Telefono.substring(0,2);
+    this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
+    this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+    this.form.value.Banner = window.location.href;
+
+    if(predCel == 55){
+      this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
+    }
+
+    if(predTel == 55){
+      this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+    }
+
+    // -------------------------------- Predictivo  ----------------------------------
     this.onKeyFechaNacimiento();
     let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
     this.form.controls['FechaCita'].setValue(fecha_cita);
@@ -412,7 +429,7 @@ export class SearchInboundComponent implements OnInit {
 
   resetForm() {
     window.location.href = "/searchInbound";
-    
+
     this.form.reset();
   }
 

@@ -44,7 +44,7 @@ import { ModalidadService } from '../providers/modalidad.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
-import { CampusNivelService } from '../providers/campus-nivel.service';
+import { CampusCarreraService } from '../providers/campus-carrera.service';
 
 /*export class MyErrorStateMatcher implements ErrorStateMatcher {
     //isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -100,7 +100,7 @@ export class NewRegisterComponent implements OnInit {
     Ciclo: FormControl;
     Tipificacion: FormControl;
     Notas: FormControl;
-  
+
     CampusCita: FormControl;
     FechaCita: FormControl;
     HoraCita: FormControl;
@@ -122,10 +122,14 @@ export class NewRegisterComponent implements OnInit {
     campus_citas: CampusCita[] = [];
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
+  rows = [];
+  campusTxt: any;
+  nivelTxt: any;
+  canalText: any;
 
     constructor(private landingService: LandingService,
-                private gralService: GeneralService, 
-                public dialog: MatDialog, 
+                private gralService: GeneralService,
+                public dialog: MatDialog,
                 private renderer: Renderer2,
                 private pnnServ: PnnService,
                 private csqServ: CsqService,
@@ -142,13 +146,17 @@ export class NewRegisterComponent implements OnInit {
                 private modalidadServ: ModalidadService,
                 private parentescoServ: ParentescoService,
                 private campusCitaServ: CampusCitaService,
-                private campusNivelServ: CampusNivelService,
-                private tipicicacionServ: TipificacionService) {}
+                private campusCarreraServ: CampusCarreraService,
+                private tipicicacionServ: TipificacionService) {
+      this.fetch((data) => {
+        this.rows = data;
+        console.log(this.rows);
+      });
+    }
 
     ngOnInit() {
-
         this.landingService.getInit();
-        
+
         // Se obtiene todos los canales
         this.canalServ.getAll()
             .subscribe(
@@ -174,24 +182,10 @@ export class NewRegisterComponent implements OnInit {
             .subscribe(
                 (data: Parentesco[]) => this.parentescos = data
             )
-
         // Se obtienen todos los campus
         this.campusServ.getAll()
             .subscribe(
                 (data: Campus[]) => this.campus = data
-            )
-        this.campusServ.getCampus();
-            
-        // Se obtienen todos los niveles
-        this.niveles = this.modalidadServ.getNiveles();
-
-        // Se obtienen todas las modalidades
-        this.modalidades = this.modalidadServ.getModalidades();
-        
-        // Se obtienen todas las carreras
-        this.carreraServ.getAll()
-            .subscribe(
-                (data: Carrera[]) => this.carreras = data
             )
         // Se obtienen los ciclos
         this.cicloServ.getAll()
@@ -225,7 +219,16 @@ export class NewRegisterComponent implements OnInit {
             )
 
         this.formInit();
-    }    
+    }
+
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/canales.json`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
 
     formInit() {
         let userLocal = localStorage.getItem('user');
@@ -282,6 +285,7 @@ export class NewRegisterComponent implements OnInit {
         let form = this.form;
         let pnnServ = this.pnnServ;
 
+
         $('form').find(':input').each(function(){
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');
@@ -295,11 +299,10 @@ export class NewRegisterComponent implements OnInit {
                 }else{
                     form.controls[name].setErrors({'numInvalid': false});
                     form.controls[name].reset();
-                }               
+                }
             }
         })
-        
-        
+
 
         if (this.form.valid) {
             this.onKeyFechaNacimiento();
@@ -309,6 +312,51 @@ export class NewRegisterComponent implements OnInit {
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel+'@unitec.edu.mx', disabled: false });
             }
+
+
+          // -------------------------------- Predictivo  ----------------------------------
+
+          const predCel = this.form.value.NumeroCelular.substring(0,2);
+          const predCelTutor = this.form.value.NumeroCelularTutor.substring(0,2);
+          const predTel = this.form.value.Telefono.substring(0,2);
+          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
+          this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
+          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularTutor;
+          this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+          this.form.value.TelefonoPredictivoTutor = '901'+this.form.value.TelefonoTutor;
+          this.form.value.Banner = window.location.href;
+          this.form.value.CanalPreferido = 'Voz';
+
+          if(predCel == 55){
+            this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
+          }
+
+          if(predCelTutor == 55){
+            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularTutor;
+          }
+
+          if(predTel == 55){
+            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+          }
+
+          if(predTelTutor == 55){
+            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
+          }
+
+          if(this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS'){
+            this.form.value.CanalPreferido = 'Redes Sociales';
+          }
+
+          for(let i=0;i < this.rows.length; i++){
+            if(this.rows[i].FUENTENEGOCIO == this.canalText && this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
+              this.form.value.Team = this.rows[i].TEAM;
+              this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+              this.form.value.Attemp = this.rows[i].ATTEMP;
+            }
+          }
+
+          // -------------------------------- Predictivo  ----------------------------------
+
 
             this.sendServ.sendDataToApi(this.form.value)
                 .subscribe(
@@ -326,7 +374,7 @@ export class NewRegisterComponent implements OnInit {
         } else {
             this.showDialog("Error al realizar el registro *");
         }
-        
+
     }
 
     resetForm() {
@@ -439,6 +487,12 @@ export class NewRegisterComponent implements OnInit {
     }
 
     onChangeCampus(value: string){
+      for(let i=0;i < this.campus.length; i++){
+        if(this.campus[i].crmit_tb_campusid == value){
+          this.campusTxt = this.campus[i].crmi_name;
+        }
+      }
+
         if(this.form.controls['Nivel'].disabled){
             this.form.controls['Nivel'].enable();
         }else{
@@ -449,18 +503,24 @@ export class NewRegisterComponent implements OnInit {
         if(this.form.controls['Modalidad'].enabled){
             this.form.controls['Modalidad'].setValue('');
             this.form.controls['Modalidad'].markAsUntouched();
-            this.form.controls['Modalidad'].disable();      
+            this.form.controls['Modalidad'].disable();
         }
 
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
+            this.form.controls['Carrera'].disable();
         }
-        this.niveles = this.campusNivelServ.getNivelesByCampus(value);
+        this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
 
     onChangeNivel(value: string){
+      for(let i=0;i < this.niveles.length; i++){
+        if(this.niveles[i].crmit_codigounico == value){
+          this.nivelTxt = this.niveles[i].crmit_name;
+        }
+      }
+
         if(this.form.controls['Modalidad'].disabled){
             this.form.controls['Modalidad'].enable();
         }else{
@@ -471,9 +531,9 @@ export class NewRegisterComponent implements OnInit {
         if(this.form.controls['Carrera'].enabled){
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
-            this.form.controls['Carrera'].disable();      
+            this.form.controls['Carrera'].disable();
         }
-        this.modalidades = this.campusNivelServ.getModalidadByNivel(value);   
+        this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
     }
 
     onChangeModalidad(value: string){
@@ -483,10 +543,11 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
         }
-        this.carreras = this.campusNivelServ.getCarreraByModalidad(value);
+        this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
     }
 
     onFielCanal(value) {
+      this.canalText = value.toUpperCase();
         this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
         console.log(value);
@@ -501,10 +562,10 @@ export class NewRegisterComponent implements OnInit {
     addValidation(isChecked) {
         if (isChecked.checked) {
             this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
-             this.sinEmail = true;            
-             
+             this.sinEmail = true;
+
         } else {
-            this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });            
+            this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
              this.sinEmail = false;
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();
