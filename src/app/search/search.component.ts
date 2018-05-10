@@ -168,11 +168,6 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (data: Canal[]) => this.canales = data
       )
-    // Se obtienen todos los csqs
-    this.csqServ.getAll()
-      .subscribe(
-        (data: Csq[]) => this.csqs = data
-      )
     // Se obtienen todos los intereses
     this.interesServ.getAll()
       .subscribe(
