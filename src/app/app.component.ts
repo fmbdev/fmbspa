@@ -24,21 +24,9 @@ import * as $ from 'jquery';
 })
 
 export class AppComponent implements OnInit{
-<<<<<<< HEAD
-  @ViewChild('sidenav') sidenav: MatSidenav;
-  shows:boolean = false;
-  landings: any = [];
-
-  constructor(
-              private router: Router,
-              private landingService: LandingService,                
-              private homeService: HomeService,
-              private pnnServ: PnnService, 
-=======
   
   constructor(private pnnServ: PnnService,
               private csqServ: CsqService,
->>>>>>> hags_developer
               private authServ:AuthService,
               private nivelServ: NivelService,
               private carreraServ: CarreraService,
@@ -47,25 +35,13 @@ export class AppComponent implements OnInit{
               private campusCarreraServ: CampusCarreraService){}
 
   ngOnInit(){
-    this.landingService.getInit();    
+    //this.landingService.getInit();    
     this.pnnServ.getAll();
     this.csqServ.getAll();
     this.nivelServ.getAll();
     this.carreraServ.getAll();
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
-<<<<<<< HEAD
-    let userLocal = localStorage.getItem('user');
-    let datos = JSON.parse(userLocal);    
-   // this.subsGetMe = this.homeService.getMe(  ).subscribe(me => this.meget = me);   
-    
-    console.log(datos);
-    if(window.location.pathname!='/'){
-      if(datos===null){
-        this.homeService.getInit();  
-         this.shows = false;
-
-=======
 
     /*if(window.location.pathname!='/'){
       if(localStorage.hello){
@@ -75,7 +51,6 @@ export class AppComponent implements OnInit{
         }else{
           window.location.href="/";
         }        
->>>>>>> hags_developer
       }else{
          this.shows = true;
         $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+datos.domainname,
@@ -96,14 +71,6 @@ export class AppComponent implements OnInit{
     let land = JSON.parse(userLanding);  
     this.landings = land; 
     }else{
-<<<<<<< HEAD
-     this.shows = true; 
-      let userLanding = localStorage.getItem('landings');
-      let land = JSON.parse(userLanding);  
-       this.landings = land; 
-    }
-         	
-=======
       if(localStorage.hello){
         var rick = JSON.parse(localStorage.hello);
         if(rick.msft){
@@ -116,10 +83,9 @@ export class AppComponent implements OnInit{
       }
     }*/
      	
->>>>>>> hags_developer
   }
 
-  onLogout() {
+  /*onLogout() {
     //this.authServ.logout();
     this.sidenav.close();
     localStorage.clear();
@@ -141,7 +107,7 @@ export class AppComponent implements OnInit{
    onGoto(url:string){
     this.sidenav.close();
     this.router.navigate([url]);
-  }
+  }*/
 
 
 }
