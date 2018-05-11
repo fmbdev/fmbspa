@@ -150,7 +150,6 @@ export class NewRegisterComponent implements OnInit {
                 private tipicicacionServ: TipificacionService) {
       this.fetch((data) => {
         this.rows = data;
-        console.log(this.rows);
       });
     }
 
@@ -355,10 +354,22 @@ export class NewRegisterComponent implements OnInit {
 
           // -------------------------------- Predictivo  ----------------------------------
 
+        const sendd = {Usuario: this.form.value.Usuario,
+          Canal: this.form.value.Canal, CSQ: this.form.value.CSQ, TelefonoCorreo: this.form.value.TelefonoCorreo, Interesa_NoInteresa: this.form.value.Interesa_NoInteresa,
+          Nombre: this.form.value.Nombre, ApellidoPaterno: this.form.value.ApellidoPaterno, ApellidoMaterno: this.form.value.ApellidoMaterno, CorreoElectronico: this.form.value.CorreoElectronico, NumeroCelular: this.form.value.NumeroCelular, Telefono: this.form.value.Telefono, Genero: this.form.value.Genero, Edad: this.form.value.Edad, SinCorreo: this.form.value.SinCorreo,
+          NombreTutor: this.form.value.NombreTutor, ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, NumeroCelularTutor: this.form.value.NumeroCelularTutor, ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, TelefonoTutor: this.form.value.TelefonoTutor,
+          Campus: this.form.value.Campus, AreaInteres: this.form.value.AreaInteres, Ciclo: this.form.value.Ciclo, Carrera: this.form.value.Carrera, Nivel: this.form.value.Nivel, Modalidad: this.form.value.Modalidad,
+          Banner: this.form.value.Banner, Tipificacion: this.form.value.Tipificacion, Notas: this.form.value.Notas
+        };
+          // CampusCita: this.form.value.CampusCita, FechaCita: this.form.value.FechaCita, HoraCita: this.form.value.HoraCita, Programacion: this.form.value.Programacion, Asesor: this.form.value.Asesor,
+          // TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo, TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor, TelefonoPredictivo: this.form.value.TelefonoPredictivo, TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor, CanalPreferido: this.form.value.CanalPreferido, Team: this.form.value.Team, Prioridad: this.form.value.Prioridad, Attemp: this.form.value.Attemp
+          //
 
-            this.sendServ.sendDataToApi(this.form.value)
+
+            this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
+                      console.log(res);
                         if (res.status == 200) {
 
                             this.showDialog("Los datos se han guardado correctamente.");
@@ -369,6 +380,7 @@ export class NewRegisterComponent implements OnInit {
                         }
                     }
                 )
+
         } else {
             this.showDialog("Error al realizar el registro *");
         }
