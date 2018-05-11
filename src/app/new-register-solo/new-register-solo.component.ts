@@ -352,7 +352,14 @@ export class NewRegisterSoloComponent implements OnInit {
 
           // -------------------------------- Predictivo  ----------------------------------
 
-            this.sendServ.sendDataToApi(this.form.value)
+          const sendd = {Usuario: this.form.value.Usuario,
+            Nombre: this.form.value.Nombre, ApellidoPaterno: this.form.value.ApellidoPaterno, ApellidoMaterno: this.form.value.ApellidoMaterno, CorreoElectronico: this.form.value.CorreoElectronico, NumeroCelular: this.form.value.NumeroCelular, Telefono: this.form.value.Telefono, Genero: this.form.value.Genero, Edad: this.form.value.Edad, SinCorreo: this.form.value.SinCorreo,
+            NombreTutor: this.form.value.NombreTutor, ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, NumeroCelularTutor: this.form.value.NumeroCelularTutor, ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, TelefonoTutor: this.form.value.TelefonoTutor,
+            Campus: this.form.value.Campus, AreaInteres: this.form.value.AreaInteres, Ciclo: this.form.value.Ciclo, Carrera: this.form.value.Carrera, Nivel: this.form.value.Nivel, Modalidad: this.form.value.Modalidad,
+            Banner: this.form.value.Banner
+          };
+
+            this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
                         if (res.status == 200) {
