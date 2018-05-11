@@ -1,5 +1,5 @@
 export interface Canal {
-    id: number;
+    crmit_canales: string;
     crmit_name: string;
     crmit_codigounico: number;
     crmit_quedefine: number;

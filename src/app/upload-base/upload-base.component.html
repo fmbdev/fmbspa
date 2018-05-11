@@ -7,8 +7,8 @@
         <mat-grid-list cols="3" rowHeight="70px">
             <mat-grid-tile [colspan]="2">
                 <mat-form-field>
-                    <input readonly matInput placeholder="Seleccionar Archivo" [(ngModel)]="newdata.filename" (click)="imgFileInput.click()">
-                    <input hidden type="file" #imgFileInput (change)="previewImage($event)" name="file" />
+                    <input  matInput placeholder="Seleccionar Archivo" [(ngModel)]="newdata.filename" (click)="imgFileInput.click()">
+                    <input required hidden type="file" #imgFileInput (change)="previewImage($event)" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>

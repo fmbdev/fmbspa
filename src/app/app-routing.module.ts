@@ -29,75 +29,90 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
-    //canActivate: [AuthGuard] 
+    component: HomeComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'register',
-    component: NewRegisterComponent
-    //canActivate: [AuthGuard]
+    component: NewRegisterComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
-    path: 'form',
-    component: FormComponent
+    path: 'menu',
+    component: FormComponent,
+    /*canActivate: [AuthGuard] */
   },
 
   {
     path: 'register-existing',
-    component: NewRegisterExistingComponent
+    component: NewRegisterExistingComponent,
+    /*canActivate: [AuthGuard] */
   },
   {
     path: 'register-existing-reception',
-    component: NewRegisterExistingReceptionComponent
+    component: NewRegisterExistingReceptionComponent,
+    /*canActivate: [AuthGuard] */
   },
   {
     path: 'referidoReferente',
-    component: ReferidoReferenteComponent
+    component: ReferidoReferenteComponent,
+    /*canActivate: [AuthGuard] */
   },
 
    {
     path: 'referidoPromotor',
-    component: ReferidoPromotorComponent
+    component: ReferidoPromotorComponent,
+    /*canActivate: [AuthGuard]*/
   },
    {
     path: 'referidoTlmk',
-    component: ReferidoTlmkComponent
+    component: ReferidoTlmkComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'referidoWeb',
-    component: ReferidoWebComponent
+    component: ReferidoWebComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'registerPromotion',
-    component: NewRegisterPromotionComponent
+    component: NewRegisterPromotionComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'registerSolo',
-    component: NewRegisterSoloComponent
+    component: NewRegisterSoloComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'searchInbound',
-    component: SearchInboundComponent
+    component: SearchInboundComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'results',
-    component: SearchResultsComponent
+    component: SearchResultsComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'upload',
-    component: UploadBaseComponent
+    component: UploadBaseComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'upload-sis',
-    component: UploadBaseSisComponent
+    component: UploadBaseSisComponent,
+    /*canActivate: [AuthGuard]*/
   },
   {
     path: 'modal',
-    component: ModalConfirmComponent
+    component: ModalConfirmComponent,
+    /*canActivate: [AuthGuard] */
   }
 ];
 

@@ -167,22 +167,16 @@ export class NewRegisterPromotionComponent implements OnInit {
 
         // Se obtienes los Subsubtipos de actividades
         this.subsub_tipos = this.subSubServ.getAllSubSubTipo();
-
+        
         // Se obtienen los turnos
         this.turnoServ.getAll()
             .subscribe(
                 (data: Turno[]) => this.turnos = data
             )
-
         // Se obtiene todos los canales
         this.canalServ.getAll()
             .subscribe(
                 (data: Canal[]) => this.canales = data
-            )
-        // Se obtienen todos los csqs
-        this.csqServ.getAll()
-            .subscribe(
-                (data: Csq[]) => this.csqs = data
             )
         // Se obtienen todos los intereses
         this.interesServ.getAll()
@@ -238,16 +232,19 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.escuelaEmpresaServ.getAll()
             .subscribe(
                 (data: EscuelaEmpresa[]) => this.escuelas_empresas = data
-            )
+        )
 
         this.formInit();
     }
 
     formInit() {
+        let userLocal = localStorage.getItem('user');
+        let datos = JSON.parse(userLocal);
+        
         this.form = new FormGroup({
 
 
-            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }, Validators.required),
+            Usuario: new FormControl({ value: datos.fullname, disabled: false }, Validators.required),
             //Asesor: new FormControl(''),
 
             actvidadNoTradicional: new FormControl(''),

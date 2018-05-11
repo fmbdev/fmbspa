@@ -161,11 +161,6 @@ export class NewRegisterComponent implements OnInit {
             .subscribe(
                 (data: Canal[]) => this.canales = data
             )
-        // Se obtienen todos los csqs
-        this.csqServ.getAll()
-            .subscribe(
-                (data: Csq[]) => this.csqs = data
-            )
         // Se obtienen todos los intereses
         this.interesServ.getAll()
             .subscribe(
@@ -230,11 +225,13 @@ export class NewRegisterComponent implements OnInit {
   }
 
     formInit() {
-        let userName = '';
+        let userLocal = localStorage.getItem('user');
+        let datos = JSON.parse(userLocal);
+
         this.form = new FormGroup({
-            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: false }),
+            Usuario: new FormControl({ value: datos.fullname, disabled: false }),
             Canal: new FormControl('', Validators.required),
-            CSQ: new FormControl('', Validators.required),
+            CSQ: new FormControl({ value: '', disabled: true }, Validators.required),
             TelefonoCorreo: new FormControl('', Validators.required),
             Interesa_NoInteresa: new FormControl('', Validators.required),
 
@@ -554,6 +551,16 @@ export class NewRegisterComponent implements OnInit {
             this.form.controls['Carrera'].markAsUntouched();
         }
         this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
+    }
+
+    onChangeCanal(value: string){
+        if(this.form.controls['CSQ'].disabled){
+            this.form.controls['CSQ'].enable();
+        }else{
+            this.form.controls['CSQ'].setValue('');
+            this.form.controls['CSQ'].markAsUntouched();
+        }
+        this.csqs = this.csqServ.getCsqsByCanal(value);
     }
 
     onFielCanal(value) {

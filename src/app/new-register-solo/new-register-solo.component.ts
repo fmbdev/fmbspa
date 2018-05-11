@@ -184,11 +184,6 @@ export class NewRegisterSoloComponent implements OnInit {
             .subscribe(
                 (data: Canal[]) => this.canales = data
             )
-        // Se obtienen todos los csqs
-        this.csqServ.getAll()
-            .subscribe(
-                (data: Csq[]) => this.csqs = data
-            )
         // Se obtienen todos los intereses
         this.interesServ.getAll()
             .subscribe(
@@ -253,10 +248,14 @@ export class NewRegisterSoloComponent implements OnInit {
   }
 
     formInit() {
+
+        let userLocal = localStorage.getItem('user');
+        let datos = JSON.parse(userLocal);
+        
         this.form = new FormGroup({
 
-            Usuario: new FormControl({ value: 'Ricardo Vargas', disabled: true }),
-
+            Usuario: new FormControl({ value: datos.fullname, disabled: true }),
+ 
             SinCorreo: new FormControl(''),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
