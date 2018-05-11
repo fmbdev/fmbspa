@@ -89,7 +89,9 @@
                     <mat-form-field>
                         <mat-select placeholder="Escuela/Empresa" formControlName="EscuelaEmpresa" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_claveescuelaempresacrm']">
+                            <!--<mat-option value="1">CENTRO DE ESTUDIOS UNIVERSITARIOS (COYOACAN</mat-option>
+                            <mat-option value="2">PRE_COLEGIO ANGEL DEL CAMPO (IZTAPALAPA)</mat-option>-->
+                                <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_claveescuelaempresacrm']">
                                     {{ escuelaempresa['Name'] }}
                                 </mat-option>
                         </mat-select>

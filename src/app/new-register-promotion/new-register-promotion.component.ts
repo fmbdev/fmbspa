@@ -232,7 +232,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.escuelaEmpresaServ.getAll()
             .subscribe(
                 (data: EscuelaEmpresa[]) => this.escuelas_empresas = data
-            )
+        )
 
         this.formInit();
     }

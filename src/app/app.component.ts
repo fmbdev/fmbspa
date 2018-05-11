@@ -8,6 +8,7 @@ import { CarreraService } from './providers/carrera.service';
 import { ModalidadService } from './providers/modalidad.service';
 import { CampusCarreraService } from './providers/campus-carrera.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
+import { EscuelaEmpresaService } from './providers/escuela-empresa.service';
 import { HomeService } from './providers/home.service';
 import { LandingService } from './services/landing.service';
 import {Router} from "@angular/router";
@@ -38,22 +39,25 @@ export class AppComponent implements OnInit{
               private nivelServ: NivelService,
               private carreraServ: CarreraService,
               private modalidadServ: ModalidadService,              
-              private subSubServ: SubsubtipoActividadService,
-              private campusCarreraServ: CampusCarreraService){}
+              private subSubServ: SubsubtipoActividadService,             
+              private campusCarreraServ: CampusCarreraService,
+              private escuelaEmpresaServ: EscuelaEmpresaService,){}
 
   ngOnInit(){
-    //this.landingService.getInit();    
+    this.landingService.getInit();    
     this.pnnServ.getAll();
     this.csqServ.getAll();
     this.nivelServ.getAll();
     this.carreraServ.getAll();
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
+    this.subSubServ.getSubSubTiposActividad();
+    //this.escuelaEmpresaServ.getAll();
+
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);    
    // this.subsGetMe = this.homeService.getMe(  ).subscribe(me => this.meget = me);   
     
-    console.log(datos);
     if(window.location.pathname!='/'){
       if(datos===null){
         this.homeService.getInit();  
@@ -87,16 +91,16 @@ export class AppComponent implements OnInit{
          	
   }
 
-  /*onLogout() {
+  onLogout() {
     //this.authServ.logout();
-    /*this.sidenav.close();
+    this.sidenav.close();
     localStorage.clear();
     this.router.navigate(['/']);
 
   }
   
   onMenu(){
-      /*if(window.location.pathname =='/' || window.location.pathname == '/home' || window.location.pathname == '/menu' ){
+      if(window.location.pathname =='/' || window.location.pathname == '/home' || window.location.pathname == '/menu' ){
         return "no";
       }
 	  	if(localStorage.access_token){
@@ -109,7 +113,6 @@ export class AppComponent implements OnInit{
    onGoto(url:string){
     this.sidenav.close();
     this.router.navigate([url]);
-  }*/
-
+  }
 
 }
