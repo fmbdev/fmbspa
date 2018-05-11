@@ -359,7 +359,10 @@ export class NewRegisterComponent implements OnInit {
                         if (res.status == 200) {
 
                             this.showDialog("Los datos se han guardado correctamente.");
-
+                            setTimeout(function() {
+                                window.location.href = "/register";
+                                this.form.reset();
+                            },1000);
                         } else {
 
                             this.showDialog("Error al realizar el registro.");
@@ -553,7 +556,7 @@ export class NewRegisterComponent implements OnInit {
 
     onFielCanal(value) {
       this.canalText = value.toUpperCase();
-        this.form.controls.TelefonoCorreo.clearValidators();
+      /*  this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
         console.log(value);
         if (value == 'Canal prueba #1') {
@@ -561,7 +564,7 @@ export class NewRegisterComponent implements OnInit {
         } else {
             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
         }
-        this.form.controls.TelefonoCorreo.updateValueAndValidity();
+        this.form.controls.TelefonoCorreo.updateValueAndValidity();*/
     }
 
     addValidation(isChecked) {
