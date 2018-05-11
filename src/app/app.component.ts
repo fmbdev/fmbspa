@@ -8,6 +8,7 @@ import { CarreraService } from './providers/carrera.service';
 import { ModalidadService } from './providers/modalidad.service';
 import { CampusCarreraService } from './providers/campus-carrera.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
+import { EscuelaEmpresaService } from './providers/escuela-empresa.service';
 import { HomeService } from './providers/home.service';
 import { LandingService } from './services/landing.service';
 import {Router} from "@angular/router";
@@ -30,28 +31,33 @@ export class AppComponent implements OnInit{
 
   constructor(
               private router: Router,
-              private landingService: LandingService,                
+              private landingService: LandingService,
+              private csqServ: CsqService,         
               private homeService: HomeService,
               private pnnServ: PnnService,              
               private authServ:AuthService,
               private nivelServ: NivelService,
               private carreraServ: CarreraService,
               private modalidadServ: ModalidadService,              
-              private subSubServ: SubsubtipoActividadService,
-              private campusCarreraServ: CampusCarreraService){}
+              private subSubServ: SubsubtipoActividadService,             
+              private campusCarreraServ: CampusCarreraService,
+              private escuelaEmpresaServ: EscuelaEmpresaService,){}
 
   ngOnInit(){
     this.landingService.getInit();    
     this.pnnServ.getAll();
+    this.csqServ.getAll();
     this.nivelServ.getAll();
     this.carreraServ.getAll();
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
+    this.subSubServ.getSubSubTiposActividad();
+    //this.escuelaEmpresaServ.getAll();
+
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);    
    // this.subsGetMe = this.homeService.getMe(  ).subscribe(me => this.meget = me);   
     
-    console.log(datos);
     if(window.location.pathname!='/'){
       if(datos===null){
         this.homeService.getInit();  
@@ -108,6 +114,5 @@ export class AppComponent implements OnInit{
     this.sidenav.close();
     this.router.navigate([url]);
   }
-
 
 }

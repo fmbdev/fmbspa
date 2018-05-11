@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class EscuelaEmpresaService {
 
   private headers = new Headers({'Content-Type':'application/json'});
+  private escuelaEmpresas: EscuelaEmpresa[] = [];
 
   constructor( private http: Http) {}
 
@@ -16,6 +17,10 @@ export class EscuelaEmpresaService {
                .map(
                  (res: Response) => res.json()
                )
+
   }
 
+  /*getEscuelasEmpresas() : EscuelaEmpresa[] {
+    return this.escuelaEmpresas;
+  }*/
 }

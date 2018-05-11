@@ -130,7 +130,7 @@ export class ReferidoWebComponent implements OnInit {
       patern_ref:new FormControl('', [LandingValidation.palabraMalaValidator()]),
       matern_ref:new FormControl('', [LandingValidation.palabraMalaValidator()]),
       mail_ref: new FormControl('', [LandingValidation.emailMaloValidator()]),
-      tipo_ref: new FormControl('', [Validators.minLength(10)]),
+      tipo_ref: new FormControl(''),
       phone_ref: new FormControl(''),
       cuenta_ref: new FormControl(''),
 
