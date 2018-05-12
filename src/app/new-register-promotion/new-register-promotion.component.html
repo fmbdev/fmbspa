@@ -50,8 +50,8 @@
                     <mat-form-field>
                         <mat-select placeholder="Actividad de Agenda" formControlName="ActividadAgenda" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let sub_tipo of sub_tipos;" [value]="sub_tipo['crmit_codigounico']">
-                                {{ sub_tipo['crmit_subname'] }}
+                            <mat-option *ngFor="let act_agenda of actividad_agenda;" [value]="act_agenda['crmit_actividadid']">
+                                {{ act_agenda['crmit_actividadname'] }}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.ActividadAgenda.errors?.required">Por favor elige una actividad de agenda</mat-error>

@@ -31,6 +31,7 @@ import { SubsubTipo } from '../interfaces/subsub-tipo';
 import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
+import { ActividadAgenda } from '../interfaces/actividad-agenda';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -52,6 +53,7 @@ import { CampusCarreraService } from '../providers/campus-carrera.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
+import { ActividadAgendaService } from '../providers/actividad-agenda.service';
 import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
 
 
@@ -130,6 +132,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     campus_citas: CampusCita[] = [];
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
+    actividad_agenda: ActividadAgenda[] = [];
     escuelas_empresas: EscuelaEmpresa[] = [];
 
     constructor(private landingService: LandingService,
@@ -155,8 +158,9 @@ export class NewRegisterPromotionComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusCarreraServ: CampusCarreraService,
         private tipicicacionServ: TipificacionService,
-        private subSubServ: SubsubtipoActividadService,
-        private escuelaEmpresaServ: EscuelaEmpresaService) { }
+        private subSubServ: SubsubtipoActividadService,       
+        private escuelaEmpresaServ: EscuelaEmpresaService, 
+        private actividadAgendaServ: ActividadAgendaService) { }
 
 
     ngOnInit() {
@@ -233,6 +237,11 @@ export class NewRegisterPromotionComponent implements OnInit {
             .subscribe(
                 (data: EscuelaEmpresa[]) => this.escuelas_empresas = data
         )
+        //Se obtienen todas las actividades agendas
+        this.actividadAgendaServ.getAll()
+            .subscribe(
+                (data: ActividadAgenda[]) => this.actividad_agenda = data
+            )
 
         this.formInit();
     }

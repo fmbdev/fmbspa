@@ -54,12 +54,13 @@ import { CampusCitaService } from './providers/campus-cita.service';
 import { ProgramacionService } from './providers/programacion.service';
 import { TipificacionService } from './providers/tipificacion.service';
 import { TransferenciaService } from './providers/transferencia.service';
+import { CampusCarreraService } from './providers/campus-carrera.service';
 import { PaginaLandingService } from './providers/pagina-landing.service';
 import { TipoActividadService } from './providers/tipo-actividad.service';
 import { TipoReferenteService } from './providers/tipo-referente.service';
 import { EscuelaEmpresaService } from './providers/escuela-empresa.service';
 import { CitaProspeccionService } from './providers/cita-prospeccion.service';
-import { CampusCarreraService } from './providers/campus-carrera.service';
+import { ActividadAgendaService } from './providers/actividad-agenda.service';
 import { GeneralService } from './services/general.service';
 import { LandingService } from './services/landing.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
@@ -142,7 +143,7 @@ import {AuthGuardService } from './providers/auth-guard.service';
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService,
               TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,
-              HttpService, AuthService, HomeService, CampusCarreraService, AuthGuardService
+              HttpService, AuthService, HomeService, CampusCarreraService, AuthGuardService, ActividadAgendaService
             ],
   bootstrap: [AppComponent]
 })
