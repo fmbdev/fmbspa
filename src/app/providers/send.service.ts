@@ -12,17 +12,17 @@ export class SendService {
 
   constructor(private http: Http) { }
 
-  sendDataToApi(data) {
-    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6103?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9", data, {headers: this.headers});
+  sendDataToApi(data) {  
+    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6163?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
   }
-  
   sendData(data) {
     //console.log(data);
-    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6047?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});    
+    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6047?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
+
   }
   sendData2(data) {
     //console.log(data);
-    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/5876?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});    
+    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/5876?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
 
   }
 

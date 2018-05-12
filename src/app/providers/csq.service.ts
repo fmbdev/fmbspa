@@ -28,12 +28,13 @@ export class CsqService {
 
   getCsqsByCanal(canalId: string) : Csq[]{
     let csqsByCanales: Csq[] = [];
-
+    this.getAll();    
     for(let i = 0; i < this.csqs.length; i++){
       if(this.csqs[i].canalId == canalId){
         csqsByCanales.push(this.csqs[i]);
       }
     }
+    console.log(csqsByCanales);    
     return csqsByCanales;
   }
 

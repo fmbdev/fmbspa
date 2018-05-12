@@ -527,6 +527,7 @@ export class NewRegisterExistingComponent implements OnInit {
             this.form.controls['CSQ'].setValue('');
             this.form.controls['CSQ'].markAsUntouched();
         }
+        console.log(value);
         this.csqs = this.csqServ.getCsqsByCanal(value);
     }
     
