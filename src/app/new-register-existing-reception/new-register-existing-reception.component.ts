@@ -321,10 +321,10 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
                     (res: any) => {
                         if(res.status == 200){
                             this.showDialog("Los datos se han guardado correctamente.");
-                            this.resetForm();
+                            //this.resetForm();
                         }else{
-                            this.showDialog("Error al realizar el registro.");
-                            this.resetForm();
+                            this.showDialogE("Error al realizar el registro.");
+                           // this.resetForm();
                         }
                     }
                 )
@@ -535,6 +535,16 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
     }
 
     private showDialog(message: string) {
+        let dialogRef = this.dialog.open(DialogComponent, {
+            height: '180px',
+            width: '500px',
+            data: { message: message }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            window.location.href = "/register-existing-reception";
+        });
+    }
+    private showDialogE(message: string) {
         let dialogRef = this.dialog.open(DialogComponent, {
             height: '180px',
             width: '500px',

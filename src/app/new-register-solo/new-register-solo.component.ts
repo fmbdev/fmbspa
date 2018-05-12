@@ -317,30 +317,41 @@ export class NewRegisterSoloComponent implements OnInit {
           // -------------------------------- Predictivo  ----------------------------------
 
           const predCel = this.form.value.NumeroCelular.substring(0,2);
-          const predCelTutor = this.form.value.NumeroCelularTutor.substring(0,2);
           const predTel = this.form.value.Telefono.substring(0,2);
-          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
+
+            if (this.form.value.NumeroCelularTutor) {
+                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
+                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
+                if (predCelTutor == 55) {
+                    this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                }
+
+            }
+
+            if (this.form.value.TelefonoTutor) {
+                const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
+                this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+                if (predTelTutor == 55) {
+                    this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
+                }
+            }
+
           this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
-          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularTutor;
           this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
-          this.form.value.TelefonoPredictivoTutor = '901'+this.form.value.TelefonoTutor;
+         
           this.form.value.Banner = window.location.href;
 
           if(predCel == 55){
             this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
           }
 
-          if(predCelTutor == 55){
-            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularTutor;
-          }
+          
 
           if(predTel == 55){
             this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
           }
 
-          if(predTelTutor == 55){
-            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
-          }
+          
 
           for(let i=0;i < this.rows.length; i++){
             if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
@@ -365,12 +376,12 @@ export class NewRegisterSoloComponent implements OnInit {
                         if (res.status == 200) {
                             this.showDialog("Los datos se han guardado correctamente.");
                         } else {
-                            this.showDialog("Error al realizar el registro.");
+                            this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
         } else {
-            this.showDialog("Error al realizar el registro *");
+            this.showDialogE("Error al realizar el registro *");
         }
 
 
@@ -565,6 +576,17 @@ export class NewRegisterSoloComponent implements OnInit {
     }
 
     private showDialog(message: string) {
+        let dialogRef = this.dialog.open(DialogComponent, {
+            height: '180px',
+            width: '500px',
+            data: { message: message }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            window.location.href = "/registerSolo";
+        });
+    }
+
+    private showDialogE(message: string) {
         let dialogRef = this.dialog.open(DialogComponent, {
             height: '180px',
             width: '500px',

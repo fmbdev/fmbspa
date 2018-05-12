@@ -311,9 +311,21 @@ export class NewRegisterComponent implements OnInit {
           // -------------------------------- Predictivo  ----------------------------------
 
           const predCel = this.form.value.NumeroCelular.substring(0,2);
-          const predCelTutor = this.form.value.NumeroCelularTutor.substring(0,2);
+            if (this.form.value.NumeroCelularTutor) {
+                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
+                if (predCelTutor == 55) {
+                    this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                }
+            }
+
+            if (this.form.value.TelefonoTutor) {
+                const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
+                if (predTelTutor == 55) {
+                    this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
+                }
+            }
+
           const predTel = this.form.value.Telefono.substring(0,2);
-          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
           this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
           this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularTutor;
           this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
@@ -325,17 +337,13 @@ export class NewRegisterComponent implements OnInit {
             this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
           }
 
-          if(predCelTutor == 55){
-            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularTutor;
-          }
+         
 
           if(predTel == 55){
             this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
           }
 
-          if(predTelTutor == 55){
-            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
-          }
+         
 
           if(this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS'){
             this.form.value.CanalPreferido = 'Redes Sociales';
@@ -370,19 +378,15 @@ export class NewRegisterComponent implements OnInit {
                         if (res.status == 200) {
 
                             this.showDialog("Los datos se han guardado correctamente.");
-                            setTimeout(function() {
-                                window.location.href = "/register";
-                                this.form.reset();
-                            },1000);
+                            
                         } else {
-
-                            this.showDialog("Error al realizar el registro.");
+                            this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
 
         } else {
-            this.showDialog("Error al realizar el registro *");
+            this.showDialogE("Error al realizar el registro *");
         }
 
     }
@@ -610,6 +614,18 @@ export class NewRegisterComponent implements OnInit {
             width: '500px',
             data: { message: message }
         });
+        dialogRef.afterClosed().subscribe(result => {
+            window.location.href = "/register";
+        });
+    }
+
+
+    private showDialogE(message: string) {
+        let dialogRef = this.dialog.open(DialogComponent, {
+            height: '180px',
+            width: '500px',
+            data: { message: message }
+        });       
     }
 
 }
