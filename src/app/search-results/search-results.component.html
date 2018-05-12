@@ -1,7 +1,7 @@
 <style>
-.mat-grid-tile{
+    .mat-grid-tile {
         font-size: 10px !important;
-}
+    }
 </style>
 <div class="results">
     <div class="head-blue">
@@ -17,10 +17,9 @@
             <mat-grid-tile class="headd">Nivel de Ínteres</mat-grid-tile>
             <mat-grid-tile class="headd">Correo Electrónico</mat-grid-tile>
             <mat-grid-tile class="headd last">Último Asesor Asignado</mat-grid-tile>
-
             <ng-container *ngFor="let r of reesults;">
                 <mat-grid-tile class="data">
-                    <mat-checkbox></mat-checkbox>
+                    <mat-checkbox value="{{r.leadid}}" (change)="showLead($event)"></mat-checkbox>
                 </mat-grid-tile>
                 <mat-grid-tile class="data">{{r.crmit_nocuentasis}}</mat-grid-tile>
                 <mat-grid-tile class="data">{{r.crmit_nopersona}}</mat-grid-tile>
@@ -33,15 +32,15 @@
     </div>
     <div class="btn" *ngIf="cantidad>2">
         Favor de especificar más datos para su búsqueda
-    </div>  
-    <div   *ngIf="cantidad<1" >
+    </div>
+    <div *ngIf="cantidad<1">
         <h3 style="text-align: center;">Sin Resultados</h3>
         <button mat-raised-button color="warn" class="cancel" (click)="cancel()">Regresar</button>
 
-    </div>  
-     
+    </div>
+
     <div class="btn" *ngIf="cantidad>0">
-        <button mat-raised-button color="warn" class="selec" >SELECCIONAR</button>
+        <button mat-raised-button color="warn" class="selec" (click)="seleccionarLead()">SELECCIONAR</button>
         <button mat-raised-button color="warn" class="cancel" (click)="cancel()">CANCELAR</button>
         <button mat-raised-button color="warn" (click)="onGoto('/register')">NUEVO</button>
     </div>

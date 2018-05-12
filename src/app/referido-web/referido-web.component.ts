@@ -321,6 +321,17 @@ onChangeModalidad(value: string){
           width: '500px',
           data: {message: message}
         });
-      }
+       dialogRef.afterClosed().subscribe(result => {
+         window.location.href = "/referidoWeb";
+       });
+  }
+
+  private showDialogE(message: string) {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      height: '180px',
+      width: '500px',
+      data: { message: message }
+    });
+  }
 
 }

@@ -171,7 +171,7 @@ export class ReferidoPromotorComponent implements OnInit {
                      this.showDialog("Los datos se han guardado correctamente.");
                      this.resetForm();
                   }else{
-                     this.showDialog("Error al realizar el registro.");
+                     this.showDialogE("Error al realizar el registro.");
                      this.resetForm();
                   }
               }
@@ -179,8 +179,7 @@ export class ReferidoPromotorComponent implements OnInit {
   }
 
   resetForm() {
-    window.location.href = "/registerPromotion";
-    this.form.reset();
+    
   }
 
   _keyOnly3letter(event: any, name: any) {
@@ -313,6 +312,15 @@ onChangeModalidad(value: string){
           width: '500px',
           data: {message: message}
         });
+       dialogRef.afterClosed().subscribe(result => {
+         window.location.href = "/registerPromotion";
+       });
       }
-
+  private showDialogE(message: string) {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      height: '180px',
+      width: '500px',
+      data: { message: message }
+    });
+  }
 }

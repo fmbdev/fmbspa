@@ -323,35 +323,88 @@ export class NewRegisterPromotionComponent implements OnInit {
 
           // -------------------------------- Predictivo  ----------------------------------
 
-          const predCel = this.form.value.NumeroCelular.substring(0,2);
-          const predCelTutor = this.form.value.NumeroCelularTutor.substring(0,2);
           const predTel = this.form.value.Telefono.substring(0,2);
-          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
-          this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
-          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularTutor;
+            if (this.form.value.NumeroCelular){
+                const predCel = this.form.value.NumeroCelular.substring(0, 2);
+                this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
+                if (predCel == 55) {
+                    this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
+                }
+            }
+            if (this.form.value.NumeroCelularTutor) {
+                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
+                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
+                
+                if (predCelTutor == 55) {
+                    this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                }
+            }
+
+            if (this.form.value.TelefonoTutor) {
+                const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
+                this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+                
+                if (predTelTutor == 55) {
+                    this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
+                }
+            }
+
+
           this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
-          this.form.value.TelefonoPredictivoTutor = '901'+this.form.value.TelefonoTutor;
           this.form.value.Banner = window.location.href;
 
-          if(predCel == 55){
-            this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
-          }
+          
 
-          if(predCelTutor == 55){
-            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularTutor;
-          }
+           
 
           if(predTel == 55){
             this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
           }
+        
+            const sendd = {
+                Usuario: this.form.value.Usuario,
+                Nombre: this.form.value.Nombre, 
+                ApellidoPaterno: this.form.value.ApellidoPaterno, 
+                ApellidoMaterno: this.form.value.ApellidoMaterno, 
+                CorreoElectronico: this.form.value.CorreoElectronico, 
+                NumeroCelular: this.form.value.NumeroCelular, 
+                Telefono: this.form.value.Telefono, 
+                Genero: 1, 
+                //Genero: this.form.value.Genero, 
+                Edad: this.form.value.Edad, SinCorreo: this.form.value.SinCorreo,
+                NombreTutor: this.form.value.NombreTutor, 
+                ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
+                NumeroCelularTutor: this.form.value.NumeroCelularTutor, 
+                ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
+                CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+                TelefonoTutor: this.form.value.TelefonoTutor,
+                Campus: this.form.value.Campus, 
+                AreaInteres: this.form.value.AreaInteres, 
+                Ciclo: this.form.value.Ciclo, 
+                Carrera: this.form.value.Carrera, 
+                Nivel: this.form.value.Nivel, 
+                Modalidad: this.form.value.Modalidad,
+                Banner: this.form.value.Banner
+            };
+           /*
+              CampusCita: this.form.value.CampusCita,
+               FechaCita: this.form.value.FechaCita,
+               HoraCita: this.form.value.HoraCita,
+               Programacion: this.form.value.Programacion,
+               Asesor: this.form.value.Asesor,
 
-          if(predTelTutor == 55){
-            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
-          }
-
+                 TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo,
+                 TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor,
+                 TelefonoPredictivo: this.form.value.TelefonoPredictivo,
+                 TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor, 
+                 CanalPreferido: this.form.value.CanalPreferido, 
+                 Team: this.form.value.Team, 
+                 Prioridad: this.form.value.Prioridad, 
+                 Attemp: this.form.value.Attemp
+            */
           // -------------------------------- Predictivo  ----------------------------------
 
-            this.sendServ.sendDataToApi(this.form.value)
+            this.sendServ.sendDataToApi(sendd)
                 .subscribe(
                     (res: any) => {
                         if (res.status == 200) {
@@ -360,12 +413,12 @@ export class NewRegisterPromotionComponent implements OnInit {
 
                         } else {
 
-                            this.showDialog("Error al realizar el registro.");
+                            this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
         } else {
-            this.showDialog("Error al realizar el registro *");
+            this.showDialogE("Error al realizar el registro *");
         }
 
     }
@@ -379,7 +432,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();
         let fecha = year - edad;
-        this.form.controls.FechaNacimiento.setValue(fecha);
+        this.form.controls.FechaNacimiento.setValue('01/01/'+fecha);
     }
 
     onKeydownEmail(event: KeyboardEvent) {
@@ -566,6 +619,16 @@ export class NewRegisterPromotionComponent implements OnInit {
     }
 
     private showDialog(message: string) {
+        let dialogRef = this.dialog.open(DialogComponent, {
+            height: '180px',
+            width: '500px',
+            data: { message: message }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            window.location.href = "/registerPromotion";
+        });
+    }
+    private showDialogE(message: string) {
         let dialogRef = this.dialog.open(DialogComponent, {
             height: '180px',
             width: '500px',

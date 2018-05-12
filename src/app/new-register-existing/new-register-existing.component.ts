@@ -215,8 +215,13 @@ export class NewRegisterExistingComponent implements OnInit {
     }
 
     formInit() {
-         let userLocal = localStorage.getItem('user');
+        let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
+        
+        let userSearch = localStorage.getItem('lead_user');
+        let jsonSearch = JSON.parse(userSearch);
+        let U = jsonSearch.value[0];
+
         this.form = new FormGroup({
             Usuario: new FormControl({ value: datos.fullname, disabled: true }, Validators.required),
             Canal: new FormControl('', Validators.required),
@@ -224,10 +229,10 @@ export class NewRegisterExistingComponent implements OnInit {
             TelefonoCorreo: new FormControl(''),
             Interesa_NoInteresa: new FormControl(''),
 
-            Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
+            Nombre: new FormControl(U.firstname, [LandingValidation.palabraMalaValidator()]),
+            ApellidoPaterno: new FormControl(U.middlename, [LandingValidation.palabraMalaValidator()]),
+            ApellidoMaterno: new FormControl(U.lastname, [LandingValidation.palabraMalaValidator()]),
+            CorreoElectronico: new FormControl(U.emailaddress1, [Validators.required, LandingValidation.emailMaloValidator()]),
             NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
@@ -335,10 +340,10 @@ export class NewRegisterExistingComponent implements OnInit {
                     (res: any) => {
                         if(res.status == 200){
                             this.showDialog("Los datos se han guardado correctamente.");
-                            this.resetForm();
+                            //this.resetForm();
                         }else{
-                            this.showDialog("Error al realizar el registro.");
-                            this.resetForm();
+                            this.showDialogE("Error al realizar el registro.");
+                            //this.resetForm();
                         }
                     }
                 )
@@ -565,6 +570,16 @@ export class NewRegisterExistingComponent implements OnInit {
     }
 
     private showDialog(message: string) {
+        let dialogRef = this.dialog.open(DialogComponent, {
+            height: '180px',
+            width: '500px',
+            data: { message: message }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            window.location.href = "/register-existing";
+        });
+    }
+    private showDialogE(message: string) {
         let dialogRef = this.dialog.open(DialogComponent, {
             height: '180px',
             width: '500px',

@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class SearchResultsComponent implements OnInit {
   displayedColumns = ['selected', 'numberA', 'id', 'name', 'interest', 'mail', 'last'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  //dataSource = new MatTableDataSource(ELEMENT_DATA);
   reesults: any;
   cantidad: any;
 
@@ -22,8 +22,8 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
    
-          let h = JSON.parse(localStorage.getItem('search_value'));
-          this.cantidad = h.length;
+      let h = JSON.parse(localStorage.getItem('search_value'));
+      this.cantidad = h.length;
       this.reesults  = h;   
   }
 
@@ -33,6 +33,35 @@ export class SearchResultsComponent implements OnInit {
   cancel() {
     this.location.back(); // <-- go back to previous location on cancel
   }
+
+  showLead(values: any) {
+    console.log(values.source.value);
+    localStorage.setItem('lead_id', values.source.value);
+  }
+  
+  seleccionarLead(){
+    let useLead = localStorage.getItem('lead_id');
+    let go = this;
+    let urlGetLEad = "https://laulatammxqa.api.crm.dynamics.com/api/data/v8.2/leads?$filter=leadid eq " + useLead;
+    var settings2 = {
+      "async": true,
+      "crossDomain": true,
+      "url": urlGetLEad,
+      "method": "GET",
+      "headers": {
+        "authorization": "Bearer " + localStorage.getItem('access_token'),
+        "content-type": "application/json",
+        "odata.metadata": "minimal",
+      }
+    }
+
+    $.ajax(settings2).done(function (response) {
+      let user = JSON.stringify(response)
+      localStorage.setItem('lead_user', user);
+      go.onGoto('/register-existing');
+    });
+  }
+  
 }
 
 
@@ -45,13 +74,3 @@ export interface Element {
   last: string;
   selected: boolean;
 }
-
-const ELEMENT_DATA: Element[] = [
-  {numberA: 99866445, id: 60189098, name: 'Hydrogen', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-  {numberA: 99866445, id: 60189098, name: 'Helium', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-  {numberA: 99866445, id: 60189098, name: 'Lithium', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-  {numberA: 99866445, id: 60189098, name: 'Beryllium', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-  {numberA: 99866445, id: 60189098, name: 'Boron', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-  {numberA: 99866445, id: 60189098, name: 'Carbon', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-  {numberA: 99866445, id: 60189098, name: 'Nitrogen', interest: 'Licenciatura', mail: 'juan@gmail.com', last: 'Juanito', selected: false},
-];
