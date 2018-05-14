@@ -30,89 +30,89 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
     component: NewRegisterComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'menu',
     component: FormComponent,
-    /*canActivate: [AuthGuard]*/ 
+    canActivate: [AuthGuard] 
   },
 
   {
     path: 'register-existing',
     component: NewRegisterExistingComponent,
-    /*canActivate: [AuthGuard]*/ 
+    canActivate: [AuthGuard] 
   },
   {
     path: 'register-existing-reception',
     component: NewRegisterExistingReceptionComponent,
-    /*canActivate: [AuthGuard]*/ 
+    canActivate: [AuthGuard] 
   },
   {
     path: 'referidoReferente',
     component: ReferidoReferenteComponent,
-    /*canActivate: [AuthGuard]*/ 
+    canActivate: [AuthGuard] 
   },
 
    {
     path: 'referidoPromotor',
     component: ReferidoPromotorComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
    {
     path: 'referidoTlmk',
     component: ReferidoTlmkComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'referidoWeb',
     component: ReferidoWebComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'registerPromotion',
     component: NewRegisterPromotionComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'registerSolo',
     component: NewRegisterSoloComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'search',
     component: SearchComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'searchInbound',
     component: SearchInboundComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'results',
     component: SearchResultsComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'upload',
     component: UploadBaseComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'upload-sis',
     component: UploadBaseSisComponent,
-    /*canActivate: [AuthGuard]*/
+    canActivate: [AuthGuard]
   },
   {
     path: 'modal',
     component: ModalConfirmComponent,
-    /*canActivate: [AuthGuard]*/ 
+    canActivate: [AuthGuard] 
   }
 ];
 
