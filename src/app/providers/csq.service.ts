@@ -27,15 +27,20 @@ export class CsqService {
   }
 
   getCsqsByCanal(canalId: string) : Csq[]{
+    console.log(canalId);//61ba8610-9989-e511-957f-005056be4250.EN LINEA
+    let array = canalId.split('.');  
+    let cID = array[0];
     let csqsByCanales: Csq[] = [];
     this.getAll();    
     for(let i = 0; i < this.csqs.length; i++){
-      if(this.csqs[i].canalId == canalId){
+      if(this.csqs[i].canalId == cID){
         csqsByCanales.push(this.csqs[i]);
       }
     }
-    console.log(csqsByCanales);    
     return csqsByCanales;
   }
 
 }
+
+
+                            

@@ -62,6 +62,7 @@ import { CampusCarreraService } from '../providers/campus-carrera.service';
 export class NewRegisterExistingComponent implements OnInit {
 
     form: FormGroup;
+    sinEmail = false;
 
     minDate = new Date(new Date().setDate(new Date().getDate()));
     maxDate = LandingValidation.fechaLimite();
@@ -125,7 +126,10 @@ export class NewRegisterExistingComponent implements OnInit {
     campus_citas: CampusCita[] = [];
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
-
+    rows = [];
+    campusTxt: any;
+    nivelTxt: any;
+    canalText: any;
     //matcher = new MyErrorStateMatcher();
 
     constructor(private landingService: LandingService,
@@ -148,9 +152,20 @@ export class NewRegisterExistingComponent implements OnInit {
         private parentescoServ: ParentescoService,
         private campusCitaServ: CampusCitaService,
         private campusCarreraServ: CampusCarreraService,
-        private tipicicacionServ: TipificacionService) { }
+        private tipicicacionServ: TipificacionService) {
+        this.fetch((data) => {
+        this.rows = data;
+      });
+       }
 
-
+       fetch(cb) {
+        const req = new XMLHttpRequest();
+        req.open('GET', `assets/canales.json`);
+        req.onload = () => {
+          cb(JSON.parse(req.response));
+        };
+        req.send();
+      }
     ngOnInit() {
 
         this.landingService.getInit();
@@ -294,59 +309,108 @@ export class NewRegisterExistingComponent implements OnInit {
 
 
 
-        if(this.form.valid){
+        if (this.form.valid) {
+            if(this.form.controls['FechaCita'].value){
+                this.onKeyFechaNacimiento();
+                let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+                this.form.controls['FechaCita'].setValue(fecha_cita);
+            }
+          
+            if(this.sinEmail){
+                let tel = this.form.controls['Telefono'].value;
+                this.form.controls['CorreoElectronico'].reset({ value: tel+'@unitec.edu.mx', disabled: false });
+            }
 
-            this.onKeyFechaNacimiento();
-            let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
-            this.form.controls['FechaCita'].setValue(fecha_cita);
 
           // -------------------------------- Predictivo  ----------------------------------
 
-          const predCel = this.form.value.NumeroCelular.substring(0,2);
-          const predCelTutor = this.form.value.NumeroCelularR.substring(0,2);
+            if (this.form.value.NumeroCelular){
+                const predCel = this.form.value.NumeroCelular.substring(0, 2);
+                this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
+                if (predCel == 55) {
+                    this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
+                }
+            }
+            if (this.form.value.NumeroCelularTutor) {
+                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
+                if (predCelTutor == 55) {
+                    this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                }
+            }
+
+            if (this.form.value.TelefonoTutor) {
+                const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
+                if (predTelTutor == 55) {
+                    this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
+                }
+            }
+
+
           const predTel = this.form.value.Telefono.substring(0,2);
-          const predTelTutor = this.form.value.TelefonoTutor.substring(0,2);
           this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
-          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularR;
+          this.form.value.TelefonoCelularPredictivoTutor = '9045'+this.form.value.NumeroCelularTutor;
           this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
           this.form.value.TelefonoPredictivoTutor = '901'+this.form.value.TelefonoTutor;
           this.form.value.Banner = window.location.href;
           this.form.value.CanalPreferido = 'Voz';
 
-          if(predCel == 55){
-            this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
-          }
+          
 
-          if(predCelTutor == 55){
-            this.form.value.TelefonoCelularPredictivoTutor = '9044'+this.form.value.NumeroCelularR;
-          }
+         
 
           if(predTel == 55){
             this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
           }
 
-          if(predTelTutor == 55){
-            this.form.value.TelefonoPredictivoTutor = '9'+this.form.value.TelefonoTutor;
-          }
+         
 
           if(this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS'){
             this.form.value.CanalPreferido = 'Redes Sociales';
           }
 
-          // -------------------------------- Predictivo  ----------------------------------
+          for(let i=0;i < this.rows.length; i++){
+            if(this.rows[i].FUENTENEGOCIO == this.canalText && this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
+              this.form.value.Team = this.rows[i].TEAM;
+              this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+              this.form.value.Attemp = this.rows[i].ATTEMP;
+            }
+          }
 
-            this.sendServ.sendDataToApi(this.form.value)
+          // -------------------------------- Predictivo  ----------------------------------
+            let edadT = this.form.value.Edad;
+
+            if(edadT==""){
+                edadT = 12;
+            }
+
+            const sendd = {Usuario: this.form.value.Usuario,
+              Canal: this.form.value.Canal, CSQ: this.form.value.CSQ, TelefonoCorreo: this.form.value.TelefonoCorreo, Interesa_NoInteresa: this.form.value.Interesa_NoInteresa,
+              Nombre: this.form.value.Nombre, ApellidoPaterno: this.form.value.ApellidoPaterno, ApellidoMaterno: this.form.value.ApellidoMaterno, CorreoElectronico: this.form.value.CorreoElectronico, NumeroCelular: this.form.value.NumeroCelular, Telefono: this.form.value.Telefono, Genero: 1, Edad: edadT, 
+              NombreTutor: this.form.value.NombreTutor, ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, NumeroCelularTutor: this.form.value.NumeroCelularTutor, ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, TelefonoTutor: this.form.value.TelefonoTutor,
+              Campus: this.form.value.Campus, AreaInteres: this.form.value.AreaInteres, Ciclo: this.form.value.Ciclo, Carrera: this.form.value.Carrera, Nivel: this.form.value.Nivel, Modalidad: this.form.value.Modalidad,
+              Banner: this.form.value.Banner, Tipificacion: this.form.value.Tipificacion, Notas: this.form.value.Notas
+            };
+          // CampusCita: this.form.value.CampusCita, FechaCita: this.form.value.FechaCita, HoraCita: this.form.value.HoraCita, Programacion: this.form.value.Programacion, Asesor: this.form.value.Asesor,
+          // TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo, TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor, TelefonoPredictivo: this.form.value.TelefonoPredictivo, TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor,SinCorreo: this.form.value.SinCorreo, CanalPreferido: this.form.value.CanalPreferido, Team: this.form.value.Team, Prioridad: this.form.value.Prioridad, Attemp: this.form.value.Attemp
+          //
+
+
+            this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
-                        if(res.status == 200){
+                      console.log(res);
+                        if (res.status == 200) {
+
                             this.showDialog("Los datos se han guardado correctamente.");
-                            //this.resetForm();
-                        }else{
+                            
+                        } else {
                             this.showDialogE("Error al realizar el registro.");
-                            //this.resetForm();
                         }
                     }
                 )
+
+        } else {
+            this.showDialogE("Error al realizar el registro *");
         }
     }
 
@@ -426,8 +490,8 @@ export class NewRegisterExistingComponent implements OnInit {
         LandingValidation.onlyLetter(event);
     }
 
-    _keyPressNum(event: any, value: any, word: any) {
-        if (value == 1) {
+    _keyPressNum(event: any, value: any, word: any) {        
+        if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value=='6ebed5d6-404f-e811-8113-3863bb3c5058') {            
             LandingValidation.onlyNumber(event);
             LandingValidation.limitChar(event, word);
             LandingValidation.onlyNumberIgual(event, word);
@@ -539,7 +603,8 @@ export class NewRegisterExistingComponent implements OnInit {
     onFielCanal(value) {
         this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
-        if (value == 1) {
+        //INBOUND - INBOUND CAMPUS - WHATSAPP - SMS
+        if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value=='6ebed5d6-404f-e811-8113-3863bb3c5058') {
             this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
         } else {
             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
@@ -549,9 +614,12 @@ export class NewRegisterExistingComponent implements OnInit {
 
     addValidation(isChecked) {
         if (isChecked.checked) {
-            this.form.controls.CorreoElectronico.reset({ value: '', disabled: true });
+            this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
+             this.sinEmail = true;
+
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
+             this.sinEmail = false;
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();
     }

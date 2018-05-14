@@ -292,6 +292,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     }
 
     onSubmit() {
+        
         let form = this.form;
         let pnnServ = this.pnnServ;
 
@@ -323,7 +324,8 @@ export class NewRegisterPromotionComponent implements OnInit {
 
           // -------------------------------- Predictivo  ----------------------------------
 
-          const predTel = this.form.value.Telefono.substring(0,2);
+            const predTel = this.form.value.Telefono.substring(0,2);
+            
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
                 this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
@@ -350,7 +352,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             }
 
 
-          this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+           this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
           this.form.value.Banner = window.location.href;
 
           
@@ -360,7 +362,10 @@ export class NewRegisterPromotionComponent implements OnInit {
           if(predTel == 55){
             this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
           }
-        
+            let edadT = this.form.value.Edad;
+            if(edadT==""){
+                edadT = 12;
+            }
             const sendd = {
                 Usuario: this.form.value.Usuario,
                 Nombre: this.form.value.Nombre, 
@@ -371,7 +376,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                 Telefono: this.form.value.Telefono, 
                 Genero: 1, 
                 //Genero: this.form.value.Genero, 
-                Edad: this.form.value.Edad, SinCorreo: this.form.value.SinCorreo,
+                Edad: edadT, SinCorreo: this.form.value.SinCorreo,
                 NombreTutor: this.form.value.NombreTutor, 
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
                 NumeroCelularTutor: this.form.value.NumeroCelularTutor, 

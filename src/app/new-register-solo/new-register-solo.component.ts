@@ -316,9 +316,13 @@ export class NewRegisterSoloComponent implements OnInit {
 
           // -------------------------------- Predictivo  ----------------------------------
 
-          const predCel = this.form.value.NumeroCelular.substring(0,2);
-          const predTel = this.form.value.Telefono.substring(0,2);
-
+            if (this.form.value.NumeroCelular){
+                const predCel = this.form.value.NumeroCelular.substring(0, 2);
+                this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
+                if (predCel == 55) {
+                    this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
+                }
+            }
             if (this.form.value.NumeroCelularTutor) {
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
                 this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
@@ -335,21 +339,17 @@ export class NewRegisterSoloComponent implements OnInit {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
                 }
             }
-
+          const predTel = this.form.value.Telefono.substring(0,2);
+          if(predTel == 55){
+            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+          }
           this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
           this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
          
           this.form.value.Banner = window.location.href;
 
-          if(predCel == 55){
-            this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.NumeroCelular;
-          }
 
           
-
-          if(predTel == 55){
-            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-          }
 
           
 
@@ -362,9 +362,14 @@ export class NewRegisterSoloComponent implements OnInit {
           }
 
           // -------------------------------- Predictivo  ----------------------------------
+          let edadT = this.form.value.Edad;
+
+            if(edadT==""){
+                edadT = 12;
+            }
 
           const sendd = {Usuario: this.form.value.Usuario,
-            Nombre: this.form.value.Nombre, ApellidoPaterno: this.form.value.ApellidoPaterno, ApellidoMaterno: this.form.value.ApellidoMaterno, CorreoElectronico: this.form.value.CorreoElectronico, NumeroCelular: this.form.value.NumeroCelular, Telefono: this.form.value.Telefono, Genero: this.form.value.Genero, Edad: this.form.value.Edad, SinCorreo: this.form.value.SinCorreo,
+            Nombre: this.form.value.Nombre, ApellidoPaterno: this.form.value.ApellidoPaterno, ApellidoMaterno: this.form.value.ApellidoMaterno, CorreoElectronico: this.form.value.CorreoElectronico, NumeroCelular: this.form.value.NumeroCelular, Telefono: this.form.value.Telefono, Genero: 1, Edad:edadT, SinCorreo: this.form.value.SinCorreo,
             NombreTutor: this.form.value.NombreTutor, ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, NumeroCelularTutor: this.form.value.NumeroCelularTutor, ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, TelefonoTutor: this.form.value.TelefonoTutor,
             Campus: this.form.value.Campus, AreaInteres: this.form.value.AreaInteres, Ciclo: this.form.value.Ciclo, Carrera: this.form.value.Carrera, Nivel: this.form.value.Nivel, Modalidad: this.form.value.Modalidad,
             Banner: this.form.value.Banner

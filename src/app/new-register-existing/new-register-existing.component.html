@@ -97,7 +97,7 @@
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.emailMalo && !form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
                     <div style="height: 41px; padding-top: 15px;">
-                        <mat-checkbox (change)="addValidation($event)" value="SinCorreo">Sin Correo Electrónico</mat-checkbox>
+                       <mat-checkbox formControlName="SinCorreo" (change)="addValidation($event)" value="ok">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()" class="validPhoneNumber">
@@ -204,8 +204,8 @@
                     <mat-form-field>
                         <mat-select [errorStateMatcher]="matcher" formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']">
-                                {{ campu['crmi_name'] }}
+                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']+campu['crmi_name']">
+                                {{ campu['crmit_tb_campusid']+'.'+campu['crmi_name']}}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Campus.errors?.required">{{showMjs('campus.m1')}}</mat-error>
