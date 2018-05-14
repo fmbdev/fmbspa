@@ -224,56 +224,55 @@ export class NewRegisterComponent implements OnInit {
     req.send();
   }
 
-    formInit() {
-        let userLocal = localStorage.getItem('user');
-        let datos = JSON.parse(userLocal);
+  formInit() {
+    let userLocal = localStorage.getItem('user');
+    let datos = JSON.parse(userLocal);
 
-        this.form = new FormGroup({
-            Usuario: new FormControl({ value: datos.fullname, disabled: false }),
-            Canal: new FormControl('', Validators.required),
-            CSQ: new FormControl({ value: '', disabled: true }, Validators.required),
-            TelefonoCorreo: new FormControl('', Validators.required),
-            Interesa_NoInteresa: new FormControl('', Validators.required),
+    this.form = new FormGroup({
+        Usuario: new FormControl({ value: datos.fullname, disabled: false }),
+        Canal: new FormControl('', Validators.required),
+        CSQ: new FormControl({ value: '', disabled: true }, Validators.required),
+        TelefonoCorreo: new FormControl('', Validators.required),
+        Interesa_NoInteresa: new FormControl('', Validators.required),
 
-            Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
-            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
-            Genero: new FormControl(''),
-            FechaNacimiento: new FormControl(''),
-            Edad: new FormControl('', [Validators.minLength(2)]),
+        Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+        ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+        ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+        CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
+        NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+        Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+        Genero: new FormControl(''),
+        FechaNacimiento: new FormControl(''),
+        Edad: new FormControl('', [Validators.minLength(2)]),
 
-            SinCorreo:new FormControl(''),
+        SinCorreo:new FormControl(''),
 
-            NombreTutor: new FormControl(''),
-            ApellidoPaternoTutor: new FormControl(''),
-            ApellidoMaternoTutor: new FormControl(''),
-            CorreoElectronicoTutor: new FormControl(''),
-            NumeroCelularTutor: new FormControl(''),
-            TelefonoTutor: new FormControl(''),
-            ParentescoTutor: new FormControl(''),
+        NombreTutor: new FormControl(''),
+        ApellidoPaternoTutor: new FormControl(''),
+        ApellidoMaternoTutor: new FormControl(''),
+        CorreoElectronicoTutor: new FormControl(''),
+        NumeroCelularTutor: new FormControl(''),
+        TelefonoTutor: new FormControl(''),
+        ParentescoTutor: new FormControl(''),
 
-            Campus: new FormControl(''),
-            AreaInteres: new FormControl(''),
-            Nivel: new FormControl({ value: '', disabled: true }),
-            Modalidad: new FormControl({ value: '', disabled: true }),
-            Carrera: new FormControl({ value: '', disabled: true }),
-            Ciclo: new FormControl(''),
+        Campus: new FormControl(''),
+        AreaInteres: new FormControl(''),
+        Nivel: new FormControl({ value: '', disabled: true }),
+        Modalidad: new FormControl({ value: '', disabled: true }),
+        Carrera: new FormControl({ value: '', disabled: true }),
+        Ciclo: new FormControl(''),
 
-            Tipificacion: new FormControl(''),
-            Notas: new FormControl(''),
+        Tipificacion: new FormControl(''),
+        Notas: new FormControl(''),
 
-            CampusCita: new FormControl({ value: '', disabled: true }),
-            FechaCita: new FormControl({ value: '', disabled: true }),
-            HoraCita: new FormControl({ value: '', disabled: true }),
-            Programacion: new FormControl({ value: '', disabled: true }),
-            Transferencia: new FormControl({ value: '', disabled: true }),
-            Asesor: new FormControl({ value: '', disabled: true })
-
-        });
-    }
+        CampusCita: new FormControl({ value: '', disabled: true }),
+        FechaCita: new FormControl({ value: '', disabled: true }),
+        HoraCita: new FormControl({ value: '', disabled: true }),
+        Programacion: new FormControl({ value: '', disabled: true }),
+        Transferencia: new FormControl({ value: '', disabled: true }),
+        Asesor: new FormControl({ value: '', disabled: true })
+    });
+}
 
     onSubmit(){
         let form = this.form;
