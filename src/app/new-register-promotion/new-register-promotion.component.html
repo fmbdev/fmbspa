@@ -39,7 +39,7 @@
                     <mat-form-field>
                         <mat-select placeholder="Sub Tipo de Actividad" formControlName="SubTipoActividad" required (change)="onChangeSubTipo(form.controls.SubTipoActividad.value)">
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let sub_tipo of sub_tipos;" [value]="sub_tipo['crmit_codigounico']">
+                            <mat-option *ngFor="let sub_tipo of sub_tipos;" [value]="sub_tipo['crmit_subname']">
                                 {{ sub_tipo['crmit_subname'] }}
                             </mat-option>
                         </mat-select>
