@@ -9,6 +9,9 @@ import { HomeService } from '../providers/home.service';
 import { AuthService } from '../providers/auth.service';
 import {Router} from "@angular/router";
 import { ModalidadService } from '../providers/modalidad.service';
+import { PnnService } from './../providers/pnn.service';
+import { CampusCarreraService } from './../providers/campus-carrera.service';
+import { AppConfig } from './../services/constants';
 
 import { Landing } from '../interfaces/landing';
 
@@ -36,6 +39,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   	private homeService: HomeService,
     private authService: AuthService,
     private modalidadServ: ModalidadService,
+    public constante: AppConfig,
+    public campusCarreraServ: CampusCarreraService, 
+    public pnnServ: PnnService,
     private router: Router) { }
 
   ngOnInit() {
@@ -70,6 +76,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log(this.landings);
     
     this.me = datos; 
+    this.campusCarreraServ.getAll();
+    this.pnnServ.getAll();
   
   }
 

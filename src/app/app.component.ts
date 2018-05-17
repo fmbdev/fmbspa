@@ -1,5 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 
+
 import { CsqService } from './providers/csq.service';
 import { PnnService } from './providers/pnn.service';
 import { AuthService } from './providers/auth.service';
@@ -45,17 +46,24 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.landingService.getInit();    
-    this.pnnServ.getAll();
+    // this.pnnServ.getAll();
+    // this.campusCarreraServ.getAll();
+
     this.csqServ.getAll();
     this.nivelServ.getAll();
+
     this.carreraServ.getAll();
     this.modalidadServ.getAll();
-    this.campusCarreraServ.getAll();
-    this.subSubServ.getSubSubTiposActividad();
-    //this.escuelaEmpresaServ.getAll();
+    
+    
+    this.escuelaEmpresaServ.getAll();
 
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);    
+
+    setTimeout(function(){
+      this.subSubServ.getSubSubTiposActividad();
+    },100);
    // this.subsGetMe = this.homeService.getMe(  ).subscribe(me => this.meget = me);   
     
     if(window.location.pathname!='/'){

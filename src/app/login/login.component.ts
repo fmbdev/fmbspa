@@ -1,3 +1,4 @@
+import { AppConfig } from './../services/constants';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {GeneralService} from '../services/general.service';
 import {MatDialog} from '@angular/material';
@@ -31,12 +32,14 @@ export class LoginComponent implements OnInit {
   inputError: any;
   txtError: any;
   email: any;
+  api_cnn;
 
   matcher = new MyErrorStateMatcher();
   
   private headers = new Headers({'Content-Type':'application/jsonp'});
 
-  constructor(private router: Router,private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService,private http: Http) { }
+  constructor(private router: Router,private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService,private http: Http, public constante: AppConfig,
+  public campusCarreraServ: CampusCarreraService, public pnnServ: PnnService) { }
 
   ngOnInit() {
     this.email = new FormControl('', this.validUsuario.bind(this));
@@ -118,12 +121,7 @@ export class LoginComponent implements OnInit {
 
                    
                 });
-          });
-          
-
-
-
-
+          });          
     }
   }
 
@@ -137,7 +135,8 @@ export class LoginComponent implements OnInit {
   }
  
   onLogin() {
-    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri=https://app.devmx.com.mx&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
+    //window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri=https://app.devmx.com.mx&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
+    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri="+this.constante.api_request+"&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
   }
 
   onLogin2() {
