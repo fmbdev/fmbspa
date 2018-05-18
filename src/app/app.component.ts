@@ -1,3 +1,5 @@
+import { AppConfig } from './services/constants';
+import { IdleUserService } from './providers/idle-user.service';
 import { Component, OnInit,ViewChild } from '@angular/core';
 
 
@@ -42,9 +44,26 @@ export class AppComponent implements OnInit{
               private modalidadServ: ModalidadService,              
               private subSubServ: SubsubtipoActividadService,             
               private campusCarreraServ: CampusCarreraService,
-              private escuelaEmpresaServ: EscuelaEmpresaService,){}
+              private escuelaEmpresaServ: EscuelaEmpresaService,
+              public userActive:  IdleUserService, 
+              private route: Router,
+              public constante: AppConfig){}
+              
 
   ngOnInit(){
+    //** Detección de inactividad **// 
+    if(this.route.url != '/'){
+      this.userActive.conteoInactividad();
+      this.userActive.detectaActividad();
+    }else{
+      
+      console.log(' no se va a ejecutar aqui');
+    }
+      
+    
+    
+    //** Detección de inactividad **// 
+
     this.landingService.getInit();    
     // this.pnnServ.getAll();
     // this.campusCarreraServ.getAll();
@@ -62,7 +81,7 @@ export class AppComponent implements OnInit{
     let datos = JSON.parse(userLocal);    
 
     setTimeout(function(){
-      this.subSubServ.getSubSubTiposActividad();
+      //this.subSubServ.getSubSubTiposActividad();
     },100);
    // this.subsGetMe = this.homeService.getMe(  ).subscribe(me => this.meget = me);   
     
@@ -96,8 +115,12 @@ export class AppComponent implements OnInit{
       let land = JSON.parse(userLanding);  
        this.landings = land; 
     }
+
+    
          	
   }
+
+ 
 
   onLogout() {
     //this.authServ.logout();

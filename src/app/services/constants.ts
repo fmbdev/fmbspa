@@ -7,6 +7,10 @@ export class AppConfig{
   API_URL_DEBUG = "http://localhost:4200/fmbapp/public/api/";
   API_DEBUG = "http://localhost:4200/";
 
+  // configuración de tiempo de inactividad del usuario para cerrar sesión //
+  // Este se ingresa en cantidad de minutos de espera //
+  IldleWaiting:number  = 10; 
+
   public api_request = this.API_URL_DEV;
   
 }

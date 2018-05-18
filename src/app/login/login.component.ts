@@ -1,7 +1,7 @@
 import { AppConfig } from './../services/constants';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {GeneralService} from '../services/general.service';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
@@ -10,6 +10,7 @@ import { Http, Headers, Response} from '@angular/http';
 import { AuthService } from '../providers/auth.service';
 import * as $ from 'jquery';
 import {Router} from "@angular/router";
+
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
   private headers = new Headers({'Content-Type':'application/jsonp'});
 
   constructor(private router: Router,private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService,private http: Http, public constante: AppConfig,
-  public campusCarreraServ: CampusCarreraService, public pnnServ: PnnService) { }
+  public elementRef: ElementRef) { }
 
   ngOnInit() {
     this.email = new FormControl('', this.validUsuario.bind(this));
@@ -125,6 +126,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  
+
   validUsuario(control: FormControl){
     console.log(this.inputError);
     if(this.inputError == 'username'){
@@ -153,6 +156,8 @@ export class LoginComponent implements OnInit {
   onGoto(url:string){
     this.router.navigate([url]);
   }
+
+  
 
 
 }

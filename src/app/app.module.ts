@@ -1,3 +1,4 @@
+import { IdleUserService } from './providers/idle-user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -82,6 +83,9 @@ import { HomeService } from './providers/home.service';
 import {AuthGuardService } from './providers/auth-guard.service';
 
 
+/* Romper sesión despues de un tiempo */
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -135,7 +139,8 @@ import {AuthGuardService } from './providers/auth-guard.service';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatListModule, 
-    MatMenuModule
+    MatMenuModule,
+
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
               ParentescoService, CampusService, NivelService, ModalidadService, SubsubtipoActividadService,
@@ -143,7 +148,7 @@ import {AuthGuardService } from './providers/auth-guard.service';
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService,
               TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,
-              HttpService, AuthService, HomeService, CampusCarreraService, AuthGuardService, ActividadAgendaService
+              HttpService, AuthService, HomeService, CampusCarreraService, AuthGuardService, ActividadAgendaService,IdleUserService
             ],
   bootstrap: [AppComponent]
 })
