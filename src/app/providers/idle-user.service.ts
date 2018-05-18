@@ -24,14 +24,15 @@ export class IdleUserService {
   conteoInactividad(){    
     
     this.minutosEspera = this.constante.IldleWaiting;
-    this.n = this.minutosEspera * 1000 ;
+    this.n = this.minutosEspera * 1000 * 60 ;
     
-    this.n = this.constante.IldleWaiting * 1000 * 60;
+    
     this.timeIlde = setTimeout(()=>{ 
       var reinicia  = 0;
       if(localStorage.getItem('rMinutosEspera') != null){
         localStorage.removeItem('rMinutosEspera');
-        this.n = this.minutosEspera;    
+        
+        this.n = this.minutosEspera * 1000 * 60 ;   
         this.conteoInactividad();   
         console.info('reinicio conter')
       }else{
