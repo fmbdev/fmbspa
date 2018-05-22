@@ -80,6 +80,7 @@ import { HttpService } from './providers/http.service';
 import { AuthService } from './providers/auth.service';
 import { HomeService } from './providers/home.service';
 import {AuthGuardService } from './providers/auth-guard.service';
+import { DialogFormComponent } from './dialog-form/dialog-form.component';
 
 
 @NgModule({
@@ -104,10 +105,12 @@ import {AuthGuardService } from './providers/auth-guard.service';
     NewRegisterExistingReceptionComponent,
     FormComponent,
     DialogComponent,
+    DialogFormComponent,
     
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    DialogFormComponent
   ],  
   imports: [
     BrowserModule,

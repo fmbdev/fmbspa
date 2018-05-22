@@ -415,6 +415,11 @@ export class NewRegisterPromotionComponent implements OnInit {
                  Team: this.form.value.Team, 
                  Prioridad: this.form.value.Prioridad, 
                  Attemp: this.form.value.Attemp
+                 //GUIDCampus: this.form.value.CampusGUID, 
+                  GUIDCiclo: this.form.value.CicloGUID,
+                  GUIDCarrera: this.form.value.CarreraGUID,
+                  GUIDNivelInteres: this.form.value.NivelGUID,
+                  GUIDModalidad: this.form.value.ModalidadGUID
             */
           // -------------------------------- Predictivo  ----------------------------------
 

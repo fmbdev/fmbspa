@@ -6,6 +6,8 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 
 import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { DialogFormComponent } from '../dialog-form/dialog-form.component';
+
 import 'rxjs/Rx';
 
 import * as $ from 'jquery';
@@ -374,7 +376,7 @@ export class NewRegisterSoloComponent implements OnInit {
             Campus: this.form.value.Campus, AreaInteres: this.form.value.AreaInteres, Ciclo: this.form.value.Ciclo, Carrera: this.form.value.Carrera, Nivel: this.form.value.Nivel, Modalidad: this.form.value.Modalidad,
             Banner: this.form.value.Banner
           };
-
+            ////GUIDCampus: this.form.value.CampusGUID, GUIDCiclo: this.form.value.CicloGUID, GUIDCarrera: this.form.value.CarreraGUID, GUIDNivelInteres: this.form.value.NivelGUID, GUIDModalidad: this.form.value.ModalidadGUID
             this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
@@ -403,7 +405,21 @@ export class NewRegisterSoloComponent implements OnInit {
         let fecha = year - edad;
         this.form.controls.FechaNacimiento.setValue('01/01/'+fecha);
     }
+    agruparClick(){
+        let ases = this.asesorServ.getAll()
+            .subscribe(
+                (data: Asesor[]) => this.asesores = data
+            );
+        this.showDialogForm(this.asesores,"Asesores");
+    }
 
+    agruparDirectaClick() {
+        let asess = this.asesorServ.getAll()
+            .subscribe(
+                (data: Asesor[]) => this.asesores = data
+            );
+        this.showDialogForm(this.asesores, "Asesores Grupal");
+    }
     onKeydownEmail(event: KeyboardEvent) {
         let name = this.form.controls.NombreTutor.value;
         if (name == '') {
@@ -596,6 +612,14 @@ export class NewRegisterSoloComponent implements OnInit {
             height: '180px',
             width: '500px',
             data: { message: message }
+        });
+    }
+
+    private showDialogForm(array: any, message: string) {
+        let dialogForm = this.dialog.open(DialogFormComponent, {
+            height: '180px',
+            width: '500px',
+            data: { message: array, title: message }
         });
     }
 }
