@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { LandingService } from '../services/landing.service';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 import { ModalidadService } from '../providers/modalidad.service';
 
 import { Landing } from '../interfaces/landing';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,8 @@ import { Landing } from '../interfaces/landing';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  
   events: MicrosoftGraph.Event[];
   meget: MicrosoftGraph.User;
   me: MicrosoftGraph.User;
@@ -78,7 +80,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onLogout() {
-    this.authService.logout();
+    //this.authServ.logout();
+    this.sidenav.close();
+    localStorage.clear();
+    this.router.navigate(['/']);
+
   }
 
   onLogin() {

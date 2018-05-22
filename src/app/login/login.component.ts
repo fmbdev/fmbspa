@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.email = new FormControl('', this.validUsuario.bind(this));
     console.log('CODE='+this.getParameterByName('code'));
     if(this.getParameterByName('code')!=''){
-      window.location.href = "https://devmx.com.mx/fmbapp/public/api/getToken2?code="+this.getParameterByName('code');
+      window.location.href = "https://devmx.com.mx/fmbapp/public/api/getToken?code="+this.getParameterByName('code');
     }
 
     if(this.getParameterByName('access_token')!=''){
@@ -119,11 +119,6 @@ export class LoginComponent implements OnInit {
                    
                 });
           });
-          
-
-
-
-
     }
   }
 
@@ -137,7 +132,7 @@ export class LoginComponent implements OnInit {
   }
  
   onLogin() {
-    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri=https://landing.devmx.com.mx&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
+    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri=https://app.devmx.com.mx&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
   }
 
   onLogin2() {

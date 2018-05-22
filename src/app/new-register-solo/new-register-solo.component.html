@@ -26,17 +26,17 @@
                         </mat-grid-tile>
                     </mat-grid-list>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="Nombre" required matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Nombre.errors?.required">{{showMjs('nombre.m1')}} </mat-error>
                         <mat-error *ngIf="form.controls.Nombre.errors?.palabraMala && !form.controls.Nombre.errors?.required">{{showMjs('nombre.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoPaterno" required matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.palabraMala && !form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoMaterno" required matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.palabraMala && !form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
@@ -67,7 +67,7 @@
                         <mat-error *ngIf="form.controls.Telefono.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-select formControlName="Genero" placeholder="Género">
+                        <mat-select formControlName="Genero" required placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let genero of generos;" [value]="genero['id']">
                                 {{ genero['genero'] }}
@@ -84,7 +84,7 @@
                     </mat-form-field>-->
                     <input formControlName="FechaNacimiento" type="hidden">
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
+                        <input autocomplete="off" required formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                     </mat-form-field>
@@ -231,15 +231,27 @@
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
-        <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 50px;">
+        <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 0px;">
+            <mat-grid-tile class="le">
+                <div class="btn">
+                    <button mat-raised-button color="warn" class="cancel" style="margin-right: 0px; ">ASIGNAR</button>
+                    <button mat-raised-button color="warn" class="cancel" style="margin-right: 0px; ">DIRECTA</button>
+                    <button mat-raised-button color="warn" class="cancel" style="margin-right: 0px;width: 189px;" >SESION GRUPAL</button>
+                </div>
+                  
+            </mat-grid-tile>
+            <mat-grid-tile class="le">
+                <div class="btn" style="width: 100%; margin-right: 0; ">
+                    <button mat-raised-button color="warn" (click)="onSubmit()" style="float: right; ">GUARDAR</button>
+                    <button mat-raised-button color="warn" (click)="resetForm()" style="float: right; " class="cancel">CANCELAR</button>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list cols="2" rowHeight="50px" style="margin-bottom: 50px;">
             <mat-grid-tile class="le">
                 <a routerLink="/referidoPromotor" target="_blank"> Capturar Referido</a>
             </mat-grid-tile>
             <mat-grid-tile>
-                <div class="btn">
-                    <button mat-raised-button color="warn" (click)="resetForm()" class="cancel">CANCELAR</button>
-                    <button mat-raised-button color="warn" (click)="onSubmit()">GUARDAR</button>
-                </div>
             </mat-grid-tile>
         </mat-grid-list>
     </div>
