@@ -7,7 +7,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario"  readonly>
+                        <input autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario" readonly>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -21,7 +21,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)" (change)="onChangeCanal(form.controls.Canal.value)">
+                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)" (change)="onChangeCanal(form.controls.Canal.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_canales']">
                                 {{ canal['crmit_name'] }}
@@ -32,7 +32,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="CSQ" placeholder="Departamento" required>
+                        <mat-select formControlName="CSQ" placeholder="Departamento" required>
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_csq']">
                                 {{ csq['crmit_name'] }}
@@ -55,7 +55,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                       <mat-select formControlName="Interesa_NoInteresa" id="interes" placeholder="Interesa/No interesa">
+                        <mat-select formControlName="Interesa_NoInteresa" id="interes" placeholder="Interesa/No interesa">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option value="Interesa">Interesa</mat-option>
                             <mat-option value="No Interesa">No Interesa</mat-option>
@@ -77,30 +77,31 @@
                         </mat-grid-tile>
                     </mat-grid-list>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Nombre.errors?.required">{{showMjs('nombre.m1')}} </mat-error>
                         <mat-error *ngIf="form.controls.Nombre.errors?.palabraMala && !form.controls.Nombre.errors?.required">{{showMjs('nombre.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.palabraMala && !form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.palabraMala && !form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required (change)="onChange()">
+                        <input autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required (change)="onChange()">
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.emailMalo && !form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
                     <div style="height: 41px; padding-top: 15px;">
-                       <mat-checkbox formControlName="SinCorreo" (change)="addValidation($event)" value="ok">Sin Correo Electrónico</mat-checkbox>
+                        <mat-checkbox formControlName="SinCorreo" (change)="addValidation($event)" value="ok">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()" class="validPhoneNumber">
+                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()"
+                            class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.required">{{showMjs('celular.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required  && !form.controls.NumeroCelular.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.aceptNumber  && !form.controls.NumeroCelular.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
@@ -108,7 +109,8 @@
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()" class="validPhoneNumber">
+                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()"
+                            class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.Telefono.errors?.required">{{showMjs('telefono.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required  && !form.controls.Telefono.errors?.numberCon">{{showMjs('telefono.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.Telefono.errors?.aceptNumber  && !form.controls.Telefono.errors?.minlength">{{showMjs('telefono.m3')}}</mat-error>
@@ -116,7 +118,7 @@
                         <mat-error *ngIf="form.controls.Telefono.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Genero" placeholder="Género">
+                        <mat-select formControlName="Genero" placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let genero of generos;" [value]="genero['id']">
                                 {{ genero['genero'] }}
@@ -126,14 +128,14 @@
 
                     </mat-form-field>
                     <!--<mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="FechaNacimiento" matInput [matDatepicker]="pickerB" readonly placeholder="Fecha de Nacimiento">
+                        <input autocomplete="off" formControlName="FechaNacimiento" matInput [matDatepicker]="pickerB" readonly placeholder="Fecha de Nacimiento">
                         <mat-datepicker-toggle matSuffix [for]="pickerB"></mat-datepicker-toggle>
                         <mat-datepicker #pickerB startView="year" [startAt]="startDate" disabled="false"></mat-datepicker>
                         <mat-error *ngIf="form.controls.FechaNacimiento.errors?.required">Ingresa una Fecha de Nacimiento </mat-error>
                     </mat-form-field>-->
                     <input formControlName="FechaNacimiento" type="hidden">
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
+                        <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                     </mat-form-field>
@@ -147,27 +149,28 @@
                         </mat-grid-tile>
                     </mat-grid-list>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="NombreTutor" (keyup)="onKeydownEmail($event)" (keypress)="_keyOnly3letter($event,form.controls.NombreTutor.value)" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)">
+                        <input autocomplete="off" formControlName="NombreTutor" (keyup)="onKeydownEmail($event)" (keypress)="_keyOnly3letter($event,form.controls.NombreTutor.value)" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)">
                         <mat-error *ngIf="form.controls.NombreTutor.errors?.required">{{showMjs('nombre.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.NombreTutor.errors?.palabraMala && !form.controls.NombreTutor.errors?.required">{{showMjs('nombre.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="ApellidoPaternoTutor" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaternoTutor.value)" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)">
+                        <input autocomplete="off" formControlName="ApellidoPaternoTutor" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaternoTutor.value)" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)">
                         <mat-error *ngIf="form.controls.ApellidoPaternoTutor.errors?.required">{{showMjs('paterno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoPaternoTutor.errors?.palabraMala && !form.controls.ApellidoPaternoTutor.errors?.required">{{showMjs('paterno.m1')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="ApellidoMaternoTutor" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaternoTutor.value)" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)">
+                        <input autocomplete="off" formControlName="ApellidoMaternoTutor" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaternoTutor.value)" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)">
                         <mat-error *ngIf="form.controls.ApellidoMaternoTutor.errors?.required">{{showMjs('materno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoMaternoTutor.errors?.palabraMala && !form.controls.ApellidoMaternoTutor.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="CorreoElectronicoTutor" matInput placeholder="Correo Electrónico">
+                        <input autocomplete="off" formControlName="CorreoElectronicoTutor" matInput placeholder="Correo Electrónico">
                         <mat-error *ngIf="form.controls.CorreoElectronicoTutor.errors?.required">{{showMjs('correo.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.CorreoElectronicoTutor.errors?.emailMalo && !form.controls.CorreoElectronicoTutor.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelularR" matInput placeholder="Número Celular (10 dígitos)" maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelularR.value)" class="validPhoneNumber">
+                        <input autocomplete="off" formControlName="NumeroCelularR" matInput placeholder="Número Celular (10 dígitos)" maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelularR.value)"
+                            class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.NumeroCelularR.errors?.required">{{showMjs('celular.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelularR.errors?.minlength && !form.controls.NumeroCelularR.errors?.required  && !form.controls.NumeroCelularR.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelularR.errors?.aceptNumber  && !form.controls.NumeroCelularR.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
@@ -183,7 +186,7 @@
                         <mat-error *ngIf="form.controls.TelefonoTutor.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="ParentescoTutor" placeholder="Parentesco">
+                        <mat-select formControlName="ParentescoTutor" placeholder="Parentesco">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_name']">
                                 {{ parentesco['crmit_name'] }}
@@ -202,7 +205,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
+                        <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']+campu['crmi_name']">
                                 {{ campu['crmit_tb_campusid']+'.'+campu['crmi_name']}}
@@ -213,7 +216,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
+                        <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
                                 {{ interes['Área Interes'] }}
@@ -226,18 +229,18 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
+                        <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                                <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']">
-                                    {{ nivel['crmit_name'] }}
-                                </mat-option>
+                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']">
+                                {{ nivel['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Nivel.errors?.required">{{showMjs('nivel.m1')}}</mat-error>
                     </mat-form-field>
-                </mat-grid-tile>                                              
+                </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input matInput placeholder="Número de Persona" [errorStateMatcher]="matcher" formControlName="NumeroPersona" readonly>
+                        <input matInput placeholder="Número de Persona" formControlName="NumeroPersona" readonly>
                         <mat-error *ngIf="form.controls.NumeroPersona.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
@@ -245,7 +248,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
+                        <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']">
                                 {{ modalidad['crmit_name'] }}
@@ -256,7 +259,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" matInput placeholder="Número de Cuenta" formControlName="NumeroCuenta" readonly>
+                        <input matInput placeholder="Número de Cuenta" formControlName="NumeroCuenta" readonly>
                         <mat-error *ngIf="form.controls.NumeroCuenta.errors?.pattern" required>Se deben ingresar solo digitos</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
@@ -264,15 +267,15 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" matInput formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
+                        <mat-select matInput formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                                <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']">
-                                    {{ carrera['name'] }}
-                                </mat-option>
+                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']">
+                                {{ carrera['name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs( 'carrera.m1')}}</mat-error>
                     </mat-form-field>
-                </mat-grid-tile> 
+                </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
                         <input matInput placeholder="Etapa de Venta" formControlName="etapaVenta" readonly>
@@ -282,7 +285,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" matInput formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
+                        <mat-select matInput formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
                                 {{ ciclo['crmit_name'] }}
@@ -303,7 +306,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="Tipificacion" placeholder="Tipificación" required>
+                        <mat-select formControlName="Tipificacion" placeholder="Tipificación" required>
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['Tipificación']">
                                 {{ tipificacion['Tipificación'] }}
@@ -318,7 +321,7 @@
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-form-field style="margin-left: 10px;" class="example-full-width">
-                <textarea matInput [errorStateMatcher]="matcher" placeholder="Notas" formControlName="Notas" (keypress)="_keyOnly3letter($event, form.controls.Notas.value)"></textarea>
+                <textarea matInput placeholder="Notas" formControlName="Notas" (keypress)="_keyOnly3letter($event, form.controls.Notas.value)"></textarea>
             </mat-form-field>
         </div>
         <div class="head-blue mt">
@@ -328,7 +331,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="CampusCitas" placeholder="Campus de Cita">
+                        <mat-select formControlName="CampusCitas" placeholder="Campus de Cita">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let campus of campus_citas;" [value]="campus['Nombre de Campus']">
                                 {{ campus['Nombre de Campus'] }}
@@ -345,7 +348,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input [errorStateMatcher]="matcher" autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
+                        <input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
                         <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                         <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'fecha_cita.m1')}}</mat-error>
@@ -354,7 +357,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" formControlName="HoraCita" placeholder="Hora de Cita">
+                        <mat-select formControlName="HoraCita" placeholder="Hora de Cita">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let hora of horas;" [value]="hora.hora">
                                 {{ hora.hora }}
@@ -372,7 +375,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select [errorStateMatcher]="matcher" placeholder="Asesor" formControlName="Asesor">
+                        <mat-select placeholder="Asesor" formControlName="Asesor">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let asesor of asesores;" [value]="asesor['Nombre Asesor']">
                                 {{ asesor['Nombre Asesor'] }}

@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
 
   events: MicrosoftGraph.Event[];
   meget: MicrosoftGraph.User;
-  me: MicrosoftGraph.User;
+  me: any;
   message: MicrosoftGraph.Message;
   emailSent: Boolean;
   subsGetUsers: Subscription;
@@ -58,6 +58,7 @@ export class FormComponent implements OnInit {
     this.landings = land; 
     
     console.log(this.landings);
+ 
     
     this.me = datos; 
   

@@ -7,7 +7,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario"  readonly>
+                        <input autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario" readonly>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -167,7 +167,7 @@
                         <mat-error *ngIf="form.controls.ApellidoMaternoTutor.errors?.palabraMala && !form.controls.ApellidoMaternoTutor.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="CorreoElectronicoTutor" matInput placeholder="Correo Electrónico" [readonly]="anyBooleanPropertyFromComponent">
+                        <input autocomplete="off" formControlName="CorreoElectronicoTutor" matInput placeholder="Correo Electrónico">
                         <mat-error *ngIf="form.controls.CorreoElectronicoTutor.errors?.required">{{showMjs('correo.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.CorreoElectronicoTutor.errors?.emailMalo && !form.controls.CorreoElectronicoTutor.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
