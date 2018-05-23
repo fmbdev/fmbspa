@@ -117,38 +117,39 @@
                 <mat-form-field>
                     <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeCampus(form.controls.Campus.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
-                        <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']">
+                        <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']+'*'+campu['crmi_name']">
                             {{ campu['crmi_name'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.Campus.errors?.required">Elige un Campus</mat-error>
+                    <mat-error *ngIf="form.controls.Campus.errors?.required">{{showMjs('campus.m1')}}</mat-error>
                 </mat-form-field>
+
                 <mat-form-field>
                     <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeNivel(form.controls.Nivel.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
-                        <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']">
+                        <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']+'*'+nivel['crmit_name']">
                             {{ nivel['crmit_name'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.Nivel.errors?.required">Elige un Nivel</mat-error>
+                    <mat-error *ngIf="form.controls.Nivel.errors?.required">{{showMjs('nivel.m1')}}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeModalidad(form.controls.Modalidad.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
-                        <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']">
+                        <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']+'*'+modalidad['crmit_name']">
                             {{ modalidad['crmit_name'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.Modalidad.errors?.required">Elige una Modalidad</mat-error>
+                    <mat-error *ngIf="form.controls.Modalidad.errors?.required">{{showMjs( 'modalidad.m1')}}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-select formControlName="Carrera" placeholder="Carrera">
                         <mat-option value="">Selecciona una opción</mat-option>
-                        <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']">
+                        <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
                             {{ carrera['name'] }}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="form.controls.Carrera.errors?.required">Elige una Carrera</mat-error>
+                    <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs( 'carrera.m1')}}</mat-error>
                 </mat-form-field>
             </div>
             <div style="clear: both; height: 0; display: block;"></div>

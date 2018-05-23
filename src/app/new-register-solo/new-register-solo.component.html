@@ -7,7 +7,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario"   readonly>
+                        <input autocomplete="off" matInput placeholder="Usuario" formControlName="Usuario" readonly>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -26,17 +26,17 @@
                         </mat-grid-tile>
                     </mat-grid-list>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="Nombre" required matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Nombre.errors?.required">{{showMjs('nombre.m1')}} </mat-error>
                         <mat-error *ngIf="form.controls.Nombre.errors?.palabraMala && !form.controls.Nombre.errors?.required">{{showMjs('nombre.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoPaterno" required matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.palabraMala && !form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoMaterno" required matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.palabraMala && !form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
@@ -67,7 +67,7 @@
                         <mat-error *ngIf="form.controls.Telefono.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-select formControlName="Genero" placeholder="Género">
+                        <mat-select formControlName="Genero" required placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let genero of generos;" [value]="genero['id']">
                                 {{ genero['genero'] }}
@@ -84,7 +84,7 @@
                     </mat-form-field>-->
                     <input formControlName="FechaNacimiento" type="hidden">
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
+                        <input autocomplete="off" required formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                     </mat-form-field>
@@ -156,7 +156,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']">
+                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']+'*'+campu['crmi_name']">
                                 {{ campu['crmi_name'] }}
                             </mat-option>
                         </mat-select>
@@ -167,7 +167,7 @@
                     <mat-form-field>
                         <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
@@ -180,20 +180,20 @@
                     <mat-form-field>
                         <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                                <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']">
-                                    {{ nivel['crmit_name'] }}
-                                </mat-option>
+                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']+'*'+nivel['crmit_name']">
+                                {{ nivel['crmit_name'] }}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Nivel.errors?.required">{{showMjs('nivel.m1')}}</mat-error>
                     </mat-form-field>
-                </mat-grid-tile>               
+                </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
                         <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']">
+                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']+'*'+modalidad['crmit_name']">
                                 {{ modalidad['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -206,13 +206,13 @@
                     <mat-form-field>
                         <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']">
+                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
                                 {{ carrera['name'] }}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs( 'carrera.m1')}}</mat-error>
                     </mat-form-field>
-                </mat-grid-tile>       
+                </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
@@ -231,15 +231,27 @@
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
-        <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 50px;">
+        <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 0px;">
+            <mat-grid-tile class="le">
+                <div class="btn">
+                    <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel" style="margin-right: 0px; ">ASIGNAR</button>
+                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel" style="margin-right: 0px; ">DIRECTA</button>
+                    <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel" style="margin-right: 0px;width: 200px;">SESION GRUPAL</button>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile class="le">
+                <div class="btn" style="width: 100%; margin-right: 0; ">
+                    <button mat-raised-button color="warn" (click)="onSubmit()" style="float: right; ">GUARDAR</button>
+                    <button mat-raised-button color="warn" (click)="resetForm()" style="float: right; " class="cancel">CANCELAR</button>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list cols="2" rowHeight="50px" style="margin-bottom: 50px;">
             <mat-grid-tile class="le">
                 <a routerLink="/referidoPromotor" target="_blank"> Capturar Referido</a>
             </mat-grid-tile>
             <mat-grid-tile>
-                <div class="btn">
-                    <button mat-raised-button color="warn" (click)="resetForm()" class="cancel">CANCELAR</button>
-                    <button mat-raised-button color="warn" (click)="onSubmit()">GUARDAR</button>
-                </div>
             </mat-grid-tile>
         </mat-grid-list>
     </div>

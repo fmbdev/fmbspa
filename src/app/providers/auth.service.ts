@@ -93,21 +93,10 @@ export class AuthService {
   }
 
   isAuthenticated() {
-        if(localStorage.user || localStorage.user==undefined){
-          return false; 
-        }else{
-          return true;
-
-          /*
-          var rick = JSON.parse(localStorage.user);
-          if(rick.msft.access_token){
-            
-            //$.ajax('', {data: {user_id:''}, contentType: 'application/json', type: 'POST'});
-            return true;
-          }else{
-            return false;
-          }   
-          */  
-        }
+    if (localStorage.getItem("user") === null) {
+      return true; 
+    } else {
+      return false;
+    }
   }
 }

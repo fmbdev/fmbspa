@@ -129,7 +129,7 @@ export class AppComponent implements OnInit{
     //this.authServ.logout();
     this.sidenav.close();
     localStorage.clear();
-    this.router.navigate(['/']);
+    window.location.href='https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/logout?post_logout_redirect_uri=https://app.devmx.com.mx';
 
   }
   

@@ -1,7 +1,6 @@
-import { AppConfig } from './../services/constants';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {GeneralService} from '../services/general.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
@@ -10,7 +9,6 @@ import { Http, Headers, Response} from '@angular/http';
 import { AuthService } from '../providers/auth.service';
 import * as $ from 'jquery';
 import {Router} from "@angular/router";
-
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -33,25 +31,18 @@ export class LoginComponent implements OnInit {
   inputError: any;
   txtError: any;
   email: any;
-  api_cnn;
-  front_page;
 
   matcher = new MyErrorStateMatcher();
   
   private headers = new Headers({'Content-Type':'application/jsonp'});
 
-  constructor(private router: Router,private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService,private http: Http, public constante: AppConfig,
-  public elementRef: ElementRef) { }
+  constructor(private router: Router,private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService,private http: Http) { }
 
   ngOnInit() {
-    this.api_cnn = this.constante.api_request;
-    //this.front_page = 'https://landing.devmx.com.mx';
-    this.front_page = 'http://localhost:4200';
     this.email = new FormControl('', this.validUsuario.bind(this));
     console.log('CODE='+this.getParameterByName('code'));
     if(this.getParameterByName('code')!=''){
-      //window.location.href = "https://devmx.com.mx/fmbapp/public/api/getToken2?code="+this.getParameterByName('code');
-      window.location.href = this.api_cnn+"getToken2?code="+this.getParameterByName('code');
+      window.location.href = "https://devmx.com.mx/fmbapp/public/api/getToken?code="+this.getParameterByName('code');
     }
 
     if(this.getParameterByName('access_token')!=''){
@@ -111,9 +102,7 @@ export class LoginComponent implements OnInit {
                 $.ajax(settings2).done(function (response){            
                   let user = JSON.stringify(response)
                   localStorage.setItem('user',user); 
-                  //let url_request = "https://devmx.com.mx/fmbapp/public/api/";
-                  let url_request =  this.api_cnn;
-                  $.ajax(url_request+'roles/'+response.domainname,
+                  $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+response.domainname,
                     {
                        //data: {user_id:''},
                         contentType: 'application/json',
@@ -129,11 +118,9 @@ export class LoginComponent implements OnInit {
 
                    
                 });
-          });          
+          });
     }
   }
-
-  
 
   validUsuario(control: FormControl){
     console.log(this.inputError);
@@ -145,7 +132,7 @@ export class LoginComponent implements OnInit {
   }
  
   onLogin() {
-    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri="+this.front_page+"&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
+    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri=https://app.devmx.com.mx&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
   }
 
   onLogin2() {
@@ -162,8 +149,6 @@ export class LoginComponent implements OnInit {
   onGoto(url:string){
     this.router.navigate([url]);
   }
-
-  
 
 
 }

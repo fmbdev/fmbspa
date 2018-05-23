@@ -40,7 +40,8 @@ import { CicloService } from './providers/ciclo.service';
 import { TurnoService } from './providers/turno.service';
 import { FormatService } from './providers/format.service';
 import { CampusService } from './providers/campus.service';
-import { AsesorService } from './providers/asesor.service';
+import { AsesorService} from './providers/asesor.service';
+import { AsesorGrupalService } from './providers/asesor-grupal.service';
 import { GeneroService } from './providers/genero.service';
 import { InteresService } from './providers/interes.service';
 import { CarreraService } from './providers/carrera.service';
@@ -81,6 +82,7 @@ import { HttpService } from './providers/http.service';
 import { AuthService } from './providers/auth.service';
 import { HomeService } from './providers/home.service';
 import {AuthGuardService } from './providers/auth-guard.service';
+import { DialogFormComponent } from './dialog-form/dialog-form.component';
 
 
 /* Romper sesión despues de un tiempo */
@@ -108,10 +110,12 @@ import {AuthGuardService } from './providers/auth-guard.service';
     NewRegisterExistingReceptionComponent,
     FormComponent,
     DialogComponent,
+    DialogFormComponent,
     
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    DialogFormComponent
   ],  
   imports: [
     BrowserModule,
@@ -144,7 +148,7 @@ import {AuthGuardService } from './providers/auth-guard.service';
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
               ParentescoService, CampusService, NivelService, ModalidadService, SubsubtipoActividadService,
-              CarreraService, CicloService, AsesorService, HoraService, PnnService, SendService, FormatService,
+              CarreraService, CicloService, AsesorService,AsesorGrupalService, HoraService, PnnService, SendService, FormatService,
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService,
               TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,

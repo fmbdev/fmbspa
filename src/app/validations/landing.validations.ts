@@ -146,11 +146,13 @@ export class LandingValidation {
         
     }
     static onlyLetter(event: any) {
-        const pattern = /[a-zA-Z\ñ\Ñ\ ]/;
-        const inputChar = String.fromCharCode(event.charCode);
-
-        if (!pattern.test(inputChar)) {
-          // invalid character, prevent input           
+        var pattern2 = /[a-zA-Z\s\u00f1\u00d1]/;
+        
+        var inputChar2 = String.fromCharCode(event.charCode);
+        
+        console.log(pattern2.test(inputChar2));
+        
+        if (!pattern2.test(inputChar2)) {        
           event.preventDefault();
         }
     }
