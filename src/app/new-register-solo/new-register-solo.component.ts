@@ -374,13 +374,52 @@ export class NewRegisterSoloComponent implements OnInit {
                 edadT = 12;
             }
           let bandera = localStorage.getItem('bandera');
+            /* Interes GUID */
+            let _Campus = this.form.value.Campus;
+            let _Nivel = this.form.value.Nivel;
+            let _Modalidad = this.form.value.Modalidad;
+            let _Carrera = this.form.value.Carrera;
+
+            let CampusV = _Campus.split('*');
+            let NivelV = _Nivel.split('*');
+            let ModalidadV = _Modalidad.split('*');
+            let CarreraV = _Carrera.split('*');
+            
           const sendd = {Usuario: this.form.value.Usuario,
-            Nombre: this.form.value.Nombre, ApellidoPaterno: this.form.value.ApellidoPaterno, ApellidoMaterno: this.form.value.ApellidoMaterno, CorreoElectronico: this.form.value.CorreoElectronico, NumeroCelular: this.form.value.NumeroCelular, Telefono: this.form.value.Telefono, Genero: 1, Edad:edadT, SinCorreo: this.form.value.SinCorreo,
-            NombreTutor: this.form.value.NombreTutor, ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, NumeroCelularTutor: this.form.value.NumeroCelularTutor, ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, TelefonoTutor: this.form.value.TelefonoTutor,
-            Campus: this.form.value.Campus, AreaInteres: this.form.value.AreaInteres, Ciclo: this.form.value.Ciclo, Carrera: this.form.value.Carrera, Nivel: this.form.value.Nivel, Modalidad: this.form.value.Modalidad,
-            Banner: this.form.value.Banner, Bandera: bandera
+            Nombre: this.form.value.Nombre, 
+            ApellidoPaterno: this.form.value.ApellidoPaterno, 
+            ApellidoMaterno: this.form.value.ApellidoMaterno, 
+            CorreoElectronico: this.form.value.CorreoElectronico, 
+            NumeroCelular: this.form.value.NumeroCelular, 
+            Telefono: this.form.value.Telefono, 
+            Genero: this.form.value.Genero,
+            Edad:edadT, 
+            SinCorreo: this.form.value.SinCorreo,
+
+            NombreTutor: this.form.value.NombreTutor, 
+            ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
+            NumeroCelularTutor: this.form.value.NumeroCelularTutor, 
+            ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
+            CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+            TelefonoTutor: this.form.value.TelefonoTutor,
+
+              AreaInteres: this.form.value.AreaInteres,
+              Ciclo: this.form.value.Ciclo,
+
+              Campus: CampusV[1],
+              Nivel: NivelV[1],
+              Modalidad: ModalidadV[1],
+              Carrera: CarreraV[1],
+
+              GUIDCampus: CampusV[0],
+              GUIDNivelInteres: NivelV[0],
+              GUIDModalidad: ModalidadV[0],
+              GUIDCarrera: CarreraV[0],
+
+              Banner: this.form.value.Banner,
+              Bandera: bandera
           };
-            ////GUIDCampus: this.form.value.CampusGUID, GUIDCiclo: this.form.value.CicloGUID, GUIDCarrera: this.form.value.CarreraGUID, GUIDNivelInteres: this.form.value.NivelGUID, GUIDModalidad: this.form.value.ModalidadGUID
+             
             this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
@@ -419,7 +458,9 @@ export class NewRegisterSoloComponent implements OnInit {
 
     agruparDirectaClick() {
         //let nivelG = 'Posgrado';
-        let nivelG = this.form.controls.Nivel.value;
+        let k = this.form.controls.Nivel.value;
+        let g = k.split('*');
+        let nivelG = g[0];
         console.log(nivelG);
         if(nivelG){
            let asess = this.asesorGrupalServ.getAll(nivelG)
@@ -517,60 +558,76 @@ export class NewRegisterSoloComponent implements OnInit {
         this.form.controls.Ciclo.updateValueAndValidity();
     }
 
-    onChangeCampus(value: string){
-      for(let i=0;i < this.campus.length; i++){
-        if(this.campus[i].crmit_tb_campusid == value){
-          this.campusTxt = this.campus[i].crmi_name;
+    //Cambiado
+    onChangeCampus(campus: string) {
+        console.log(campus);
+        let cadena = campus.split('*');
+        let value = cadena[0];
+        for (let i = 0; i < this.campus.length; i++) {
+            if (this.campus[i].crmit_tb_campusid == value) {
+                this.campusTxt = this.campus[i].crmi_name;
+            }
         }
-      }
 
-        if(this.form.controls['Nivel'].disabled){
+        if (this.form.controls['Nivel'].disabled) {
             this.form.controls['Nivel'].enable();
-        }else{
+        } else {
             this.form.controls['Nivel'].setValue('');
             this.form.controls['Nivel'].markAsUntouched();
         }
 
-        if(this.form.controls['Modalidad'].enabled){
+        if (this.form.controls['Modalidad'].enabled) {
             this.form.controls['Modalidad'].setValue('');
             this.form.controls['Modalidad'].markAsUntouched();
             this.form.controls['Modalidad'].disable();
         }
 
-        if(this.form.controls['Carrera'].enabled){
+        if (this.form.controls['Carrera'].enabled) {
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
             this.form.controls['Carrera'].disable();
         }
         this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
+    //Cambiando
+    onChangeNivel(campus: string) {
+        console.log(campus);
 
-    onChangeNivel(value: string){
-      for(let i=0;i < this.niveles.length; i++){
-        if(this.niveles[i].crmit_codigounico == value){
-          this.nivelTxt = this.niveles[i].crmit_name;
+        let cadena = campus.split('*');
+        let value = cadena[0];
+
+        for (let i = 0; i < this.niveles.length; i++) {
+            if (this.niveles[i].crmit_codigounico == value) {
+                this.nivelTxt = this.niveles[i].crmit_name;
+            }
         }
-      }
 
-        if(this.form.controls['Modalidad'].disabled){
+        if (this.form.controls['Modalidad'].disabled) {
             this.form.controls['Modalidad'].enable();
-        }else{
+        } else {
             this.form.controls['Modalidad'].setValue('');
             this.form.controls['Modalidad'].markAsUntouched();
         }
 
-        if(this.form.controls['Carrera'].enabled){
+        if (this.form.controls['Carrera'].enabled) {
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
             this.form.controls['Carrera'].disable();
         }
+
         this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
     }
+    //Cambiando
+    onChangeModalidad(campus: string) {
 
-    onChangeModalidad(value: string){
-        if(this.form.controls['Carrera'].disabled){
+        console.log(campus);
+
+        let cadena = campus.split('*');
+        let value = cadena[0];
+
+        if (this.form.controls['Carrera'].disabled) {
             this.form.controls['Carrera'].enable();
-        }else{
+        } else {
             this.form.controls['Carrera'].setValue('');
             this.form.controls['Carrera'].markAsUntouched();
         }

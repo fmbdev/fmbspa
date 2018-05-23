@@ -156,7 +156,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']">
+                            <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']+'*'+campu['crmi_name']">
                                 {{ campu['crmi_name'] }}
                             </mat-option>
                         </mat-select>
@@ -167,7 +167,7 @@
                     <mat-form-field>
                         <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']">
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
@@ -180,7 +180,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']">
+                            <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']+'*'+nivel['crmit_name']">
                                 {{ nivel['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -193,7 +193,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']">
+                            <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']+'*'+modalidad['crmit_name']">
                                 {{ modalidad['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -206,7 +206,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']">
+                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
                                 {{ carrera['name'] }}
                             </mat-option>
                         </mat-select>
@@ -235,7 +235,7 @@
             <mat-grid-tile class="le">
                 <div class="btn">
                     <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel" style="margin-right: 0px; ">ASIGNAR</button>
-                    <button (click)="agruparDClick()"  mat-raised-button color="warn" class="cancel" style="margin-right: 0px; ">DIRECTA</button>
+                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel" style="margin-right: 0px; ">DIRECTA</button>
                     <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel" style="margin-right: 0px;width: 200px;">SESION GRUPAL</button>
                 </div>
 

@@ -222,9 +222,11 @@ export class ReferidoWebComponent implements OnInit {
   _keyPressTxt(event: any) {
     LandingValidation.onlyLetter(event);
   }
+
   showMjs(field: any) {
     return LandingValidation.getMensaje(field);
   }
+
   _keyPressNum(event: any, value: any, word: any) {
     if (value == 1) {
       LandingValidation.onlyNumber(event);
@@ -256,64 +258,81 @@ export class ReferidoWebComponent implements OnInit {
     }
   }
 
-  onChangeCampus(value: string){
-    for(let i=0;i < this.campus.length; i++){
-      if(this.campus[i].crmit_tb_campusid == value){
+  //Cambiado
+  onChangeCampus(campus: string) {
+    console.log(campus);
+    let cadena = campus.split('*');
+    let value = cadena[0];
+    for (let i = 0; i < this.campus.length; i++) {
+      if (this.campus[i].crmit_tb_campusid == value) {
         this.campusTxt = this.campus[i].crmi_name;
       }
     }
 
-    if(this.form.controls['Nivel'].disabled){
-        this.form.controls['Nivel'].enable();
-    }else{
-        this.form.controls['Nivel'].setValue('');
-        this.form.controls['Nivel'].markAsUntouched();
+    if (this.form.controls['Nivel'].disabled) {
+      this.form.controls['Nivel'].enable();
+    } else {
+      this.form.controls['Nivel'].setValue('');
+      this.form.controls['Nivel'].markAsUntouched();
     }
 
-    if(this.form.controls['Modalidad'].enabled){
-        this.form.controls['Modalidad'].setValue('');
-        this.form.controls['Modalidad'].markAsUntouched();
-        this.form.controls['Modalidad'].disable();
+    if (this.form.controls['Modalidad'].enabled) {
+      this.form.controls['Modalidad'].setValue('');
+      this.form.controls['Modalidad'].markAsUntouched();
+      this.form.controls['Modalidad'].disable();
     }
 
-    if(this.form.controls['Carrera'].enabled){
-        this.form.controls['Carrera'].setValue('');
-        this.form.controls['Carrera'].markAsUntouched();
-        this.form.controls['Carrera'].disable();
+    if (this.form.controls['Carrera'].enabled) {
+      this.form.controls['Carrera'].setValue('');
+      this.form.controls['Carrera'].markAsUntouched();
+      this.form.controls['Carrera'].disable();
     }
     this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
   }
+  //Cambiando
+  onChangeNivel(campus: string) {
+    console.log(campus);
 
-onChangeNivel(value: string){
-  for(let i=0;i < this.niveles.length; i++){
-    if(this.niveles[i].crmit_codigounico == value){
-      this.nivelTxt = this.niveles[i].crmit_name;
-    }
-  }
-    if(this.form.controls['Modalidad'].disabled){
-        this.form.controls['Modalidad'].enable();
-    }else{
-        this.form.controls['Modalidad'].setValue('');
-        this.form.controls['Modalidad'].markAsUntouched();
+    let cadena = campus.split('*');
+    let value = cadena[0];
+
+    for (let i = 0; i < this.niveles.length; i++) {
+      if (this.niveles[i].crmit_codigounico == value) {
+        this.nivelTxt = this.niveles[i].crmit_name;
+      }
     }
 
-    if(this.form.controls['Carrera'].enabled){
-        this.form.controls['Carrera'].setValue('');
-        this.form.controls['Carrera'].markAsUntouched();
-        this.form.controls['Carrera'].disable();
+    if (this.form.controls['Modalidad'].disabled) {
+      this.form.controls['Modalidad'].enable();
+    } else {
+      this.form.controls['Modalidad'].setValue('');
+      this.form.controls['Modalidad'].markAsUntouched();
     }
+
+    if (this.form.controls['Carrera'].enabled) {
+      this.form.controls['Carrera'].setValue('');
+      this.form.controls['Carrera'].markAsUntouched();
+      this.form.controls['Carrera'].disable();
+    }
+
     this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
-}
+  }
+  //Cambiando
+  onChangeModalidad(campus: string) {
 
-onChangeModalidad(value: string){
-    if(this.form.controls['Carrera'].disabled){
-        this.form.controls['Carrera'].enable();
-    }else{
-        this.form.controls['Carrera'].setValue('');
-        this.form.controls['Carrera'].markAsUntouched();
+    console.log(campus);
+
+    let cadena = campus.split('*');
+    let value = cadena[0];
+
+    if (this.form.controls['Carrera'].disabled) {
+      this.form.controls['Carrera'].enable();
+    } else {
+      this.form.controls['Carrera'].setValue('');
+      this.form.controls['Carrera'].markAsUntouched();
     }
     this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
-}
+  }
 
  private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {

@@ -38,7 +38,11 @@ export class CampusCarreraService {
         )
   }
 
-  getNivelesByCarrera(campusId: string) : Nivel[] {
+  getNivelesByCarrera(campus: string) : Nivel[] {
+
+    let cadena = campus.split('*');
+    let campusId = cadena[0];
+    
     this.findCarrerasByCampus(campusId);
 
     let nivelesId: string[] = [];
