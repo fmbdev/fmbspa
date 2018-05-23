@@ -39,7 +39,8 @@ import { CicloService } from './providers/ciclo.service';
 import { TurnoService } from './providers/turno.service';
 import { FormatService } from './providers/format.service';
 import { CampusService } from './providers/campus.service';
-import { AsesorService } from './providers/asesor.service';
+import { AsesorService} from './providers/asesor.service';
+import { AsesorGrupalService } from './providers/asesor-grupal.service';
 import { GeneroService } from './providers/genero.service';
 import { InteresService } from './providers/interes.service';
 import { CarreraService } from './providers/carrera.service';
@@ -142,7 +143,7 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
   ],  
   providers: [CanalService, CsqService, TipificacionService, InteresService,
               ParentescoService, CampusService, NivelService, ModalidadService, SubsubtipoActividadService,
-              CarreraService, CicloService, AsesorService, HoraService, PnnService, SendService, FormatService,
+              CarreraService, CicloService, AsesorService,AsesorGrupalService, HoraService, PnnService, SendService, FormatService,
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
               ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService,
               TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,

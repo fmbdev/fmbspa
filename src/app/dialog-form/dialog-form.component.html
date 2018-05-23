@@ -1,3 +1,4 @@
+<form [formGroup]="forms">
 <div class="dialog-container">
     <div class="row">
         <div class="col-12">
@@ -5,7 +6,7 @@
                 <mat-grid-list cols="1" rowHeight="80px">
                     <mat-grid-tile>
                         <mat-form-field>
-                            <mat-select placeholder="{{title}}" formControlName="Asesor">
+                            <mat-select placeholder="{{title}}" formControlName="Asesor" (change)="onChangeAsesor(forms.controls.Asesor.value)">
                                 <mat-option value="">Selecciona una opción</mat-option>
                                 <mat-option *ngFor="let asesor of asesors;" [value]="asesor['Nombre Asesor']">
                                     {{ asesor['Nombre Asesor'] }}
@@ -25,3 +26,4 @@
         </div>
     </div>
 </div>
+</form>

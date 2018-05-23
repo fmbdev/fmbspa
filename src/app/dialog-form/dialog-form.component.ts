@@ -15,8 +15,11 @@ export class DialogFormComponent implements OnInit {
 
   message: any = [];
   title: string = "";
+  bandera: string = "";
   asesores: Asesor[] = [];
   asesors: Asesor[] = [];
+    Asesor: FormControl;
+    forms: FormGroup;
   
   constructor(
     private asesorServ: AsesorService,
@@ -24,6 +27,7 @@ export class DialogFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.asesors = this.data.message;
     this.title = this.data.title;
+    this.bandera = this.data.bandera;
   }
 
   onNoClick(): void {
@@ -31,10 +35,13 @@ export class DialogFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.asesorServ.getAll()
-      .subscribe(
-        (data: Asesor[]) => this.asesores = data
-      )
+    this.forms = new FormGroup({
+            Asesor: new FormControl(''),
+    });
+  }
+
+  onChangeAsesor(value){
+    localStorage.setItem('bandera',this.bandera+' '+value);
   }
   
 

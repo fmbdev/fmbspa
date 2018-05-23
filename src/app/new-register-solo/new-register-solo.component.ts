@@ -23,6 +23,7 @@ import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
 import { Genero } from '../interfaces/genero';
 import { Asesor } from '../interfaces/asesor';
+import { AsesorGrupal } from '../interfaces/asesor-grupal';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
 import { Modalidad } from '../interfaces/modalidad';
@@ -42,6 +43,7 @@ import { TurnoService } from '../providers/turno.service';
 import { FormatService } from '../providers/format.service';
 import { CampusService } from '../providers/campus.service';
 import { AsesorService } from '../providers/asesor.service';
+import { AsesorGrupalService } from '../providers/asesor-grupal.service';
 import { GeneroService } from '../providers/genero.service';
 import { CarreraService } from '../providers/carrera.service';
 import { InteresService } from '../providers/interes.service';
@@ -126,6 +128,7 @@ export class NewRegisterSoloComponent implements OnInit {
     campus: Campus[] = [];
     generos: Genero[] = [];
     asesores: Asesor[] = [];
+    asesorGrupal: AsesorGrupal[] = [];
     carreras: Carrera[] = [];
     intereses: Interes[] = [];
     modalidades: Modalidad[] = [];
@@ -151,6 +154,7 @@ export class NewRegisterSoloComponent implements OnInit {
         private canalServ: CanalService,
         private campusServ: CampusService,
         private asesorServ: AsesorService,
+        private asesorGrupalServ: AsesorGrupalService,
         private formatServ: FormatService,
         private generoServ: GeneroService,
         private carreraServ: CarreraService,
@@ -236,7 +240,7 @@ export class NewRegisterSoloComponent implements OnInit {
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
             )
-
+          
         this.formInit();
     }
 
@@ -369,12 +373,12 @@ export class NewRegisterSoloComponent implements OnInit {
             if(edadT==""){
                 edadT = 12;
             }
-
+          let bandera = localStorage.getItem('bandera');
           const sendd = {Usuario: this.form.value.Usuario,
             Nombre: this.form.value.Nombre, ApellidoPaterno: this.form.value.ApellidoPaterno, ApellidoMaterno: this.form.value.ApellidoMaterno, CorreoElectronico: this.form.value.CorreoElectronico, NumeroCelular: this.form.value.NumeroCelular, Telefono: this.form.value.Telefono, Genero: 1, Edad:edadT, SinCorreo: this.form.value.SinCorreo,
             NombreTutor: this.form.value.NombreTutor, ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, NumeroCelularTutor: this.form.value.NumeroCelularTutor, ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, TelefonoTutor: this.form.value.TelefonoTutor,
             Campus: this.form.value.Campus, AreaInteres: this.form.value.AreaInteres, Ciclo: this.form.value.Ciclo, Carrera: this.form.value.Carrera, Nivel: this.form.value.Nivel, Modalidad: this.form.value.Modalidad,
-            Banner: this.form.value.Banner
+            Banner: this.form.value.Banner, Bandera: bandera
           };
             ////GUIDCampus: this.form.value.CampusGUID, GUIDCiclo: this.form.value.CicloGUID, GUIDCarrera: this.form.value.CarreraGUID, GUIDNivelInteres: this.form.value.NivelGUID, GUIDModalidad: this.form.value.ModalidadGUID
             this.sendServ.sendDataToApi(sendd)// this.form.value)
@@ -410,16 +414,31 @@ export class NewRegisterSoloComponent implements OnInit {
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
             );
-        this.showDialogForm(this.asesores,"Asesores");
+        this.showDialogForm(this.asesores,"Asesores,sores," ,"Cita-");
     }
 
     agruparDirectaClick() {
-        let asess = this.asesorServ.getAll()
+        //let nivelG = 'Posgrado';
+        let nivelG = this.form.controls.Nivel.value;
+        console.log(nivelG);
+        if(nivelG){
+           let asess = this.asesorGrupalServ.getAll(nivelG)
             .subscribe(
-                (data: Asesor[]) => this.asesores = data
-            );
-        this.showDialogForm(this.asesores, "Asesores Grupal");
+                (datat: AsesorGrupal[]) => this.asesorGrupal = datat
+            )    
+            setTimeout(()=>{            
+                this.showDialogForm(this.asesorGrupal, "Asesores Grupal","SesiónG-");
+            },1000); 
+        }else{
+            this.showDialogE("Seleccione un Nivel");
+        }
     }
+
+    agruparDClick(){
+        localStorage.setItem('bandera',this.form.controls.Usuario.value);
+    }
+
+
     onKeydownEmail(event: KeyboardEvent) {
         let name = this.form.controls.NombreTutor.value;
         if (name == '') {
@@ -615,11 +634,11 @@ export class NewRegisterSoloComponent implements OnInit {
         });
     }
 
-    private showDialogForm(array: any, message: string) {
+    private showDialogForm(array: any, message: string, bander: string) {
         let dialogForm = this.dialog.open(DialogFormComponent, {
             height: '180px',
             width: '500px',
-            data: { message: array, title: message }
+            data: { message: array, title: message,bandera: bander }
         });
     }
 }
