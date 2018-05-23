@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   txtError: any;
   email: any;
   api_cnn;
+  front_page;
 
   matcher = new MyErrorStateMatcher();
   
@@ -43,10 +44,14 @@ export class LoginComponent implements OnInit {
   public elementRef: ElementRef) { }
 
   ngOnInit() {
+    this.api_cnn = this.constante.api_request;
+    //this.front_page = 'https://landing.devmx.com.mx';
+    this.front_page = 'http://localhost:4200';
     this.email = new FormControl('', this.validUsuario.bind(this));
     console.log('CODE='+this.getParameterByName('code'));
     if(this.getParameterByName('code')!=''){
-      window.location.href = "https://devmx.com.mx/fmbapp/public/api/getToken2?code="+this.getParameterByName('code');
+      //window.location.href = "https://devmx.com.mx/fmbapp/public/api/getToken2?code="+this.getParameterByName('code');
+      window.location.href = this.api_cnn+"getToken2?code="+this.getParameterByName('code');
     }
 
     if(this.getParameterByName('access_token')!=''){
@@ -106,7 +111,9 @@ export class LoginComponent implements OnInit {
                 $.ajax(settings2).done(function (response){            
                   let user = JSON.stringify(response)
                   localStorage.setItem('user',user); 
-                  $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+response.domainname,
+                  //let url_request = "https://devmx.com.mx/fmbapp/public/api/";
+                  let url_request =  this.api_cnn;
+                  $.ajax(url_request+'roles/'+response.domainname,
                     {
                        //data: {user_id:''},
                         contentType: 'application/json',
@@ -138,7 +145,7 @@ export class LoginComponent implements OnInit {
   }
  
   onLogin() {
-    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri=https://landing.devmx.com.mx&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
+    window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri="+this.front_page+"&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
   }
 
   onLogin2() {

@@ -31,6 +31,7 @@ export class AppComponent implements OnInit{
   @ViewChild('sidenav') sidenav: MatSidenav;
   shows:boolean = false;
   landings: any = [];
+  api_cnn;
 
   constructor(
               private router: Router,
@@ -51,6 +52,8 @@ export class AppComponent implements OnInit{
               
 
   ngOnInit(){
+    this.api_cnn = this.constante.api_request;
+
     //** Detección de inactividad **// 
     if(this.route.url != '/'){
       this.userActive.conteoInactividad();
@@ -92,7 +95,7 @@ export class AppComponent implements OnInit{
 
       }else{
          this.shows = true;
-        $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+datos.domainname,
+        $.ajax(this.api_cnn+'roles/'+datos.domainname,
         {
            //data: {user_id:''},
             contentType: 'application/json',

@@ -293,6 +293,13 @@ export class NewRegisterSoloComponent implements OnInit {
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');
                 if(form.controls[name].value != '' && form.controls[name].value != null){
+                    //* validación numero vacío si es sin correo  *//
+                    if(this.sinEmail && !form.controls.NumeroCelular  || form.controls.NumeroCelular == undefined){
+                        form.controls['NumeroCelular'].setErrors({'numInvalid': true});
+                    }   
+
+                    
+
                     if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
                         form.controls[name].setErrors({'numInvalid': true});
                     }else{

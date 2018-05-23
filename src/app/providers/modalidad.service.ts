@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AppConfig } from './../services/constants';
 import { Http, Headers, Response} from '@angular/http';
 import { Modalidad } from '../interfaces/modalidad';
 import { Nivel } from '../interfaces/nivel';
@@ -13,11 +14,14 @@ export class ModalidadService {
   private modalidades: Modalidad[] = [];
   private niveles: Nivel[] = [];
   private landings: Landing[] = [];
+  api_cnn;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,private constante: AppConfig) {
+    this.api_cnn = this.constante.api_request;
+  }
 
   getAll() {
-    this.http.get("https://devmx.com.mx/fmbapp/public/api/modalidad", {headers: this.headers})
+    this.http.get(this.api_cnn+"modalidad", {headers: this.headers})
         .map(
           (res: Response) => res.json()
         )
