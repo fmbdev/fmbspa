@@ -49,7 +49,7 @@
                         <mat-checkbox formControlName="SinCorreo" (change)="addValidation($event)" value="ok">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()"
+                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" required  minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()"
                             class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.required">{{showMjs('celular.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required  && !form.controls.NumeroCelular.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
@@ -154,7 +154,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
+                        <mat-select formControlName="Campus" required placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']+'*'+campu['crmi_name']">
                                 {{ campu['crmi_name'] }}
@@ -165,7 +165,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
+                        <mat-select formControlName="AreaInteres" required placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
@@ -178,7 +178,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
+                        <mat-select formControlName="Nivel" placeholder="Nivel" required (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']+'*'+nivel['crmit_name']">
                                 {{ nivel['crmit_name'] }}
@@ -191,7 +191,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
+                        <mat-select formControlName="Modalidad" required placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']+'*'+modalidad['crmit_name']">
                                 {{ modalidad['crmit_name'] }}
@@ -204,7 +204,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
+                        <mat-select formControlName="Carrera" placeholder="Carrera" required (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
                                 {{ carrera['name'] }}
@@ -217,7 +217,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
+                        <mat-select formControlName="Ciclo" required placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
                                 {{ ciclo['crmit_name'] }}

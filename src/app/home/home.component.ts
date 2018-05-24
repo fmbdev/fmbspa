@@ -1,3 +1,4 @@
+import { UsuarioService } from './../providers/usuario.service';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { LandingService } from '../services/landing.service';
 
@@ -44,7 +45,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     public constante: AppConfig,
     public campusCarreraServ: CampusCarreraService, 
     public pnnServ: PnnService,
-    private router: Router) { }
+    private router: Router, 
+    private usrService: UsuarioService ) { 
+      window.onpopstate = function (event) {
+        //history.go(1);
+        console.log('le puchaste back o go')
+      }
+    }
 
   ngOnInit() {
     
@@ -53,10 +60,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);  
-
-       
+    this.usrService.getRolUsuario(datos.windowsliveid).subscribe(res=>{
+      console.log('este es su rol', res.rol_name );
+      localStorage.setItem('tipo_rol', res.rol_name );
+    });
     
-    console.log(datos);
+    
     let userLanding = localStorage.getItem('landings');
     let land = JSON.parse(userLanding);  
     this.landings = land; 

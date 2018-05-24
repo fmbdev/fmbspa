@@ -52,6 +52,8 @@ export class AppComponent implements OnInit{
               
 
   ngOnInit(){
+    
+    
     this.api_cnn = this.constante.api_request;
 
     //** Detección de inactividad **// 
