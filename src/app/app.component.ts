@@ -62,7 +62,7 @@ export class AppComponent implements OnInit{
       this.userActive.detectaActividad();
     }else{
       
-      console.log(' no se va a ejecutar aqui');
+      
     }
       
     
@@ -137,6 +137,7 @@ export class AppComponent implements OnInit{
   
   onMenu(){
       if(window.location.pathname =='/' || window.location.pathname == '/home' || window.location.pathname == '/menu' ){
+        this.sidenav.close();
         return "no";
       }
 	  	if(localStorage.access_token){
