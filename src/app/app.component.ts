@@ -55,6 +55,7 @@ export class AppComponent implements OnInit{
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
     this.subSubServ.getSubSubTiposActividad();
+    this.subSubServ.getSubSubTiposActividadAll();
   
 
     let userLocal = localStorage.getItem('user');

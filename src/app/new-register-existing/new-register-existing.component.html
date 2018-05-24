@@ -248,7 +248,7 @@
                                 {{ modalidad['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Modalidad.errors?.required">{{showMjs( 'modalidad.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Modalidad.errors?.required">{{showMjs('modalidad.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -261,7 +261,7 @@
                                 {{ carrera['name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs( 'carrera.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs('carrera.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -274,7 +274,7 @@
                                 {{ ciclo['crmit_name'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Ciclo.errors?.required">{{showMjs( 'ciclo.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Ciclo.errors?.required">{{showMjs('ciclo.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
@@ -295,7 +295,7 @@
                                 {{ tipificacion['Tipificación'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Tipificacion.errors?.required">{{showMjs( 'tipificacion.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Tipificacion.errors?.required">{{showMjs('tipificacion.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -320,7 +320,7 @@
                                 {{ campus['Nombre de Campus'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.CampusCitas.errors?.required">{{showMjs( 'campus.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.CampusCitas.errors?.required">{{showMjs('campus.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -334,7 +334,7 @@
                         <input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
                         <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'fecha_cita.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs('fecha_cita.m1')}}</mat-error>
                     </mat-form-field>
 
                 </mat-grid-tile>
@@ -346,7 +346,7 @@
                                 {{ hora.hora }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.HoraCita.errors?.required">{{showMjs( 'hora_cita.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.HoraCita.errors?.required">{{showMjs('hora_cita.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
@@ -364,7 +364,7 @@
                                 {{ asesor['Nombre Asesor'] }}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.controls.Asesor.errors?.required">{{showMjs( 'asesor.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Asesor.errors?.required">{{showMjs('asesor.m1')}}</mat-error>
 
                     </mat-form-field>
                 </mat-grid-tile>
