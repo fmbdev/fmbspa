@@ -385,12 +385,24 @@ export class NewRegisterPromotionComponent implements OnInit {
             let _Nivel = this.form.value.Nivel;
             let _Modalidad = this.form.value.Modalidad;
             let _Carrera = this.form.value.Carrera;
+            let _Interes = this.form.value.AreaInteres;
+            let _Ciclo = this.form.value.Ciclo;
+            
+            let _SubTipo = this.form.value.SubTipoActividad;
+            let _SubSubTipo = this.form.value.SubSubTipoActividad;
+            let _Turno = this.form.value.Turno;
 
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
-
+            let InteresV = _Interes.split('*');
+            let CicloV = _Ciclo.split('*');
+            
+            let SubTipoV = _SubTipo.split('*');
+            let SubSubTipoV = _SubSubTipo.split('*');
+            let TurnoV = _Turno.split('*');
+ 
             
             const sendd = {
                 Usuario: this.form.value.Usuario,
@@ -409,20 +421,40 @@ export class NewRegisterPromotionComponent implements OnInit {
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
                 TelefonoTutor: this.form.value.TelefonoTutor,
-                AreaInteres: this.form.value.AreaInteres,
-                Ciclo: this.form.value.Ciclo,
-
+                
+                
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
+               
+                AreaInteres: InteresV[1],
+                Ciclo: CicloV[1],
+                
+                SubTipo:SubTipoV[1],
+                SubSubTipo:SubSubTipoV[0],
+                Turno:TurnoV[1],
+                Calidad:this.form.value.Calidad,
 
                 GUIDCampus: CampusV[0],
                 GUIDNivelInteres: NivelV[0],
                 GUIDModalidad: ModalidadV[0],
                 GUIDCarrera: CarreraV[0],
+                
+                GUIDAreaInteres:InteresV[0],
+                GUIDCiclo: CicloV[0],
+                GUIDUsuario:localStorage.getItem('UserId'),
+
+                GUIDCalidad:this.form.value.EscuelaEmpresa,
+                GUIDTurno:TurnoV[0],
+
+                GUIDSubTipo:SubTipoV[0],
+                GUIDSubSubTipo:SubSubTipoV[1],
+
 
                 Banner: this.form.value.Banner,
+                Tipificacion: this.form.value.Tipificacion,
+                Notas: this.form.value.Notas
             };
            /*
               CampusCita: this.form.value.CampusCita,
@@ -665,17 +697,23 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
     }
 
-    onChangeSubTipo(value: string){
+    onChangeSubTipo(campus: string){
         if(this.form.controls['SubSubTipoActividad'].disabled){
             this.form.controls['SubSubTipoActividad'].enable();
         }else{
             this.form.controls['SubSubTipoActividad'].setValue('');
             this.form.controls['SubSubTipoActividad'].markAsUntouched();
         }
+
+         let cadena = campus.split('*');
+        let value = cadena[1];
         this.subsub_tipos = this.subSubServ.getSubSubTiposBySubTipo(value);
     }
 
-    onChangeEscuelaEmpresa(value: string){
+    onChangeEscuelaEmpresa(campus: string){
+        let cadena = campus.split('*');
+        let value = cadena[0];
+
         let calidad_name = this.escuelaEmpresaServ.getCalidadByEscuelaEmpresa(value);
         if(calidad_name != null){
             this.form.controls['Calidad'].setValue(calidad_name);
