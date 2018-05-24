@@ -353,12 +353,12 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             }
 
             /* Interes GUID */
-            let _Campus = this.form.value.Campus;
-            let _Nivel = this.form.value.Nivel;
-            let _Modalidad = this.form.value.Modalidad;
-            let _Carrera = this.form.value.Carrera;
-            let _Interes = this.form.value.AreaInteres;
-            let _Ciclo = this.form.value.Ciclo;
+            let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
+            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
+            let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
             
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');

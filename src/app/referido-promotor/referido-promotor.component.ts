@@ -168,10 +168,10 @@ export class ReferidoPromotorComponent implements OnInit {
             if (edadT == "") {
                 edadT = 12;
             }
-            let _Campus = this.form.value.Campus;
-            let _Nivel = this.form.value.Nivel;
-            let _Modalidad = this.form.value.Modalidad;
-            let _Carrera = this.form.value.Carrera;
+            let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
             
             
             let CampusV = _Campus.split('*');
