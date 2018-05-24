@@ -8,9 +8,11 @@ import { CarreraService } from './providers/carrera.service';
 import { ModalidadService } from './providers/modalidad.service';
 import { CampusCarreraService } from './providers/campus-carrera.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
-import { EscuelaEmpresaService } from './providers/escuela-empresa.service';
 import { HomeService } from './providers/home.service';
 import { LandingService } from './services/landing.service';
+import { CalidadService } from './providers/calidad.service';
+
+
 import {Router} from "@angular/router";
 
 import {MatSidenav} from '@angular/material/sidenav';
@@ -38,10 +40,10 @@ export class AppComponent implements OnInit{
               private authServ:AuthService,
               private nivelServ: NivelService,
               private carreraServ: CarreraService,
-              private modalidadServ: ModalidadService,              
+              private calidadServ: CalidadService,        
+              private modalidadServ: ModalidadService,      
               private subSubServ: SubsubtipoActividadService,             
-              private campusCarreraServ: CampusCarreraService,
-              private escuelaEmpresaServ: EscuelaEmpresaService,){}
+              private campusCarreraServ: CampusCarreraService){}
 
   ngOnInit(){
     this.landingService.getInit();    
@@ -49,11 +51,11 @@ export class AppComponent implements OnInit{
     this.csqServ.getAll();
     this.nivelServ.getAll();
     this.carreraServ.getAll();
+    this.calidadServ.getAll();
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
     this.subSubServ.getSubSubTiposActividad();
-    this.subSubServ.getSubSubTiposActividadAll();
-    //this.escuelaEmpresaServ.getAll();
+  
 
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);    
