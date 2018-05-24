@@ -357,11 +357,15 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             let _Nivel = this.form.value.Nivel;
             let _Modalidad = this.form.value.Modalidad;
             let _Carrera = this.form.value.Carrera;
-
+            let _Interes = this.form.value.AreaInteres;
+            let _Ciclo = this.form.value.Ciclo;
+            
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
+            let InteresV = _Interes.split('*');
+            let CicloV = _Ciclo.split('*');
 
             const sendd = {
               Usuario: this.form.value.Usuario,
@@ -387,18 +391,22 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
               CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
               TelefonoTutor: this.form.value.TelefonoTutor,
 
-                AreaInteres: this.form.value.AreaInteres,
-                Ciclo: this.form.value.Ciclo,
-
-                Campus: CampusV[1],
+                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
-
+               
+                AreaInteres: InteresV[1],
+                Ciclo: CicloV[1],
+                
                 GUIDCampus: CampusV[0],
                 GUIDNivelInteres: NivelV[0],
                 GUIDModalidad: ModalidadV[0],
                 GUIDCarrera: CarreraV[0],
+                
+                GUIDAreaInteres:InteresV[0],
+                GUIDCiclo: CicloV[0],
+                GUIDUsuario:localStorage.getItem('UserId'),
 
                 Banner: this.form.value.Banner,
                 Tipificacion: this.form.value.Tipificacion,

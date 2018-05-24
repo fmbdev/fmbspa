@@ -453,7 +453,7 @@ export class NewRegisterSoloComponent implements OnInit {
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
             );
-        this.showDialogForm(this.asesores,"Asesores,sores," ,"Cita-");
+        this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita-");
     }
 
     agruparDirectaClick() {
@@ -467,9 +467,9 @@ export class NewRegisterSoloComponent implements OnInit {
             .subscribe(
                 (datat: AsesorGrupal[]) => this.asesorGrupal = datat
             )    
-            setTimeout(()=>{            
-                this.showDialogForm(this.asesorGrupal, "Asesores Grupal","SesiónG-");
-            },1000); 
+            setTimeout(() => {
+                this.showDialogForm(this.asesorGrupal, "Selecciona a un Asesor Grupal", "SesiónG-");
+            }, 1000); 
         }else{
             this.showDialogE("Seleccione un Nivel");
         }
