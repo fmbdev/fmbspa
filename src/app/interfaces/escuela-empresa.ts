@@ -7,4 +7,5 @@ export interface EscuelaEmpresa {
     crmit_descturno1: string;
     crmit_empresaescuela: string;
     crmit_descturno3: string;
+    crmit_calidadidname: string;
 }

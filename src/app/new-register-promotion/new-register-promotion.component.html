@@ -87,11 +87,11 @@
             <mat-grid-list cols="2" rowHeight="70px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Escuela/Empresa" formControlName="EscuelaEmpresa" required>
+                        <mat-select placeholder="Escuela/Empresa" formControlName="EscuelaEmpresa" required (change)="onChangeEscuelaEmpresa(form.controls.EscuelaEmpresa.value)">
                             <mat-option value="0">Selecciona una opción</mat-option>
                             <!--<mat-option value="1">CENTRO DE ESTUDIOS UNIVERSITARIOS (COYOACAN</mat-option>
                             <mat-option value="2">PRE_COLEGIO ANGEL DEL CAMPO (IZTAPALAPA)</mat-option>-->
-                            <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_claveescuelaempresacrm']">
+                            <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_empresaescuela']">
                                 {{ escuelaempresa['Name'] }}
                             </mat-option>
                         </mat-select>
