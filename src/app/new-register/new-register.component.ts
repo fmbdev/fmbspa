@@ -428,19 +428,36 @@ export class NewRegisterComponent implements OnInit {
             //
 
 
-            this.sendServ.sendDataToApi(sendd)// this.form.value)
-                .subscribe(
-                    (res: any) => {
-                        console.log(res);
-                        if (res.status == 200) {
+            if(!this.form.controls['SinCorreo'].value){
+                this.sendServ.sendDataToApi(sendd)// this.form.value)
+                    .subscribe(
+                        (res: any) => {
+                            console.log(res);
+                            if (res.status == 200) {
 
-                            this.showDialog("Los datos se han guardado correctamente.");
+                                this.showDialog("Los datos se han guardado correctamente.");
 
-                        } else {
-                            this.showDialogE("Error al realizar el registro.");
+                            } else {
+                                this.showDialogE("Error al realizar el registro.");
+                            }
                         }
-                    }
-                )
+                    )
+                }else{
+                    this.sendServ.sendData3(sendd)// this.form.value)
+                    .subscribe(
+                        (res: any) => {
+                            console.log(res);
+                            if (res.status == 200) {
+
+                                this.showDialog("Los datos se han guardado correctamente.");
+
+                            } else {
+                                this.showDialogE("Error al realizar el registro.");
+                            }
+                        }
+                    )
+                }
+
 
         } else {
             this.showDialogE("Error al realizar el registro *");

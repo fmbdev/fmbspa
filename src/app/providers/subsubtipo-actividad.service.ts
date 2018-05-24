@@ -40,7 +40,6 @@ export class SubsubtipoActividadService {
               let sst = {id: data[i].id, crmit_subtipoactividadid: data[i].crmit_subtipoactividadid, crmit_subsubname: data[i].crmit_subsubname, crmit_subname: data[i].crmit_subname};
               this.subSubTipo.push(sst);              
             }
-            console.log(this.subSubTipo);
           }
         )
   }
@@ -64,8 +63,6 @@ export class SubsubtipoActividadService {
         subsub_tipos.push(this.subSubTipo[i])
       }
     }
-    console.log("subsub_tipos");
-    console.log(subsub_tipos);
     return subsub_tipos;
   }
 

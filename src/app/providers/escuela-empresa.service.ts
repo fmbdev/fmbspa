@@ -17,10 +17,29 @@ export class EscuelaEmpresaService {
                .map(
                  (res: Response) => res.json()
                )
+               .do(
+                 (data: EscuelaEmpresa[]) => this.escuelaEmpresas = data
+               )
 
   }
 
   /*getEscuelasEmpresas() : EscuelaEmpresa[] {
     return this.escuelaEmpresas;
   }*/
+
+  getCalidadByEscuelaEmpresa(escuelaId: string) : String{
+    console.log(escuelaId);
+    let calidad_name: string = "";
+    for(let i = 0; i < this.escuelaEmpresas.length; i++){
+      if(escuelaId == this.escuelaEmpresas[i].crmit_calidadid){
+        calidad_name = this.escuelaEmpresas[i].crmit_calidadidname;
+      }
+    }
+    if(calidad_name != ""){
+      return calidad_name;
+    }else{
+      return null;
+    }
+  }
+
 }

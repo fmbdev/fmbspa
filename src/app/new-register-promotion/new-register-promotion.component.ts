@@ -93,6 +93,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     FechaNacimiento: FormControl;
     Edad: FormControl;
 
+
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
     ApellidoMaternoTutor: FormControl;
@@ -266,7 +267,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             SubSubTipoActividad: new FormControl({ value: '', disabled: true }),
             EscuelaEmpresa: new FormControl(''),
             Turno: new FormControl(''),
-            Calidad: new FormControl('', [Validators.required, Validators.maxLength(5)]),
+            Calidad: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.maxLength(5)]),
             SinCorreo:new FormControl(''),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -400,7 +401,8 @@ export class NewRegisterPromotionComponent implements OnInit {
                 NumeroCelular: this.form.value.NumeroCelular, 
                 Telefono: this.form.value.Telefono,                 
                 Genero: this.form.value.Genero, 
-                Edad: edadT, SinCorreo: this.form.value.SinCorreo,
+                Edad: edadT,
+                SinCorreo: this.form.value.SinCorreo,
                 NombreTutor: this.form.value.NombreTutor, 
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
                 NumeroCelularTutor: this.form.value.NumeroCelularTutor, 
@@ -445,19 +447,36 @@ export class NewRegisterPromotionComponent implements OnInit {
             */
           // -------------------------------- Predictivo  ----------------------------------
 
-            this.sendServ.sendDataToApi(sendd)
+          if(!this.form.controls['SinCorreo'].value){
+            this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
+                        console.log(res);
                         if (res.status == 200) {
 
                             this.showDialog("Los datos se han guardado correctamente.");
 
                         } else {
-
                             this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
+            }else{
+                this.sendServ.sendData3(sendd)// this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        console.log(res);
+                        if (res.status == 200) {
+
+                            this.showDialog("Los datos se han guardado correctamente.");
+
+                        } else {
+                            this.showDialogE("Error al realizar el registro.");
+                        }
+                    }
+                )
+            }
+            
         } else {
             this.showDialogE("Error al realizar el registro *");
         }
@@ -654,6 +673,13 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['SubSubTipoActividad'].markAsUntouched();
         }
         this.subsub_tipos = this.subSubServ.getSubSubTiposBySubTipo(value);
+    }
+
+    onChangeEscuelaEmpresa(value: string){
+        let calidad_name = this.escuelaEmpresaServ.getCalidadByEscuelaEmpresa(value);
+        if(calidad_name != null){
+            this.form.controls['Calidad'].setValue(calidad_name);
+        }
     }
 
     onFielCanal(value) {

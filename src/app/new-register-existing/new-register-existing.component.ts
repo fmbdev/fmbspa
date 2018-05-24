@@ -83,6 +83,7 @@ export class NewRegisterExistingComponent implements OnInit {
     Genero: FormControl;
     FechaNacimiento: FormControl;
     Edad: FormControl;
+    SinCorreo: FormControl;
 
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
@@ -253,6 +254,7 @@ export class NewRegisterExistingComponent implements OnInit {
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
             Edad: new FormControl('', [Validators.minLength(2)]),
+            SinCorreo: new FormControl(''),
 
             NombreTutor: new FormControl(''),
             ApellidoPaternoTutor: new FormControl(''),
@@ -407,7 +409,8 @@ export class NewRegisterExistingComponent implements OnInit {
               NumeroCelular: this.form.value.NumeroCelular, 
               Telefono: this.form.value.Telefono, 
               Genero: this.form.value.Genero,
-              Edad: edadT, 
+              Edad: edadT,
+              SinCorreo: this.form.value.SinCorreo,
 
               NombreTutor: this.form.value.NombreTutor, 
               ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
@@ -438,19 +441,35 @@ export class NewRegisterExistingComponent implements OnInit {
           // GUIDCampus: this.form.value.CampusGUID, GUIDCiclo: this.form.value.CicloGUID, GUIDCarrera: this.form.value.CarreraGUID, GUIDNivelInteres: this.form.value.NivelGUID, GUIDModalidad: this.form.value.ModalidadGUID
 
 
+          if(!this.form.controls['SinCorreo'].value){
             this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
-                      console.log(res);
+                        console.log(res);
                         if (res.status == 200) {
 
                             this.showDialog("Los datos se han guardado correctamente.");
-                            
+
                         } else {
                             this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
+            }else{
+                this.sendServ.sendData3(sendd)// this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        console.log(res);
+                        if (res.status == 200) {
+
+                            this.showDialog("Los datos se han guardado correctamente.");
+
+                        } else {
+                            this.showDialogE("Error al realizar el registro.");
+                        }
+                    }
+                )
+            }
 
         } else {
             this.showDialogE("Error al realizar el registro *");
