@@ -1,3 +1,6 @@
+import { DialogComponent } from './../dialog/dialog.component';
+import { MatDialog } from '@angular/material';
+import { AppComponent } from './../app.component';
 import { Router } from '@angular/router';
 import { AppConfig } from './../services/constants';
 import { Injectable } from '@angular/core';
@@ -8,7 +11,7 @@ export class IdleUserService {
   minutosEspera:number;
   rMinutosEspera:number ;
   timeIlde ;
-  constructor( private constante: AppConfig, private router: Router ) { }
+  constructor( private constante: AppConfig, private router: Router, private root_Ctrl: AppComponent, private dialog :MatDialog ) { }
 
   detectaActividad(){
     document.addEventListener("click",          this.resetearTiempo, false );
@@ -34,12 +37,9 @@ export class IdleUserService {
         
         this.n = this.minutosEspera * 1000 * 60 ;   
         this.conteoInactividad();   
-        console.info('reinicio conter')
-      }else{
-        console.warn('va a cerrar la sesion ');
-        localStorage.clear();
-        window.location.href = "/";
         
+      }else{
+        this.showDialog("Los datos se han guardado correctamente.");        
       }
       
       
@@ -56,4 +56,20 @@ export class IdleUserService {
     localStorage.setItem('rMinutosEspera', '10' );
 
   }
+
+  private showDialog(message: string) {
+    let dialogRef = this.dialog.open(DialogComponent, {
+        height: '180px',
+        width: '500px',
+        data: { message: message }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        //window.location.href = "/";
+        localStorage.clear();
+        this.root_Ctrl.onLogout();
+    });
+  }
+  
 }
+
+

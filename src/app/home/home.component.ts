@@ -47,10 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     public pnnServ: PnnService,
     private router: Router, 
     private usrService: UsuarioService ) { 
-      window.onpopstate = function (event) {
-        //history.go(1);
-        console.log('le puchaste back o go')
-      }
+      
     }
 
   ngOnInit() {
