@@ -73,7 +73,7 @@ export class AppComponent implements OnInit{
     //** Detección de inactividad **// 
 
     this.landingService.getInit();    
-    // this.pnnServ.getAll();
+    this.pnnServ.getAll();
     // this.campusCarreraServ.getAll();
 
     this.csqServ.getAll();
