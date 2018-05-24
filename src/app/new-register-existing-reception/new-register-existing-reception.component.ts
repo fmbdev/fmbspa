@@ -618,6 +618,11 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
 
     addValidation(isChecked) {
         if (isChecked.checked) {
+            if(this.form.controls.Telefono.value == ""){
+                isChecked.source.checked = false
+                this.showDialogE("Debes ingresar un teléfono de contacto");
+                return false;
+            }
             this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
             this.sinEmail = true;
 

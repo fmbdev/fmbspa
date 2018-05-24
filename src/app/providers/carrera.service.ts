@@ -1,3 +1,4 @@
+import { AppConfig } from './../services/constants';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response} from '@angular/http';
 import { Carrera } from '../interfaces/carrera';
@@ -9,11 +10,14 @@ export class CarreraService {
 
   private headers = new Headers({'Content-Type':'application/json'});
   private carreras: Carrera[] = [];
+  api_cnn;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private constante: AppConfig) {
+    this.api_cnn =  this.constante.api_request; 
+   }
 
   getAll() {
-    this.http.get("https://devmx.com.mx/fmbapp/public/api/carrera", {headers: this.headers})
+    this.http.get(this.api_cnn+"carrera", {headers: this.headers})
         .map(
           (res: Response) => res.json()
         )

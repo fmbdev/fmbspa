@@ -1,4 +1,7 @@
+import { AppConfig } from './services/constants';
+import { IdleUserService } from './providers/idle-user.service';
 import { Component, OnInit,ViewChild } from '@angular/core';
+
 
 import { CsqService } from './providers/csq.service';
 import { PnnService } from './providers/pnn.service';
@@ -11,7 +14,7 @@ import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.ser
 import { HomeService } from './providers/home.service';
 import { LandingService } from './services/landing.service';
 import { CalidadService } from './providers/calidad.service';
-
+import { EscuelaEmpresaService } from './providers/escuela-empresa.service';
 
 import {Router} from "@angular/router";
 
@@ -30,6 +33,7 @@ export class AppComponent implements OnInit{
   @ViewChild('sidenav') sidenav: MatSidenav;
   shows:boolean = false;
   landings: any = [];
+  api_cnn;
 
   constructor(
               private router: Router,
@@ -43,23 +47,53 @@ export class AppComponent implements OnInit{
               private calidadServ: CalidadService,        
               private modalidadServ: ModalidadService,      
               private subSubServ: SubsubtipoActividadService,             
-              private campusCarreraServ: CampusCarreraService){}
+              private campusCarreraServ: CampusCarreraService,
+              private escuelaEmpresaServ: EscuelaEmpresaService,
+              public userActive:  IdleUserService, 
+              private route: Router,
+              public constante: AppConfig){}
+              
 
   ngOnInit(){
+    
+    
+    this.api_cnn = this.constante.api_request;
+
+    //** Detección de inactividad **// 
+    if(this.route.url != '/'){
+      this.userActive.conteoInactividad();
+      this.userActive.detectaActividad();
+    }else{
+      
+      console.log(' no se va a ejecutar aqui');
+    }
+      
+    
+    
+    //** Detección de inactividad **// 
+
     this.landingService.getInit();    
-    this.pnnServ.getAll();
+    // this.pnnServ.getAll();
+    // this.campusCarreraServ.getAll();
+
     this.csqServ.getAll();
     this.nivelServ.getAll();
+
     this.carreraServ.getAll();
     this.calidadServ.getAll();
     this.modalidadServ.getAll();
     this.campusCarreraServ.getAll();
     this.subSubServ.getSubSubTiposActividad();
     this.subSubServ.getSubSubTiposActividadAll();
-  
+    
+    this.escuelaEmpresaServ.getAll();
 
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);    
+
+    setTimeout(function(){
+      //this.subSubServ.getSubSubTiposActividad();
+    },100);
    // this.subsGetMe = this.homeService.getMe(  ).subscribe(me => this.meget = me);   
     
     if(window.location.pathname!='/'){
@@ -69,7 +103,7 @@ export class AppComponent implements OnInit{
 
       }else{
          this.shows = true;
-        $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+datos.domainname,
+        $.ajax(this.api_cnn+'roles/'+datos.domainname,
         {
            //data: {user_id:''},
             contentType: 'application/json',
@@ -92,8 +126,12 @@ export class AppComponent implements OnInit{
       let land = JSON.parse(userLanding);  
        this.landings = land; 
     }
+
+    
          	
   }
+
+ 
 
   onLogout() {
     //this.authServ.logout();

@@ -1,3 +1,4 @@
+import { UsuarioService } from './../providers/usuario.service';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { LandingService } from '../services/landing.service';
 
@@ -9,6 +10,9 @@ import { HomeService } from '../providers/home.service';
 import { AuthService } from '../providers/auth.service';
 import {Router} from "@angular/router";
 import { ModalidadService } from '../providers/modalidad.service';
+import { PnnService } from './../providers/pnn.service';
+import { CampusCarreraService } from './../providers/campus-carrera.service';
+import { AppConfig } from './../services/constants';
 
 import { Landing } from '../interfaces/landing';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -38,7 +42,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   	private homeService: HomeService,
     private authService: AuthService,
     private modalidadServ: ModalidadService,
-    private router: Router) { }
+    public constante: AppConfig,
+    public campusCarreraServ: CampusCarreraService, 
+    public pnnServ: PnnService,
+    private router: Router, 
+    private usrService: UsuarioService ) { 
+      window.onpopstate = function (event) {
+        //history.go(1);
+        console.log('le puchaste back o go')
+      }
+    }
 
   ngOnInit() {
     
@@ -47,10 +60,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);  
-
-       
+    this.usrService.getRolUsuario(datos.windowsliveid).subscribe(res=>{
+      console.log('este es su rol', res.rol_name );
+      localStorage.setItem('tipo_rol', res.rol_name );
+    });
     
-    console.log(datos);
+    
     let userLanding = localStorage.getItem('landings');
     let land = JSON.parse(userLanding);  
     this.landings = land; 
@@ -72,6 +87,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log(this.landings);
     
     this.me = datos; 
+    this.campusCarreraServ.getAll();
+    this.pnnServ.getAll();
   
   }
 

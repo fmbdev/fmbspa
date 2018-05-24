@@ -1,3 +1,4 @@
+import { AppConfig } from './../services/constants';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response} from '@angular/http';
 import { SubTipo } from '../interfaces/sub-tipo';
@@ -11,11 +12,15 @@ export class SubsubtipoActividadService {
   private headers = new Headers({'Content-Type':'application/json'});
   private subTipo: SubTipo[] = [];
   private subSubTipo: SubsubTipo[] = [];
-  
-  constructor(private http: Http) { }
+  api_cnn;
+
+  constructor(private http: Http, private constante: AppConfig) { 
+    this.api_cnn = this.constante.api_request;
+  }
 
   getSubSubTiposActividad(){
-    this.http.get("https://devmx.com.mx/fmbapp/public/api/subsubtipo_actividad", {headers: this.headers})
+    //this.http.get("https://devmx.com.mx/fmbapp/public/api/subsubtipo_actividad", {headers: this.headers})
+    this.http.get(this.api_cnn+"subsubtipo_actividad", {headers: this.headers})
         .map(
           (res: Response) => res.json()
         )
@@ -30,7 +35,7 @@ export class SubsubtipoActividadService {
   }
 
   getSubSubTiposActividadAll(){
-    this.http.get("https://devmx.com.mx/fmbapp/public/api/subsubtipo_actividad_all", {headers: this.headers})
+    this.http.get(this.api_cnn+"subsubtipo_actividad_all", {headers: this.headers})
         .map(
           (res: Response) => res.json()
         )

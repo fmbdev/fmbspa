@@ -138,6 +138,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     campusTxt: any;
     nivelTxt: any;
     canalText: any;
+    perfil_usuario:string;
 
     constructor(private landingService: LandingService,
         private gralService: GeneralService,
@@ -166,8 +167,11 @@ export class NewRegisterPromotionComponent implements OnInit {
         private escuelaEmpresaServ: EscuelaEmpresaService, 
         private actividadAgendaServ: ActividadAgendaService) { }
 
-
     ngOnInit() {
+        
+        
+        this.perfil_usuario = localStorage.getItem('tipo_rol');
+
         this.landingService.getInit();
 
         // Se obtienes los Subtipos de actividades
@@ -313,6 +317,12 @@ export class NewRegisterPromotionComponent implements OnInit {
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');
                 if(form.controls[name].value != '' && form.controls[name].value != null){
+                    //* validación numero vacío si es sin correo  *//
+                    if(this.sinEmail && !form.controls.NumeroCelular  || form.controls.NumeroCelular == undefined){
+                        form.controls['NumeroCelular'].setErrors({'numInvalid': true});
+                    }   
+
+
                     if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
                         form.controls[name].setErrors({'numInvalid': true});
                     }else{
@@ -733,6 +743,11 @@ export class NewRegisterPromotionComponent implements OnInit {
 
     addValidation(isChecked) {
         if (isChecked.checked) {
+            if(this.form.controls.Telefono.value == ""){
+                isChecked.source.checked = false
+                this.showDialogE("Debes ingresar un teléfono de contacto");
+                return false;
+            }
             this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
             this.sinEmail = true;
 
