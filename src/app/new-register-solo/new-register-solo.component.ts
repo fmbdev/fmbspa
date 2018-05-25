@@ -390,7 +390,10 @@ export class NewRegisterSoloComponent implements OnInit {
             let InteresV = _Interes.split('*');
             let CicloV = _Ciclo.split('*');
             
-          const sendd = {Usuario: this.form.value.Usuario,
+          const sendd = {
+            
+            Usuario: this.form.value.Usuario,
+            
             Nombre: this.form.value.Nombre, 
             ApellidoPaterno: this.form.value.ApellidoPaterno, 
             ApellidoMaterno: this.form.value.ApellidoMaterno, 

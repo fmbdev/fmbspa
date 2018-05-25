@@ -49,8 +49,8 @@
                         <mat-checkbox formControlName="SinCorreo" (change)="addValidation($event)" value="ok">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" required  minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()"
-                            class="validPhoneNumber">
+                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" required minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)"
+                            (change)="onChange()" class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.required">{{showMjs('celular.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required  && !form.controls.NumeroCelular.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.aceptNumber  && !form.controls.NumeroCelular.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
@@ -167,7 +167,7 @@
                     <mat-form-field>
                         <mat-select formControlName="AreaInteres" required placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']+'*'+interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
@@ -219,7 +219,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Ciclo" required placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
+                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_codigounico']+'*'+ciclo['crmit_name']">
                                 {{ ciclo['crmit_name'] }}
                             </mat-option>
                         </mat-select>
