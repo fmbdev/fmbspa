@@ -400,7 +400,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             
             let _SubTipo = this.form.value.SubTipoActividad;
             let _SubSubTipo = this.form.value.SubSubTipoActividad;
-            let _Turno = this.form.value.Turno;
+
+            let _Turno = (this.form.value.Turno==null)? "": this.form.value.Turno;
 
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
@@ -411,6 +412,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             
             let SubTipoV = _SubTipo.split('*');
             let SubSubTipoV = _SubSubTipo.split('*');
+            
             let TurnoV = _Turno.split('*');
  
             
@@ -422,7 +424,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                 CorreoElectronico: this.form.value.CorreoElectronico, 
                 NumeroCelular: this.form.value.NumeroCelular, 
                 Telefono: this.form.value.Telefono,                 
-                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
+                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
                 Edad: edadT,
                 SinCorreo: this.form.value.SinCorreo,
                 NombreTutor: this.form.value.NombreTutor, 
@@ -430,41 +432,29 @@ export class NewRegisterPromotionComponent implements OnInit {
                 NumeroCelularTutor: this.form.value.NumeroCelularTutor, 
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
-                TelefonoTutor: this.form.value.TelefonoTutor,
-                
-                
+                TelefonoTutor: this.form.value.TelefonoTutor,                              
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
-                Carrera: CarreraV[1],
-               
+                Carrera: CarreraV[1],               
                 AreaInteres: InteresV[1],
-                Ciclo: CicloV[1],
-                
+                Ciclo: CicloV[1],              
                 SubTipo:SubTipoV[1],
                 SubSubTipo:SubSubTipoV[0],
-                Turno:TurnoV[1],
-                Calidad:this.form.value.Calidad,
-
+                Turno:TurnoV[2],
+                Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-                
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
-
-                GUIDCalidad:this.form.value.EscuelaEmpresa,
-                GUIDTurno:TurnoV[0],
-
+                GUIDCalidad:(this.form.value.EscuelaEmpresa)? null : this.form.value.EscuelaEmpresa,
+                GUIDTurno:(TurnoV[0]=='')? null : TurnoV[0],
                 GUIDSubTipo:SubTipoV[0],
                 GUIDSubSubTipo:SubSubTipoV[1],
-
-
-                Banner: this.form.value.Banner,
-                Tipificacion: this.form.value.Tipificacion,
-                Notas: this.form.value.Notas
+                Banner: this.form.value.Banner                
             };
            /*
               CampusCita: this.form.value.CampusCita,
@@ -490,20 +480,19 @@ export class NewRegisterPromotionComponent implements OnInit {
           // -------------------------------- Predictivo  ----------------------------------
 
           if(!this.form.controls['SinCorreo'].value){
-            this.sendServ.sendDataToApi(sendd)// this.form.value)
+            this.sendServ.sendData3(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
                         console.log(res);
                         if (res.status == 200) {
-
                             this.showDialog("Los datos se han guardado correctamente.");
-
                         } else {
                             this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
             }else{
+                //this.sendServ.sendDataToApi(sendd)// this.form.value)
                 this.sendServ.sendData3(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {

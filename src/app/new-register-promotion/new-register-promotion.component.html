@@ -75,7 +75,7 @@
                     <mat-form-field>
                         <mat-select placeholder="Turno" formControlName="Turno" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let turno of turnos;" [value]="turno['crmit_codigounico']+'*'+turno['crmit_name']">
+                            <mat-option *ngFor="let turno of turnos;" [value]="turno['crmit_codigounico']+'*'+turno['crmit_name']+'*'+turno['id']">
                                 {{ turno['crmit_name'] }}
                             </mat-option>
                         </mat-select>
