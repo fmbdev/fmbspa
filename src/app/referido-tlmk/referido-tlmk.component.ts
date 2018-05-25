@@ -172,19 +172,18 @@ export class ReferidoTlmkComponent implements OnInit {
                 CorreoElectronico: this.form.value.CorreoElectronico,
                 NumeroCelular: this.form.value.NumeroCelular,
                 Telefono: this.form.value.Telefono,
-                Genero: this.form.value.Genero,
+                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
 
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
-               
                 
-                GUIDCampus: CampusV[0],
-                GUIDNivelInteres: NivelV[0],
-                GUIDModalidad: ModalidadV[0],
-                GUIDCarrera: CarreraV[0],
+                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
 

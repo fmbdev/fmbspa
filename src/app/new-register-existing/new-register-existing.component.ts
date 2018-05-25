@@ -432,13 +432,13 @@ export class NewRegisterExistingComponent implements OnInit {
                 AreaInteres: InteresV[1],
                 Ciclo: CicloV[1],
 
-                GUIDCampus: CampusV[0],
-                GUIDNivelInteres: NivelV[0],
-                GUIDModalidad: ModalidadV[0],
-                GUIDCarrera: CarreraV[0],
-
-                GUIDAreaInteres:InteresV[0],
-                GUIDCiclo: CicloV[0],
+                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
+                
+                GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
                 
                 Banner: this.form.value.Banner,
