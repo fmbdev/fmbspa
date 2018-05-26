@@ -1,5 +1,5 @@
 export interface Turno {
-    id: number;
+    id: string;
     turno: string;
     crmit_codigounico: string;
     crmit_name: string;

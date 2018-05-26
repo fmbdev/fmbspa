@@ -66,6 +66,7 @@ import { ActividadAgendaService } from './providers/actividad-agenda.service';
 import { GeneralService } from './services/general.service';
 import { LandingService } from './services/landing.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
+import { CalidadService } from './providers/calidad.service';
 
 import { AppConfig } from './services/constants';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
@@ -150,9 +151,9 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
               ParentescoService, CampusService, NivelService, ModalidadService, SubsubtipoActividadService,
               CarreraService, CicloService, AsesorService,AsesorGrupalService, HoraService, PnnService, SendService, FormatService,
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
-              ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService,
-              TipoReferenteService, TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService,
-              HttpService, AuthService, HomeService, CampusCarreraService, AuthGuardService, ActividadAgendaService,IdleUserService
+              ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService, TipoReferenteService, 
+              TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService, HttpService, 
+              AuthService, HomeService, CampusCarreraService, AuthGuardService, ActividadAgendaService, CalidadService, IdleUserService
             ],
   bootstrap: [AppComponent]
 })

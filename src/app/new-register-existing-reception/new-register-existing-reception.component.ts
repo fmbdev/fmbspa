@@ -353,15 +353,19 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             }
 
             /* Interes GUID */
-            let _Campus = this.form.value.Campus;
-            let _Nivel = this.form.value.Nivel;
-            let _Modalidad = this.form.value.Modalidad;
-            let _Carrera = this.form.value.Carrera;
-
+            let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
+            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
+            let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
+            
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
+            let InteresV = _Interes.split('*');
+            let CicloV = _Ciclo.split('*');
 
             const sendd = {
               Usuario: this.form.value.Usuario,
@@ -376,7 +380,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
               CorreoElectronico: this.form.value.CorreoElectronico, 
               NumeroCelular: this.form.value.NumeroCelular, 
               Telefono: this.form.value.Telefono, 
-              Genero: this.form.value.Genero,
+              Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
               Edad: edadT, 
               SinCorreo: this.form.value.SinCorreo,
 
@@ -387,18 +391,22 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
               CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
               TelefonoTutor: this.form.value.TelefonoTutor,
 
-                AreaInteres: this.form.value.AreaInteres,
-                Ciclo: this.form.value.Ciclo,
-
-                Campus: CampusV[1],
+                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
-
-                GUIDCampus: CampusV[0],
-                GUIDNivelInteres: NivelV[0],
-                GUIDModalidad: ModalidadV[0],
-                GUIDCarrera: CarreraV[0],
+               
+                AreaInteres: InteresV[1],
+                Ciclo: CicloV[1],
+                
+                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
+                
+                GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+                GUIDUsuario:localStorage.getItem('UserId'),
 
                 Banner: this.form.value.Banner,
                 Tipificacion: this.form.value.Tipificacion,

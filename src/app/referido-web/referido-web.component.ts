@@ -185,16 +185,58 @@ export class ReferidoWebComponent implements OnInit {
         }
       }
       // -------------------------------- Predictivo  ----------------------------------
+            let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
+            
+            
+            let CampusV = _Campus.split('*');
+            let NivelV = _Nivel.split('*');
+            let ModalidadV = _Modalidad.split('*');
+            let CarreraV = _Carrera.split('*');
 
-      this.sendServ.sendDataToApi(this.form.value)
+            const sendd = {
+                Usuario: this.form.value.Usuario,
+
+                name_ref: this.form.value.name_ref,
+                patern_ref: this.form.value.patern_ref,
+                matern_ref: this.form.value.matern_ref,
+                mail_ref: this.form.value.mail_ref,
+                tipo_ref: this.form.value.tipo_ref,
+                phone_ref: this.form.value.phone_ref,
+                cuenta_ref: this.form.value.cuenta_ref,
+
+                Nombre: this.form.value.Nombre,
+                ApellidoPaterno: this.form.value.ApellidoPaterno,
+                ApellidoMaterno: this.form.value.ApellidoMaterno,
+                CorreoElectronico: this.form.value.CorreoElectronico,
+                NumeroCelular: this.form.value.NumeroCelular,
+                Telefono: this.form.value.Telefono,
+                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
+                
+                Campus: CampusV[1],
+                Nivel: NivelV[1],
+                Modalidad: ModalidadV[1],
+                Carrera: CarreraV[1],
+                               
+                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
+                 
+                GUIDUsuario:localStorage.getItem('UserId'),
+
+                Banner: this.form.value.Banner
+                
+            };
+      this.sendServ.sendDataToApi(sendd)
         .subscribe(
           (res: any) => {
             if (res.status == 200) {
-              this.showDialog("Los datos se han guardado correctamente.");
-              this.resetForm();
+              this.showDialog("Los datos se han guardado correctamente.");             
             } else {
-              this.showDialog("Error al realizar el registro.");
-              this.resetForm();
+              this.showDialog("Error al realizar el registro.");             
             }
           }
         )
@@ -240,24 +282,13 @@ export class ReferidoWebComponent implements OnInit {
   onChange() {
     if (this.form.controls.tipoCel.value == 'Oficina') {
       this.mostrarExtension = false;
-      /*this.form.controls.citaCampus.reset({ value: '', disabled: false });
-      this.form.controls.citaFecha.reset({ value: '', disabled: false });
-      this.form.controls.citaHora.reset({ value: '', disabled: false });
-      this.form.controls.citaCall.reset({ value: '', disabled: false });
-      this.form.controls.citaTransfer.reset({ value: '', disabled: false });
-      this.form.controls.citaAsesor.reset({ value: '', disabled: false });*/
     } else {
       this.mostrarExtension = true;
-
-      /*this.form.controls.citaCampus.reset({ value: '', disabled: true });
-      this.form.controls.citaFecha.reset({ value: '', disabled: true });
-      this.form.controls.citaHora.reset({ value: '', disabled: true });
-      this.form.controls.citaCall.reset({ value: '', disabled: true });
-      this.form.controls.citaTransfer.reset({ value: '', disabled: true });
-      this.form.controls.citaAsesor.reset({ value: '', disabled: true });*/
     }
   }
 
+      
+      
   //Cambiado
   onChangeCampus(campus: string) {
     console.log(campus);

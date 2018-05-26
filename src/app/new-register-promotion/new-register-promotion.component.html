@@ -39,7 +39,7 @@
                     <mat-form-field>
                         <mat-select placeholder="Sub Tipo de Actividad" formControlName="SubTipoActividad" required (change)="onChangeSubTipo(form.controls.SubTipoActividad.value)">
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let sub_tipo of sub_tipos;" [value]="sub_tipo['crmit_subname']">
+                            <mat-option *ngFor="let sub_tipo of sub_tipos;" [value]="sub_tipo['crmit_codigounico']+'*'+sub_tipo['crmit_subname']">
                                 {{ sub_tipo['crmit_subname'] }}
                             </mat-option>
                         </mat-select>
@@ -64,7 +64,7 @@
                     <mat-form-field>
                         <mat-select placeholder="Sub Sub Tipo de Actividad" formControlName="SubSubTipoActividad" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let subsub_tipo of subsub_tipos;" [value]="subsub_tipo['crmit_subtipoactividadid']">
+                            <mat-option *ngFor="let subsub_tipo of subsub_tipos;" [value]="subsub_tipo['crmit_subsubname']+'*'+subsub_tipo['crmit_subtipoactividadid']">
                                 {{ subsub_tipo['crmit_subsubname'] }}
                             </mat-option>
                         </mat-select>
@@ -75,7 +75,7 @@
                     <mat-form-field>
                         <mat-select placeholder="Turno" formControlName="Turno" required>
                             <mat-option value="0">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let turno of turnos;" [value]="turno['id']">
+                            <mat-option *ngFor="let turno of turnos;" [value]="turno['crmit_codigounico']+'*'+turno['crmit_name']+'*'+turno['id']">
                                 {{ turno['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -87,11 +87,11 @@
             <mat-grid-list cols="2" rowHeight="70px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Escuela/Empresa" formControlName="EscuelaEmpresa" required>
+                        <mat-select placeholder="Escuela/Empresa" formControlName="EscuelaEmpresa" required (change)="onChangeEscuelaEmpresa(form.controls.EscuelaEmpresa.value)">
                             <mat-option value="0">Selecciona una opción</mat-option>
                             <!--<mat-option value="1">CENTRO DE ESTUDIOS UNIVERSITARIOS (COYOACAN</mat-option>
                             <mat-option value="2">PRE_COLEGIO ANGEL DEL CAMPO (IZTAPALAPA)</mat-option>-->
-                            <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_claveescuelaempresacrm']">
+                            <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_empresaescuela']">
                                 {{ escuelaempresa['Name'] }}
                             </mat-option>
                         </mat-select>
@@ -102,7 +102,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input matInput placeholder="calidad" formControlName="Calidad" minLength="5" type="tel" required>
+                        <input matInput placeholder="Calidad" formControlName="Calidad" minLength="5" type="tel" required>
                         <mat-error *ngIf="form.controls.Calidad.errors?.required">Por favor ingresa una calidad</mat-error>
                         <mat-error *ngIf="form.controls.Calidad.errors?.maxlength && !form.controls.Calidad.errors?.required">Debe contener como máximo 5 caracteres</mat-error>
                     </mat-form-field>
@@ -247,7 +247,7 @@
         <div class="head-blue mt">
             ÍNTERES
         </div>
-        <div class="form">
+         <div class="form">
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
@@ -264,7 +264,7 @@
                     <mat-form-field>
                         <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let interes of intereses;" [value]="interes['Área Interes']">
+                            <mat-option *ngFor="let interes of intereses;" [value]="interes['id']+'*'+interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
                             </mat-option>
                         </mat-select>
@@ -316,7 +316,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_name']">
+                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_codigounico']+'*'+ciclo['crmit_name']">
                                 {{ ciclo['crmit_name'] }}
                             </mat-option>
                         </mat-select>

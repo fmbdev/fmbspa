@@ -1,4 +1,4 @@
 export interface Interes {
-    id: number;
+    id: string;
     "Área Interes": string;
 }

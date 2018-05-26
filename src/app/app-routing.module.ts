@@ -40,23 +40,23 @@ const routes: Routes = [
   {
     path: 'menu',
     component: FormComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'register-existing',
     component: NewRegisterExistingComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
   },
   {
     path: 'register-existing-reception',
     component: NewRegisterExistingReceptionComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
   },
   {
     path: 'referidoReferente',
     component: ReferidoReferenteComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
   },
 
    {
@@ -112,7 +112,7 @@ const routes: Routes = [
   {
     path: 'modal',
     component: ModalConfirmComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -93,6 +93,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     FechaNacimiento: FormControl;
     Edad: FormControl;
 
+
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
     ApellidoMaternoTutor: FormControl;
@@ -270,7 +271,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             SubSubTipoActividad: new FormControl({ value: '', disabled: true }),
             EscuelaEmpresa: new FormControl(''),
             Turno: new FormControl(''),
-            Calidad: new FormControl('', [Validators.required, Validators.maxLength(5)]),
+            Calidad: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.maxLength(5)]),
             SinCorreo:new FormControl(''),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -390,16 +391,30 @@ export class NewRegisterPromotionComponent implements OnInit {
             }
 
             /* Interes GUID */
-            let _Campus = this.form.value.Campus;
-            let _Nivel = this.form.value.Nivel;
-            let _Modalidad = this.form.value.Modalidad;
-            let _Carrera = this.form.value.Carrera;
+            let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
+            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
+            let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
+            
+            let _SubTipo = this.form.value.SubTipoActividad;
+            let _SubSubTipo = this.form.value.SubSubTipoActividad;
+
+            let _Turno = (this.form.value.Turno==null)? "": this.form.value.Turno;
 
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
-
+            let InteresV = _Interes.split('*');
+            let CicloV = _Ciclo.split('*');
+            
+            let SubTipoV = _SubTipo.split('*');
+            let SubSubTipoV = _SubSubTipo.split('*');
+            
+            let TurnoV = _Turno.split('*');
+ 
             
             const sendd = {
                 Usuario: this.form.value.Usuario,
@@ -409,28 +424,37 @@ export class NewRegisterPromotionComponent implements OnInit {
                 CorreoElectronico: this.form.value.CorreoElectronico, 
                 NumeroCelular: this.form.value.NumeroCelular, 
                 Telefono: this.form.value.Telefono,                 
-                Genero: this.form.value.Genero, 
-                Edad: edadT, SinCorreo: this.form.value.SinCorreo,
+                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
+                Edad: edadT,
+                SinCorreo: this.form.value.SinCorreo,
                 NombreTutor: this.form.value.NombreTutor, 
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
                 NumeroCelularTutor: this.form.value.NumeroCelularTutor, 
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
-                TelefonoTutor: this.form.value.TelefonoTutor,
-                AreaInteres: this.form.value.AreaInteres,
-                Ciclo: this.form.value.Ciclo,
-
+                TelefonoTutor: this.form.value.TelefonoTutor,                              
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
-                Carrera: CarreraV[1],
-
-                GUIDCampus: CampusV[0],
-                GUIDNivelInteres: NivelV[0],
-                GUIDModalidad: ModalidadV[0],
-                GUIDCarrera: CarreraV[0],
-
-                Banner: this.form.value.Banner,
+                Carrera: CarreraV[1],               
+                AreaInteres: InteresV[1],
+                Ciclo: CicloV[1],              
+                SubTipo:SubTipoV[1],
+                SubSubTipo:SubSubTipoV[0],
+                Turno:TurnoV[2],
+                Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
+                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
+                GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+                GUIDUsuario:localStorage.getItem('UserId'),
+                GUIDCalidad:(this.form.value.EscuelaEmpresa)? null : this.form.value.EscuelaEmpresa,
+                GUIDTurno:(TurnoV[0]=='')? null : TurnoV[0],
+                GUIDSubTipo:SubTipoV[0],
+                GUIDSubSubTipo:SubSubTipoV[1],
+                Banner: this.form.value.Banner                
             };
            /*
               CampusCita: this.form.value.CampusCita,
@@ -455,19 +479,35 @@ export class NewRegisterPromotionComponent implements OnInit {
             */
           // -------------------------------- Predictivo  ----------------------------------
 
-            this.sendServ.sendDataToApi(sendd)
+          if(!this.form.controls['SinCorreo'].value){
+            this.sendServ.sendData3(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
+                        console.log(res);
+                        if (res.status == 200) {
+                            this.showDialog("Los datos se han guardado correctamente.");
+                        } else {
+                            this.showDialogE("Error al realizar el registro.");
+                        }
+                    }
+                )
+            }else{
+                //this.sendServ.sendDataToApi(sendd)// this.form.value)
+                this.sendServ.sendData3(sendd)// this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        console.log(res);
                         if (res.status == 200) {
 
                             this.showDialog("Los datos se han guardado correctamente.");
 
                         } else {
-
                             this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
+            }
+            
         } else {
             this.showDialogE("Error al realizar el registro *");
         }
@@ -656,14 +696,27 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
     }
 
-    onChangeSubTipo(value: string){
+    onChangeSubTipo(campus: string){
         if(this.form.controls['SubSubTipoActividad'].disabled){
             this.form.controls['SubSubTipoActividad'].enable();
         }else{
             this.form.controls['SubSubTipoActividad'].setValue('');
             this.form.controls['SubSubTipoActividad'].markAsUntouched();
         }
+
+         let cadena = campus.split('*');
+        let value = cadena[1];
         this.subsub_tipos = this.subSubServ.getSubSubTiposBySubTipo(value);
+    }
+
+    onChangeEscuelaEmpresa(campus: string){
+        let cadena = campus.split('*');
+        let value = cadena[0];
+
+        let calidad_name = this.escuelaEmpresaServ.getCalidadByEscuelaEmpresa(value);
+        if(calidad_name != null){
+            this.form.controls['Calidad'].setValue(calidad_name);
+        }
     }
 
     onFielCanal(value) {

@@ -83,6 +83,7 @@ export class NewRegisterExistingComponent implements OnInit {
     Genero: FormControl;
     FechaNacimiento: FormControl;
     Edad: FormControl;
+    SinCorreo: FormControl;
 
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
@@ -253,6 +254,7 @@ export class NewRegisterExistingComponent implements OnInit {
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
             Edad: new FormControl('', [Validators.minLength(2)]),
+            SinCorreo: new FormControl(''),
 
             NombreTutor: new FormControl(''),
             ApellidoPaternoTutor: new FormControl(''),
@@ -383,15 +385,19 @@ export class NewRegisterExistingComponent implements OnInit {
                 edadT = 12;
             }
             /* Interes GUID */
-            let _Campus = this.form.value.Campus;
-            let _Nivel = this.form.value.Nivel;
-            let _Modalidad = this.form.value.Modalidad;
-            let _Carrera = this.form.value.Carrera;
-
+            let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
+            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
+            let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
+            
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
+            let InteresV = _Interes.split('*');
+            let CicloV = _Ciclo.split('*');
 
             const sendd = {
               Usuario: this.form.value.Usuario,
@@ -407,7 +413,8 @@ export class NewRegisterExistingComponent implements OnInit {
               NumeroCelular: this.form.value.NumeroCelular, 
               Telefono: this.form.value.Telefono, 
               Genero: this.form.value.Genero,
-              Edad: edadT, 
+              Edad: edadT,
+              SinCorreo: this.form.value.SinCorreo,
 
               NombreTutor: this.form.value.NombreTutor, 
               ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
@@ -416,19 +423,24 @@ export class NewRegisterExistingComponent implements OnInit {
               CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
               TelefonoTutor: this.form.value.TelefonoTutor,
 
-                AreaInteres: this.form.value.AreaInteres,
-                Ciclo: this.form.value.Ciclo,
-
+                
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
+                
+                AreaInteres: InteresV[1],
+                Ciclo: CicloV[1],
 
-                GUIDCampus: CampusV[0],
-                GUIDNivelInteres: NivelV[0],
-                GUIDModalidad: ModalidadV[0],
-                GUIDCarrera: CarreraV[0],
-
+                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
+                
+                GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+                GUIDUsuario:localStorage.getItem('UserId'),
+                
                 Banner: this.form.value.Banner,
                 Tipificacion: this.form.value.Tipificacion,
                 Notas: this.form.value.Notas
@@ -438,19 +450,35 @@ export class NewRegisterExistingComponent implements OnInit {
           // GUIDCampus: this.form.value.CampusGUID, GUIDCiclo: this.form.value.CicloGUID, GUIDCarrera: this.form.value.CarreraGUID, GUIDNivelInteres: this.form.value.NivelGUID, GUIDModalidad: this.form.value.ModalidadGUID
 
 
+          if(!this.form.controls['SinCorreo'].value){
             this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
-                      console.log(res);
+                        console.log(res);
                         if (res.status == 200) {
 
                             this.showDialog("Los datos se han guardado correctamente.");
-                            
+
                         } else {
                             this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
+            }else{
+                this.sendServ.sendData3(sendd)// this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        console.log(res);
+                        if (res.status == 200) {
+
+                            this.showDialog("Los datos se han guardado correctamente.");
+
+                        } else {
+                            this.showDialogE("Error al realizar el registro.");
+                        }
+                    }
+                )
+            }
 
         } else {
             this.showDialogE("Error al realizar el registro *");

@@ -376,24 +376,31 @@ export class NewRegisterSoloComponent implements OnInit {
             }
           let bandera = localStorage.getItem('bandera');
             /* Interes GUID */
-            let _Campus = this.form.value.Campus;
-            let _Nivel = this.form.value.Nivel;
-            let _Modalidad = this.form.value.Modalidad;
-            let _Carrera = this.form.value.Carrera;
-
+            let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
+            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
+            let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
+            
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
+            let InteresV = _Interes.split('*');
+            let CicloV = _Ciclo.split('*');
             
-          const sendd = {Usuario: this.form.value.Usuario,
+          const sendd = {
+            
+            Usuario: this.form.value.Usuario,
+            
             Nombre: this.form.value.Nombre, 
             ApellidoPaterno: this.form.value.ApellidoPaterno, 
             ApellidoMaterno: this.form.value.ApellidoMaterno, 
             CorreoElectronico: this.form.value.CorreoElectronico, 
             NumeroCelular: this.form.value.NumeroCelular, 
             Telefono: this.form.value.Telefono, 
-            Genero: this.form.value.Genero,
+            Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
             Edad:edadT, 
             SinCorreo: this.form.value.SinCorreo,
 
@@ -404,33 +411,58 @@ export class NewRegisterSoloComponent implements OnInit {
             CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
             TelefonoTutor: this.form.value.TelefonoTutor,
 
-              AreaInteres: this.form.value.AreaInteres,
-              Ciclo: this.form.value.Ciclo,
+                 
+            Campus: CampusV[1],
+            Nivel: NivelV[1],
+            Modalidad: ModalidadV[1],
+            Carrera: CarreraV[1],
+           
+            AreaInteres: InteresV[1],
+            Ciclo: CicloV[1],
+            
+            GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+            GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+            GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
+            
+            GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+            GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+            GUIDUsuario:localStorage.getItem('UserId'),
 
-              Campus: CampusV[1],
-              Nivel: NivelV[1],
-              Modalidad: ModalidadV[1],
-              Carrera: CarreraV[1],
-
-              GUIDCampus: CampusV[0],
-              GUIDNivelInteres: NivelV[0],
-              GUIDModalidad: ModalidadV[0],
-              GUIDCarrera: CarreraV[0],
-
-              Banner: this.form.value.Banner,
-              Bandera: bandera
+            Banner: this.form.value.Banner,
+            Bandera: bandera
+            
           };
              
+          if(!this.form.controls['SinCorreo'].value){
             this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
+                        console.log(res);
                         if (res.status == 200) {
+
                             this.showDialog("Los datos se han guardado correctamente.");
+
                         } else {
                             this.showDialogE("Error al realizar el registro.");
                         }
                     }
                 )
+            }else{
+                this.sendServ.sendData3(sendd)// this.form.value)
+                .subscribe(
+                    (res: any) => {
+                        console.log(res);
+                        if (res.status == 200) {
+
+                            this.showDialog("Los datos se han guardado correctamente.");
+
+                        } else {
+                            this.showDialogE("Error al realizar el registro.");
+                        }
+                    }
+                )
+            }
         } else {
             this.showDialogE("Error al realizar el registro *");
         }
@@ -454,7 +486,7 @@ export class NewRegisterSoloComponent implements OnInit {
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
             );
-        this.showDialogForm(this.asesores,"Asesores,sores," ,"Cita-");
+        this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita-");
     }
 
     agruparDirectaClick() {
@@ -468,9 +500,9 @@ export class NewRegisterSoloComponent implements OnInit {
             .subscribe(
                 (datat: AsesorGrupal[]) => this.asesorGrupal = datat
             )    
-            setTimeout(()=>{            
-                this.showDialogForm(this.asesorGrupal, "Asesores Grupal","SesiónG-");
-            },1000); 
+            setTimeout(() => {
+                this.showDialogForm(this.asesorGrupal, "Selecciona a un Asesor Grupal", "SesiónG-");
+            }, 1000); 
         }else{
             this.showDialogE("Seleccione un Nivel");
         }
