@@ -395,11 +395,14 @@ export class NewRegisterComponent implements OnInit {
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
-                NumeroCelular: this.form.value.NumeroCelular,
-                Telefono: this.form.value.Telefono,
+                //NumeroCelular: this.form.value.NumeroCelular,
+                TelefonoCelular: this.form.value.NumeroCelular,
+                //Telefono: this.form.value.Telefono,
+                TelefonoCasa: this.form.value.Telefono,
                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
                 Edad: edadT,
                 SinCorreo: this.form.value.SinCorreo,
+                
 
                 NombreTutor: this.form.value.NombreTutor,
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
@@ -428,8 +431,16 @@ export class NewRegisterComponent implements OnInit {
 
                 Banner: this.form.value.Banner,
                 Tipificacion: this.form.value.Tipificacion,
-                Notas: this.form.value.Notas
-                
+                Notas: this.form.value.Notas,
+
+                Tipocontactoidname: this.form.value.ParentescoTutor,  
+
+                // Ejecutivo: this.form.value.ParentescoTutor , 
+                // SubTipoActividad: this.form.value.ParentescoTutor , 
+                // SubSubTipoActividad:  this.form.value.ParentescoTutor,
+                // EscuelaEmpresa:this.form.value.ParentescoTutor,
+                // Calidad:this.form.value.ParentescoTutor,
+
             };
 
             // CampusCita: this.form.value.CampusCita, FechaCita: this.form.value.FechaCita, HoraCita: this.form.value.HoraCita, Programacion: this.form.value.Programacion, Asesor: this.form.value.Asesor,

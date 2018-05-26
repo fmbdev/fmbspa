@@ -422,7 +422,8 @@ export class NewRegisterPromotionComponent implements OnInit {
                 ApellidoPaterno: this.form.value.ApellidoPaterno, 
                 ApellidoMaterno: this.form.value.ApellidoMaterno, 
                 CorreoElectronico: this.form.value.CorreoElectronico, 
-                NumeroCelular: this.form.value.NumeroCelular, 
+                //NumeroCelular: this.form.value.NumeroCelular, 
+                TelefonoCelular: this.form.value.NumeroCelular, 
                 Telefono: this.form.value.Telefono,                 
                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
                 Edad: edadT,
@@ -454,7 +455,8 @@ export class NewRegisterPromotionComponent implements OnInit {
                 GUIDTurno:(TurnoV[0]=='')? null : TurnoV[0],
                 GUIDSubTipo:SubTipoV[0],
                 GUIDSubSubTipo:SubSubTipoV[1],
-                Banner: this.form.value.Banner                
+                Banner: this.form.value.Banner,
+                Tipocontactoidname: this.form.value.ParentescoTutor                
             };
            /*
               CampusCita: this.form.value.CampusCita,

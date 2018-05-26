@@ -1,5 +1,5 @@
 import { AppConfig } from './services/constants';
-import { IdleUserService } from './providers/idle-user.service';
+//import { IdleUserService } from './providers/idle-user.service';
 import { Component, OnInit,ViewChild } from '@angular/core';
 
 
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit{
               private subSubServ: SubsubtipoActividadService,             
               private campusCarreraServ: CampusCarreraService,
               private escuelaEmpresaServ: EscuelaEmpresaService,
-              public userActive:  IdleUserService, 
+              //public userActive:  IdleUserService, 
               private route: Router,
               public constante: AppConfig){}
               
