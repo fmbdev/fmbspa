@@ -61,8 +61,8 @@ export class AppComponent implements OnInit{
 
     //** Detección de inactividad **// 
     if(this.route.url != '/'){
-      this.userActive.conteoInactividad();
-      this.userActive.detectaActividad();
+      // this.userActive.conteoInactividad();
+      // this.userActive.detectaActividad();
     }else{
       
       
