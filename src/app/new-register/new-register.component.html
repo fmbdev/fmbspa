@@ -23,7 +23,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)" (change)="onChangeCanal(form.controls.Canal.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_canales']">
+                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_canales']+'*'+canal['crmit_name']">
                                 {{ canal['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -37,7 +37,7 @@
                     <mat-form-field>
                         <mat-select formControlName="CSQ" placeholder="Departamento">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_csq']">
+                            <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_name']">
                                 {{ csq['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -60,8 +60,8 @@
                     <mat-form-field>
                         <mat-select formControlName="Interesa_NoInteresa" id="interes" placeholder="Interesa/No interesa">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="Interesa">Interesa</mat-option>
-                            <mat-option value="No Interesa">No Interesa</mat-option>
+                            <mat-option value="0">Interesa</mat-option>
+                            <mat-option value="1">No Interesa</mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Interesa_NoInteresa.errors?.required">{{showMjs('area_interes.m1')}}</mat-error>
                     </mat-form-field>

@@ -127,6 +127,7 @@ export class ReferidoTlmkComponent implements OnInit {
     // -------------------------------- Predictivo  ----------------------------------
 
     const predTel = this.form.value.Telefono.substring(0,2);
+
     this.form.value.Banner = window.location.href;
 
     if(this.form.value.tipoCel == "Celular"){
@@ -144,12 +145,11 @@ export class ReferidoTlmkComponent implements OnInit {
         this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
       }
     }
+    if(this.form.value.tipoCel == "Celular"){
+    }
     // -------------------------------- Predictivo  ----------------------------------
-       let edadT = this.form.value.Edad;
-
-            if (edadT == "") {
-                edadT = 12;
-            }
+            let edadT = this.form.value.Edad;
+            if (edadT == "") {edadT = 12; }
             
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
@@ -170,10 +170,12 @@ export class ReferidoTlmkComponent implements OnInit {
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
-                NumeroCelular: this.form.value.NumeroCelular,
-                Telefono: this.form.value.Telefono,
-                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
+                NumeroCelular: this.form.value.NumeroCelular,                
+                TelefonoCelular: this.form.value.Telefono,
+                TelefonoCasa: this.form.value.Telefono,
+                TelefonoOficina: this.form.value.Telefono,
 
+                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
@@ -183,13 +185,15 @@ export class ReferidoTlmkComponent implements OnInit {
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-                 
-                GUIDUsuario:localStorage.getItem('UserId'),
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],                    
+                GUIDUsuario:localStorage.getItem('UserId'),  
 
-                Banner: this.form.value.Banner
-                
+                TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo,
+                TelefonoPredictivo: this.form.value.TelefonoPredictivo,
+
+                Banner: this.form.value.Banner                
             };
+
         this.sendServ.sendDataToApi(sendd)
          .subscribe(
               (res: any) => {

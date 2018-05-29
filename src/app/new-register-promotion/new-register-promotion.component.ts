@@ -434,16 +434,21 @@ export class NewRegisterPromotionComponent implements OnInit {
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
                 TelefonoTutor: this.form.value.TelefonoTutor,                              
+                
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],               
                 AreaInteres: InteresV[1],
                 Ciclo: CicloV[1],              
+                
+                EscuelaEmpresa:this.form.value.EscuelaEmpresa,
+                ActividadAgenda:this.form.value.ActividadAgenda,
                 SubTipo:SubTipoV[1],
                 SubSubTipo:SubSubTipoV[0],
                 Turno:TurnoV[2],
                 Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
+                
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
@@ -451,10 +456,12 @@ export class NewRegisterPromotionComponent implements OnInit {
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
-                GUIDCalidad:(this.form.value.EscuelaEmpresa)? null : this.form.value.EscuelaEmpresa,
-                GUIDTurno:(TurnoV[0]=='')? null : TurnoV[0],
+                
+                GUIDCalidad:(this.form.value.EscuelaEmpresa)? null : this.form.value.EscuelaEmpresa,                
+                GUIDTurno:(TurnoV[0]=='')? null : TurnoV[0],                
                 GUIDSubTipo:SubTipoV[0],
                 GUIDSubSubTipo:SubSubTipoV[1],
+                
                 Banner: this.form.value.Banner,
                 Tipocontactoidname: this.form.value.ParentescoTutor                
             };
@@ -482,7 +489,7 @@ export class NewRegisterPromotionComponent implements OnInit {
           // -------------------------------- Predictivo  ----------------------------------
 
           if(!this.form.controls['SinCorreo'].value){
-            this.sendServ.sendData3(sendd)// this.form.value)
+            this.sendServ.sendDataToApi(sendd)// this.form.value)
                 .subscribe(
                     (res: any) => {
                         console.log(res);

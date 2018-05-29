@@ -49,16 +49,13 @@ export class AppComponent implements OnInit{
               private subSubServ: SubsubtipoActividadService,             
               private campusCarreraServ: CampusCarreraService,
               private escuelaEmpresaServ: EscuelaEmpresaService,
-              public userActive:  IdleUserService, 
+              private userActive:  IdleUserService, 
               private route: Router,
-              public constante: AppConfig){}
+              private constante: AppConfig){}
               
 
   ngOnInit(){
-    
-    
     this.api_cnn = this.constante.api_request;
-
     //** Detección de inactividad **// 
     if(this.route.url != '/'){
       this.userActive.conteoInactividad();

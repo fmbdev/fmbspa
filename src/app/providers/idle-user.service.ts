@@ -1,6 +1,6 @@
 import { DialogComponent } from './../dialog/dialog.component';
 import { MatDialog } from '@angular/material';
-import { AppComponent } from './../app.component';
+//import { AppComponent } from './../app.component';
 import { Router } from '@angular/router';
 import { AppConfig } from './../services/constants';
 import { Injectable } from '@angular/core';
@@ -11,7 +11,8 @@ export class IdleUserService {
   minutosEspera:number;
   rMinutosEspera:number ;
   timeIlde ;
-  constructor( private constante: AppConfig, private router: Router, private root_Ctrl: AppComponent, private dialog :MatDialog ) { }
+  constructor( private constante: AppConfig, private router: Router, private dialog :MatDialog ) { }
+  //constructor( private constante: AppConfig, private router: Router, private root_Ctrl: AppComponent, private dialog :MatDialog ) { }
 
   detectaActividad(){
     document.addEventListener("click",          this.resetearTiempo, false );
@@ -66,7 +67,7 @@ export class IdleUserService {
     dialogRef.afterClosed().subscribe(result => {
         //window.location.href = "/";
         localStorage.clear();
-        this.root_Ctrl.onLogout();
+        //this.root_Ctrl.onLogout();
     });
   }
   

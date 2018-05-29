@@ -353,12 +353,7 @@ export class NewRegisterSoloComponent implements OnInit {
           this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
           this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
          
-          this.form.value.Banner = window.location.href;
-
-
-          
-
-          
+          this.form.value.Banner = window.location.href;                 
 
           for(let i=0;i < this.rows.length; i++){
             if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
@@ -372,8 +367,9 @@ export class NewRegisterSoloComponent implements OnInit {
           let edadT = this.form.value.Edad;
 
             if(edadT==""){
-                edadT = 12;
+                edadT = 12;                
             }
+
           let bandera = localStorage.getItem('bandera');
             /* Interes GUID */
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
@@ -390,46 +386,48 @@ export class NewRegisterSoloComponent implements OnInit {
             let InteresV = _Interes.split('*');
             let CicloV = _Ciclo.split('*');
             
-          const sendd = {
-            
+          const sendd = {    
+
             Usuario: this.form.value.Usuario,
                     
             Nombre: this.form.value.Nombre, 
             ApellidoPaterno: this.form.value.ApellidoPaterno, 
             ApellidoMaterno: this.form.value.ApellidoMaterno, 
-            CorreoElectronico: this.form.value.CorreoElectronico, 
-            //NumeroCelular: this.form.value.NumeroCelular, 
-            TelefonoCelular: this.form.value.NumeroCelular, 
-            //Telefono: this.form.value.Telefono, 
-            TelefonoCasa: this.form.value.Telefono, 
+            CorreoElectronico: this.form.value.CorreoElectronico,             
+            TelefonoCelular: this.form.value.NumeroCelular,             
+            TelefonoCasa: this.form.value.Telefono,             
             Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
             Edad:edadT, 
-            SinCorreo: this.form.value.SinCorreo,
 
+            SinCorreo: this.form.value.SinCorreo,
+            
             NombreTutor: this.form.value.NombreTutor, 
             ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
             NumeroCelularTutor: this.form.value.NumeroCelularTutor, 
             ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
             CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
             TelefonoTutor: this.form.value.TelefonoTutor,
+            ParentescoTutor:this.form.value.ParentescoTutor,
 
-                 
             Campus: CampusV[1],
             Nivel: NivelV[1],
             Modalidad: ModalidadV[1],
-            Carrera: CarreraV[1],
-           
+            Carrera: CarreraV[1],           
             AreaInteres: InteresV[1],
             Ciclo: CicloV[1],
             
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
             GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
             GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-            
+            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],            
             GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
             GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
             GUIDUsuario:localStorage.getItem('UserId'),
+
+            TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo,
+            TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor,
+            TelefonoPredictivo: this.form.value.TelefonoPredictivo,
+            TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor,
 
             Banner: this.form.value.Banner,
             Bandera: bandera

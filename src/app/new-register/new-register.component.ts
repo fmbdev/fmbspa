@@ -228,7 +228,6 @@ export class NewRegisterComponent implements OnInit {
     formInit() {
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
-
         this.form = new FormGroup({
             Usuario: new FormControl({ value: datos.fullname, disabled: false }),
             Canal: new FormControl('', Validators.required),
@@ -300,7 +299,7 @@ export class NewRegisterComponent implements OnInit {
 
         if (this.form.valid) {
             this.onKeyFechaNacimiento();
-            let fecha_cita = this.formatServ.changeFormatFechaCita(this.form.controls['FechaCita'].value);
+            let fecha_cita = this.formatServ.changeFormatFecha(this.form.controls['FechaCita'].value);
             this.form.controls['FechaCita'].setValue(fecha_cita);
 
             if (this.sinEmail) {
@@ -318,8 +317,9 @@ export class NewRegisterComponent implements OnInit {
                     this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
                 }
             }
+
             if (this.form.value.NumeroCelularTutor) {
-                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
+                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);                
                 if (predCelTutor == 55) {
                     this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
                 }
@@ -334,10 +334,12 @@ export class NewRegisterComponent implements OnInit {
 
 
             const predTel = this.form.value.Telefono.substring(0, 2);
+
             this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
-            this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
+            this.form.value.TelefonoCelularPredictivoTutor =  '9045' + this.form.value.NumeroCelularTutor;
             this.form.value.TelefonoPredictivo = '901' + this.form.value.Telefono;
             this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+            
             this.form.value.Banner = window.location.href;
             this.form.value.CanalPreferido = 'Voz';
 
@@ -348,7 +350,6 @@ export class NewRegisterComponent implements OnInit {
             if (predTel == 55) {
                 this.form.value.TelefonoPredictivo = '9' + this.form.value.Telefono;
             }
-
 
 
             if (this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS') {
@@ -376,6 +377,7 @@ export class NewRegisterComponent implements OnInit {
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
             let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
             let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
+            let _Canal = (this.form.value.Canal==null)? "": this.form.value.Canal; 
             
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
@@ -383,70 +385,74 @@ export class NewRegisterComponent implements OnInit {
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
             let CicloV = _Ciclo.split('*');
+            
+            let CanalV = _Canal.split('*');
     
-
             const sendd = {
-                Usuario: this.form.value.Usuario,
-                Canal: this.form.value.Canal,
+
+                Usuario: this.form.value.Usuario,                
+                
+                CanalPreferido: CanalV[1],                
                 CSQ: this.form.value.CSQ,
                 TelefonoCorreo: this.form.value.TelefonoCorreo,
                 Interesa_NoInteresa: this.form.value.Interesa_NoInteresa,
+                
+
                 Nombre: this.form.value.Nombre,
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
-                CorreoElectronico: this.form.value.CorreoElectronico,
-                //NumeroCelular: this.form.value.NumeroCelular,
-                TelefonoCelular: this.form.value.NumeroCelular,
-                //Telefono: this.form.value.Telefono,
+                CorreoElectronico: this.form.value.CorreoElectronico,                
+                TelefonoCelular: this.form.value.NumeroCelular,                
                 TelefonoCasa: this.form.value.Telefono,
                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
                 Edad: edadT,
                 SinCorreo: this.form.value.SinCorreo,
                 
-
                 NombreTutor: this.form.value.NombreTutor,
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
                 NumeroCelularTutor: this.form.value.NumeroCelularTutor,
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
                 TelefonoTutor: this.form.value.TelefonoTutor,
-
+                ParentescoTutor:this.form.value.ParentescoTutor,
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
-                Carrera: CarreraV[1],
-               
+                Carrera: CarreraV[1],               
                 AreaInteres: InteresV[1],
                 Ciclo: CicloV[1],
                 
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-                
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],                
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
 
                 Banner: this.form.value.Banner,
+                Bandera:"",                
+
+                TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo,
+                TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor,
+                TelefonoPredictivo: this.form.value.TelefonoPredictivo,
+                TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor,
+
                 Tipificacion: this.form.value.Tipificacion,
                 Notas: this.form.value.Notas,
 
-                Tipocontactoidname: this.form.value.ParentescoTutor,  
-
-                // Ejecutivo: this.form.value.ParentescoTutor , 
-                // SubTipoActividad: this.form.value.ParentescoTutor , 
-                // SubSubTipoActividad:  this.form.value.ParentescoTutor,
-                // EscuelaEmpresa:this.form.value.ParentescoTutor,
-                // Calidad:this.form.value.ParentescoTutor,
+                CampusCita: this.form.value.CampusCita,
+                FechaCita: this.form.value.FechaCita,
+                HoraCita: this.form.value.HoraCita,
+                Programacion: (this.form.value.Programacion)? "": "",
+                Asesor: this.form.value.Asesor,
 
             };
 
             // CampusCita: this.form.value.CampusCita, FechaCita: this.form.value.FechaCita, HoraCita: this.form.value.HoraCita, Programacion: this.form.value.Programacion, Asesor: this.form.value.Asesor,
-            // TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo, TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor, TelefonoPredictivo: this.form.value.TelefonoPredictivo, TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor, CanalPreferido: this.form.value.CanalPreferido, Team: this.form.value.Team, Prioridad: this.form.value.Prioridad, Attemp: this.form.value.Attemp
-            //
-
+               
+            // CanalPreferido: this.form.value.CanalPreferido, Team: this.form.value.Team, Prioridad: this.form.value.Prioridad, Attemp: this.form.value.Attemp
 
             if(!this.form.controls['SinCorreo'].value){
                 this.sendServ.sendDataToApi(sendd)// this.form.value)
@@ -463,7 +469,7 @@ export class NewRegisterComponent implements OnInit {
                         }
                     )
                 }else{
-                    this.sendServ.sendData3(sendd)// this.form.value)
+                    this.sendServ.sendDataToApi(sendd)// this.form.value)
                     .subscribe(
                         (res: any) => {
                             console.log(res);
@@ -545,7 +551,11 @@ export class NewRegisterComponent implements OnInit {
         LandingValidation.onlyLetter(event);
     }
 
-    _keyPressNum(event: any, value: any, word: any) {
+    _keyPressNum(event: any, value: any, campus: any) {
+        
+        var cadena = campus.split('*');
+        var word = cadena[0];
+
         if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             LandingValidation.onlyNumber(event);
             LandingValidation.limitChar(event, word);
@@ -672,7 +682,10 @@ export class NewRegisterComponent implements OnInit {
 
 
 
-    onChangeCanal(value: string) {
+    onChangeCanal(campus: string) {
+        var cadena = campus.split('*');
+        var value = cadena[0];
+        
         if (this.form.controls['CSQ'].disabled) {
             this.form.controls['CSQ'].enable();
         } else {
@@ -682,7 +695,10 @@ export class NewRegisterComponent implements OnInit {
         this.csqs = this.csqServ.getCsqsByCanal(value);
     }
 
-    onFielCanal(value) {
+    onFielCanal(campus) {
+        var cadena = campus.split('*');
+        var value = cadena[0];
+
         this.canalText = value.toUpperCase();
         this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
