@@ -187,8 +187,13 @@ export class ReferidoReferenteComponent implements OnInit {
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
-                NumeroCelular: this.form.value.NumeroCelular,
-                Telefono: this.form.value.Telefono,
+
+                NumeroCelular: (this.form.value.tipoCel == "Celular")? this.form.value.NumeroCelular:null,
+
+                TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null, 
+                TelefonoOficina:(this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null, 
+                
+
                 Genero: this.form.value.Genero,
 
                 
