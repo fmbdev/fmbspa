@@ -138,21 +138,43 @@ export class ReferidoPromotorComponent implements OnInit {
 
     const predTel = this.form.value.Telefono.substring(0,2);
     this.form.value.Banner = window.location.href;
+    
+    this.form.value.TelefonoCelular=null;
+    this.form.value.TelefonoPredictivo=null;
+
+    this.form.value.TelefonoCasa=null;
+    this.form.value.TelefonoCasaPredictivo=null;
+
+    this.form.value.TelefonoOficina=null;
+    this.form.value.TelefonoOficinaPredictivo=null;
+
 
     if(this.form.value.tipoCel == "Celular"){
       if(predTel == 55){
-        this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.Telefono;
+        this.form.value.TelefonoPredictivo = '9044'+this.form.value.Telefono;
       }else{
-        this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.Telefono;
+        this.form.value.TelefonoPredictivo = '9045'+this.form.value.Telefono;
       }
+      this.form.value.TelefonoCelular=this.form.value.Telefono;
     }
 
     if(this.form.value.tipoCel == "Casa"){
       if(predTel == 55){
-        this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+        this.form.value.TelefonoCasaPredictivo = '9'+this.form.value.Telefono;
       }else{
-        this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+        this.form.value.TelefonoCasaPredictivo = '901'+this.form.value.Telefono;
       }
+      this.form.value.TelefonoCasa=this.form.value.Telefono;
+    }
+
+    if(this.form.value.tipoCel == "Oficina"){
+      if(predTel == 55){
+        this.form.value.TelefonoOficinaPredictivo = '9'+this.form.value.Telefono;
+      }else{
+        this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
+      }
+      this.form.value.TelefonoOficina=this.form.value.Telefono;
+
     }
 
     for(let i=0;i < this.rows.length; i++){
@@ -160,6 +182,12 @@ export class ReferidoPromotorComponent implements OnInit {
         this.form.value.Team = this.rows[i].TEAM;
         this.form.value.Prioridad = this.rows[i].PRIORIDAD;
         this.form.value.Attemp = this.rows[i].ATTEMP;
+      }else{
+
+        this.form.value.Team =null;
+        this.form.value.Prioridad =null;
+        this.form.value.Attemp =null;
+
       }
     }
     // -------------------------------- Predictivo  ----------------------------------
@@ -204,6 +232,19 @@ export class ReferidoPromotorComponent implements OnInit {
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
+
+                TelefonoCelular:this.form.value.TelefonoCelular,
+                TelefonoPredictivo:this.form.value.TelefonoPredictivo,
+
+                TelefonoCasa:this.form.value.TelefonoCasa,
+                TelefonoCasaPredictivo:this.form.value.TelefonoCasaPredictivo,
+
+                TelefonoOficina:this.form.value.TelefonoOficina,
+                TelefonoOficinaPredictivo:this.form.value.TelefonoOficinaPredictivo,
+
+                Team:this.form.value.Team,
+                Prioridad:this.form.value.Prioridad,
+                Attemp:this.form.value.Attemp,
 
                 Banner: this.form.value.Banner
                 

@@ -27,7 +27,7 @@ export class SubsubtipoActividadService {
         .subscribe(
           (data: any) => {
             for(let i = 0; i < data.length; i++){
-              let st = {id: data[i].id, crmit_codigounico: data[i].crmit_codigounico, crmit_subname: data[i].crmit_subname,crmit_subsubname: data[i].crmit_subsubname};
+              let st = {id: data[i].id,crmit_subtipoactividadid: data[i].crmit_subtipoactividadid, crmit_codigounico: data[i].crmit_codigounico, crmit_subname: data[i].crmit_subname,crmit_subsubname: data[i].crmit_subsubname};
               this.subTipo.push(st);                                         
             }
           }
@@ -42,7 +42,7 @@ export class SubsubtipoActividadService {
         .subscribe(
           (data: any) => {
             for(let i = 0; i < data.length; i++){
-              let sst = {id: data[i].id, crmit_subtipoactividadid: data[i].crmit_subtipoactividadid, crmit_subsubname: data[i].crmit_subsubname, crmit_subname: data[i].crmit_subname};
+              let sst = {id: data[i].id, crmit_subtipoactividadid: data[i].crmit_subtipoactividadid, crmit_codigounico: data[i].crmit_codigounico, crmit_subsubname: data[i].crmit_subsubname, crmit_subname: data[i].crmit_subname};
               this.subSubTipo.push(sst);              
             }
             console.log(this.subSubTipo);
@@ -61,7 +61,7 @@ export class SubsubtipoActividadService {
   getSubSubTiposBySubTipo(subTipoId: string) : SubsubTipo[] {
     
     console.log(subTipoId);
-
+ 
     let subsub_tipos: SubsubTipo[] = [];
 
     for(let i = 0; i < this.subSubTipo.length; i++){

@@ -15,7 +15,7 @@ export class SendService {
     sendDataToApi(data) {
                              //https://endpoint.scribesoft.com/v1/orgs/27038/requests/6189?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f
       //return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6334?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
-      return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6334?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
+      return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6427?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
     }
     
     sendData(data) {

@@ -47,4 +47,20 @@ export class EscuelaEmpresaService {
     }
   }
 
+  getCalidadIdByEscuelaEmpresa(escuelaId: string) : String{
+    let calidades: Calidad[] = this.calidadServ.getCalidades();
+    let calidad_id: string = "";
+
+    for(let i = 0; i < calidades.length; i++){
+      if(escuelaId == calidades[i].crmit_empresaescuela){
+        calidad_id = calidades[i].crmit_calidadid;
+      }
+    }
+    if(calidad_id != ""){
+      return calidad_id;
+    }else{
+      return null;
+    }
+  }
+
 }

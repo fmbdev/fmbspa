@@ -56,9 +56,9 @@
 </head>
 <body class="home page-template-default page page-id-13 custom-background right-sidebar woocommerce-active">
 <input type="hidden" name="h_posicion" id="h_posicion" value="">
-<div class="todoElBody">
-  <search-side-nav></search-side-nav>			
-    <app-modal></app-modal>
+<div class="todoElBody">			
+  <search-side-nav></search-side-nav> 
+  <app-modal></app-modal>
   <modal-formulario-tradicional></modal-formulario-tradicional>
   <modal-app-formulario-tradicional></modal-app-formulario-tradicional>
   <input id="data_json_basura" type="hidden" value="0">
@@ -83,9 +83,9 @@
 <script type='text/javascript' src='//www.calidadacademica.mx/wp-content/themes/temaunitec/assets/frontend/js/vendor/min/bootstrap.min.js'></script>
 <script type='text/javascript' src='//www.calidadacademica.mx/wp-content/themes/temaunitec/assets/frontend/js/vendor/min/mdb.min.js'></script>
 <script type='text/javascript' src='//www.calidadacademica.mx/wp-content/themes/temaunitec/assets/frontend/js/vendor/typeahead.js'></script>
-<script type='text/javascript' src='/lp_web/landing_web/inline.bundle.js'></script>
-<script type='text/javascript' src='/lp_web/landing_web/polyfills.bundle.js'></script>
-<script type='text/javascript' src='/lp_web/landing_web/main.bundle.js'></script>
+<script type='text/javascript' src='/lp_web/inline.bundle.js'></script>
+<script type='text/javascript' src='/lp_web/polyfills.bundle.js'></script>
+<script type='text/javascript' src='/lp_web/main.bundle.js'></script>
 
 </body>
 </html>

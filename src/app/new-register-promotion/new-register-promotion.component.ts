@@ -82,6 +82,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     EscuelaEmpresa: FormControl;
     Turno: FormControl;
     Calidad: FormControl;
+    GUIDCalidad: FormControl;
 
     Nombre: FormControl;
     ApellidoPaterno: FormControl;
@@ -401,6 +402,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             let _SubTipo = this.form.value.SubTipoActividad;
             let _SubSubTipo = this.form.value.SubSubTipoActividad;
 
+            let _ActividadAgenda = (this.form.value.ActividadAgenda==null)? "": this.form.value.ActividadAgenda;
+            let _EmpresaEscuela = (this.form.value.EscuelaEmpresa==null)? "": this.form.value.EscuelaEmpresa;
             let _Turno = (this.form.value.Turno==null)? "": this.form.value.Turno;
 
             let CampusV = _Campus.split('*');
@@ -413,15 +416,19 @@ export class NewRegisterPromotionComponent implements OnInit {
             let SubTipoV = _SubTipo.split('*');
             let SubSubTipoV = _SubSubTipo.split('*');
             
+            let ActividadAgendaV = _ActividadAgenda.split('*');
+            let EmpresaEscuelaV = _EmpresaEscuela.split('*');
             let TurnoV = _Turno.split('*');
- 
-            
+                    console.log("this.form.value.Calidad");       
+                    console.log(this.form.value.Calidad);       
+                
             const sendd = {
                 Usuario: this.form.value.Usuario,
                 Nombre: this.form.value.Nombre, 
                 ApellidoPaterno: this.form.value.ApellidoPaterno, 
                 ApellidoMaterno: this.form.value.ApellidoMaterno, 
                 CorreoElectronico: this.form.value.CorreoElectronico, 
+                
                 //NumeroCelular: this.form.value.NumeroCelular, 
                 TelefonoCelular: this.form.value.NumeroCelular, 
                 Telefono: this.form.value.Telefono,                 
@@ -437,33 +444,33 @@ export class NewRegisterPromotionComponent implements OnInit {
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
-                Modalidad: ModalidadV[1],
+                Modalidad:ModalidadV[1],
                 Carrera: CarreraV[1],               
                 AreaInteres: InteresV[1],
                 Ciclo: CicloV[1],              
                 
-                EscuelaEmpresa:this.form.value.EscuelaEmpresa,
-                ActividadAgenda:this.form.value.ActividadAgenda,
+                EscuelaEmpresa:EmpresaEscuelaV[1],
+                ActividadAgenda:ActividadAgendaV[1],
                 SubTipo:SubTipoV[1],
                 SubSubTipo:SubSubTipoV[0],
                 Turno:TurnoV[2],
-                Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
-                
+                                
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
-                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
-                GUIDUsuario:localStorage.getItem('UserId'),
-                
-                GUIDCalidad:(this.form.value.EscuelaEmpresa)? null : this.form.value.EscuelaEmpresa,                
+                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],                
+                GUIDUsuario:localStorage.getItem('UserId'),                
+                GUIDActividAgenda:ActividadAgendaV[0],
+                GUIDEscuelaEmpresa:EmpresaEscuelaV[0],
                 GUIDTurno:(TurnoV[0]=='')? null : TurnoV[0],                
                 GUIDSubTipo:SubTipoV[0],
-                GUIDSubSubTipo:SubSubTipoV[1],
-                
+                GUIDSubSubTipo:SubSubTipoV[1],  
+                Calidad: this.form.value.Calidad,
+                GUIDCalidad:EmpresaEscuelaV[2],                          
                 Banner: this.form.value.Banner,
-                Tipocontactoidname: this.form.value.ParentescoTutor                
+                ParentescoTutor: this.form.value.ParentescoTutor                
             };
            /*
               CampusCita: this.form.value.CampusCita,
@@ -712,9 +719,10 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.form.controls['SubSubTipoActividad'].setValue('');
             this.form.controls['SubSubTipoActividad'].markAsUntouched();
         }
-
-         let cadena = campus.split('*');
+        let cadena = campus.split('*');
         let value = cadena[1];
+        console.log('subtipo-Value');
+        console.log(cadena);
         this.subsub_tipos = this.subSubServ.getSubSubTiposBySubTipo(value);
     }
 
@@ -723,8 +731,9 @@ export class NewRegisterPromotionComponent implements OnInit {
         let value = cadena[0];
 
         let calidad_name = this.escuelaEmpresaServ.getCalidadByEscuelaEmpresa(value);
+        let calidad_id = this.escuelaEmpresaServ.getCalidadIdByEscuelaEmpresa(value);
         if(calidad_name != null){
-            this.form.controls['Calidad'].setValue(calidad_name);
+            this.form.controls['Calidad'].setValue(calidad_name);            
         }
     }
 
