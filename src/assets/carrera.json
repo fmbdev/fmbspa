@@ -1,1 +1,1030 @@
-[{"id":1,"codigounico":"e028167f-b51d-e811-8ed6-0050568d5ea9","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":2,"codigounico":"5906e242-2726-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":3,"codigounico":"263fcec0-142a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":4,"codigounico":"14aba42d-152a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":5,"codigounico":"cc46b75d-182a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":6,"codigounico":"93c5349b-182a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":7,"codigounico":"ff98b120-192a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":8,"codigounico":"8c3e7bab-192a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":9,"codigounico":"07ea7925-1a2a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":10,"codigounico":"b7076799-272a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":11,"codigounico":"822be5e6-272a-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":12,"codigounico":"5f36c069-812c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":13,"codigounico":"f056b2bd-812c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":14,"codigounico":"f4a2c796-832c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":15,"codigounico":"b340a956-9f2c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":16,"codigounico":"7ed24269-a02c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":17,"codigounico":"ffc814c1-a22c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":18,"codigounico":"f8e7a733-a32c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":19,"codigounico":"d06c0377-a32c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":20,"codigounico":"18096302-a42c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":21,"codigounico":"b5480a6b-a42c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":22,"codigounico":"23d5dff5-a42c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":23,"codigounico":"8783fea7-a52c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":24,"codigounico":"fef7ece6-a52c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":25,"codigounico":"de90411d-a62c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":26,"codigounico":"0edefb64-a62c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":27,"codigounico":"6f5637f4-a62c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":28,"codigounico":"dea847c4-a82c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":29,"codigounico":"4167224b-a92c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":30,"codigounico":"fb03a7e0-a92c-e811-9df9-0050568d5ea9","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":31,"codigounico":"868a7ec1-493b-e711-a51f-0050568d5ea9","name":"Licenciatura en Nutrici\u00f3n","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":32,"codigounico":"360a3876-4b3b-e711-a51f-0050568d5ea9","name":"Licenciatura en Enfermer\u00eda","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":33,"codigounico":"9629982b-4d3b-e711-a51f-0050568d5ea9","name":"Licenciatura en Fisioterapia","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":34,"codigounico":"6bd7b50f-0c3c-e811-ac38-0050568d5ea9","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":35,"codigounico":"bf4478f6-0c3c-e811-ac38-0050568d5ea9","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":36,"codigounico":"287cb65c-adff-e711-b357-0050568d5ea9","name":"Licenciatura en Administraci\u00f3n Empresas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":37,"codigounico":"1ae087b7-adff-e711-b357-0050568d5ea9","name":"Licenciatura en Contadur\u00eda P\u00fablica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":38,"codigounico":"8d05bf25-aeff-e711-b357-0050568d5ea9","name":"Licenciatura en Derecho","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":39,"codigounico":"4ec7e880-aeff-e711-b357-0050568d5ea9","name":"Licenciatura en Mercadotecnia","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":40,"codigounico":"4a30bdd7-aeff-e711-b357-0050568d5ea9","name":"Licenciatura en Negocios Internacionales","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":41,"codigounico":"3405953a-afff-e711-b357-0050568d5ea9","name":"Licenciatura en Pedagog\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":42,"codigounico":"019ce683-afff-e711-b357-0050568d5ea9","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":43,"codigounico":"d074e463-b0ff-e711-b357-0050568d5ea9","name":"Licenciatura en Arquitectura","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":44,"codigounico":"8384abc4-b0ff-e711-b357-0050568d5ea9","name":"Licenciatura en Dise\u00f1o Gr\u00e1fico","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":45,"codigounico":"6dfb9be7-b4ff-e711-b357-0050568d5ea9","name":"Licenciatura en Dise\u00f1o, Animaci\u00f3n y Arte Digital","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":46,"codigounico":"43d2b458-b5ff-e711-b357-0050568d5ea9","name":"Ingenier\u00eda en Sistemas Computacionales","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":47,"codigounico":"2d3ddc07-b6ff-e711-b357-0050568d5ea9","name":"Ingenier\u00eda Industrial y de Sistemas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":48,"codigounico":"6075f19a-b6ff-e711-b357-0050568d5ea9","name":"Licenciatura Internacional en Turismo y Reuniones","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":49,"codigounico":"48aa40e4-b6ff-e711-b357-0050568d5ea9","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":50,"codigounico":"8803207c-b7ff-e711-b357-0050568d5ea9","name":"Licenciatura en Gastronom\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":51,"codigounico":"78612c52-76c9-e711-bd7b-0050568d5ea9","name":"ESPECIALIDAD EN ENDODONCIA","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":52,"codigounico":"f6900cdb-76c9-e711-bd7b-0050568d5ea9","name":"ESPECIALIDAD EN ODONTOLOGIA PEDIATRICA","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":53,"codigounico":"43e58b2d-77c9-e711-bd7b-0050568d5ea9","name":"ESPECIALIDAD EN ODONTOLOGIA RESTAURADORA","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":54,"codigounico":"4b7d846a-77c9-e711-bd7b-0050568d5ea9","name":"ESPECIALIDAD EN ORTODONCIA","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":55,"codigounico":"34bc89b7-77c9-e711-bd7b-0050568d5ea9","name":"ESPECIALIDAD EN PERIODONCIA","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":56,"codigounico":"4e4b6194-76bb-e311-9f0d-005056be327d","name":"Licenciatura en Administraci\u00f3n Tecnolog\u00edas la Informaci\u00f3n","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":57,"codigounico":"c084ce4f-77bb-e311-9f0d-005056be327d","name":"Licenciatura en Contadur\u00eda P\u00fablica","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":58,"codigounico":"37c8c096-77bb-e311-9f0d-005056be327d","name":"Licenciatura en Administraci\u00f3n Empresas","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":59,"codigounico":"502e95de-77bb-e311-9f0d-005056be327d","name":"Licenciatura en Mercadotecnia","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":60,"codigounico":"727c1624-78bb-e311-9f0d-005056be327d","name":"Licenciatura en Negocios Internacionales","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":61,"codigounico":"36bfc847-78bb-e311-9f0d-005056be327d","name":"Licenciatura en Derecho","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":62,"codigounico":"8ca6ff71-78bb-e311-9f0d-005056be327d","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":63,"codigounico":"f9fe5394-78bb-e311-9f0d-005056be327d","name":"Licenciatura en Pedagog\u00eda","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":64,"codigounico":"f081b5ad-a922-e611-9155-005056be4250","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":65,"codigounico":"315a8d51-d922-e611-9155-005056be4250","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":66,"codigounico":"5098122c-7923-e611-9155-005056be4250","name":"Licenciatura en Gastronomia","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":67,"codigounico":"18b042fb-1129-e611-9155-005056be4250","name":"Licenciatura en Finanzas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":68,"codigounico":"f3c49799-1329-e611-9155-005056be4250","name":"Licenciatura en Administraci\u00f3n Tecnolog\u00edas la Informaci\u00f3n","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":69,"codigounico":"d5ba4cf0-1329-e611-9155-005056be4250","name":"Licenciatura en Administraci\u00f3n Empresas Tur\u00edsticas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":70,"codigounico":"84bfa6de-eb29-e611-9155-005056be4250","name":"Licenciatura en Contadur\u00eda P\u00fablica y Finanzas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":71,"codigounico":"744d7814-ec29-e611-9155-005056be4250","name":"Licenciatura en Econom\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":72,"codigounico":"23bcb4fd-ed29-e611-9155-005056be4250","name":"Ingenier\u00eda en Sistemas Computacionales","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":73,"codigounico":"9539c369-9ec3-e511-9279-005056be4250","name":"Licenciatura en Administraci\u00f3n Empresas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":74,"codigounico":"0f57f6dd-9ec3-e511-9279-005056be4250","name":"Licenciatura en Contadur\u00eda P\u00fablica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":75,"codigounico":"a0f667d5-9fc3-e511-9279-005056be4250","name":"Licenciatura en Derecho","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":76,"codigounico":"dfd55e30-a0c3-e511-9279-005056be4250","name":"Licenciatura en Mercadotecnia","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":77,"codigounico":"80216a8b-a8c3-e511-9279-005056be4250","name":"Licenciatura en Pedagog\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":78,"codigounico":"eb2a2e47-c4e4-e511-9279-005056be4250","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":79,"codigounico":"928028e0-25d1-e611-987f-005056be4250","name":"Seminario en Anal\u00edtica E Inteligencia De Negocios","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":80,"codigounico":"66798b16-e03a-e511-9e25-005056be4250","name":"Licenciatura en Cirujano Dentista","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":81,"codigounico":"db0369bc-583c-e511-9e25-005056be4250","name":"Licenciatura en Comercio Internacional","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":82,"codigounico":"6e656bcc-27fe-e611-a5d4-005056be4250","name":"Preparatoria","ofertaeducativaname":"PREPARATORIA","ofertaeducativaid":"d002c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":83,"codigounico":"6b9ed3d4-d419-e511-a8d3-005056be4250","name":"Licenciatura en Comercio Internacional","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":84,"codigounico":"8028c716-d519-e511-a8d3-005056be4250","name":"Licenciatura en Comercio Internacional","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":85,"codigounico":"ed3b9b9d-d105-e711-b36c-005056be4250","name":"Maestr\u00eda en Administraci\u00f3n Negocios","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":86,"codigounico":"962bc5cb-d105-e711-b36c-005056be4250","name":"Maestr\u00eda en Derecho","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":87,"codigounico":"5a3d2df8-d105-e711-b36c-005056be4250","name":"Maestr\u00eda en Direcci\u00f3n Proyectos","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":88,"codigounico":"5130ce26-d205-e711-b36c-005056be4250","name":"Maestr\u00eda en Educaci\u00f3n","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":89,"codigounico":"45bcca5f-d205-e711-b36c-005056be4250","name":"Maestr\u00eda en Psicolog\u00eda","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":90,"codigounico":"3177a59c-d205-e711-b36c-005056be4250","name":"Maestr\u00eda en Seguridad en Tecnolog\u00eda de la Informaci\u00f3n","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":91,"codigounico":"2ae3be2e-d605-e711-b36c-005056be4250","name":"Maestr\u00eda en Administraci\u00f3n Negocios","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":92,"codigounico":"621d995d-d605-e711-b36c-005056be4250","name":"Maestr\u00eda en Derecho","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":93,"codigounico":"db77e489-d605-e711-b36c-005056be4250","name":"Maestr\u00eda en Direcci\u00f3n Proyectos","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":94,"codigounico":"76a9f2ba-d605-e711-b36c-005056be4250","name":"Maestr\u00eda en Educaci\u00f3n","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":95,"codigounico":"6ecb7625-d705-e711-b36c-005056be4250","name":"Maestr\u00eda en Psicolog\u00eda","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":96,"codigounico":"c13bf544-550b-e711-b36c-005056be4250","name":"Seminario en Administraci\u00f3n de Negocios","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":97,"codigounico":"e6d1e3b2-550b-e711-b36c-005056be4250","name":"Maestr\u00eda en Derecho","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":98,"codigounico":"5d63061a-560b-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":99,"codigounico":"9d4ab7e0-7a0b-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":100,"codigounico":"668e2b37-7b0b-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":101,"codigounico":"8011407d-7b0b-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":102,"codigounico":"28cf3760-7c0b-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":103,"codigounico":"b7718ef3-7c0b-e711-b36c-005056be4250","name":"Maestr\u00eda en Derecho","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":104,"codigounico":"e1b9a453-7d0b-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":105,"codigounico":"886aaeb9-7d0b-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":106,"codigounico":"0fd47a05-7e0b-e711-b36c-005056be4250","name":"SEMINARIO EN PSICOLOG\u00cdA","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":107,"codigounico":"dc612536-4e16-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":108,"codigounico":"9ff56dcc-4f16-e711-b36c-005056be4250","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":109,"codigounico":"c2faa420-5016-e711-b36c-005056be4250","name":"Diplomado en Finanzas","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":110,"codigounico":"75580b61-5016-e711-b36c-005056be4250","name":"Diplomado en Empresas Sostenibles","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":111,"codigounico":"9708bcbc-5016-e711-b36c-005056be4250","name":"Diplomado en Empresas Tur\u00edsticas","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":112,"codigounico":"ff630b0b-5116-e711-b36c-005056be4250","name":"Diplomado en Derecho de Amparo","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":113,"codigounico":"29943a44-5116-e711-b36c-005056be4250","name":"Diplomado en Derecho Corporativo","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":114,"codigounico":"17755d76-5116-e711-b36c-005056be4250","name":"Diplomado en Derecho Fiscal","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":115,"codigounico":"b0a04ab4-5116-e711-b36c-005056be4250","name":"Diplomado en Tecnolog\u00eda Educativa","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":116,"codigounico":"59d93c1a-5216-e711-b36c-005056be4250","name":"Diplomado en Evaluaci\u00f3n Educativa","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":117,"codigounico":"eda9a849-5216-e711-b36c-005056be4250","name":"Diplomado en Psicolog\u00eda Organizacional","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":118,"codigounico":"17090c7a-5216-e711-b36c-005056be4250","name":"Diplomado en Psicolog\u00eda Educativa","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":119,"codigounico":"f1995c83-52f7-e311-b5a9-005056be4250","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":120,"codigounico":"b0bc3a5c-e6a1-e611-bb99-005056be4250","name":"Maestr\u00eda en Analit\u00edca e inteligencia de Negocios","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":121,"codigounico":"f24410a4-d21c-e411-bc84-005056be4250","name":"Licenciatura en Enfermer\u00eda","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":122,"codigounico":"2c80329b-3c2c-e611-bd4d-005056be4250","name":"Ingenier\u00eda Mec\u00e1nica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":123,"codigounico":"718eeada-3c2c-e611-bd4d-005056be4250","name":"Ingenier\u00eda Qu\u00edmica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":124,"codigounico":"1f4b9681-612e-e611-bd4d-005056be4250","name":"Licenciatura en Publicidad y Medios","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":125,"codigounico":"65bd1237-622e-e611-bd4d-005056be4250","name":"Licenciatura Internacional en Turismo y Administraci\u00f3n de Congresos y Reuniones","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":126,"codigounico":"fe666767-622e-e611-bd4d-005056be4250","name":"Licenciatura en Mercadotecnia Digital y Publicidad","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":127,"codigounico":"7e2b6e65-632e-e611-bd4d-005056be4250","name":"Ingenier\u00eda Gesti\u00f3n de Negocios","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":128,"codigounico":"41671cc1-812e-e611-bd4d-005056be4250","name":"Licenciatura en Dise\u00f1o Industrial","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":129,"codigounico":"670f7585-822e-e611-bd4d-005056be4250","name":"Ingenier\u00eda en Sistemas Digitales y Rob\u00f3tica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":130,"codigounico":"02a5f83b-832e-e611-bd4d-005056be4250","name":"Licenciatura en Pedagog\u00eda","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":131,"codigounico":"5e08a8d2-832e-e611-bd4d-005056be4250","name":"Licenciatura en Internacional en Turismo y Administraci\u00f3n de Hoteles","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":132,"codigounico":"2e4c1c5a-842e-e611-bd4d-005056be4250","name":"Ingenier\u00eda Mecatr\u00f3nica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":133,"codigounico":"fa5c5e0f-d934-e611-bd4d-005056be4250","name":"Ingenier\u00eda Industrial y Administraci\u00f3n","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":134,"codigounico":"bc608115-d934-e611-bd4d-005056be4250","name":"Licenciatura en Administraci\u00f3n de Empresas de Entretenimiento y Comunicaci\u00f3n","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":135,"codigounico":"63a7163b-d934-e611-bd4d-005056be4250","name":"Ingenier\u00eda en Software y Redes","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":136,"codigounico":"36ca4c55-d934-e611-bd4d-005056be4250","name":"Ingenier\u00eda Ambiental y Sustentabilidad","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":137,"codigounico":"38c35c5b-d934-e611-bd4d-005056be4250","name":"Licenciatura en Administraci\u00f3n Tecnolog\u00edas la Informaci\u00f3n","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":138,"codigounico":"5c57cca6-d934-e611-bd4d-005056be4250","name":"Ingenier\u00eda en Telecomunicaciones y Electr\u00f3nica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":139,"codigounico":"d2e1dcfa-d934-e611-bd4d-005056be4250","name":"Licenciatura en Negocios Internacionales","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":140,"codigounico":"f21f193e-da34-e611-bd4d-005056be4250","name":"Licenciatura en Negocios Internacionales","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":141,"codigounico":"0168a061-da34-e611-bd4d-005056be4250","name":"Licenciatura en Administraci\u00f3n Tecnolog\u00edas la Informaci\u00f3n","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":142,"codigounico":"bd2fa66d-da34-e611-bd4d-005056be4250","name":"Licenciatura en Mercadotecnia","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":143,"codigounico":"8081f194-da34-e611-bd4d-005056be4250","name":"Licenciatura en Derecho","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":144,"codigounico":"820887b8-da34-e611-bd4d-005056be4250","name":"Licenciatura en Administraci\u00f3n Empresas Tur\u00edsticas","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":145,"codigounico":"ab664110-db34-e611-bd4d-005056be4250","name":"Licenciatura en Dise\u00f1o Gr\u00e1fico","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":146,"codigounico":"a6e414c4-db34-e611-bd4d-005056be4250","name":"Licenciatura en Pedagog\u00eda","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":147,"codigounico":"43d3bdee-db34-e611-bd4d-005056be4250","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":148,"codigounico":"2e951d1e-dc34-e611-bd4d-005056be4250","name":"Licenciatura en administraci\u00f3n de empresas","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":149,"codigounico":"dc2fd13e-dc34-e611-bd4d-005056be4250","name":"Licenciatura en Contadur\u00eda P\u00fablica","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":150,"codigounico":"6a9bc8bf-e234-e611-bd4d-005056be4250","name":"Licenciatura en Ciencias La Comunicaci\u00f3n","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":151,"codigounico":"6c3da72a-e537-e611-bd4d-005056be4250","name":"Ingenier\u00eda Gesti\u00f3n de Negocios","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":152,"codigounico":"bc602570-a4b5-e511-bea5-005056be4250","name":"Licenciatura en Negocios Internacionales","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":153,"codigounico":"ab2135a2-a4b5-e511-bea5-005056be4250","name":"Ingenier\u00eda en Sistemas Computacionales","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":154,"codigounico":"9be9ffc8-a4b5-e511-bea5-005056be4250","name":"Ingenier\u00eda Civil","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":155,"codigounico":"68754bee-a4b5-e511-bea5-005056be4250","name":"Ingenier\u00eda Industrial y Sistemas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":156,"codigounico":"5e081df4-3ab6-e511-bea5-005056be4250","name":"Licenciatura en Dise\u00f1o, Animaci\u00f3n y Arte Digital","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":157,"codigounico":"3ac363fa-3ab6-e511-bea5-005056be4250","name":"Licenciatura en Dise\u00f1o Industrial","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":158,"codigounico":"59565c07-3bb6-e511-bea5-005056be4250","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":159,"codigounico":"01c1f912-3eb6-e511-bea5-005056be4250","name":"Licenciatura en Arquitectura","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":160,"codigounico":"56ea6221-2fba-e511-bea5-005056be4250","name":"Licenciatura en Mercadotecnia","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":161,"codigounico":"9a587687-2fba-e511-bea5-005056be4250","name":"Licenciatura en Contadur\u00eda P\u00fablica","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":162,"codigounico":"0c7982af-2fba-e511-bea5-005056be4250","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":163,"codigounico":"09dfb47e-31ba-e511-bea5-005056be4250","name":"Licenciatura en Derecho","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":164,"codigounico":"0ffc032a-32ba-e511-bea5-005056be4250","name":"Licenciatura en Administraci\u00f3n Empresas","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":165,"codigounico":"cede11a8-2278-e511-bed8-005056be4250","name":"Maestr\u00eda en en Administraci\u00f3n de Establecimientos de Servicios de Salud","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":166,"codigounico":"745345e4-eb4a-e711-bae5-005056be6e15","name":"Licenciatura en Relaciones Internacionales","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":167,"codigounico":"74b300b4-f14a-e711-bae5-005056be6e15","name":"Ingenier\u00eda en Industrial y Administraci\u00f3n","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":168,"codigounico":"540a6365-f24a-e711-bae5-005056be6e15","name":"Ingenier\u00eda en Software y Redes","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":169,"codigounico":"744167a0-f24a-e711-bae5-005056be6e15","name":"Licenciatura en Dise\u00f1o Digital y Animaci\u00f3n","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":170,"codigounico":"be8ad71e-f34a-e711-bae5-005056be6e15","name":"Licenciatura en Relaciones Internacionales","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":171,"codigounico":"348141b6-f34a-e711-bae5-005056be6e15","name":"Licenciatura en Dise\u00f1o Digital y Animaci\u00f3n","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":172,"codigounico":"b43f5da2-464d-e711-bae5-005056be6e15","name":"Licenciatura Internacional en Turismo y Reuniones","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":173,"codigounico":"deb3cdab-474d-e711-bae5-005056be6e15","name":"Licenciatura en Comunicaci\u00f3n y Medios","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":174,"codigounico":"0cf5cc3f-a657-e711-bae5-005056be6e15","name":"Maestr\u00eda en Dise\u00f1o Multimedia","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":175,"codigounico":"a5611db6-a657-e711-bae5-005056be6e15","name":"Maestr\u00eda en Migraci\u00f3n Sistemas","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":176,"codigounico":"a06b150d-a757-e711-bae5-005056be6e15","name":"Maestr\u00eda en Juicios Orales","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":177,"codigounico":"e3e9f36a-a757-e711-bae5-005056be6e15","name":"Maestr\u00eda en Direcci\u00f3n de la Comunicaci\u00f3n","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":178,"codigounico":"4c5cf6d8-a757-e711-bae5-005056be6e15","name":"Maestr\u00eda en Dise\u00f1o Multimedia","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":179,"codigounico":"1d93f2a0-a857-e711-bae5-005056be6e15","name":"Maestr\u00eda en Juicios Orales","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":180,"codigounico":"7d844e20-a957-e711-bae5-005056be6e15","name":"Maestr\u00eda en Direcci\u00f3n de la Comunicaci\u00f3n","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":181,"codigounico":"4b76be9a-a957-e711-bae5-005056be6e15","name":"Maestr\u00eda en Analit\u00edca e inteligencia de Negocios","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":182,"codigounico":"b5af81ee-ab57-e711-bae5-005056be6e15","name":"SEMINARIO EN DISE\u00d1O MULTIMEDIA","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":183,"codigounico":"bd34fd41-ac57-e711-bae5-005056be6e15","name":"SEMINARIO EN MIGRACION DE SISTEMAS","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":184,"codigounico":"590118c6-ac57-e711-bae5-005056be6e15","name":"Seminario en Juicios Orales","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":185,"codigounico":"51c97417-ad57-e711-bae5-005056be6e15","name":"SEMINARIO EN DIRECCI\u00d3N DE LA COMUNICACI\u00d3N","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":186,"codigounico":"ad09b65e-ad57-e711-bae5-005056be6e15","name":"SEMINARIO EN DISE\u00d1O MULTIMEDIA","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":187,"codigounico":"316382ca-ad57-e711-bae5-005056be6e15","name":"SEMINARIO EN JUICIOS ORALES","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":188,"codigounico":"5d92ab64-ae57-e711-bae5-005056be6e15","name":"SEMINARIO EN DIRECCI\u00d3N DE LA COMUNICACI\u00d3N","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":189,"codigounico":"5d468713-b057-e711-bae5-005056be6e15","name":"SEMINARIO EN INTELIGENCIA DE NEGOCIOS","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":190,"codigounico":"8f229d4d-ceae-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":191,"codigounico":"d2efa78e-ceae-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":192,"codigounico":"0e295400-cfae-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":193,"codigounico":"547f5332-cfae-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":194,"codigounico":"b27e579b-f9b8-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":195,"codigounico":"2d7ecb79-fab8-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":196,"codigounico":"619d1cfa-fab8-e211-8a41-3440b5bef8e0","name":"Diplomado en Psicolog\u00eda Organizacional","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":197,"codigounico":"2daecbbf-fcb8-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":198,"codigounico":"7bf69f16-feb8-e211-8a41-3440b5bef8e0","name":"Licenciatura en Administraci\u00f3n Tecnolog\u00edas la Informaci\u00f3n","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":199,"codigounico":"4d3b1a86-feb8-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":200,"codigounico":"cd6b4342-ffb8-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":201,"codigounico":"419cf30f-00b9-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":202,"codigounico":"0d9f11a5-00b9-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":203,"codigounico":"30686a64-05b9-e211-8a41-3440b5bef8e0","name":"Licenciatura en Dise\u00f1o Industrial","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":204,"codigounico":"8f0a11b4-06b9-e211-8a41-3440b5bef8e0","name":"Licenciatura en Dise\u00f1o, Animaci\u00f3n y Arte Digital","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":205,"codigounico":"6d0ab9fe-06b9-e211-8a41-3440b5bef8e0","name":"Licenciatura en Mercadotecnia Digital y Publicidad","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":206,"codigounico":"14f52dba-0fb9-e211-8a41-3440b5bef8e0","name":"Licenciatura en Administraci\u00f3n de Empresas de Entretenimiento y Comunicaci\u00f3n","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":207,"codigounico":"c946ec6b-43bf-e211-8a41-3440b5bef8e0","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":208,"codigounico":"22447dd6-2f76-e211-94a7-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":209,"codigounico":"2bc69adc-3176-e211-94a7-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":210,"codigounico":"dbecb58a-3376-e211-94a7-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":211,"codigounico":"15a83e05-3476-e211-94a7-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":212,"codigounico":"ea52b946-917b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":213,"codigounico":"8a497b93-917b-e211-bfd1-3440b5bef8e4","name":"Diplomado en Capital Humano","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":214,"codigounico":"aa6eb8c5-917b-e211-bfd1-3440b5bef8e4","name":"Diplomado en Finanzas","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":215,"codigounico":"4a12773b-927b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":216,"codigounico":"aa283f66-927b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":217,"codigounico":"ca1ee699-927b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":218,"codigounico":"ea90b3df-927b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":219,"codigounico":"aa584d09-937b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":220,"codigounico":"8a6aa636-937b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":221,"codigounico":"4aed8361-937b-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":222,"codigounico":"4a7b7c8f-937b-e211-bfd1-3440b5bef8e4","name":"Especialidad en Periodoncia","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":223,"codigounico":"2aec16b3-937b-e211-bfd1-3440b5bef8e4","name":"Especialidad en Odontolog\u00eda Restauradora","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":224,"codigounico":"ea110926-947b-e211-bfd1-3440b5bef8e4","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":225,"codigounico":"cac30051-947b-e211-bfd1-3440b5bef8e4","name":"Licenciatura en Pedagog\u00eda","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":226,"codigounico":"1504683d-8c7c-e211-bfd1-3440b5bef8e4","name":"Licenciatura en Administraci\u00f3n Empresas Tur\u00edsticas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":227,"codigounico":"0838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":228,"codigounico":"0a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":229,"codigounico":"0c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":230,"codigounico":"0e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":231,"codigounico":"1038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":232,"codigounico":"1238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":233,"codigounico":"1638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":234,"codigounico":"1838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":235,"codigounico":"1a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":236,"codigounico":"1c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":237,"codigounico":"1e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":238,"codigounico":"2038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":239,"codigounico":"2238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":240,"codigounico":"2438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":241,"codigounico":"2638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":242,"codigounico":"2838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":243,"codigounico":"2a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":244,"codigounico":"2c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":245,"codigounico":"2e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":246,"codigounico":"3038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":247,"codigounico":"3238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":248,"codigounico":"3438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":249,"codigounico":"3838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":250,"codigounico":"3a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":251,"codigounico":"3e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":252,"codigounico":"4038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":253,"codigounico":"4238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":254,"codigounico":"4438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":255,"codigounico":"4638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":256,"codigounico":"4838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":257,"codigounico":"4a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":258,"codigounico":"4c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":259,"codigounico":"4e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":260,"codigounico":"5038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":261,"codigounico":"5238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":262,"codigounico":"5438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":263,"codigounico":"5638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":264,"codigounico":"5838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":265,"codigounico":"5a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":266,"codigounico":"5c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":267,"codigounico":"5e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":268,"codigounico":"6038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":269,"codigounico":"6238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":270,"codigounico":"6438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":271,"codigounico":"6638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":272,"codigounico":"6838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":273,"codigounico":"6a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":274,"codigounico":"6c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":275,"codigounico":"6e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":276,"codigounico":"7038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":277,"codigounico":"7238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":278,"codigounico":"7638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":279,"codigounico":"7838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":280,"codigounico":"7a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":281,"codigounico":"7c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":282,"codigounico":"7e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":283,"codigounico":"8038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":284,"codigounico":"8238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":285,"codigounico":"8438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":286,"codigounico":"8638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":287,"codigounico":"8838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":288,"codigounico":"8c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":289,"codigounico":"8e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":290,"codigounico":"9038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":291,"codigounico":"9438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":292,"codigounico":"9638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":293,"codigounico":"9838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":294,"codigounico":"9a38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":295,"codigounico":"9c38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":296,"codigounico":"9e38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":297,"codigounico":"a038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":298,"codigounico":"a238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":299,"codigounico":"a438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":300,"codigounico":"a638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":301,"codigounico":"a838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":302,"codigounico":"aa38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":303,"codigounico":"ac38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":304,"codigounico":"ae38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":305,"codigounico":"b038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":306,"codigounico":"b238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":307,"codigounico":"b438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":308,"codigounico":"b638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":309,"codigounico":"b838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":310,"codigounico":"ba38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":311,"codigounico":"bc38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":312,"codigounico":"be38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":313,"codigounico":"c038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":314,"codigounico":"c238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":315,"codigounico":"c438978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":316,"codigounico":"c638978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":317,"codigounico":"c838978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":318,"codigounico":"ca38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":319,"codigounico":"cc38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":320,"codigounico":"ce38978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":321,"codigounico":"d038978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":322,"codigounico":"d238978a-a57f-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":323,"codigounico":"54725a45-e582-e211-bfd1-3440b5bef8e4","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":324,"codigounico":"a0fe4a9b-f5bf-e211-9e76-6cae8b2a0430","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":325,"codigounico":"dffc3682-5bd4-e211-9e76-6cae8b2a0430","name":null,"ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":326,"codigounico":"7f3216be-5bd4-e211-9e76-6cae8b2a0430","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":327,"codigounico":"a64ccf5b-46d5-e211-9e76-6cae8b2a0430","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":328,"codigounico":"537b9b90-159b-e211-bdee-6cae8b2a0430","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":329,"codigounico":"bcf4aefe-c39b-e211-bdee-6cae8b2a0430","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":330,"codigounico":"04e1f938-c59b-e211-bdee-6cae8b2a0430","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":331,"codigounico":"2a7c849d-20e0-e211-828e-6cae8b2a0434","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":332,"codigounico":"91713408-d8e5-e211-828e-6cae8b2a0434","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":333,"codigounico":"4bbb20f7-0beb-e211-828e-6cae8b2a0434","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":334,"codigounico":"8f05bb88-15f0-e211-828e-6cae8b2a0434","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":335,"codigounico":"6037558f-6d24-e311-8890-6cae8b2a0434","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":336,"codigounico":"d331dc5b-6e24-e311-8890-6cae8b2a0434","name":"Licenciatura en Negocios Internacionales","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":337,"codigounico":"8e06493e-72ef-e211-862d-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":338,"codigounico":"38761890-73ef-e211-862d-6cae8b2a4ddc","name":"SEMINARIO EN PSICOLOG\u00cdA","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":339,"codigounico":"463a9289-74ef-e211-862d-6cae8b2a4ddc","name":"Seminario en Educaci\u00f3n","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":340,"codigounico":"ad6a011f-75ef-e211-862d-6cae8b2a4ddc","name":"Seminario en Administraci\u00f3n Negocios","ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":341,"codigounico":"b2696e20-76ef-e211-862d-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":342,"codigounico":"3d8c2a0e-78ef-e211-862d-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":343,"codigounico":"45275605-9072-e211-b35f-6cae8b2a4ddc","name":"ADMINISTRACION DE EMPRESAS (INT)","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":344,"codigounico":"47275605-9072-e211-b35f-6cae8b2a4ddc","name":"ADMINISTRACION DE EMPRESAS (CORPORATIVA)","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":345,"codigounico":"49275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":346,"codigounico":"4b275605-9072-e211-b35f-6cae8b2a4ddc","name":"ADMON. DE EMPRESAS CORP. INTENSIVA","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":347,"codigounico":"4d275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":348,"codigounico":"4f275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":349,"codigounico":"51275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":350,"codigounico":"53275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Arquitectura","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":351,"codigounico":"55275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":352,"codigounico":"57275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":353,"codigounico":"59275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Ciencias La Comunicaci\u00f3n","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":354,"codigounico":"5b275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":355,"codigounico":"5d275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":356,"codigounico":"5f275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Cirujano Dentista","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":357,"codigounico":"61275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Contadur\u00eda P\u00fablica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":358,"codigounico":"63275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":359,"codigounico":"65275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":360,"codigounico":"67275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":361,"codigounico":"69275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":362,"codigounico":"6b275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":363,"codigounico":"6d275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Derecho","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":364,"codigounico":"6f275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":365,"codigounico":"71275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":366,"codigounico":"73275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Dise\u00f1o Gr\u00e1fico","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":367,"codigounico":"75275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":368,"codigounico":"77275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Dise\u00f1o Gr\u00e1fico","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":369,"codigounico":"79275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Econom\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":370,"codigounico":"7b275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":371,"codigounico":"7d275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":372,"codigounico":"7f275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":373,"codigounico":"81275605-9072-e211-b35f-6cae8b2a4ddc","name":"Especialidad en Endodoncia","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":374,"codigounico":"83275605-9072-e211-b35f-6cae8b2a4ddc","name":"Especialidad en Odontolog\u00eda Pedi\u00e1trica","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":375,"codigounico":"85275605-9072-e211-b35f-6cae8b2a4ddc","name":"Especialidad en Ortodoncia","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":376,"codigounico":"87275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Finanzas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":377,"codigounico":"89275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":378,"codigounico":"8b275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Administraci\u00f3n Tecnolog\u00edas la Informaci\u00f3n","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":379,"codigounico":"8d275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":380,"codigounico":"8f275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Gesti\u00f3n de Negocios","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":381,"codigounico":"91275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda en Sistemas Computacionales","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":382,"codigounico":"93275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":383,"codigounico":"95275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Civil","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":384,"codigounico":"97275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Mec\u00e1nica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":385,"codigounico":"99275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":386,"codigounico":"9b275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Industrial y Sistemas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":387,"codigounico":"9d275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda en Sistemas Computacionales","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":388,"codigounico":"9f275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Gesti\u00f3n de Negocios","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":389,"codigounico":"a1275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":390,"codigounico":"a3275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda en Sistemas Digitales y Rob\u00f3tica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":391,"codigounico":"a5275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":392,"codigounico":"a7275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Qu\u00edmica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":393,"codigounico":"a9275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":394,"codigounico":"ab275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":395,"codigounico":"ad275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":396,"codigounico":"af275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":397,"codigounico":"b1275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":398,"codigounico":"b3275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Administraci\u00f3n Empresas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":399,"codigounico":"b5275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Administraci\u00f3n Empresas","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":400,"codigounico":"b7275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":401,"codigounico":"b9275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":402,"codigounico":"bb275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Contadur\u00eda P\u00fablica","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":403,"codigounico":"bd275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":404,"codigounico":"bf275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":405,"codigounico":"c1275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Derecho","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":406,"codigounico":"c3275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":407,"codigounico":"c5275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":408,"codigounico":"c7275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":409,"codigounico":"c9275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda en Telecomunicaciones y Electr\u00f3nica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":410,"codigounico":"cb275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Mercadotecnia","ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":411,"codigounico":"cd275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":412,"codigounico":"cf275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA ONLINE","ofertaeducativaid":"ca02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":413,"codigounico":"d1275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":414,"codigounico":"d3275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Internacional en Turismo y Administraci\u00f3n de Congresos y Reuniones","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":415,"codigounico":"d5275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Internacional en Turismo y Administraci\u00f3n de Hoteles","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":416,"codigounico":"d7275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Contadur\u00eda P\u00fablica y Finanzas","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":417,"codigounico":"d9275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Administraci\u00f3n de Negocios","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":418,"codigounico":"db275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":419,"codigounico":"dd275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Administraci\u00f3n de Negocios","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":420,"codigounico":"df275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Administraci\u00f3n Industrial","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":421,"codigounico":"e1275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":422,"codigounico":"e3275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Fisioterapia","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":423,"codigounico":"e5275605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Ambiental y Sustentabilidad","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":424,"codigounico":"e7275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":425,"codigounico":"e9275605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Publicidad y Medios","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":426,"codigounico":"eb275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":427,"codigounico":"ed275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":428,"codigounico":"ef275605-9072-e211-b35f-6cae8b2a4ddc","name":"Maestr\u00eda en Direcci\u00f3n de la Comunicaci\u00f3n","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":429,"codigounico":"f1275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":430,"codigounico":"f3275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":431,"codigounico":"f5275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":432,"codigounico":"f7275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":433,"codigounico":"f9275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":434,"codigounico":"fb275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":435,"codigounico":"fd275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":436,"codigounico":"ff275605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":437,"codigounico":"01285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":438,"codigounico":"03285605-9072-e211-b35f-6cae8b2a4ddc","name":"Maestr\u00eda en Direcci\u00f3n Proyectos","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":439,"codigounico":"05285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":440,"codigounico":"07285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":441,"codigounico":"09285605-9072-e211-b35f-6cae8b2a4ddc","name":"Maestr\u00eda en Dise\u00f1o Multimedia","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":442,"codigounico":"0b285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":443,"codigounico":"0d285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":444,"codigounico":"0f285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":445,"codigounico":"11285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":446,"codigounico":"13285605-9072-e211-b35f-6cae8b2a4ddc","name":"Maestr\u00eda en Juicios Orales","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":447,"codigounico":"15285605-9072-e211-b35f-6cae8b2a4ddc","name":"Maestr\u00eda en Migraci\u00f3n Sistemas","ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":448,"codigounico":"17285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":449,"codigounico":"19285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO","ofertaeducativaid":"cc02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":450,"codigounico":"1b285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":451,"codigounico":"1d285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"POSGRADO ONLINE","ofertaeducativaid":"ce02c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"SEMESTRAL","planestudiosid":"45bd6c6e-5f72-e211-a7b5-3440b5bef8e4"},{"id":452,"codigounico":"1f285605-9072-e211-b35f-6cae8b2a4ddc","name":"Ingenier\u00eda Mecatr\u00f3nica","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":453,"codigounico":"21285605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Mercadotecnia","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":454,"codigounico":"23285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":455,"codigounico":"25285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":456,"codigounico":"27285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":457,"codigounico":"29285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":458,"codigounico":"2b285605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Negocios Internacionales","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":459,"codigounico":"2d285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":460,"codigounico":"2f285605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Nutrici\u00f3n","ofertaeducativaname":"CIENCIAS DE LA SALUD","ofertaeducativaid":"c402c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":461,"codigounico":"31285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":462,"codigounico":"33285605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Pedagog\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":463,"codigounico":"35285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":464,"codigounico":"37285605-9072-e211-b35f-6cae8b2a4ddc","name":"Preparatoria","ofertaeducativaname":"PREPARATORIA","ofertaeducativaid":"d002c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":465,"codigounico":"39285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"PREPARATORIA","ofertaeducativaid":"d002c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":466,"codigounico":"3b285605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":467,"codigounico":"3d285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":468,"codigounico":"3f285605-9072-e211-b35f-6cae8b2a4ddc","name":"Licenciatura en Psicolog\u00eda","ofertaeducativaname":"LICENCIATURA CORP","ofertaeducativaid":"c802c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":469,"codigounico":"41285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":470,"codigounico":"43285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"},{"id":471,"codigounico":"45285605-9072-e211-b35f-6cae8b2a4ddc","name":null,"ofertaeducativaname":"LICENCIATURA","ofertaeducativaid":"c602c3a1-6972-e211-b35f-6cae8b2a4ddc","planestudiosname":"CUATRIMESTRAL","planestudiosid":"a4a6b266-5f72-e211-a7b5-3440b5bef8e4"}]
+[
+    {
+        "codigounico": "8d05bf25-aeff-e711-b357-0050568d5ea9",
+        "name": "DERECHO"
+    },
+    {
+        "codigounico": "868a7ec1-493b-e711-a51f-0050568d5ea9",
+        "name": "LICENCIATURA EN NUTRICION"
+    },
+    {
+        "codigounico": "1ae087b7-adff-e711-b357-0050568d5ea9",
+        "name": "CONTADURÍA PÚBLICA"
+    },
+    {
+        "codigounico": "287cb65c-adff-e711-b357-0050568d5ea9",
+        "name": "ADMINISTRACIÓN DE EMPRESAS"
+    },
+    {
+        "codigounico": "e028167f-b51d-e811-8ed6-0050568d5ea9",
+        "name": "MAESTRÍA EN DIRECCIÓN DE ORGANIZACIONES DE SALUD"
+    },
+    {
+        "codigounico": "5906e242-2726-e811-9df9-0050568d5ea9",
+        "name": "MAESTRÍA EN DIRECCIÓN DE ORGANIZACIONES DE SALUD"
+    },
+    {
+        "codigounico": "263fcec0-142a-e811-9df9-0050568d5ea9",
+        "name": "ADMINISTRACIÓN DE EMPRESAS"
+    },
+    {
+        "codigounico": "360a3876-4b3b-e711-a51f-0050568d5ea9",
+        "name": "LICENCIATURA EN ENFERMERIA"
+    },
+    {
+        "codigounico": "9629982b-4d3b-e711-a51f-0050568d5ea9",
+        "name": "LICENCIATURA EN FISIOTERAPIA"
+    },
+    {
+        "codigounico": "6bd7b50f-0c3c-e811-ac38-0050568d5ea9",
+        "name": "MAESTRÍA EN DIRECCIÓN DE ORGANIZACIONES DE SALUD (SEMINARIO)"
+    },
+    {
+        "codigounico": "bf4478f6-0c3c-e811-ac38-0050568d5ea9",
+        "name": "MAESTRÍA EN DIRECCIÓN DE ORGANIZACIONES DE SALUD (SEMINARIO)"
+    },
+    {
+        "codigounico": "4ec7e880-aeff-e711-b357-0050568d5ea9",
+        "name": "MERCADOTECNIA"
+    },
+    {
+        "codigounico": "4a30bdd7-aeff-e711-b357-0050568d5ea9",
+        "name": "NEGOCIOS INTERNACIONALES"
+    },
+    {
+        "codigounico": "3405953a-afff-e711-b357-0050568d5ea9",
+        "name": "PEDAGOGÍA"
+    },
+    {
+        "codigounico": "019ce683-afff-e711-b357-0050568d5ea9",
+        "name": "PSICOLOGÍA"
+    },
+    {
+        "codigounico": "d074e463-b0ff-e711-b357-0050568d5ea9",
+        "name": "ARQUITECTURA"
+    },
+    {
+        "codigounico": "8384abc4-b0ff-e711-b357-0050568d5ea9",
+        "name": "DISEÑO GRÁFICO"
+    },
+    {
+        "codigounico": "6dfb9be7-b4ff-e711-b357-0050568d5ea9",
+        "name": "DISEÑO,ANIMACIÓN Y ARTE DIGITAL"
+    },
+    {
+        "codigounico": "43d2b458-b5ff-e711-b357-0050568d5ea9",
+        "name": "INGENIERÍA EN SISTEMA COMPUTACIONALES"
+    },
+    {
+        "codigounico": "2d3ddc07-b6ff-e711-b357-0050568d5ea9",
+        "name": "INGENIERÍA INDUSTRIAL Y DE SISTEMAS"
+    },
+    {
+        "codigounico": "6075f19a-b6ff-e711-b357-0050568d5ea9",
+        "name": "INTERNACIONAL EN TURISMO Y REUNIONES"
+    },
+    {
+        "codigounico": "8803207c-b7ff-e711-b357-0050568d5ea9",
+        "name": "PROFESIONAL ASOCIADO EN CHEF COCINA INTERNACIONAL"
+    },
+    {
+        "codigounico": "78612c52-76c9-e711-bd7b-0050568d5ea9",
+        "name": "ESPECIALIDAD EN ENDODONCIA"
+    },
+    {
+        "codigounico": "f6900cdb-76c9-e711-bd7b-0050568d5ea9",
+        "name": "ESPECIALIDAD EN ODONTOLOGIA PEDIATRICA"
+    },
+    {
+        "codigounico": "43e58b2d-77c9-e711-bd7b-0050568d5ea9",
+        "name": "ESPECIALIDAD EN ODONTOLOGIA RESTAURADORA"
+    },
+    {
+        "codigounico": "4b7d846a-77c9-e711-bd7b-0050568d5ea9",
+        "name": "ESPECIALIDAD EN ORTODONCIA"
+    },
+    {
+        "codigounico": "34bc89b7-77c9-e711-bd7b-0050568d5ea9",
+        "name": "ESPECIALIDAD EN PERIODONCIA"
+    },
+    {
+        "codigounico": "4e4b6194-76bb-e311-9f0d-005056be327d",
+        "name": "LIC.ADMON DE TEC DE INF HÍBRIDO"
+    },
+    {
+        "codigounico": "c084ce4f-77bb-e311-9f0d-005056be327d",
+        "name": "LIC. EN CONT PUBLICA HÍBRIDO"
+    },
+    {
+        "codigounico": "37c8c096-77bb-e311-9f0d-005056be327d",
+        "name": "LIC. EN ADMON DE EMP. HÍBRIDO"
+    },
+    {
+        "codigounico": "502e95de-77bb-e311-9f0d-005056be327d",
+        "name": "LIC. EN MERCADOTECNIA HÍBRIDO"
+    },
+    {
+        "codigounico": "727c1624-78bb-e311-9f0d-005056be327d",
+        "name": "LIC. NEGOCIOS INT. HÍBRIDO"
+    },
+    {
+        "codigounico": "36bfc847-78bb-e311-9f0d-005056be327d",
+        "name": "LIC. EN DERECHO HÍBRIDO"
+    },
+    {
+        "codigounico": "8ca6ff71-78bb-e311-9f0d-005056be327d",
+        "name": "LIC. EN PSICOLOGIA HÍBRIDO"
+    },
+    {
+        "codigounico": "f9fe5394-78bb-e311-9f0d-005056be327d",
+        "name": "LIC. EN PEDAGOGÍA HÍBRIDO"
+    },
+    {
+        "codigounico": "315a8d51-d922-e611-9155-005056be4250",
+        "name": "INSERVIBLE"
+    },
+    {
+        "codigounico": "5098122c-7923-e611-9155-005056be4250",
+        "name": "GASTRONOMÍA"
+    },
+    {
+        "codigounico": "18b042fb-1129-e611-9155-005056be4250",
+        "name": "LICENCIATURA EN FINANZAS"
+    },
+    {
+        "codigounico": "f3c49799-1329-e611-9155-005056be4250",
+        "name": "LIC. EN ADMÓN. DE TECNOLOGÍAS DE LA INFORMACIÓN"
+    },
+    {
+        "codigounico": "d5ba4cf0-1329-e611-9155-005056be4250",
+        "name": "LICENCIATURA EN ADMINISTRACIÓN DE EMPRESAS TURÍSTICAS"
+    },
+    {
+        "codigounico": "84bfa6de-eb29-e611-9155-005056be4250",
+        "name": "LICENCIATURA EN CONTADURÍA PÚBLICA Y FINANZAS"
+    },
+    {
+        "codigounico": "744d7814-ec29-e611-9155-005056be4250",
+        "name": "LICENCIATURA EN ECONOMÍA"
+    },
+    {
+        "codigounico": "23bcb4fd-ed29-e611-9155-005056be4250",
+        "name": "LIC. EN INGENIERÍA EN SISTEMAS COMPUTACIONALES"
+    },
+    {
+        "codigounico": "9539c369-9ec3-e511-9279-005056be4250",
+        "name": "ADMINISTRACIÓN DE EMPRESAS"
+    },
+    {
+        "codigounico": "0f57f6dd-9ec3-e511-9279-005056be4250",
+        "name": "LIC. EN CONTADURÍA PÚBLICA"
+    },
+    {
+        "codigounico": "a0f667d5-9fc3-e511-9279-005056be4250",
+        "name": "LICENCIATURA EN DERECHO"
+    },
+    {
+        "codigounico": "dfd55e30-a0c3-e511-9279-005056be4250",
+        "name": "LICENCIATURA EN MERCADOTECNIA"
+    },
+    {
+        "codigounico": "80216a8b-a8c3-e511-9279-005056be4250",
+        "name": "LICENCIATURA EN PEDAGOGÍA"
+    },
+    {
+        "codigounico": "928028e0-25d1-e611-987f-005056be4250",
+        "name": "MAESTRÍA EN AN. E INTELIGENCIA DE NEGOCIOS ONLINE (SEMINARIO)"
+    },
+    {
+        "codigounico": "66798b16-e03a-e511-9e25-005056be4250",
+        "name": "CIRUJANO DENTISTA"
+    },
+    {
+        "codigounico": "db0369bc-583c-e511-9e25-005056be4250",
+        "name": "LIC.EN COM.INTERNAC.ON LINE"
+    },
+    {
+        "codigounico": "6e656bcc-27fe-e611-a5d4-005056be4250",
+        "name": "PREPARATORIA"
+    },
+    {
+        "codigounico": "6b9ed3d4-d419-e511-a8d3-005056be4250",
+        "name": "LIC. EN COMERCIO INTERNACIONAL"
+    },
+    {
+        "codigounico": "8028c716-d519-e511-a8d3-005056be4250",
+        "name": "LIC.EN COM.INTERNACIONAL HÍBRIDO"
+    },
+    {
+        "codigounico": "ed3b9b9d-d105-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACIÓN DE NEGOCIOS"
+    },
+    {
+        "codigounico": "962bc5cb-d105-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DERECHO (PRESENCIAL)"
+    },
+    {
+        "codigounico": "5a3d2df8-d105-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DIRECCIÓN DE PROYECTOS (PRESENCIAL)"
+    },
+    {
+        "codigounico": "5130ce26-d205-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN EDUCACIÓN (PRESENCIAL)"
+    },
+    {
+        "codigounico": "45bcca5f-d205-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN PSICOLOGÍA (PRESENCIAL)"
+    },
+    {
+        "codigounico": "3177a59c-d205-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN SEGURIDAD DE TECNOLOGÍAS DE LA INFORMACIÓN (PRESENCIAL)"
+    },
+    {
+        "codigounico": "2ae3be2e-d605-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACIÓN DE NEGOCIOS (MBA) ON LINE"
+    },
+    {
+        "codigounico": "621d995d-d605-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DERECHO"
+    },
+    {
+        "codigounico": "db77e489-d605-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DIRECCIÓN DE PROYECTOS (ON LINE)"
+    },
+    {
+        "codigounico": "76a9f2ba-d605-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN EDUCACIÓN (ON LINE)"
+    },
+    {
+        "codigounico": "6ecb7625-d705-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN PSICOLOGÍA"
+    },
+    {
+        "codigounico": "c13bf544-550b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACIÓN DE NEGOCIOS (SEMINARIO)"
+    },
+    {
+        "codigounico": "e6d1e3b2-550b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DERECHO (SEMINARIO)"
+    },
+    {
+        "codigounico": "5d63061a-560b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DIRECCIÓN DE PROYECTOS (SEMINARIO)"
+    },
+    {
+        "codigounico": "9d4ab7e0-7a0b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN EDUCACIÓN ( SEMINARIO)"
+    },
+    {
+        "codigounico": "668e2b37-7b0b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN PSICOLOGIA (SEMINARIO)"
+    },
+    {
+        "codigounico": "8011407d-7b0b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN SEGURIDAD DE TECNOLOGÍAS DE LA INFORMACIÓN (SEMINARIO)"
+    },
+    {
+        "codigounico": "28cf3760-7c0b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACIÓN DE NEGOCIOS MBA (SEMINARIO_ON LINE)"
+    },
+    {
+        "codigounico": "b7718ef3-7c0b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DERECHO (SEMINARIO ON LINE)"
+    },
+    {
+        "codigounico": "e1b9a453-7d0b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DIRECCIÓN DE PROYECTOS (SEMINARIO ON LINE)"
+    },
+    {
+        "codigounico": "886aaeb9-7d0b-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN EDUCACIÓN (SEMINARIO ON LINE)"
+    },
+    {
+        "codigounico": "0fd47a05-7e0b-e711-b36c-005056be4250",
+        "name": "SEMINARIO EN PSICOLOGÍA"
+    },
+    {
+        "codigounico": "dc612536-4e16-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACION DE NEGOCIOS(DIPLOMADO EN MERCADOTECNIA )ON LINE"
+    },
+    {
+        "codigounico": "9ff56dcc-4f16-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACION DE NEGOCIOS(DIPLOMADO EN GESTION DEL TALENTO)ON LINE"
+    },
+    {
+        "codigounico": "c2faa420-5016-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACION DE NEGOCIOS(DIPLOMADO EN FINANZAS)ON LINE"
+    },
+    {
+        "codigounico": "75580b61-5016-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACION DE NEGOCIOS(DIPLOMADO EN EMPRESAS SOSTENIBLES )ON LINE"
+    },
+    {
+        "codigounico": "9708bcbc-5016-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN ADMINISTRACION DE NEGOCIOS(DIPLOMADO EN EMPRESAS TURÍSTICAS )ON LINE"
+    },
+    {
+        "codigounico": "ff630b0b-5116-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DERECHO(DIPLOMADO EN DERECHO DE AMPARO)ON LINE"
+    },
+    {
+        "codigounico": "29943a44-5116-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DERECHO(DIPLOMADO EN DERECHO CORPORATIVO)ON LINE"
+    },
+    {
+        "codigounico": "17755d76-5116-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN DERECHO(DIPLOMADO EN DERECHO FISCAL)ON LINE"
+    },
+    {
+        "codigounico": "b0a04ab4-5116-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN EDUCACION(DIPLOMADO EN TECNOLOGÍA EDUCATIVA)ON LINE"
+    },
+    {
+        "codigounico": "59d93c1a-5216-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN EDUCACION(DIPLOMADO EN EVALUACION EDUCATIVA)ON LINE"
+    },
+    {
+        "codigounico": "eda9a849-5216-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN PSICOLOGÍA(DIPLOMADO EN PSICOLOGÍA ORGANIZACIONAL)ON LINE"
+    },
+    {
+        "codigounico": "17090c7a-5216-e711-b36c-005056be4250",
+        "name": "MAESTRÍA EN PSICOLOGÍA(DIPLOMADO EN PSICOLOGÍA EDUCATIVA)ON LINE"
+    },
+    {
+        "codigounico": "f1995c83-52f7-e311-b5a9-005056be4250",
+        "name": "OTRA (POSGRADO)"
+    },
+    {
+        "codigounico": "b0bc3a5c-e6a1-e611-bb99-005056be4250",
+        "name": "MAESTRÍA EN ANALÍTICA E INTELIGENCIA DE NEGOCIOS ONLINE"
+    },
+    {
+        "codigounico": "f24410a4-d21c-e411-bc84-005056be4250",
+        "name": "ENFERMERÍA"
+    },
+    {
+        "codigounico": "2c80329b-3c2c-e611-bd4d-005056be4250",
+        "name": "LIC.EN INGENIERÍA MECÁNICA"
+    },
+    {
+        "codigounico": "718eeada-3c2c-e611-bd4d-005056be4250",
+        "name": "LIC.EN INGENIERÍA QUÍMICA"
+    },
+    {
+        "codigounico": "1f4b9681-612e-e611-bd4d-005056be4250",
+        "name": "LIC. EN PUBLICIDAD Y MEDIOS"
+    },
+    {
+        "codigounico": "65bd1237-622e-e611-bd4d-005056be4250",
+        "name": "LIC. INT. EN TURISMO Y ADMÓN. DE CONGRESOS Y REUNIONES"
+    },
+    {
+        "codigounico": "fe666767-622e-e611-bd4d-005056be4250",
+        "name": "LICENCIATURA EN MERCADOTECNIA DIGITAL Y PUBLICIDAD"
+    },
+    {
+        "codigounico": "7e2b6e65-632e-e611-bd4d-005056be4250",
+        "name": "LIC. EN INGENIERÍA EN GESTIÓN DE NEGOCIOS"
+    },
+    {
+        "codigounico": "41671cc1-812e-e611-bd4d-005056be4250",
+        "name": "LICENCIATURA EN DISEÑO INDUSTRIAL"
+    },
+    {
+        "codigounico": "670f7585-822e-e611-bd4d-005056be4250",
+        "name": "LICENCIATURA EN SISTEMAS DIGITALES Y ROBÓTICA"
+    },
+    {
+        "codigounico": "02a5f83b-832e-e611-bd4d-005056be4250",
+        "name": "LIC. EN PEDAGOGÍA"
+    },
+    {
+        "codigounico": "5e08a8d2-832e-e611-bd4d-005056be4250",
+        "name": "LIC. INTERNACIONAL EN TURISMO Y ADMINISTRACIÓN DE HOTELES"
+    },
+    {
+        "codigounico": "2e4c1c5a-842e-e611-bd4d-005056be4250",
+        "name": "LIC. EN INGENIERÍA MECATRÓNICA"
+    },
+    {
+        "codigounico": "fa5c5e0f-d934-e611-bd4d-005056be4250",
+        "name": "LIC. EN INGENIERÍA INDUSTRIAL Y ADMINISTRACIÓN ON LINE"
+    },
+    {
+        "codigounico": "bc608115-d934-e611-bd4d-005056be4250",
+        "name": "LIC. EN ADMÓN. DE EMPRESAS DE ENTRETENIMIENTO Y COMUNICACIÓN"
+    },
+    {
+        "codigounico": "63a7163b-d934-e611-bd4d-005056be4250",
+        "name": "LIC. EN INGENIERÍA EN SOFTWARE Y REDES ON LINE"
+    },
+    {
+        "codigounico": "36ca4c55-d934-e611-bd4d-005056be4250",
+        "name": "LIC. EN INGENIERÍA AMBIENTAL Y SUSTENTABILIDAD"
+    },
+    {
+        "codigounico": "38c35c5b-d934-e611-bd4d-005056be4250",
+        "name": "LIC. EN ADMÓN. DE TECNOLOGÍAS DE INFORMACIÓN ON LINE"
+    },
+    {
+        "codigounico": "5c57cca6-d934-e611-bd4d-005056be4250",
+        "name": "LIC. EN INGENIERÍA EN TELECOMUNICACIONES Y ELECTRÓNICA"
+    },
+    {
+        "codigounico": "d2e1dcfa-d934-e611-bd4d-005056be4250",
+        "name": "LIC. EN NEGOCIOS INTERNACIONALES ON_LINE"
+    },
+    {
+        "codigounico": "f21f193e-da34-e611-bd4d-005056be4250",
+        "name": "LIC. EN NEGOCIOS INTERNACIONALES HÍBRIDO"
+    },
+    {
+        "codigounico": "0168a061-da34-e611-bd4d-005056be4250",
+        "name": "LIC. EN TECNOLOGÍAS DE INFORMACIÓN HÍBRIDO"
+    },
+    {
+        "codigounico": "bd2fa66d-da34-e611-bd4d-005056be4250",
+        "name": "LIC. EN MERCADOTECNIA ON_LINE"
+    },
+    {
+        "codigounico": "8081f194-da34-e611-bd4d-005056be4250",
+        "name": "LIC. EN DERECHO"
+    },
+    {
+        "codigounico": "820887b8-da34-e611-bd4d-005056be4250",
+        "name": "LIC. EN ADMÓN. DE EMPRESAS TURÍSTICAS ON LINE"
+    },
+    {
+        "codigounico": "ab664110-db34-e611-bd4d-005056be4250",
+        "name": "LICENCIATURA EN DISEÑO GRÁFICO CORP"
+    },
+    {
+        "codigounico": "a6e414c4-db34-e611-bd4d-005056be4250",
+        "name": "LIC. EN PEDAGOGÍA ON LINE"
+    },
+    {
+        "codigounico": "43d3bdee-db34-e611-bd4d-005056be4250",
+        "name": "LIC. EN PSICOLOGÍA"
+    },
+    {
+        "codigounico": "2e951d1e-dc34-e611-bd4d-005056be4250",
+        "name": "LIC. EN ADMINISTRACIÓN DE EMPRESAS ON LINE"
+    },
+    {
+        "codigounico": "dc2fd13e-dc34-e611-bd4d-005056be4250",
+        "name": "LIC. EN CONTADURÍA PUBLICA ON LINE"
+    },
+    {
+        "codigounico": "6a9bc8bf-e234-e611-bd4d-005056be4250",
+        "name": "LICENCIATURA EN CIENCIAS DE LA COMUNICACIÓN"
+    },
+    {
+        "codigounico": "6c3da72a-e537-e611-bd4d-005056be4250",
+        "name": "LICENCIATURA EN INGENIERÍA EN GESTIÓN DE NEGOCIOS"
+    },
+    {
+        "codigounico": "bc602570-a4b5-e511-bea5-005056be4250",
+        "name": "LIC.E/NEGOCIOS INTERNACIONALES"
+    },
+    {
+        "codigounico": "ab2135a2-a4b5-e511-bea5-005056be4250",
+        "name": "ING. SISTEMAS COMPUTACIONALES"
+    },
+    {
+        "codigounico": "9be9ffc8-a4b5-e511-bea5-005056be4250",
+        "name": "LIC. EN INGENIERIA CIVIL"
+    },
+    {
+        "codigounico": "68754bee-a4b5-e511-bea5-005056be4250",
+        "name": "LIC. EN INGENIERÍA INDUSTRIAL Y DE SISTEMAS"
+    },
+    {
+        "codigounico": "5e081df4-3ab6-e511-bea5-005056be4250",
+        "name": "LIC. EN DISEÑO, ANIMACION Y ARTE DIGITAL"
+    },
+    {
+        "codigounico": "3ac363fa-3ab6-e511-bea5-005056be4250",
+        "name": "LIC. EN DISEÑO GRAFICO"
+    },
+    {
+        "codigounico": "59565c07-3bb6-e511-bea5-005056be4250",
+        "name": "LIC. EN PSICOLOGÍA"
+    },
+    {
+        "codigounico": "01c1f912-3eb6-e511-bea5-005056be4250",
+        "name": "LIC. EN ARQUITECTURA"
+    },
+    {
+        "codigounico": "56ea6221-2fba-e511-bea5-005056be4250",
+        "name": "MERCADOTECNIA HÍBRIDO"
+    },
+    {
+        "codigounico": "9a587687-2fba-e511-bea5-005056be4250",
+        "name": "CONTADURÍA PÚBLICA HÍBRIDO"
+    },
+    {
+        "codigounico": "0c7982af-2fba-e511-bea5-005056be4250",
+        "name": "PSICOLOGÍA HÍBRIDO"
+    },
+    {
+        "codigounico": "09dfb47e-31ba-e511-bea5-005056be4250",
+        "name": "DERECHO HÍBRIDO"
+    },
+    {
+        "codigounico": "0ffc032a-32ba-e511-bea5-005056be4250",
+        "name": "ADMINISTRACIÓN DE EMPRESAS HÍBRIDO"
+    },
+    {
+        "codigounico": "cede11a8-2278-e511-bed8-005056be4250",
+        "name": "MAEST.ADMON.EST.D/SERV.SALUD C"
+    },
+    {
+        "codigounico": "745345e4-eb4a-e711-bae5-005056be6e15",
+        "name": "LICENCIATURA EN RELACIONES INTERNACIONALES"
+    },
+    {
+        "codigounico": "74b300b4-f14a-e711-bae5-005056be6e15",
+        "name": "INGENIERÍA INDUSTRIAL Y ADMINISTRACIÓN"
+    },
+    {
+        "codigounico": "540a6365-f24a-e711-bae5-005056be6e15",
+        "name": "INGENIERÍA EN SOFTWARE Y REDES"
+    },
+    {
+        "codigounico": "744167a0-f24a-e711-bae5-005056be6e15",
+        "name": "DISEÑO DIGITAL Y ANIMACIÓN"
+    },
+    {
+        "codigounico": "be8ad71e-f34a-e711-bae5-005056be6e15",
+        "name": "LICENCIATURA EN RELACIONES INTERNACIONALES"
+    },
+    {
+        "codigounico": "348141b6-f34a-e711-bae5-005056be6e15",
+        "name": "DISEÑO DIGITAL Y ANIMACIÓN"
+    },
+    {
+        "codigounico": "b43f5da2-464d-e711-bae5-005056be6e15",
+        "name": "LICENCIAURA INTERACIONAL EN TURISMO Y REUNIONES"
+    },
+    {
+        "codigounico": "deb3cdab-474d-e711-bae5-005056be6e15",
+        "name": "LICENCIATURA EN COMUNICACIÓN Y MEDIOS"
+    },
+    {
+        "codigounico": "0cf5cc3f-a657-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN DISEÑO MULTIMEDIA"
+    },
+    {
+        "codigounico": "a5611db6-a657-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN MIGRACION DE SISTEMAS"
+    },
+    {
+        "codigounico": "a06b150d-a757-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN JUICIOS ORALES"
+    },
+    {
+        "codigounico": "e3e9f36a-a757-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN DIRECCION DE LA COMUNICACION"
+    },
+    {
+        "codigounico": "4c5cf6d8-a757-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN DISEÑO MULTIMEDIA"
+    },
+    {
+        "codigounico": "1d93f2a0-a857-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN JUICIOS ORALES"
+    },
+    {
+        "codigounico": "7d844e20-a957-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN DIRECCIÓN DE LA COMUNICACIÓN"
+    },
+    {
+        "codigounico": "4b76be9a-a957-e711-bae5-005056be6e15",
+        "name": "MAESTRÍA EN INTELIGENCIA DE NEGOCIOS"
+    },
+    {
+        "codigounico": "b5af81ee-ab57-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN DISEÑO MULTIMEDIA"
+    },
+    {
+        "codigounico": "bd34fd41-ac57-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN MIGRACION DE SISTEMAS"
+    },
+    {
+        "codigounico": "590118c6-ac57-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN JUICIOS ORALES"
+    },
+    {
+        "codigounico": "51c97417-ad57-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN DIRECCIÓN DE LA COMUNICACIÓN"
+    },
+    {
+        "codigounico": "ad09b65e-ad57-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN DISEÑO MULTIMEDIA"
+    },
+    {
+        "codigounico": "316382ca-ad57-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN JUICIOS ORALES"
+    },
+    {
+        "codigounico": "5d92ab64-ae57-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN DIRECCIÓN DE LA COMUNICACIÓN"
+    },
+    {
+        "codigounico": "5d468713-b057-e711-bae5-005056be6e15",
+        "name": "SEMINARIO EN INTELIGENCIA DE NEGOCIOS"
+    },
+    {
+        "codigounico": "619d1cfa-fab8-e211-8a41-3440b5bef8e0",
+        "name": "MTRIA EN PSICOLOGIA D.PO ON-LINE (DIPL.- EN PSIC ORGANIZACIONAL)"
+    },
+    {
+        "codigounico": "7bf69f16-feb8-e211-8a41-3440b5bef8e0",
+        "name": "LIC.EN ADMON.DE TECNOLOGIAS DE LA INF. ON LINE"
+    },
+    {
+        "codigounico": "30686a64-05b9-e211-8a41-3440b5bef8e0",
+        "name": "LIC. EN DISEÑO INDUSTRIAL"
+    },
+    {
+        "codigounico": "8f0a11b4-06b9-e211-8a41-3440b5bef8e0",
+        "name": "LIC. EN DISEÑO ANIMACION Y ARTE DIGITAL"
+    },
+    {
+        "codigounico": "6d0ab9fe-06b9-e211-8a41-3440b5bef8e0",
+        "name": "LIC. EN PUBLICIDAD Y MERCADOTECNIA DIGITAL"
+    },
+    {
+        "codigounico": "14f52dba-0fb9-e211-8a41-3440b5bef8e0",
+        "name": "LIC. EN COMUNICACION Y ADMINISTRACION DE EMPRESAS DE ENTRETENIMIENTO"
+    },
+    {
+        "codigounico": "8a497b93-917b-e211-bfd1-3440b5bef8e4",
+        "name": "MTRIA EN ADMON DE NEGOCIOS D.CH ON - LINE (DIPL. EN CAPITAL HUMANO)"
+    },
+    {
+        "codigounico": "aa6eb8c5-917b-e211-bfd1-3440b5bef8e4",
+        "name": "MTRIA EN ADMON DE NEGOCIOS D.FZ (DIPL. EN FINANZAS)"
+    },
+    {
+        "codigounico": "4a7b7c8f-937b-e211-bfd1-3440b5bef8e4",
+        "name": "ESPECIALIDAD EN PERIODONCIA"
+    },
+    {
+        "codigounico": "2aec16b3-937b-e211-bfd1-3440b5bef8e4",
+        "name": "ESPECIALIDAD EN ODONTOLOGIA RESTAURADORA"
+    },
+    {
+        "codigounico": "ea110926-947b-e211-bfd1-3440b5bef8e4",
+        "name": "LICENCIATURA EN PSICOLOGIA ONLINE"
+    },
+    {
+        "codigounico": "cac30051-947b-e211-bfd1-3440b5bef8e4",
+        "name": "LICENCIATURA EN PEDAGOGIA ONLINE"
+    },
+    {
+        "codigounico": "1504683d-8c7c-e211-bfd1-3440b5bef8e4",
+        "name": "LICENCIATURA EN ADMINISTRACION DE EMPRESAS TURISTICAS"
+    },
+    {
+        "codigounico": "dffc3682-5bd4-e211-9e76-6cae8b2a0430",
+        "name": "OTRA (SALUD)"
+    },
+    {
+        "codigounico": "7f3216be-5bd4-e211-9e76-6cae8b2a0430",
+        "name": "OTRA (EN LINEA)"
+    },
+    {
+        "codigounico": "a64ccf5b-46d5-e211-9e76-6cae8b2a0430",
+        "name": "OTRA (EJECUTIVA)"
+    },
+    {
+        "codigounico": "d331dc5b-6e24-e311-8890-6cae8b2a0434",
+        "name": "LIC. EN NEGOCIOS INTERNACIONALES ON LINE (INGL)"
+    },
+    {
+        "codigounico": "38761890-73ef-e211-862d-6cae8b2a4ddc",
+        "name": "SEMINARIO EN PSICOLOGÍA"
+    },
+    {
+        "codigounico": "463a9289-74ef-e211-862d-6cae8b2a4ddc",
+        "name": "MAESTRIA EN EDUCACION (ON-LINE SEMINARIO)(S)"
+    },
+    {
+        "codigounico": "ad6a011f-75ef-e211-862d-6cae8b2a4ddc",
+        "name": "MAESTRIA EN ADMINISTRACION DE NEGOCIOS (ON-LINE SEMINARIO)(S)"
+    },
+    {
+        "codigounico": "45275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ADMINISTRACION DE EMPRESAS (INT)"
+    },
+    {
+        "codigounico": "47275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ADMINISTRACION DE EMPRESAS (CORPORATIVA)"
+    },
+    {
+        "codigounico": "4b275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ADMON. DE EMPRESAS CORP. INTENSIVA"
+    },
+    {
+        "codigounico": "4d275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. ADMON EMP C/ENF EN OP COM"
+    },
+    {
+        "codigounico": "4f275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ADMON. DE TEC. DE LA INFORMACION CORPORATIVA"
+    },
+    {
+        "codigounico": "53275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ARQUITECTURA"
+    },
+    {
+        "codigounico": "59275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "CIENCIAS DE LA COMUNICACION"
+    },
+    {
+        "codigounico": "5d275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "CIENCIAS DE LA COMUNICACION CORPORATIVA"
+    },
+    {
+        "codigounico": "5f275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN CIRUJANO DENTISTA"
+    },
+    {
+        "codigounico": "61275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "CONTADURIA PUBLICA"
+    },
+    {
+        "codigounico": "65275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "CONTADURIA PUBLICA CON ENFASIS EN DERECHO FISCAL"
+    },
+    {
+        "codigounico": "67275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "CONTADURIA PUBLICA CORP. INTENSIVA"
+    },
+    {
+        "codigounico": "69275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "CONTADURIA PUBLICA CORPORATIVA"
+    },
+    {
+        "codigounico": "6b275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "CONTADURIA PUBLICA NOCTURNA"
+    },
+    {
+        "codigounico": "6d275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "DERECHO"
+    },
+    {
+        "codigounico": "71275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "DERECHO CORPORATIVA"
+    },
+    {
+        "codigounico": "73275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "DISEÑO GRAFICO"
+    },
+    {
+        "codigounico": "77275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "DISEÑO GRAFICO CORPORATIVA"
+    },
+    {
+        "codigounico": "79275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ECONOMIA"
+    },
+    {
+        "codigounico": "7d275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ENFERMERÍA (1050)"
+    },
+    {
+        "codigounico": "81275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ESPECIALIDAD EN ENDODONCIA"
+    },
+    {
+        "codigounico": "83275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ESPECIALIDAD EN ODONTOLOGIA PEDIATRICA"
+    },
+    {
+        "codigounico": "85275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ESPECIALIDAD EN ORTODONCIA"
+    },
+    {
+        "codigounico": "87275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "FINANZAS"
+    },
+    {
+        "codigounico": "8b275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ADM. DE TECNOLOGIAS DE LA INF."
+    },
+    {
+        "codigounico": "8d275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "INFORMATICA ADMINISTRATIVA"
+    },
+    {
+        "codigounico": "8f275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "ING. COMERCIAL CORPORATIVA"
+    },
+    {
+        "codigounico": "91275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "SISTEMAS COMPUTACIONALES CORPORATIVA"
+    },
+    {
+        "codigounico": "95275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "INGENIERIA CIVIL"
+    },
+    {
+        "codigounico": "97275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "INGENIERIA MECANICA"
+    },
+    {
+        "codigounico": "9b275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "INGENIERIA INDUSTRIAL Y DE SISTEMAS"
+    },
+    {
+        "codigounico": "9d275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "INGENIERIA SISTEMAS COMPUTACIONALES"
+    },
+    {
+        "codigounico": "9f275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LICENCIATURA EN INGENIERIA COMERCIAL"
+    },
+    {
+        "codigounico": "a1275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN ING. EN TEC. DE INF. Y COMUNICACIONES"
+    },
+    {
+        "codigounico": "a3275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN ING. SISTEMAS DIGITALES Y ROBOTICA"
+    },
+    {
+        "codigounico": "a7275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "INGENIERIA QUIMICA"
+    },
+    {
+        "codigounico": "b3275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN ADMINISTRACION DE EMPRESAS"
+    },
+    {
+        "codigounico": "b5275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN ADMINISTRACION DE EMPRESAS (ONLINE)"
+    },
+    {
+        "codigounico": "b7275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN ADMINISTRACIÓN DE PROYECTOS SUSTENTABLES"
+    },
+    {
+        "codigounico": "b9275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN ADMINISTRACION DE VENTAS CORPORATIVA"
+    },
+    {
+        "codigounico": "bb275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN CONTADURIA PUBLICA ON LINE"
+    },
+    {
+        "codigounico": "c1275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN DERECHO ON LINE"
+    },
+    {
+        "codigounico": "c5275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN IMAGEN CORPORATIVA Y RESPONSABILIDAD SOCIAL"
+    },
+    {
+        "codigounico": "c9275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "INGENIERIA EN TELECOMUNICACIONES Y ELECTRONICA"
+    },
+    {
+        "codigounico": "cb275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN MERCADOTECNIA ON LINE"
+    },
+    {
+        "codigounico": "cf275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN NEGOCIOS INTERNACIONALES ON LINE"
+    },
+    {
+        "codigounico": "d1275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. EN PUBLICIDAD Y MEDIOS (CORPORATIVA)"
+    },
+    {
+        "codigounico": "d3275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. INTERNACIONAL EN ADMON. DE CENTROS DE CONVENCION Y EVENTOS"
+    },
+    {
+        "codigounico": "d5275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC. INTERNACIONAL EN ADMON. DE HOTELES Y COMPLEJOS TURISTICOS"
+    },
+    {
+        "codigounico": "d7275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LIC.EN CONTADURIA PUBLICA Y FINANZAS"
+    },
+    {
+        "codigounico": "d9275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LICENCIATURA EN ADMINISTRACION DE NEGOCIOS"
+    },
+    {
+        "codigounico": "dd275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LICENCIATURA EN ADMINISTRACION DE NEGOCIOS (CORPORATIVA)"
+    },
+    {
+        "codigounico": "df275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LICENCIATURA EN ADMINISTRACION INDUSTRIAL"
+    },
+    {
+        "codigounico": "e3275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LICENCIATURA EN FISIOTERAPIA"
+    },
+    {
+        "codigounico": "e5275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LICENCIATURA EN INGENIERIA AMBIENTAL Y SUSTENTABILIDAD"
+    },
+    {
+        "codigounico": "e9275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "LICENCIATURA EN PUBLICIDAD Y MEDIOS"
+    },
+    {
+        "codigounico": "eb275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN DIRECCION DE PROYECTOS (ON LINE SEMINARIO)(S)"
+    },
+    {
+        "codigounico": "ed275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN DISEÑO MULTIMEDIA (SEMINARIO)"
+    },
+    {
+        "codigounico": "ef275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN ADMINISTRACION DE LA COMUNICACION (TRADICIONAL)"
+    },
+    {
+        "codigounico": "f1275605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN ADMINISTRACION DE LA COMUNICACION (SEMINARIO)"
+    },
+    {
+        "codigounico": "03285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN DIRECCION DE PROYECTOS (TRADICIONAL)"
+    },
+    {
+        "codigounico": "09285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN DISEÑO MULTIMEDIA (TRADICIONAL)"
+    },
+    {
+        "codigounico": "11285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN JUICIOS ORALES (SEMINARIO)"
+    },
+    {
+        "codigounico": "13285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN JUICIOS ORALES (TRADICIONAL)"
+    },
+    {
+        "codigounico": "15285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN MIGRACION DE SISTEMAS (TRADICIONAL)"
+    },
+    {
+        "codigounico": "17285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MAESTRIA EN MIGRACION DE SISTEMAS (SEMINARIO)"
+    },
+    {
+        "codigounico": "1f285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MECATRONICA"
+    },
+    {
+        "codigounico": "21285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MERCADOTECNIA"
+    },
+    {
+        "codigounico": "25285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "MERCADOTECNIA CORP. INTENSIVA"
+    },
+    {
+        "codigounico": "29285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "NEGOCIOS INTERNAC. CORPORATIVA"
+    },
+    {
+        "codigounico": "2b285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "NEGOCIOS INTERNACIONALES"
+    },
+    {
+        "codigounico": "2f285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "NUTRICIÓN"
+    },
+    {
+        "codigounico": "33285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "PEDAGOGÍA"
+    },
+    {
+        "codigounico": "35285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "PEDAGOGIA CORPORATIVA"
+    },
+    {
+        "codigounico": "37285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "PREPARATORIA"
+    },
+    {
+        "codigounico": "3b285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "PSICOLOGIA"
+    },
+    {
+        "codigounico": "3f285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "PSICOLOGIA CORPORATIVA"
+    },
+    {
+        "codigounico": "45285605-9072-e211-b35f-6cae8b2a4ddc",
+        "name": "OTRA (TRADICIONAL)"
+    }
+]

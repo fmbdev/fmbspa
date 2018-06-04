@@ -1,1 +1,26 @@
-[{"crmit_codigounico":"4411cf79-6172-e211-a7b5-3440b5bef8e4","crmit_name":"SECUNDARIA","ID":0},{"crmit_codigounico":"e4b32b71-6172-e211-a7b5-3440b5bef8e4","crmit_name":"POSGRADO","ID":0},{"crmit_codigounico":"643d9468-6172-e211-a7b5-3440b5bef8e4","crmit_name":"LICENCIATURA","ID":0},{"crmit_codigounico":"049e7e5f-6172-e211-a7b5-3440b5bef8e4","crmit_name":"PREPARATORIA","ID":0},{"crmit_codigounico":"03c4705c-2c44-e811-810d-3863bb3c4538","crmit_name":"PRUEBASJJ","ID":0},{"crmit_codigounico":"58caa147-ae44-e811-8111-3863bb3c31e0","crmit_name":"LICENCIATURA PRUEBA","ID":0},{"crmit_codigounico":"f359e485-af44-e811-8111-3863bb3c31e0","crmit_name":"POSGRADO PRUEBA","ID":0},{"crmit_codigounico":"5f438353-e348-e811-810f-3863bb3c4538","crmit_name":"POSGRADO PRU","ID":0}]
+[
+    {
+        "crmit_codigounico": "e4b32b71-6172-e211-a7b5-3440b5bef8e4",
+        "crmit_name": "POSGRADO"
+    },
+    {
+        "crmit_codigounico": "643d9468-6172-e211-a7b5-3440b5bef8e4",
+        "crmit_name": "LICENCIATURA"
+    },
+    {
+        "crmit_codigounico": "049e7e5f-6172-e211-a7b5-3440b5bef8e4",
+        "crmit_name": "PREPARATORIA"
+    },
+    {
+        "crmit_codigounico": "03c4705c-2c44-e811-810d-3863bb3c4538",
+        "crmit_name": "PRUEBASJJ"
+    },
+    {
+        "crmit_codigounico": "58caa147-ae44-e811-8111-3863bb3c31e0",
+        "crmit_name": "LICENCIATURA PRUEBA"
+    },
+    {
+        "crmit_codigounico": "5f438353-e348-e811-810f-3863bb3c4538",
+        "crmit_name": "POSGRADO PRU"
+    }
+]
