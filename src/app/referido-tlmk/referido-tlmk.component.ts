@@ -131,19 +131,37 @@ export class ReferidoTlmkComponent implements OnInit {
 
     if(this.form.value.tipoCel == "Celular"){
       if(predTel == 55){
-        this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.Telefono;
+        this.form.value.TelefonoPredictivo = '9044'+this.form.value.Telefono;
       }else{
-        this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.Telefono;
+        this.form.value.TelefonoPredictivo = '9045'+this.form.value.Telefono;
       }
     }
 
     if(this.form.value.tipoCel == "Casa"){
       if(predTel == 55){
-        this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+        this.form.value.TelefonoCasaPredictivo = '9'+this.form.value.Telefono;
       }else{
-        this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+        this.form.value.TelefonoCasaPredictivo = '901'+this.form.value.Telefono;
       }
     }
+
+    if(this.form.value.tipoCel == "Oficina"){
+      if(predTel == 55){
+        this.form.value.TelefonoOficinaPredictivo = '9'+this.form.value.Telefono;
+      }else{
+        this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
+      }
+    }
+
+    //console.log('diccionario', this.rows);
+    for(let i=0;i < this.rows.length; i++){
+      if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
+        this.form.value.Team = this.rows[i].TEAM;
+        this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+        this.form.value.Attemp = this.rows[i].ATTEMP;
+      }
+    }
+
     // -------------------------------- Predictivo  ----------------------------------
        let edadT = this.form.value.Edad;
 
@@ -171,7 +189,11 @@ export class ReferidoTlmkComponent implements OnInit {
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
                 NumeroCelular: this.form.value.NumeroCelular,
-                Telefono: this.form.value.Telefono,
+                //Telefono: this.form.value.Telefono,
+                TelefonoCelular: (this.form.value.tipoCel == "Celular")? this.form.value.Telefono:null,
+                TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null,
+                TelefonoOficina: (this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null,
+
                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
 
                 
@@ -187,9 +209,15 @@ export class ReferidoTlmkComponent implements OnInit {
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
 
-                Banner: this.form.value.Banner
+                Banner: this.form.value.Banner,
+                
+                Team: this.form.value.Team ,
+                Prioridad: this.form.value.Prioridad ,
+                Attemp: this.form.value.Attemp
                 
             };
+            
+
         this.sendServ.sendDataToApi(sendd)
          .subscribe(
               (res: any) => {

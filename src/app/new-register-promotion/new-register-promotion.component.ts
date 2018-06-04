@@ -357,11 +357,15 @@ export class NewRegisterPromotionComponent implements OnInit {
                 }
             }
             if (this.form.value.NumeroCelularTutor) {
+                //TelefonoCasaTutorPredictivo
+                //TelefonoCelularTutorPredictivo
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
+                //this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
+                this.form.value.TelefonoCelularTutorPredictivo = '9045' + this.form.value.NumeroCelularTutor;
                 
                 if (predCelTutor == 55) {
-                    this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                    //this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                    this.form.value.TelefonoCelularTutorPredictivo = '9044' + this.form.value.NumeroCelularTutor;
                 }
             }
 
@@ -423,8 +427,13 @@ export class NewRegisterPromotionComponent implements OnInit {
                 ApellidoMaterno: this.form.value.ApellidoMaterno, 
                 CorreoElectronico: this.form.value.CorreoElectronico, 
                 //NumeroCelular: this.form.value.NumeroCelular, 
-                TelefonoCelular: this.form.value.NumeroCelular, 
-                Telefono: this.form.value.Telefono,                 
+                //form.controls.NumeroCelular
+                //TelefonoCelular: this.form.value.NumeroCelular, 
+                Telefono: this.form.value.NumeroCelular,
+                
+                //Telefono: this.form.value.Telefono,
+                TelefonoCasa: this.form.value.Telefono,            
+
                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
                 Edad: edadT,
                 SinCorreo: this.form.value.SinCorreo,
@@ -442,8 +451,12 @@ export class NewRegisterPromotionComponent implements OnInit {
                 Ciclo: CicloV[1],              
                 SubTipo:SubTipoV[1],
                 SubSubTipo:SubSubTipoV[0],
-                Turno:TurnoV[2],
+
+                Turno: this.form.value.Turno, //TurnoV[2],
+                ActividadAgenda: this.form.value.ActividadAgenda,
+
                 Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
+
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
@@ -456,7 +469,14 @@ export class NewRegisterPromotionComponent implements OnInit {
                 GUIDSubTipo:SubTipoV[0],
                 GUIDSubSubTipo:SubSubTipoV[1],
                 Banner: this.form.value.Banner,
-                Tipocontactoidname: this.form.value.ParentescoTutor                
+                Tipocontactoidname: this.form.value.ParentescoTutor ,
+                
+                TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+                TelefonoPredictivo:this.form.value.TelefonoCelularPredictivo,
+
+
+                TelefonoCasaTutorPredictivo: this.form.value.TelefonoPredictivoTutor,
+                TelefonoCelularTutorPredictivo: this.form.value.TelefonoCelularTutorPredictivo,
             };
            /*
               CampusCita: this.form.value.CampusCita,
