@@ -454,6 +454,8 @@ export class NewRegisterPromotionComponent implements OnInit {
 
                 Turno: this.form.value.Turno, //TurnoV[2],
                 ActividadAgenda: this.form.value.ActividadAgenda,
+                //GUIDActividadAgenda
+                
 
                 Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
 

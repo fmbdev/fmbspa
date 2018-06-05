@@ -197,10 +197,12 @@ export class ReferidoReferenteComponent implements OnInit {
                 CorreoElectronico: this.form.value.CorreoElectronico,
                 
                 TelefonoCelular: (this.form.value.tipoCel == "Celular")? this.form.value.NumeroCelular:null,
-
                 TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null, 
                 TelefonoOficina:(this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null, 
                 
+                TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
+                TelefonoPredictivo: this.form.value.TelefonoPredictivo,
+                TelefonoCelularPredictivo: this.form.value.TelefonoPredictivo,
 
                 Genero: this.form.value.Genero,
 

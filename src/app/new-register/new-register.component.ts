@@ -434,12 +434,13 @@ export class NewRegisterComponent implements OnInit {
                 Notas: this.form.value.Notas,
 
                 Tipocontactoidname: this.form.value.ParentescoTutor,  
+                FechaCita: this.form.value.FechaCita,
 
                 // Ejecutivo: this.form.value.ParentescoTutor , 
                 // SubTipoActividad: this.form.value.ParentescoTutor , 
                 // SubSubTipoActividad:  this.form.value.ParentescoTutor,
                 // EscuelaEmpresa:this.form.value.ParentescoTutor,
-                // Calidad:this.form.value.ParentescoTutor,
+                // Calidad:this.form.value.ParentescoTutor, this.form.value.FechaCita
 
             };
 
