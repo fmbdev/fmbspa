@@ -164,6 +164,14 @@ export class ReferidoPromotorComponent implements OnInit {
       }else{
         this.form.value.TelefonoCasaPredictivo = '901'+this.form.value.Telefono;
       }
+    }
+
+    if(this.form.value.tipoCel == "Oficina"){
+      if(predTel == 55){
+        this.form.value.TelefonoOficinaPredictivo = '9044'+this.form.value.Telefono;
+      }else{
+        this.form.value.TelefonoOficinaPredictivo = '9045'+this.form.value.Telefono;
+      }
       this.form.value.TelefonoCasa=this.form.value.Telefono;
     }
 
@@ -215,8 +223,15 @@ export class ReferidoPromotorComponent implements OnInit {
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
+
                 NumeroCelular: this.form.value.NumeroCelular,
-                Telefono: this.form.value.Telefono,
+                //Telefono: this.form.value.Telefono,
+                
+                TelefonoCelular: (this.form.value.tipoCel == "Celular")? this.form.value.Telefono:null,
+                TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null,
+                TelefonoOficina: (this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null,
+
+
                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
 
                 
@@ -233,20 +248,11 @@ export class ReferidoPromotorComponent implements OnInit {
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
 
-                TelefonoCelular:this.form.value.TelefonoCelular,
-                TelefonoPredictivo:this.form.value.TelefonoPredictivo,
+                Banner: this.form.value.Banner,
 
-                TelefonoCasa:this.form.value.TelefonoCasa,
-                TelefonoCasaPredictivo:this.form.value.TelefonoCasaPredictivo,
-
-                TelefonoOficina:this.form.value.TelefonoOficina,
-                TelefonoOficinaPredictivo:this.form.value.TelefonoOficinaPredictivo,
-
-                Team:this.form.value.Team,
-                Prioridad:this.form.value.Prioridad,
-                Attemp:this.form.value.Attemp,
-
-                Banner: this.form.value.Banner
+                Team: this.form.value.Team ,
+                Prioridad: this.form.value.Prioridad ,
+                Attemp: this.form.value.Attemp
                 
             };
     this.sendServ.sendDataToApi(sendd)

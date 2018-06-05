@@ -177,6 +177,14 @@ export class ReferidoWebComponent implements OnInit {
         }
       }
 
+      if(this.form.value.tipoCel == "Oficina"){
+        if(predTel == 55){
+          this.form.value.TelefonoOficinaPredictivo = '9'+this.form.value.Telefono;
+        }else{
+          this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
+        }
+      }
+
       for(let i=0;i < this.rows.length; i++){
         if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
           this.form.value.Team = this.rows[i].TEAM;
@@ -199,12 +207,12 @@ export class ReferidoWebComponent implements OnInit {
             const sendd = {
                 Usuario: this.form.value.Usuario,
 
-                name_ref: this.form.value.name_ref,
-                patern_ref: this.form.value.patern_ref,
-                matern_ref: this.form.value.matern_ref,
-                mail_ref: this.form.value.mail_ref,
-                tipo_ref: this.form.value.tipo_ref,
-                phone_ref: this.form.value.phone_ref,
+                NombreReferente: this.form.value.name_ref,
+                ApellidoPaternoReferente: this.form.value.patern_ref,
+                ApellidoMaternoReferente: this.form.value.matern_ref,
+                CorreoElectronicoReferente: this.form.value.mail_ref,
+                ParentescoReferente: this.form.value.tipo_ref,
+                TelefonoCelularReferente: this.form.value.phone_ref,
                 cuenta_ref: this.form.value.cuenta_ref,
 
                 Nombre: this.form.value.Nombre,
@@ -212,7 +220,11 @@ export class ReferidoWebComponent implements OnInit {
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
                 NumeroCelular: this.form.value.NumeroCelular,
-                Telefono: this.form.value.Telefono,
+                //Telefono: this.form.value.Telefono,
+                TelefonoCelular: (this.form.value.tipoCel == "Celular")? this.form.value.Telefono:null,
+                TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null,
+                TelefonoOficina: (this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null,
+
                 Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
                 
                 Campus: CampusV[1],
@@ -227,7 +239,11 @@ export class ReferidoWebComponent implements OnInit {
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
 
-                Banner: this.form.value.Banner
+                Banner: this.form.value.Banner,
+                
+                Team: this.form.value.Team ,
+                Prioridad: this.form.value.Prioridad ,
+                Attemp: this.form.value.Attemp
                 
             };
       this.sendServ.sendDataToApi(sendd)

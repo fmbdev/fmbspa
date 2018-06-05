@@ -1,5 +1,5 @@
 import { AppConfig } from './services/constants';
-import { IdleUserService } from './providers/idle-user.service';
+//import { IdleUserService } from './providers/idle-user.service';
 import { Component, OnInit,ViewChild } from '@angular/core';
 
 
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit{
               private subSubServ: SubsubtipoActividadService,             
               private campusCarreraServ: CampusCarreraService,
               private escuelaEmpresaServ: EscuelaEmpresaService,
-              private userActive:  IdleUserService, 
+              //public userActive:  IdleUserService, 
               private route: Router,
               private constante: AppConfig){}
               
@@ -58,8 +58,8 @@ export class AppComponent implements OnInit{
     this.api_cnn = this.constante.api_request;
     //** Detección de inactividad **// 
     if(this.route.url != '/'){
-      this.userActive.conteoInactividad();
-      this.userActive.detectaActividad();
+      // this.userActive.conteoInactividad();
+      // this.userActive.detectaActividad();
     }else{
       
       

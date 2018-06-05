@@ -447,6 +447,13 @@ export class NewRegisterComponent implements OnInit {
                 HoraCita: this.form.value.HoraCita,
                 Programacion: (this.form.value.Programacion)? "": "",
                 Asesor: this.form.value.Asesor,
+                Tipocontactoidname: this.form.value.ParentescoTutor,  
+
+                // Ejecutivo: this.form.value.ParentescoTutor , 
+                // SubTipoActividad: this.form.value.ParentescoTutor , 
+                // SubSubTipoActividad:  this.form.value.ParentescoTutor,
+                // EscuelaEmpresa:this.form.value.ParentescoTutor,
+                // Calidad:this.form.value.ParentescoTutor, this.form.value.FechaCita
 
             };
 

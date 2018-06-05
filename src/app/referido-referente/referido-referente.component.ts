@@ -149,6 +149,14 @@ export class ReferidoReferenteComponent implements OnInit {
       }
     }
 
+    if(this.form.value.tipoCel == "Oficina"){
+      if(predTel == 55){
+        this.form.value.TelefonoOficinaPredictivo = '9'+this.form.value.Telefono;
+      }else{
+        this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
+      }
+    }
+
     for(let i=0;i < this.rows.length; i++){
       if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
         this.form.value.Team = this.rows[i].TEAM;
@@ -187,12 +195,14 @@ export class ReferidoReferenteComponent implements OnInit {
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
-
-                NumeroCelular: (this.form.value.tipoCel == "Celular")? this.form.value.NumeroCelular:null,
-
+                
+                TelefonoCelular: (this.form.value.tipoCel == "Celular")? this.form.value.NumeroCelular:null,
                 TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null, 
                 TelefonoOficina:(this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null, 
                 
+                TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
+                TelefonoPredictivo: this.form.value.TelefonoPredictivo,
+                TelefonoCelularPredictivo: this.form.value.TelefonoPredictivo,
 
                 Genero: this.form.value.Genero,
 
@@ -210,7 +220,11 @@ export class ReferidoReferenteComponent implements OnInit {
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
 
-                Banner: this.form.value.Banner
+                Banner: this.form.value.Banner,
+                
+                Team: this.form.value.Team ,
+                Prioridad: this.form.value.Prioridad ,
+                Attemp: this.form.value.Attemp
                 
             };
 
