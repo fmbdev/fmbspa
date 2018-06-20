@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
 
     if(this.getParameterByName('access_token')!=''){
-        let userLocal = localStorage.setItem('access_token',this.getParameterByName('access_token'));
+        var userLocal = localStorage.setItem('access_token',this.getParameterByName('access_token'));
         console.log('creando Access_token');
         /*var settings = {
             "async": true,
@@ -75,22 +75,24 @@ export class LoginComponent implements OnInit {
               "odata.metadata": "minimal",              
             }
           }
-          let old = this;
-          $.ajax(settings).done(function (response){            
-            let WhoAmI = JSON.stringify(response)
+          var old = this;
+          $.ajax(settings).done(function (response2){            
+            var WhoAmI = JSON.stringify(response2)
             localStorage.setItem('WhoAmI',WhoAmI) 
-
-            let w = localStorage.getItem('WhoAmI');
-            let k = JSON.parse(w);
-            localStorage.setItem('UserId',k.UserId);
+            console.log(response2);
+            var w = localStorage.getItem('WhoAmI');
+            var k = JSON.parse(w);
+            localStorage.setItem('UserId',response2.UserId);
+            localStorage.setItem('UserId22',response2.UserId);
                    
-            let UserId = localStorage.getItem('UserId');
+            var UserId = localStorage.getItem('UserId22');
 
-
+                var url_user ="https://laulatammxqa.api.crm.dynamics.com/api/data/v8.2/systemusers("+UserId+")";
+                console.log(url_user);
                 var settings2 = {
                   "async": true,
                   "crossDomain": true,
-                  "url": "https://laulatammxqa.api.crm.dynamics.com/api/data/v8.2/systemusers("+k.UserId+")",
+                  "url": url_user,
                   "method": "GET",
                   "headers": {
                     "authorization": "Bearer "+localStorage.getItem('access_token'),
@@ -98,9 +100,10 @@ export class LoginComponent implements OnInit {
                     "odata.metadata": "minimal",              
                   }
                 }
-
+  
                 $.ajax(settings2).done(function (response){            
-                  let user = JSON.stringify(response)
+                  var user = JSON.stringify(response)
+                  console.log(response);
                   localStorage.setItem('user',user); 
                   $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+response.domainname,
                     {
@@ -109,7 +112,7 @@ export class LoginComponent implements OnInit {
                         type: 'GET',
                         success: function(result) {
                             console.log(result);
-                            let dat = JSON.stringify(result);                 
+                            var dat = JSON.stringify(result);                 
                             this.landings = result; 
                             localStorage.setItem('landings', dat);
                             old.onGoto('/home');

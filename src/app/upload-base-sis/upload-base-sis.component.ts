@@ -27,7 +27,15 @@ export class UploadBaseSisComponent implements OnInit {
   arrayBuffer:any;
   file:File;
   columDistin:boolean;
-  constructor(private sendServ: SendService,public dialog: MatDialog) { }
+  rows = [];
+  campusTxt: any;
+  nivelTxt: any;
+
+  constructor(private sendServ: SendService,public dialog: MatDialog) {
+    this.fetch((data) => {
+      this.rows = data;
+    });
+   }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -39,7 +47,14 @@ export class UploadBaseSisComponent implements OnInit {
     console.log("-ll- Ok"); 
      this.newdata.filename = event.srcElement.files[0].name;         
   } 
-
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/carga-sis.json`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
   checkCols(workbook) //your workbook variable 
   { 
       var colValues =[]; 
@@ -54,7 +69,9 @@ export class UploadBaseSisComponent implements OnInit {
         //Contails all column names 
       } 
     }
+
     let col = '["Num Persona","id campus","nombre corto telemarketer","ciclo","lista de seguimiento","nombre corto asesor","fuente obtención","clave de sis (Carrera)"]';
+
     let cColum = JSON.stringify(colValues);
     
     if(col == cColum){
@@ -96,11 +113,31 @@ export class UploadBaseSisComponent implements OnInit {
               }
                   let f = 400;  
               filas.forEach(key => {
+               
+                /* 
+                this.form.value.FuenteObtencion = null;
+                var ciclo = key.ciclo;
+                this.campusTxt = key.campus;
+                this.nivelTxt = key.ciclo;
+
+                for (let i = 0; i < this.rows.length; i++) {
+                  if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+                    this.form.value.Team = this.rows[i].TEAM;
+                    this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+                    this.form.value.Attemp = this.rows[i].ATTEMP;
+                    this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+
+                  }
+                }
+                */
+
                 let obj2 = {
-                   "Prioridad" : tipo,
-                   "Team" : tipo,
-                   "Attemp" : tipo,
-                  };
+                  "Prioridad": 0,
+                  "Team": "",
+                  "Attemp": 0,
+                  "FuenteObtencion": "ABSORCION"                  
+                };
+                  
                
                   let datos = Object.assign(key, obj2);
                 

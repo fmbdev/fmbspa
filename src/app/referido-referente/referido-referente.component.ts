@@ -130,46 +130,58 @@ export class ReferidoReferenteComponent implements OnInit {
   onSubmit() {
     // -------------------------------- Predictivo  ----------------------------------
 
-    const predTel = this.form.value.Telefono.substring(0,2);
+    const predTel = this.form.value.Telefono.substring(0, 2);
+
+    console.log("predTel=" + predTel);
     this.form.value.Banner = window.location.href;
 
-    if(this.form.value.tipoCel == "Celular"){
-      if(predTel == 55){
-        this.form.value.TelefonoCelularPredictivo = '9044'+this.form.value.Telefono;
-      }else{
-        this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.Telefono;
+    this.form.value.TelefonoCelular = null;
+    this.form.value.TelefonoPredictivo = null;
+
+    this.form.value.TelefonoCasa = null;
+    this.form.value.TelefonoCasaPredictivo = null;
+
+    this.form.value.TelefonoOficina = null;
+    this.form.value.TelefonoOficinaPredictivo = null;
+
+
+    if (this.form.value.tipoCel == "Celular") {
+      if (predTel == 55) {
+        this.form.value.TelefonoPredictivo = '9044' + this.form.value.Telefono;
+      } else {
+        this.form.value.TelefonoPredictivo = '9045' + this.form.value.Telefono;
       }
     }
 
-    if(this.form.value.tipoCel == "Casa"){
-      if(predTel == 55){
-        this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-      }else{
-        this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+    if (this.form.value.tipoCel == "Casa") {
+      if (predTel == 55) {
+        this.form.value.TelefonoCasaPredictivo = '9' + this.form.value.Telefono;
+      } else {
+        this.form.value.TelefonoCasaPredictivo = '901' + this.form.value.Telefono;
       }
     }
 
-    if(this.form.value.tipoCel == "Oficina"){
-      if(predTel == 55){
-        this.form.value.TelefonoOficinaPredictivo = '9'+this.form.value.Telefono;
-      }else{
-        this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
+    if (this.form.value.tipoCel == "Oficina") {
+      if (predTel == 55) {
+        this.form.value.TelefonoOficinaPredictivo = '9' + this.form.value.Telefono;
+      } else {
+        this.form.value.TelefonoOficinaPredictivo = '901' + this.form.value.Telefono;
       }
     }
+    this.form.value.FuenteObtencio = null;
+    var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');     
 
-    for(let i=0;i < this.rows.length; i++){
-      if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
+    for (let i = 0; i < this.rows.length; i++) {
+      var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+      if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
         this.form.value.Team = this.rows[i].TEAM;
         this.form.value.Prioridad = this.rows[i].PRIORIDAD;
         this.form.value.Attemp = this.rows[i].ATTEMP;
+        this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+
       }
     }
-
-    /*setTimeout(() => {
-      console.log(this.form.value);
-    }, 1000);*/
-
-    // -------------------------------- Predictivo  ----------------------------------
+    // -------------------------------- Predictivo  -----------------------------------
            
             let edadT = this.form.value.Edad;
 
@@ -196,16 +208,15 @@ export class ReferidoReferenteComponent implements OnInit {
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
                 
-                TelefonoCelular: (this.form.value.tipoCel == "Celular")? this.form.value.NumeroCelular:null,
+                Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono:null,
                 TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null, 
                 TelefonoOficina:(this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null, 
                 
-                TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
                 TelefonoPredictivo: this.form.value.TelefonoPredictivo,
-                TelefonoCelularPredictivo: this.form.value.TelefonoPredictivo,
-
-                Genero: this.form.value.Genero,
-
+                TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
+                TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
+              
+                Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
@@ -222,9 +233,12 @@ export class ReferidoReferenteComponent implements OnInit {
 
                 Banner: this.form.value.Banner,
                 
-                Team: this.form.value.Team ,
-                Prioridad: this.form.value.Prioridad ,
-                Attemp: this.form.value.Attemp
+              Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
+              Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
+              Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
+              FuenteObtencion: this.form.value.FuenteObtencion,
+              Ciclo: ciclo
+
                 
             };
 

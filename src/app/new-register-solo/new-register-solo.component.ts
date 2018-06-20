@@ -314,6 +314,20 @@ export class NewRegisterSoloComponent implements OnInit {
         })
 
         this.onKeyFechaNacimiento();
+        
+        if (this.sinEmail) {
+            this.form.controls.CorreoElectronico.clearValidators();
+        } else {
+            if (this.form.controls['CorreoElectronico'].value != "") {
+                this.form.controls.Telefono.clearValidators();
+                this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+                this.form.controls.Telefono.updateValueAndValidity();
+            } else {
+                let tel = this.form.controls['Telefono'].value;
+                this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+            }
+        }
+
 
         if (this.form.valid) {
             if (this.sinEmail) {
@@ -323,6 +337,13 @@ export class NewRegisterSoloComponent implements OnInit {
 
           // -------------------------------- Predictivo  ----------------------------------
 
+             const predTel = this.form.value.Telefono.substring(0,2);
+            if(predTel == 55){
+              this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+            }
+            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+
+
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
                 this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
@@ -330,6 +351,8 @@ export class NewRegisterSoloComponent implements OnInit {
                     this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
                 }
             }
+
+            
             if (this.form.value.NumeroCelularTutor) {
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
                 this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
@@ -346,22 +369,24 @@ export class NewRegisterSoloComponent implements OnInit {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
                 }
             }
-          const predTel = this.form.value.Telefono.substring(0,2);
-          if(predTel == 55){
-            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-          }
-          this.form.value.TelefonoCelularPredictivo = '9045'+this.form.value.NumeroCelular;
-          this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
          
-          this.form.value.Banner = window.location.href;                 
+            this.form.value.Banner = window.location.href;
+            this.form.value.FuenteObtencion = "";
 
-          for(let i=0;i < this.rows.length; i++){
-            if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
-              this.form.value.Team = this.rows[i].TEAM;
-              this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-              this.form.value.Attemp = this.rows[i].ATTEMP;
+            let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
+            let CicloV = _Ciclo.split('*');
+
+
+            for (let i = 0; i < this.rows.length; i++) {
+                //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+                var ciclo = CicloV[2];
+                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+                    this.form.value.Team = this.rows[i].TEAM;
+                    this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+                    this.form.value.Attemp = this.rows[i].ATTEMP;
+                    this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                }
             }
-          }
 
           // -------------------------------- Predictivo  ----------------------------------
           let edadT = this.form.value.Edad;
@@ -377,14 +402,12 @@ export class NewRegisterSoloComponent implements OnInit {
             let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
             let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
-            let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
             
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
-            let CicloV = _Ciclo.split('*');
             
           const sendd = {    
 
@@ -394,19 +417,13 @@ export class NewRegisterSoloComponent implements OnInit {
             ApellidoPaterno: this.form.value.ApellidoPaterno, 
             ApellidoMaterno: this.form.value.ApellidoMaterno, 
             CorreoElectronico: this.form.value.CorreoElectronico,             
-            TelefonoCelular: this.form.value.NumeroCelular,             
-            TelefonoCasa: this.form.value.Telefono,             
-            Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
+            Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
             Edad:edadT, 
 
-            SinCorreo: this.form.value.SinCorreo,
-            
             NombreTutor: this.form.value.NombreTutor, 
             ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-            NumeroCelularTutor: this.form.value.NumeroCelularTutor, 
             ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
             CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
-            TelefonoTutor: this.form.value.TelefonoTutor,
             ParentescoTutor:this.form.value.ParentescoTutor,
 
             Campus: CampusV[1],
@@ -424,13 +441,32 @@ export class NewRegisterSoloComponent implements OnInit {
             GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
             GUIDUsuario:localStorage.getItem('UserId'),
 
-            TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo,
-            TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor,
-            TelefonoPredictivo: this.form.value.TelefonoPredictivo,
-            TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor,
+             
 
             Banner: this.form.value.Banner,
-            Bandera: bandera
+            Bandera: (bandera==null)?"":bandera,
+
+            Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
+            Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
+            Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
+            FuenteObtencion: this.form.value.FuenteObtencion,
+
+            //Numero Celular
+            Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
+            TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
+            //Numero Telefono o Telefono Casa
+            TelefonoCasa: this.form.value.Telefono,
+            TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+              
+
+            //Numero Celular Tutor
+            NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
+            TelefonoCelularTutorPredictivo:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
+            //Numero Casa Tutor                
+            TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
+            TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
+
+
             
           };
              

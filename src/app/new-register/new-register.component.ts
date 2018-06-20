@@ -218,7 +218,7 @@ export class NewRegisterComponent implements OnInit {
 
     fetch(cb) {
         const req = new XMLHttpRequest();
-        req.open('GET', `assets/canales.json`);
+        req.open('GET', `assets/inbound.json`);
         req.onload = () => {
             cb(JSON.parse(req.response));
         };
@@ -296,10 +296,44 @@ export class NewRegisterComponent implements OnInit {
             }
         })
 
+        if (this.sinEmail) {
+            this.form.controls.CorreoElectronico.clearValidators();
+        }
+        
 
-        if (this.form.valid) {
+        if (this.sinEmail) {
+            this.form.controls.CorreoElectronico.clearValidators();
+        }else{
+            if (this.form.controls['CorreoElectronico'].value!=""){
+                this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+                this.form.controls.Telefono.clearValidators();
+                this.form.controls.Telefono.updateValueAndValidity();
+            }else{
+                console.log('aqui');
+                let tel = this.form.controls['Telefono'].value;
+                if(tel){
+                    this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: true });
+                    this.form.controls.CorreoElectronico.clearValidators();
+                    this.form.controls.CorreoElectronico.updateValueAndValidity(); 
+                    console.log('HERE');
+                }              
+
+            }
+        }
+
+        if (this.form.controls['CorreoElectronico'].value != "" && this.form.controls['Telefono'].value == "" ) {
+            console.log('aqui 123');
+            this.form.controls.Telefono.updateValueAndValidity();
+            this.form.controls.Telefono.clearValidators();
+        }
+
+
+        if (this.form.valid){
+
             this.onKeyFechaNacimiento();
+
             let fecha_cita = this.formatServ.changeFormatFecha(this.form.controls['FechaCita'].value);
+            
             this.form.controls['FechaCita'].setValue(fecha_cita);
 
             if (this.sinEmail) {
@@ -308,9 +342,19 @@ export class NewRegisterComponent implements OnInit {
             }
 
 
-            // -------------------------------- Predictivo  ----------------------------------
 
-            if (this.form.value.NumeroCelular) {
+
+            // -------------------------------- Predictivo  ----------------------------------
+            
+            if (this.form.value.Telefono) {
+                const predTel = this.form.value.Telefono.substring(0,2);
+                if(predTel == 55){
+                  this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+                }
+                this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+            }
+
+            if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
                 this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
                 if (predCel == 55) {
@@ -318,51 +362,46 @@ export class NewRegisterComponent implements OnInit {
                 }
             }
 
+            
             if (this.form.value.NumeroCelularTutor) {
-                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);                
+                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
+                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
                 if (predCelTutor == 55) {
                     this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
                 }
+
             }
 
             if (this.form.value.TelefonoTutor) {
                 const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
+                this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
                 if (predTelTutor == 55) {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
                 }
             }
+          let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
+          let CicloV = _Ciclo.split('*');
 
-
-            const predTel = this.form.value.Telefono.substring(0, 2);
-
-            this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
-            this.form.value.TelefonoCelularPredictivoTutor =  '9045' + this.form.value.NumeroCelularTutor;
-            this.form.value.TelefonoPredictivo = '901' + this.form.value.Telefono;
-            this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
-            
+          this.form.value.Banner = window.location.href;
+          this.form.value.FuenteObtencion=null;
+            for (let i = 0; i < this.rows.length; i++) {
+                //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+                var ciclo = CicloV[2];
+                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+                    this.form.value.Team = this.rows[i].TEAM;
+                    this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+                    this.form.value.Attemp = this.rows[i].ATTEMP;
+                    this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                }
+            }
+            console.log(this.form.value.FuenteObtencion);
+          // -------------------------------- Predictivo  ----------------------------------
             this.form.value.Banner = window.location.href;
             this.form.value.CanalPreferido = 'Voz';
-
-
-
-
-
-            if (predTel == 55) {
-                this.form.value.TelefonoPredictivo = '9' + this.form.value.Telefono;
-            }
-
-
             if (this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS') {
                 this.form.value.CanalPreferido = 'Redes Sociales';
             }
 
-            for (let i = 0; i < this.rows.length; i++) {
-                if (this.rows[i].FUENTENEGOCIO == this.canalText && this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1") {
-                    this.form.value.Team = this.rows[i].TEAM;
-                    this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                    this.form.value.Attemp = this.rows[i].ATTEMP;
-                }
-            }
 
             // -------------------------------- Predictivo  ----------------------------------
             let edadT = this.form.value.Edad;
@@ -376,7 +415,6 @@ export class NewRegisterComponent implements OnInit {
             let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
             let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
-            let _Ciclo = (this.form.value.Ciclo==null)? "": this.form.value.Ciclo; 
             let _Canal = (this.form.value.Canal==null)? "": this.form.value.Canal; 
             
             let CampusV = _Campus.split('*');
@@ -384,9 +422,12 @@ export class NewRegisterComponent implements OnInit {
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
-            let CicloV = _Ciclo.split('*');
             
             let CanalV = _Canal.split('*');
+
+            console.log(this.form.value.CampusCita);
+            console.log(this.form.value.FechaCita);
+            console.log(this.form.value.HoraCita);
     
             const sendd = {
 
@@ -395,25 +436,22 @@ export class NewRegisterComponent implements OnInit {
                 CanalPreferido: CanalV[1],                
                 CSQ: this.form.value.CSQ,
                 TelefonoCorreo: this.form.value.TelefonoCorreo,
-                Interesa_NoInteresa: this.form.value.Interesa_NoInteresa,
+                Interesa_NoInteresa: (this.form.value.Interesa_NoInteresa) ? "" : this.form.value.Interesa_NoInteresa,
                 
 
                 Nombre: this.form.value.Nombre,
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,                
-                TelefonoCelular: this.form.value.NumeroCelular,                
-                TelefonoCasa: this.form.value.Telefono,
-                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
+               
+                Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
                 Edad: edadT,
-                SinCorreo: this.form.value.SinCorreo,
+               //SinCorreo: this.form.value.SinCorreo,
                 
                 NombreTutor: this.form.value.NombreTutor,
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
-                NumeroCelularTutor: this.form.value.NumeroCelularTutor,
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
-                TelefonoTutor: this.form.value.TelefonoTutor,
                 ParentescoTutor:this.form.value.ParentescoTutor,
                 
                 Campus: CampusV[1],
@@ -421,7 +459,7 @@ export class NewRegisterComponent implements OnInit {
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],               
                 AreaInteres: InteresV[1],
-                Ciclo: CicloV[1],
+                Ciclo: CicloV[2],
                 
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
@@ -434,20 +472,36 @@ export class NewRegisterComponent implements OnInit {
                 Banner: this.form.value.Banner,
                 Bandera:"",                
 
-                TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo,
-                TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor,
-                TelefonoPredictivo: this.form.value.TelefonoPredictivo,
-                TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor,
-
                 Tipificacion: this.form.value.Tipificacion,
-                Notas: this.form.value.Notas,
+                Notas: (this.form.value.Notas) ? "" : this.form.value.Notas,
 
-                CampusCita: this.form.value.CampusCita,
-                FechaCita: this.form.value.FechaCita,
-                HoraCita: this.form.value.HoraCita,
-                Programacion: (this.form.value.Programacion)? "": "",
-                Asesor: this.form.value.Asesor,
-                Tipocontactoidname: this.form.value.ParentescoTutor,  
+                CampusCita: (this.form.value.CampusCita == undefined || this.form.value.CampusCita=="") ? null : this.form.value.CampusCita,
+                FechaCita: (this.form.value.FechaCita == undefined || this.form.value.FechaCita =="aN/aN/NaN") ? null : this.form.value.FechaCita,
+                HoraCita: (this.form.value.HoraCita == undefined || this.form.value.HoraCita=="") ? "" : this.form.value.HoraCita,
+                //Programacion: (this.form.value.Programacion)? "": "",
+                Asesor: (this.form.value.Asesor) ? null : this.form.value.Asesor,
+                // Tipocontactoidname: this.form.value.ParentescoTutor,  
+
+                Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
+                Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
+                Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
+                FuenteObtencion: this.form.value.FuenteObtencion,
+
+
+                //Numero Celular
+                Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
+                TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
+                //Numero Telefono o Telefono Casa
+                TelefonoCasa: this.form.value.Telefono,
+                TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+              
+
+                //Numero Celular Tutor
+                NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
+                TelefonoCelularTutorPredictivo:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
+                //Numero Casa Tutor                
+                TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
+                TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
                 // Ejecutivo: this.form.value.ParentescoTutor , 
                 // SubTipoActividad: this.form.value.ParentescoTutor , 
@@ -611,6 +665,61 @@ export class NewRegisterComponent implements OnInit {
 
     }
 
+    onChangeInteresaNo(value) {
+        if (value == '1') {
+            this.form.controls.Nombre.reset({ value: '', disabled: true });
+            this.form.controls.ApellidoPaterno.reset({ value: '', disabled: true });
+            this.form.controls.ApellidoMaterno.reset({ value: '', disabled: true });
+            this.form.controls.CorreoElectronico.reset({ value: '', disabled: true });
+            this.form.controls.Genero.reset({ value: '', disabled: true });
+            this.form.controls.NumeroCelular.reset({ value: '', disabled: true });
+            this.form.controls.Telefono.reset({ value: '', disabled: true });
+            this.form.controls.Edad.reset({ value: '', disabled: true });
+
+            this.form.controls.NombreTutor.reset({ value: '', disabled: true });
+            this.form.controls.ApellidoPaternoTutor.reset({ value: '', disabled: true });
+            this.form.controls.ApellidoMaternoTutor.reset({ value: '', disabled: true });
+            this.form.controls.CorreoElectronicoTutor.reset({ value: '', disabled: true });
+            this.form.controls.ParentescoTutor.reset({ value: '', disabled: true });
+            this.form.controls.NumeroCelularTutor.reset({ value: '', disabled: true });
+            this.form.controls.TelefonoTutor.reset({ value: '', disabled: true });
+
+            this.form.controls.Campus.reset({ value: '', disabled: true });
+            this.form.controls.AreaInteres.reset({ value: '', disabled: true });
+            this.form.controls.Nivel.reset({ value: '', disabled: true });
+            this.form.controls.Modalidad.reset({ value: '', disabled: true });
+            this.form.controls.Carrera.reset({ value: '', disabled: true });
+            this.form.controls.Ciclo.reset({ value: '', disabled: true });
+
+        } else {
+
+            this.form.controls.Nombre.reset({ value: '', disabled: false });
+            this.form.controls.ApellidoPaterno.reset({ value: '', disabled: false });
+            this.form.controls.ApellidoMaterno.reset({ value: '', disabled: false });
+            this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
+            this.form.controls.Genero.reset({ value: '', disabled: false });
+            this.form.controls.NumeroCelular.reset({ value: '', disabled: false });
+            this.form.controls.Telefono.reset({ value: '', disabled: false });
+            this.form.controls.Edad.reset({ value: '', disabled: false });
+
+            this.form.controls.NombreTutor.reset({ value: '', disabled: false });
+            this.form.controls.ApellidoPaternoTutor.reset({ value: '', disabled: false });
+            this.form.controls.ApellidoMaternoTutor.reset({ value: '', disabled: false });
+            this.form.controls.CorreoElectronicoTutor.reset({ value: '', disabled: false });
+            this.form.controls.ParentescoTutor.reset({ value: '', disabled: false });
+            this.form.controls.NumeroCelularTutor.reset({ value: '', disabled: false });
+            this.form.controls.TelefonoTutor.reset({ value: '', disabled: false });
+
+            this.form.controls.Campus.reset({ value: '', disabled: false });
+            this.form.controls.AreaInteres.reset({ value: '', disabled: false });
+            this.form.controls.Nivel.reset({ value: '', disabled: false });
+            this.form.controls.Modalidad.reset({ value: '', disabled: false });
+            this.form.controls.Carrera.reset({ value: '', disabled: false });
+            this.form.controls.Ciclo.reset({ value: '', disabled: false });
+            
+        }
+    }
+
     //Cambiado
     onChangeCampus(campus: string) {
         console.log(campus);
@@ -725,10 +834,8 @@ export class NewRegisterComponent implements OnInit {
                 this.showDialogE("Debes ingresar un teléfono de contacto");
                 return false;
             }
-
             this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
             this.sinEmail = true;
-
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
             this.sinEmail = false;

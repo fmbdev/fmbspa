@@ -8,7 +8,6 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 import { LandingValidation } from '../validations/landing.validations';
 import { LandingService } from '../services/landing.service';
 
-
 import { DialogComponent } from '../dialog/dialog.component';
 import 'rxjs/Rx';
 
@@ -53,6 +52,7 @@ export class ReferidoPromotorComponent implements OnInit {
 
   Campus: FormControl;
   //interestArea: FormControl;
+  
   Nivel: FormControl;
   Modalidad: FormControl;
   Carrera: FormControl;
@@ -137,6 +137,8 @@ export class ReferidoPromotorComponent implements OnInit {
     // -------------------------------- Predictivo  ----------------------------------
 
     const predTel = this.form.value.Telefono.substring(0,2);
+
+    console.log("predTel=" + predTel);
     this.form.value.Banner = window.location.href;
     
     this.form.value.TelefonoCelular=null;
@@ -155,7 +157,6 @@ export class ReferidoPromotorComponent implements OnInit {
       }else{
         this.form.value.TelefonoPredictivo = '9045'+this.form.value.Telefono;
       }
-      this.form.value.TelefonoCelular=this.form.value.Telefono;
     }
 
     if(this.form.value.tipoCel == "Casa"){
@@ -168,34 +169,21 @@ export class ReferidoPromotorComponent implements OnInit {
 
     if(this.form.value.tipoCel == "Oficina"){
       if(predTel == 55){
-        this.form.value.TelefonoOficinaPredictivo = '9044'+this.form.value.Telefono;
-      }else{
-        this.form.value.TelefonoOficinaPredictivo = '9045'+this.form.value.Telefono;
-      }
-      this.form.value.TelefonoCasa=this.form.value.Telefono;
-    }
-
-    if(this.form.value.tipoCel == "Oficina"){
-      if(predTel == 55){
         this.form.value.TelefonoOficinaPredictivo = '9'+this.form.value.Telefono;
       }else{
         this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
       }
-      this.form.value.TelefonoOficina=this.form.value.Telefono;
-
     }
 
-    for(let i=0;i < this.rows.length; i++){
-      if(this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == "C1"){
+    this.form.value.FuenteObtencio = null;
+    var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');     
+
+    for (let i = 0; i < this.rows.length; i++) {
+      if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
         this.form.value.Team = this.rows[i].TEAM;
         this.form.value.Prioridad = this.rows[i].PRIORIDAD;
         this.form.value.Attemp = this.rows[i].ATTEMP;
-      }else{
-
-        this.form.value.Team =null;
-        this.form.value.Prioridad =null;
-        this.form.value.Attemp =null;
-
+        this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
       }
     }
     // -------------------------------- Predictivo  ----------------------------------
@@ -215,45 +203,51 @@ export class ReferidoPromotorComponent implements OnInit {
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
              
+            console.log('prom');
 
+            console.log(this.form.value.TelefonoPredictivo);
+            console.log(this.form.value.TelefonoCasaPredictivo);
+            console.log(this.form.value.TelefonoOficinaPredictivo);
+            
             const sendd = {
-                Usuario: this.form.value.Usuario,
+              Usuario: this.form.value.Usuario,
 
                 Nombre: this.form.value.Nombre,
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
 
-                NumeroCelular: this.form.value.NumeroCelular,
-                //Telefono: this.form.value.Telefono,
+                //NumeroCelular: this.form.value.NumeroCelular,
+                 
                 
-                TelefonoCelular: (this.form.value.tipoCel == "Celular")? this.form.value.Telefono:null,
-                TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null,
-                TelefonoOficina: (this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null,
-
-
-                Genero: (this.form.value.Genero=='')? null : this.form.value.Genero,
-
+                Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
-               
-                
+
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-                 
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],                 
                 GUIDUsuario:localStorage.getItem('UserId'),
-
-                Banner: this.form.value.Banner,
-
-                Team: this.form.value.Team ,
-                Prioridad: this.form.value.Prioridad ,
-                Attemp: this.form.value.Attemp
                 
+                Banner: this.form.value.Banner,  
+
+              Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
+              Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
+              Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
+              FuenteObtencion: this.form.value.FuenteObtencion,
+              Ciclo:ciclo,
+
+              Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
+              TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,
+              TelefonoOficina: (this.form.value.tipoCel == "Oficina") ? this.form.value.Telefono : null,
+              
+              TelefonoPredictivo: this.form.value.TelefonoPredictivo,              
+              TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
+              TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo
             };
     this.sendServ.sendDataToApi(sendd)
          .subscribe(
