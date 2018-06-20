@@ -116,7 +116,7 @@ export class ReferidoReferenteComponent implements OnInit {
       Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
       extension: new FormControl(''),
       tipoCel: new FormControl(''),
-
+       
       Campus: new FormControl(''),
       Nivel: new FormControl({ value: '', disabled: true }),
       Modalidad: new FormControl({ value: '', disabled: true }),
@@ -129,45 +129,66 @@ export class ReferidoReferenteComponent implements OnInit {
 
   onSubmit() {
     // -------------------------------- Predictivo  ----------------------------------
+    if (this.form.controls['CorreoElectronico'].value != "") {
+      this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+      this.form.controls.Telefono.clearValidators();
+      this.form.controls.Telefono.updateValueAndValidity();
+    } else {
+      console.log('aqui');
+      let tel = this.form.controls['Telefono'].value;
+      if (tel) {
+        this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+        this.form.controls.CorreoElectronico.clearValidators();
+        this.form.controls.CorreoElectronico.updateValueAndValidity();
+        console.log('HERE');
+      }
+
+    }   
 
     const predTel = this.form.value.Telefono.substring(0, 2);
 
     console.log("predTel=" + predTel);
+
     this.form.value.Banner = window.location.href;
 
     this.form.value.TelefonoCelular = null;
     this.form.value.TelefonoPredictivo = null;
-
+  
     this.form.value.TelefonoCasa = null;
     this.form.value.TelefonoCasaPredictivo = null;
 
     this.form.value.TelefonoOficina = null;
     this.form.value.TelefonoOficinaPredictivo = null;
+    console.log(this.form.value.TelefonoPredictivo);
 
+    if (this.form.value.tipoCel == "") {
+      this.showDialogE("Ingresa un tipo de teléfono");
+      return false;
+    }
 
     if (this.form.value.tipoCel == "Celular") {
-      if (predTel == 55) {
+      if (predTel == "55") {
         this.form.value.TelefonoPredictivo = '9044' + this.form.value.Telefono;
       } else {
         this.form.value.TelefonoPredictivo = '9045' + this.form.value.Telefono;
       }
-    }
-
-    if (this.form.value.tipoCel == "Casa") {
-      if (predTel == 55) {
+      console.log(this.form.value.TelefonoPredictivo);
+    }else if (this.form.value.tipoCel == "Casa") {
+      if (predTel == "55") {
         this.form.value.TelefonoCasaPredictivo = '9' + this.form.value.Telefono;
       } else {
         this.form.value.TelefonoCasaPredictivo = '901' + this.form.value.Telefono;
       }
-    }
-
-    if (this.form.value.tipoCel == "Oficina") {
-      if (predTel == 55) {
+    } else if (this.form.value.tipoCel == "Oficina") {
+      if (predTel == "55") {
         this.form.value.TelefonoOficinaPredictivo = '9' + this.form.value.Telefono;
+
       } else {
         this.form.value.TelefonoOficinaPredictivo = '901' + this.form.value.Telefono;
       }
     }
+
+    console.log(this.form.value.TelefonoPredictivo);
     this.form.value.FuenteObtencio = null;
     var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');     
 
@@ -182,7 +203,9 @@ export class ReferidoReferenteComponent implements OnInit {
       }
     }
     // -------------------------------- Predictivo  -----------------------------------
-           
+        
+
+    console.log(this.form.value.TelefonoPredictivo);
             let edadT = this.form.value.Edad;
 
             if (edadT == "") {
@@ -201,6 +224,11 @@ export class ReferidoReferenteComponent implements OnInit {
              
 
             const sendd = {
+
+              TelefonoPredictivo: this.form.value.TelefonoPredictivo,
+              TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
+              TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
+
                 Usuario: this.form.value.Usuario,
 
                 Nombre: this.form.value.Nombre,
@@ -210,11 +238,9 @@ export class ReferidoReferenteComponent implements OnInit {
                 
                 Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono:null,
                 TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null, 
-                TelefonoOficina:(this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null, 
+                TelefonoOficina: (this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null, 
                 
-                TelefonoPredictivo: this.form.value.TelefonoPredictivo,
-                TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
-                TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
+                
               
                 Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
                 

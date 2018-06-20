@@ -51,12 +51,14 @@
                         <input autocomplete="off" formControlName="extension" matInput placeholder="Extension" type="tel" (keypress)="_keyPress($event)">
                         <mat-error *ngIf="form.controls.extension.errors?.required">Ingresa una extension</mat-error>
                     </mat-form-field>
-                    <mat-radio-group class="radio-group" formControlName="tipoCel" style="padding-left: 10px;" (keyup)="onChange()">
+
+                    <mat-radio-group class="radio-group" formControlName="tipoCel" required onChange style="padding-left: 10px;" (keyup)="onChange()">
                         <mat-radio-button value="Celular"> Celular </mat-radio-button>
                         <mat-radio-button value="Casa"> Casa </mat-radio-button>
                         <mat-radio-button value="Oficina"> Oficina </mat-radio-button>
-                        <mat-error *ngIf="form.controls.tipoCel.errors?.required">Ingresa un tipo de teléfono</mat-error>
                     </mat-radio-group>
+
+
                 </div>
             </div>
             <div style="width: 50%;float: left;display: block;">

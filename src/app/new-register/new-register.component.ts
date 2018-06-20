@@ -294,15 +294,11 @@ export class NewRegisterComponent implements OnInit {
                     form.controls[name].reset();
                 }
             }
-        })
+        });
 
         if (this.sinEmail) {
             this.form.controls.CorreoElectronico.clearValidators();
-        }
-        
-
-        if (this.sinEmail) {
-            this.form.controls.CorreoElectronico.clearValidators();
+            console.log("ClearValidation email");
         }else{
             if (this.form.controls['CorreoElectronico'].value!=""){
                 this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
@@ -312,11 +308,11 @@ export class NewRegisterComponent implements OnInit {
                 console.log('aqui');
                 let tel = this.form.controls['Telefono'].value;
                 if(tel){
-                    this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: true });
+                    this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
                     this.form.controls.CorreoElectronico.clearValidators();
                     this.form.controls.CorreoElectronico.updateValueAndValidity(); 
                     console.log('HERE');
-                }              
+                }
 
             }
         }
@@ -834,10 +830,12 @@ export class NewRegisterComponent implements OnInit {
                 this.showDialogE("Debes ingresar un teléfono de contacto");
                 return false;
             }
-            this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
+
+            this.form.controls.CorreoElectronico.reset({ value: this.form.controls.Telefono.value+ '@unitec.edu.mx', disabled: false });
             this.sinEmail = true;
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
+            this.form.controls.CorreoElectronico.setValidators([Validators.required, LandingValidation.emailMaloValidator]);
             this.sinEmail = false;
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();

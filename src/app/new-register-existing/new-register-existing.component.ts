@@ -46,11 +46,6 @@ import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
 
-/*export class MyErrorStateMatcher implements ErrorStateMatcher {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-        return !!(control && control.invalid && (control.dirty || control.touched));
-    }
-}*/
 
 @Component({
   selector: 'app-new-register-existing',
@@ -160,12 +155,12 @@ export class NewRegisterExistingComponent implements OnInit {
        }
 
        fetch(cb) {
-        const req = new XMLHttpRequest();
-           req.open('GET', `assets/inbound.json`);
-        req.onload = () => {
-          cb(JSON.parse(req.response));
-        };
-        req.send();
+            const req = new XMLHttpRequest();
+               req.open('GET', `assets/inbound.json`);
+            req.onload = () => {
+              cb(JSON.parse(req.response));
+            };
+            req.send();
       }
     ngOnInit() {
 
@@ -312,18 +307,30 @@ export class NewRegisterExistingComponent implements OnInit {
 
         if (this.sinEmail) {
             this.form.controls.CorreoElectronico.clearValidators();
+            console.log("ClearValidation email");
         } else {
             if (this.form.controls['CorreoElectronico'].value != "") {
-                this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+                this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.updateValueAndValidity();
             } else {
+                console.log('aqui');
                 let tel = this.form.controls['Telefono'].value;
-                this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                if (tel) {
+                    this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                    this.form.controls.CorreoElectronico.clearValidators();
+                    this.form.controls.CorreoElectronico.updateValueAndValidity();
+                    console.log('HERE');
+                }
+
             }
         }
 
-
+        if (this.form.controls['CorreoElectronico'].value != "" && this.form.controls['Telefono'].value == "") {
+            console.log('aqui 123');
+            this.form.controls.Telefono.updateValueAndValidity();
+            this.form.controls.Telefono.clearValidators();
+        }
         
         if (this.form.valid) {
             if(this.form.controls['FechaCita'].value){
@@ -748,18 +755,18 @@ export class NewRegisterExistingComponent implements OnInit {
 
     addValidation(isChecked) {
         if (isChecked.checked) {
-            if(this.form.controls.Telefono.value == ""){
-                isChecked.source.checked = false
+            if (this.form.controls.Telefono.value == "") {
+                isChecked.source.checked = false;
                 this.showDialogE("Debes ingresar un teléfono de contacto");
                 return false;
             }
-            
-            this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
-             this.sinEmail = true;
 
+            this.form.controls.CorreoElectronico.reset({ value: this.form.controls.Telefono.value + '@unitec.edu.mx', disabled: false });
+            this.sinEmail = true;
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
-             this.sinEmail = false;
+            this.form.controls.CorreoElectronico.setValidators([Validators.required, LandingValidation.emailMaloValidator]);
+            this.sinEmail = false;
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();
     }

@@ -106,33 +106,48 @@ export class ReferidoPromotorComponent implements OnInit {
   formInit() {
     let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
-    this.form = new FormGroup({
-      Usuario: new FormControl({ value: datos.fullname, disabled: true }, Validators.required),
-
-      Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-      ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-      ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-      CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-      cel: new FormControl('', [Validators.minLength(10)]),
-      Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
-      extension: new FormControl(''),
-      tipoCel: new FormControl(''),
-
-
-
-      Campus: new FormControl(''),
-      Nivel: new FormControl({ value: '', disabled: true }),
-      Modalidad: new FormControl({ value: '', disabled: true }),
-      Carrera: new FormControl({ value: '', disabled: true }),
-      Ciclo: new FormControl(''),
-      tipificacion: new FormControl(''),
-
-    });
+        this.form = new FormGroup({
+          Usuario: new FormControl({ value: datos.fullname, disabled: true }, Validators.required),
+    
+          Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+          ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+          ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+          CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
+          cel: new FormControl('', [Validators.minLength(10)]),
+          Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+          extension: new FormControl(''),
+          tipoCel: new FormControl(''),
+    
+    
+    
+          Campus: new FormControl(''),
+          Nivel: new FormControl({ value: '', disabled: true }),
+          Modalidad: new FormControl({ value: '', disabled: true }),
+          Carrera: new FormControl({ value: '', disabled: true }),
+          Ciclo: new FormControl(''),
+          tipificacion: new FormControl(''),
+    
+        });
   }
 
   onSubmit() {
     this.mostrarExtension = true;
+    
+    if (this.form.controls['CorreoElectronico'].value != "") {
+      this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+      this.form.controls.Telefono.clearValidators();
+      this.form.controls.Telefono.updateValueAndValidity();
+    } else {
+      console.log('aqui');
+      let tel = this.form.controls['Telefono'].value;
+      if (tel) {
+        this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+        this.form.controls.CorreoElectronico.clearValidators();
+        this.form.controls.CorreoElectronico.updateValueAndValidity();
+        console.log('HERE');
+      }
 
+    }
 
     // -------------------------------- Predictivo  ----------------------------------
 
@@ -150,6 +165,10 @@ export class ReferidoPromotorComponent implements OnInit {
     this.form.value.TelefonoOficina=null;
     this.form.value.TelefonoOficinaPredictivo=null;
 
+    if (this.form.value.tipoCel == "") {
+      this.showDialogE("Ingresa un tipo de teléfono");
+      return false;
+    }
 
     if(this.form.value.tipoCel == "Celular"){
       if(predTel == 55){
@@ -186,6 +205,9 @@ export class ReferidoPromotorComponent implements OnInit {
         this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
       }
     }
+
+
+     
     // -------------------------------- Predictivo  ----------------------------------
             let edadT = this.form.value.Edad;
 
@@ -195,15 +217,11 @@ export class ReferidoPromotorComponent implements OnInit {
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
             let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
-            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
-            
-            
+            let _Carrera = (this.form.value.Carrera == null) ? "" : this.form.value.Carrera;
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
-             
-            console.log('prom');
 
             console.log(this.form.value.TelefonoPredictivo);
             console.log(this.form.value.TelefonoCasaPredictivo);
@@ -425,4 +443,5 @@ export class ReferidoPromotorComponent implements OnInit {
       data: { message: message }
     });
   }
+
 }

@@ -153,7 +153,21 @@ export class ReferidoWebComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.controls['CorreoElectronico'].value != "") {
+      this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+      this.form.controls.Telefono.clearValidators();
+      this.form.controls.Telefono.updateValueAndValidity();
+    } else {
+      let tel = this.form.controls['Telefono'].value;
+      if (tel) {
+        this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+        this.form.controls.CorreoElectronico.clearValidators();
+        this.form.controls.CorreoElectronico.updateValueAndValidity();
+      }
+    }
+
     this.mostrarExtension = true;
+    
     if (this.form.valid) {
 
       // -------------------------------- Predictivo  ----------------------------------
@@ -181,6 +195,10 @@ export class ReferidoWebComponent implements OnInit {
       this.form.value.TelefonoOficina = null;
       this.form.value.TelefonoOficinaPredictivo = null;
 
+      if (this.form.value.tipoCel == "") {
+        this.showDialogE("Ingresa un tipo de teléfono");
+        return false;
+      }
 
       if (this.form.value.tipoCel == "Celular") {
         if (predTel == 55) {
@@ -188,7 +206,6 @@ export class ReferidoWebComponent implements OnInit {
         } else {
           this.form.value.TelefonoPredictivo = '9045' + this.form.value.Telefono;
         }
-        this.form.value.TelefonoPredictivo = this.form.value.Telefono;
       }
 
       if (this.form.value.tipoCel == "Casa") {
@@ -197,8 +214,6 @@ export class ReferidoWebComponent implements OnInit {
         } else {
           this.form.value.TelefonoCasaPredictivo = '901' + this.form.value.Telefono;
         }
-        this.form.value.TelefonoCasaPredictivo = this.form.value.Telefono;
-
       }
 
       if (this.form.value.tipoCel == "Oficina") {
@@ -207,9 +222,9 @@ export class ReferidoWebComponent implements OnInit {
         } else {
           this.form.value.TelefonoOficinaPredictivo = '901' + this.form.value.Telefono;
         }
-        this.form.value.TelefonoOficinaPredictivo = this.form.value.Telefono;
-
       }  
+
+      console.log(this.form.value.TelefonoOficinaPredictivo);
 
       this.form.value.FuenteObtencion = "";
       var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo'); 
@@ -225,14 +240,16 @@ export class ReferidoWebComponent implements OnInit {
         }
       }
     // -------------------------------- Predictivo  ----------------------------------
-
+     
 
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
             let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
+            let _TipoReferente = (this.form.value.tipo_ref == null) ? "" : this.form.value.tipo_ref;
             
             
+            let TipoRefV = _TipoReferente.split('*');
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
@@ -245,7 +262,7 @@ export class ReferidoWebComponent implements OnInit {
                 ApellidoPaternoReferente: this.form.value.patern_ref,
                 ApellidoMaternoReferente: this.form.value.matern_ref,
                 CorreoElectronicoReferente: this.form.value.mail_ref,
-                ParentescoReferente: this.form.value.tipo_ref,
+                ParentescoReferente: (TipoRefV[1] == '') ? null : TipoRefV[1],
                 CuentaReferente: this.form.value.cuenta_ref,
 
                 Nombre: this.form.value.Nombre,
@@ -265,6 +282,8 @@ export class ReferidoWebComponent implements OnInit {
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],                 
                 GUIDUsuario:localStorage.getItem('UserId'),
+                GUIDReferidoParentesco: (TipoRefV[0] == '') ? null : TipoRefV[0],                 
+
 
                 Banner: this.form.value.Banner,
 
@@ -274,7 +293,7 @@ export class ReferidoWebComponent implements OnInit {
                 
                 TelefonoPredictivo: this.form.value.TelefonoPredictivo,
                 TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
-                TelefonoOficinaPredictivo: this.form.value.TelefonoCasaPredictivo,
+              TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
 
                 Telefonocelularreferente:this.form.value.Telefonocelularreferente,                
                 Telefonocelularpredictivoreferente:this.form.value.Telefonocelularpredictivoreferente,

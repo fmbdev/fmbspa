@@ -165,9 +165,9 @@ export class NewRegisterSoloComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private tipicicacionServ: TipificacionService,
         private campusCarreraServ: CampusCarreraService,) {
-      this.fetch((data) => {
-        this.rows = data;
-      });
+        this.fetch((data) => {
+            this.rows = data;
+        });
     }
 
 
@@ -317,15 +317,29 @@ export class NewRegisterSoloComponent implements OnInit {
         
         if (this.sinEmail) {
             this.form.controls.CorreoElectronico.clearValidators();
+            console.log("ClearValidation email");
         } else {
             if (this.form.controls['CorreoElectronico'].value != "") {
-                this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+                this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.updateValueAndValidity();
             } else {
+                console.log('aqui');
                 let tel = this.form.controls['Telefono'].value;
-                this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                if (tel) {
+                    this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                    this.form.controls.CorreoElectronico.clearValidators();
+                    this.form.controls.CorreoElectronico.updateValueAndValidity();
+                    console.log('HERE');
+                }
+
             }
+        }
+
+        if (this.form.controls['CorreoElectronico'].value != "" && this.form.controls['Telefono'].value == "") {
+            console.log('aqui 123');
+            this.form.controls.Telefono.updateValueAndValidity();
+            this.form.controls.Telefono.clearValidators();
         }
 
 

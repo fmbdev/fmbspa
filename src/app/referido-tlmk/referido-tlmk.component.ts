@@ -126,6 +126,21 @@ export class ReferidoTlmkComponent implements OnInit {
 
     // -------------------------------- Predictivo  ----------------------------------
 
+    if (this.form.controls['CorreoElectronico'].value != "") {
+      this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+      this.form.controls.Telefono.clearValidators();
+      this.form.controls.Telefono.updateValueAndValidity();
+    } else {
+      console.log('aqui');
+      let tel = this.form.controls['Telefono'].value;
+      if (tel) {
+        this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+        this.form.controls.CorreoElectronico.clearValidators();
+        this.form.controls.CorreoElectronico.updateValueAndValidity();
+        console.log('HERE');
+      }
+
+    }
     const predTel = this.form.value.Telefono.substring(0, 2);
     this.form.value.Banner = window.location.href;
 
@@ -137,7 +152,11 @@ export class ReferidoTlmkComponent implements OnInit {
 
     this.form.value.TelefonoOficina = null;
     this.form.value.TelefonoOficinaPredictivo = null;
-
+    
+    if (this.form.value.tipoCel == "") {
+      this.showDialogE("Ingresa un tipo de teléfono");
+      return false;
+    }
 
     if (this.form.value.tipoCel == "Celular") {
       if (predTel == 55) {
@@ -145,7 +164,6 @@ export class ReferidoTlmkComponent implements OnInit {
       } else {
         this.form.value.TelefonoPredictivo = '9045' + this.form.value.Telefono;
       }
-      this.form.value.TelefonoPredictivo = this.form.value.Telefono;
     }
 
     if (this.form.value.tipoCel == "Casa") {
@@ -154,7 +172,6 @@ export class ReferidoTlmkComponent implements OnInit {
       } else {
         this.form.value.TelefonoCasaPredictivo = '901' + this.form.value.Telefono;
       }
-      this.form.value.TelefonoCasaPredictivo = this.form.value.Telefono;
 
     }
 
@@ -164,8 +181,6 @@ export class ReferidoTlmkComponent implements OnInit {
       } else {
         this.form.value.TelefonoOficinaPredictivo = '901' + this.form.value.Telefono;
       }
-      this.form.value.TelefonoOficinaPredictivo = this.form.value.Telefono;
-
     }
     this.form.value.FuenteObtencio = null;
     var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
@@ -181,6 +196,8 @@ export class ReferidoTlmkComponent implements OnInit {
       } 
     }
     // -------------------------------- Predictivo  ----------------------------------
+
+    
             let edadT = this.form.value.Edad;
             if (edadT == "") {edadT = 12; }
             
