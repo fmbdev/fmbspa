@@ -183,10 +183,12 @@ export class ReferidoTlmkComponent implements OnInit {
       }
     }
     this.form.value.FuenteObtencio = null;
-    var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+    var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
     
     for (let i = 0; i < this.rows.length; i++) {
+
       var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+
       if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
         this.form.value.Team = this.rows[i].TEAM;
         this.form.value.Prioridad = this.rows[i].PRIORIDAD;
@@ -238,7 +240,8 @@ export class ReferidoTlmkComponent implements OnInit {
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 FuenteObtencion: this.form.value.FuenteObtencion,
-                Ciclo: ciclo,
+                Ciclo: ciclo_name,
+                GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
 
                 Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
                 TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,

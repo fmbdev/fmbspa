@@ -106,13 +106,11 @@ export class AppComponent implements OnInit{
             contentType: 'application/json',
             type: 'GET',
             success: function(result) {
-                console.log(result);
                 let dat = JSON.stringify(result);                 
                 this.landings = result; 
                 localStorage.setItem('landings', dat);
             }
         });
-     
       }
        let userLanding = localStorage.getItem('landings');
     let land = JSON.parse(userLanding);  
@@ -123,9 +121,6 @@ export class AppComponent implements OnInit{
       let land = JSON.parse(userLanding);  
        this.landings = land; 
     }
-
-    
-         	
   }
 
  

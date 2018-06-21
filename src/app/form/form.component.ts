@@ -42,26 +42,15 @@ export class FormComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    
-    
-    //this.homeService.getInit();   
 
     let userLocal = localStorage.getItem('user');
     let datos = JSON.parse(userLocal);  
 
-       
-    
-    console.log(datos);
 
     let userLanding = localStorage.getItem('landings');
     let land = JSON.parse(userLanding);  
     this.landings = land; 
-    
-    console.log(this.landings);
- 
-    
     this.me = datos; 
-  
   }
 
   ngOnDestroy() {
@@ -69,8 +58,6 @@ export class FormComponent implements OnInit {
   }
 
   onLogout() {
-    //this.authServ.logout();
-    //this.sidenav.close();
     localStorage.clear();
     window.location.href='https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/logout?post_logout_redirect_uri=https://app.devmx.com.mx';
     

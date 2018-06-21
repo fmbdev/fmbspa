@@ -272,7 +272,8 @@ export class NewRegisterPromotionComponent implements OnInit {
         
         this.form = new FormGroup({
 
-
+            Ejecutivo: new FormControl(''),
+            
             Usuario: new FormControl({ value: datos.fullname, disabled: false }, Validators.required),
             //Asesor: new FormControl(''),
 
@@ -285,7 +286,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             Turno: new FormControl(''),
             Calidad: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.maxLength(5)]),
             SinCorreo:new FormControl(''),
-
+                
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -447,7 +448,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
             let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
-            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
+            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres; 
+            let _Ejecutivo = (this.form.value.Ejecutivo == null) ? "" : this.form.value.Ejecutivo; 
             
             let _SubTipo = this.form.value.SubTipoActividad;
             let _SubSubTipo = this.form.value.SubSubTipoActividad;
@@ -461,6 +463,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
+            let EjecutivoV = _Ejecutivo.split('*');
             
             let SubTipoV = _SubTipo.split('*');
             let SubSubTipoV = _SubSubTipo.split('*');
@@ -472,6 +475,9 @@ export class NewRegisterPromotionComponent implements OnInit {
                     console.log(this.form.value.Calidad);       
                 
             const sendd = {
+                                
+                Ejecutivo: EjecutivoV[1],
+                GUIDEjecutivo: EjecutivoV[0],
                 Usuario: this.form.value.Usuario,
                 Nombre: this.form.value.Nombre, 
                 ApellidoPaterno: this.form.value.ApellidoPaterno, 

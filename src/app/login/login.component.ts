@@ -48,22 +48,6 @@ export class LoginComponent implements OnInit {
     if(this.getParameterByName('access_token')!=''){
         var userLocal = localStorage.setItem('access_token',this.getParameterByName('access_token'));
         console.log('creando Access_token');
-        /*var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://laulatammxqa.api.crm.dynamics.com/api/data/v8.2/systemusers?$select=fullname&$filter=contains(fullname,'ana')",
-            "method": "GET",
-            "headers": {
-              "authorization": "Bearer "+localStorage.getItem('access_token'),
-              "content-type": "application/json",
-              "odata.metadata": "minimal",              
-            }
-          }
-
-          $.ajax(settings).done(function (response) {
-            console.log(response);
-          });*/
-
           var settings = {
             "async": true,
             "crossDomain": true,
@@ -79,16 +63,18 @@ export class LoginComponent implements OnInit {
           $.ajax(settings).done(function (response2){            
             var WhoAmI = JSON.stringify(response2)
             localStorage.setItem('WhoAmI',WhoAmI) 
-            console.log(response2);
             var w = localStorage.getItem('WhoAmI');
             var k = JSON.parse(w);
             localStorage.setItem('UserId',response2.UserId);
-            localStorage.setItem('UserId22',response2.UserId);
-                   
+            localStorage.setItem('UserId22', response2.UserId);
+
+            localStorage.setItem('ciclo', "C1");
+            localStorage.setItem('ciclo_name', "18-3");
+            localStorage.setItem('GUIDCiclo',"8026c76c-4bee-e611-a5d4-005056be4250");
+             
             var UserId = localStorage.getItem('UserId22');
 
                 var url_user ="https://laulatammxqa.api.crm.dynamics.com/api/data/v8.2/systemusers("+UserId+")";
-                console.log(url_user);
                 var settings2 = {
                   "async": true,
                   "crossDomain": true,
@@ -103,7 +89,6 @@ export class LoginComponent implements OnInit {
   
                 $.ajax(settings2).done(function (response){            
                   var user = JSON.stringify(response)
-                  console.log(response);
                   localStorage.setItem('user',user); 
                   $.ajax('https://devmx.com.mx/fmbapp/public/api/roles/'+response.domainname,
                     {
@@ -126,7 +111,6 @@ export class LoginComponent implements OnInit {
   }
 
   validUsuario(control: FormControl){
-    console.log(this.inputError);
     if(this.inputError == 'username'){
       return {'error': true};
     }

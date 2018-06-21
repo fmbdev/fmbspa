@@ -22,13 +22,12 @@ export class LandingService {
 	getPalabrasMalas() {
 		localStorage.removeItem('getBasuraObs');
 		if (localStorage.getBasuraObss === undefined) {
-			console.log('creando localstorage');
 			return this.http.get(this.configUrl)
 				.subscribe(data => {
 					localStorage.getBasuraObss = JSON.stringify(data);
 				});
 		} else {
-			return console.log('undefined');
+			return false;
 		}
 	}
 
@@ -40,7 +39,7 @@ export class LandingService {
 					localStorage.getMgss = JSON.stringify(data);
 				});
 		} else {
-			return console.log('undefined Mensajes');
+			return false;
 		}
 	}
 

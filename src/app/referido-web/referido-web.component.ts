@@ -227,7 +227,7 @@ export class ReferidoWebComponent implements OnInit {
       console.log(this.form.value.TelefonoOficinaPredictivo);
 
       this.form.value.FuenteObtencion = "";
-      var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo'); 
+      var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
 
       for (let i = 0; i < this.rows.length; i++) {
         var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
@@ -293,25 +293,26 @@ export class ReferidoWebComponent implements OnInit {
                 
                 TelefonoPredictivo: this.form.value.TelefonoPredictivo,
                 TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
-              TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
+                TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
 
-                Telefonocelularreferente:this.form.value.Telefonocelularreferente,                
+                Telefonocelularreferente: this.form.value.phone_ref,
                 Telefonocelularpredictivoreferente:this.form.value.Telefonocelularpredictivoreferente,
                 
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 FuenteObtencion: this.form.value.FuenteObtencion,
-                Ciclo: ciclo,
+                Ciclo: ciclo_name,
+                GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
                 
             };
       this.sendServ.sendDataToApi(sendd)
         .subscribe(
           (res: any) => {
             if (res.status == 200) {
-              this.showDialog("Los datos se han guardado correctamente.");             
+              this.showDialog("Los datos se han guardado correctamente.");
             } else {
-              this.showDialog("Error al realizar el registro.");             
+              this.showDialog("Error al realizar el registro.");
             }
           }
         )

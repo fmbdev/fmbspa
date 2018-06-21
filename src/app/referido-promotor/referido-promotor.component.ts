@@ -193,9 +193,10 @@ export class ReferidoPromotorComponent implements OnInit {
         this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
       }
     }
+    var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
 
     this.form.value.FuenteObtencio = null;
-    var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');     
+    var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
 
     for (let i = 0; i < this.rows.length; i++) {
       if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
@@ -236,28 +237,25 @@ export class ReferidoPromotorComponent implements OnInit {
                 CorreoElectronico: this.form.value.CorreoElectronico,
 
                 //NumeroCelular: this.form.value.NumeroCelular,
-                 
-                
-                Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
-                
-                Campus: CampusV[1],
-                Nivel: NivelV[1],
-                Modalidad: ModalidadV[1],
-                Carrera: CarreraV[1],
+              Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
+              Campus: CampusV[1],
+              Nivel: NivelV[1],
+              Modalidad: ModalidadV[1],
+              Carrera: CarreraV[1],
 
-                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
-                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
-                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],                 
-                GUIDUsuario:localStorage.getItem('UserId'),
-                
-                Banner: this.form.value.Banner,  
+              GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+              GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+              GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+              GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
+              GUIDUsuario:localStorage.getItem('UserId'),
+              Banner: this.form.value.Banner,  
 
               Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
               Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
               FuenteObtencion: this.form.value.FuenteObtencion,
-              Ciclo:ciclo,
+              Ciclo: ciclo_name,
+              GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
 
               Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
               TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,

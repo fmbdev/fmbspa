@@ -9,8 +9,8 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select placeholder="Ejecutivo" [disabled]=" perfil_usuario == 'UNTC Ejecutivo de Cuenta' ">
-                            <mat-option *ngFor="let asesor of asesores;" [value]="asesor['Nombre Asesor']">
+                        <mat-select formControlName="Ejecutivo" placeholder="Ejecutivo" [disabled]=" perfil_usuario == 'UNTC Ejecutivo de Cuenta' ">
+                            <mat-option *ngFor="let asesor of asesores;" [value]="asesor['asesorid']+'*'+asesor['Nombre Asesor']">
                                 {{ asesor['Nombre Asesor'] }}
                             </mat-option>
                         </mat-select>

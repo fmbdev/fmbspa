@@ -190,7 +190,7 @@ export class ReferidoReferenteComponent implements OnInit {
 
     console.log(this.form.value.TelefonoPredictivo);
     this.form.value.FuenteObtencio = null;
-    var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');     
+    var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
 
     for (let i = 0; i < this.rows.length; i++) {
       var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
@@ -263,7 +263,8 @@ export class ReferidoReferenteComponent implements OnInit {
               Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
               FuenteObtencion: this.form.value.FuenteObtencion,
-              Ciclo: ciclo
+              Ciclo: ciclo,
+              GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
 
                 
             };
