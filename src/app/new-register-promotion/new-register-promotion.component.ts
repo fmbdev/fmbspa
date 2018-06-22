@@ -501,8 +501,8 @@ export class NewRegisterPromotionComponent implements OnInit {
                 EscuelaEmpresa:EmpresaEscuelaV[1],
                 
                 ActividadAgenda: ActividadAgendaV[1],
-                SubTipo:SubTipoV[1],
-                SubSubTipo:SubSubTipoV[0],
+                SubTipoActividad:SubTipoV[1],
+                SubSubTipoActividad:SubSubTipoV[0],
                 Turno: TurnoV[2],                
                 //GUIDActividadAgenda
                 
@@ -743,6 +743,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         }
         this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
+    
     //Cambiando
     onChangeNivel(campus: string) {
         console.log(campus);
@@ -771,6 +772,7 @@ export class NewRegisterPromotionComponent implements OnInit {
 
         this.modalidades = this.campusCarreraServ.getModalidadesByNivel(value);
     }
+
     //Cambiando
     onChangeModalidad(campus: string) {
 

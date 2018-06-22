@@ -25,6 +25,14 @@ export class CarreraService {
           (data: Carrera[]) => this.carreras = data
         )
   }
+  
+  getAlls(): Observable<Carrera[]> {
+      return this.http.get(this.api_cnn +"carrera", { headers: this.headers })
+      .map(
+        (data: Response) => data.json()
+      )
+  }
+
 
   getCarreras(): Carrera[]{
     return this.carreras;
