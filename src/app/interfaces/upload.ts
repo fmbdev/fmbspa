@@ -12,6 +12,7 @@ export interface Upload {
     calidad: string;
     campus: string;
     carrera: string;
+    ciclo: string;
     area_atención: string;
     fuente_obtención: string;
 }

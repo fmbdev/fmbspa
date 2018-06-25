@@ -17,6 +17,11 @@ import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
 import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 import { Upload } from '../interfaces/upload';
+import { SubsubTipo } from '../interfaces/subsub-tipo';
+import { SubTipo } from '../interfaces/sub-tipo';
+
+import { TipoActividadService } from '../providers/tipo-actividad.service';
+import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
 
 import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
@@ -49,13 +54,17 @@ export class UploadBaseComponent implements OnInit {
   campus: Campus[] = [];
   carreras: Carrera[] = [];
   escuelas_empresas: EscuelaEmpresa[] = [];
+  sub_tipos: SubTipo[] = [];
+  subsub_tipos: SubsubTipo[] = [];
+   
 
   constructor(private sendServ: SendService, 
               public dialog: MatDialog,
               private cicloServ: CicloService,
               private campusServ: CampusService,
               private carreraServ: CarreraService,
-              private escuelaEmpresaServ: EscuelaEmpresaService
+              private escuelaEmpresaServ: EscuelaEmpresaService,
+              private subSubServ: SubsubtipoActividadService
               ) {
     this.fetch((data) => {
       this.rows = data;
@@ -93,6 +102,11 @@ export class UploadBaseComponent implements OnInit {
       .subscribe(
         (data: EscuelaEmpresa[]) => this.escuelas_empresas = data
       )
+    // Se obtienes los Subtipos de actividades
+    this.sub_tipos = this.subSubServ.getAllSubTipo();
+
+    // Se obtienes los Subsubtipos de actividades
+    this.subsub_tipos = this.subSubServ.getAllSubSubTipo();
   }
 
   previewImage(event){  
@@ -144,14 +158,8 @@ export class UploadBaseComponent implements OnInit {
         
         let tipo = this.Tipo.value;
 
-        //this.showDialog("Debe elegir un archivo."); 
-
-        console.log(this.imgFileInput.value);
-        
         let fileReader = new FileReader();
         
-        console.log(fileReader);
-
           fileReader.onload = (e) => {
 
               this.arrayBuffer = fileReader.result;
@@ -183,50 +191,108 @@ export class UploadBaseComponent implements OnInit {
               }else{
                   this.columDistin = true;
               }
-                  let f = 400;
+                  let f = 500;
 
                   filas.forEach((key:Upload) => {
-                    console.log(key);
-                    /*
-
-                    this.form.value.FuenteObtencion = key.fuente_obtención;
-                    var ciclo = key.ciclo;
-                    this.campusTxt = key.campus;
-                    this.nivelTxt = key.ciclo;
-                    for (let i = 0; i < this.rows.length; i++) {
-                      if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
-                        this.form.value.Team = this.rows[i].TEAM;
-                        this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                        this.form.value.Attemp = this.rows[i].ATTEMP;
-                        this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-                      }
-                    }
-                    */
                     
                     var carreraTM = this.getObjects(this.carreras, 'id', key.carrera);
+                    var escuelaTM = this.getObjects(this.escuelas_empresas, 'escuelaID', key.escuela_de_procedencia);
+                    var campusTM = this.getObjects(this.campus, 'crmi_name', key.campus);
+                    var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
+                    var subtipoTM = this.getObjects( this.sub_tipos,'crmit_subname',key.sub_tipo);
+                    var subsubtipotTM = this.getObjects( this.subsub_tipos,'crmit_subsubname',key.sub_sub_tipo);
 
-                    console.log(key);
-                    console.log(carreraTM[0]);
+                    var keyCelular = key.Teléfono_Celular;
+                    var keyTelefono = key.Teléfono_Domicilio;
+                    var skeyTelefono = keyTelefono.toString();
+                    var skeyCelular = keyCelular.toString();
+                    
+                   
+                        var predTel = skeyCelular.substring(0,2);
+                        var TelefonoPredictivo = null;
+                        TelefonoPredictivo = '9045'+skeyCelular;                     
+                        if(predTel == '55'){
+                          TelefonoPredictivo = '9044'+skeyCelular;
+                        }
 
-                    let obj2 = {
-                       "Prioridad" : 0,
-                       "Team" : "",
-                       "Attemp" : 0,
-                      "FuenteObtencion": "BD EXTERNA"
+                        var TelefonoCasaPredictivo = null;
+
+                        var predTel2 = skeyTelefono.substring(0,2);
+                        TelefonoCasaPredictivo = '901'+skeyTelefono;                        
+                        if(predTel2 == '55'){
+                          TelefonoCasaPredictivo = '9'+skeyTelefono;
+                        }
+                    
+
+
+                    var   Genero = key.Sexo;
+                          if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
+
+
+
+                   
+
+
+                    var GUIDCarrera=carreraTM[0].codigounico;
+                    var TCarrera=carreraTM[0].name;
+
+                    var GUIDEscuelaEmpresa=escuelaTM[0].crmit_empresaescuela;
+                    var TEscuelaEmpresa=escuelaTM[0].Name;
+
+                    var GUIDCampus=campusTM[0].crmit_tb_campusid;
+                    var GUIDCiclo=cicloTM[0].crmit_codigounico;
+                    var GUIDSubTipo = subtipoTM[0].crmit_codigounico;
+                    var GUIDSubSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;                   
+
+                    var obj2 = {
+                      "FuenteObtencion":this.Tipo.value,
+                      "Genero":Genero,
+                      "Calidad":key.calidad,
+                      "Telefono":skeyCelular,
+                      "TelefonoPredictivo":TelefonoPredictivo,
+                      "TelefonoCasa":skeyTelefono,
+                      "TelefonoCasaPredictivo":TelefonoCasaPredictivo,
+                      "AreaInteres":key.area_atención,
+                      "Campus":key.campus,
+                      "GUIDCampus":GUIDCampus,
+                      "Carrera":TCarrera,
+                      "GUIDCarrera":GUIDCarrera,
+                      "Ciclo":key.ciclo,
+                      "GUIDCiclo":GUIDCiclo,
+                      "EscuelaEmpresa":TEscuelaEmpresa,
+                      "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa,
+                      "SubSubTipo":key.sub_sub_tipo,
+                      "GUIDSubSubTipo":GUIDSubSubTipo,
+                      "SubTipo":key.sub_tipo,
+                      "GUIDSubTipo":GUIDSubTipo,
                     };
 
+                    delete key.Sexo;
+                    delete key.Teléfono_Celular;
+                    delete key.Teléfono_Domicilio;
+                    delete key.area_atención;
+                    delete key.sub_sub_tipo;
+                    delete key.sub_tipo;
+                    delete key.campus;
+                    delete key.carrera;
+                    delete key.ciclo;
+                    delete key.calidad;
+                    delete key.escuela_de_procedencia;
+                    delete key.fuente_obtención;
 
-                    let datos = Object.assign(key, obj2);
-              
-                     /*
+
+                    var datos = Object.assign(key, obj2);
+                     
                       setTimeout(() => {
                         this.sendServ.sendData(datos)
                           .subscribe(
                             (res: any) => {
+                              console.log("res");
                               console.log(res);
                               if (res.status == 200) {
                                 x++;
                               }else{
+                                x--;
                               }
                             },
                             () => {
@@ -234,7 +300,7 @@ export class UploadBaseComponent implements OnInit {
                             }
                           )
                       }, f);  
-                     */ 
+                     
                   });   
                   
 
@@ -247,15 +313,15 @@ export class UploadBaseComponent implements OnInit {
                   setTimeout(() => {
                     console.log(this.columDistin);
                     if(this.columDistin){
-                      //if(count == x){
+                      if(count == x){
                           this.showDialog("Los datos se han guardado correctamente.");
                           console.log('guardado ok');
                           this.newdata.filename ="";
                           this.Tipo.value="";
-                     // }else{
-                     //     this.showDialog("Error al guardar los registros.");
-                     //     console.log('guardado NO');
-                     //} 
+                     }else{
+                         this.showDialog("Error al guardar los registros.");
+                          console.log('guardado NO');
+                     } 
                     }else{
                           console.log('columDistin false');
 
