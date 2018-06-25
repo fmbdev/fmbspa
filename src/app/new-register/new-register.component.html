@@ -294,7 +294,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Tipificacion" placeholder="Tipificación" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['Tipificación']">
+                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['id']+'*'+tipificacion['Tipificación']">
                                 {{ tipificacion['Tipificación'] }}
                             </mat-option>
                         </mat-select>
