@@ -253,18 +253,36 @@ export class ReferidoTlmkComponent implements OnInit {
             };
             
 
-        this.sendServ.sendDataToApi(sendd)
-         .subscribe(
-              (res: any) => {
-                  if(res.status == 200){
-                     this.showDialog("Los datos se han guardado correctamente.");
-                     //this.resetForm();
-                  }else{
-                     this.showDialogE("Error al realizar el registro.");
-                     //this.resetForm();
-                  }
-              }
-        )
+    this.sendServ.sendData4(sendd)
+      .subscribe(
+        (res: any) => {
+          if (res.status == 200) {
+           console.log("Los datos se han guardado correctamente. ENDPOINT 7030");
+          } else {
+            console.log("Error al realizar el registro. . ENDPOINT 7030");
+          }
+        }
+      )
+    this.sendServ.sendData5(sendd)
+      .subscribe(
+        (res: any) => {
+          if (res.status == 200) {
+            console.log("Los datos se han guardado correctamente. . ENDPOINT 7031");
+          } else {
+            console.log("Error al realizar el registro.. ENDPOINT 7031");
+          }
+        }
+      )
+    this.sendServ.sendData6(sendd)
+      .subscribe(
+        (res: any) => {
+          if (res.status == 200) {
+            console.log("Los datos se han guardado correctamente.. ENDPOINT 7032");
+          } else {
+            console.log("Error al realizar el registro.. ENDPOINT 7032");
+          }
+        }
+      )
   }
 
   resetForm() {
