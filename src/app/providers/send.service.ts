@@ -15,8 +15,11 @@ export class SendService {
     sendDataToApi(data) {
       return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6523?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
     }
-    
+  sendData0(data) {
+    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/7030?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, { headers: this.headers });
+  }
     sendData(data) {
+                           
       return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6523?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
     }
   

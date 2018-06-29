@@ -31,6 +31,7 @@ import { CampusCarreraService } from '../providers/campus-carrera.service'
 export class ReferidoTlmkComponent implements OnInit {
 
   form: FormGroup;
+  conEmail = true;
 
   //maxDate = new Date(2018, this.month.getMonth(),12);
   maxDate = LandingValidation.fechaLimite();
@@ -253,36 +254,73 @@ export class ReferidoTlmkComponent implements OnInit {
             };
             
 
-    this.sendServ.sendData4(sendd)
-      .subscribe(
-        (res: any) => {
-          if (res.status == 200) {
-           console.log("Los datos se han guardado correctamente. ENDPOINT 7030");
-          } else {
-            console.log("Error al realizar el registro. . ENDPOINT 7030");
+    console.log("this.conEmail");
+    console.log(this.conEmail);
+    if (this.conEmail) {
+      this.sendServ.sendData4(sendd)// this.form.value)
+        .subscribe(
+          (res: any) => {
+            console.log(res.status);
+            if (res.status == 200) {
+              this.showDialogE("Registro guardado con éxito.");
+              this.sendServ.sendData6(sendd)// this.form.value)
+                .subscribe(
+                  (res: any) => {
+                    console.log(res.status);
+                    if (res.status == 200) {
+                      this.showDialog("Los datos se han guardado correctamente.");
+                    } else {
+                      this.showDialogE("Error al guardar el registro.");
+                    }
+                  }
+                )
+
+            } else {
+              this.showDialogE("Error al guardar el registro.");
+            }
+          }, error => {
+            if (error.status === 400) {
+              console.log(error);
+              this.showDialogE(error._body);
+            }
+            else if (error.status === 500) {
+              this.showDialogE(error._body);
+            }
           }
-        }
-      )
-    this.sendServ.sendData5(sendd)
-      .subscribe(
-        (res: any) => {
-          if (res.status == 200) {
-            console.log("Los datos se han guardado correctamente. . ENDPOINT 7031");
-          } else {
-            console.log("Error al realizar el registro.. ENDPOINT 7031");
+        )
+    } else {
+      this.sendServ.sendData5(sendd)// this.form.value)
+        .subscribe(
+          (res: any) => {
+            console.log(res.status);
+            if (res.status == 200) {
+              this.showDialogE("Registro guardado con éxito.");
+              this.sendServ.sendData6(sendd)// this.form.value)
+                .subscribe(
+                  (res: any) => {
+                    console.log(res.status);
+                    if (res.status == 200) {
+                      this.showDialog("Los datos se han guardado correctamente.");
+                    } else {
+                      this.showDialogE("Error al guardar el registro.2");
+                    }
+                  }
+                )
+
+            } else {
+              this.showDialogE("Error al guardar el registro.");
+            }
+          }, error => {
+            if (error.status === 400) {
+              console.log(error);
+              this.showDialogE(error._body);
+            }
+            else if (error.status === 500) {
+              this.showDialogE(error._body);
+            }
           }
-        }
-      )
-    this.sendServ.sendData6(sendd)
-      .subscribe(
-        (res: any) => {
-          if (res.status == 200) {
-            console.log("Los datos se han guardado correctamente.. ENDPOINT 7032");
-          } else {
-            console.log("Error al realizar el registro.. ENDPOINT 7032");
-          }
-        }
-      )
+        )
+    }
   }
 
   resetForm() {

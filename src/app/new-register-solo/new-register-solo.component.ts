@@ -64,8 +64,8 @@ import { CampusCarreraService } from '../providers/campus-carrera.service';
 export class NewRegisterSoloComponent implements OnInit {
 
     form: FormGroup;
-    sinEmail=false;
-
+    sinEmail = false;
+    conEmail = true;
     //maxDate = new Date(2018, this.month.getMonth(),12);
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
@@ -324,13 +324,12 @@ export class NewRegisterSoloComponent implements OnInit {
                 this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.updateValueAndValidity();
             } else {
-                console.log('aqui');
                 let tel = this.form.controls['Telefono'].value;
                 if (tel) {
                     this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
                     this.form.controls.CorreoElectronico.clearValidators();
                     this.form.controls.CorreoElectronico.updateValueAndValidity();
-                    console.log('HERE');
+                    this.conEmail = false;
                 }
 
             }
@@ -347,6 +346,7 @@ export class NewRegisterSoloComponent implements OnInit {
             if (this.sinEmail) {
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                this.conEmail = false;
             }
 
           // -------------------------------- Predictivo  ----------------------------------
@@ -484,34 +484,72 @@ export class NewRegisterSoloComponent implements OnInit {
             
           };
              
-          if(!this.form.controls['SinCorreo'].value){
-            this.sendServ.sendDataToApi(sendd)// this.form.value)
-                .subscribe(
-                    (res: any) => {
-                        console.log(res);
-                        if (res.status == 200) {
+            console.log("this.conEmail");
+            console.log(this.conEmail);
+            if (this.conEmail) {
+                this.sendServ.sendData4(sendd)// this.form.value)
+                    .subscribe(
+                        (res: any) => {
+                            console.log(res.status);
+                            if (res.status == 200) {
+                                this.showDialogE("Registro guardado con éxito.");
+                                this.sendServ.sendData6(sendd)// this.form.value)
+                                    .subscribe(
+                                        (res: any) => {
+                                            console.log(res.status);
+                                            if (res.status == 200) {
+                                                this.showDialog("Los datos se han guardado correctamente.");
+                                            } else {
+                                                this.showDialogE("Error al guardar el registro.");
+                                            }
+                                        }
+                                    )
 
-                            this.showDialog("Los datos se han guardado correctamente.");
-
-                        } else {
-                            this.showDialogE("Error al realizar el registro.");
+                            } else {
+                                this.showDialogE("Error al guardar el registro.");
+                            }
+                        }, error => {
+                            if (error.status === 400) {
+                                console.log(error);
+                                this.showDialogE(error._body);
+                            }
+                            else if (error.status === 500) {
+                                this.showDialogE(error._body);
+                            }
                         }
-                    }
-                )
-            }else{
-                this.sendServ.sendData3(sendd)// this.form.value)
-                .subscribe(
-                    (res: any) => {
-                        console.log(res);
-                        if (res.status == 200) {
+                    )
+            } else {
+                this.sendServ.sendData5(sendd)// this.form.value)
+                    .subscribe(
+                        (res: any) => {
+                            console.log(res.status);
+                            if (res.status == 200) {
+                                this.showDialogE("Registro guardado con éxito.");
+                                this.sendServ.sendData6(sendd)// this.form.value)
+                                    .subscribe(
+                                        (res: any) => {
+                                            console.log(res.status);
+                                            if (res.status == 200) {
+                                                this.showDialog("Los datos se han guardado correctamente.");
+                                            } else {
+                                                this.showDialogE("Error al guardar el registro.2");
+                                            }
+                                        }
+                                    )
 
-                            this.showDialog("Los datos se han guardado correctamente.");
-
-                        } else {
-                            this.showDialogE("Error al realizar el registro.");
+                            } else {
+                                this.showDialogE("Error al guardar el registro.");
+                            }
+                        }, error => {
+                            if (error.status === 400) {
+                                console.log(error);
+                                this.showDialogE(error._body);
+                            }
+                            else if (error.status === 500) {
+                                this.showDialogE(error._body);
+                            }
                         }
-                    }
-                )
+                    )
             }
         } else {
             this.showDialogE("Error al realizar el registro *");
@@ -739,12 +777,13 @@ export class NewRegisterSoloComponent implements OnInit {
             }
             this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
             this.sinEmail = true;
-            //this.form.controls.SinCorreo.reset({ value: 'no', disabled: false });
+            this.conEmail = false;
 
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
            // this.form.controls.SinCorreo.reset({ value: 'ok', disabled: false });
             this.sinEmail = false;
+            this.conEmail = true;
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();
     }

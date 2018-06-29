@@ -63,6 +63,7 @@ export class NewRegisterComponent implements OnInit {
 
     form: FormGroup;
     sinEmail = false;
+    conEmail = true;
     minDate = new Date(new Date().setDate(new Date().getDate()));
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
@@ -308,7 +309,8 @@ export class NewRegisterComponent implements OnInit {
                 if(tel){
                     this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
                     this.form.controls.CorreoElectronico.clearValidators();
-                    this.form.controls.CorreoElectronico.updateValueAndValidity(); 
+                    this.form.controls.CorreoElectronico.updateValueAndValidity();
+                    this.conEmail = false;
                 }
 
             }
@@ -332,6 +334,7 @@ export class NewRegisterComponent implements OnInit {
             if (this.sinEmail) {
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                this.conEmail = false;
             }
 
 
@@ -421,12 +424,13 @@ export class NewRegisterComponent implements OnInit {
             let tipificacionV = _Tipificacion.split('*');
             
             let CanalV = _Canal.split('*');
-            let sendd={};
+            let sendd = {};
             //Interesa
+            
             console.log(this.form.value.Interesa_NoInteresa);
+
             if (this.form.value.Interesa_NoInteresa=="0"){
                 sendd = {
-
                     Usuario: this.form.value.Usuario,
                     CanalPreferido: this.form.value.CanalPreferido,
                     Canal: CanalV[1],
@@ -494,15 +498,19 @@ export class NewRegisterComponent implements OnInit {
                     //Numero Casa Tutor                
                     TelefonoTutor: (this.form.value.TelefonoTutor == '') ? null : this.form.value.TelefonoTutor,
                     TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
-
-
-
                 };
+                
+                if (CanalV[0] == "68bed5d6-404f-e811-8113-3863bb3c5058" || CanalV[0] == "6cbed5d6-404f-e811-8113-3863bb3c5058" || CanalV[0] == "70bed5d6-404f-e811-8113-3863bb3c5058") {
+                    
+                }
+                
+                 
+
             }else{
              //No interesa
                 let tel = this.form.controls['TelefonoCorreo'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: true });
-
+                this.conEmail = false;
                 sendd = {
 
                     Usuario: this.form.value.Usuario,
@@ -532,13 +540,6 @@ export class NewRegisterComponent implements OnInit {
                     AreaInteres: InteresV[1],
                     Ciclo: CicloV[2],
 
-                    //GUIDCampus: (CampusV[0] == '') ? null : CampusV[0],
-                    //GUIDNivelInteres: (NivelV[0] == '') ? null : NivelV[0],
-                    //GUIDModalidad: (ModalidadV[0] == '') ? null : ModalidadV[0],
-                    //GUIDCarrera: (CarreraV[0] == '') ? null : CarreraV[0],
-                    //GUIDAreaInteres: (InteresV[0] == '') ? null : InteresV[0],
-                    //GUIDCiclo: (CicloV[0] == '') ? null : CicloV[0],
-
                     GUIDUsuario: localStorage.getItem('UserId'),
                     GUIDCanal: CanalV[0],
                     GUIDTipificacion: tipificacionV[0],
@@ -547,80 +548,128 @@ export class NewRegisterComponent implements OnInit {
                     Tipificacion: tipificacionV[1],
                     Notas: (this.form.value.Notas) ? "" : this.form.value.Notas,
 
-                    //CampusCita: (this.form.value.CampusCita == undefined || this.form.value.CampusCita == "") ? null : this.form.value.CampusCita,
-                    //FechaCita: (this.form.value.FechaCita == undefined || this.form.value.FechaCita == "aN/aN/NaN") ? null : this.form.value.FechaCita,
-                    //HoraCita: (this.form.value.HoraCita == undefined || this.form.value.HoraCita == "") ? "" : this.form.value.HoraCita,
                     Asesor: (this.form.value.Asesor) ? null : this.form.value.Asesor,
 
-
-                    //Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
-                    //Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
-                    //Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                     FuenteObtencion: this.form.value.FuenteObtencion,
 
-
-                    //Numero Celular
-                    //Telefono: (this.form.value.NumeroCelular == "") ? null : this.form.value.NumeroCelular,
-                    //TelefonoPredictivo: (this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
-                    //Numero Telefono o Telefono Casa
-                    //TelefonoCasa: this.form.value.Telefono,
-                   // TelefonoCasaPredictivo: this.form.value.TelefonoPredictivo,
-
-
-                    //Numero Celular Tutor
-                    //NumeroCelularTutor: (this.form.value.NumeroCelularTutor == '') ? null : this.form.value.NumeroCelularTutor,
-                    //TelefonoCelularTutorPredictivo: (this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-                    //Numero Casa Tutor                
-                    //TelefonoTutor: (this.form.value.TelefonoTutor == '') ? null : this.form.value.TelefonoTutor,
-                    //TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
-
-
-
                 };
+                
+                if (CanalV[0] == "68bed5d6-404f-e811-8113-3863bb3c5058" || CanalV[0] == "6cbed5d6-404f-e811-8113-3863bb3c5058" || CanalV[0] == "70bed5d6-404f-e811-8113-3863bb3c5058") {
+                    sendd = {
 
-            }
-    
-           
+                        Usuario: this.form.value.Usuario,
+                        CanalPreferido: this.form.value.CanalPreferido,
+                        Canal: CanalV[1],
+                        CSQ: this.form.value.CSQ,
+                        Interesa_NoInteresa: "No Interesa",
 
-            // CampusCita: this.form.value.CampusCita, FechaCita: this.form.value.FechaCita, HoraCita: this.form.value.HoraCita, Programacion: this.form.value.Programacion, Asesor: this.form.value.Asesor,
-               
-            // CanalPreferido: this.form.value.CanalPreferido, Team: this.form.value.Team, Prioridad: this.form.value.Prioridad, Attemp: this.form.value.Attemp
+                        Nombre: this.form.value.Nombre,
+                        ApellidoPaterno: this.form.value.ApellidoPaterno,
+                        ApellidoMaterno: this.form.value.ApellidoMaterno,
+                        CorreoElectronico: this.form.value.TelefonoCorreo,
+                        Genero: (this.form.value.Genero == '') ? -1 : this.form.value.Genero,
+                        Edad: edadT,
 
-            if(!this.form.controls['SinCorreo'].value){
-                this.sendServ.sendDataToApi(sendd)// this.form.value)
-                    .subscribe(
-                        (res: any) => {
-                            console.log(res);
-                            if (res.status == 200) {
+                        NombreTutor: this.form.value.NombreTutor,
+                        ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+                        ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+                        CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
+                        ParentescoTutor: this.form.value.ParentescoTutor,
 
-                                this.showDialog("Los datos se han guardado correctamente.");
+                        Campus: CampusV[1],
+                        Nivel: NivelV[1],
+                        Modalidad: ModalidadV[1],
+                        Carrera: CarreraV[1],
+                        AreaInteres: InteresV[1],
+                        Ciclo: CicloV[2],
 
-                            } else {
-                                this.showDialogE("Error al realizar el registro.");
-                            }
-                        }
-                    )
-                }else{
-                    this.sendServ.sendDataToApi(sendd)// this.form.value)
-                    .subscribe(
-                        (res: any) => {
-                            console.log(res);
-                            if (res.status == 200) {
+                        GUIDUsuario: localStorage.getItem('UserId'),
+                        GUIDCanal: CanalV[0],
+                        GUIDTipificacion: tipificacionV[0],
 
-                                this.showDialog("Los datos se han guardado correctamente.");
+                        Banner: window.location.href,
+                        Tipificacion: tipificacionV[1],
+                        Notas: (this.form.value.Notas) ? "" : this.form.value.Notas,
 
-                            } else {
-                                this.showDialogE("Error al realizar el registro.");
-                            }
-                        }
-                    )
+                        Asesor: (this.form.value.Asesor) ? null : this.form.value.Asesor,
+
+                        FuenteObtencion: this.form.value.FuenteObtencion,
+
+                    };
                 }
+            }
+            console.log("this.conEmail");
+            console.log(this.conEmail);
+            if (this.conEmail){
+                this.sendServ.sendData4(sendd)// this.form.value)
+                    .subscribe(
+                        (res: any) => {
+                            console.log(res.status);
+                            if (res.status == 200) {
+                                this.showDialogE("Registro guardado con éxito.");
+                                this.sendServ.sendData6(sendd)// this.form.value)
+                                    .subscribe(
+                                        (res: any) => {
+                                            console.log(res.status);
+                                            if (res.status == 200) {
+                                                this.showDialog("Los datos se han guardado correctamente.");
+                                            } else {
+                                                this.showDialogE("Error al guardar el registro.");
+                                            }
+                                        }
+                                    )
+
+                            } else {
+                                this.showDialogE("Error al guardar el registro.");
+                            }
+                    }, error => {
+                            if (error.status === 400) {
+                                console.log(error);
+                                this.showDialogE(error._body);
+                            }
+                            else if (error.status === 500) {
+                                this.showDialogE(error._body);
+                            }
+                        }
+                    )
+            }else{
+                this.sendServ.sendData5(sendd)// this.form.value)
+                    .subscribe(
+                        (res: any) => {
+                            console.log(res.status);
+                            if (res.status == 200) {
+                                this.showDialogE("Registro guardado con éxito.");
+                                this.sendServ.sendData6(sendd)// this.form.value)
+                                    .subscribe(
+                                        (res: any) => {
+                                            console.log(res.status);
+                                            if (res.status == 200) {
+                                                this.showDialog("Los datos se han guardado correctamente.");
+                                            } else {
+                                                this.showDialogE("Error al guardar el registro.2");
+                                            }
+                                        }
+                                    )
+
+                            } else {
+                                this.showDialogE("Error al guardar el registro.");
+                            }
+                    }, error => {
+                            if (error.status === 400) {
+                                console.log(error);
+                                this.showDialogE(error._body);
+                            }
+                            else if (error.status === 500) {
+                                this.showDialogE(error._body);
+                            }
+                        }
+                    )
+            }
 
 
         } else {
             this.showDialogE("Error al realizar el registro *");
         }
-
     }
 
     resetForm() {
@@ -913,10 +962,12 @@ export class NewRegisterComponent implements OnInit {
 
             this.form.controls.CorreoElectronico.reset({ value: this.form.controls.Telefono.value+ '@unitec.edu.mx', disabled: false });
             this.sinEmail = true;
+            this.conEmail = false;
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
             this.form.controls.CorreoElectronico.setValidators([Validators.required, LandingValidation.emailMaloValidator]);
             this.sinEmail = false;
+            this.conEmail = true;
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();
     }

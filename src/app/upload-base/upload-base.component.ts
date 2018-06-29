@@ -246,6 +246,8 @@ export class UploadBaseComponent implements OnInit {
 
                     var obj2 = {
                       "FuenteObtencion":this.Tipo.value,
+                      "ApellidoMaterno":key.Apellido_Materno,
+                      "ApellidoPaterno": key.Apellido_Paterno,
                       "Genero":Genero,
                       "Calidad":key.calidad,
                       "Telefono":skeyCelular,
@@ -279,26 +281,39 @@ export class UploadBaseComponent implements OnInit {
                     delete key.calidad;
                     delete key.escuela_de_procedencia;
                     delete key.fuente_obtención;
+                    delete key.Apellido_Materno;
+                    delete key.Apellido_Paterno;
 
 
                     var datos = Object.assign(key, obj2);
-                     
                       setTimeout(() => {
-                        this.sendServ.sendData(datos)
+                        this.sendServ.sendData4(datos)
                           .subscribe(
                             (res: any) => {
                               console.log("res");
                               console.log(res);
                               if (res.status == 200) {
                                 x++;
+                                this.sendServ.sendData6(datos)
+                                  .subscribe(
+                                    (ress: any) => {
+                                      console.log("ress");
+                                      console.log(ress);
+                                    }
+                                  );
                               }else{
                                 x--;
                               }
-                            },
-                            () => {
-                              console.log(x);
-                            }
-                          )
+                          },
+                            error => {
+                              if (error.status === 400) {
+                                console.log(error);
+                                //this.showDialogE(error._body);
+                              }
+                              else if (error.status === 500) {
+                                //this.showDialogE(error._body);
+                              }
+                          })
                       }, f);  
                      
                   });   
