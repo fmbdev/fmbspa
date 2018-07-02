@@ -12,13 +12,27 @@ import * as XLSX from 'xlsx';
 
 import { SendService } from '../providers/send.service';
 
+import { Ciclo } from '../interfaces/ciclo';
+import { Campus } from '../interfaces/campus';
+import { Carrera } from '../interfaces/carrera';
+import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
+import { UploadSis } from '../interfaces/upload-sis';
+import { CampusCarrera } from '../interfaces/campus-carrera';
+
+import { CicloService } from '../providers/ciclo.service';
+import { CampusService } from '../providers/campus.service';
+import { CarreraService } from '../providers/carrera.service';
+import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
+import { CampusCarreraService } from '../providers/campus-carrera.service';
+
+
 @Component({
   selector: 'app-upload-base-sis',
   templateUrl: './upload-base-sis.component.html',
   styleUrls: ['./upload-base-sis.component.scss']
 })
 export class UploadBaseSisComponent implements OnInit {
-   @ViewChild("imgFileInput") imgFileInput: any;
+  @ViewChild("imgFileInput") imgFileInput: any;
   @ViewChild("Tipo") Tipo: any;
 
   newdata: any = {};
@@ -28,12 +42,26 @@ export class UploadBaseSisComponent implements OnInit {
   file:File;
   columDistin:boolean;
   rows = [];
+  rowss = [];
   campusTxt: any;
   nivelTxt: any;
 
-  constructor(private sendServ: SendService,public dialog: MatDialog) {
+  uploads: UploadSis[] = [];
+  ciclos: Ciclo[] = [];
+  campus: Campus[] = [];
+  carreras: Carrera[] = [];
+  campusCarreras: CampusCarrera[] = [];
+
+  
+  constructor(private sendServ: SendService, public dialog: MatDialog, private cicloServ: CicloService,
+    private campusServ: CampusService,
+    private campusCarreraServ: CampusCarreraService,
+    private carreraServ: CarreraService) {
     this.fetch((data) => {
       this.rows = data;
+    });
+    this.fetchs((data) => {
+      this.rowss = data;
     });
    }
 
@@ -41,12 +69,34 @@ export class UploadBaseSisComponent implements OnInit {
     this.form = new FormGroup({
       datos: new FormControl(''),
     });
+
+    // Se obtienen todos los campus
+    this.campusServ.getAll()
+      .subscribe(
+        (data: Campus[]) => this.campus = data
+      )
+
+    // Se obtienen todos los campus
+    this.carreraServ.getAlls()
+      .subscribe(
+        (data: Carrera[]) => this.carreras = data
+      )
+
+
+    // Se obtienen los ciclos
+    this.cicloServ.getAll()
+      .subscribe(
+        (data: Ciclo[]) => this.ciclos = data
+      )
+
+     
+
   }
 
-  previewImage(event){  
-    console.log("-ll- Ok"); 
-     this.newdata.filename = event.srcElement.files[0].name;         
-  } 
+  previewImage(event){
+     this.newdata.filename = event.srcElement.files[0].name;
+  }
+
   fetch(cb) {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/carga-sis.json`);
@@ -55,7 +105,17 @@ export class UploadBaseSisComponent implements OnInit {
     };
     req.send();
   }
-  checkCols(workbook) //your workbook variable 
+
+  fetchs(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://devmx.com.mx/fmbapp/public/api/campus_carreras`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
+  checkCols(workbook)
   { 
       var colValues =[]; 
       var first_sheet_name = workbook.SheetNames[0]; 
@@ -70,10 +130,11 @@ export class UploadBaseSisComponent implements OnInit {
       } 
     }
 
-    let col = '["Num Persona","id campus","nombre corto telemarketer","ciclo","lista de seguimiento","nombre corto asesor","fuente obtención","clave de sis (Carrera)"]';
+    let col = '["Num_Persona","id_campus","nombre_corto_telemarketer","ciclo","lista_de_seguimiento","nombre_corto_asesor","fuente_obtención","clave_de_sis_carrera"]';
 
     let cColum = JSON.stringify(colValues);
-    
+    console.log(cColum);
+    console.log(col);
     if(col == cColum){
       return true;
     }else{
@@ -85,7 +146,7 @@ export class UploadBaseSisComponent implements OnInit {
    Upload() {
      let x = 0;
      let count = 0;
-        
+
          let tipo = this.Tipo.value;
         let fileReader = new FileReader();
           fileReader.onload = (e) => {
@@ -112,9 +173,9 @@ export class UploadBaseSisComponent implements OnInit {
                   this.columDistin = true;
               }
                   let f = 400;  
-              filas.forEach(key => {
-               
-                /* 
+            filas.forEach((key: UploadSis) => {
+          
+                /*
                 this.form.value.FuenteObtencion = null;
                 var ciclo = key.ciclo;
                 this.campusTxt = key.campus;
@@ -130,24 +191,56 @@ export class UploadBaseSisComponent implements OnInit {
                   }
                 }
                 */
-
-                let obj2 = {
-                  "Prioridad": 0,
-                  "Team": "",
-                  "Attemp": 0,
-                  "FuenteObtencion": "ABSORCION"                  
-                };
-                  
-               
-                  let datos = Object.assign(key, obj2);
+              
+                var campusTM = this.getObjects(this.campus, 'crmit_codigounico', key.id_campus);
+                var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
                 
+                var carreraTM = this.getObjects(this.carreras, 'id', key.clave_de_sis_carrera);
+
+                //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
+                
+                var ciclo = cicloTM[0].crmit_name;
+                var GUIDCiclo = cicloTM[0].crmit_codigounico;
+  
+                var campus = campusTM[0].crmi_name;
+                var GUIDCampus = campusTM[0].crmit_tb_campusid;
+                
+                var GUIDCarrera = carreraTM[0].codigounico;
+                var TCarrera = carreraTM[0].name;
+                
+
+                /* obtener nivel y modalidad */
+              let nivel = "" ;
+              let GUIDNivelInteres = "" ;
+
+              let Modalidad ="" ;
+              let GUIDModalidad ="" ;
+              for (let i = 0; i < this.rowss.length; i++) {
+                console.log(this.rowss[i]);
+              }
+
+              var obj2 = {
+                "FuenteObtencion": this.Tipo.value,
+                "Campus": campus,
+                "GUIDCampus": GUIDCampus,
+
+                "Carrera": TCarrera,
+                "GUIDCarrera": GUIDCarrera,
+
+                "Ciclo": key.ciclo,
+                "GUIDCiclo": GUIDCiclo,
+              };
+
+                  let datos = Object.assign(key, obj2);
+
+                     /*
                       setTimeout(() => {
                         this.sendServ.sendData(datos)
                           .subscribe(
                             (res: any) => {
                               console.log(res);
                               if (res.status == 200) {
-                                x++;                                 
+                                x++;
                               }else{
                               }
                             },
@@ -155,7 +248,8 @@ export class UploadBaseSisComponent implements OnInit {
                               console.log(x);
                             }
                           )
-                      }, f);  
+                      }, f);
+                      */
                  
               });
                   let total;
@@ -184,6 +278,26 @@ export class UploadBaseSisComponent implements OnInit {
           
           fileReader.readAsArrayBuffer(this.imgFileInput.nativeElement.files[0]);
          
+  }
+  
+  getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+      if (!obj.hasOwnProperty(i)) continue;
+      if (typeof obj[i] == 'object') {
+        objects = objects.concat(this.getObjects(obj[i], key, val));
+      } else
+        //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+        if (i == key && obj[i] == val || i == key && val == '') { //
+          objects.push(obj);
+        } else if (obj[i] == val && key == '') {
+          //only add if the object is not already in the array
+          if (objects.lastIndexOf(obj) == -1) {
+            objects.push(obj);
+          }
+        }
+    }
+    return objects;
   }
 
   onSubmit(){

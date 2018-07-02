@@ -34,8 +34,15 @@ export class CampusCarreraService {
           (res: Response) => res.json()
         )
         .subscribe(
-          (data: CampusCarrera[]) => this.campusCarreras = data           
+          (data: CampusCarrera[]) => this.campusCarreras = data
         )
+  }
+
+  getAlls(): Observable<CampusCarrera[]> {
+    return this.http.get("https://devmx.com.mx/fmbapp/public/api/campus_carreras", { headers: this.headers })
+      .map(
+        (res: Response) => res.json()
+      )
   }
 
   getNivelesByCarrera(campus: string) : Nivel[] {
@@ -160,7 +167,4 @@ export class CampusCarreraService {
     return exists;
   }
 
-
-
-  
 }

@@ -228,11 +228,6 @@ export class UploadBaseComponent implements OnInit {
                     var   Genero = key.Sexo;
                           if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
 
-
-
-                   
-
-
                     var GUIDCarrera=carreraTM[0].codigounico;
                     var TCarrera=carreraTM[0].name;
 
@@ -255,7 +250,8 @@ export class UploadBaseComponent implements OnInit {
                       "TelefonoCasa":skeyTelefono,
                       "TelefonoCasaPredictivo":TelefonoCasaPredictivo,
                       "AreaInteres":key.area_atención,
-                      "Campus":key.campus,
+                      "Campus": key.campus,
+                      "CorreoElectronico": key.Correo_Electronico,
                       "GUIDCampus":GUIDCampus,
                       "Carrera":TCarrera,
                       "GUIDCarrera":GUIDCarrera,
@@ -283,6 +279,7 @@ export class UploadBaseComponent implements OnInit {
                     delete key.fuente_obtención;
                     delete key.Apellido_Materno;
                     delete key.Apellido_Paterno;
+                    delete key.Correo_Electronico;
 
 
                     var datos = Object.assign(key, obj2);
