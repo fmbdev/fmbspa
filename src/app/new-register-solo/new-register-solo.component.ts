@@ -466,8 +466,6 @@ export class NewRegisterSoloComponent implements OnInit {
             TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
             TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
-
-            
           };
              
           if(!this.form.controls['SinCorreo'].value){
@@ -532,7 +530,7 @@ export class NewRegisterSoloComponent implements OnInit {
         let nivelG = g[0];
         console.log(nivelG);
         if(nivelG){
-           let asess = this.asesorGrupalServ.getAll(nivelG)
+           let asess = this.asesorGrupalServ.getAll()
             .subscribe(
                 (datat: AsesorGrupal[]) => this.asesorGrupal = datat
             )    

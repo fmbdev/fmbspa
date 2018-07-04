@@ -48,7 +48,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Teléfono o Correo Electrónico" (keypress)="_keyPressNum($event,form.controls.Canal.value,form.controls.TelefonoCorreo.value)">
+                        <input autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Teléfono o Correo Electrónico" (keypress)="_keyPressNum($event,form.controls.Canal.value,form.controls.TelefonoCorreo.value)" class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.emailMalo && !form.controls.TelefonoCorreo.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                         <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.minlength && !form.controls.TelefonoCorreo.errors?.required  && !form.controls.TelefonoCorreo.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.aceptNumber  && !form.controls.TelefonoCorreo.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
@@ -294,7 +294,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Tipificacion" placeholder="Tipificación" required>
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['id']+'*'+tipificacion['Tipificación']">
+                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['Tipificación']">
                                 {{ tipificacion['Tipificación'] }}
                             </mat-option>
                         </mat-select>
@@ -348,11 +348,11 @@
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="80px">
+
                 <mat-grid-tile>
                     <mat-checkbox formControlName="Programacion">Programación Llamada</mat-checkbox>
-
-                    <mat-checkbox (change)="addAsesor($event)" formControlName="Transferencia">Transferencia en Linea</mat-checkbox>
                 </mat-grid-tile>
+
                 <mat-grid-tile>
                     <mat-form-field>
                         <mat-select placeholder="Asesor" formControlName="Asesor">
@@ -364,18 +364,35 @@
                         <mat-error *ngIf="form.controls.Asesor.errors?.required">{{showMjs('asesor.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-checkbox (change)="addAsesor($event)" formControlName="Transferencia">Transferencia en Linea</mat-checkbox>
+                </mat-grid-tile>
+
             </mat-grid-list>
         </div>
         <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 50px;">
-            <mat-grid-tile class="le">
-                <a routerLink="/referidoPromotor" target="_blank"> Capturar Referido</a>
+
+            <mat-grid-tile>
+                <div class="btn">
+                    <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">ASIGNAR</button>
+                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">DIRECTA</button>
+                    <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel btn_170" style="margin-right: 0px; width: 200px;">SESION GRUPAL</button>
+                </div>
             </mat-grid-tile>
+
+
             <mat-grid-tile>
                 <div class="btn">
                     <button mat-raised-button color="warn" (click)="resetForm()" class="cancel">CANCELAR</button>
                     <button mat-raised-button color="warn" (click)="onSubmit()">GUARDAR</button>
                 </div>
             </mat-grid-tile>
+
+            <mat-grid-tile class="le">
+                <!--<a routerLink="/referidoPromotor" target="_blank"> Capturar Referido</a>-->
+            </mat-grid-tile>
         </mat-grid-list>
+
     </div>
 </form>

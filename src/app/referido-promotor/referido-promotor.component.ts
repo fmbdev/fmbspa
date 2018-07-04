@@ -234,7 +234,7 @@ export class ReferidoPromotorComponent implements OnInit {
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
 
-                //NumeroCelular: this.form.value.NumeroCelular,
+              //NumeroCelular: this.form.value.NumeroCelular,
               Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
               Campus: CampusV[1],
               Nivel: NivelV[1],
@@ -259,7 +259,7 @@ export class ReferidoPromotorComponent implements OnInit {
               TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,
               TelefonoOficina: (this.form.value.tipoCel == "Oficina") ? this.form.value.Telefono : null,
               
-              TelefonoPredictivo: this.form.value.TelefonoPredictivo,              
+              TelefonoPredictivo: this.form.value.TelefonoPredictivo,
               TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
               TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo
             };
@@ -347,9 +347,11 @@ export class ReferidoPromotorComponent implements OnInit {
   _keyPressTxt(event: any) {
     LandingValidation.onlyLetter(event);
   }
+
   showMjs(field: any) {
     return LandingValidation.getMensaje(field);
   }
+
   _keyPressNum(event: any, value: any, word: any) {
     if (value == 1) {
       LandingValidation.onlyNumber(event);
@@ -401,7 +403,7 @@ export class ReferidoPromotorComponent implements OnInit {
     }
   }
 
-  //Cambiado
+  //Cambiado - 
     onChangeCampus(campus: string) {
         console.log(campus);
         let cadena = campus.split('*');

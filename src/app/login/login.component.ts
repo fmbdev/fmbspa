@@ -36,9 +36,12 @@ export class LoginComponent implements OnInit {
   
   private headers = new Headers({'Content-Type':'application/jsonp'});
 
-  constructor(private router: Router,private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService,private http: Http) { }
+  constructor(private router: Router,private gralService: GeneralService, public dialog: MatDialog, private authService: AuthService,private http: Http) { 
+    
+  }
 
   ngOnInit() {
+
     this.email = new FormControl('', this.validUsuario.bind(this));
     console.log('CODE='+this.getParameterByName('code'));
     if(this.getParameterByName('code')!=''){
@@ -108,6 +111,13 @@ export class LoginComponent implements OnInit {
                 });
           });
     }
+
+    if (localStorage.getItem('user') == null && this.getParameterByName('code') == '' && this.getParameterByName('access_token') == '') {
+      window.location.href = "https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/authorize?client_id=8b121322-84ec-4bb9-8929-6c64333775f6&response_type=code&redirect_uri=https://app.devmx.com.mx&response_mode=query&resource=https://laulatammxqa.crm.dynamics.com";
+    }else{
+      this.onGoto('/home');
+    }
+
   }
 
   validUsuario(control: FormControl){
@@ -123,9 +133,7 @@ export class LoginComponent implements OnInit {
     
   }
 
-  onLogin2() {
-     
-  }
+  
 
   getParameterByName(name) {
       name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

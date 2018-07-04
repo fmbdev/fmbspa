@@ -7,4 +7,5 @@ export interface UploadSis {
     nombre_corto_asesor: string;
     fuente_obtención: string;
     clave_de_sis_carrera: string;
+    EsAlumno: boolean;
 }

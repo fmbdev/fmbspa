@@ -51,10 +51,12 @@ export class AppComponent implements OnInit{
               private escuelaEmpresaServ: EscuelaEmpresaService,
               //public userActive:  IdleUserService, 
               private route: Router,
-              private constante: AppConfig){}
-              
+              private constante: AppConfig){
+                
+              }
 
   ngOnInit(){
+
     this.api_cnn = this.constante.api_request;
     //** Detección de inactividad **// 
     if(this.route.url != '/'){
@@ -132,7 +134,13 @@ export class AppComponent implements OnInit{
     window.location.href='https://login.microsoftonline.com/346a1d1d-e75b-4753-902b-74ed60ae77a1/oauth2/logout?post_logout_redirect_uri=https://app.devmx.com.mx';
 
   }
-  
+  getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
   onMenu(){
       if(window.location.pathname =='/' || window.location.pathname == '/home' || window.location.pathname == '/menu' ){
         this.sidenav.close();
@@ -145,8 +153,24 @@ export class AppComponent implements OnInit{
 	  	} 
  	}
 
-   onGoto(url:string){
+
+  onMenu2() {
+    if (window.location.pathname == '/' || window.location.pathname == '/home' || window.location.pathname == '/menu') {
+      
+      return "no";
+    }
+    if (localStorage.access_token) {
+      return "access_token";
+    } else {
+      return "no";
+    }
+  }
+  onGoto(url: string) {
     this.sidenav.close();
+    this.router.navigate([url]);
+  }
+
+  onGoto2(url: string) {
     this.router.navigate([url]);
   }
 

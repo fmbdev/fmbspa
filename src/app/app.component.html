@@ -9,7 +9,7 @@
         </ul>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div class="logo" *ngIf="shows">
+        <div class="logo" *ngIf="onMenu2()!='no'">
             <a routerLink="menu"><img src="/assets/imgs/logo.png"></a>
         </div>
         <p *ngIf="onMenu()!='no'"><button style="background: #006fba !important; color: #fff !important;" mat-button (click)="sidenav.toggle()">Menu</button></p>

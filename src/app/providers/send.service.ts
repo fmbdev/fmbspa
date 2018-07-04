@@ -41,4 +41,7 @@ export class SendService {
   sendData6(data) {
     return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/7032?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, { headers: this.headers });
   }
+  sendData7(data) {
+    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/7088?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, { headers: this.headers });
+  }
 }

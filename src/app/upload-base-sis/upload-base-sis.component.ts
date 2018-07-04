@@ -19,6 +19,15 @@ import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 import { UploadSis } from '../interfaces/upload-sis';
 import { CampusCarrera } from '../interfaces/campus-carrera';
 
+
+import { Interes } from '../interfaces/interes';
+import { Modalidad } from '../interfaces/modalidad';
+
+
+import { InteresService } from '../providers/interes.service';
+import { ModalidadService } from '../providers/modalidad.service';
+
+
 import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
@@ -43,12 +52,16 @@ export class UploadBaseSisComponent implements OnInit {
   columDistin:boolean;
   rows = [];
   rowss = [];
+  rowss_mod = [];
+  rowss_niv = [];
   campusTxt: any;
   nivelTxt: any;
 
   uploads: UploadSis[] = [];
   ciclos: Ciclo[] = [];
   campus: Campus[] = [];
+  intereses: Interes[] = [];
+  modalidades: Modalidad[] = [];
   carreras: Carrera[] = [];
   campusCarreras: CampusCarrera[] = [];
 
@@ -56,12 +69,23 @@ export class UploadBaseSisComponent implements OnInit {
   constructor(private sendServ: SendService, public dialog: MatDialog, private cicloServ: CicloService,
     private campusServ: CampusService,
     private campusCarreraServ: CampusCarreraService,
+    private interesServ: InteresService,
+    private modalidadServ: ModalidadService,
+
     private carreraServ: CarreraService) {
     this.fetch((data) => {
       this.rows = data;
     });
     this.fetchs((data) => {
       this.rowss = data;
+    });
+
+    this.fetchs_modalidad((data) => {
+      this.rowss_mod = data;
+    });
+
+    this.fetchs_nivel((data) => {
+      this.rowss_niv = data;
     });
    }
 
@@ -89,13 +113,12 @@ export class UploadBaseSisComponent implements OnInit {
         (data: Ciclo[]) => this.ciclos = data
       )
 
-     
-
   }
 
   previewImage(event){
      this.newdata.filename = event.srcElement.files[0].name;
   }
+  
 
   fetch(cb) {
     const req = new XMLHttpRequest();
@@ -109,6 +132,24 @@ export class UploadBaseSisComponent implements OnInit {
   fetchs(cb) {
     const req = new XMLHttpRequest();
     req.open('GET', `https://devmx.com.mx/fmbapp/public/api/campus_carreras`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
+  fetchs_modalidad(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://devmx.com.mx/fmbapp/public/api/modalidad`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
+  fetchs_nivel(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://devmx.com.mx/fmbapp/public/api/nivel_estudios`);
     req.onload = () => {
       cb(JSON.parse(req.response));
     };
@@ -144,6 +185,9 @@ export class UploadBaseSisComponent implements OnInit {
   }
 
    Upload() {
+
+     console.log('this.modalidades');
+     console.log(this.modalidades);
      let x = 0;
      let count = 0;
 
@@ -164,7 +208,7 @@ export class UploadBaseSisComponent implements OnInit {
               console.log(this.checkCols(workbook));
               
               if(!this.checkCols(workbook)){
-                  this.showDialog("Los titulos de la columna no coinciden");                  
+                  this.showDialog("Los titulos de la columna no coinciden");
                   this.newdata.filename ="";
                   this.Tipo.value="";
                   this.columDistin = false;
@@ -172,84 +216,118 @@ export class UploadBaseSisComponent implements OnInit {
               }else{
                   this.columDistin = true;
               }
-                  let f = 400;  
+                  let f = 400;
+
             filas.forEach((key: UploadSis) => {
-          
-                /*
-                this.form.value.FuenteObtencion = null;
-                var ciclo = key.ciclo;
-                this.campusTxt = key.campus;
-                this.nivelTxt = key.ciclo;
 
-                for (let i = 0; i < this.rows.length; i++) {
-                  if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
-                    this.form.value.Team = this.rows[i].TEAM;
-                    this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                    this.form.value.Attemp = this.rows[i].ATTEMP;
-                    this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-
-                  }
-                }
-                */
+                
               
                 var campusTM = this.getObjects(this.campus, 'crmit_codigounico', key.id_campus);
                 var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
-                
                 var carreraTM = this.getObjects(this.carreras, 'id', key.clave_de_sis_carrera);
+
+                console.log('campusTM');
+                console.log(campusTM);
+                console.log('cicloTM');
+                console.log(cicloTM);
+                console.log('carreraTM');
+                console.log(carreraTM);
 
                 //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
                 
                 var ciclo = cicloTM[0].crmit_name;
+              var cicloC = cicloTM[0].crmit_ciclovigenteventas;
                 var GUIDCiclo = cicloTM[0].crmit_codigounico;
   
                 var campus = campusTM[0].crmi_name;
                 var GUIDCampus = campusTM[0].crmit_tb_campusid;
-                
+
                 var GUIDCarrera = carreraTM[0].codigounico;
                 var TCarrera = carreraTM[0].name;
-                
 
                 /* obtener nivel y modalidad */
-              let nivel = "" ;
-              let GUIDNivelInteres = "" ;
+                var NivelInteres = "" ;
+                var GUIDNivelInteres = "" ;
+  
+                var Modalidad ="" ;
+                var GUIDModalidad ="" ;
 
-              let Modalidad ="" ;
-              let GUIDModalidad ="" ;
               for (let i = 0; i < this.rowss.length; i++) {
-                console.log(this.rowss[i]);
+                if (this.rowss[i].campusId == GUIDCampus && this.rowss[i].carreraId == GUIDCarrera) {
+                  GUIDModalidad = this.rowss[i].modalidadId;
+                  GUIDNivelInteres = this.rowss[i].nivelId;
+                }
               }
 
+              for (let i = 0; i < this.rowss_mod.length; i++) {
+                if (this.rowss_mod[i].crmit_codigounico == GUIDModalidad) {
+                  Modalidad = this.rowss_mod[i].crmit_name;
+                }
+              }
+
+              for (let i = 0; i < this.rowss_niv.length; i++) {
+                if (this.rowss_niv[i].crmit_codigounico == GUIDNivelInteres) {
+                  NivelInteres = this.rowss_niv[i].crmit_name;
+                }
+              }
+              
+                let Team = "";
+                let Prioridad = 0;
+                let Attemp = "";
+
+                for (let i = 0; i < this.rows.length; i++) {
+                  console.log(campus + " - " + NivelInteres + " - " + cicloC);
+                  console.log(this.rows[i]);
+                  if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
+                    Team = this.rows[i].TEAM;
+                    Prioridad = parseInt(this.rows[i].PRIORIDAD);
+                    Attemp = this.rows[i].ATTEMP;
+                  }
+                }
+
               var obj2 = {
+                "Attemp": Attemp,
                 "FuenteObtencion": this.Tipo.value,
-                "Campus": campus,
-                "GUIDCampus": GUIDCampus,
-
-                "Carrera": TCarrera,
-                "GUIDCarrera": GUIDCarrera,
-
+                "NumPersona": key.Num_Persona,
+                "Prioridad": Prioridad,
+                "Team": Team,
                 "Ciclo": key.ciclo,
                 "GUIDCiclo": GUIDCiclo,
+                "Carrera": TCarrera,
+                "GUIDCarrera": GUIDCarrera,
+                "Nivel": NivelInteres,
+                "GUIDNivelInteres": GUIDNivelInteres,
+                "Modalidad": Modalidad,
+                "GUIDModalidad": GUIDModalidad,
+                "campus": campus,
+                "GUIDCampus": GUIDCampus,
+                "GUIDUsuario": localStorage.getItem('UserId'),
+                "EsAlumno": true,
               };
 
-                  let datos = Object.assign(key, obj2);
-
-                     /*
-                      setTimeout(() => {
-                        this.sendServ.sendData(datos)
-                          .subscribe(
-                            (res: any) => {
-                              console.log(res);
-                              if (res.status == 200) {
-                                x++;
-                              }else{
-                              }
-                            },
-                            () => {
-                              console.log(x);
-                            }
-                          )
-                      }, f);
-                      */
+              setTimeout(() => {
+                this.sendServ.sendData7(obj2)
+                  .subscribe(
+                    (res: any) => {
+                      console.log("res");
+                      console.log(res);
+                      if (res.status == 200) {
+                        x++;
+                      } else {
+                        x--;
+                      }
+                    },
+                    error => {
+                      if (error.status === 400) {
+                        console.log(error);
+                        //this.showDialogE(error._body);
+                        x--;
+                      }
+                      else if (error.status === 500) {
+                        //this.showDialogE(error._body);
+                      }
+                    })
+              }, f);  
                  
               });
                   let total;
@@ -259,15 +337,15 @@ export class UploadBaseSisComponent implements OnInit {
              setTimeout(() => {
                     console.log(this.columDistin);
                     if(this.columDistin){
-                      //if(count == x){
+                      if(count == x){
                           this.showDialog("Los datos se han guardado correctamente.");
                           console.log('guardado ok');
                           this.newdata.filename ="";
                           this.Tipo.value="";
-                     // }else{
-                     //     this.showDialog("Error al guardar los registros.");
-                     //     console.log('guardado NO');
-                     //} 
+                      }else{
+                          this.showDialog("Error al guardar los registros.");
+                          console.log('guardado NO');
+                     } 
                     }else{
                           console.log('columDistin false');
 

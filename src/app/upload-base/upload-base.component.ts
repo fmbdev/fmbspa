@@ -206,11 +206,10 @@ export class UploadBaseComponent implements OnInit {
                     var keyTelefono = key.Teléfono_Domicilio;
                     var skeyTelefono = keyTelefono.toString();
                     var skeyCelular = keyCelular.toString();
-                    
-                   
+
                         var predTel = skeyCelular.substring(0,2);
                         var TelefonoPredictivo = null;
-                        TelefonoPredictivo = '9045'+skeyCelular;                     
+                        TelefonoPredictivo = '9045'+skeyCelular;
                         if(predTel == '55'){
                           TelefonoPredictivo = '9044'+skeyCelular;
                         }
@@ -218,12 +217,11 @@ export class UploadBaseComponent implements OnInit {
                         var TelefonoCasaPredictivo = null;
 
                         var predTel2 = skeyTelefono.substring(0,2);
-                        TelefonoCasaPredictivo = '901'+skeyTelefono;                        
+                        TelefonoCasaPredictivo = '901'+skeyTelefono;
+
                         if(predTel2 == '55'){
                           TelefonoCasaPredictivo = '9'+skeyTelefono;
                         }
-                    
-
 
                     var   Genero = key.Sexo;
                           if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}

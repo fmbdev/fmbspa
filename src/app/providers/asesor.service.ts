@@ -13,6 +13,7 @@ export class AsesorService {
 
   getAll() : Observable<Asesor[]>{
     return this.http.get("https://devmx.com.mx/fmbapp/public/api/asesor", {headers: this.headers})
+   // return this.http.get("https://devmx.com.mx/fmbspa/src/assets/Asesor_cita.json", {headers: this.headers})
                .map(
                  (res: Response) => res.json()
                )
