@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit() {
-    //this.constante.initDebug('director');
+    //this.constante.initDebug('director'); test
     let userLocal = localStorage.getItem('user');
     
     let datos = JSON.parse(userLocal);  
