@@ -486,10 +486,6 @@ export class NewRegisterExistingComponent implements OnInit {
 
     
             };
-          // CampusCita: this.form.value.CampusCita, FechaCita: this.form.value.FechaCita, HoraCita: this.form.value.HoraCita, Programacion: this.form.value.Programacion, Asesor: this.form.value.Asesor,
-          // TelefonoCelularPredictivo: this.form.value.TelefonoCelularPredictivo, TelefonoCelularPredictivoTutor: this.form.value.TelefonoCelularPredictivoTutor, TelefonoPredictivo: this.form.value.TelefonoPredictivo, TelefonoPredictivoTutor: this.form.value.TelefonoPredictivoTutor,SinCorreo: this.form.value.SinCorreo, CanalPreferido: this.form.value.CanalPreferido, Team: this.form.value.Team, Prioridad: this.form.value.Prioridad, Attemp: this.form.value.Attemp
-          // GUIDCampus: this.form.value.CampusGUID, GUIDCiclo: this.form.value.CicloGUID, GUIDCarrera: this.form.value.CarreraGUID, GUIDNivelInteres: this.form.value.NivelGUID, GUIDModalidad: this.form.value.ModalidadGUID
-
 
             console.log("this.conEmail");
             console.log(this.conEmail);
@@ -534,9 +530,9 @@ export class NewRegisterExistingComponent implements OnInit {
                                 this.showDialogE("Registro guardado con éxito.");
                                 this.sendServ.sendData6(sendd)// this.form.value)
                                     .subscribe(
-                                        (res: any) => {
-                                            console.log(res.status);
-                                            if (res.status == 200) {
+                                        (ress: any) => {
+                                            console.log(ress.status);
+                                            if (ress.status == 200) {
                                                 this.showDialog("Los datos se han guardado correctamente.");
                                             } else {
                                                 this.showDialogE("Error al guardar el registro.2");
