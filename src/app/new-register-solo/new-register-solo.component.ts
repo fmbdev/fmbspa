@@ -174,6 +174,7 @@ export class NewRegisterSoloComponent implements OnInit {
 
 
     ngOnInit() {
+        localStorage.setItem('bandera','');
         this.landingService.getInit();
 
         // Se obtiene los tipos de actividades
@@ -404,6 +405,7 @@ export class NewRegisterSoloComponent implements OnInit {
             }
 
             let bandera = localStorage.getItem('bandera');
+            
             /* Interes GUID */
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
@@ -417,17 +419,16 @@ export class NewRegisterSoloComponent implements OnInit {
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
-
             let ParentescoV = _Parentesco.split('*');
-            
-          const sendd = {    
+
+            const sendd = {    
 
             Usuario: this.form.value.Usuario,
                     
             Nombre: this.form.value.Nombre, 
             ApellidoPaterno: this.form.value.ApellidoPaterno, 
             ApellidoMaterno: this.form.value.ApellidoMaterno, 
-            CorreoElectronico: this.form.value.CorreoElectronico,             
+            CorreoElectronico: this.form.value.CorreoElectronico,
             Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
             Edad:edadT, 
 
