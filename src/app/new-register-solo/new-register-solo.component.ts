@@ -458,7 +458,7 @@ export class NewRegisterSoloComponent implements OnInit {
              
 
             Banner: this.form.value.Banner,
-            Bandera: (bandera==null)?"":bandera,
+            Bandera: (bandera==null)? "" :bandera,
 
             Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
             Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,

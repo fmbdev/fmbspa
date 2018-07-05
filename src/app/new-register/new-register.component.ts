@@ -247,6 +247,7 @@ export class NewRegisterComponent implements OnInit {
     }
 
     formInit() {
+        localStorage.setItem('bandera', '');
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
         this.form = new FormGroup({
@@ -405,7 +406,7 @@ export class NewRegisterComponent implements OnInit {
           let CicloV = _Ciclo.split('*');
 
           this.form.value.Banner = window.location.href;
-          this.form.value.FuenteObtencion=null;
+          this.form.value.FuenteObtencion="";
             for (let i = 0; i < this.rows.length; i++) {
                 //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
                 var ciclo = CicloV[2];
@@ -438,12 +439,15 @@ export class NewRegisterComponent implements OnInit {
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
             let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
             let _Canal = (this.form.value.Canal==null)? "": this.form.value.Canal; 
-            
+            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor;
+
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
+            let ParentescoV = _Parentesco.split('*');
+            
             
             let CanalV = _Canal.split('*');
 
@@ -474,7 +478,8 @@ export class NewRegisterComponent implements OnInit {
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
-                ParentescoTutor:this.form.value.ParentescoTutor,
+                ParentescoTutor: ParentescoV[0],
+                GUIDParentescotutor: ParentescoV[1],
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
@@ -486,7 +491,7 @@ export class NewRegisterComponent implements OnInit {
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],                
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
@@ -500,14 +505,12 @@ export class NewRegisterComponent implements OnInit {
                 CampusCita: (this.form.value.CampusCita == undefined || this.form.value.CampusCita=="") ? null : this.form.value.CampusCita,
                 FechaCita: (this.form.value.FechaCita == undefined || this.form.value.FechaCita =="aN/aN/NaN") ? null : this.form.value.FechaCita,
                 HoraCita: (this.form.value.HoraCita == undefined || this.form.value.HoraCita=="") ? "" : this.form.value.HoraCita,
-                //Programacion: (this.form.value.Programacion)? "": "",
                 Asesor: (this.form.value.Asesor) ? null : this.form.value.Asesor,
-                // Tipocontactoidname: this.form.value.ParentescoTutor,  
 
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                FuenteObtencion: this.form.value.FuenteObtencion,
+                fuenteobtencion: this.form.value.FuenteObtencion,
 
 
                 //Numero Celular
@@ -852,12 +855,10 @@ export class NewRegisterComponent implements OnInit {
         this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
     }
 
-
-
     onChangeCanal(campus: string) {
         var cadena = campus.split('*');
         var value = cadena[0];
-        
+
         if (this.form.controls['CSQ'].disabled) {
             this.form.controls['CSQ'].enable();
         } else {
