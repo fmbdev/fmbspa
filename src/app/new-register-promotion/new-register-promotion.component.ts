@@ -489,8 +489,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                 
             const sendd = {
                                 
-                Ejecutivo: EjecutivoV[1],
-                GUIDEjecutivo: EjecutivoV[0],
+                
                 Usuario: this.form.value.Usuario,
                 Nombre: this.form.value.Nombre, 
                 ApellidoPaterno: this.form.value.ApellidoPaterno, 
@@ -504,7 +503,13 @@ export class NewRegisterPromotionComponent implements OnInit {
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
 
-                
+                ParentescoTutor: ParentescoV[0],
+                GUIDParentescotutor: ParentescoV[1],
+
+                Ejecutivo: EjecutivoV[1],
+                GUIDEjecutivo: EjecutivoV[0],
+
+
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad:ModalidadV[1],
@@ -538,7 +543,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                 //Calidad: this.form.value.Calidad,
                 GUIDCalidad:EmpresaEscuelaV[2],                          
                 Banner: this.form.value.Banner,
-                ParentescoTutor: this.form.value.ParentescoTutor,              
+                //ParentescoTutor: this.form.value.ParentescoTutor,              
                 
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
