@@ -84,6 +84,7 @@ export class ReferidoPromotorComponent implements OnInit {
   }
 
   ngOnInit() {
+//        localStorage.setItem('bandera','');
         this.landingService.getInit();
 
      // Se obtienen todos los campus
@@ -95,6 +96,8 @@ export class ReferidoPromotorComponent implements OnInit {
     this.formInit();
   }
 
+
+
   fetch(cb) {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/referidos.json`);
@@ -105,6 +108,8 @@ export class ReferidoPromotorComponent implements OnInit {
   }
 
   formInit() {
+
+  
     let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
         this.form = new FormGroup({

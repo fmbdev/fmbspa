@@ -234,7 +234,7 @@
                     <mat-form-field>
                         <mat-select formControlName="ParentescoTutor" placeholder="Parentesco">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_name']">
+                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_name']+'*'+parentesco['crmit_codigounico']">
                                 {{ parentesco['crmit_name'] }}
                             </mat-option>
                         </mat-select>

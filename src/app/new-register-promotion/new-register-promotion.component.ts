@@ -176,7 +176,7 @@ export class NewRegisterPromotionComponent implements OnInit {
 
     ngOnInit() {
         
-        
+        localStorage.setItem('bandera','');
         this.perfil_usuario = localStorage.getItem('tipo_rol');
 
         this.landingService.getInit();
@@ -271,6 +271,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     formInit() {
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
+        let bandera = localStorage.getItem('bandera');
         
         this.form = new FormGroup({
 
@@ -446,7 +447,11 @@ export class NewRegisterPromotionComponent implements OnInit {
             
             this.form.value.Banner = window.location.href;          
             
+
+            let bandera = localStorage.getItem('bandera');
+            
             /* Interes GUID */
+            
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
             let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
@@ -460,12 +465,15 @@ export class NewRegisterPromotionComponent implements OnInit {
             let _ActividadAgenda = (this.form.value.ActividadAgenda==null)? "": this.form.value.ActividadAgenda;
             let _EmpresaEscuela = (this.form.value.EscuelaEmpresa==null)? "": this.form.value.EscuelaEmpresa;
             let _Turno = (this.form.value.Turno==null)? "": this.form.value.Turno;
+            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor; 
 
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
+            let ParentescoV = _Parentesco.split('*');
+
             let EjecutivoV = _Ejecutivo.split('*');
             
             let SubTipoV = _SubTipo.split('*');
@@ -476,6 +484,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             let TurnoV = _Turno.split('*');
                     console.log("this.form.value.Calidad");       
                     console.log(this.form.value.Calidad);       
+
+                   
                 
             const sendd = {
                                 
@@ -493,6 +503,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+
                 
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
