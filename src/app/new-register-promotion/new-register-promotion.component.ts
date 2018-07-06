@@ -425,7 +425,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             }
             
             this.form.value.Banner = window.location.href;
-            this.form.value.FuenteObtencion = null;
+            this.form.value.FuenteObtencion = "";
             
             let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
             let CicloV = _Ciclo.split('*');
@@ -438,8 +438,11 @@ export class NewRegisterPromotionComponent implements OnInit {
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    
                 }
             }
+
+            //console.log(this.form.value.FuenteObtencion);
             
             
           let edadT = this.form.value.Edad;            
@@ -482,8 +485,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             let ActividadAgendaV = _ActividadAgenda.split('*');
             let EmpresaEscuelaV = _EmpresaEscuela.split('*');
             let TurnoV = _Turno.split('*');
-                    console.log("this.form.value.Calidad");       
-                    console.log(this.form.value.Calidad);       
+                    //console.log("this.form.value.Calidad");       
+                    //console.log(this.form.value.Calidad);       
 
                    
                 
