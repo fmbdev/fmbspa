@@ -478,6 +478,7 @@ export class NewRegisterComponent implements OnInit {
                 ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
                 ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
                 CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
+                
                 ParentescoTutor: ParentescoV[0],
                 GUIDParentescotutor: ParentescoV[1],
                 
