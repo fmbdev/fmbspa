@@ -599,7 +599,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                             }
                         }, error => {
                             if (error.status === 400) {
-                                console.log(error);
+                                //console.log(error);
                                 this.showDialogE(error._body);
                             }
                             else if (error.status === 500) {
