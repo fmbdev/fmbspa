@@ -201,8 +201,11 @@ export class ReferidoPromotorComponent implements OnInit {
     }
     var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
 
-    this.form.value.FuenteObtencio = null;
+    this.form.value.FuenteObtencion = null;
+
     var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+
+    
 
     for (let i = 0; i < this.rows.length; i++) {
       if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {

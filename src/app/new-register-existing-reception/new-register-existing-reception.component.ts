@@ -766,4 +766,44 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             data: { message: message }
         });
     }
+
+    private showDialogForm(array: any, message: string, bander: string) {
+        let dialogForm = this.dialog.open(DialogFormComponent, {
+            height: '180px',
+            width: '500px',
+            data: { message: array, title: message,bandera: bander }
+        });
+    }
+
+    agruparClick(){
+        /*let ases = this.asesorServ.getAll()
+            .subscribe(
+                (data: Asesor[]) => this.asesores = data
+            );*/
+                
+            
+        //this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita-");
+    }
+
+    agruparDClick(){
+       /* let ases = this.asesorServ.getAll()
+            .subscribe(
+                (data: AsesorCita[]) => this.asesores = data
+            );
+        
+        localStorage.setItem('bandera',this.form.controls.Usuario.value);
+        //this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita - Alfonso Silva");*/
+    }
+
+
+    agruparDirectaClick(){
+
+       /* let ases = this.asesorGrupalServ.getAll()
+            .subscribe(
+                (data: AsesorGrupal[]) => this.asesoresGrupal = data
+            );
+
+        this.showDialogForm(this.asesoresGrupal, "Selecciona a un Asesor", "SesionG - Alfonso Silva");*/
+    }
+
 }

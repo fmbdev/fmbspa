@@ -371,14 +371,35 @@
 
             </mat-grid-list>
         </div>
-        <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 50px;">
+
+
+        <div class="row">
+            <div class="col-sm-12" style="float:right; text-align: right;">
+
+                <div class="btn">
+                    <button mat-raised-button color="warn" (click)="resetForm()" class="cancel btn_110">CANCELAR</button>
+                    <button mat-raised-button color="warn" (click)="onSubmit()" class="btn_110">GUARDAR</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12" style="float:left; text-align: left;">
+
+                <div class="btn">
+                    <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel btn_110">ASIGNAR</button>
+                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel btn_110">DIRECTA</button>
+                    <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel btn_160">SESION GRUPAL</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!--<mat-grid-list cols="1" rowHeight="60px" style="margin-bottom: 20px; text-align: right;">
 
             <mat-grid-tile>
-                <div class="btn">
-                    <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">ASIGNAR</button>
-                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">DIRECTA</button>
-                    <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel btn_170" style="margin-right: 0px; width: 200px;">SESION GRUPAL</button>
-                </div>
+
             </mat-grid-tile>
 
 
@@ -389,10 +410,25 @@
                 </div>
             </mat-grid-tile>
 
-            <mat-grid-tile class="le">
-                <!--<a routerLink="/referidoPromotor" target="_blank"> Capturar Referido</a>-->
+        </mat-grid-list>-->
+
+        <!--<mat-grid-list cols="1" rowHeight="80px" style="margin-bottom: 20px; text-align: left;">
+            <mat-grid-tile>
+                <div class="btn">
+                    <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">ASIGNAR</button>
+                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">DIRECTA</button>
+                    <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel btn_170" style="margin-right: 0px; width: 200px;">SESION GRUPAL</button>
+                </div>
             </mat-grid-tile>
-        </mat-grid-list>
+
+            <mat-grid-tile>
+
+            </mat-grid-tile>
+
+
+        </mat-grid-list>-->
+
+
 
     </div>
 </form>

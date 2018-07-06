@@ -99,7 +99,21 @@
             </div>
             <div style="clear: both; height: 0; display: block;"></div>
         </div>
-        <mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
+
+
+        <div class="row">
+            <div class="col-sm-12" style="float:right; text-align: right;">
+
+                <div class="btn">
+                    <button mat-raised-button color="warn" (click)="resetForm()" class="cancel btn_110">CANCELAR</button>
+                    <button mat-raised-button color="warn" (click)="onSubmit()" class="btn_110">GUARDAR</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--<mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
             <mat-grid-tile class="le">
             </mat-grid-tile>
             <mat-grid-tile>
@@ -108,6 +122,8 @@
                     <button mat-raised-button color="warn" (click)="onSubmit()">GUARDAR</button>
                 </div>
             </mat-grid-tile>
-        </mat-grid-list>
+        </mat-grid-list>-->
+
+
     </div>
 </form>
