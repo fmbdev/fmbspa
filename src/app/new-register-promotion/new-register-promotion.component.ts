@@ -290,9 +290,9 @@ export class NewRegisterPromotionComponent implements OnInit {
             Calidad: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.maxLength(5)]),
             SinCorreo:new FormControl(''),
                 
-            Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+            Nombre: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+            ApellidoPaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+            ApellidoMaterno: new FormControl('',[Validators.required, LandingValidation.palabraMalaValidator()]),
             CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
             NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
@@ -324,74 +324,108 @@ export class NewRegisterPromotionComponent implements OnInit {
         });
     }
 
+
+
+
     onSubmit() {
         
-        let form = this.form;
-        let pnnServ = this.pnnServ;
 
-        $('form').find(':input').each(function(){
-            if($(this).hasClass('validPhoneNumber')){
-                let name = $(this).attr('formControlName');
-                if(form.controls[name].value != '' && form.controls[name].value != null){
-                    //* validación numero vacío si es sin correo  *//
-                    if(this.sinEmail && !form.controls.NumeroCelular  || form.controls.NumeroCelular == undefined){
-                        form.controls['NumeroCelular'].setErrors({'numInvalid': true});
-                    }   
+        if (this.form.value.CorreoElectronico == "" && this.form.value.Telefono == "") {
+            this.showDialogE("Ingresa Email o Telefono");
+            return false;
+        }
 
+        if (this.form.value.Nombre == "") {
+            this.showDialogE("Ingresa tu Nombre");
+            return false;
+          }
+      
+          if (this.form.value.ApellidoPaterno == "") {
+            this.showDialogE("Ingresa tu Apellido Paterno");
+            return false;
+          }
+      
+          if (this.form.value.ApellidoMaterno == "") {
+            this.showDialogE("Ingresa tu Apellido Materno");
+            return false;
+          }
 
-                    if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
-                        form.controls[name].setErrors({'numInvalid': true});
-                    }else{
-                        form.controls[name].setErrors({'numInvalid': false});
-                        form.controls[name].updateValueAndValidity();
-                    }
-                }else{
-                    form.controls[name].setErrors({'numInvalid': false});
-                    form.controls[name].reset();
-                }
-            }
-        })
+          
 
-        this.onKeyFechaNacimiento();
-        
-        if (this.sinEmail) {
+          let form = this.form;
+          let pnnServ = this.pnnServ;
+  
+  
+          $('form').find(':input').each(function () {
+              if ($(this).hasClass('validPhoneNumber')) {
+                  let name = $(this).attr('formControlName');
+                  if (form.controls[name].value != '' && form.controls[name].value != null) {
+                      if (!pnnServ.checkPnnIsValid(form.controls[name].value)) {
+                          form.controls[name].setErrors({ 'numInvalid': true });
+                      } else {
+                          form.controls[name].setErrors({ 'numInvalid': false });
+                          form.controls[name].updateValueAndValidity();
+                      }
+                  } else {
+                      form.controls[name].setErrors({ 'numInvalid': false });
+                      form.controls[name].reset();
+                  }
+              }
+          })
+  
+          
+          
+          if (this.sinEmail) {
             this.form.controls.CorreoElectronico.clearValidators();
-            console.log("ClearValidation email");
-        } else {
-            if (this.form.controls['CorreoElectronico'].value != "") {
+            }else{
+
+            if (this.form.controls['CorreoElectronico'].value != ""){
                 this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
                 this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.updateValueAndValidity();
-            } else {
-                console.log('aqui');
+            }else{
+                console.log('Entrando con correo, sin telefono');
+                
                 let tel = this.form.controls['Telefono'].value;
-                if (tel) {
+
+                if (tel == "") {
                     this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
                     this.form.controls.CorreoElectronico.clearValidators();
                     this.form.controls.CorreoElectronico.updateValueAndValidity();
-                    this.conEmail = false;
+                    this.conEmail = true;
                 }
 
             }
+
         }
 
-        if (this.form.controls['CorreoElectronico'].value != "" && this.form.controls['Telefono'].value == "") {
-            console.log('aqui 123');
+        if (this.form.controls['CorreoElectronico'].value != "" && this.form.controls['Telefono'].value == "" ) {
+            console.log('Si Correo no esta vacio y si telefono esta vacio');
             this.form.controls.Telefono.updateValueAndValidity();
             this.form.controls.Telefono.clearValidators();
         }
 
         if (this.form.valid) {
 
+            console.log(this.sinEmail);
+
             if (this.sinEmail) {
                 let tel = this.form.controls['Telefono'].value;
-                this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                //this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+                this.form.controls['CorreoElectronico'].reset({ value: this.form.controls['Nombre']+'@unitec.edu.mx', disabled: false });
                 this.conEmail = false;
+                
             }
 
           // -------------------------------- Predictivo  ----------------------------------
 
+            if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
+
+                this.form.value.Telefono = "5555555555";
+            }
+
              const predTel = this.form.value.Telefono.substring(0,2);
+             console.log(predTel);
             if(predTel == 55){
               this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
             }
@@ -573,8 +607,10 @@ export class NewRegisterPromotionComponent implements OnInit {
            
           // -------------------------------- Predictivo  ----------------------------------
 
-            console.log("this.conEmail");
-            console.log(this.conEmail);
+           // console.log("this.conEmail");
+            console.log("Con Email - "+this.conEmail);
+            
+
             if (this.conEmail) {
                 this.sendServ.sendData4(sendd)// this.form.value)
                     .subscribe(
@@ -631,7 +667,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                             }
                         }, error => {
                             if (error.status === 400) {
-                                console.log(error);
+                                //console.log(error);
                                 this.showDialogE(error._body);
                             }
                             else if (error.status === 500) {
@@ -869,6 +905,7 @@ export class NewRegisterPromotionComponent implements OnInit {
 
     addValidation(isChecked) {
         if (isChecked.checked) {
+            console.log("desde addValidation");
             if (this.form.controls.Telefono.value == "") {
                 isChecked.source.checked = false;
                 this.showDialogE("Debes ingresar un teléfono de contacto");

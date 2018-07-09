@@ -227,6 +227,14 @@ export class NewRegisterComponent implements OnInit {
                 (data: Hora[]) => this.horas = data
             )
 
+        //Se obtienen todos los asesores
+
+        let ases = this.asesorServ.getAll()
+            .subscribe(
+                (data: Asesor[]) => this.asesores = data
+            );
+
+
         //Se obtiene todas los asesores grupales    
         this.asesorGrupalServ.getAll()
             .subscribe(
@@ -507,6 +515,8 @@ export class NewRegisterComponent implements OnInit {
                 FechaCita: (this.form.value.FechaCita == undefined || this.form.value.FechaCita =="aN/aN/NaN") ? null : this.form.value.FechaCita,
                 HoraCita: (this.form.value.HoraCita == undefined || this.form.value.HoraCita=="") ? "" : this.form.value.HoraCita,
                 Asesor: (this.form.value.Asesor) ? null : this.form.value.Asesor,
+
+                
 
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,

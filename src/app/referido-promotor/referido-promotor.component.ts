@@ -115,9 +115,14 @@ export class ReferidoPromotorComponent implements OnInit {
         this.form = new FormGroup({
           Usuario: new FormControl({ value: datos.fullname, disabled: true }, Validators.required),
     
-          Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-          ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-          ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+          //Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+          //ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+          //ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
+          
+          Nombre: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+          ApellidoPaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+          ApellidoMaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
+          
           CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
           cel: new FormControl('', [Validators.minLength(10)]),
           Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
@@ -138,20 +143,36 @@ export class ReferidoPromotorComponent implements OnInit {
 
   onSubmit() {
     this.mostrarExtension = true;
+
+      /*********Validaciones Form***********/    
+
+          /*if( this.form.controls['Nombre'].value == "" ){
+
+            //alert("Esta vacio Nombre: " + this.form.controls['Nombre'].value);
+
+          }else{
+
+            //alert("No esta vacio, contiene: " + + this.form.controls['Nombre'].value);
+
+          }*/
+
+          /////
+
+
     
-    if (this.form.controls['CorreoElectronico'].value != "") {
-      this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
-      this.form.controls.Telefono.clearValidators();
-      this.form.controls.Telefono.updateValueAndValidity();
-    } else {
-      console.log('aqui');
-      let tel = this.form.controls['Telefono'].value;
-      if (tel) {
-        this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
-        this.form.controls.CorreoElectronico.clearValidators();
-        this.form.controls.CorreoElectronico.updateValueAndValidity();
-        this.conEmail = false;
-      }
+          if (this.form.controls['CorreoElectronico'].value != "") {
+            this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            this.form.controls.Telefono.clearValidators();
+            this.form.controls.Telefono.updateValueAndValidity();
+          } else {
+            console.log('aqui');
+            let tel = this.form.controls['Telefono'].value;
+            if (tel) {
+              this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
+              this.form.controls.CorreoElectronico.clearValidators();
+              this.form.controls.CorreoElectronico.updateValueAndValidity();
+              this.conEmail = false;
+            }
 
     }
 
@@ -170,6 +191,22 @@ export class ReferidoPromotorComponent implements OnInit {
 
     this.form.value.TelefonoOficina=null;
     this.form.value.TelefonoOficinaPredictivo=null;
+
+
+    if (this.form.value.Nombre == "") {
+      this.showDialogE("Ingresa tu Nombre");
+      return false;
+    }
+
+    if (this.form.value.ApellidoPaterno == "") {
+      this.showDialogE("Ingresa tu Apellido Paterno");
+      return false;
+    }
+
+    if (this.form.value.ApellidoMaterno == "") {
+      this.showDialogE("Ingresa tu Apellido Materno");
+      return false;
+    }
 
     if (this.form.value.tipoCel == "") {
       this.showDialogE("Ingresa un tipo de teléfono");

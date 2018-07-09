@@ -6,6 +6,7 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 
 import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 import 'rxjs/Rx';
 
 import * as $ from 'jquery';
