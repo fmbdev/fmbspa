@@ -128,6 +128,7 @@ export class NewRegisterComponent implements OnInit {
 
     asesores: Asesor[] = [];
     
+    
     carreras: Carrera[] = [];
     intereses: Interes[] = [];
     modalidades: Modalidad[] = [];
@@ -466,15 +467,18 @@ export class NewRegisterComponent implements OnInit {
             
             let CanalV = _Canal.split('*');
 
-            console.log(this.form.value.CampusCita);
+            /*console.log(this.form.value.CampusCita);
             console.log(this.form.value.FechaCita);
-            console.log(this.form.value.HoraCita);
+            console.log(this.form.value.HoraCita);*/
     
+            //var notasTxt = this.form.value.Notas;
+
+             
             const sendd = {
 
                 Usuario: this.form.value.Usuario,                
                 
-                CanalPreferido: CanalV[1],                
+                Canal: CanalV[1],   //Se envia Canal en vez de CanalPreferido             
                 CSQ: this.form.value.CSQ,
                 TelefonoCorreo: this.form.value.TelefonoCorreo,
                 Interesa_NoInteresa: (this.form.value.Interesa_NoInteresa) ? "" : this.form.value.Interesa_NoInteresa,
@@ -500,10 +504,12 @@ export class NewRegisterComponent implements OnInit {
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
-                Carrera: CarreraV[1],               
+                Carrera: CarreraV[1],
                 AreaInteres: InteresV[1],
                 Ciclo: CicloV[1],
                 
+                GUIDCampusCita: (CampusV[0] == '') ? null : CampusV[0],
+                GUIDCanal: (CanalV[0]=='')? null : CanalV[0],
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
@@ -512,13 +518,20 @@ export class NewRegisterComponent implements OnInit {
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
 
+                
                 Banner: this.form.value.Banner,
-                Bandera:"",                
+                Bandera:"",
 
                 Tipificacion: this.form.value.Tipificacion,
-                Notas: (this.form.value.Notas) ? "" : this.form.value.Notas,
+
+                
+                Notas: (this.form.value.Notas == '') ? null : this.form.value.Notas,
+                
 
                 CampusCita: (this.form.value.CampusCita == undefined || this.form.value.CampusCita=="") ? null : this.form.value.CampusCita,
+                
+                
+
                 FechaCita: (this.form.value.FechaCita == undefined || this.form.value.FechaCita =="aN/aN/NaN") ? null : this.form.value.FechaCita,
                 HoraCita: (this.form.value.HoraCita == undefined || this.form.value.HoraCita=="") ? "" : this.form.value.HoraCita,
                 Asesor: (this.form.value.Asesor) ? null : this.form.value.Asesor,
@@ -554,8 +567,9 @@ export class NewRegisterComponent implements OnInit {
 
             };
  
-            console.log("this.conEmail");
-            console.log(this.conEmail);
+            //console.log("Campus Cita: " + this.CampusCita );
+            //console.log("this.conEmail");
+            //console.log(this.conEmail);
             if (this.conEmail) {
                 this.sendServ.sendData4(sendd)// this.form.value)
                     .subscribe(
