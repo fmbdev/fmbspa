@@ -162,7 +162,7 @@ export class ReferidoReferenteComponent implements OnInit {
     this.form.value.TelefonoOficinaPredictivo = null;
     console.log(this.form.value.TelefonoPredictivo);
 
-    if (this.form.value.tipoCel == "") {
+    if (this.form.value.tipoCel == "" && this.form.value.Telefono != "") {
       this.showDialogE("Ingresa un tipo de teléfono");
       return false;
     }

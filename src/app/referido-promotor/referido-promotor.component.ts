@@ -208,7 +208,7 @@ export class ReferidoPromotorComponent implements OnInit {
       return false;
     }
 
-    if (this.form.value.tipoCel == "") {
+    if (this.form.value.tipoCel == "" && this.form.value.Telefono != "") {
       this.showDialogE("Ingresa un tipo de teléfono");
       return false;
     }

@@ -196,7 +196,7 @@ export class ReferidoWebComponent implements OnInit {
       this.form.value.TelefonoOficina = null;
       this.form.value.TelefonoOficinaPredictivo = null;
 
-      if (this.form.value.tipoCel == "") {
+      if (this.form.value.tipoCel == "" && this.form.value.Telefono != "") {
         this.showDialogE("Ingresa un tipo de teléfono");
         return false;
       }
