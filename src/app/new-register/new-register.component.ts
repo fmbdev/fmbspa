@@ -417,7 +417,14 @@ export class NewRegisterComponent implements OnInit {
           this.form.value.FuenteObtencion="";
             for (let i = 0; i < this.rows.length; i++) {
                 //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-                var ciclo = CicloV[2];
+                var ciclo = CicloV[1];
+
+                //console.log("variable ciclo: " + ciclo);
+                //console.log("variable ClicloV[2]: " + CicloV[2]);
+                //console.log("variable ClicloV[1]: " + CicloV[1]);
+                //console.log("variable ClicloV[0]: " + CicloV[0]);
+
+
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
                     this.form.value.Team = this.rows[i].TEAM;
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
@@ -495,7 +502,7 @@ export class NewRegisterComponent implements OnInit {
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],               
                 AreaInteres: InteresV[1],
-                Ciclo: CicloV[2],
+                Ciclo: CicloV[1],
                 
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],

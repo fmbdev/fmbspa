@@ -190,11 +190,19 @@ export class ReferidoReferenteComponent implements OnInit {
     }
 
     console.log(this.form.value.TelefonoPredictivo);
+
     this.form.value.FuenteObtencio = null;
-    var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
+    
+    var ciclo = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
+    
+    //console.log("Este es el Ciclo: "+ciclo);
 
     for (let i = 0; i < this.rows.length; i++) {
-      var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+      
+      //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+     
+      //console.log("Variable ciclo: " + this.form.value.ciclo[1]);
+
       if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
         this.form.value.Team = this.rows[i].TEAM;
         this.form.value.Prioridad = this.rows[i].PRIORIDAD;
