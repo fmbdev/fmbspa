@@ -454,6 +454,13 @@ export class NewRegisterComponent implements OnInit {
                 //console.log("Fuenteobtension_fo: " + this.rows[i].FUENTE_NEGOCIO);
             }
             
+          //  console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
+            //console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
+            //console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
+
+
+            ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
+           // console.log("Nuevo Ciclo: " + ciclo);
 
 
           // -------------------------------- Predictivo  ----------------------------------
@@ -532,7 +539,7 @@ export class NewRegisterComponent implements OnInit {
                 Carrera: CarreraV[1],
                 AreaInteres: InteresV[1],
                 //Ciclo: CicloV[1],
-                Ciclo:  "C"+ciclo_mocho[1],
+                Ciclo:  ciclo,
                 
                 GUIDCampusCita: (CampusV[0] == '') ? null : CampusV[0],
                 GUIDCanal: (CanalV[0]=='')? null : CanalV[0],

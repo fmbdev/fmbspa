@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 import { GeneralService } from '../services/general.service';
 import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 
 import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -27,6 +26,8 @@ import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
+import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
+import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 
 
 @Component({
@@ -318,7 +319,7 @@ export class UploadBaseComponent implements OnInit {
                   let total;
                   total = f * count;
 
-                  console.log('X = ' + x);
+                  console.log('X = ' + total);
 
                   setTimeout(() => {
                     console.log(this.columDistin);

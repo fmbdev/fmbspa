@@ -464,9 +464,17 @@ export class NewRegisterPromotionComponent implements OnInit {
             let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
             let CicloV = _Ciclo.split('*');
 
+
+
             for (let i = 0; i < this.rows.length; i++) {
+
+
                 //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-                var ciclo = CicloV[2];
+                var ciclo = CicloV[1];
+                var ciclo_mocho = CicloV[1].split('-');
+                ciclo = "C"+ciclo_mocho[1];
+
+
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
                     this.form.value.Team = this.rows[i].TEAM;
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
@@ -475,7 +483,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                     
                 }
             }
-
+            ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
             //console.log(this.form.value.FuenteObtencion);
             
             

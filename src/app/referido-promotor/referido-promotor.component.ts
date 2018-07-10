@@ -263,6 +263,10 @@ export class ReferidoPromotorComponent implements OnInit {
       }
     }
 
+    //console.log("Ciclo: " + ciclo);
+    //console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
+    //console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
+    //console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
 
      
     // -------------------------------- Predictivo  ----------------------------------

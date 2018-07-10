@@ -411,6 +411,7 @@ export class NewRegisterSoloComponent implements OnInit {
 
             }
 
+            ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
             //console.log("-- FuenteObtencion: " + this.form.value.FuenteObtencion);
 
 
@@ -463,7 +464,7 @@ export class NewRegisterSoloComponent implements OnInit {
             Modalidad: ModalidadV[1],
             Carrera: CarreraV[1],
             AreaInteres: InteresV[1],
-            Ciclo:  "C"+ciclo_mocho[1],
+            Ciclo:  ciclo,
 
             
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
