@@ -389,13 +389,31 @@ export class NewRegisterSoloComponent implements OnInit {
             for (let i = 0; i < this.rows.length; i++) {
                 //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
                 var ciclo = CicloV[2];
+
+                //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
+                var ciclo_mocho = CicloV[1].split('-');
+                ciclo = "C"+ciclo_mocho[1];
+
+
+                
+
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
                     this.form.value.Team = this.rows[i].TEAM;
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+
+                   // console.log(this.rows[i].CICLO + " = " + ciclo);
+                   // console.log("FuenteObtencion: " + this.rows[i].FUENTE_NEGOCIO );
                 }
+
+               // console.log(this.rows[i].CICLO + " = " + ciclo);
+
             }
+
+            //console.log("-- FuenteObtencion: " + this.form.value.FuenteObtencion);
+
+
 
           // -------------------------------- Predictivo  ----------------------------------
           let edadT = this.form.value.Edad;
@@ -445,7 +463,8 @@ export class NewRegisterSoloComponent implements OnInit {
             Modalidad: ModalidadV[1],
             Carrera: CarreraV[1],
             AreaInteres: InteresV[1],
-            Ciclo: CicloV[1],
+            Ciclo:  "C"+ciclo_mocho[1],
+
             
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
             GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],

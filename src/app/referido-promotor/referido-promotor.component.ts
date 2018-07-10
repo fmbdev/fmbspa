@@ -241,6 +241,16 @@ export class ReferidoPromotorComponent implements OnInit {
     this.form.value.FuenteObtencion = null;
 
     var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+    //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
+    
+    var ciclo_mocho = ciclo.split('-');
+
+    //ciclo = "C"+ciclo_mocho[1];
+
+      //console.log("Ciclo de LocalStorage: " + ciclo);
+      //console.log("Ciclo Mocho[0]: " + ciclo_mocho[0]);
+      //console.log("Ciclo Mocho[1]: " + ciclo_mocho[1]);
+
 
     
 
@@ -297,7 +307,11 @@ export class ReferidoPromotorComponent implements OnInit {
               Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
               FuenteObtencion: this.form.value.FuenteObtencion,
-              Ciclo: ciclo_name,
+              
+              //Ciclo: ciclo_name,
+              //Ciclo:  "C"+ciclo_mocho[1],
+              Ciclo: ciclo,
+
               GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
 
               Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,

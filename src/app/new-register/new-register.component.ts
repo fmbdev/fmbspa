@@ -416,24 +416,46 @@ export class NewRegisterComponent implements OnInit {
 
           this.form.value.Banner = window.location.href;
           this.form.value.FuenteObtencion="";
+          //var Fuenteobtension_fo = "";
+
             for (let i = 0; i < this.rows.length; i++) {
                 //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
                 var ciclo = CicloV[1];
 
-                //console.log("variable ciclo: " + ciclo);
-                //console.log("variable ClicloV[2]: " + CicloV[2]);
-                //console.log("variable ClicloV[1]: " + CicloV[1]);
-                //console.log("variable ClicloV[0]: " + CicloV[0]);
 
+                //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
+                var ciclo_mocho = CicloV[1].split('-');
+
+
+                ciclo = "C"+ciclo_mocho[1];
 
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+                    
+                    //console.log("---ciclo : "+ ciclo + " = " + this.rows[i].CICLO);
+
                     this.form.value.Team = this.rows[i].TEAM;
+                    //console.log("-- Team: " + this.form.value.Team);
+
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+                    //console.log("-- Prioridad: " + this.form.value.Prioridad);
+                    
                     this.form.value.Attemp = this.rows[i].ATTEMP;
+                    //console.log("-- Attemp: " + this.rows[i].ATTEMP);
+                    
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    //console.log("-- FuenteObtencion: " + this.rows[i].FUENTE_NEGOCIO);
+                    
+                    //Fuenteobtension_fo = this.rows[i].FUENTE_NEGOCIO;
+
+                     
+
+
                 }
+                //console.log("Fuenteobtension_fo: " + this.rows[i].FUENTE_NEGOCIO);
             }
-            console.log(this.form.value.FuenteObtencion);
+            
+
+
           // -------------------------------- Predictivo  ----------------------------------
             this.form.value.Banner = window.location.href;
             this.form.value.CanalPreferido = 'Voz';
@@ -473,7 +495,10 @@ export class NewRegisterComponent implements OnInit {
     
             //var notasTxt = this.form.value.Notas;
 
-             
+            //console.log("El Usuario que se envia: " + this.form.value.Usuario); 
+
+            //console.log("Fuente Obtension: " + this.form.value.FuenteObtencion);
+
             const sendd = {
 
                 Usuario: this.form.value.Usuario,                
@@ -506,7 +531,8 @@ export class NewRegisterComponent implements OnInit {
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
                 AreaInteres: InteresV[1],
-                Ciclo: CicloV[1],
+                //Ciclo: CicloV[1],
+                Ciclo:  "C"+ciclo_mocho[1],
                 
                 GUIDCampusCita: (CampusV[0] == '') ? null : CampusV[0],
                 GUIDCanal: (CanalV[0]=='')? null : CanalV[0],
@@ -542,7 +568,8 @@ export class NewRegisterComponent implements OnInit {
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 fuenteobtencion: this.form.value.FuenteObtencion,
-
+                //FuenteObtencion: this.form.value.FuenteObtencion,
+                
 
                 //Numero Celular
                 Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
@@ -567,9 +594,8 @@ export class NewRegisterComponent implements OnInit {
 
             };
  
-            //console.log("Campus Cita: " + this.CampusCita );
-            //console.log("this.conEmail");
-            //console.log(this.conEmail);
+            
+
             if (this.conEmail) {
                 this.sendServ.sendData4(sendd)// this.form.value)
                     .subscribe(
