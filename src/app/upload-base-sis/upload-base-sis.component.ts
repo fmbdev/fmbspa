@@ -226,17 +226,11 @@ export class UploadBaseSisComponent implements OnInit {
                 var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
                 var carreraTM = this.getObjects(this.carreras, 'id', key.clave_de_sis_carrera);
 
-                console.log('campusTM');
-                console.log(campusTM);
-                console.log('cicloTM');
-                console.log(cicloTM);
-                console.log('carreraTM');
-                console.log(carreraTM);
-
                 //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
                 
                 var ciclo = cicloTM[0].crmit_name;
-              var cicloC = cicloTM[0].crmit_ciclovigenteventas;
+              var ciclo_mocho = ciclo.split('-'); 
+                var cicloC = "C" + ciclo_mocho[1];
                 var GUIDCiclo = cicloTM[0].crmit_codigounico;
   
                 var campus = campusTM[0].crmi_name;
@@ -276,12 +270,13 @@ export class UploadBaseSisComponent implements OnInit {
                 let Attemp = "";
 
                 for (let i = 0; i < this.rows.length; i++) {
-                  console.log(campus + " - " + NivelInteres + " - " + cicloC);
-                  console.log(this.rows[i]);
+
                   if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
                     Team = this.rows[i].TEAM;
                     Prioridad = parseInt(this.rows[i].PRIORIDAD);
                     Attemp = this.rows[i].ATTEMP;
+                  }else{
+
                   }
                 }
 
@@ -310,7 +305,6 @@ export class UploadBaseSisComponent implements OnInit {
                   .subscribe(
                     (res: any) => {
                       console.log("res");
-                      console.log(res);
                       if (res.status == 200) {
                         x++;
                       } else {
@@ -319,7 +313,6 @@ export class UploadBaseSisComponent implements OnInit {
                     },
                     error => {
                       if (error.status === 400) {
-                        console.log(error);
                         //this.showDialogE(error._body);
                         x--;
                       }
@@ -335,19 +328,15 @@ export class UploadBaseSisComponent implements OnInit {
 
                   console.log('X = ' + x);
              setTimeout(() => {
-                    console.log(this.columDistin);
                     if(this.columDistin){
                       if(count == x){
                           this.showDialog("Los datos se han guardado correctamente.");
-                          console.log('guardado ok');
                           this.newdata.filename ="";
                           this.Tipo.value="";
                       }else{
                           this.showDialog("Error al guardar los registros.");
-                          console.log('guardado NO');
                      } 
                     }else{
-                          console.log('columDistin false');
 
                     }  
                   }, total); 
@@ -391,7 +380,6 @@ export class UploadBaseSisComponent implements OnInit {
           }
         }
       )*/
-      console.log(this.form.value)
   }
 
   private showDialog(message: string){
