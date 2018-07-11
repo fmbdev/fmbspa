@@ -129,6 +129,32 @@ export class ReferidoReferenteComponent implements OnInit {
   }
 
   onSubmit() {
+
+    if (this.form.value.Nombre == "" || this.form.value.Nombre == null) {
+      this.showDialogE("Los datos de registro no estan llenos, favor de revisarlos.");
+      return false;
+    }
+
+    if (this.form.value.ApellidoPaterno == "" || this.form.value.ApellidoPaterno == null){
+      this.showDialogE("Los datos de registro no estan llenos, favor de revisarlos.");
+      return false;
+    }
+
+    if (this.form.value.ApellidoMaterno == "" || this.form.value.ApellidoMaterno == null){
+      this.showDialogE("Los datos de registro no estan llenos, favor de revisarlos.");
+      return false;
+    }
+
+    if (this.form.value.Telefono == "" && this.form.value.CorreoElectronico == "" ) {
+      this.showDialogE("Debes Ingresar un Telefono o Correo Electronico. ");
+      return false;
+    }
+
+    if ( this.form.value.Telefono != "" && this.form.value.tipoCel == "" ) {
+      this.showDialogE("Debes seleccionar un tipo de Telefono");
+      return false;
+    }
+
     // -------------------------------- Predictivo  ----------------------------------
     if (this.form.controls['CorreoElectronico'].value != "") {
       this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
