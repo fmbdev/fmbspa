@@ -79,7 +79,7 @@ export class ReferidoWebComponent implements OnInit {
   Nivel: FormControl;
   Modalidad: FormControl;
   Carrera: FormControl;
-  Ciclo: FormControl;
+  //Ciclo: FormControl;
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
@@ -277,6 +277,7 @@ export class ReferidoWebComponent implements OnInit {
 
       this.form.value.FuenteObtencion = "";
       let ciclo_vigente = ""; 
+      let ciclo_codigounico = "";
 
       let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
 
@@ -284,11 +285,13 @@ export class ReferidoWebComponent implements OnInit {
 
       for(let i = 0 ; i <= this.ciclos.length ; i++ ){
             
-        //console.log("No Valido = "+this.ciclos[i].crmit_name+" - "+this.ciclos[i].crmit_ciclovigenteventas);
-        if(String(this.ciclos[i].crmit_ciclovigenteventas) == String("True"){
-              ciclo_vigente = this.ciclos[i].crmit_name;
-             // console.log("Valido = "+ciclo_vigente+" - "+this.ciclos[i].crmit_ciclovigenteventas);
-            }
+          if(this.ciclos[i] !== undefined){ 
+            if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
+                  ciclo_vigente = this.ciclos[i].crmit_name;
+                  ciclo_codigounico = this.ciclos[i].crmit_codigounico;
+                }
+          
+          }    
       }
 
     
@@ -296,14 +299,20 @@ export class ReferidoWebComponent implements OnInit {
           
           console.log("Ciclo Vigente = " + ciclo_vigente);
 
-      let ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-
+      //let ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+      let ciclo ="";
         if(ciclo == "" || ciclo == null ){
           
              ciclo_mocho = ciclo_vigente.split('-');
+
+             console.log("ciclo_mocho[0] = " + ciclo_mocho[0]);
+             console.log("ciclo_mocho[1] = " + ciclo_mocho[1]);
+             console.log("ciclo_mocho[2] = " + ciclo_mocho[2]);
+
                 ciclo = "C"+ciclo_mocho[1];
         } 
 
+        console.log("Nuevo Ciclo: "+ciclo);
 
       for (let i = 0; i < this.rows.length; i++) {
 
@@ -390,9 +399,9 @@ export class ReferidoWebComponent implements OnInit {
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 FuenteObtencion: this.form.value.FuenteObtencion,
-                Ciclo: ciclo_name,
-                GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
-                
+                Ciclo: ciclo,
+               // GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
+               GUIDCiclo: ciclo_codigounico,
             };
      // console.log("this.conEmail");
       //console.log(this.conEmail);
