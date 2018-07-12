@@ -18,6 +18,7 @@ import { Nivel } from '../interfaces/nivel';
 import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
 //import { TipoReferente } from '../interfaces/tipo-referente';
+import { Ciclo } from '../interfaces/ciclo';
 
 //Servicios
 import { CampusService } from '../providers/campus.service';
@@ -27,6 +28,8 @@ import { ModalidadService } from '../providers/modalidad.service';
 import { SendService } from '../providers/send.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
+import { CicloService } from '../providers/ciclo.service';
+
 
 @Component({
   selector: 'app-referido-web',
@@ -44,6 +47,7 @@ export class ReferidoWebComponent implements OnInit {
   niveles: Nivel[] = [];
   tiposReferentes: Parentesco[] = [];
   parentescos: Parentesco[] = [];
+  ciclos: Ciclo[] = [];
   rows = [];
   campusTxt: any;
   nivelTxt: any;
@@ -79,17 +83,26 @@ export class ReferidoWebComponent implements OnInit {
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
-  constructor(private landingService: LandingService,private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
-     private campusServ: CampusService,
+  constructor(
+
+    private landingService: LandingService,
+    private gralService: GeneralService, 
+    public dialog: MatDialog, 
+    private renderer: Renderer2,
+    private campusServ: CampusService,
     private carreraServ: CarreraService,
     private modalidadServ: ModalidadService,
     private sendServ: SendService,
     private parentescoServ: ParentescoService,
     private campusCarreraServ: CampusCarreraService,
+    private cicloServ: CicloService,
     private tipoRefenteServ: ParentescoService) {
+
     this.fetch((data) => {
       this.rows = data;
     });
+
+//    console.log( this.rows );
   }
 
   ngOnInit() {
@@ -110,6 +123,12 @@ export class ReferidoWebComponent implements OnInit {
     this.parentescoServ.getAll()
     .subscribe(
         (data: Parentesco[]) => this.parentescos = data
+    )
+
+    //Se obtienen todos los ciclo
+    this.cicloServ.getAll()
+    .subscribe(
+      (data: Ciclo[]) => this.ciclos = data
     )
 
     this.formInit();
@@ -148,7 +167,7 @@ export class ReferidoWebComponent implements OnInit {
       Nivel: new FormControl({ value: '', disabled: true }),
       Modalidad: new FormControl({ value: '', disabled: true }),
       Carrera: new FormControl({ value: '', disabled: true }),
-      Ciclo: new FormControl(''),
+      //Ciclo: new FormControl(''),
       tipificacion: new FormControl(''),
     });
   }
@@ -255,21 +274,59 @@ export class ReferidoWebComponent implements OnInit {
         }
       }  
 
-      console.log(this.form.value.TelefonoOficinaPredictivo);
 
       this.form.value.FuenteObtencion = "";
-      var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
+      let ciclo_vigente = ""; 
+
+      let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
+
+      
+
+      for(let i = 0 ; i <= this.ciclos.length ; i++ ){
+            
+        //console.log("No Valido = "+this.ciclos[i].crmit_name+" - "+this.ciclos[i].crmit_ciclovigenteventas);
+        if(String(this.ciclos[i].crmit_ciclovigenteventas) == String("True"){
+              ciclo_vigente = this.ciclos[i].crmit_name;
+             // console.log("Valido = "+ciclo_vigente+" - "+this.ciclos[i].crmit_ciclovigenteventas);
+            }
+      }
+
+    
+      let ciclo_mocho = [];
+          
+          console.log("Ciclo Vigente = " + ciclo_vigente);
+
+      let ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+
+        if(ciclo == "" || ciclo == null ){
+          
+             ciclo_mocho = ciclo_vigente.split('-');
+                ciclo = "C"+ciclo_mocho[1];
+        } 
+
 
       for (let i = 0; i < this.rows.length; i++) {
-        var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
+
+       
+
         if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+          var __ciclo = this.rows[i].CICLO;
           this.form.value.Team = this.rows[i].TEAM;
+          var __team =  this.rows[i].TEAM;
           this.form.value.Prioridad = this.rows[i].PRIORIDAD;
           this.form.value.Attemp = this.rows[i].ATTEMP;
           this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
 
         }
+        
       }
+
+      console.log("__ciclo = " + __ciclo);  
+      console.log("__team = " + __team);
+      console.log("__Prioridad: " + this.form.value.Prioridad);
+      console.log("__ATTEMP: " + this.form.value.Attemp);
+
+
     // -------------------------------- Predictivo  ----------------------------------
      
 
