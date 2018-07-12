@@ -16,13 +16,16 @@ import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
 import { Nivel } from '../interfaces/nivel';
 import { Modalidad } from '../interfaces/modalidad';
+import { Ciclo } from '../interfaces/ciclo';
+
 
 //Servicios
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
 import { ModalidadService } from '../providers/modalidad.service';
 import { SendService } from '../providers/send.service';
-import { CampusCarreraService } from '../providers/campus-carrera.service'
+import { CampusCarreraService } from '../providers/campus-carrera.service';
+import { CicloService } from '../providers/ciclo.service';
 
 @Component({
   selector: 'app-referido-promotor',
@@ -66,6 +69,7 @@ export class ReferidoPromotorComponent implements OnInit {
   modalidades: Modalidad[] = [];
   niveles: Nivel[] = [];
   rows = [];
+  ciclos: Ciclo[] = [];
   campusTxt: any;
   nivelTxt: any;
 
@@ -77,6 +81,7 @@ export class ReferidoPromotorComponent implements OnInit {
     private carreraServ: CarreraService,
     private sendServ: SendService,
     private modalidadServ: ModalidadService,
+    private cicloServ: CicloService,
     private campusCarreraServ: CampusCarreraService) {
     this.fetch((data) => {
       this.rows = data;
@@ -92,6 +97,12 @@ export class ReferidoPromotorComponent implements OnInit {
             .subscribe(
                 (data: Campus[]) => this.campus = data
             )
+
+    //Se obtienen todos los ciclo
+    this.cicloServ.getAll()
+    .subscribe(
+      (data: Ciclo[]) => this.ciclos = data
+    )        
 
     this.formInit();
   }
@@ -135,7 +146,7 @@ export class ReferidoPromotorComponent implements OnInit {
           Nivel: new FormControl({ value: '', disabled: true }),
           Modalidad: new FormControl({ value: '', disabled: true }),
           Carrera: new FormControl({ value: '', disabled: true }),
-          Ciclo: new FormControl(''),
+          //Ciclo: new FormControl(''),
           tipificacion: new FormControl(''),
     
         });
@@ -262,20 +273,34 @@ export class ReferidoPromotorComponent implements OnInit {
         this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
       }
     }
-    var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
-
-    this.form.value.FuenteObtencion = null;
-
-    var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-    //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
     
-    var ciclo_mocho = ciclo.split('-');
+    /*****Si no hay ciclo, se extrae de la base de datos el ciclo*******/
 
-    //ciclo = "C"+ciclo_mocho[1];
+    this.form.value.FuenteObtencion = "";
+    let ciclo_vigente = ""; 
+    let ciclo_codigounico = "";
 
-      //console.log("Ciclo de LocalStorage: " + ciclo);
-      //console.log("Ciclo Mocho[0]: " + ciclo_mocho[0]);
-      //console.log("Ciclo Mocho[1]: " + ciclo_mocho[1]);
+    let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
+
+
+    for(let i = 0 ; i <= this.ciclos.length ; i++ ){
+        if(this.ciclos[i] !== undefined){ 
+          if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
+                ciclo_vigente = this.ciclos[i].crmit_name;
+                ciclo_codigounico = this.ciclos[i].crmit_codigounico;
+              }
+        }    
+
+    }
+
+  
+    let ciclo_mocho = [];
+    let ciclo ="";
+
+      if(ciclo == "" || ciclo == null ){
+           ciclo_mocho = ciclo_vigente.split('-');
+           ciclo = "C"+ciclo_mocho[1];
+      } 
 
 
     
@@ -289,10 +314,7 @@ export class ReferidoPromotorComponent implements OnInit {
       }
     }
 
-    //console.log("Ciclo: " + ciclo);
-    //console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
-    //console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
-    //console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
+    
 
      
     // -------------------------------- Predictivo  ----------------------------------
@@ -338,11 +360,8 @@ export class ReferidoPromotorComponent implements OnInit {
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
               FuenteObtencion: this.form.value.FuenteObtencion,
               
-              //Ciclo: ciclo_name,
-              //Ciclo:  "C"+ciclo_mocho[1],
               Ciclo: ciclo,
-
-              GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
+              GUIDCiclo: ciclo_codigounico,
 
               Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
               TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,

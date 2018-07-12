@@ -16,12 +16,15 @@ import { Carrera } from '../interfaces/carrera';
 import { Nivel } from '../interfaces/nivel';
 import { Modalidad } from '../interfaces/modalidad';
 import { SendService } from '../providers/send.service';
+import { Ciclo } from '../interfaces/ciclo';
+
 
 //Servicios
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
 import { ModalidadService } from '../providers/modalidad.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
+import { CicloService } from '../providers/ciclo.service';
 
 @Component({
   selector: 'app-referido-referente',
@@ -59,6 +62,7 @@ export class ReferidoReferenteComponent implements OnInit {
 
   public mostrarExtension: boolean = null;
 
+  ciclos: Ciclo[] = [];
   campus: Campus[] = [];
   carreras: Carrera[] = [];
   modalidades: Modalidad[] = [];
@@ -75,6 +79,7 @@ export class ReferidoReferenteComponent implements OnInit {
     private carreraServ: CarreraService,
     private sendServ: SendService,
     private modalidadServ: ModalidadService,
+    private cicloServ: CicloService,
     private campusCarreraServ: CampusCarreraService) {
     this.fetch((data) => {
       this.rows = data;
@@ -90,6 +95,13 @@ export class ReferidoReferenteComponent implements OnInit {
       .subscribe(
         (data: Campus[]) => this.campus = data
       )
+
+    //Se obtienen todos los ciclo
+    this.cicloServ.getAll()
+    .subscribe(
+      (data: Ciclo[]) => this.ciclos = data
+    )
+
 
     this.formInit();
   }
@@ -215,20 +227,37 @@ export class ReferidoReferenteComponent implements OnInit {
       }
     }
 
-    console.log(this.form.value.TelefonoPredictivo);
-
-    this.form.value.FuenteObtencio = null;
     
-    var ciclo = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
-    
-    //console.log("Este es el Ciclo: "+ciclo);
+  /*****Si no hay ciclo, se extrae de la base de datos el ciclo*******/
 
+  this.form.value.FuenteObtencion = "";
+  let ciclo_vigente = ""; 
+  let ciclo_codigounico = "";
+
+  let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
+
+    for(let i = 0 ; i <= this.ciclos.length ; i++ ){
+        if(this.ciclos[i] !== undefined){ 
+          if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
+                ciclo_vigente = this.ciclos[i].crmit_name;
+                ciclo_codigounico = this.ciclos[i].crmit_codigounico;
+              }
+        }    
+
+    }
+
+    let ciclo_mocho = [];
+      let ciclo ="";
+
+        if(ciclo == "" || ciclo == null ){
+             ciclo_mocho = ciclo_vigente.split('-');
+             ciclo = "C"+ciclo_mocho[1];
+        } 
+
+    
     for (let i = 0; i < this.rows.length; i++) {
       
-      //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-     
-      //console.log("Variable ciclo: " + this.form.value.ciclo[1]);
-
+    
       if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
         this.form.value.Team = this.rows[i].TEAM;
         this.form.value.Prioridad = this.rows[i].PRIORIDAD;
@@ -291,6 +320,7 @@ export class ReferidoReferenteComponent implements OnInit {
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
+                
 
                 Banner: this.form.value.Banner,
                 
@@ -299,8 +329,7 @@ export class ReferidoReferenteComponent implements OnInit {
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
               FuenteObtencion: this.form.value.FuenteObtencion,
               Ciclo: ciclo,
-              GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
-
+              GUIDCiclo: ciclo_codigounico,
                 
             };
 

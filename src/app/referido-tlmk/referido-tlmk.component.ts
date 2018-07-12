@@ -15,6 +15,8 @@ import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
 import { Nivel } from '../interfaces/nivel';
 import { Modalidad } from '../interfaces/modalidad';
+import { Ciclo } from '../interfaces/ciclo';
+
 
 //Servicios
 import { CampusService } from '../providers/campus.service';
@@ -22,6 +24,8 @@ import { CarreraService } from '../providers/carrera.service';
 import { ModalidadService } from '../providers/modalidad.service';
 import { SendService } from '../providers/send.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service'
+import { CicloService } from '../providers/ciclo.service';
+
 
 @Component({
   selector: 'app-referido-tlmk',
@@ -57,6 +61,7 @@ export class ReferidoTlmkComponent implements OnInit {
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
+  ciclos: Ciclo[] = [];
   campus: Campus[] = [];
   carreras: Carrera[] = [];
   modalidades: Modalidad[] = [];
@@ -65,11 +70,16 @@ export class ReferidoTlmkComponent implements OnInit {
   campusTxt: any;
   nivelTxt: any;
 
-  constructor(private landingService: LandingService,private gralService: GeneralService, public dialog: MatDialog, private renderer: Renderer2,
+  constructor(
+    private landingService: LandingService,
+    private gralService: GeneralService, 
+    public dialog: MatDialog, 
+    private renderer: Renderer2,
     private campusServ: CampusService,
     private carreraServ: CarreraService,
     private sendServ: SendService,
     private modalidadServ: ModalidadService,
+    private cicloServ: CicloService,
     private campusCarreraServ: CampusCarreraService) {
     this.fetch((data) => {
       this.rows = data;
@@ -86,6 +96,12 @@ export class ReferidoTlmkComponent implements OnInit {
         (data: Campus[]) => this.campus = data
       )
 
+    //Se obtienen todos los ciclo
+    this.cicloServ.getAll()
+    .subscribe(
+      (data: Ciclo[]) => this.ciclos = data
+    )
+    
     this.formInit();
   }
 
@@ -117,7 +133,7 @@ export class ReferidoTlmkComponent implements OnInit {
       Nivel: new FormControl({ value: '', disabled: true }),
       Modalidad: new FormControl({ value: '', disabled: true }),
       Carrera: new FormControl({ value: '', disabled: true }),
-      Ciclo: new FormControl(''),
+      //Ciclo: new FormControl(''),
       tipificacion: new FormControl(''),
     });
   }
@@ -212,12 +228,36 @@ export class ReferidoTlmkComponent implements OnInit {
         this.form.value.TelefonoOficinaPredictivo = '901' + this.form.value.Telefono;
       }
     }
-    this.form.value.FuenteObtencio = null;
-    var ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
-    
+
+
+    this.form.value.FuenteObtencion = "";
+    let ciclo_vigente = ""; 
+    let ciclo_codigounico = "";
+
+//    let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
+
+
+    for(let i = 0 ; i <= this.ciclos.length ; i++ ){
+        if(this.ciclos[i] !== undefined){ 
+          if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
+                ciclo_vigente = this.ciclos[i].crmit_name;
+                ciclo_codigounico = this.ciclos[i].crmit_codigounico;
+              }
+        }    
+
+    }
+
+  
+    let ciclo_mocho = [];
+    let ciclo ="";
+
+      if(ciclo == "" || ciclo == null ){
+           ciclo_mocho = ciclo_vigente.split('-');
+           ciclo = "C"+ciclo_mocho[1];
+      } 
+
     for (let i = 0; i < this.rows.length; i++) {
 
-      var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
 
       if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
         this.form.value.Team = this.rows[i].TEAM;
@@ -270,8 +310,10 @@ export class ReferidoTlmkComponent implements OnInit {
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 FuenteObtencion: this.form.value.FuenteObtencion,
-                Ciclo: ciclo_name,
-                GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
+
+                Ciclo: ciclo,
+               // GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
+                GUIDCiclo: ciclo_codigounico,
 
                 Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
                 TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,

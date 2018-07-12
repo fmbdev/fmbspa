@@ -279,60 +279,38 @@ export class ReferidoWebComponent implements OnInit {
       }  
 
 
+/*****Si no hay ciclo, se extrae de la base de datos el ciclo*******/
+
       this.form.value.FuenteObtencion = "";
       let ciclo_vigente = ""; 
       let ciclo_codigounico = "";
 
       let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
 
-      
 
-<<<<<<< HEAD
       for(let i = 0 ; i <= this.ciclos.length ; i++ ){
-            
           if(this.ciclos[i] !== undefined){ 
             if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
                   ciclo_vigente = this.ciclos[i].crmit_name;
                   ciclo_codigounico = this.ciclos[i].crmit_codigounico;
                 }
-          
           }    
-=======
-      for (let i = 0; i <= this.ciclos.length; i++) {
-        //Solo esto valide
-        if (this.ciclos[i]!==undefined){
-          if (this.ciclos[i].crmit_ciclovigenteventas == "true") {
-            ciclo_vigente = this.ciclos[i].crmit_name;
-          }
-        }
-        
->>>>>>> ca0403feebb7710348d51c41ef10e8d70bd4ed91
+
       }
 
     
       let ciclo_mocho = [];
-          
-          console.log("Ciclo Vigente = " + ciclo_vigente);
-
-      //let ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
       let ciclo ="";
+
         if(ciclo == "" || ciclo == null ){
-          
              ciclo_mocho = ciclo_vigente.split('-');
-
-             console.log("ciclo_mocho[0] = " + ciclo_mocho[0]);
-             console.log("ciclo_mocho[1] = " + ciclo_mocho[1]);
-             console.log("ciclo_mocho[2] = " + ciclo_mocho[2]);
-
-                ciclo = "C"+ciclo_mocho[1];
+             ciclo = "C"+ciclo_mocho[1];
         } 
 
-        console.log("Nuevo Ciclo: "+ciclo);
 
       for (let i = 0; i < this.rows.length; i++) {
 
        
-
         if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
           var __ciclo = this.rows[i].CICLO;
           this.form.value.Team = this.rows[i].TEAM;
@@ -345,12 +323,7 @@ export class ReferidoWebComponent implements OnInit {
         
       }
 
-      console.log("__ciclo = " + __ciclo);  
-      console.log("__team = " + __team);
-      console.log("__Prioridad: " + this.form.value.Prioridad);
-      console.log("__ATTEMP: " + this.form.value.Attemp);
-
-
+     
     // -------------------------------- Predictivo  ----------------------------------
      
 
@@ -416,7 +389,7 @@ export class ReferidoWebComponent implements OnInit {
                 FuenteObtencion: this.form.value.FuenteObtencion,
                 Ciclo: ciclo,
                // GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
-               GUIDCiclo: ciclo_codigounico,
+                GUIDCiclo: ciclo_codigounico,
             };
      // console.log("this.conEmail");
       //console.log(this.conEmail);
