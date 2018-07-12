@@ -188,7 +188,7 @@ export class UploadBaseSisComponent implements OnInit {
 
      console.log('this.modalidades');
      console.log(this.modalidades);
-     let x = 0;
+    
      let count = 0;
 
          let tipo = this.Tipo.value;
@@ -204,7 +204,7 @@ export class UploadBaseSisComponent implements OnInit {
               var first_sheet_name = workbook.SheetNames[0];
               var worksheet = workbook.Sheets[first_sheet_name];
               let filas = XLSX.utils.sheet_to_json(worksheet,{raw:true});
-              let count=  Object.keys(filas).length;
+              count =  Object.keys(filas).length;
               console.log(this.checkCols(workbook));
               
               if(!this.checkCols(workbook)){
@@ -216,23 +216,23 @@ export class UploadBaseSisComponent implements OnInit {
               }else{
                   this.columDistin = true;
               }
-                  let f = 400;
+            
+            let f = 500;
+              let x = 0;
 
             filas.forEach((key: UploadSis) => {
 
-                
-              
                 var campusTM = this.getObjects(this.campus, 'crmit_codigounico', key.id_campus);
                 var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
                 var carreraTM = this.getObjects(this.carreras, 'id', key.clave_de_sis_carrera);
 
                 //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
-                
+
                 var ciclo = cicloTM[0].crmit_name;
-              var ciclo_mocho = ciclo.split('-'); 
+                var ciclo_mocho = ciclo.split('-'); 
                 var cicloC = "C" + ciclo_mocho[1];
                 var GUIDCiclo = cicloTM[0].crmit_codigounico;
-  
+
                 var campus = campusTM[0].crmi_name;
                 var GUIDCampus = campusTM[0].crmit_tb_campusid;
 
@@ -243,8 +243,8 @@ export class UploadBaseSisComponent implements OnInit {
                 var NivelInteres = "" ;
                 var GUIDNivelInteres = "" ;
   
-                var Modalidad ="" ;
-                var GUIDModalidad ="" ;
+                var Modalidad = "" ;
+                var GUIDModalidad = "" ;
 
               for (let i = 0; i < this.rowss.length; i++) {
                 if (this.rowss[i].campusId == GUIDCampus && this.rowss[i].carreraId == GUIDCarrera) {
@@ -305,40 +305,43 @@ export class UploadBaseSisComponent implements OnInit {
                   .subscribe(
                     (res: any) => {
                       console.log("res");
+                      console.log(res.status);
                       if (res.status == 200) {
-                        x++;
+                        x=x+1;
+                        if (count == x) {
+                          this.showDialog("Los datos se han guardado correctamente.");
+                          this.newdata.filename = "";
+                          this.Tipo.value = "";
+                        }  
                       } else {
-                        x--;
+                        x=x-1;
+                        this.showDialog("Error al guardar el registro");
                       }
                     },
                     error => {
                       if (error.status === 400) {
-                        //this.showDialogE(error._body);
+                        console.warn(error._body);
+                        this.showDialog("Error al guardar el registro");
                         x--;
                       }
                       else if (error.status === 500) {
-                        //this.showDialogE(error._body);
+                        console.warn(error._body);
+                        this.showDialog("Error al guardar el registro");
                       }
                     })
-              }, f);  
-                 
+              }, f);
               });
                   let total;
                   total = f * count;
 
                   console.log('X = ' + x);
-             setTimeout(() => {
-                    if(this.columDistin){
-                      if(count == x){
-                          this.showDialog("Los datos se han guardado correctamente.");
-                          this.newdata.filename ="";
-                          this.Tipo.value="";
-                      }else{
-                          this.showDialog("Error al guardar los registros.");
-                     } 
-                    }else{
-
-                    }  
+                  
+                   setTimeout(() => {
+                          if(this.columDistin){
+                            
+                          }else{
+      
+                          }  
                   }, total); 
               
           }
@@ -381,7 +384,7 @@ export class UploadBaseSisComponent implements OnInit {
         }
       )*/
   }
-
+  
   private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {
           height: '200px',
