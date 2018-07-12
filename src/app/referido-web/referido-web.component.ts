@@ -170,6 +170,8 @@ export class ReferidoWebComponent implements OnInit {
       //Ciclo: new FormControl(''),
       tipificacion: new FormControl(''),
     });
+
+    
   }
 
   onSubmit() {
@@ -183,6 +185,8 @@ export class ReferidoWebComponent implements OnInit {
       this.showDialogE("Los datos de registro no estan llenos, favor de revisarlos.");
       return false;
     }
+
+
 
     if (this.form.value.ApellidoMaterno == "" || this.form.value.ApellidoMaterno == null){
       this.showDialogE("Los datos de registro no estan llenos, favor de revisarlos.");
@@ -283,6 +287,7 @@ export class ReferidoWebComponent implements OnInit {
 
       
 
+<<<<<<< HEAD
       for(let i = 0 ; i <= this.ciclos.length ; i++ ){
             
           if(this.ciclos[i] !== undefined){ 
@@ -292,6 +297,16 @@ export class ReferidoWebComponent implements OnInit {
                 }
           
           }    
+=======
+      for (let i = 0; i <= this.ciclos.length; i++) {
+        //Solo esto valide
+        if (this.ciclos[i]!==undefined){
+          if (this.ciclos[i].crmit_ciclovigenteventas == "true") {
+            ciclo_vigente = this.ciclos[i].crmit_name;
+          }
+        }
+        
+>>>>>>> ca0403feebb7710348d51c41ef10e8d70bd4ed91
       }
 
     

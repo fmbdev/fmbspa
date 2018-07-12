@@ -337,7 +337,7 @@ export class UploadBaseComponent implements OnInit {
                           console.log('columDistin false');
 
                     }  
-                  }, total);           
+                  }, total);
           }
           
             fileReader.readAsArrayBuffer(this.imgFileInput.nativeElement.files[0]);
