@@ -54,12 +54,7 @@ import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
 
-/*export class MyErrorStateMatcher implements ErrorStateMatcher {
-    //isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-        return !!(control && control.invalid && (control.dirty || control.touched));
-    }
-}*/
+
 
 @Component({
     selector: 'app-new-register',
