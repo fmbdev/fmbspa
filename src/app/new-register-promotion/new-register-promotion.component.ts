@@ -326,10 +326,11 @@ export class NewRegisterPromotionComponent implements OnInit {
         });
     }
 
-
+     
 
     onSubmit() {
-        
+        console.log("Entrando a Sumbit");
+       // console.log("----- Check: ------- :" + this.form.controls.actvidadNoTradicional.value);
 
         if (this.form.value.CorreoElectronico == "" && this.form.value.Telefono == "") {
             this.showDialogE("Ingresa Email o Telefono");
@@ -428,6 +429,8 @@ export class NewRegisterPromotionComponent implements OnInit {
                 
             }
 
+
+            
           // -------------------------------- Predictivo  ----------------------------------
 
             if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
@@ -541,9 +544,185 @@ export class NewRegisterPromotionComponent implements OnInit {
                     //console.log("this.form.value.Calidad");       
                     //console.log(this.form.value.Calidad);       
 
-                   
+            let sendd = {};       
+
+            if(this.form.controls.actvidadNoTradicional.value == true){
+
+                 sendd = {
                 
-            const sendd = {
+                    Usuario: this.form.value.Usuario,
+                    Nombre: this.form.value.Nombre, 
+                    ApellidoPaterno: this.form.value.ApellidoPaterno, 
+                    ApellidoMaterno: this.form.value.ApellidoMaterno, 
+                    CorreoElectronico: this.form.value.CorreoElectronico, 
+                    Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
+                    Edad: edadT,
+                   
+                    NombreTutor: this.form.value.NombreTutor, 
+                    ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
+                    ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
+                    CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+    
+                    ParentescoTutor: ParentescoV[0],
+                    GUIDParentescotutor: ParentescoV[1],
+    
+                    Ejecutivo: EjecutivoV[1],
+                    GUIDEjecutivo: EjecutivoV[0],
+    
+    
+                    Campus: CampusV[1],
+                    Nivel: NivelV[1],
+                    Modalidad:ModalidadV[1],
+                    Carrera: CarreraV[1],               
+                    AreaInteres: InteresV[1],
+                    Ciclo: CicloV[1],              
+                    
+                    
+                    ActividadAgenda: ActividadAgendaV[1],
+                    SubTipoActividad:SubTipoV[1],
+                    SubSubTipoActividad:SubSubTipoV[0],
+    
+                    
+    
+                    Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
+    
+                    GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                    GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                    GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                    GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
+                    GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+                    GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],                
+                    GUIDUsuario:localStorage.getItem('UserId'),                
+                    GUIDActividAgenda:ActividadAgendaV[0],
+    
+                     GUIDCalidad:EmpresaEscuelaV[2],
+                    
+                                    
+                    GUIDSubTipo:SubTipoV[0],
+                    GUIDSubSubTipo:SubSubTipoV[1],  
+                    //Calidad: this.form.value.Calidad,
+                                              
+                    Banner: this.form.value.Banner,
+                    //ParentescoTutor: this.form.value.ParentescoTutor,              
+                    
+                    Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
+                    Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
+                    Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
+                    FuenteObtencion: this.form.value.FuenteObtencion,
+                    
+                    //Numero Celular
+                    Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
+                    TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
+                    //Numero Telefono o Telefono Casa
+                    TelefonoCasa: this.form.value.Telefono,
+                    TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+                  
+    
+                    //Numero Celular Tutor
+                    NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
+                    TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
+                    //Numero Casa Tutor                
+                    TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
+                    TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
+    
+    
+                };
+
+
+            }else{
+
+                  sendd = {
+                                
+                
+                    Usuario: this.form.value.Usuario,
+                    Nombre: this.form.value.Nombre, 
+                    ApellidoPaterno: this.form.value.ApellidoPaterno, 
+                    ApellidoMaterno: this.form.value.ApellidoMaterno, 
+                    CorreoElectronico: this.form.value.CorreoElectronico, 
+                    Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
+                    Edad: edadT,
+                   
+                    NombreTutor: this.form.value.NombreTutor, 
+                    ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
+                    ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
+                    CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+    
+                    ParentescoTutor: ParentescoV[0],
+                    GUIDParentescotutor: ParentescoV[1],
+    
+                    Ejecutivo: EjecutivoV[1],
+                    GUIDEjecutivo: EjecutivoV[0],
+    
+    
+                    Campus: CampusV[1],
+                    Nivel: NivelV[1],
+                    Modalidad:ModalidadV[1],
+                    Carrera: CarreraV[1],               
+                    AreaInteres: InteresV[1],
+                    Ciclo: CicloV[1],              
+                    
+                    
+                    ActividadAgenda: ActividadAgendaV[1],
+                    SubTipoActividad:SubTipoV[1],
+                    SubSubTipoActividad:SubSubTipoV[0],
+    
+    
+                    
+                    EscuelaEmpresa: EmpresaEscuelaV[1],
+                    Turno: TurnoV[2],                
+                    
+                    GUIDEscuelaEmpresa: EmpresaEscuelaV[0],
+                    GUIDTurno: TurnoV[0],
+                    
+    
+                    Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
+    
+                    GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+                    GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+                    GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+                    GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
+                    GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+                    GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],                
+                    GUIDUsuario:localStorage.getItem('UserId'),                
+                    GUIDActividAgenda:ActividadAgendaV[0],
+    
+                     GUIDCalidad:EmpresaEscuelaV[2],
+                    
+                                    
+                    GUIDSubTipo:SubTipoV[0],
+                    GUIDSubSubTipo:SubSubTipoV[1],  
+                    //Calidad: this.form.value.Calidad,
+                                              
+                    Banner: this.form.value.Banner,
+                    //ParentescoTutor: this.form.value.ParentescoTutor,              
+                    
+                    Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
+                    Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
+                    Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
+                    FuenteObtencion: this.form.value.FuenteObtencion,
+                    
+                    //Numero Celular
+                    Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
+                    TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
+                    //Numero Telefono o Telefono Casa
+                    TelefonoCasa: this.form.value.Telefono,
+                    TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+                  
+    
+                    //Numero Celular Tutor
+                    NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
+                    TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
+                    //Numero Casa Tutor                
+                    TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
+                    TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
+    
+    
+                };
+
+            }
+
+                
+            /*const sendd = {
                                 
                 
                 Usuario: this.form.value.Usuario,
@@ -573,13 +752,18 @@ export class NewRegisterPromotionComponent implements OnInit {
                 AreaInteres: InteresV[1],
                 Ciclo: CicloV[1],              
                 
-                EscuelaEmpresa:EmpresaEscuelaV[1],
                 
                 ActividadAgenda: ActividadAgendaV[1],
                 SubTipoActividad:SubTipoV[1],
                 SubSubTipoActividad:SubSubTipoV[0],
+
+
+                
+                EscuelaEmpresa: EmpresaEscuelaV[1],
                 Turno: TurnoV[2],                
-                //GUIDActividadAgenda
+                
+                GUIDEscuelaEmpresa: EmpresaEscuelaV[0],
+                GUIDTurno: TurnoV[0],
                 
 
                 Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
@@ -592,12 +776,14 @@ export class NewRegisterPromotionComponent implements OnInit {
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],                
                 GUIDUsuario:localStorage.getItem('UserId'),                
                 GUIDActividAgenda:ActividadAgendaV[0],
-                GUIDEscuelaEmpresa:EmpresaEscuelaV[0],
-                GUIDTurno:(TurnoV[0]=='')? null : TurnoV[0],                
+
+                 GUIDCalidad:EmpresaEscuelaV[2],
+                
+                                
                 GUIDSubTipo:SubTipoV[0],
                 GUIDSubSubTipo:SubSubTipoV[1],  
                 //Calidad: this.form.value.Calidad,
-                GUIDCalidad:EmpresaEscuelaV[2],                          
+                                          
                 Banner: this.form.value.Banner,
                 //ParentescoTutor: this.form.value.ParentescoTutor,              
                 
@@ -622,7 +808,9 @@ export class NewRegisterPromotionComponent implements OnInit {
                 TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
 
-            };
+            };*/
+
+
            
           // -------------------------------- Predictivo  ----------------------------------
 
