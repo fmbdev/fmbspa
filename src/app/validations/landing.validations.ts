@@ -183,4 +183,14 @@ export class LandingValidation {
         let object = JSON.parse(localStorage.getMgss);  
         return object[field][mjs];   
     }
+
+    static edadMinima(campo:any){
+
+        let e = campo;
+        let mensaje = "";
+        if(e.value <= 12){
+            return mensaje;
+        }
+        
+    }
 }

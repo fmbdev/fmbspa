@@ -350,6 +350,11 @@ export class NewRegisterPromotionComponent implements OnInit {
             return false;
           }
 
+          if (this.form.value.Edad < 11) {
+            this.showDialogE("Tu edad debe ser mayor igual a 12 años");
+            return false;
+          }
+
           
 
           let form = this.form;

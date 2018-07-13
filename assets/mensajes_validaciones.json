@@ -26,13 +26,14 @@
     "telefono": {
         "m1": "Ingresa tu número de teléfono",
         "m2": "Al menos debe contener 10 dígitos",
-        "m3": "Número inválido"        
+        "m3": "Número inválido"
     },
     "genero": {
         "m1": "Elige tu género"
     },
     "edad": {
-        "m1": "Al menos debe contener 2 dígitos"
+        "m1": "Al menos debe contener 2 dígitos",
+        "m2": "Al menos debe ser mayor de 12 años"
     },
     "cana_preferido": {
         "m1": "Elige un canal preferido"

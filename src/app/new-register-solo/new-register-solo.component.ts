@@ -298,6 +298,12 @@ export class NewRegisterSoloComponent implements OnInit {
         let form = this.form;
         let pnnServ = this.pnnServ;
 
+        if (this.form.value.Edad < 11) {
+            this.showDialogE("Tu edad debe ser mayor igual a 12 años");
+            return false;
+          }
+
+
         $('form').find(':input').each(function(){
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');

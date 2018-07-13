@@ -310,6 +310,12 @@ export class NewRegisterComponent implements OnInit {
         let pnnServ = this.pnnServ;
 
 
+        if (this.form.value.Edad < 11) {
+            this.showDialogE("Tu edad debe ser mayor igual a 12 años");
+            return false;
+          }
+      
+
         $('form').find(':input').each(function () {
             if ($(this).hasClass('validPhoneNumber')) {
                 let name = $(this).attr('formControlName');
@@ -340,7 +346,6 @@ export class NewRegisterComponent implements OnInit {
                 this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.updateValueAndValidity();
             }else{
-                console.log('aqui');
                 let tel = this.form.controls['Telefono'].value;
                 if (tel) {
                     this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
@@ -353,7 +358,6 @@ export class NewRegisterComponent implements OnInit {
         }
 
         if (this.form.controls['CorreoElectronico'].value != "" && this.form.controls['Telefono'].value == "" ) {
-            console.log('aqui 123');
             this.form.controls.Telefono.updateValueAndValidity();
             this.form.controls.Telefono.clearValidators();
         }
@@ -477,6 +481,7 @@ export class NewRegisterComponent implements OnInit {
             if (edadT == "") {
                 edadT = 12;
             }
+
             /* Interes GUID */
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
@@ -690,7 +695,10 @@ export class NewRegisterComponent implements OnInit {
         let year = new Date().getFullYear();
         let fecha = year - edad;
         this.form.controls.FechaNacimiento.setValue("01/01/" + fecha);
+
+        
     }
+
 
     onKeydownEmail(event: KeyboardEvent) {
         let name = this.form.controls.NombreTutor.value;
@@ -979,6 +987,10 @@ export class NewRegisterComponent implements OnInit {
 
     showMjs(field: any) {
         return LandingValidation.getMensaje(field);
+    }
+
+    EdadMin(field: any) {
+        return LandingValidation.edadMinima(field);
     }
 
     private showDialog(message: string) {
