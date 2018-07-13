@@ -458,9 +458,7 @@ export class NewRegisterComponent implements OnInit {
                 //console.log("Fuenteobtension_fo: " + this.rows[i].FUENTE_NEGOCIO);
             }
             
-          //  console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
-            //console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
-            //console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
+         
 
 
             ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
@@ -749,11 +747,12 @@ export class NewRegisterComponent implements OnInit {
         var cadena = campus.split('*');
         var word = cadena[0];
 
-        if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
+        //TelefonoCorreo
+       /* if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             LandingValidation.onlyNumber(event);
             LandingValidation.limitChar(event, word);
             LandingValidation.onlyNumberIgual(event, word);
-        }
+        }*/
     }
 
     onChange() {
@@ -946,15 +945,27 @@ export class NewRegisterComponent implements OnInit {
         var value = cadena[0];
 
         this.canalText = value.toUpperCase();
-        this.form.controls.TelefonoCorreo.clearValidators();
-        this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
-        console.log(value);
-        if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
+        //this.form.controls.TelefonoCorreo.clearValidators();
+
+        //this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
+        
+
+        
+        console.log("TelefonoCorreo.value: " + value);
+
+        //Chat: 68bed5d6-404f-e811-8113-3863bb3c5058
+        //Recuperacion: 70bed5d6-404f-e811-8113-3863bb3c5058 
+        //Watts: 6abed5d6-404f-e811-8113-3863bb3c5058
+
+
+       /* if (value == '68bed5d6-404f-e811-8113-3863bb3c5058' || value == '70bed5d6-404f-e811-8113-3863bb3c5058' || value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            
         } else {
             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
         }
-        this.form.controls.TelefonoCorreo.updateValueAndValidity();/**/
+        this.form.controls.TelefonoCorreo.updateValueAndValidity();*/ /**/
+
     }
 
     addValidation(isChecked) {
