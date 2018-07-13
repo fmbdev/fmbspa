@@ -98,5 +98,8 @@
     },
     "asesor": {
         "m1": "Elige un asesor"
+    },
+    "ejecutivo": {
+        "m1": "Elige un ejecutivo"
     }
 }

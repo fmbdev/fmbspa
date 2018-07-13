@@ -4,12 +4,13 @@
             <mat-grid-list class="" cols="2" rowHeight="70px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input matInput placeholder="Usuario" formControlName="Usuario" readonly>
+                        <input matInput placeholder="Usuario" formControlName="Usuario" readonly> {{Usuario}}
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Ejecutivo" placeholder="Ejecutivo" [disabled]=" perfil_usuario == 'UNTC Ejecutivo de Cuenta' ">
+                        <mat-select formControlName="Ejecutivo" placeholder="Ejecutivo*" [disabled]=" perfil_usuario == 'UNTC Ejecutivo de Cuenta' ">
+                            <mat-error *ngIf="form.controls.Ejecutivo.errors?.required">{{showMjs('ejecutivo.m1')}} </mat-error>
                             <mat-option *ngFor="let asesor of asesores;" [value]="asesor['asesorid']+'*'+asesor['Nombre Asesor']">
                                 {{ asesor['Nombre Asesor'] }}
                             </mat-option>

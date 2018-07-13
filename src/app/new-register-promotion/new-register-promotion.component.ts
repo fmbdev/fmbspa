@@ -179,6 +179,8 @@ export class NewRegisterPromotionComponent implements OnInit {
         localStorage.setItem('bandera','');
         this.perfil_usuario = localStorage.getItem('tipo_rol');
 
+        
+
         this.landingService.getInit();
 
         // Se obtienes los Subtipos de actividades
@@ -326,7 +328,6 @@ export class NewRegisterPromotionComponent implements OnInit {
 
 
 
-
     onSubmit() {
         
 
@@ -352,6 +353,11 @@ export class NewRegisterPromotionComponent implements OnInit {
 
           if (this.form.value.Edad < 11) {
             this.showDialogE("Tu edad debe ser mayor igual a 12 años");
+            return false;
+          }
+
+          if (this.form.value.Ejecutivo  == "") {
+            this.showDialogE("Debe seleccionar un ejecutivo");
             return false;
           }
 
