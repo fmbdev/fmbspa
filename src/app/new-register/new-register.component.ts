@@ -499,16 +499,7 @@ export class NewRegisterComponent implements OnInit {
             
             let CanalV = _Canal.split('*');
 
-            /*console.log(this.form.value.CampusCita);
-            console.log(this.form.value.FechaCita);
-            console.log(this.form.value.HoraCita);*/
-    
-            //var notasTxt = this.form.value.Notas;
-
-            //console.log("El Usuario que se envia: " + this.form.value.Usuario); 
-
-            //console.log("Fuente Obtension: " + this.form.value.FuenteObtencion);
-
+            
             const sendd = {
 
                 Usuario: this.form.value.Usuario,                
@@ -945,18 +936,34 @@ export class NewRegisterComponent implements OnInit {
         var value = cadena[0];
 
         this.canalText = value.toUpperCase();
-        //this.form.controls.TelefonoCorreo.clearValidators();
+        this.form.controls.TelefonoCorreo.clearValidators();
 
         //this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
         
 
         
-        console.log("TelefonoCorreo.value: " + value);
+        //console.log("Canal.value: " + value);
 
         //Chat: 68bed5d6-404f-e811-8113-3863bb3c5058
         //Recuperacion: 70bed5d6-404f-e811-8113-3863bb3c5058 
         //Watts: 6abed5d6-404f-e811-8113-3863bb3c5058
 
+       
+        this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
+        this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            
+
+
+       
+        //if ( value == '68bed5d6-404f-e811-8113-3863bb3c5058' || value == '70bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' ) {
+        //    this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator(), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+          //  //this.form.controls.TelefonoCorreo.setValidators([]);
+        //} else {
+
+            //this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
+            //this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            //}
+       // this.form.controls.TelefonoCorreo.updateValueAndValidity();
 
        /* if (value == '68bed5d6-404f-e811-8113-3863bb3c5058' || value == '70bed5d6-404f-e811-8113-3863bb3c5058' || value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);

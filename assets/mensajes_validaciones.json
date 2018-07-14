@@ -32,8 +32,8 @@
         "m1": "Elige tu género"
     },
     "edad": {
-        "m1": "Al menos debe contener 2 dígitos",
-        "m2": "Al menos debe ser mayor de 12 años"
+        "m1": "Al menos debe contener 2 dígitos y debe ser mayor de 11 años"
+            //"m2": "Al menos debe ser mayor de 12 años"
     },
     "cana_preferido": {
         "m1": "Elige un canal preferido"
