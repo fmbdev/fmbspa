@@ -426,7 +426,15 @@ export class NewRegisterComponent implements OnInit {
                 var ciclo_mocho = CicloV[1].split('-');
 
 
-                ciclo = "C"+ciclo_mocho[1];
+                console.log("ciclo_mocho[1] = "+ciclo_mocho[1]);
+
+                if(ciclo_mocho[1] = "" or ciclo_mocho[1] == null){
+                ciclo = null;
+                }else{
+                    ciclo = "C"+ciclo_mocho[1];
+                }
+                
+
 
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
                     
