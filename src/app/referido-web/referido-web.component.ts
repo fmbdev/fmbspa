@@ -307,6 +307,11 @@ export class ReferidoWebComponent implements OnInit {
              ciclo = "C"+ciclo_mocho[1];
         } 
 
+       // console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
+       // console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
+       // console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
+
+
 
       for (let i = 0; i < this.rows.length; i++) {
 
@@ -322,8 +327,9 @@ export class ReferidoWebComponent implements OnInit {
         }
         
       }
-
-     
+      //Asignacion nueva de Ciclo
+     ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
+     //console.log("Nuevo Ciclo: " + ciclo);
     // -------------------------------- Predictivo  ----------------------------------
      
 
