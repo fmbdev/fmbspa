@@ -623,6 +623,28 @@ export class NewRegisterExistingComponent implements OnInit {
 
             //console.log("Fuente Obtension: " + this.form.value.FuenteObtencion);
 
+            console.log("TelefonoCorreo desde Form: "+this.form.value.TelefonoCorreo);
+            /**********Funcion para validar si contiene Telefono o correo************/ 
+
+            //function validar_TelefonoCorreo(num) {
+                if (isNaN(this.form.value.TelefonoCorreo)) {
+                    //Aqui asignamos Correo
+                        if(this.form.value.CorreoElectronico == "" || this.form.value.CorreoElectronico == null ){
+                            this.form.value.CorreoElectronico = this.form.value.TelefonoCorreo;
+                        }
+                    console.log("Conteniene: Correo");
+
+                } else {
+                    //Aqui asignamos Telefono
+                    if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
+                        this.form.value.Telefono = this.form.value.TelefonoCorreo;
+                    }
+                    console.log("Conteniene: Telefono");
+                }
+           // }
+            
+            /*********Termina funcion para validar si contiene Telefono o correo***********/
+
             const sendd = {
 
               Usuario: this.form.value.Usuario,
