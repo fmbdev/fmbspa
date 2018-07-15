@@ -275,7 +275,7 @@ export class NewRegisterExistingComponent implements OnInit {
                         
                         this.form.controls.Canal.reset({ value: carrerasValue, disabled: false });
                         this.form.controls.CSQ.reset({ value: U.crmit_csq, disabled: false });
-
+                        this.onFielCanal(carrerasValue);
                 }
             ) /*/*
         //
@@ -860,8 +860,12 @@ export class NewRegisterExistingComponent implements OnInit {
 
         var cadena = campus.split('*');
         var word = cadena[0];
-
-        if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
+        console.log('value 2');
+       
+        var cadena2 = value.split('*');
+        var word2 = cadena2[0];
+        console.log(word2);
+        if (word2 == '64bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '66bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6abed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             LandingValidation.onlyNumber(event);
             LandingValidation.limitChar(event, word);
             LandingValidation.onlyNumberIgual(event, word);
@@ -1082,6 +1086,7 @@ export class NewRegisterExistingComponent implements OnInit {
         this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
         console.log(value);
+        console.log('value');
         if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
         } else {

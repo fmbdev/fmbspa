@@ -759,8 +759,16 @@ export class NewRegisterExistingSoloComponent implements OnInit {
         LandingValidation.onlyLetter(event);
     }
 
-    _keyPressNum(event: any, value: any, word: any) {
-        if (value == 1) {
+    _keyPressNum(event: any, value: any, campus: any) {
+
+        var cadena = campus.split('*');
+        var word = cadena[0];
+        console.log('value 2');
+       
+        var cadena2 = value.split('*');
+        var word2 = cadena2[0];
+        console.log(word2);
+        if (word2 == '64bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '66bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6abed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             LandingValidation.onlyNumber(event);
             LandingValidation.limitChar(event, word);
             LandingValidation.onlyNumberIgual(event, word);
