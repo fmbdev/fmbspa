@@ -58,6 +58,7 @@ export class SearchResultsComponent implements OnInit {
     $.ajax(settings2).done(function (response) {
       const user = JSON.stringify(response);
       const fuente = response.value[0].crmit_fuenteobtencionname;
+      console.log(fuente);
       localStorage.setItem('lead_user', user);
       if(fuente=='SOLOVINOS'){
          go.onGoto('/register-existing-solo');

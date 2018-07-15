@@ -350,13 +350,15 @@ export class NewRegisterExistingComponent implements OnInit {
                 //campus
                 const objecCam = this.getObjects(this.campus, 'crmit_tb_campusid', U._crmit_campusid_value);
                 this.campusValue = objecCam[0].crmit_tb_campusid+'*'+objecCam[0].crmi_name;
-                
+                this.campusTxt = objecCam[0].crmi_name;
+
                 //nivel
                 this.niveles = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
                 const nivelesEstudio = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
                 const objecNivelEstudio = this.getObjects(nivelesEstudio, 'crmit_codigounico', U._crmit_nivelinteresid_value);
                 const nivelEstudioValue = objecNivelEstudio[0].crmit_codigounico+'*'+objecNivelEstudio[0].crmit_name;
-                
+                this.nivelTxt =objecNivelEstudio[0].crmit_name;
+
                 //modalidad
                 this.modalidades = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
                 const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
