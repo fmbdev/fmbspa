@@ -66,6 +66,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
     form: FormGroup;
     sinEmail=false;
     conEmail = true;
+    campusValue = '';
 
 
     //maxDate = new Date(2018, this.month.getMonth(),12);
@@ -261,28 +262,34 @@ export class NewRegisterExistingSoloComponent implements OnInit {
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
         
+
+        let userSearch = localStorage.getItem('lead_user');
+        let jsonSearch = JSON.parse(userSearch);
+        let U = jsonSearch.value[0];
+
+        
         this.form = new FormGroup({
 
             Usuario: new FormControl({ value: datos.fullname, disabled: true }),
  
             SinCorreo: new FormControl(''),
 
-            Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
-            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
-            Genero: new FormControl(''),
+            Nombre: new FormControl(U.firstname, [LandingValidation.palabraMalaValidator()]),
+            ApellidoPaterno: new FormControl(U.middlename, [LandingValidation.palabraMalaValidator()]),
+            ApellidoMaterno: new FormControl(U.lastname, [LandingValidation.palabraMalaValidator()]),
+            CorreoElectronico: new FormControl(U.emailaddress1, [Validators.required, LandingValidation.emailMaloValidator()]),
+            NumeroCelular: new FormControl(U.mobilephone, [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Telefono: new FormControl(U.telephone1, [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Genero: new FormControl(U.crmit_sexo),
             FechaNacimiento: new FormControl(''),
-            Edad: new FormControl('', [Validators.minLength(2)]),
+            Edad: new FormControl(U.crmit_edad, [Validators.minLength(2)]),
 
-            NombreTutor: new FormControl(''),
-            ApellidoPaternoTutor: new FormControl(''),
-            ApellidoMaternoTutor: new FormControl(''),
-            CorreoElectronicoTutor: new FormControl(''),
-            NumeroCelularTutor: new FormControl(''),
-            TelefonoTutor: new FormControl(''),
+            NombreTutor: new FormControl(U.crmit_nombretutor),
+            ApellidoPaternoTutor: new FormControl(U.crmit_apaternotutor),
+            ApellidoMaternoTutor: new FormControl(U.lastname),
+            CorreoElectronicoTutor: new FormControl(U.crmit_emailtutor),
+            NumeroCelularTutor: new FormControl(U.telephone1),
+            TelefonoTutor: new FormControl(U.telephone2),
             ParentescoTutor: new FormControl(''),
 
             Campus: new FormControl(''),
@@ -292,6 +299,68 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             Carrera: new FormControl({ value: '', disabled: true }),
             Ciclo: new FormControl(''),
         });
+        //parentescoServ
+        this.parentescoServ.getAll()
+            .subscribe(
+                (data: Parentesco[]) =>{
+                    const parentescoObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_tipocontactoid_value);
+                    const parentescoValue = parentescoObjec[0].crmit_name+'*'+parentescoObjec[0].crmit_codigounico;
+                    this.form.controls.ParentescoTutor.reset({ value: parentescoValue, disabled: false });
+                }
+            )
+
+        this.campusServ.getAll()
+        .subscribe(
+            (data: Campus[]) => {
+                //campus
+                const objecCam = this.getObjects(this.campus, 'crmit_tb_campusid', U._crmit_campusid_value);
+                this.campusValue = objecCam[0].crmit_tb_campusid+'*'+objecCam[0].crmi_name;
+                
+                //nivel
+                this.niveles = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                const nivelesEstudio = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                const objecNivelEstudio = this.getObjects(nivelesEstudio, 'crmit_codigounico', U._crmit_nivelinteresid_value);
+                const nivelEstudioValue = objecNivelEstudio[0].crmit_codigounico+'*'+objecNivelEstudio[0].crmit_name;
+                
+                //modalidad
+                this.modalidades = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                const modalidadObjec = this.getObjects(modalidadess, 'crmit_codigounico', U._crmit_modalidadid_value);
+                const modalidadValue = modalidadObjec[0].crmit_codigounico+'*'+modalidadObjec[0].crmit_name;
+                
+                //carrera
+                this.carreras = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                const carrerass = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                const carrerasObjec = this.getObjects(carrerass, 'codigounico', U._crmit_carrerainteresid_value);
+                const carrerasValue = carrerasObjec[0].codigounico+'*'+carrerasObjec[0].name;
+
+                this.form.controls.Campus.reset({ value: this.campusValue , disabled: false });
+                this.form.controls.Nivel.reset({ value: nivelEstudioValue, disabled: false });
+                this.form.controls.Modalidad.reset({ value: modalidadValue, disabled: false });
+                this.form.controls.Carrera.reset({ value: carrerasValue, disabled: false });
+            }
+        )
+        //ciclo
+        this.cicloServ.getAll()
+            .subscribe(
+            (data: Ciclo[]) => {
+                    const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
+                    const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas;
+
+                    this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
+
+                }
+            )
+        //Area de Interes
+        this.interesServ.getAll()
+        .subscribe(
+            (data: Interes[]) =>{
+                const interesObjec = this.getObjects(data, 'id', U._crmit_areaatencionid_value);
+                const peopleArray = Object.values(interesObjec[0]);
+                const interesValue = peopleArray[0]+'*'+peopleArray[1];
+                this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
+            }
+        )
     }
 
     onSubmit() {
@@ -586,7 +655,25 @@ export class NewRegisterExistingSoloComponent implements OnInit {
         window.location.href = "/registerSolo";
         this.form.reset();
     }
-
+    getObjects(obj, key, val) {
+        var objects = [];
+        for (var i in obj) {
+            if (!obj.hasOwnProperty(i)) continue;
+            if (typeof obj[i] == 'object') {
+                objects = objects.concat(this.getObjects(obj[i], key, val));
+            } else
+                //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+                if (i == key && obj[i] == val || i == key && val == '') { //
+                    objects.push(obj);
+                } else if (obj[i] == val && key == '') {
+                    //only add if the object is not already in the array
+                    if (objects.lastIndexOf(obj) == -1) {
+                        objects.push(obj);
+                    }
+                }
+        }
+        return objects;
+    }
     onKeyFechaNacimiento() {
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();

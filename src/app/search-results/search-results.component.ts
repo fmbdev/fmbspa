@@ -56,9 +56,14 @@ export class SearchResultsComponent implements OnInit {
     }
 
     $.ajax(settings2).done(function (response) {
-      let user = JSON.stringify(response)
+      const user = JSON.stringify(response);
+      const fuente = response.value[0].crmit_fuenteobtencionname;
       localStorage.setItem('lead_user', user);
-      go.onGoto('/register-existing');
+      if(fuente=='SOLOVINOS'){
+         go.onGoto('/register-existing-solo');
+      }else if(fuente=='INBOUND'){
+        go.onGoto('/register-existing');
+     }
     });
   }
   
