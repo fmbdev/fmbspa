@@ -315,7 +315,9 @@ export class ReferidoPromotorComponent implements OnInit {
     }
 
     
-
+ //Asignacion nueva de Ciclo
+ ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
+ //console.log("Nuevo Ciclo: " + ciclo);
      
     // -------------------------------- Predictivo  ----------------------------------
             let edadT = this.form.value.Edad;

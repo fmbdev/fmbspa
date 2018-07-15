@@ -17,6 +17,7 @@ import { ReferidoTlmkComponent } from './referido-tlmk/referido-tlmk.component';
 import { ReferidoWebComponent } from './referido-web/referido-web.component';
 import { NewRegisterExistingComponent } from './new-register-existing/new-register-existing.component';
 import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
+import { NewRegisterExistingSoloComponent } from './new-register-existing-solo/new-register-existing-solo.component';
 import { FormComponent } from './form/form.component';
 import { 
   AuthGuardService as AuthGuard 
@@ -46,6 +47,11 @@ const routes: Routes = [
   {
     path: 'register-existing',
     component: NewRegisterExistingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'register-existing-solo',
+    component: NewRegisterExistingSoloComponent,
     canActivate: [AuthGuard]
   },
   {
