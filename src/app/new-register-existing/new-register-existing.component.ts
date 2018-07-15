@@ -289,7 +289,7 @@ export class NewRegisterExistingComponent implements OnInit {
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl({ value: '', disabled: true }, Validators.required),
             TelefonoCorreo: new FormControl('', Validators.required),
-            Interesa_NoInteresa: new FormControl('', Validators.required),
+            Interesa_NoInteresa: new FormControl('0', Validators.required),
 
             Nombre: new FormControl(U.firstname, [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl(U.middlename, [LandingValidation.palabraMalaValidator()]),
