@@ -534,7 +534,20 @@ export class NewRegisterComponent implements OnInit {
             
             /*********Termina funcion para validar si contiene Telefono o correo***********/
             /******Si la opcion de no me inter******/    
+            
+            let arm_bandera = "";
 
+           // console.log("Valor de Transferencia: " + this.form.controls.Transferencia.value);
+            // console.log("Valor de Programacion: " + this.form.controls.Programacion.value);
+
+            if(this.form.controls.Transferencia.value == true){
+                arm_bandera = "Cita-"+this.form.value.Asesor;
+                console.log("Bandera Transferencia: "+arm_bandera);
+
+            }else if(this.form.controls.Programacion.value == true){
+                arm_bandera = "RLL-"+this.form.value.FechaCita+"-"+this.form.value.HoraCita+"-"+this.form.value.NumeroCelular;
+                console.log("Bandera Programacion: "+arm_bandera);
+            }
 
             const sendd = {
 
@@ -583,7 +596,7 @@ export class NewRegisterComponent implements OnInit {
 
                 
                 Banner: this.form.value.Banner,
-                Bandera:"",
+                Bandera: (arm_bandera == '') ? null :arm_bandera,
 
                 Tipificacion: this.form.value.Tipificacion,
 
@@ -1032,12 +1045,56 @@ export class NewRegisterComponent implements OnInit {
 
     addAsesor(isChecked) {
         if (isChecked.checked) {
+            
             this.form.controls.Asesor.reset({ value: '', disabled: false });
+
+            this.form.controls.CampusCita.reset({ value: '', disabled: true });
+            this.form.controls.FechaCita.reset({ value: '', disabled: true });
+            this.form.controls.HoraCita.reset({ value: '', disabled: true });
+            this.form.controls.Programacion.reset({ value: '', disabled: true });
+            
+            
+        
         } else {
+
+            this.form.controls.CampusCita.reset({ value: '', disabled: false });
+            this.form.controls.FechaCita.reset({ value: '', disabled: false });
+            this.form.controls.HoraCita.reset({ value: '', disabled: false });
+            this.form.controls.Programacion.reset({ value: '', disabled: false });
+            
+
             this.form.controls.Asesor.reset({ value: '', disabled: true });
+            
+        
         }
+        
         this.form.controls.Asesor.updateValueAndValidity();
     }
+
+    checkProgramacion(isChecked) {
+        if (isChecked.checked) {
+            
+            this.form.controls.Asesor.reset({ value: '', disabled: true });
+
+            this.form.controls.CampusCita.reset({ value: '', disabled: true });
+            this.form.controls.Transferencia.reset({ value: '', disabled: true });
+            console.log('activo');
+
+            
+        
+        } else {
+
+            this.form.controls.Asesor.reset({ value: '', disabled: true });
+            this.form.controls.CampusCita.reset({ value: '', disabled: false });
+            this.form.controls.Transferencia.reset({ value: '', disabled: false });
+            console.log('in activo');
+        
+        }
+        
+        this.form.controls.Asesor.updateValueAndValidity();
+    }
+
+
 
     showMjs(field: any) {
         return LandingValidation.getMensaje(field);
