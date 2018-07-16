@@ -334,9 +334,13 @@ export class ReferidoPromotorComponent implements OnInit {
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
 
-            
+            let u = localStorage.getItem('user');
+            let data = JSON.parse(u);
+            let nom_usu = data.fullname;
+
             const sendd = {
-              Usuario: this.form.value.Usuario,
+
+              Usuario:  nom_usu,
 
                 Nombre: this.form.value.Nombre,
                 ApellidoPaterno: this.form.value.ApellidoPaterno,

@@ -533,7 +533,7 @@ export class NewRegisterComponent implements OnInit {
            // }
             
             /*********Termina funcion para validar si contiene Telefono o correo***********/
-
+            /******Si la opcion de no me inter******/    
 
 
             const sendd = {

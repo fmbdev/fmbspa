@@ -346,9 +346,14 @@ export class ReferidoWebComponent implements OnInit {
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
 
-            const sendd = {
-                Usuario: this.form.value.Usuario,
 
+            let u = localStorage.getItem('user');
+            let data = JSON.parse(u);
+            let nom_usu = data.fullname;
+
+            const sendd = {
+
+              Usuario:  nom_usu,
                 NombreReferente: this.form.value.name_ref,
                 ApellidoPaternoReferente: this.form.value.patern_ref,
                 ApellidoMaternoReferente: this.form.value.matern_ref,

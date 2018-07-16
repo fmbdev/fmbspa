@@ -291,13 +291,18 @@ export class ReferidoReferenteComponent implements OnInit {
             let CarreraV = _Carrera.split('*');
              
 
+            let u = localStorage.getItem('user');
+            let data = JSON.parse(u);
+            let nom_usu = data.fullname;
+
             const sendd = {
 
+              Usuario:  nom_usu,
               TelefonoPredictivo: this.form.value.TelefonoPredictivo,
               TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
               TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
 
-                Usuario: this.form.value.Usuario,
+                
 
                 Nombre: this.form.value.Nombre,
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
