@@ -265,19 +265,20 @@ export class NewRegisterExistingComponent implements OnInit {
         //this.onChangeCanal('6abed5d6-404f-e811-8113-3863bb3c5058*WhatsApp');
 
 
-
-       this.canalServ.getAll()
-            .subscribe(
-                (data: Canal[]) => {
-                        const canalLead = this.getObjects(data, 'crmit_codigounico',  U._crmit_canalid_value);
-                        const carrerasValue = canalLead[0].crmit_codigounico + '*' + canalLead[0].crmit_name;
-                        this.csqs = this.csqServ.getCsqsByCanal(U._crmit_canalid_value);
-                        
-                        this.form.controls.Canal.reset({ value: carrerasValue, disabled: false });
-                        this.form.controls.CSQ.reset({ value: U.crmit_csq, disabled: false });
-                        this.onFielCanal(carrerasValue);
-                }
-            ) /*/*
+        if(U._crmit_canalid_value!==null){
+            this.canalServ.getAll()
+                .subscribe(
+                    (data: Canal[]) => {
+                            const canalLead = this.getObjects(data, 'crmit_codigounico',  U._crmit_canalid_value);
+                            const carrerasValue = canalLead[0].crmit_codigounico + '*' + canalLead[0].crmit_name;
+                            this.csqs = this.csqServ.getCsqsByCanal(U._crmit_canalid_value);
+                            
+                            this.form.controls.Canal.reset({ value: carrerasValue, disabled: false });
+                            this.form.controls.CSQ.reset({ value: U.crmit_csq, disabled: false });
+                            this.onFielCanal(carrerasValue);
+                    }
+                )
+        }
         //
 
 
@@ -335,72 +336,88 @@ export class NewRegisterExistingComponent implements OnInit {
         
         
         //parentescoServ
-        this.parentescoServ.getAll()
-            .subscribe(
-                (data: Parentesco[]) =>{
-                    const parentescoObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_tipocontactoid_value);
-                    const parentescoValue = parentescoObjec[0].crmit_name+'*'+parentescoObjec[0].crmit_codigounico;
-                    this.form.controls.ParentescoTutor.reset({ value: parentescoValue, disabled: false });
-                }
-            )
+        if(U._crmit_tipocontactoid_value!==null){
+            this.parentescoServ.getAll()
+                .subscribe(
+                    (data: Parentesco[]) =>{
+                        const parentescoObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_tipocontactoid_value);
+                        const parentescoValue = parentescoObjec[0].crmit_name+'*'+parentescoObjec[0].crmit_codigounico;
+                        this.form.controls.ParentescoTutor.reset({ value: parentescoValue, disabled: false });
+                    }
+                )
+        }
+        console.log(U._crmit_campusid_value);
 
-        this.campusServ.getAll()
-        .subscribe(
-            (data: Campus[]) => {
-                //campus
-                const objecCam = this.getObjects(this.campus, 'crmit_tb_campusid', U._crmit_campusid_value);
-                this.campusValue = objecCam[0].crmit_tb_campusid+'*'+objecCam[0].crmi_name;
-                this.campusTxt = objecCam[0].crmi_name;
+        if(U._crmit_campusid_value!==null){
+            console.log('aaaaaaaaaaaaaaaa aqui');
+            this.campusServ.getAll()
+                .subscribe(
+                    (data: Campus[]) => {
+                        //campus
+                        const objecCam = this.getObjects(this.campus, 'crmit_tb_campusid', U._crmit_campusid_value);
+                        this.campusValue = objecCam[0].crmit_tb_campusid+'*'+objecCam[0].crmi_name;
+                        this.campusTxt = objecCam[0].crmi_name;
 
-                //nivel
-                this.niveles = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
-                const nivelesEstudio = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
-                const objecNivelEstudio = this.getObjects(nivelesEstudio, 'crmit_codigounico', U._crmit_nivelinteresid_value);
-                const nivelEstudioValue = objecNivelEstudio[0].crmit_codigounico+'*'+objecNivelEstudio[0].crmit_name;
-                this.nivelTxt =objecNivelEstudio[0].crmit_name;
+                        //nivel
+                        this.niveles = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                        const nivelesEstudio = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                        const objecNivelEstudio = this.getObjects(nivelesEstudio, 'crmit_codigounico', U._crmit_nivelinteresid_value);
+                        const nivelEstudioValue = objecNivelEstudio[0].crmit_codigounico+'*'+objecNivelEstudio[0].crmit_name;
+                        this.nivelTxt =objecNivelEstudio[0].crmit_name;
 
-                //modalidad
-                this.modalidades = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
-                const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
-                const modalidadObjec = this.getObjects(modalidadess, 'crmit_codigounico', U._crmit_modalidadid_value);
-                const modalidadValue = modalidadObjec[0].crmit_codigounico+'*'+modalidadObjec[0].crmit_name;
-                
-                //carrera
-                this.carreras = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
-                const carrerass = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
-                const carrerasObjec = this.getObjects(carrerass, 'codigounico', U._crmit_carrerainteresid_value);
-                const carrerasValue = carrerasObjec[0].codigounico+'*'+carrerasObjec[0].name;
+                        //modalidad
+                        this.modalidades = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                        const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                        const modalidadObjec = this.getObjects(modalidadess, 'crmit_codigounico', U._crmit_modalidadid_value);
+                        const modalidadValue = modalidadObjec[0].crmit_codigounico+'*'+modalidadObjec[0].crmit_name;
+                        
+                        //carrera
+                        this.carreras = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                        const carrerass = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                        const carrerasObjec = this.getObjects(carrerass, 'codigounico', U._crmit_carrerainteresid_value);
+                        const carrerasValue = carrerasObjec[0].codigounico+'*'+carrerasObjec[0].name;
 
-                this.form.controls.Campus.reset({ value: this.campusValue , disabled: false });
-                this.form.controls.Nivel.reset({ value: nivelEstudioValue, disabled: false });
-                this.form.controls.Modalidad.reset({ value: modalidadValue, disabled: false });
-                this.form.controls.Carrera.reset({ value: carrerasValue, disabled: false });
-            }
-        )
-        //ciclo
-        this.cicloServ.getAll()
-            .subscribe(
-            (data: Ciclo[]) => {
-                    const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
-                    const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas;
+                        this.form.controls.Campus.reset({ value: this.campusValue , disabled: false });
+                        this.form.controls.Nivel.reset({ value: nivelEstudioValue, disabled: false });
+                        this.form.controls.Modalidad.reset({ value: modalidadValue, disabled: false });
+                        this.form.controls.Carrera.reset({ value: carrerasValue, disabled: false });
+                    }
+                )
+        }
+        
+        if(U._crmit_ciclointeresid_value!==null){
+            this.cicloServ.getAll()
+                .subscribe(
+                (data: Ciclo[]) => {
+                        const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
+                        const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas;
 
-                    this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
+                        this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
 
-                }
-            )
+                    }
+                )
+        }
+
         //Area de Interes
-        this.interesServ.getAll()
-        .subscribe(
-            (data: Interes[]) =>{
-                const interesObjec = this.getObjects(data, 'id', U._crmit_areaatencionid_value);
-                const peopleArray = Object.values(interesObjec[0]);
-                const interesValue = peopleArray[0]+'*'+peopleArray[1];
-                this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
-            }
-        )
+        if(U._crmit_areaatencionid_value!==null){
+            this.interesServ.getAll()
+            .subscribe(
+                (data: Interes[]) =>{
+                    const interesObjec = this.getObjects(data, 'id', U._crmit_areaatencionid_value);
+                    if(interesObjec.length != 0 ){
+                        console.log(this.getObjects(data, 'id', U._crmit_areaatencionid_value));
+                        const peopleArray = Object.values(interesObjec[0]);
+                        const interesValue = peopleArray[0]+'*'+peopleArray[1];
+                        this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
+                    }
+                    
+                }
+            )
+        }
 
 
         //Tipificacion
+        if(U.crmit_tipificacion!==null){
             this.tipicicacionServ.getAll()
             .subscribe(
                 (data: Tipificacion[]) => {
@@ -409,13 +426,10 @@ export class NewRegisterExistingComponent implements OnInit {
                     this.form.controls.Tipificacion.reset({ value: tipificacioncoValue, disabled: false });
                 }
             )
-
+        }
             const fecha_citas = this.formatServ.changeFormatFecha(U.crmit_fechacreacioncita);
 
             this.form.controls.FechaCita.reset({ value: fecha_citas, disabled: false });
-        
-        
-        
     }
 
     onSubmit() {

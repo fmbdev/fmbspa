@@ -48,7 +48,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Teléfono o Correo Electrónico" (keypress($event,form.controls.Canal.value,form.controls.TelefonoCorreo.value)" class="validPhoneNumber">
+                        <input autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Teléfono o Correo Electrónico"  class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.emailMalo && !form.controls.TelefonoCorreo.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                         <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.minlength && !form.controls.TelefonoCorreo.errors?.required  && !form.controls.TelefonoCorreo.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.aceptNumber  && !form.controls.TelefonoCorreo.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
