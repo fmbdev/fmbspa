@@ -170,6 +170,8 @@ export class ReferidoTlmkComponent implements OnInit {
 
     this.mostrarExtension = true;
 
+ 
+
     // -------------------------------- Predictivo  ----------------------------------
 
     if (this.form.controls['CorreoElectronico'].value != "") {
@@ -267,6 +269,12 @@ export class ReferidoTlmkComponent implements OnInit {
 
       } 
     }
+
+    //Asignacion nueva de Ciclo
+    ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
+    //console.log("Nuevo Ciclo: " + ciclo);
+
+    
     // -------------------------------- Predictivo  ----------------------------------
 
     

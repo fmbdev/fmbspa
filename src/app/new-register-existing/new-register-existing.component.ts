@@ -64,6 +64,9 @@ import { CampusCarreraService } from '../providers/campus-carrera.service';
 
 
 export class NewRegisterExistingComponent implements OnInit {
+
+
+    campusValue = '';
     form: FormGroup;
     sinEmail = false;
     conEmail = true;
@@ -235,7 +238,8 @@ export class NewRegisterExistingComponent implements OnInit {
             .subscribe(
                 (data: AsesorGrupal[]) => this.asesoresGrupal = data
             )
-
+        
+           
 
         this.formInit();
     }
@@ -261,30 +265,32 @@ export class NewRegisterExistingComponent implements OnInit {
         //this.onChangeCanal('6abed5d6-404f-e811-8113-3863bb3c5058*WhatsApp');
 
 
-        let CanalLead =[];
-        let canalP = U.crmit_canalpreferido;
-
-        this.canalServ.getAll()
-            .subscribe(
-                (data: Canal[]) => {
-                    if (canalP == 'Voz') {
-                        CanalLead = this.getObjects(this.canales, 'crmit_name', 'WhatsApp');
-                        console.log(CanalLead[0].crmit_codigounico);
-                        //this.csqs = this.csqServ.getCsqsByCanal(CanalLead[0].crmit_codigounico);
-                    } else {
-                        CanalLead = this.getObjects(this.canales, 'crmit_name', 'Inbound');
-                        console.log(CanalLead);
-                        //this.csqs = this.csqServ.getCsqsByCanal(CanalLead[0].crmit_codigounico);
+        if(U._crmit_canalid_value!==null){
+            this.canalServ.getAll()
+                .subscribe(
+                    (data: Canal[]) => {
+                            const canalLead = this.getObjects(data, 'crmit_codigounico',  U._crmit_canalid_value);
+                            const carrerasValue = canalLead[0].crmit_codigounico + '*' + canalLead[0].crmit_name;
+                            this.csqs = this.csqServ.getCsqsByCanal(U._crmit_canalid_value);
+                            
+                            this.form.controls.Canal.reset({ value: carrerasValue, disabled: false });
+                            this.form.controls.CSQ.reset({ value: U.crmit_csq, disabled: false });
+                            this.onFielCanal(carrerasValue);
                     }
-                }
-            )
-        //CanalLead[0].crmit_codigounico + '*' + CanalLead[0].crmit_name
+                )
+        }
+        //
+
+
+        /* AREA DE INTERES */
+        //Calculando Campus
+       
         this.form = new FormGroup({
             Usuario: new FormControl({ value: datos.fullname, disabled: false }),
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl({ value: '', disabled: true }, Validators.required),
             TelefonoCorreo: new FormControl('', Validators.required),
-            Interesa_NoInteresa: new FormControl('', Validators.required),
+            Interesa_NoInteresa: new FormControl('0', Validators.required),
 
             Nombre: new FormControl(U.firstname, [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl(U.middlename, [LandingValidation.palabraMalaValidator()]),
@@ -304,9 +310,9 @@ export class NewRegisterExistingComponent implements OnInit {
             CorreoElectronicoTutor: new FormControl(U.crmit_emailtutor),
             NumeroCelularTutor: new FormControl(U.telephone1),
             TelefonoTutor: new FormControl(U.telephone2),
-            ParentescoTutor: new FormControl(U._crmit_tipocontactoid_value),
+            ParentescoTutor: new FormControl(''),
 
-            Campus: new FormControl(''),
+            Campus: new FormControl(this.campusValue),
             AreaInteres: new FormControl(''),
             Nivel: new FormControl({ value: '', disabled: true }),
             Modalidad: new FormControl({ value: '', disabled: true }),
@@ -318,7 +324,7 @@ export class NewRegisterExistingComponent implements OnInit {
             NumeroCuenta: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
 
             Tipificacion: new FormControl(''),
-            Notas: new FormControl(''),
+            Notas: new FormControl(U.crmit_notas),
 
             CampusCita: new FormControl({ value: '', disabled: true }),
             FechaCita: new FormControl({ value: '', disabled: true }),
@@ -327,6 +333,103 @@ export class NewRegisterExistingComponent implements OnInit {
             Transferencia: new FormControl({ value: '', disabled: true }),
             Asesor: new FormControl({ value: '', disabled: true })
         });
+        
+        
+        //parentescoServ
+        if(U._crmit_tipocontactoid_value!==null){
+            this.parentescoServ.getAll()
+                .subscribe(
+                    (data: Parentesco[]) =>{
+                        const parentescoObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_tipocontactoid_value);
+                        const parentescoValue = parentescoObjec[0].crmit_name+'*'+parentescoObjec[0].crmit_codigounico;
+                        this.form.controls.ParentescoTutor.reset({ value: parentescoValue, disabled: false });
+                    }
+                )
+        }
+        console.log(U._crmit_campusid_value);
+
+        if(U._crmit_campusid_value!==null){
+            console.log('aaaaaaaaaaaaaaaa aqui');
+            this.campusServ.getAll()
+                .subscribe(
+                    (data: Campus[]) => {
+                        //campus
+                        const objecCam = this.getObjects(this.campus, 'crmit_tb_campusid', U._crmit_campusid_value);
+                        this.campusValue = objecCam[0].crmit_tb_campusid+'*'+objecCam[0].crmi_name;
+                        this.campusTxt = objecCam[0].crmi_name;
+
+                        //nivel
+                        this.niveles = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                        const nivelesEstudio = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                        const objecNivelEstudio = this.getObjects(nivelesEstudio, 'crmit_codigounico', U._crmit_nivelinteresid_value);
+                        const nivelEstudioValue = objecNivelEstudio[0].crmit_codigounico+'*'+objecNivelEstudio[0].crmit_name;
+                        this.nivelTxt =objecNivelEstudio[0].crmit_name;
+
+                        //modalidad
+                        this.modalidades = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                        const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                        const modalidadObjec = this.getObjects(modalidadess, 'crmit_codigounico', U._crmit_modalidadid_value);
+                        const modalidadValue = modalidadObjec[0].crmit_codigounico+'*'+modalidadObjec[0].crmit_name;
+                        
+                        //carrera
+                        this.carreras = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                        const carrerass = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                        const carrerasObjec = this.getObjects(carrerass, 'codigounico', U._crmit_carrerainteresid_value);
+                        const carrerasValue = carrerasObjec[0].codigounico+'*'+carrerasObjec[0].name;
+
+                        this.form.controls.Campus.reset({ value: this.campusValue , disabled: false });
+                        this.form.controls.Nivel.reset({ value: nivelEstudioValue, disabled: false });
+                        this.form.controls.Modalidad.reset({ value: modalidadValue, disabled: false });
+                        this.form.controls.Carrera.reset({ value: carrerasValue, disabled: false });
+                    }
+                )
+        }
+        
+        if(U._crmit_ciclointeresid_value!==null){
+            this.cicloServ.getAll()
+                .subscribe(
+                (data: Ciclo[]) => {
+                        const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
+                        const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas;
+
+                        this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
+
+                    }
+                )
+        }
+
+        //Area de Interes
+        if(U._crmit_areaatencionid_value!==null){
+            this.interesServ.getAll()
+            .subscribe(
+                (data: Interes[]) =>{
+                    const interesObjec = this.getObjects(data, 'id', U._crmit_areaatencionid_value);
+                    if(interesObjec.length != 0 ){
+                        console.log(this.getObjects(data, 'id', U._crmit_areaatencionid_value));
+                        const peopleArray = Object.values(interesObjec[0]);
+                        const interesValue = peopleArray[0]+'*'+peopleArray[1];
+                        this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
+                    }
+                    
+                }
+            )
+        }
+
+
+        //Tipificacion
+        if(U.crmit_tipificacion!==null){
+            this.tipicicacionServ.getAll()
+            .subscribe(
+                (data: Tipificacion[]) => {
+                    const tipificacionObjec = this.getObjects(data, 'Tipificación', U.crmit_tipificacion);
+                    const tipificacioncoValue = tipificacionObjec[0].Tipificación;
+                    this.form.controls.Tipificacion.reset({ value: tipificacioncoValue, disabled: false });
+                }
+            )
+        }
+            //const fecha_citas = this.formatServ.changeFormatFecha(U.crmit_fechacreacioncita);
+
+            //this.form.controls.FechaCita.reset({ value: fecha_citas, disabled: false });
     }
 
     onSubmit() {
@@ -533,6 +636,28 @@ export class NewRegisterExistingComponent implements OnInit {
             //console.log("El Usuario que se envia: " + this.form.value.Usuario); 
 
             //console.log("Fuente Obtension: " + this.form.value.FuenteObtencion);
+
+            console.log("TelefonoCorreo desde Form: "+this.form.value.TelefonoCorreo);
+            /**********Funcion para validar si contiene Telefono o correo************/ 
+
+            //function validar_TelefonoCorreo(num) {
+                if (isNaN(this.form.value.TelefonoCorreo)) {
+                    //Aqui asignamos Correo
+                        if(this.form.value.CorreoElectronico == "" || this.form.value.CorreoElectronico == null ){
+                            this.form.value.CorreoElectronico = this.form.value.TelefonoCorreo;
+                        }
+                    console.log("Conteniene: Correo");
+
+                } else {
+                    //Aqui asignamos Telefono
+                    if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
+                        this.form.value.Telefono = this.form.value.TelefonoCorreo;
+                    }
+                    console.log("Conteniene: Telefono");
+                }
+           // }
+            
+            /*********Termina funcion para validar si contiene Telefono o correo***********/
 
             const sendd = {
 
@@ -771,8 +896,12 @@ export class NewRegisterExistingComponent implements OnInit {
 
         var cadena = campus.split('*');
         var word = cadena[0];
-
-        if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
+        console.log('value 2');
+       
+        var cadena2 = value.split('*');
+        var word2 = cadena2[0];
+        console.log(word2);
+        if (word2 == '64bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '66bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6abed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             LandingValidation.onlyNumber(event);
             LandingValidation.limitChar(event, word);
             LandingValidation.onlyNumberIgual(event, word);
@@ -993,6 +1122,7 @@ export class NewRegisterExistingComponent implements OnInit {
         this.form.controls.TelefonoCorreo.clearValidators();
         this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
         console.log(value);
+        console.log('value');
         if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
         } else {

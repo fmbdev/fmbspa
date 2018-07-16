@@ -76,6 +76,7 @@ import { ReferidoPromotorComponent } from './referido-promotor/referido-promotor
 import { ReferidoTlmkComponent } from './referido-tlmk/referido-tlmk.component';
 import { ReferidoWebComponent } from './referido-web/referido-web.component';
 import { NewRegisterExistingComponent } from './new-register-existing/new-register-existing.component';
+import { NewRegisterExistingSoloComponent } from './new-register-existing-solo/new-register-existing-solo.component';
 import { NewRegisterExistingReceptionComponent } from './new-register-existing-reception/new-register-existing-reception.component';
 import { FormComponent } from './form/form.component';
 
@@ -108,6 +109,7 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
     ReferidoTlmkComponent,
     ReferidoWebComponent,
     NewRegisterExistingComponent,
+    NewRegisterExistingSoloComponent,
     NewRegisterExistingReceptionComponent,
     FormComponent,
     DialogComponent,

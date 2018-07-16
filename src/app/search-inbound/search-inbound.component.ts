@@ -416,6 +416,7 @@ export class SearchInboundComponent implements OnInit {
             console.log(response.value);
             let jj = JSON.stringify(response.value);
             localStorage.setItem('search_value',jj);
+            localStorage.setItem('search_tipo','search_inbound');
             this.reesults = response.value;
              es.router.navigate(['/results']);
           }); 

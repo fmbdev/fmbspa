@@ -266,6 +266,10 @@ export class ReferidoReferenteComponent implements OnInit {
 
       }
     }
+
+     //Asignacion nueva de Ciclo
+     ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
+     //console.log("Nuevo Ciclo: " + ciclo);
     // -------------------------------- Predictivo  -----------------------------------
         
 

@@ -56,9 +56,14 @@ export class SearchResultsComponent implements OnInit {
     }
 
     $.ajax(settings2).done(function (response) {
-      let user = JSON.stringify(response)
+      const user = JSON.stringify(response);
       localStorage.setItem('lead_user', user);
-      go.onGoto('/register-existing');
+      const tipo_search = localStorage.getItem('search_tipo');
+      if(tipo_search=='search_inbound'){
+         go.onGoto('/register-existing');
+      }else{
+        go.onGoto('/register-existing-solo');
+     }
     });
   }
   

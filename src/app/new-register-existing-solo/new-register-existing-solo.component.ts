@@ -4,8 +4,6 @@ import { FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, Ng
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 
-
-
 import { MatDialog, MatSelect, MatDialogRef, MAT_DIALOG_DATA, NativeDateAdapter } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
@@ -25,15 +23,15 @@ import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
 import { Genero } from '../interfaces/genero';
 import { Asesor } from '../interfaces/asesor';
-import { AsesorCita } from '../interfaces/asesor-cita';
+import { AsesorGrupal } from '../interfaces/asesor-grupal';
 import { Carrera } from '../interfaces/carrera';
 import { Interes } from '../interfaces/interes';
 import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
 import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
-import { AsesorGrupal } from '../interfaces/asesor-grupal';
-
+import { TipoActividad } from '../interfaces/tipo-actividad';
+import { Turno } from '../interfaces/turno';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -41,10 +39,11 @@ import { SendService } from '../providers/send.service';
 import { HoraService } from '../providers/hora.service';
 import { CanalService } from '../providers/canal.service';
 import { CicloService } from '../providers/ciclo.service';
+import { TurnoService } from '../providers/turno.service';
 import { FormatService } from '../providers/format.service';
 import { CampusService } from '../providers/campus.service';
-import { AsesorGrupalService } from '../providers/asesor-grupal.service';
 import { AsesorService } from '../providers/asesor.service';
+import { AsesorGrupalService } from '../providers/asesor-grupal.service';
 import { GeneroService } from '../providers/genero.service';
 import { CarreraService } from '../providers/carrera.service';
 import { InteresService } from '../providers/interes.service';
@@ -52,25 +51,36 @@ import { ModalidadService } from '../providers/modalidad.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
+import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
 
 
-
 @Component({
-    selector: 'app-new-register',
-    templateUrl: './new-register.component.html',
-    styleUrls: ['./new-register.component.scss']
+  selector: 'app-new-register-existing-solo',
+  templateUrl: './new-register-existing-solo.component.html',
+  styleUrls: ['./new-register-existing-solo.component.scss']
 })
 
-export class NewRegisterComponent implements OnInit {
+export class NewRegisterExistingSoloComponent implements OnInit {
 
     form: FormGroup;
-    sinEmail = false;
+    sinEmail=false;
     conEmail = true;
+    campusValue = '';
 
-    minDate = new Date(new Date().setDate(new Date().getDate()));
+
+    //maxDate = new Date(2018, this.month.getMonth(),12);
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
+
+    ejecutivo: FormControl;
+    actvidadNoTradicional: FormControl;
+    subTipoActividad: FormControl;
+    company: FormControl;
+    SubSubTipoActividad: FormControl;
+    turno: FormControl;
+    school: FormControl;
+    Calidad: FormControl;
 
     Usuario: FormControl;
     Canal: FormControl;
@@ -87,7 +97,6 @@ export class NewRegisterComponent implements OnInit {
     Genero: FormControl;
     FechaNacimiento: FormControl;
     Edad: FormControl;
-    SinCorreo: FormControl;
 
     NombreTutor: FormControl;
     ApellidoPaternoTutor: FormControl;
@@ -105,8 +114,9 @@ export class NewRegisterComponent implements OnInit {
     Ciclo: FormControl;
     Tipificacion: FormControl;
     Notas: FormControl;
+    SinCorreo: FormControl;
 
-    CampusCita: FormControl;
+    CampusCitas: FormControl;
     FechaCita: FormControl;
     HoraCita: FormControl;
     Programacion: FormControl;
@@ -120,24 +130,19 @@ export class NewRegisterComponent implements OnInit {
     canales: Canal[] = [];
     campus: Campus[] = [];
     generos: Genero[] = [];
-
     asesores: Asesor[] = [];
-    
-    
+    asesorGrupal: AsesorGrupal[] = [];
     carreras: Carrera[] = [];
     intereses: Interes[] = [];
     modalidades: Modalidad[] = [];
     campus_citas: CampusCita[] = [];
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
+    tipo_actividades: TipoActividad[] = [];
+    turnos: Turno[] = [];
     rows = [];
-
-    asesoresGrupal: AsesorGrupal[] = [];
-
-
     campusTxt: any;
     nivelTxt: any;
-    canalText: any;
 
     constructor(private landingService: LandingService,
         private gralService: GeneralService,
@@ -148,29 +153,42 @@ export class NewRegisterComponent implements OnInit {
         private horaServ: HoraService,
         private sendServ: SendService,
         private cicloServ: CicloService,
+        private turnoServ: TurnoService,
         private canalServ: CanalService,
         private campusServ: CampusService,
         private asesorServ: AsesorService,
+        private asesorGrupalServ: AsesorGrupalService,
         private formatServ: FormatService,
         private generoServ: GeneroService,
         private carreraServ: CarreraService,
         private interesServ: InteresService,
         private modalidadServ: ModalidadService,
         private parentescoServ: ParentescoService,
+        private tipoActServ: TipoActividadService,
         private campusCitaServ: CampusCitaService,
-        private campusCarreraServ: CampusCarreraService,
-        private asesorGrupalServ: AsesorGrupalService,
-        private tipicicacionServ: TipificacionService) {
-        this.fetch((data) => {
-            this.rows = data;
-        });
+        private tipicicacionServ: TipificacionService,
+        private campusCarreraServ: CampusCarreraService,) {
+      this.fetch((data) => {
+        this.rows = data;
+      });
     }
 
+
     ngOnInit() {
+        localStorage.setItem('bandera','');
         this.landingService.getInit();
 
-       
-        
+        // Se obtiene los tipos de actividades
+        this.tipoActServ.getAll()
+            .subscribe(
+                (data: TipoActividad[]) => this.tipo_actividades = data
+            )
+        // Se obtienen los turnos
+        this.turnoServ.getAll()
+            .subscribe(
+                (data: Turno[]) => this.turnos = data
+            )
+
         // Se obtiene todos los canales
         this.canalServ.getAll()
             .subscribe(
@@ -216,69 +234,62 @@ export class NewRegisterComponent implements OnInit {
             .subscribe(
                 (data: CampusCita[]) => this.campus_citas = data
             )
-
         // Se obtienen todas las hora para asignar una cita
         this.horaServ.getAll()
             .subscribe(
                 (data: Hora[]) => this.horas = data
             )
-
-        //Se obtienen todos los asesores
-
-        let ases = this.asesorServ.getAll()
+        // Se obtienen todos lo asesores
+        this.asesorServ.getAll()
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
-            );
-
-
-        //Se obtiene todas los asesores grupales    
-        this.asesorGrupalServ.getAll()
-            .subscribe(
-                (data: AsesorGrupal[]) => this.asesoresGrupal = data
             )
-
-
+          
         this.formInit();
     }
 
-    fetch(cb) {
-        const req = new XMLHttpRequest();
-        req.open('GET', `assets/inbound.json`);
-        req.onload = () => {
-            cb(JSON.parse(req.response));
-        };
-        req.send();
-    }
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/solovinos.json`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
 
     formInit() {
-        localStorage.setItem('bandera', '');
+
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
+        
+
+        let userSearch = localStorage.getItem('lead_user');
+        let jsonSearch = JSON.parse(userSearch);
+        let U = jsonSearch.value[0];
+
+        
         this.form = new FormGroup({
-            Usuario: new FormControl({ value: datos.fullname, disabled: false }),
-            Canal: new FormControl('', Validators.required),
-            CSQ: new FormControl({ value: '', disabled: true }, Validators.required),
-            TelefonoCorreo: new FormControl('', Validators.required),
-            Interesa_NoInteresa: new FormControl('', Validators.required),
 
-            Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-            CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
-            NumeroCelular: new FormControl('', [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
-            Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
-            Genero: new FormControl(''),
-            FechaNacimiento: new FormControl(''),
-            Edad: new FormControl('', [Validators.minLength(2)]),
-
+            Usuario: new FormControl({ value: datos.fullname, disabled: true }),
+ 
             SinCorreo: new FormControl(''),
 
-            NombreTutor: new FormControl(''),
-            ApellidoPaternoTutor: new FormControl(''),
-            ApellidoMaternoTutor: new FormControl(''),
-            CorreoElectronicoTutor: new FormControl(''),
-            NumeroCelularTutor: new FormControl(''),
-            TelefonoTutor: new FormControl(''),
+            Nombre: new FormControl(U.firstname, [LandingValidation.palabraMalaValidator()]),
+            ApellidoPaterno: new FormControl(U.middlename, [LandingValidation.palabraMalaValidator()]),
+            ApellidoMaterno: new FormControl(U.lastname, [LandingValidation.palabraMalaValidator()]),
+            CorreoElectronico: new FormControl(U.emailaddress1, [Validators.required, LandingValidation.emailMaloValidator()]),
+            NumeroCelular: new FormControl(U.mobilephone, [Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Telefono: new FormControl(U.telephone1, [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
+            Genero: new FormControl(U.crmit_sexo),
+            FechaNacimiento: new FormControl(''),
+            Edad: new FormControl(U.crmit_edad, [Validators.minLength(2)]),
+
+            NombreTutor: new FormControl(U.crmit_nombretutor),
+            ApellidoPaternoTutor: new FormControl(U.crmit_apaternotutor),
+            ApellidoMaternoTutor: new FormControl(U.lastname),
+            CorreoElectronicoTutor: new FormControl(U.crmit_emailtutor),
+            NumeroCelularTutor: new FormControl(U.telephone1),
+            TelefonoTutor: new FormControl(U.telephone2),
             ParentescoTutor: new FormControl(''),
 
             Campus: new FormControl(''),
@@ -287,65 +298,111 @@ export class NewRegisterComponent implements OnInit {
             Modalidad: new FormControl({ value: '', disabled: true }),
             Carrera: new FormControl({ value: '', disabled: true }),
             Ciclo: new FormControl(''),
-
-            Tipificacion: new FormControl(''),
-            Notas: new FormControl(''),
-
-            CampusCita: new FormControl({ value: '', disabled: true }),
-            FechaCita: new FormControl({ value: '', disabled: true }),
-            HoraCita: new FormControl({ value: '', disabled: true }),
-            Programacion: new FormControl({ value: '', disabled: true }),
-            Transferencia: new FormControl({ value: '', disabled: true }),
-            Asesor: new FormControl({ value: '', disabled: true })
         });
+        //parentescoServ
+        this.parentescoServ.getAll()
+            .subscribe(
+                (data: Parentesco[]) =>{
+                    const parentescoObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_tipocontactoid_value);
+                    const parentescoValue = parentescoObjec[0].crmit_name+'*'+parentescoObjec[0].crmit_codigounico;
+                    this.form.controls.ParentescoTutor.reset({ value: parentescoValue, disabled: false });
+                }
+            )
+
+        this.campusServ.getAll()
+        .subscribe(
+            (data: Campus[]) => {
+                //campus
+                const objecCam = this.getObjects(this.campus, 'crmit_tb_campusid', U._crmit_campusid_value);
+                this.campusValue = objecCam[0].crmit_tb_campusid+'*'+objecCam[0].crmi_name;
+                this.campusTxt = objecCam[0].crmi_name;
+
+                //nivel
+                this.niveles = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                const nivelesEstudio = this.campusCarreraServ.getNivelesByCarrera(U._crmit_campusid_value);
+                const objecNivelEstudio = this.getObjects(nivelesEstudio, 'crmit_codigounico', U._crmit_nivelinteresid_value);
+                const nivelEstudioValue = objecNivelEstudio[0].crmit_codigounico+'*'+objecNivelEstudio[0].crmit_name;
+                this.nivelTxt =objecNivelEstudio[0].crmit_name;
+                
+                //modalidad
+                this.modalidades = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
+                const modalidadObjec = this.getObjects(modalidadess, 'crmit_codigounico', U._crmit_modalidadid_value);
+                const modalidadValue = modalidadObjec[0].crmit_codigounico+'*'+modalidadObjec[0].crmit_name;
+                
+                //carrera
+                this.carreras = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                const carrerass = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
+                const carrerasObjec = this.getObjects(carrerass, 'codigounico', U._crmit_carrerainteresid_value);
+                const carrerasValue = carrerasObjec[0].codigounico+'*'+carrerasObjec[0].name;
+
+                this.form.controls.Campus.reset({ value: this.campusValue , disabled: false });
+                this.form.controls.Nivel.reset({ value: nivelEstudioValue, disabled: false });
+                this.form.controls.Modalidad.reset({ value: modalidadValue, disabled: false });
+                this.form.controls.Carrera.reset({ value: carrerasValue, disabled: false });
+            }
+        )
+        //ciclo
+        this.cicloServ.getAll()
+            .subscribe(
+            (data: Ciclo[]) => {
+                    const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
+                    const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas;
+
+                    this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
+
+                }
+            )
+        //Area de Interes
+        this.interesServ.getAll()
+        .subscribe(
+            (data: Interes[]) =>{
+                const interesObjec = this.getObjects(data, 'id', U._crmit_areaatencionid_value);
+                const peopleArray = Object.values(interesObjec[0]);
+                const interesValue = peopleArray[0]+'*'+peopleArray[1];
+                this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
+            }
+        )
     }
 
-
-    
-
     onSubmit() {
-
-
         let form = this.form;
         let pnnServ = this.pnnServ;
-
 
         if (this.form.value.Edad < 11) {
             this.showDialogE("Tu edad debe ser mayor igual a 12 años");
             return false;
           }
-      
 
-        $('form').find(':input').each(function () {
-            if ($(this).hasClass('validPhoneNumber')) {
+
+        $('form').find(':input').each(function(){
+            if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');
-                if (form.controls[name].value != '' && form.controls[name].value != null) {
-                    if (!pnnServ.checkPnnIsValid(form.controls[name].value)) {
-                        form.controls[name].setErrors({ 'numInvalid': true });
-                    } else {
-                        form.controls[name].setErrors({ 'numInvalid': false });
+                if(form.controls[name].value != '' && form.controls[name].value != null){
+                    
+                    if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
+                        form.controls[name].setErrors({'numInvalid': true});
+                    }else{
+                        form.controls[name].setErrors({'numInvalid': false});
                         form.controls[name].updateValueAndValidity();
                     }
-                } else {
-                    form.controls[name].setErrors({ 'numInvalid': false });
+                }else{
+                    form.controls[name].setErrors({'numInvalid': false});
                     form.controls[name].reset();
                 }
             }
         })
-
-        if (this.sinEmail) {
-            this.form.controls.CorreoElectronico.clearValidators();
-        }
         
+        this.onKeyFechaNacimiento();
 
         if (this.sinEmail) {
             this.form.controls.CorreoElectronico.clearValidators();
         }else{
-            if (this.form.controls['CorreoElectronico'].value!=""){
-                this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+            if (this.form.controls['CorreoElectronico'].value != "") {
                 this.form.controls.Telefono.clearValidators();
+                this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
                 this.form.controls.Telefono.updateValueAndValidity();
-            }else{
+            } else {
                 let tel = this.form.controls['Telefono'].value;
                 if (tel) {
                     this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
@@ -353,42 +410,25 @@ export class NewRegisterComponent implements OnInit {
                     this.form.controls.CorreoElectronico.updateValueAndValidity();
                     this.conEmail = false;
                 }
-
             }
         }
 
-        if (this.form.controls['CorreoElectronico'].value != "" && this.form.controls['Telefono'].value == "" ) {
-            this.form.controls.Telefono.updateValueAndValidity();
-            this.form.controls.Telefono.clearValidators();
-        }
 
-
-        if (this.form.valid){
-
-            this.onKeyFechaNacimiento();
-
-            let fecha_cita = this.formatServ.changeFormatFecha(this.form.controls['FechaCita'].value);
-            
-            this.form.controls['FechaCita'].setValue(fecha_cita);
-
+        if (this.form.valid) {
             if (this.sinEmail) {
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
                 this.conEmail = false;
             }
 
+          // -------------------------------- Predictivo  ----------------------------------
 
-
-
-            // -------------------------------- Predictivo  ----------------------------------
-            
-            if (this.form.value.Telefono) {
-                const predTel = this.form.value.Telefono.substring(0,2);
-                if(predTel == 55){
-                  this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-                }
-                this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+             const predTel = this.form.value.Telefono.substring(0,2);
+            if(predTel == 55){
+              this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
             }
+            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+
 
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
@@ -415,224 +455,132 @@ export class NewRegisterComponent implements OnInit {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
                 }
             }
-          let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
-          let CicloV = _Ciclo.split('*');
+         
+            this.form.value.Banner = window.location.href;
+            this.form.value.FuenteObtencion = "";
 
-          this.form.value.Banner = window.location.href;
-          this.form.value.FuenteObtencion="";
-          //var Fuenteobtension_fo = "";
+            let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
+            let CicloV = _Ciclo.split('*');
+
 
             for (let i = 0; i < this.rows.length; i++) {
                 //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-                var ciclo = CicloV[1];
-
+                var ciclo = CicloV[2];
 
                 //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
-                //var ciclo_mocho = CicloV[1].split('-');
-                var ciclo_mocho = (CicloV[1] == null) ? "" : CicloV[1].split('-');
+                var ciclo_mocho = CicloV[1].split('-');
+                ciclo = "C"+ciclo_mocho[1];
 
-                //let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
 
-                console.log("ciclo_mocho[1] = "+ciclo_mocho[1]);
-
-                //if(ciclo_mocho[1] == "" || ciclo_mocho[1] == null){
-
-               // ciclo = "";
                 
-//            }else{
-                    ciclo = "C"+ciclo_mocho[1];
-                //}
-                
-
 
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
-                    
-                    //console.log("---ciclo : "+ ciclo + " = " + this.rows[i].CICLO);
-
                     this.form.value.Team = this.rows[i].TEAM;
-                    //console.log("-- Team: " + this.form.value.Team);
-
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                    //console.log("-- Prioridad: " + this.form.value.Prioridad);
-                    
                     this.form.value.Attemp = this.rows[i].ATTEMP;
-                    //console.log("-- Attemp: " + this.rows[i].ATTEMP);
-                    
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-                    //console.log("-- FuenteObtencion: " + this.rows[i].FUENTE_NEGOCIO);
-                    
-                    //Fuenteobtension_fo = this.rows[i].FUENTE_NEGOCIO;
 
-                     
-
-
+                   // console.log(this.rows[i].CICLO + " = " + ciclo);
+                   // console.log("FuenteObtencion: " + this.rows[i].FUENTE_NEGOCIO );
                 }
-                //console.log("Fuenteobtension_fo: " + this.rows[i].FUENTE_NEGOCIO);
-            }
-            
-         
 
+               // console.log(this.rows[i].CICLO + " = " + ciclo);
+
+            }
 
             ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
-           // console.log("Nuevo Ciclo: " + ciclo);
+            //console.log("-- FuenteObtencion: " + this.form.value.FuenteObtencion);
+
 
 
           // -------------------------------- Predictivo  ----------------------------------
-            this.form.value.Banner = window.location.href;
-            this.form.value.CanalPreferido = 'Voz';
-            if (this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS') {
-                this.form.value.CanalPreferido = 'Redes Sociales';
+          let edadT = this.form.value.Edad;
+
+            if(edadT==""){
+                edadT = 12;                
             }
 
-
-            // -------------------------------- Predictivo  ----------------------------------
-            let edadT = this.form.value.Edad;
-
-            if (edadT == "") {
-                edadT = 12;
-            }
-
+            let bandera = localStorage.getItem('bandera');
+            
             /* Interes GUID */
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
             let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
             let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
-            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
-            let _Canal = (this.form.value.Canal==null)? "": this.form.value.Canal; 
-            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor;
-
+            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres; 
+            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor; 
+            
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
             let ParentescoV = _Parentesco.split('*');
+
+            const sendd = {    
+
+            Usuario: this.form.value.Usuario,
+                    
+            Nombre: this.form.value.Nombre, 
+            ApellidoPaterno: this.form.value.ApellidoPaterno, 
+            ApellidoMaterno: this.form.value.ApellidoMaterno, 
+            CorreoElectronico: this.form.value.CorreoElectronico,
+            Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
+            Edad:edadT, 
+
+            NombreTutor: this.form.value.NombreTutor, 
+            ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
+            ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
+            CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
             
+            ParentescoTutor: ParentescoV[0],
+            GUIDParentescotutor: ParentescoV[1],
+
+            Campus: CampusV[1],
+            Nivel: NivelV[1],
+            Modalidad: ModalidadV[1],
+            Carrera: CarreraV[1],
+            AreaInteres: InteresV[1],
+            Ciclo:  ciclo,
+
             
-            let CanalV = _Canal.split('*');
+            GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
+            GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
+            GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
+            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],            
+            GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
+            GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+            GUIDUsuario:localStorage.getItem('UserId'),
 
+             
 
-            console.log("TelefonoCorreo desde Form: "+this.form.value.TelefonoCorreo);
-            /**********Funcion para validar si contiene Telefono o correo************/ 
+            Banner: this.form.value.Banner,
+            Bandera: (bandera==null)? "" :bandera,
 
-            //function validar_TelefonoCorreo(num) {
-                if (isNaN(this.form.value.TelefonoCorreo)) {
-                    //Aqui asignamos Correo
-                        if(this.form.value.CorreoElectronico == "" || this.form.value.CorreoElectronico == null ){
-                            this.form.value.CorreoElectronico = this.form.value.TelefonoCorreo;
-                        }
-                    console.log("Conteniene: Correo");
+            Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
+            Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
+            Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
+            fuenteobtencion: this.form.value.FuenteObtencion,
 
-                } else {
-                    //Aqui asignamos Telefono
-                    if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
-                        this.form.value.Telefono = this.form.value.TelefonoCorreo;
-                    }
-                    console.log("Conteniene: Telefono");
-                }
-           // }
-            
-            /*********Termina funcion para validar si contiene Telefono o correo***********/
-
-
-
-            const sendd = {
-
-                Usuario: this.form.value.Usuario,                
-                
-                Canal: CanalV[1],   //Se envia Canal en vez de CanalPreferido             
-                CSQ: this.form.value.CSQ,
-                TelefonoCorreo: this.form.value.TelefonoCorreo,
-                Interesa_NoInteresa: (this.form.value.Interesa_NoInteresa) ? "" : this.form.value.Interesa_NoInteresa,
-                
-
-                Nombre: this.form.value.Nombre,
-                ApellidoPaterno: this.form.value.ApellidoPaterno,
-                ApellidoMaterno: this.form.value.ApellidoMaterno,
-                CorreoElectronico: this.form.value.CorreoElectronico,                
-               
-                Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
-                Edad: edadT,
-               //SinCorreo: this.form.value.SinCorreo,
-                
-                NombreTutor: this.form.value.NombreTutor,
-                ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
-                ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
-                CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
-                
-                ParentescoTutor: ParentescoV[0],
-                GUIDParentescotutor: ParentescoV[1],
-                
-                Campus: CampusV[1],
-                Nivel: NivelV[1],
-                Modalidad: ModalidadV[1],
-                Carrera: CarreraV[1],
-                AreaInteres: InteresV[1],
-                //Ciclo: CicloV[1],
-                Ciclo:  ciclo,
-                
-                GUIDCampusCita: (CampusV[0] == '') ? null : CampusV[0],
-                GUIDCanal: (CanalV[0]=='')? null : CanalV[0],
-                GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
-                GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
-                GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-                GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
-                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
-                GUIDUsuario:localStorage.getItem('UserId'),
-
-                
-                Banner: this.form.value.Banner,
-                Bandera:"",
-
-                Tipificacion: this.form.value.Tipificacion,
-
-                
-                Notas: (this.form.value.Notas == '') ? null : this.form.value.Notas,
-                
-
-                CampusCita: (this.form.value.CampusCita == undefined || this.form.value.CampusCita=="") ? null : this.form.value.CampusCita,
-                
-                
-
-                FechaCita: (this.form.value.FechaCita == undefined || this.form.value.FechaCita =="aN/aN/NaN") ? null : this.form.value.FechaCita,
-                HoraCita: (this.form.value.HoraCita == undefined || this.form.value.HoraCita=="") ? "" : this.form.value.HoraCita,
-                Asesor: (this.form.value.Asesor) ? null : this.form.value.Asesor,
-
-                
-
-                Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
-                Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
-                Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                fuenteobtencion: this.form.value.FuenteObtencion,
-                //FuenteObtencion: this.form.value.FuenteObtencion,
-                
-
-                //Numero Celular
-                Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
-                TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
-                //Numero Telefono o Telefono Casa
-                TelefonoCasa: this.form.value.Telefono,
-                TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+            //Numero Celular
+            Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
+            TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
+            //Numero Telefono o Telefono Casa
+            TelefonoCasa: this.form.value.Telefono,
+            TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
               
 
-                //Numero Celular Tutor
-                NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
-                TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-                //Numero Casa Tutor                
-                TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
-                TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
+            //Numero Celular Tutor
+            NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
+            TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
+            //Numero Casa Tutor                
+            TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
+            TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
-                // Ejecutivo: this.form.value.ParentescoTutor , 
-                // SubTipoActividad: this.form.value.ParentescoTutor , 
-                // SubSubTipoActividad:  this.form.value.ParentescoTutor,
-                // EscuelaEmpresa:this.form.value.ParentescoTutor,
-                // Calidad:this.form.value.ParentescoTutor, this.form.value.FechaCita
-
-            };
- 
-            
-
+          };
+             
+            console.log("this.conEmail");
+            console.log(this.conEmail);
             if (this.conEmail) {
                 this.sendServ.sendData4(sendd)// this.form.value)
                     .subscribe(
@@ -698,30 +646,71 @@ export class NewRegisterComponent implements OnInit {
                         }
                     )
             }
-
-
         } else {
             this.showDialogE("Error al realizar el registro *");
         }
 
+
     }
 
     resetForm() {
-        window.location.href = "/register";
+        window.location.href = "/registerSolo";
         this.form.reset();
-        /*Object.keys(this.form.controls).forEach(key => {
-            this.form.controls[key].setErrors(null)
-          });*/
-        //this.form.reset();
     }
-
+    getObjects(obj, key, val) {
+        var objects = [];
+        for (var i in obj) {
+            if (!obj.hasOwnProperty(i)) continue;
+            if (typeof obj[i] == 'object') {
+                objects = objects.concat(this.getObjects(obj[i], key, val));
+            } else
+                //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+                if (i == key && obj[i] == val || i == key && val == '') { //
+                    objects.push(obj);
+                } else if (obj[i] == val && key == '') {
+                    //only add if the object is not already in the array
+                    if (objects.lastIndexOf(obj) == -1) {
+                        objects.push(obj);
+                    }
+                }
+        }
+        return objects;
+    }
     onKeyFechaNacimiento() {
         let edad = this.form.controls.Edad.value;
         let year = new Date().getFullYear();
         let fecha = year - edad;
-        this.form.controls.FechaNacimiento.setValue("01/01/" + fecha);
+        this.form.controls.FechaNacimiento.setValue('01/01/'+fecha);
+    }
+    agruparClick(){
+        let ases = this.asesorServ.getAll()
+            .subscribe(
+                (data: Asesor[]) => this.asesores = data
+            );
+        this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita-");
+    }
 
-        
+    agruparDirectaClick() {
+        //let nivelG = 'Posgrado';
+        let k = this.form.controls.Nivel.value;
+        let g = k.split('*');
+        let nivelG = g[0];
+        console.log(nivelG);
+        if(nivelG){
+           let asess = this.asesorGrupalServ.getAll()
+            .subscribe(
+                (datat: AsesorGrupal[]) => this.asesorGrupal = datat
+            )    
+            setTimeout(() => {
+                this.showDialogForm(this.asesorGrupal, "Selecciona a un Asesor Grupal", "SesiónG-");
+            }, 1000); 
+        }else{
+            this.showDialogE("Seleccione un Nivel");
+        }
+    }
+
+    agruparDClick(){
+        localStorage.setItem('bandera',this.form.controls.Usuario.value);
     }
 
 
@@ -763,6 +752,7 @@ export class NewRegisterComponent implements OnInit {
     }
 
     _keyPressNumA(event: any, name: any) {
+        
         LandingValidation.onlyNumberIgual(event, name);
     }
     _keyPressTxt(event: any) {
@@ -770,33 +760,22 @@ export class NewRegisterComponent implements OnInit {
     }
 
     _keyPressNum(event: any, value: any, campus: any) {
-        
+
         var cadena = campus.split('*');
         var word = cadena[0];
-
-        //TelefonoCorreo
-       /* if (value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
+        console.log('value 2');
+       
+        var cadena2 = value.split('*');
+        var word2 = cadena2[0];
+        console.log(word2);
+        if (word2 == '64bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '66bed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6abed5d6-404f-e811-8113-3863bb3c5058' || word2 == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
             LandingValidation.onlyNumber(event);
             LandingValidation.limitChar(event, word);
             LandingValidation.onlyNumberIgual(event, word);
-        }*/
-    }
-
-    onChange() {
-        if (this.form.controls.Nombre.value != '' && this.form.controls.ApellidoPaterno.value != '' && this.form.controls.ApellidoMaterno.value != '' && this.form.controls.CorreoElectronico.value != '' && this.form.controls.NumeroCelular.value != '' && this.form.controls.Telefono.value != '') {
-            this.form.controls.CampusCita.reset({ value: '', disabled: false });
-            this.form.controls.FechaCita.reset({ value: '', disabled: false });
-            this.form.controls.HoraCita.reset({ value: '', disabled: false });
-            this.form.controls.Programacion.reset({ value: '', disabled: false });
-            this.form.controls.Transferencia.reset({ value: '', disabled: false });
-        } else {
-            this.form.controls.CampusCita.reset({ value: '', disabled: true });
-            this.form.controls.FechaCita.reset({ value: '', disabled: true });
-            this.form.controls.HoraCita.reset({ value: '', disabled: true });
-            this.form.controls.Programacion.reset({ value: '', disabled: true });
-            this.form.controls.Transferencia.reset({ value: '', disabled: true });
         }
     }
+
+    onChange() {}
 
     onChangeInteres(value) {
         if (value == '') {
@@ -820,62 +799,6 @@ export class NewRegisterComponent implements OnInit {
         this.form.controls.Modalidad.updateValueAndValidity();
         this.form.controls.Carrera.updateValueAndValidity();
         this.form.controls.Ciclo.updateValueAndValidity();
-
-    }
-
-    onChangeInteresaNo(value) {
-        if (value == '1') {
-            this.form.controls.Nombre.reset({ value: '', disabled: true });
-            this.form.controls.ApellidoPaterno.reset({ value: '', disabled: true });
-            this.form.controls.ApellidoMaterno.reset({ value: '', disabled: true });
-            this.form.controls.CorreoElectronico.reset({ value: '', disabled: true });
-            this.form.controls.Genero.reset({ value: '', disabled: true });
-            this.form.controls.NumeroCelular.reset({ value: '', disabled: true });
-            this.form.controls.Telefono.reset({ value: '', disabled: true });
-            this.form.controls.Edad.reset({ value: '', disabled: true });
-
-            this.form.controls.NombreTutor.reset({ value: '', disabled: true });
-            this.form.controls.ApellidoPaternoTutor.reset({ value: '', disabled: true });
-            this.form.controls.ApellidoMaternoTutor.reset({ value: '', disabled: true });
-            this.form.controls.CorreoElectronicoTutor.reset({ value: '', disabled: true });
-            this.form.controls.ParentescoTutor.reset({ value: '', disabled: true });
-            this.form.controls.NumeroCelularTutor.reset({ value: '', disabled: true });
-            this.form.controls.TelefonoTutor.reset({ value: '', disabled: true });
-
-            this.form.controls.Campus.reset({ value: '', disabled: true });
-            this.form.controls.AreaInteres.reset({ value: '', disabled: true });
-            this.form.controls.Nivel.reset({ value: '', disabled: true });
-            this.form.controls.Modalidad.reset({ value: '', disabled: true });
-            this.form.controls.Carrera.reset({ value: '', disabled: true });
-            this.form.controls.Ciclo.reset({ value: '', disabled: true });
-
-        } else {
-
-            this.form.controls.Nombre.reset({ value: '', disabled: false });
-            this.form.controls.ApellidoPaterno.reset({ value: '', disabled: false });
-            this.form.controls.ApellidoMaterno.reset({ value: '', disabled: false });
-            this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
-            this.form.controls.Genero.reset({ value: '', disabled: false });
-            this.form.controls.NumeroCelular.reset({ value: '', disabled: false });
-            this.form.controls.Telefono.reset({ value: '', disabled: false });
-            this.form.controls.Edad.reset({ value: '', disabled: false });
-
-            this.form.controls.NombreTutor.reset({ value: '', disabled: false });
-            this.form.controls.ApellidoPaternoTutor.reset({ value: '', disabled: false });
-            this.form.controls.ApellidoMaternoTutor.reset({ value: '', disabled: false });
-            this.form.controls.CorreoElectronicoTutor.reset({ value: '', disabled: false });
-            this.form.controls.ParentescoTutor.reset({ value: '', disabled: false });
-            this.form.controls.NumeroCelularTutor.reset({ value: '', disabled: false });
-            this.form.controls.TelefonoTutor.reset({ value: '', disabled: false });
-
-            this.form.controls.Campus.reset({ value: '', disabled: false });
-            this.form.controls.AreaInteres.reset({ value: '', disabled: false });
-            this.form.controls.Nivel.reset({ value: '', disabled: false });
-            this.form.controls.Modalidad.reset({ value: '', disabled: false });
-            this.form.controls.Carrera.reset({ value: '', disabled: false });
-            this.form.controls.Ciclo.reset({ value: '', disabled: false });
-            
-        }
     }
 
     //Cambiado
@@ -954,61 +877,15 @@ export class NewRegisterComponent implements OnInit {
         this.carreras = this.campusCarreraServ.getCarrerasByModalidad(value);
     }
 
-    onChangeCanal(campus: string) {
-        var cadena = campus.split('*');
-        var value = cadena[0];
-
-        if (this.form.controls['CSQ'].disabled) {
-            this.form.controls['CSQ'].enable();
-        } else {
-            this.form.controls['CSQ'].setValue('');
-            this.form.controls['CSQ'].markAsUntouched();
-        }
-        this.csqs = this.csqServ.getCsqsByCanal(value);
-    }
-
-    onFielCanal(campus) {
-        var cadena = campus.split('*');
-        var value = cadena[0];
-
-        this.canalText = value.toUpperCase();
+    onFielCanal(value) {
         this.form.controls.TelefonoCorreo.clearValidators();
-
-        //this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
-        
-
-        
-        //console.log("Canal.value: " + value);
-
-        //Chat: 68bed5d6-404f-e811-8113-3863bb3c5058
-        //Recuperacion: 70bed5d6-404f-e811-8113-3863bb3c5058 
-        //Watts: 6abed5d6-404f-e811-8113-3863bb3c5058
-
-       
-        this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
-        this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
-            
-
-
-       
-        //if ( value == '68bed5d6-404f-e811-8113-3863bb3c5058' || value == '70bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' ) {
-        //    this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator(), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
-          //  //this.form.controls.TelefonoCorreo.setValidators([]);
-        //} else {
-
-            //this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
-            //this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
-            //}
-       // this.form.controls.TelefonoCorreo.updateValueAndValidity();
-
-       /* if (value == '68bed5d6-404f-e811-8113-3863bb3c5058' || value == '70bed5d6-404f-e811-8113-3863bb3c5058' || value == '64bed5d6-404f-e811-8113-3863bb3c5058' || value == '66bed5d6-404f-e811-8113-3863bb3c5058' || value == '6abed5d6-404f-e811-8113-3863bb3c5058' || value == '6ebed5d6-404f-e811-8113-3863bb3c5058') {
-            this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
-            
+        this.form.controls.TelefonoCorreo.reset({ value: '', disabled: false });
+        if (value == 1) {
+            this.form.controls.TelefonoCorreo.setValidators([Validators.minLength(10), Validators.maxLength(10), LandingValidation.aceptNumberValidator()]);
         } else {
             this.form.controls.TelefonoCorreo.setValidators([LandingValidation.emailMaloValidator()]);
         }
-        this.form.controls.TelefonoCorreo.updateValueAndValidity();*/ /**/
-
+        this.form.controls.TelefonoCorreo.updateValueAndValidity();
     }
 
     addValidation(isChecked) {
@@ -1020,12 +897,14 @@ export class NewRegisterComponent implements OnInit {
             }
             this.form.controls.CorreoElectronico.reset({ value: 'telefono@unitec.edu.mx', disabled: false });
             this.sinEmail = true;
+            //this.form.controls.SinCorreo.reset({ value: 'no', disabled: false });
             this.conEmail = false;
+
         } else {
             this.form.controls.CorreoElectronico.reset({ value: '', disabled: false });
+           // this.form.controls.SinCorreo.reset({ value: 'ok', disabled: false });
             this.sinEmail = false;
             this.conEmail = true;
-
         }
         this.form.controls.CorreoElectronico.updateValueAndValidity();
     }
@@ -1043,10 +922,6 @@ export class NewRegisterComponent implements OnInit {
         return LandingValidation.getMensaje(field);
     }
 
-    EdadMin(field: any) {
-        return LandingValidation.edadMinima(field);
-    }
-
     private showDialog(message: string) {
         let dialogRef = this.dialog.open(DialogComponent, {
             height: '180px',
@@ -1054,7 +929,7 @@ export class NewRegisterComponent implements OnInit {
             data: { message: message }
         });
         dialogRef.afterClosed().subscribe(result => {
-            window.location.href = "/register";
+            window.location.href = "/registerSolo";
         });
     }
 
@@ -1073,39 +948,4 @@ export class NewRegisterComponent implements OnInit {
             data: { message: array, title: message,bandera: bander }
         });
     }
-
-    agruparClick(){
-        /*let ases = this.asesorServ.getAll()
-            .subscribe(
-                (data: Asesor[]) => this.asesores = data
-            );*/
-                
-            
-        //this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita-");
-    }
-
-    agruparDClick(){
-        let ases = this.asesorServ.getAll()
-            .subscribe(
-                (data: AsesorCita[]) => this.asesores = data
-            );
-        
-        localStorage.setItem('bandera',this.form.controls.Usuario.value);
-        this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita - Alfonso Silva");
-    }
-
-
-    agruparDirectaClick(){
-
-        let ases = this.asesorGrupalServ.getAll()
-            .subscribe(
-                (data: AsesorGrupal[]) => this.asesoresGrupal = data
-            );
-
-        this.showDialogForm(this.asesoresGrupal, "Selecciona a un Asesor", "SesionG - Alfonso Silva");
-    }
-
-
-    
-
 }

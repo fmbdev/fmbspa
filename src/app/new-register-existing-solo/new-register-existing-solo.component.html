@@ -15,68 +15,6 @@
     </div>
     <div class="register">
         <div class="head-blue mt">
-            ORIGEN LLAMADA
-        </div>
-        <div class="form">
-            <mat-grid-list cols="2" rowHeight="80px">
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select formControlName="Canal" id="canal" placeholder="Canal" (change)="onFielCanal(form.controls.Canal.value)" (change)="onChangeCanal(form.controls.Canal.value)">
-                            <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let canal of canales;" [value]="canal['crmit_canales']+'*'+canal['crmit_name']">
-                                {{ canal['crmit_name'] }}
-                            </mat-option>
-                        </mat-select>
-
-                        <mat-error *ngIf="form.controls.Canal.errors?.required && form.controls.Canal.invalid">{{showMjs('canal.m1')}}</mat-error>
-
-
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select formControlName="CSQ" placeholder="Departamento">
-                            <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let csq of csqs;" [value]="csq['crmit_name']">
-                                {{ csq['crmit_name'] }}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.controls.CSQ.errors?.required">{{showMjs('csq.m1')}}</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="2" rowHeight="80px">
-                <mat-grid-tile>
-                    <mat-form-field>
-
-                        <input required autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Telefono o Correo Electronico" (change)="onChange()">
-                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.emailMalo && !form.controls.TelefonoCorreo.errors?.required">{{showMjs('correo.m2')}} </mat-error>
-                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.minlength && !form.controls.TelefonoCorreo.errors?.required  && !form.controls.TelefonoCorreo.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
-                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.aceptNumber  && !form.controls.TelefonoCorreo.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
-
-                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.numberCon  &&  form.controls.TelefonoCorreo.errors?.minlength && !form.controls.TelefonoCorreo.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
-
-                        <mat-error *ngIf="form.controls.TelefonoCorreo.errors?.numInvalid">Número Invalido</mat-error>
-
-                        <!--<input autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Teléfono o Correo Electrónico" (keypress)="_keyPressNum($event,form.controls.Canal.value,form.controls.TelefonoCorreo.value)" class="validPhoneNumber">-->
-                        <!--<input autocomplete="off" formControlName="TelefonoCorreo" matInput placeholder="Teléfono o Correo Electrónico" class="validPhoneNumber">
-                        -->
-
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select formControlName="Interesa_NoInteresa" id="interes" placeholder="Interesa/No interesa" (change)="onChangeInteresaNo(form.controls.Interesa_NoInteresa.value)">
-                            <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option value="0">Interesa</mat-option>
-                            <mat-option value="1">No Interesa</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.controls.Interesa_NoInteresa.errors?.required">{{showMjs('area_interes.m1')}}</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-        </div>
-        <div class="head-blue mt">
             CONTACTO
         </div>
         <div class="form2">
@@ -88,22 +26,22 @@
                         </mat-grid-tile>
                     </mat-grid-list>
                     <mat-form-field>
-                        <input required autocomplete="off" formControlName="Nombre" matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="Nombre" required matInput placeholder="Nombre" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.Nombre.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Nombre.errors?.required">{{showMjs('nombre.m1')}} </mat-error>
                         <mat-error *ngIf="form.controls.Nombre.errors?.palabraMala && !form.controls.Nombre.errors?.required">{{showMjs('nombre.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input required autocomplete="off" formControlName="ApellidoPaterno" matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoPaterno" required matInput placeholder="Apellido Paterno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoPaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoPaterno.errors?.palabraMala && !form.controls.ApellidoPaterno.errors?.required">{{showMjs('paterno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input required autocomplete="off" formControlName="ApellidoMaterno" matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
+                        <input autocomplete="off" formControlName="ApellidoMaterno" required matInput placeholder="Apellido Materno" (keypress)="_keyPressTxt($event)" (keypress)="_keyOnly3letter($event,form.controls.ApellidoMaterno.value)" (change)="onChange()">
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.ApellidoMaterno.errors?.palabraMala && !form.controls.ApellidoMaterno.errors?.required">{{showMjs('materno.m2')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input required autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" (change)="onChange()" [readonly]="sinEmail">
+                        <input autocomplete="off" formControlName="CorreoElectronico" matInput placeholder="Correo Electrónico" required (change)="onChange()" [readonly]="sinEmail">
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.CorreoElectronico.errors?.emailMalo && !form.controls.CorreoElectronico.errors?.required">{{showMjs('correo.m2')}} </mat-error>
                     </mat-form-field>
@@ -111,8 +49,8 @@
                         <mat-checkbox formControlName="SinCorreo" (change)="addValidation($event)" value="ok">Sin Correo Electrónico</mat-checkbox>
                     </div>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)" (change)="onChange()"
-                            class="validPhoneNumber">
+                        <input autocomplete="off" formControlName="NumeroCelular" matInput placeholder="Número Celular (10 dígitos)" required minLength="10" maxLength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.NumeroCelular.value)"
+                            (change)="onChange()" class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.required">{{showMjs('celular.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.required  && !form.controls.NumeroCelular.errors?.numberCon">{{showMjs('celular.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.aceptNumber  && !form.controls.NumeroCelular.errors?.minlength">{{showMjs('celular.m3')}}</mat-error>
@@ -129,7 +67,7 @@
                         <mat-error *ngIf="form.controls.Telefono.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-select formControlName="Genero" placeholder="Género">
+                        <mat-select formControlName="Genero" required placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let genero of generos;" [value]="genero['id']">
                                 {{ genero['genero'] }}
@@ -146,9 +84,8 @@
                     </mat-form-field>-->
                     <input formControlName="FechaNacimiento" type="hidden">
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
+                        <input autocomplete="off" required formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
-                        <mat-error *ngIf="form.controls.Edad.errors?.required">{{EdadMin('edad.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                     </mat-form-field>
                 </div>
@@ -217,7 +154,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Campus" placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
+                        <mat-select formControlName="Campus" required placeholder="Campus" (change)="onChangeInteres(form.controls.Campus.value)" (change)="onChangeCampus(form.controls.Campus.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let campu of campus;" [value]="campu['crmit_tb_campusid']+'*'+campu['crmi_name']">
                                 {{ campu['crmi_name'] }}
@@ -228,7 +165,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="AreaInteres" placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
+                        <mat-select formControlName="AreaInteres" required placeholder="Área Ínteres" (change)="onChangeInteres(form.controls.AreaInteres.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let interes of intereses;" [value]="interes['id']+'*'+interes['Área Interes']">
                                 {{ interes['Área Interes'] }}
@@ -241,7 +178,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Nivel" placeholder="Nivel" (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
+                        <mat-select formControlName="Nivel" placeholder="Nivel" required (change)="onChangeInteres(form.controls.Nivel.value)" (change)="onChangeNivel(form.controls.Nivel.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let nivel of niveles;" [value]="nivel['crmit_codigounico']+'*'+nivel['crmit_name']">
                                 {{ nivel['crmit_name'] }}
@@ -254,7 +191,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Modalidad" placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
+                        <mat-select formControlName="Modalidad" required placeholder="Modalidad" (change)="onChangeInteres(form.controls.Modalidad.value)" (change)="onChangeModalidad(form.controls.Modalidad.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let modalidad of modalidades;" [value]="modalidad['crmit_codigounico']+'*'+modalidad['crmit_name']">
                                 {{ modalidad['crmit_name'] }}
@@ -267,7 +204,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
+                        <mat-select formControlName="Carrera" placeholder="Carrera" required (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
                                 {{ carrera['name'] }}
@@ -280,7 +217,7 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <mat-select formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
+                        <mat-select formControlName="Ciclo" required placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_codigounico']+'*'+ciclo['crmit_name']+'*'+ciclo['crmit_ciclovigenteventas']">
                                 {{ ciclo['crmit_name'] }}
@@ -292,92 +229,6 @@
                 <mat-grid-tile>
                     &nbsp;
                 </mat-grid-tile>
-            </mat-grid-list>
-        </div>
-        <div class="head-blue mt">
-            TIPIFICACIÓN
-        </div>
-        <div class="form">
-            <mat-grid-list cols="2" rowHeight="80px">
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select formControlName="Tipificacion" placeholder="Tipificación" required>
-                            <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let tipificacion of tipificaciones;" [value]="tipificacion['Tipificación']">
-                                {{ tipificacion['Tipificación'] }}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.controls.Tipificacion.errors?.required">{{showMjs('tipificacion.m1')}}</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    &nbsp;
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-form-field style="margin-left: 10px;" class="example-full-width">
-                <textarea matInput placeholder="Notas" formControlName="Notas" (keypress)="_keyOnly3letter($event, form.controls.Notas.value)"></textarea>
-            </mat-form-field>
-        </div>
-        <div class="head-blue mt">
-            CITA
-        </div>
-        <div class="form">
-            <mat-grid-list cols="2" rowHeight="80px">
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select formControlName="CampusCita" placeholder="Campus de Cita">
-                            <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let campus of campus_citas;" [value]="campus['Nombre de Campus']">
-                                {{ campus['Nombre de Campus'] }}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.controls.CampusCita.errors?.required">{{showMjs('campus.m1')}}</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="2" rowHeight="80px">
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
-                        <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                        <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'fecha_cita.m1')}}</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select formControlName="HoraCita" placeholder="Hora de Cita">
-                            <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let hora of horas;" [value]="hora.hora">
-                                {{ hora.hora }}
-                            </mat-option>
-                            <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'hora_cita.m1')}}</mat-error>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="2" rowHeight="80px">
-
-                <mat-grid-tile>
-                    <mat-checkbox formControlName="Programacion">Programación Llamada</mat-checkbox>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-select placeholder="Asesor" formControlName="Asesor">
-                            <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let asesor of asesores;" [value]="asesor['Nombre Asesor']">
-                                {{ asesor['Nombre Asesor'] }}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.controls.Asesor.errors?.required">{{showMjs('asesor.m1')}}</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-checkbox (change)="addAsesor($event)" formControlName="Transferencia">Transferencia en Linea</mat-checkbox>
-                </mat-grid-tile>
-
             </mat-grid-list>
         </div>
 
@@ -393,50 +244,42 @@
             </div>
         </div>
 
-        <!--<div class="row">
+        <div class="row">
             <div class="col-sm-12" style="float:left; text-align: left;">
 
                 <div class="btn">
-                    <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel btn_110">ASIGNAR</button>
-                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel btn_110">DIRECTA</button>
+                    <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel btn_110">DIRECTA</button>
+                    <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel btn_110">ASIGNAR</button>
                     <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel btn_160">SESION GRUPAL</button>
                 </div>
 
             </div>
-        </div>-->
-
-        <!--<mat-grid-list cols="1" rowHeight="60px" style="margin-bottom: 20px; text-align: right;">
-
-            <mat-grid-tile>
-
-            </mat-grid-tile>
+        </div>
 
 
-            <mat-grid-tile>
-                <div class="btn">
-                    <button mat-raised-button color="warn" (click)="resetForm()" class="cancel">CANCELAR</button>
-                    <button mat-raised-button color="warn" (click)="onSubmit()">GUARDAR</button>
-                </div>
-            </mat-grid-tile>
-
-        </mat-grid-list>-->
-
-        <!--<mat-grid-list cols="1" rowHeight="80px" style="margin-bottom: 20px; text-align: left;">
-            <mat-grid-tile>
+        <!--  <mat-grid-list cols="2" rowHeight="80px" style="margin-bottom: 0px;">
+            <mat-grid-tile class="le">
                 <div class="btn">
                     <button (click)="agruparClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">ASIGNAR</button>
                     <button (click)="agruparDClick()" mat-raised-button color="warn" class="cancel btn_120" style="margin-right: 0px; ">DIRECTA</button>
                     <button (click)="agruparDirectaClick()" mat-raised-button color="warn" class="cancel btn_170" style="margin-right: 0px; width: 200px;">SESION GRUPAL</button>
                 </div>
-            </mat-grid-tile>
 
+            </mat-grid-tile>
+            <mat-grid-tile class="le">
+                <div class="btn" style="width: 100%; margin-right: 0; ">
+                    <button mat-raised-button color="warn" (click)="onSubmit()" style="float: right; ">GUARDAR</button>
+                    <button mat-raised-button color="warn" (click)="resetForm()" style="float: right; " class="cancel">CANCELAR</button>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list cols="2" rowHeight="50px" style="margin-bottom: 50px;">
+            <mat-grid-tile class="le">
+                   <a routerLink="/referidoPromotor" target="_blank"> Capturar Referido</a>
+            </mat-grid-tile>
             <mat-grid-tile>
-
             </mat-grid-tile>
-
-
         </mat-grid-list>-->
-
 
 
     </div>
