@@ -289,7 +289,6 @@ export class UploadBaseComponent implements OnInit {
                               console.log("res");
                               console.log(res);
                               if (res.status == 200) {
-                                x++;
                                 this.sendServ.sendData6(datos)
                                   .subscribe(
                                     (ress: any) => {
@@ -297,8 +296,15 @@ export class UploadBaseComponent implements OnInit {
                                       console.log(ress);
                                     }
                                   );
-                              }else{
-                                x--;
+                                x = x + 1;
+                                if (count == x) {
+                                  this.showDialog("Los datos se han guardado correctamente.");
+                                  this.newdata.filename = "";
+                                  this.Tipo.value = "";
+                                }
+                              } else {
+                                x = x - 1;
+                                this.showDialog("Error al guardar el registro");
                               }
                           },
                             error => {
@@ -316,28 +322,7 @@ export class UploadBaseComponent implements OnInit {
                   
 
 
-                  let total;
-                  total = f * count;
-
-                  console.log('X = ' + total);
-
-                  setTimeout(() => {
-                    console.log(this.columDistin);
-                    if(this.columDistin){
-                      if(count == x){
-                          this.showDialog("Los datos se han guardado correctamente.");
-                          console.log('guardado ok');
-                          this.newdata.filename ="";
-                          this.Tipo.value="";
-                     }else{
-                         this.showDialog("Error al guardar los registros.");
-                          console.log('guardado NO');
-                     } 
-                    }else{
-                          console.log('columDistin false');
-
-                    }  
-                  }, total);
+                 
           }
           
             fileReader.readAsArrayBuffer(this.imgFileInput.nativeElement.files[0]);
