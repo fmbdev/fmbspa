@@ -110,7 +110,7 @@ export class UploadBaseComponent implements OnInit {
     this.subsub_tipos = this.subSubServ.getAllSubSubTipo();
   }
 
-  previewImage(event){  
+  previewImage(event){
     console.log(event.srcElement.files[0]); 
      this.newdata.filename = event.srcElement.files[0].name;
   }
@@ -235,8 +235,8 @@ export class UploadBaseComponent implements OnInit {
 
                     var GUIDCampus=campusTM[0].crmit_tb_campusid;
                     var GUIDCiclo=cicloTM[0].crmit_codigounico;
-                    var GUIDSubTipo = subtipoTM[0].crmit_codigounico;
-                    var GUIDSubSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;                   
+                    var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid; 
+                    var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;                 
 
                     var obj2 = {
                       "FuenteObtencion":this.Tipo.value,
