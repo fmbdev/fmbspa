@@ -427,9 +427,9 @@ export class NewRegisterExistingComponent implements OnInit {
                 }
             )
         }
-            const fecha_citas = this.formatServ.changeFormatFecha(U.crmit_fechacreacioncita);
+            //const fecha_citas = this.formatServ.changeFormatFecha(U.crmit_fechacreacioncita);
 
-            this.form.controls.FechaCita.reset({ value: fecha_citas, disabled: false });
+            //this.form.controls.FechaCita.reset({ value: fecha_citas, disabled: false });
     }
 
     onSubmit() {
