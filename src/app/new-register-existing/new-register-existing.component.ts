@@ -373,8 +373,8 @@ export class NewRegisterExistingComponent implements OnInit {
             (data: Ciclo[]) => {
 
                     const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
-                    const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas;
-
+                    const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas+'*'+cicloObjec[0].nombremes+'*'+cicloObjec[0].nombreventas;
+                   
                     this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
 
                 }
