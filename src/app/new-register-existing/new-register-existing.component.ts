@@ -440,57 +440,41 @@ export class NewRegisterExistingComponent implements OnInit {
             }
             let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
             let CicloV = _Ciclo.split('*');
+            let ciclo = "";
+            let nombre_ventas = "";
+  
 
             this.form.value.Banner = window.location.href;
             this.form.value.FuenteObtencion = "";
 
-            //var Fuenteobtension_fo = "";
+
+            console.log("Ciclo del form: " + CicloV);
+            console.log(" " );
+            console.log(" " );console.log(" " );
+            console.log(" " );console.log(" " );
+            //En caso de ser 18-3, esos son los resultados y ubicacion de var
+            console.log('CicloV[0] : '+CicloV[0]); //id
+            console.log('CicloV[1] : '+CicloV[1]); //18-3
+            console.log('CicloV[2] : '+CicloV[2]); //true
+            console.log('CicloV[3] : '+CicloV[3]); //Mayo
+            console.log('CicloV[4] : '+CicloV[4]); //C2
            
             for (let i = 0; i < this.rows.length; i++) {
-                //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-                var ciclo = CicloV[1];
+                
+                nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
 
-
-                //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
-                var ciclo_mocho = CicloV[1].split('-');
-
-
-                ciclo = "C" + ciclo_mocho[1];
-
-                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
-
-                    //console.log("---ciclo : "+ ciclo + " = " + this.rows[i].CICLO);
-
+                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
                     this.form.value.Team = this.rows[i].TEAM;
-                    //console.log("-- Team: " + this.form.value.Team);
-
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                    //console.log("-- Prioridad: " + this.form.value.Prioridad);
-
                     this.form.value.Attemp = this.rows[i].ATTEMP;
-                    //console.log("-- Attemp: " + this.rows[i].ATTEMP);
-
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-                    //console.log("-- FuenteObtencion: " + this.rows[i].FUENTE_NEGOCIO);
-
-                    //Fuenteobtension_fo = this.rows[i].FUENTE_NEGOCIO;
-
-
-
 
                 }
-                //console.log("Fuenteobtension_fo: " + this.rows[i].FUENTE_NEGOCIO);
+
             }
+            
 
-            //  console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
-            //console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
-            //console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
-
-
-            ciclo = ciclo_mocho[0] + "-" + ciclo_mocho[1];
-            // console.log("Nuevo Ciclo: " + ciclo);
-
-
+            ciclo = CicloV[1];
             // -------------------------------- Predictivo  ----------------------------------
             this.form.value.Banner = window.location.href;
             this.form.value.CanalPreferido = 'Voz';

@@ -233,44 +233,46 @@ export class ReferidoReferenteComponent implements OnInit {
   this.form.value.FuenteObtencion = "";
   let ciclo_vigente = ""; 
   let ciclo_codigounico = "";
+  let ciclo = "";
+  let ciclo_nombreventas = "";
 
+
+  console.log("localStorage.getItem('ciclo_name') = " + localStorage.getItem('ciclo_name'));
   let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
 
-    for(let i = 0 ; i <= this.ciclos.length ; i++ ){
-        if(this.ciclos[i] !== undefined){ 
-          if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
-                ciclo_vigente = this.ciclos[i].crmit_name;
-                ciclo_codigounico = this.ciclos[i].crmit_codigounico;
-              }
-        }    
+
+
+  for(let i = 0 ; i <= this.ciclos.length ; i++ ){
+      if(this.ciclos[i] !== undefined){ 
+        if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
+
+              ciclo_vigente = this.ciclos[i].crmit_name;
+              ciclo_nombreventas = this.ciclos[i].nombreventas;
+              ciclo_codigounico = this.ciclos[i].crmit_codigounico;
+              
+            }
+      }    
+
+  }
+
+  for (let i = 0; i < this.rows.length; i++) {
+
+       
+    if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo_nombreventas) {
+      var __ciclo = this.rows[i].CICLO;
+      this.form.value.Team = this.rows[i].TEAM;
+      var __team =  this.rows[i].TEAM;
+      this.form.value.Prioridad = this.rows[i].PRIORIDAD;
+      this.form.value.Attemp = this.rows[i].ATTEMP;
+      this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
 
     }
-
-    let ciclo_mocho = [];
-      let ciclo ="";
-
-        if(ciclo == "" || ciclo == null ){
-             ciclo_mocho = ciclo_vigente.split('-');
-             ciclo = "C"+ciclo_mocho[1];
-        } 
-
     
-    for (let i = 0; i < this.rows.length; i++) {
-      
-    
-      if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
-        this.form.value.Team = this.rows[i].TEAM;
-        this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-        this.form.value.Attemp = this.rows[i].ATTEMP;
-        this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+  }
+ ciclo = ciclo_vigente;
 
-      }
-    }
 
-     //Asignacion nueva de Ciclo
-     ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
-     //console.log("Nuevo Ciclo: " + ciclo);
-    // -------------------------------- Predictivo  -----------------------------------
+ // -------------------------------- Predictivo  -----------------------------------
         
 
     console.log(this.form.value.TelefonoPredictivo);
