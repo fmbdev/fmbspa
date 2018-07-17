@@ -509,15 +509,7 @@ export class NewRegisterExistingComponent implements OnInit {
 
             let CanalV = _Canal.split('*');
 
-            /*console.log(this.form.value.CampusCita);
-            console.log(this.form.value.FechaCita);
-            console.log(this.form.value.HoraCita);*/
-
-            //var notasTxt = this.form.value.Notas;
-
-            //console.log("El Usuario que se envia: " + this.form.value.Usuario); 
-
-            //console.log("Fuente Obtension: " + this.form.value.FuenteObtencion);
+          
 
             const sendd = {
 
@@ -551,7 +543,6 @@ export class NewRegisterExistingComponent implements OnInit {
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
                 AreaInteres: InteresV[1],
-                //Ciclo: CicloV[1],
                 Ciclo: ciclo,
 
                 GUIDCampusCita: (CampusV[0] == '') ? null : CampusV[0],

@@ -265,6 +265,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
 
         let userSearch = localStorage.getItem('lead_user');
         let jsonSearch = JSON.parse(userSearch);
+        
         let U = jsonSearch.value[0];
 
         

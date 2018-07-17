@@ -220,7 +220,7 @@
                         <mat-select formControlName="Ciclo" required placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
                             <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_codigounico']+'*'+ciclo['crmit_name']+'*'+ciclo['crmit_ciclovigenteventas']+'*'+ciclo['nombremes']+'*'+ciclo['nombreventas']">
-                                {{ ciclo['crmit_name'] }} - {{ciclo['nombremes']}}
+                                {{ ciclo['crmit_name'] }}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.controls.Ciclo.errors?.required">{{showMjs( 'ciclo.m1')}}</mat-error>
