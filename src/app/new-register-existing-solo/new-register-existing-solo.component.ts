@@ -265,6 +265,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
 
         let userSearch = localStorage.getItem('lead_user');
         let jsonSearch = JSON.parse(userSearch);
+        
         let U = jsonSearch.value[0];
 
         
@@ -462,34 +463,40 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
             let CicloV = _Ciclo.split('*');
 
+            let ciclo = "";
+            let nombre_ventas = "";
+
+
+            console.log("Ciclo del form: " + CicloV);
+            console.log(" " );
+            console.log(" " );console.log(" " );
+            console.log(" " );console.log(" " );
+            //En caso de ser 18-3, esos son los resultados y ubicacion de var
+            console.log('CicloV[0] : '+CicloV[0]); //id
+            console.log('CicloV[1] : '+CicloV[1]); //18-3
+            console.log('CicloV[2] : '+CicloV[2]); //true
+            console.log('CicloV[3] : '+CicloV[3]); //Mayo
+            console.log('CicloV[4] : '+CicloV[4]); //C2
+
+
+
+
 
             for (let i = 0; i < this.rows.length; i++) {
-                //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-                var ciclo = CicloV[2];
+               
+                nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
 
-                //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
-                var ciclo_mocho = CicloV[1].split('-');
-                ciclo = "C"+ciclo_mocho[1];
-
-
-                
-
-                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
                     this.form.value.Team = this.rows[i].TEAM;
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
 
-                   // console.log(this.rows[i].CICLO + " = " + ciclo);
-                   // console.log("FuenteObtencion: " + this.rows[i].FUENTE_NEGOCIO );
                 }
-
-               // console.log(this.rows[i].CICLO + " = " + ciclo);
 
             }
 
-            ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
-            //console.log("-- FuenteObtencion: " + this.form.value.FuenteObtencion);
+            ciclo = CicloV[1];
 
 
 

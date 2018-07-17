@@ -152,7 +152,7 @@ export class ReferidoWebComponent implements OnInit {
       mail_ref: new FormControl('', [LandingValidation.emailMaloValidator()]),
       tipo_ref: new FormControl(''),
       phone_ref: new FormControl(''),
-      cuenta_ref: new FormControl(''),
+      cuenta_ref: new FormControl('',[Validators.minLength(12)]),
 
       Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
       ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -204,6 +204,11 @@ export class ReferidoWebComponent implements OnInit {
     }
 
 
+/*    if (this.form.controls['cuenta_ref'].value != "") {
+      this.form.controls.cuenta_ref.setValidators([Validators.minLength(12), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+      this.form.controls.cuenta_ref.clearValidators();
+      this.form.controls.cuenta_ref.updateValueAndValidity();
+    }*/
 
     if (this.form.controls['CorreoElectronico'].value != "") {
       this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
@@ -284,39 +289,34 @@ export class ReferidoWebComponent implements OnInit {
       this.form.value.FuenteObtencion = "";
       let ciclo_vigente = ""; 
       let ciclo_codigounico = "";
+      let ciclo = "";
+      let ciclo_nombreventas = "";
 
+      
+      console.log("localStorage.getItem('ciclo_name') = " + localStorage.getItem('ciclo_name'));
       let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
 
+    
 
       for(let i = 0 ; i <= this.ciclos.length ; i++ ){
           if(this.ciclos[i] !== undefined){ 
             if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
+
                   ciclo_vigente = this.ciclos[i].crmit_name;
+                  ciclo_nombreventas = this.ciclos[i].nombreventas;
                   ciclo_codigounico = this.ciclos[i].crmit_codigounico;
+                  
                 }
           }    
 
       }
 
     
-      let ciclo_mocho = [];
-      let ciclo ="";
-
-        if(ciclo == "" || ciclo == null ){
-             ciclo_mocho = ciclo_vigente.split('-');
-             ciclo = "C"+ciclo_mocho[1];
-        } 
-
-       // console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
-       // console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
-       // console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
-
-
 
       for (let i = 0; i < this.rows.length; i++) {
 
        
-        if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+        if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo_nombreventas) {
           var __ciclo = this.rows[i].CICLO;
           this.form.value.Team = this.rows[i].TEAM;
           var __team =  this.rows[i].TEAM;
@@ -327,10 +327,11 @@ export class ReferidoWebComponent implements OnInit {
         }
         
       }
-      //Asignacion nueva de Ciclo
-     ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
-     //console.log("Nuevo Ciclo: " + ciclo);
-    // -------------------------------- Predictivo  ----------------------------------
+     ciclo = ciclo_vigente;
+
+
+
+     // -------------------------------- Predictivo  ----------------------------------
      
 
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;

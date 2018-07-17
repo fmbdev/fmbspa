@@ -68,6 +68,7 @@ export class NewRegisterExistingComponent implements OnInit {
     sinEmail = false;
     conEmail = true;
     campusValue = "";
+
     minDate = new Date(new Date().setDate(new Date().getDate()));
     maxDate = LandingValidation.fechaLimite();
     startDate = LandingValidation.fechaInicio();
@@ -267,7 +268,6 @@ export class NewRegisterExistingComponent implements OnInit {
                         const canalLead = this.getObjects(data, 'crmit_codigounico',  U._crmit_canalid_value);
                         const carrerasValue = canalLead[0].crmit_codigounico + '*' + canalLead[0].crmit_name;
                         this.csqs = this.csqServ.getCsqsByCanal(U._crmit_canalid_value);
-                        
                         this.form.controls.Canal.reset({ value: carrerasValue, disabled: false });
                         this.form.controls.CSQ.reset({ value: U.crmit_csq, disabled: false });
 
@@ -280,7 +280,7 @@ export class NewRegisterExistingComponent implements OnInit {
             Canal: new FormControl('', Validators.required),
             CSQ: new FormControl({ value: '', disabled: true }, Validators.required),
             TelefonoCorreo: new FormControl('', Validators.required),
-            Interesa_NoInteresa: new FormControl('', Validators.required),
+            Interesa_NoInteresa: new FormControl('0', Validators.required),
 
             Nombre: new FormControl(U.firstname, [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl(U.middlename, [LandingValidation.palabraMalaValidator()]),
@@ -314,7 +314,7 @@ export class NewRegisterExistingComponent implements OnInit {
             NumeroCuenta: new FormControl('12345678', Validators.pattern('^[0-9]+$')),
 
             Tipificacion: new FormControl(''),
-            Notas: new FormControl(''),
+            Notas: new FormControl(U.crmit_notas),
 
             CampusCita: new FormControl({ value: '', disabled: true }),
             FechaCita: new FormControl({ value: '', disabled: true }),
@@ -371,6 +371,7 @@ export class NewRegisterExistingComponent implements OnInit {
         this.cicloServ.getAll()
             .subscribe(
             (data: Ciclo[]) => {
+
                     const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
                     const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas;
 
@@ -382,10 +383,16 @@ export class NewRegisterExistingComponent implements OnInit {
         this.interesServ.getAll()
         .subscribe(
             (data: Interes[]) =>{
-                const interesObjec = this.getObjects(data, 'id', U._crmit_areaatencionid_value);
-                const peopleArray = Object.values(interesObjec[0]);
-                const interesValue = peopleArray[0]+'*'+peopleArray[1];
-                this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
+                console.log(U._crmit_areaatencionid_value);
+                let attt = U._crmit_areaatencionid_value;
+                let interesObjec = this.getObjects(this.intereses, 'id', attt);
+                //console.log(interesObjec);
+                 
+                   let peopleArray = Object.values(interesObjec[0]);
+                   let interesValue = peopleArray[0]+'*'+peopleArray[1];
+                   this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
+                 
+               
             }
         )
 
@@ -515,57 +522,41 @@ export class NewRegisterExistingComponent implements OnInit {
             }
             let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
             let CicloV = _Ciclo.split('*');
+            let ciclo = "";
+            let nombre_ventas = "";
+  
 
             this.form.value.Banner = window.location.href;
             this.form.value.FuenteObtencion = "";
 
-            //var Fuenteobtension_fo = "";
+
+            console.log("Ciclo del form: " + CicloV);
+            console.log(" " );
+            console.log(" " );console.log(" " );
+            console.log(" " );console.log(" " );
+            //En caso de ser 18-3, esos son los resultados y ubicacion de var
+            console.log('CicloV[0] : '+CicloV[0]); //id
+            console.log('CicloV[1] : '+CicloV[1]); //18-3
+            console.log('CicloV[2] : '+CicloV[2]); //true
+            console.log('CicloV[3] : '+CicloV[3]); //Mayo
+            console.log('CicloV[4] : '+CicloV[4]); //C2
            
             for (let i = 0; i < this.rows.length; i++) {
-                //var ciclo = (localStorage.getItem('ciclo') == null) ? "C1" : localStorage.getItem('ciclo');
-                var ciclo = CicloV[1];
+                
+                nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
 
-
-                //Asignar C a el reciduo del ciclo (1 cifra, debe quedar C1,C2 o C3)
-                var ciclo_mocho = CicloV[1].split('-');
-
-
-                ciclo = "C" + ciclo_mocho[1];
-
-                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
-
-                    //console.log("---ciclo : "+ ciclo + " = " + this.rows[i].CICLO);
-
+                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
                     this.form.value.Team = this.rows[i].TEAM;
-                    //console.log("-- Team: " + this.form.value.Team);
-
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                    //console.log("-- Prioridad: " + this.form.value.Prioridad);
-
                     this.form.value.Attemp = this.rows[i].ATTEMP;
-                    //console.log("-- Attemp: " + this.rows[i].ATTEMP);
-
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-                    //console.log("-- FuenteObtencion: " + this.rows[i].FUENTE_NEGOCIO);
-
-                    //Fuenteobtension_fo = this.rows[i].FUENTE_NEGOCIO;
-
-
-
 
                 }
-                //console.log("Fuenteobtension_fo: " + this.rows[i].FUENTE_NEGOCIO);
+
             }
+            
 
-            //  console.log("ciclo_mocho[0]: "+ciclo_mocho[0]);
-            //console.log("ciclo_mocho[1]: "+ciclo_mocho[1]);
-            //console.log("ciclo_mocho[2]: "+ciclo_mocho[2]);
-
-
-            ciclo = ciclo_mocho[0] + "-" + ciclo_mocho[1];
-            // console.log("Nuevo Ciclo: " + ciclo);
-
-
+            ciclo = CicloV[1];
             // -------------------------------- Predictivo  ----------------------------------
             this.form.value.Banner = window.location.href;
             this.form.value.CanalPreferido = 'Voz';
@@ -600,15 +591,7 @@ export class NewRegisterExistingComponent implements OnInit {
 
             let CanalV = _Canal.split('*');
 
-            /*console.log(this.form.value.CampusCita);
-            console.log(this.form.value.FechaCita);
-            console.log(this.form.value.HoraCita);*/
-
-            //var notasTxt = this.form.value.Notas;
-
-            //console.log("El Usuario que se envia: " + this.form.value.Usuario); 
-
-            //console.log("Fuente Obtension: " + this.form.value.FuenteObtencion);
+          
 
             const sendd = {
 
@@ -642,7 +625,6 @@ export class NewRegisterExistingComponent implements OnInit {
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
                 AreaInteres: InteresV[1],
-                //Ciclo: CicloV[1],
                 Ciclo: ciclo,
 
                 GUIDCampusCita: (CampusV[0] == '') ? null : CampusV[0],
@@ -872,6 +854,7 @@ export class NewRegisterExistingComponent implements OnInit {
     }
 
     onChangeInteres(value) {
+        console.log(value);
         if (value == '') {
             this.form.controls.Campus.clearValidators();
             this.form.controls.AreaInteres.clearValidators();
