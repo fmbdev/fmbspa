@@ -152,7 +152,7 @@ export class ReferidoWebComponent implements OnInit {
       mail_ref: new FormControl('', [LandingValidation.emailMaloValidator()]),
       tipo_ref: new FormControl(''),
       phone_ref: new FormControl(''),
-      cuenta_ref: new FormControl(''),
+      cuenta_ref: new FormControl('',[Validators.minLength(12)]),
 
       Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
       ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -204,6 +204,11 @@ export class ReferidoWebComponent implements OnInit {
     }
 
 
+/*    if (this.form.controls['cuenta_ref'].value != "") {
+      this.form.controls.cuenta_ref.setValidators([Validators.minLength(12), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
+      this.form.controls.cuenta_ref.clearValidators();
+      this.form.controls.cuenta_ref.updateValueAndValidity();
+    }*/
 
     if (this.form.controls['CorreoElectronico'].value != "") {
       this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);

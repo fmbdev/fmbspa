@@ -38,7 +38,7 @@
                 <mat-grid-tile>
                     <mat-form-field>
                         <input autocomplete="off" formControlName="phone_ref" matInput placeholder="Teléfono" minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)">
-                        <mat-error *ngIf="form.controls.phone_ref.errors?.minlength">Al menos debe contener 10 dígitos</mat-error>
+                        <mat-error *ngIf="form.controls.phone_ref.errors?.minlength">Al menos debe contener 12 dígitos</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
@@ -58,8 +58,8 @@
                 <mat-grid-tile>
                     <mat-form-field>
 
-                        <input autocomplete="off" formControlName="cuenta_ref" matInput placeholder="Cuenta" type="tel" (keypress)="_keyPress($event)">
-                        <!-- <input autocomplete="off" formControlName="cuenta_ref" matInput placeholder="Cuenta" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressTxt($event)">-->
+                        <input autocomplete="off" formControlName="cuenta_ref" matInput placeholder="Cuenta" maxlength="12" type="tel" (keypress)="_keyPress($event)">
+                        <mat-error *ngIf="form.controls.cuenta_ref.errors?.minlength">Al menos debe contener 12 dígitos</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
