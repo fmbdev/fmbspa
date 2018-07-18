@@ -1,3 +1,0 @@
-
-¡Operación exitosa!<br>Datos: {"Nombre":"alfonsock", "ApellidoPaterno":"silvack", "ApellidoMaterno":"hidalgock", "CorreoElectronico":"silvack@alfonso.com", "Telefono":"5521290085"}<br>
-¡Operación exitosa!<br>Datos: {"Nombre":"alfonsocl", "ApellidoPaterno":"silvacl", "ApellidoMaterno":"hidalgocl", "CorreoElectronico":"silvacl@alfonso.com", "Telefono":"5521290084"}<br>
