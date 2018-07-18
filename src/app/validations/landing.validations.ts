@@ -187,7 +187,7 @@ export class LandingValidation {
     static edadMinValidator(): ValidatorFn { //Validacion de edad
         return (control: AbstractControl): { [key: string]: any } => {
             const name = control.value;
-            if(name <= 12){
+            if(name <= 12 && name != ""){
                 return { 'edadMin': { name } }
             }else{
                 return null;

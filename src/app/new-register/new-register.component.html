@@ -148,7 +148,6 @@
                     <mat-form-field>
                         <input autocomplete="off" formControlName="Edad" matInput placeholder="Edad" type="tel" (keypress)="_keyPress($event)" (blur)="onKeyFechaNacimiento()" minlength="2" maxlength="2" (change)="onChange()">
                         <mat-error *ngIf="form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
-                        <mat-error *ngIf="form.controls.Edad.errors?.required">{{EdadMin('edad.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.edadMin">Tu edad debe ser igual o mayor a 12 años.</mat-error>
                     </mat-form-field>

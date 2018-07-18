@@ -269,7 +269,7 @@ export class NewRegisterComponent implements OnInit {
             Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
-            Edad: new FormControl('', [Validators.minLength(2),LandingValidation.edadMinValidator()]),
+            Edad: new FormControl('', [Validators.minLength(2), LandingValidation.edadMinValidator()]),
 
             SinCorreo: new FormControl(''),
 

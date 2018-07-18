@@ -275,7 +275,7 @@ export class NewRegisterSoloComponent implements OnInit {
             Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
-            Edad: new FormControl('', [Validators.minLength(2)]),
+            Edad: new FormControl('', [Validators.minLength(2), LandingValidation.edadMinValidator()]),
 
             NombreTutor: new FormControl(''),
             ApellidoPaternoTutor: new FormControl(''),
