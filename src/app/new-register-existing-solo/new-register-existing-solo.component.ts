@@ -283,7 +283,9 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             Telefono: new FormControl(U.telephone1, [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(U.crmit_sexo),
             FechaNacimiento: new FormControl(''),
-            Edad: new FormControl(U.crmit_edad, [Validators.minLength(2)]),
+            
+            Edad: new FormControl(U.crmit_edad, [Validators.minLength(2),LandingValidation.edadMinValidator()]),
+
 
             NombreTutor: new FormControl(U.crmit_nombretutor),
             ApellidoPaternoTutor: new FormControl(U.crmit_apaternotutor),
@@ -370,12 +372,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
         let form = this.form;
         let pnnServ = this.pnnServ;
 
-        if (this.form.value.Edad < 11) {
-            this.showDialogE("Tu edad debe ser mayor igual a 12 años");
-            return false;
-          }
-
-
+        
         $('form').find(':input').each(function(){
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');

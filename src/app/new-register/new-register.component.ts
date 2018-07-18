@@ -269,7 +269,7 @@ export class NewRegisterComponent implements OnInit {
             Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
-            Edad: new FormControl('', [Validators.minLength(2)]),
+            Edad: new FormControl('', [Validators.minLength(2),LandingValidation.edadMinValidator()]),
 
             SinCorreo: new FormControl(''),
 
@@ -309,12 +309,6 @@ export class NewRegisterComponent implements OnInit {
         let form = this.form;
         let pnnServ = this.pnnServ;
 
-
-        if (this.form.value.Edad < 11) {
-            this.showDialogE("Tu edad debe ser mayor igual a 12 años");
-            return false;
-          }
-      
 
         $('form').find(':input').each(function () {
             if ($(this).hasClass('validPhoneNumber')) {
@@ -1080,9 +1074,6 @@ export class NewRegisterComponent implements OnInit {
         return LandingValidation.getMensaje(field);
     }
 
-    EdadMin(field: any) {
-        return LandingValidation.edadMinima(field);
-    }
 
     private showDialog(message: string) {
         let dialogRef = this.dialog.open(DialogComponent, {

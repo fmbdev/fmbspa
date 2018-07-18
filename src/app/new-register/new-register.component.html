@@ -150,6 +150,7 @@
                         <mat-error *ngIf="form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.required">{{EdadMin('edad.m2')}}</mat-error>
                         <mat-error *ngIf="form.controls.Edad.errors?.minlength && !form.controls.Edad.errors?.required">{{showMjs('edad.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Edad.errors?.edadMin">Tu edad debe ser igual o mayor a 12 años.</mat-error>
                     </mat-form-field>
                 </div>
             </div>

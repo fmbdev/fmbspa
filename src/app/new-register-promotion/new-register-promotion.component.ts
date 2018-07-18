@@ -300,7 +300,8 @@ export class NewRegisterPromotionComponent implements OnInit {
             Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(''),
             FechaNacimiento: new FormControl(''),
-            Edad: new FormControl('', [Validators.minLength(2)]),
+            Edad: new FormControl('', [Validators.minLength(2),LandingValidation.edadMinValidator()]),
+
 
             NombreTutor: new FormControl(''),
             ApellidoPaternoTutor: new FormControl(''),
@@ -352,11 +353,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             return false;
           }
 
-          if (this.form.value.Edad < 11) {
-            this.showDialogE("Tu edad debe ser mayor igual a 12 años");
-            return false;
-          }
-
+          
           if (this.form.value.Ejecutivo  == "") {
             this.showDialogE("Debe seleccionar un ejecutivo");
             return false;

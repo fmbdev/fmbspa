@@ -184,15 +184,18 @@ export class LandingValidation {
         return object[field][mjs];   
     }
 
-    static edadMinima(campo:any){
+    static edadMinValidator(): ValidatorFn { //Validacion de edad
+        return (control: AbstractControl): { [key: string]: any } => {
+            const name = control.value;
+            if(name <= 12){
+                return { 'edadMin': { name } }
+            }else{
+                return null;
+            }
+        };
+    } 
 
-        let e = campo;
-        let mensaje = "";
-        if(e.value <= 12){
-            return mensaje;
-        }
-        
-    }
+
 
     static getObjects(obj, key, val) {
         var objects = [];
