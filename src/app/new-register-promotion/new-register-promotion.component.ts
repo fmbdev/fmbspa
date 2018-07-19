@@ -362,6 +362,13 @@ export class NewRegisterPromotionComponent implements OnInit {
             return false;
           }
 
+          //let main_user {} = {};
+          
+          //main_user = localStorage.getItem('user');
+
+          //console.log('Fullname ' + main_user.fullname);
+         // console.log('Fullname ' + main_user.fullname);
+
           
           if (this.form.value.Ejecutivo  == "") {
             this.showDialogE("Debe seleccionar un ejecutivo");
@@ -484,7 +491,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
             let CicloV = _Ciclo.split('*');
 
-
+            let f_negocio = "";
 
             for (let i = 0; i < this.rows.length; i++) {
 
@@ -500,6 +507,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
                     
                 }
             }
@@ -590,6 +598,9 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
             let sendd = {};       
 
+            
+            //console.log("localStorage.getItem('UserId') = "+localStorage.getItem('UserId'));
+
             if(this.form.controls.actvidadNoTradicional.value == true){
 
                  sendd = {
@@ -612,7 +623,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
     
                     Ejecutivo: EjecutivoV[1],
                     GUIDEjecutivo: EjecutivoV[0],
-    
+                    FuenteNegocio : (f_negocio == "")? "" : f_negocio,
     
                     Campus: CampusV[1],
                     Nivel: NivelV[1],
@@ -698,7 +709,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
     
                     Ejecutivo: EjecutivoV[1],
                     GUIDEjecutivo: EjecutivoV[0],
-    
+                    FuenteNegocio : (f_negocio == "")? "" : f_negocio,
     
                     Campus: CampusV[1],
                     Nivel: NivelV[1],

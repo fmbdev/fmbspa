@@ -325,7 +325,7 @@ export class ReferidoWebComponent implements OnInit {
 
       }
 
- 
+ let f_negocio = "";
       for (let i = 0; i < this.rows.length; i++) {
 
        
@@ -336,6 +336,7 @@ export class ReferidoWebComponent implements OnInit {
           this.form.value.Prioridad = this.rows[i].PRIORIDAD;
           this.form.value.Attemp = this.rows[i].ATTEMP;
           this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+          f_negocio = this.rows[i].FUENTE_NEGOCIO;
 
         }
         
@@ -430,6 +431,7 @@ export class ReferidoWebComponent implements OnInit {
                 GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
                 FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                 Banner: this.form.value.Banner,
+                FuenteNegocio : (f_negocio == "")? "" : f_negocio,
 
                 Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
                 TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,

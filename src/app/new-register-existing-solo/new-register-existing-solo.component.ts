@@ -487,7 +487,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
 
 
 
-
+            let f_negocio = "";
 
             for (let i = 0; i < this.rows.length; i++) {
                
@@ -498,6 +498,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
 
                 }
 
@@ -610,7 +611,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             AreaInteres: InteresV[1],
             Ciclo:  ciclo,
 
-            
+            FuenteNegocio : (f_negocio == "")? "" : f_negocio,
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
             GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
             GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],

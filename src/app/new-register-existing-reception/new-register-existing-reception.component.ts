@@ -385,6 +385,8 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             console.log('CicloV[3] : '+CicloV[3]); //Mayo
             console.log('CicloV[4] : '+CicloV[4]); //C2
            
+
+            let f_negocio = "";
             for (let i = 0; i < this.rows.length; i++) {
                 
                 nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
@@ -394,6 +396,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
 
                 }
 
@@ -440,6 +443,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
               ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
               CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
 
+              FuenteNegocio : (f_negocio == "")? "" : f_negocio,
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],

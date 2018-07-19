@@ -270,7 +270,7 @@ export class ReferidoTlmkComponent implements OnInit {
 
   }
 
-
+let f_negocio = "";
   for (let i = 0; i < this.rows.length; i++) {
 
        
@@ -281,6 +281,7 @@ export class ReferidoTlmkComponent implements OnInit {
       this.form.value.Prioridad = this.rows[i].PRIORIDAD;
       this.form.value.Attemp = this.rows[i].ATTEMP;
       this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+      f_negocio = this.rows[i].FUENTE_NEGOCIO;
 
     }
     
@@ -371,7 +372,7 @@ export class ReferidoTlmkComponent implements OnInit {
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
-
+                FuenteNegocio : (f_negocio == "")? "" : f_negocio,
 
                 Ciclo: ciclo,
                // GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),

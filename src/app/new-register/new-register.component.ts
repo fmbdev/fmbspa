@@ -441,7 +441,7 @@ export class NewRegisterComponent implements OnInit {
 
 
 
-
+          let f_negocio = "";
 
             for (let i = 0; i < this.rows.length; i++) {
                 
@@ -452,6 +452,8 @@ export class NewRegisterComponent implements OnInit {
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
+
 
                 }
 
@@ -634,7 +636,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
-
+                FuenteNegocio : (f_negocio == "")? "" : f_negocio,
                 
                 Banner: this.form.value.Banner,
                 Bandera: (arm_bandera == '') ? null :arm_bandera,

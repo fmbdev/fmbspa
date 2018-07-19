@@ -410,7 +410,7 @@ export class NewRegisterSoloComponent implements OnInit {
             console.log('CicloV[3] : '+CicloV[3]); //Mayo
             console.log('CicloV[4] : '+CicloV[4]); //C2
 
-
+            let f_negocio = "";
             for (let i = 0; i < this.rows.length; i++) {
 
                 nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
@@ -420,6 +420,7 @@ export class NewRegisterSoloComponent implements OnInit {
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
 
                 }
 
@@ -512,7 +513,7 @@ export class NewRegisterSoloComponent implements OnInit {
             Carrera: CarreraV[1],
             AreaInteres: InteresV[1],
             Ciclo:  ciclo,
-
+            FuenteNegocio : (f_negocio == "")? "" : f_negocio,
             
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
             GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],

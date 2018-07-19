@@ -544,6 +544,9 @@ export class NewRegisterExistingComponent implements OnInit {
             console.log('CicloV[3] : '+CicloV[3]); //Mayo
             console.log('CicloV[4] : '+CicloV[4]); //C2
            
+
+            let f_negocio = "";
+
             for (let i = 0; i < this.rows.length; i++) {
                 
                 nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
@@ -553,6 +556,8 @@ export class NewRegisterExistingComponent implements OnInit {
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
+
 
                 }
 
@@ -687,7 +692,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
                 Notas: (this.form.value.Notas == '') ? null : this.form.value.Notas,
 
-
+                FuenteNegocio : (f_negocio == "")? "" : f_negocio,
                 CampusCita: (this.form.value.CampusCita == undefined || this.form.value.CampusCita == "") ? null : this.form.value.CampusCita,
 
 
