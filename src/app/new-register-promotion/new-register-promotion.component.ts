@@ -32,6 +32,7 @@ import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 import { ActividadAgenda } from '../interfaces/actividad-agenda';
+import { FuenteObtencion } from '../interfaces/fuenteobtencion';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -55,6 +56,7 @@ import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
 import { ActividadAgendaService } from '../providers/actividad-agenda.service';
 import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
+import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
 
 
 @Component({
@@ -138,6 +140,7 @@ export class NewRegisterPromotionComponent implements OnInit {
     tipificaciones: Tipificacion[] = [];
     actividad_agenda: ActividadAgenda[] = [];
     escuelas_empresas: EscuelaEmpresa[] = [];
+    fuentesobtencion: FuenteObtencion[] = [];
     campusTxt: any;
     nivelTxt: any;
     canalText: any;
@@ -168,6 +171,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         private tipicicacionServ: TipificacionService,
         private subSubServ: SubsubtipoActividadService,       
         private escuelaEmpresaServ: EscuelaEmpresaService, 
+        private fuenteobtencionServ: FuenteObtencionService,        
         private actividadAgendaServ: ActividadAgendaService) {
             this.fetch((data) => {
                 this.rows = data;
@@ -259,6 +263,11 @@ export class NewRegisterPromotionComponent implements OnInit {
             .subscribe(
                 (data: ActividadAgenda[]) => this.actividad_agenda = data
             )
+        //Se obtiene todos los fuente obtencion
+        this.fuenteobtencionServ.getAll()
+        .subscribe(
+        (data: FuenteObtencion[]) => this.fuentesobtencion = data
+        )    
 
         this.formInit();
     }
@@ -505,6 +514,44 @@ export class NewRegisterPromotionComponent implements OnInit {
             
 
             let bandera = localStorage.getItem('bandera');
+
+
+/***********Fuente Obtencion Begin***********/
+
+let f_o = "";
+let fuente_obtencion_nombre = "";
+let fuente_obtencion_GUID = "";
+
+f_o = this.form.value.FuenteObtencion;
+console.log('this.form.value.FuenteObtencion = '+this.form.value.FuenteObtencion);
+if(f_o == "" || f_o == null){
+  fuente_obtencion_nombre = "PROMOCION";
+}else{
+  this.form.value.FuenteObtencion = "PROMOCION";
+  fuente_obtencion_nombre = "PROMOCION";
+}
+
+
+let fo = "";
+
+for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
+
+  if(this.fuentesobtencion[i] !== undefined){ 
+    if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
+
+      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+          
+        }
+  } 
+            
+}
+    console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
+    console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+
+/***********Fuente Obtencion End***********/     
+
+
+
             
             /* Interes GUID */
             
@@ -605,7 +652,9 @@ export class NewRegisterPromotionComponent implements OnInit {
                     Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                     Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                     Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                    FuenteObtencion: this.form.value.FuenteObtencion,
+                    
+                    GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+                    FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                     
                     //Numero Celular
                     Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
@@ -696,7 +745,9 @@ export class NewRegisterPromotionComponent implements OnInit {
                     Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                     Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                     Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                    FuenteObtencion: this.form.value.FuenteObtencion,
+
+                    GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+                    FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                     
                     //Numero Celular
                     Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,

@@ -33,7 +33,7 @@ import { Parentesco } from '../interfaces/parentesco';
 import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { AsesorGrupal } from '../interfaces/asesor-grupal';
-
+import { FuenteObtencion } from '../interfaces/fuenteobtencion';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -53,6 +53,8 @@ import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
+import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
+
 
 
 
@@ -122,7 +124,8 @@ export class NewRegisterComponent implements OnInit {
     generos: Genero[] = [];
 
     asesores: Asesor[] = [];
-    
+    fuentesobtencion: FuenteObtencion[] = [];
+
     
     carreras: Carrera[] = [];
     intereses: Interes[] = [];
@@ -160,6 +163,7 @@ export class NewRegisterComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusCarreraServ: CampusCarreraService,
         private asesorGrupalServ: AsesorGrupalService,
+        private fuenteobtencionServ: FuenteObtencionService,
         private tipicicacionServ: TipificacionService) {
         this.fetch((data) => {
             this.rows = data;
@@ -222,6 +226,12 @@ export class NewRegisterComponent implements OnInit {
             .subscribe(
                 (data: Hora[]) => this.horas = data
             )
+
+        //Se obtiene todos los fuente obtencion
+        this.fuenteobtencionServ.getAll()
+        .subscribe(
+        (data: FuenteObtencion[]) => this.fuentesobtencion = data
+        )    
 
         //Se obtienen todos los asesores
 
@@ -450,6 +460,41 @@ export class NewRegisterComponent implements OnInit {
 
             ciclo = CicloV[1];
 
+/***********Fuente Obtencion Begin***********/
+
+let f_o = "";
+let fuente_obtencion_nombre = "";
+let fuente_obtencion_GUID = "";
+
+f_o = this.form.value.FuenteObtencion;
+console.log("this.form.value.FuenteObtencion = " + this.form.value.FuenteObtencion);
+if(f_o == "" || f_o == null){
+  fuente_obtencion_nombre = "INBOUND";
+}else{
+  this.form.value.FuenteObtencion = "INBOUND";
+  fuente_obtencion_nombre = "INBOUND";
+}
+
+
+let fo = "";
+
+for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
+
+  if(this.fuentesobtencion[i] !== undefined){ 
+    if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
+
+      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+          
+        }
+  } 
+            
+}
+    console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
+    console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+
+/***********Fuente Obtencion End***********/    
+
+
 
           // -------------------------------- Predictivo  ----------------------------------
             this.form.value.Banner = window.location.href;
@@ -591,7 +636,9 @@ export class NewRegisterComponent implements OnInit {
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                fuenteobtencion: this.form.value.FuenteObtencion,
+                GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '2e89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+
+                fuenteobtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                 //FuenteObtencion: this.form.value.FuenteObtencion,
                 
 
