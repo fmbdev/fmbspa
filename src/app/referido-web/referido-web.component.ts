@@ -428,7 +428,7 @@ export class ReferidoWebComponent implements OnInit {
                 GUIDUsuario: localStorage.getItem('UserId'),
                 GUIDReferidoParentesco: (TipoRefV[0] == '') ? null : TipoRefV[0],                 
                 GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
-
+                FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                 Banner: this.form.value.Banner,
 
                 Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
@@ -445,7 +445,7 @@ export class ReferidoWebComponent implements OnInit {
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
+
                 Ciclo: ciclo,
                // GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
                 GUIDCiclo: ciclo_codigounico,

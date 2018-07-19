@@ -32,6 +32,7 @@ import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { TipoActividad } from '../interfaces/tipo-actividad';
 import { Turno } from '../interfaces/turno';
+import { FuenteObtencion } from '../interfaces/fuenteobtencion';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -53,6 +54,8 @@ import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
+import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
+
 
 
 @Component({
@@ -139,6 +142,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
     parentescos: Parentesco[] = [];
     tipificaciones: Tipificacion[] = [];
     tipo_actividades: TipoActividad[] = [];
+    fuentesobtencion: FuenteObtencion[] = [];
     turnos: Turno[] = [];
     rows = [];
     campusTxt: any;
@@ -167,6 +171,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
         private tipoActServ: TipoActividadService,
         private campusCitaServ: CampusCitaService,
         private tipicicacionServ: TipificacionService,
+        private fuenteobtencionServ: FuenteObtencionService,
         private campusCarreraServ: CampusCarreraService,) {
       this.fetch((data) => {
         this.rows = data;
@@ -244,6 +249,11 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
             )
+        //Se obtiene todos los fuente obtencion
+        this.fuenteobtencionServ.getAll()
+        .subscribe(
+        (data: FuenteObtencion[]) => this.fuentesobtencion = data
+        )    
           
         this.formInit();
     }
@@ -495,7 +505,39 @@ export class NewRegisterExistingSoloComponent implements OnInit {
 
             ciclo = CicloV[1];
 
+/***********Fuente Obtencion Begin***********/
 
+let f_o = "";
+let fuente_obtencion_nombre = "";
+let fuente_obtencion_GUID = "";
+
+f_o = this.form.value.FuenteObtencion;
+
+if(f_o == "" || f_o == null){
+  fuente_obtencion_nombre = "SOLOVINO";
+}else{
+  this.form.value.FuenteObtencion = "SOLOVINO";
+  fuente_obtencion_nombre = "SOLOVINO";
+}
+
+
+let fo = "";
+
+for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
+
+  if(this.fuentesobtencion[i] !== undefined){ 
+    if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
+
+      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+          
+        }
+  } 
+            
+}
+    console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
+    console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+
+/***********Fuente Obtencion End***********/   
 
           // -------------------------------- Predictivo  ----------------------------------
           let edadT = this.form.value.Edad;
@@ -555,7 +597,8 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
             GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
             GUIDUsuario:localStorage.getItem('UserId'),
-
+            GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3c89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+            fuenteobtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
              
 
             Banner: this.form.value.Banner,
@@ -564,7 +607,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
             Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
             Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-            fuenteobtencion: this.form.value.FuenteObtencion,
+            
 
             //Numero Celular
             Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,

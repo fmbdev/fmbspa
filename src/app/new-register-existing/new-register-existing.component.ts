@@ -33,6 +33,7 @@ import { Parentesco } from '../interfaces/parentesco';
 import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { AsesorGrupal } from '../interfaces/asesor-grupal';
+import { FuenteObtencion } from '../interfaces/fuenteobtencion';
 
 
 import { PnnService } from '../providers/pnn.service';
@@ -53,6 +54,7 @@ import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCitaService } from '../providers/campus-cita.service';
 import { TipificacionService } from '../providers/tipificacion.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
+import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
 
 
 
@@ -134,7 +136,7 @@ export class NewRegisterExistingComponent implements OnInit {
     rows = [];
 
     asesoresGrupal: AsesorGrupal[] = [];
-
+    fuentesobtencion: FuenteObtencion[] = [];
 
     campusTxt: any;
     nivelTxt: any;
@@ -161,6 +163,7 @@ export class NewRegisterExistingComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusCarreraServ: CampusCarreraService,
         private asesorGrupalServ: AsesorGrupalService,
+        private fuenteobtencionServ: FuenteObtencionService,
         private tipicicacionServ: TipificacionService) {
         this.fetch((data) => {
         this.rows = data;
@@ -236,6 +239,12 @@ export class NewRegisterExistingComponent implements OnInit {
             .subscribe(
                 (data: AsesorGrupal[]) => this.asesoresGrupal = data
             )
+
+        //Se obtiene todos los fuente obtencion
+            this.fuenteobtencionServ.getAll()
+            .subscribe(
+            (data: FuenteObtencion[]) => this.fuentesobtencion = data
+            )    
 
 
         this.formInit();
@@ -551,6 +560,42 @@ export class NewRegisterExistingComponent implements OnInit {
             
 
             ciclo = CicloV[1];
+
+/***********Fuente Obtencion Begin***********/
+
+let f_o = "";
+let fuente_obtencion_nombre = "";
+let fuente_obtencion_GUID = "";
+
+f_o = this.form.value.FuenteObtencion;
+
+if(f_o == "" || f_o == null){
+  fuente_obtencion_nombre = "INBOUND";
+}else{
+  this.form.value.FuenteObtencion = "INBOUND";
+  fuente_obtencion_nombre = "INBOUND";
+}
+
+
+let fo = "";
+
+for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
+
+  if(this.fuentesobtencion[i] !== undefined){ 
+    if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
+
+      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+          
+        }
+  } 
+            
+}
+    console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
+    console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+
+/***********Fuente Obtencion End***********/     
+
+
             // -------------------------------- Predictivo  ----------------------------------
             this.form.value.Banner = window.location.href;
             this.form.value.CanalPreferido = 'Voz';
@@ -630,6 +675,8 @@ export class NewRegisterExistingComponent implements OnInit {
                 GUIDAreaInteres: (InteresV[0] == '') ? null : InteresV[0],
                 GUIDCiclo: (CicloV[0] == '') ? null : CicloV[0],
                 GUIDUsuario: localStorage.getItem('UserId'),
+                GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '2e89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+                fuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                 
                 
                 Banner: this.form.value.Banner,
@@ -654,7 +701,7 @@ export class NewRegisterExistingComponent implements OnInit {
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                fuenteobtencion: this.form.value.FuenteObtencion,
+                
                 //FuenteObtencion: this.form.value.FuenteObtencion,
 
                 
