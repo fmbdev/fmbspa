@@ -467,13 +467,35 @@ let fuente_obtencion_nombre = "";
 let fuente_obtencion_GUID = "";
 
 f_o = this.form.value.FuenteObtencion;
-console.log("this.form.value.FuenteObtencion = " + this.form.value.FuenteObtencion);
-if(f_o == "" || f_o == null){
-  fuente_obtencion_nombre = "INBOUND";
+
+let c = this.form.value.Canal.split('*');
+
+c = c[1];
+
+
+if(c == "Chat"){
+
+    fuente_obtencion_nombre = "CHAT";
+    console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+
+}else if(c == "Social"){
+
+    fuente_obtencion_nombre = "SOCIAL";
+    console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+
 }else{
-  this.form.value.FuenteObtencion = "INBOUND";
-  fuente_obtencion_nombre = "INBOUND";
+
+    /*if(f_o == "" || f_o == null){
+        fuente_obtencion_nombre = "INBOUND";
+        }else{*/
+        this.form.value.FuenteObtencion = "INBOUND";
+        fuente_obtencion_nombre = "INBOUND";
+       /* } */
+
 }
+console.log("-------------------------------");
+console.log("Valor de Canal y Fuente Obtencion: " + fuente_obtencion_nombre);
+console.log("-------------------------------");           
 
 
 let fo = "";
