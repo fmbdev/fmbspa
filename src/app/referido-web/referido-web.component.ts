@@ -17,18 +17,18 @@ import { Carrera } from '../interfaces/carrera';
 import { Nivel } from '../interfaces/nivel';
 import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
-//import { TipoReferente } from '../interfaces/tipo-referente';
 import { Ciclo } from '../interfaces/ciclo';
+import { FuenteObtencion } from '../interfaces/fuenteobtencion';
 
 //Servicios
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
 import { ModalidadService } from '../providers/modalidad.service';
-//import { TipoReferenteService } from '../providers/tipo-referente.service';
 import { SendService } from '../providers/send.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
 import { CicloService } from '../providers/ciclo.service';
+import { FuenteObtencionServ } from '../providers/fuenteobtencion.service';
 
 
 @Component({
@@ -48,9 +48,11 @@ export class ReferidoWebComponent implements OnInit {
   tiposReferentes: Parentesco[] = [];
   parentescos: Parentesco[] = [];
   ciclos: Ciclo[] = [];
+  fuentesobtencion: FuenteObtencion[] = [];
   rows = [];
   campusTxt: any;
   nivelTxt: any;
+  
 
   //maxDate = new Date(2018, this.month.getMonth(),12);
   maxDate = LandingValidation.fechaLimite();
@@ -96,6 +98,7 @@ export class ReferidoWebComponent implements OnInit {
     private parentescoServ: ParentescoService,
     private campusCarreraServ: CampusCarreraService,
     private cicloServ: CicloService,
+    private fuenteobtencionServ: FuenteObtencionServ,
     private tipoRefenteServ: ParentescoService) {
 
     this.fetch((data) => {
@@ -129,6 +132,12 @@ export class ReferidoWebComponent implements OnInit {
     this.cicloServ.getAll()
     .subscribe(
       (data: Ciclo[]) => this.ciclos = data
+    )
+
+    //Se obtiene todos los fuente obtencion
+    this.fuenteobtencionServ.getAll()
+    .subscribe(
+      (data: FuenteObtencion[]) => this.fuentesobtencion = data
     )
 
     this.formInit();
@@ -167,7 +176,6 @@ export class ReferidoWebComponent implements OnInit {
       Nivel: new FormControl({ value: '', disabled: true }),
       Modalidad: new FormControl({ value: '', disabled: true }),
       Carrera: new FormControl({ value: '', disabled: true }),
-      //Ciclo: new FormControl(''),
       tipificacion: new FormControl(''),
     });
 
@@ -311,8 +319,7 @@ export class ReferidoWebComponent implements OnInit {
 
       }
 
-    
-
+ 
       for (let i = 0; i < this.rows.length; i++) {
 
        
@@ -327,9 +334,30 @@ export class ReferidoWebComponent implements OnInit {
         }
         
       }
+
+    //Asignacion a ciclo
      ciclo = ciclo_vigente;
 
+      let f_o = "";
+      let fuente_obtencion_nombre = "";
+      let fuente_obtencion_GUID = "";
 
+      f_o = this.form.value.FuenteObtencion;
+
+      if(f_o == "" || f_o == null){
+        fuente_obtencion_nombre = "REFERIDOSs";
+      }
+
+
+      console.log("Fuentes obtencion: "+this.fuentesobtencion);
+
+      for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
+
+          fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+
+          console.log("fuente_GUID: "+this.fuentesobtencion[i].fuente_GUID);
+      }
+console.log("Fuente Guid: " + fuente_obtencion_GUID);
 
      // -------------------------------- Predictivo  ----------------------------------
      
@@ -378,9 +406,9 @@ export class ReferidoWebComponent implements OnInit {
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],                 
-                GUIDUsuario:localStorage.getItem('UserId'),
+                GUIDUsuario: localStorage.getItem('UserId'),
                 GUIDReferidoParentesco: (TipoRefV[0] == '') ? null : TipoRefV[0],                 
-
+                GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
 
                 Banner: this.form.value.Banner,
 
@@ -398,7 +426,7 @@ export class ReferidoWebComponent implements OnInit {
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                FuenteObtencion: this.form.value.FuenteObtencion,
+                FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                 Ciclo: ciclo,
                // GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
                 GUIDCiclo: ciclo_codigounico,
