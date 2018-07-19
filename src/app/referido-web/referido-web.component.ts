@@ -28,7 +28,7 @@ import { SendService } from '../providers/send.service';
 import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
 import { CicloService } from '../providers/ciclo.service';
-import { FuenteObtencionServ } from '../providers/fuenteobtencion.service';
+import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
 
 
 @Component({
@@ -77,11 +77,11 @@ export class ReferidoWebComponent implements OnInit {
   tipoCel: FormControl;
 
   Campus: FormControl;
-  //interestArea: FormControl;
+  interestArea: FormControl;
   Nivel: FormControl;
   Modalidad: FormControl;
   Carrera: FormControl;
-  //Ciclo: FormControl;
+  Ciclo: FormControl;
   tipificacion: FormControl;
   public mostrarExtension: boolean = null;
 
@@ -98,7 +98,7 @@ export class ReferidoWebComponent implements OnInit {
     private parentescoServ: ParentescoService,
     private campusCarreraServ: CampusCarreraService,
     private cicloServ: CicloService,
-    private fuenteobtencionServ: FuenteObtencionServ,
+    private fuenteobtencionServ: FuenteObtencionService,
     private tipoRefenteServ: ParentescoService) {
 
     this.fetch((data) => {
@@ -232,6 +232,12 @@ export class ReferidoWebComponent implements OnInit {
     }
 
     this.mostrarExtension = true;
+
+
+
+
+
+
     
     if (this.form.valid) {
 
@@ -338,6 +344,8 @@ export class ReferidoWebComponent implements OnInit {
     //Asignacion a ciclo
      ciclo = ciclo_vigente;
 
+     /***********Fuente Obtencion Begin***********/
+
       let f_o = "";
       let fuente_obtencion_nombre = "";
       let fuente_obtencion_GUID = "";
@@ -345,19 +353,30 @@ export class ReferidoWebComponent implements OnInit {
       f_o = this.form.value.FuenteObtencion;
 
       if(f_o == "" || f_o == null){
-        fuente_obtencion_nombre = "REFERIDOSs";
+        fuente_obtencion_nombre = "REFERIDOS";
+      }else{
+        this.form.value.FuenteObtencion = "REFERIDOS";
+        fuente_obtencion_nombre = "REFERIDOS";
       }
 
-
-      console.log("Fuentes obtencion: "+this.fuentesobtencion);
-
+      
+      let fo = "";
+      
       for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
-          fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+        if(this.fuentesobtencion[i] !== undefined){ 
+          if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
 
-          console.log("fuente_GUID: "+this.fuentesobtencion[i].fuente_GUID);
+            fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+                
+              }
+        } 
+                  
       }
-console.log("Fuente Guid: " + fuente_obtencion_GUID);
+          console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
+          console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+
+     /***********Fuente Obtencion End***********/     
 
      // -------------------------------- Predictivo  ----------------------------------
      

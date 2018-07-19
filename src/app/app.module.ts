@@ -67,6 +67,7 @@ import { GeneralService } from './services/general.service';
 import { LandingService } from './services/landing.service';
 import { SubsubtipoActividadService } from './providers/subsubtipo-actividad.service';
 import { CalidadService } from './providers/calidad.service';
+import { FuenteObtencionService } from './providers/fuenteobtencion.service';
 
 import { AppConfig } from './services/constants';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
@@ -149,7 +150,7 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
     MatMenuModule,
 
   ],  
-  providers: [CanalService, CsqService, TipificacionService, InteresService,
+  providers: [CanalService, CsqService, TipificacionService, InteresService, FuenteObtencionService,
               ParentescoService, CampusService, NivelService, ModalidadService, SubsubtipoActividadService,
               CarreraService, CicloService, AsesorService,AsesorGrupalService, HoraService, PnnService, SendService, FormatService,
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,

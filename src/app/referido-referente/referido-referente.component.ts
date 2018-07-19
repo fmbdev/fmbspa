@@ -17,6 +17,8 @@ import { Nivel } from '../interfaces/nivel';
 import { Modalidad } from '../interfaces/modalidad';
 import { SendService } from '../providers/send.service';
 import { Ciclo } from '../interfaces/ciclo';
+import { FuenteObtencion } from '../interfaces/fuenteobtencion';
+
 
 
 //Servicios
@@ -25,6 +27,7 @@ import { CarreraService } from '../providers/carrera.service';
 import { ModalidadService } from '../providers/modalidad.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
 import { CicloService } from '../providers/ciclo.service';
+import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
 
 @Component({
   selector: 'app-referido-referente',
@@ -63,6 +66,8 @@ export class ReferidoReferenteComponent implements OnInit {
   public mostrarExtension: boolean = null;
 
   ciclos: Ciclo[] = [];
+  fuentesobtencion: FuenteObtencion[] = [];
+
   campus: Campus[] = [];
   carreras: Carrera[] = [];
   modalidades: Modalidad[] = [];
@@ -80,6 +85,7 @@ export class ReferidoReferenteComponent implements OnInit {
     private sendServ: SendService,
     private modalidadServ: ModalidadService,
     private cicloServ: CicloService,
+    private fuenteobtencionServ: FuenteObtencionService,
     private campusCarreraServ: CampusCarreraService) {
     this.fetch((data) => {
       this.rows = data;
@@ -102,6 +108,12 @@ export class ReferidoReferenteComponent implements OnInit {
       (data: Ciclo[]) => this.ciclos = data
     )
 
+        //Se obtiene todos los fuente obtencion
+        this.fuenteobtencionServ.getAll()
+        .subscribe(
+          (data: FuenteObtencion[]) => this.fuentesobtencion = data
+        )
+    
 
     this.formInit();
   }
@@ -271,6 +283,39 @@ export class ReferidoReferenteComponent implements OnInit {
   }
  ciclo = ciclo_vigente;
 
+ /***********Fuente Obtencion Begin***********/
+
+ let f_o = "";
+ let fuente_obtencion_nombre = "";
+ let fuente_obtencion_GUID = "";
+
+ f_o = this.form.value.FuenteObtencion;
+
+ if(f_o == "" || f_o == null){
+   fuente_obtencion_nombre = "REFERIDOS";
+ }else{
+   this.form.value.FuenteObtencion = "REFERIDOS";
+   fuente_obtencion_nombre = "REFERIDOS";
+ }
+
+ 
+ let fo = "";
+ 
+ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
+
+   if(this.fuentesobtencion[i] !== undefined){ 
+     if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
+
+       fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
+           
+         }
+   } 
+             
+ }
+     console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
+     console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+
+/***********Fuente Obtencion End***********/ 
 
  // -------------------------------- Predictivo  -----------------------------------
         
@@ -331,14 +376,15 @@ export class ReferidoReferenteComponent implements OnInit {
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
-                
+                GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
 
                 Banner: this.form.value.Banner,
                 
               Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
               Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-              FuenteObtencion: this.form.value.FuenteObtencion,
+              FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
+
               Ciclo: ciclo,
               GUIDCiclo: ciclo_codigounico,
                 
