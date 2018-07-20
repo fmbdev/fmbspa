@@ -370,7 +370,7 @@ export class NewRegisterPromotionComponent implements OnInit {
          // console.log('Fullname ' + main_user.fullname);
 
           
-          if (this.form.value.Ejecutivo  == "") {
+          if (this.form.value.Ejecutivo  == "" && this.perfil_usuario != 'UNTC Ejecutivo de Cuenta' ) {
             this.showDialogE("Debe seleccionar un ejecutivo");
             return false;
           }
@@ -610,7 +610,18 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
             let sendd = {};       
 
-            
+            let EjecutivoUser = "";
+            let GUIDEjecutivoUser = "";
+            let userLocal = localStorage.getItem('user');
+            let datos = JSON.parse(userLocal);
+
+            if(this.perfil_usuario=='UNTC Ejecutivo de Cuenta'){
+                EjecutivoUser = datos.fullname;
+                GUIDEjecutivoUser = datos.systemuserid;
+            }else{
+                 EjecutivoUser = EjecutivoV[1];
+                 GUIDEjecutivoUser = EjecutivoV[0];
+            }
             //console.log("localStorage.getItem('UserId') = "+localStorage.getItem('UserId'));
 
             if(this.form.controls.actvidadNoTradicional.value == true){
@@ -633,8 +644,8 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                     ParentescoTutor: ParentescoV[0],
                     GUIDParentescotutor: ParentescoV[1],
     
-                    Ejecutivo: EjecutivoV[1],
-                    GUIDEjecutivo: EjecutivoV[0],
+                    Ejecutivo: EjecutivoUser,
+                    GUIDEjecutivo: GUIDEjecutivoUser,
                     FuenteNegocio : (f_negocio == "")? "" : f_negocio,
     
                     Campus: CampusV[1],
@@ -701,7 +712,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             }else{
 
                   sendd = {
-                                
+
                 
                     Usuario: this.form.value.Usuario,
                     Nombre: this.form.value.Nombre, 
@@ -719,8 +730,8 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                     ParentescoTutor: ParentescoV[0],
                     GUIDParentescotutor: ParentescoV[1],
     
-                    Ejecutivo: EjecutivoV[1],
-                    GUIDEjecutivo: EjecutivoV[0],
+                    Ejecutivo: EjecutivoUser,
+                    GUIDEjecutivo: GUIDEjecutivoUser,
                     FuenteNegocio : (f_negocio == "")? "" : f_negocio,
     
                     Campus: CampusV[1],
@@ -812,8 +823,8 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 ParentescoTutor: ParentescoV[0],
                 GUIDParentescotutor: ParentescoV[1],
 
-                Ejecutivo: EjecutivoV[1],
-                GUIDEjecutivo: EjecutivoV[0],
+                Ejecutivo: EjecutivoUser,
+                GUIDEjecutivo: GUIDEjecutivoUser,
 
 
                 Campus: CampusV[1],
