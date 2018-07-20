@@ -680,7 +680,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 GUIDAreaInteres: (InteresV[0] == '') ? null : InteresV[0],
                 GUIDCiclo: (CicloV[0] == '') ? null : CicloV[0],
                 GUIDUsuario: localStorage.getItem('UserId'),
-                GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '2e89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+                GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '2e89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
                 fuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                 
                 

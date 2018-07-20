@@ -522,7 +522,7 @@ export class NewRegisterSoloComponent implements OnInit {
             GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
             GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
             GUIDUsuario:localStorage.getItem('UserId'),
-            GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3c89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+            GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3c89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
              
 
             Banner: this.form.value.Banner,

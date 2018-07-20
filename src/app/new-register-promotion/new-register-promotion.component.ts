@@ -502,17 +502,29 @@ export class NewRegisterPromotionComponent implements OnInit {
                 ciclo = "C"+ciclo_mocho[1];
 
 
+                //console.log(this.rows[i].CAMPUS+" = "+this.campusTxt);
+                //console.log(this.rows[i].BL+" = "+this.nivelTxt);
+                //console.log(this.rows[i].CICLO+" = "+ciclo);
+
+
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
+
+                    //console.log("+"+this.rows[i].CAMPUS+" = "+this.campusTxt);
+                    //console.log("+"+this.rows[i].BL+" = "+this.nivelTxt);
+                    //console.log("+"+this.rows[i].CICLO+" = "+ciclo);
+
+
                     this.form.value.Team = this.rows[i].TEAM;
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
                     this.form.value.Attemp = this.rows[i].ATTEMP;
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
+
                     f_negocio = this.rows[i].FUENTE_NEGOCIO;
                     
                 }
             }
             ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
-            //console.log(this.form.value.FuenteObtencion);
+            console.log("------FuenteNegocio: " + f_negocio);
             
             
           let edadT = this.form.value.Edad;            
@@ -664,7 +676,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                     Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                     Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                     
-                    GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+                    GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
                     FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                     
                     //Numero Celular

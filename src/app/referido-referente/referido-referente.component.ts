@@ -380,7 +380,7 @@ export class ReferidoReferenteComponent implements OnInit {
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                  
                 GUIDUsuario:localStorage.getItem('UserId'),
-                GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+                GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
 
                 Banner: this.form.value.Banner,
                 
