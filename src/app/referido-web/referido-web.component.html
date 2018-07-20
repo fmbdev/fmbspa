@@ -58,7 +58,7 @@
                 <mat-grid-tile>
                     <mat-form-field>
 
-                        <input autocomplete="off" formControlName="cuenta_ref" matInput placeholder="Cuenta" type="tel" minlength="12" (keypress)="_keyPress($event)">
+                        <input autocomplete="off" formControlName="cuenta_ref" matInput placeholder="Cuenta" type="tel" maxlength="12" minlength="5" (keypress)="_keyPress($event)">
                         <mat-error *ngIf="form.controls.cuenta_ref.errors?.minlength">Al menos debe contener 12 dígitos</mat-error>
 
 
