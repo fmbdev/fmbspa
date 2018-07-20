@@ -769,7 +769,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                     Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                     Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
 
-                    GUIDFuenteObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
+                    GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
                     FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
                     
                     //Numero Celular
