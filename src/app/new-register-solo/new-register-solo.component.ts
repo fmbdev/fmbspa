@@ -273,8 +273,7 @@ export class NewRegisterSoloComponent implements OnInit {
         
         this.form = new FormGroup({
 
-            Usuario: new FormControl({ value: datos.fullname, disabled: true }),
- 
+            Usuario: new FormControl({ value: datos.fullname, disabled: false }),
             SinCorreo: new FormControl(''),
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -358,9 +357,13 @@ export class NewRegisterSoloComponent implements OnInit {
 
           // -------------------------------- Predictivo  ----------------------------------
 
+          let tel_casa_predictivo = "";
+
              const predTel = this.form.value.Telefono.substring(0,2);
             if(predTel == 55){
               this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+              tel_casa_predictivo = "9"+this.form.value.Telefono;
+
             }
             this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
 
@@ -399,32 +402,61 @@ export class NewRegisterSoloComponent implements OnInit {
             let ciclo = "";
             let nombre_ventas = "";
 
-            console.log("Ciclo del form: " + CicloV);
-            console.log(" " );
-            console.log(" " );console.log(" " );
-            console.log(" " );console.log(" " );
+            //console.log("Ciclo del form: " + CicloV);
+            //console.log(" " );
+            //console.log(" " );console.log(" " );
+            //console.log(" " );console.log(" " );
             //En caso de ser 18-3, esos son los resultados y ubicacion de var
-            console.log('CicloV[0] : '+CicloV[0]); //id
-            console.log('CicloV[1] : '+CicloV[1]); //18-3
-            console.log('CicloV[2] : '+CicloV[2]); //true
-            console.log('CicloV[3] : '+CicloV[3]); //Mayo
-            console.log('CicloV[4] : '+CicloV[4]); //C2
+            //console.log('CicloV[0] : '+CicloV[0]); //id
+            //console.log('CicloV[1] : '+CicloV[1]); //18-3
+            //console.log('CicloV[2] : '+CicloV[2]); //true
+            //console.log('CicloV[3] : '+CicloV[3]); //Mayo
+            //console.log('CicloV[4] : '+CicloV[4]); //C2
 
             let f_negocio = "";
-            for (let i = 0; i < this.rows.length; i++) {
 
-                nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
+     
+            let main_carrera = this.form.value.Carrera.split("*");
 
-                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
-                    this.form.value.Team = this.rows[i].TEAM;
-                    this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                    this.form.value.Attemp = this.rows[i].ATTEMP;
-                    this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
-
-                }
-
-            }
+            for (let i = 0; i < this.carreras.length; i++) {
+  
+              if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
+  
+              console.log("");console.log("");console.log("");console.log("");
+              console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
+              console.log("Nombre de carrera:"+this.carreras[i].name);
+              console.log("BL de Carrera:"+this.carreras[i].BL);
+              console.log("");console.log("");console.log("");console.log("");
+  
+  
+                  /**Re calcula el team prioridad y attemp con respecto a la universidad**/
+  
+                  for (let j = 0; j < this.rows.length; j++) {
+                  
+                      nombre_ventas = (CicloV[4] == "") ? "" : CicloV[4];
+      
+                      //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
+                      if (this.rows[j].FUENTE_NEGOCIO == "SOLOVINOS" && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+                        
+                          this.form.value.Team = this.rows[j].TEAM;
+                          console.log("TEAM : " + this.form.value.Team);
+                          this.form.value.Prioridad = this.rows[j].PRIORIDAD;
+                          console.log("Prioridad : " + this.form.value.Prioridad);
+                          this.form.value.Attemp = this.rows[j].ATTEMP;
+                          console.log("ATTEMP : " + this.form.value.Attemp);
+                          this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
+                          console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                          f_negocio = this.rows[i].FUENTE_NEGOCIO;
+      
+      
+                      }
+      
+                  }
+  
+                  /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
+              }
+  
+          }
 
             ciclo = CicloV[1];
 
@@ -436,7 +468,7 @@ export class NewRegisterSoloComponent implements OnInit {
       let fuente_obtencion_GUID = "";
 
       f_o = this.form.value.FuenteObtencion;
-      console.log("this.form.value.FuenteObtencion = "+f_o);
+      //console.log("this.form.value.FuenteObtencion = "+f_o);
       if(f_o == "" || f_o == null){
         fuente_obtencion_nombre = "SOLOVINOS";
       }else{
@@ -458,8 +490,13 @@ export class NewRegisterSoloComponent implements OnInit {
         } 
                   
       }
+          console.log("___________________________________________");
+          console.log(""); console.log(""); console.log("");
           console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
           console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+          console.log("Fuente Negocio: " + f_negocio);
+          console.log("");console.log("");console.log("");  
+          console.log("___________________________________________");
 
      /***********Fuente Obtencion End***********/     
 
@@ -490,7 +527,7 @@ export class NewRegisterSoloComponent implements OnInit {
 
             const sendd = {    
 
-            Usuario: this.form.value.Usuario,
+            Usuario: this.form.value.Usuario, 
                     
             Nombre: this.form.value.Nombre, 
             ApellidoPaterno: this.form.value.ApellidoPaterno, 
@@ -538,7 +575,7 @@ export class NewRegisterSoloComponent implements OnInit {
             TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
             //Numero Telefono o Telefono Casa
             TelefonoCasa: this.form.value.Telefono,
-            TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+            TelefonoCasaPredictivo: tel_casa_predictivo,
               
 
             //Numero Celular Tutor
@@ -550,19 +587,19 @@ export class NewRegisterSoloComponent implements OnInit {
 
           };
              
-            console.log("this.conEmail");
-            console.log(this.conEmail);
+            //console.log("this.conEmail");
+            //console.log(this.conEmail);
             if (this.conEmail) {
                 this.sendServ.sendData4(sendd)// this.form.value)
                     .subscribe(
                         (res: any) => {
-                            console.log(res.status);
+                            //console.log(res.status);
                             if (res.status == 200) {
                                 this.showDialogE("Registro guardado con éxito.");
                                 this.sendServ.sendData6(sendd)// this.form.value)
                                     .subscribe(
                                         (ress: any) => {
-                                            console.log(ress.status);
+                                            //console.log(ress.status);
                                             if (ress.status == 200) {
                                                 this.showDialog("Los datos se han guardado correctamente.");
                                             } else {
@@ -648,7 +685,7 @@ export class NewRegisterSoloComponent implements OnInit {
         let k = this.form.controls.Nivel.value;
         let g = k.split('*');
         let nivelG = g[0];
-        console.log(nivelG);
+        //console.log(nivelG);
         if(nivelG){
            let asess = this.asesorGrupalServ.getAll()
             .subscribe(
@@ -748,7 +785,7 @@ export class NewRegisterSoloComponent implements OnInit {
 
     //Cambiado
     onChangeCampus(campus: string) {
-        console.log(campus);
+        //console.log(campus);
         let cadena = campus.split('*');
         let value = cadena[0];
         for (let i = 0; i < this.campus.length; i++) {
@@ -779,7 +816,7 @@ export class NewRegisterSoloComponent implements OnInit {
     }
     //Cambiando
     onChangeNivel(campus: string) {
-        console.log(campus);
+        //console.log(campus);
 
         let cadena = campus.split('*');
         let value = cadena[0];
@@ -808,7 +845,7 @@ export class NewRegisterSoloComponent implements OnInit {
     //Cambiando
     onChangeModalidad(campus: string) {
 
-        console.log(campus);
+        //console.log(campus);
 
         let cadena = campus.split('*');
         let value = cadena[0];

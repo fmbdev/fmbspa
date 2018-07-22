@@ -368,6 +368,66 @@ export class ReferidoPromotorComponent implements OnInit {
          console.log("Fuente Guid: " + fuente_obtencion_GUID); 
 
     /***********Fuente Obtencion End***********/ 
+
+    let main_carrera = this.form.value.Carrera.split("*");
+    let nombre_ventas ="";
+    let valor_ciclo = ""; 
+
+    if(ciclo == "19-1"){
+       valor_ciclo = "C3";
+    }else if(ciclo == "20-1"){
+     valor_ciclo = "C3";
+    }else if(ciclo == "20-2"){
+   valor_ciclo = "C1";
+   }else if(ciclo == "18-3"){
+     valor_ciclo = "C2";
+   }
+
+     console.log("valor ciclo: "+valor_ciclo);
+     ciclo = valor_ciclo;
+
+     console.log("-----ciclo: "+ ciclo);
+
+    for (let i = 0; i < this.carreras.length; i++) {
+
+      if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
+
+      console.log("");console.log("");console.log("");console.log("");
+      console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
+      console.log("Nombre de carrera:"+this.carreras[i].name);
+      console.log("BL de Carrera:"+this.carreras[i].BL);
+      console.log("");console.log("");console.log("");console.log("");
+
+
+          /**Re calcula el team prioridad y attemp con respecto a la universidad**/
+
+          for (let j = 0; j < this.rows.length; j++) {
+          
+              nombre_ventas = ciclo;
+
+              //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
+              if (this.rows[j].FUENTE_NEGOCIO == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+                
+                  this.form.value.Team = this.rows[j].TEAM;
+                  console.log("TEAM : " + this.form.value.Team);
+                  this.form.value.Prioridad = this.rows[j].PRIORIDAD;
+                  console.log("Prioridad : " + this.form.value.Prioridad);
+                  this.form.value.Attemp = this.rows[j].ATTEMP;
+                  console.log("ATTEMP : " + this.form.value.Attemp);
+                  this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
+                  console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                  f_negocio = this.rows[i].FUENTE_NEGOCIO;
+
+
+              }
+
+          }
+
+          /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
+      }
+
+  }
+
     // -------------------------------- Predictivo  ----------------------------------
             let edadT = this.form.value.Edad;
 
@@ -417,7 +477,7 @@ export class ReferidoPromotorComponent implements OnInit {
               FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
               FuenteNegocio : (f_negocio == "")? "" : f_negocio,
               
-              Ciclo: ciclo,
+              Ciclo: ciclo_vigente,
               GUIDCiclo: ciclo_codigounico,
 
               Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,

@@ -269,10 +269,12 @@
                     <mat-form-field>
                         <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
+                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']+'*'+carrera['BL']+'*'+carrera['Activo']">
+
                                 {{ carrera['name'] }}
                             </mat-option>
                         </mat-select>
+                        <!--<mat-error>{{form.controls.Carrera.value | json )}}</mat-error>-->
                         <mat-error *ngIf="form.controls.Carrera.errors?.required">{{showMjs( 'carrera.m1')}}</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
@@ -327,7 +329,7 @@
                     <mat-form-field>
                         <mat-select formControlName="CampusCita" placeholder="Campus de Cita">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let campus of campus_citas;" [value]="campus['Nombre de Campus']">
+                            <mat-option *ngFor="let campus of campus_citas;" [value]="campus['Nombre de Campus']+'*'+campus['id de campus']">
                                 {{ campus['Nombre de Campus'] }}
                             </mat-option>
                         </mat-select>
@@ -338,7 +340,9 @@
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile>
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
+                        <!--<input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">-->
+
+                        <input autocomplete="off" formControlName="FechaCita" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" readonly placeholder="Fecha de Cita" (click)="picker.open()">
                         <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                         <mat-error *ngIf="form.controls.FechaCita.errors?.required">{{showMjs( 'fecha_cita.m1')}}</mat-error>
@@ -437,7 +441,9 @@
 
         </mat-grid-list>-->
 
-
+        <mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
+            <div style="font-size: 12px; color:brown; font-weight: bold;">v. 1.0.2</div>
+        </mat-grid-list>
 
     </div>
 </form>

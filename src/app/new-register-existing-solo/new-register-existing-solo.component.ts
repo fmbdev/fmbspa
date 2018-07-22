@@ -430,13 +430,16 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             }
 
           // -------------------------------- Predictivo  ----------------------------------
+            let tel_casa_predictivo = "";
 
              const predTel = this.form.value.Telefono.substring(0,2);
             if(predTel == 55){
               this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-            }
-            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+              tel_casa_predictivo = "9"+this.form.value.Telefono;
 
+            }
+            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+            
 
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
@@ -636,7 +639,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
             //Numero Telefono o Telefono Casa
             TelefonoCasa: this.form.value.Telefono,
-            TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+            TelefonoCasaPredictivo:tel_casa_predictivo,
               
 
             //Numero Celular Tutor
@@ -644,6 +647,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
             //Numero Casa Tutor                
             TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
+           // TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
             TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
           };

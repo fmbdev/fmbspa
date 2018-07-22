@@ -92,7 +92,7 @@
                             <mat-option value="0">Selecciona una opción</mat-option>
                             <!--<mat-option value="1">CENTRO DE ESTUDIOS UNIVERSITARIOS (COYOACAN</mat-option>
                             <mat-option value="2">PRE_COLEGIO ANGEL DEL CAMPO (IZTAPALAPA)</mat-option>-->
-                            <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_empresaescuela']+'*'+escuelaempresa['Name']+'*'+escuelaempresa['crmit_calidadid']">
+                            <mat-option *ngFor="let escuelaempresa of escuelas_empresas;" [value]="escuelaempresa['crmit_empresaescuela']+'*'+escuelaempresa['Name']+'*'+escuelaempresa['crmit_calidadid']+'*'+escuelaempresa['crmit_calidadidname']">
                                 {{ escuelaempresa['Name'] }}
                             </mat-option>
                         </mat-select>
@@ -305,7 +305,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
+                            <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']+'*'+carrera['BL']+'*'+carrera['Activo']">
                                 {{ carrera['name'] }}
                             </mat-option>
                         </mat-select>
@@ -318,7 +318,7 @@
                     <mat-form-field>
                         <mat-select formControlName="Ciclo" placeholder="Ciclo" (change)="onChangeInteres(form.controls.Ciclo.value)">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_codigounico']+'*'+ciclo['crmit_name']+'*'+ciclo['crmit_ciclovigenteventas']+'*'+ciclo['nombremes']">
+                            <mat-option *ngFor="let ciclo of ciclos;" [value]="ciclo['crmit_codigounico']+'*'+ciclo['crmit_name']+'*'+ciclo['crmit_ciclovigenteventas']+'*'+ciclo['nombremes']+'*'+ciclo['nombreventas']">
                                 {{ ciclo['crmit_name'] }}
                             </mat-option>
                         </mat-select>
@@ -366,7 +366,9 @@
                 </div>
             </mat-grid-tile>
         </mat-grid-list>-->
-
+        <mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
+            <div style="font-size: 12px; color:brown; font-weight: bold;">v. 1.0.2</div>
+        </mat-grid-list>
 
     </div>
 </form>

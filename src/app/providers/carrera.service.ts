@@ -17,7 +17,7 @@ export class CarreraService {
    }
 
   getAll() {
-    this.http.get(this.api_cnn+"carrera", {headers: this.headers})
+    this.http.get("/assets/carrera.json", {headers: this.headers})
         .map(
           (res: Response) => res.json()
         )

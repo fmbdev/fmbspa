@@ -445,7 +445,7 @@ export class NewRegisterPromotionComponent implements OnInit {
 
             
           // -------------------------------- Predictivo  ----------------------------------
-
+          let tel_casa_predictivo = "";
             if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
 
                 this.form.value.Telefono = "5555555555";
@@ -455,8 +455,9 @@ export class NewRegisterPromotionComponent implements OnInit {
              console.log(predTel);
             if(predTel == 55){
               this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+              tel_casa_predictivo = "9"+this.form.value.Telefono;
             }
-            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+            //this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono; 
 
 
             if (this.form.value.NumeroCelular){
@@ -493,6 +494,40 @@ export class NewRegisterPromotionComponent implements OnInit {
 
             let f_negocio = "";
 
+            let _EmpresaEscuela = (this.form.value.EscuelaEmpresa==null)? "": this.form.value.EscuelaEmpresa;
+            
+            let EmpresaEscuelaV = _EmpresaEscuela.split('*');
+            let cal_empresa = EmpresaEscuelaV[3];
+            let cal_status = "";
+
+            //Validacion de calidad
+            if(cal_empresa == "H"){ 
+               cal_status = "EMPRESAS";
+
+            }else if(cal_empresa == "A" || cal_empresa == "B" || cal_empresa == "C" || cal_empresa == "D" ){
+                cal_status = "ESCUELA PROMOTORA";
+
+            }else if(cal_empresa == "G"){ 
+                cal_status = "ESCUELAS BACK UP";
+ 
+             }else if(cal_empresa == "E"){ 
+                cal_status = "ESCUELAS NO ESCOLARIZADAS";
+ 
+             }else if(cal_empresa == "F"){ 
+                cal_status = "SISTEMAS ABIERTOS";
+ 
+             }else if(cal_empresa == "A286"){ 
+                cal_status = "ACUERDO 286";
+ 
+             }else if(cal_empresa == "S/A" || this.form.value.actvidadNoTradicional == true ){ 
+                cal_status = "PROMOCION NO TRADICIONAL";
+ 
+             }
+
+
+
+
+
             for (let i = 0; i < this.rows.length; i++) {
 
 
@@ -501,18 +536,17 @@ export class NewRegisterPromotionComponent implements OnInit {
                 var ciclo_mocho = CicloV[1].split('-');
                 ciclo = "C"+ciclo_mocho[1];
 
+                let nombre_ventas = CicloV[4];
 
-                //console.log(this.rows[i].CAMPUS+" = "+this.campusTxt);
-                //console.log(this.rows[i].BL+" = "+this.nivelTxt);
-                //console.log(this.rows[i].CICLO+" = "+ciclo);
+                
+                
+                if (this.rows[i].FUENTE_NEGOCIO == cal_status && this.rows[i].CICLO == nombre_ventas && this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt ) {
+               
 
-
-                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo) {
-
-                    //console.log("+"+this.rows[i].CAMPUS+" = "+this.campusTxt);
-                    //console.log("+"+this.rows[i].BL+" = "+this.nivelTxt);
-                    //console.log("+"+this.rows[i].CICLO+" = "+ciclo);
-
+                    console.log("this.form.value.Team = "+this.rows[i].TEAM);
+                    console.log("this.form.value.Prioridad = "+this.rows[i].PRIORIDAD);
+                    console.log("this.form.value.Attemp = "+this.rows[i].ATTEMP);
+                    console.log("this.form.value.FuenteObtencion = "+this.rows[i].FUENTE_NEGOCIO);
 
                     this.form.value.Team = this.rows[i].TEAM;
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
@@ -527,6 +561,54 @@ export class NewRegisterPromotionComponent implements OnInit {
             console.log("------FuenteNegocio: " + f_negocio);
             
             
+            
+
+            let main_carrera = this.form.value.Carrera.split("*");
+
+            for (let i = 0; i < this.carreras.length; i++) {
+  
+              if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
+  
+              console.log("");console.log("");console.log("");console.log("");
+              console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
+              console.log("Nombre de carrera:"+this.carreras[i].name);
+              console.log("BL de Carrera:"+this.carreras[i].BL);
+              console.log("");console.log("");console.log("");console.log("");
+  
+  
+                  /**Re calcula el team prioridad y attemp con respecto a la universidad**/
+  
+                  let nombre_ventas = "";
+                  for (let j = 0; j < this.rows.length; j++) {
+                  
+                      nombre_ventas = (CicloV[4] == "") ? "" : CicloV[4];
+      
+                      //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
+                      if (this.rows[j].FUENTE_NEGOCIO == f_negocio && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+                        
+                          this.form.value.Team = this.rows[j].TEAM;
+                          console.log("TEAM : " + this.form.value.Team);
+                          this.form.value.Prioridad = this.rows[j].PRIORIDAD;
+                          console.log("Prioridad : " + this.form.value.Prioridad);
+                          this.form.value.Attemp = this.rows[j].ATTEMP;
+                          console.log("ATTEMP : " + this.form.value.Attemp);
+                          this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
+                          console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                          //f_negocio = this.rows[i].FUENTE_NEGOCIO;
+      
+      
+                      }
+      
+                  }
+  
+                  /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
+              }
+  
+          }
+
+
+
+
           let edadT = this.form.value.Edad;            
             if(edadT==""){ edadT = 12; }
             
@@ -535,6 +617,8 @@ export class NewRegisterPromotionComponent implements OnInit {
 
             let bandera = localStorage.getItem('bandera');
 
+
+            
 
 /***********Fuente Obtencion Begin***********/
 
@@ -586,7 +670,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             let _SubSubTipo = this.form.value.SubSubTipoActividad;
 
             let _ActividadAgenda = (this.form.value.ActividadAgenda==null)? "": this.form.value.ActividadAgenda;
-            let _EmpresaEscuela = (this.form.value.EscuelaEmpresa==null)? "": this.form.value.EscuelaEmpresa;
+            //let _EmpresaEscuela = (this.form.value.EscuelaEmpresa==null)? "": this.form.value.EscuelaEmpresa;
             let _Turno = (this.form.value.Turno==null)? "": this.form.value.Turno;
             let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor; 
 
@@ -603,7 +687,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             let SubSubTipoV = _SubSubTipo.split('*');
             
             let ActividadAgendaV = _ActividadAgenda.split('*');
-            let EmpresaEscuelaV = _EmpresaEscuela.split('*');
+            //let EmpresaEscuelaV = _EmpresaEscuela.split('*');
             let TurnoV = _Turno.split('*');
                     //console.log("this.form.value.Calidad");       
                     //console.log(this.form.value.Calidad);       
@@ -695,7 +779,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                     TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                     //Numero Telefono o Telefono Casa
                     TelefonoCasa: this.form.value.Telefono,
-                    TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+                    TelefonoCasaPredictivo: tel_casa_predictivo,
                   
     
                     //Numero Celular Tutor

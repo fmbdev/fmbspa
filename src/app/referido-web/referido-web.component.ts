@@ -325,23 +325,7 @@ export class ReferidoWebComponent implements OnInit {
 
       }
 
- let f_negocio = "";
-      for (let i = 0; i < this.rows.length; i++) {
-
-       
-        if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo_nombreventas) {
-          var __ciclo = this.rows[i].CICLO;
-          this.form.value.Team = this.rows[i].TEAM;
-          var __team =  this.rows[i].TEAM;
-          this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-          this.form.value.Attemp = this.rows[i].ATTEMP;
-          this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-          f_negocio = this.rows[i].FUENTE_NEGOCIO;
-
-        }
-        
-      }
-
+ 
     //Asignacion a ciclo
      ciclo = ciclo_vigente;
 
@@ -378,6 +362,67 @@ export class ReferidoWebComponent implements OnInit {
           console.log("Fuente Guid: " + fuente_obtencion_GUID); 
 
      /***********Fuente Obtencion End***********/     
+
+     let main_carrera = this.form.value.Carrera.split("*");
+     let nombre_ventas ="";
+     let f_negocio = "";
+     let valor_ciclo = ""; 
+
+     if(ciclo == "19-1"){
+        valor_ciclo = "C3";
+     }else if(ciclo == "20-1"){
+      valor_ciclo = "C3";
+     }else if(ciclo == "20-2"){
+    valor_ciclo = "C1";
+    }else if(ciclo == "18-3"){
+      valor_ciclo = "C2";
+    }
+
+      console.log("valor ciclo: "+valor_ciclo);
+      ciclo = valor_ciclo;
+
+      console.log("-----ciclo: "+ ciclo);
+
+     for (let i = 0; i < this.carreras.length; i++) {
+
+       if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
+
+       console.log("");console.log("");console.log("");console.log("");
+       console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
+       console.log("Nombre de carrera:"+this.carreras[i].name);
+       console.log("BL de Carrera:"+this.carreras[i].BL);
+       console.log("");console.log("");console.log("");console.log("");
+
+
+           /**Re calcula el team prioridad y attemp con respecto a la universidad**/
+
+           for (let j = 0; j < this.rows.length; j++) {
+           
+               nombre_ventas = ciclo;
+
+               //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
+               if (this.rows[j].FUENTE_NEGOCIO == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+                 
+                   this.form.value.Team = this.rows[j].TEAM;
+                   console.log("TEAM : " + this.form.value.Team);
+                   this.form.value.Prioridad = this.rows[j].PRIORIDAD;
+                   console.log("Prioridad : " + this.form.value.Prioridad);
+                   this.form.value.Attemp = this.rows[j].ATTEMP;
+                   console.log("ATTEMP : " + this.form.value.Attemp);
+                   this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
+                   console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                   f_negocio = this.rows[i].FUENTE_NEGOCIO;
+
+
+               }
+
+           }
+
+           /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
+       }
+
+   }
+
 
      // -------------------------------- Predictivo  ----------------------------------
      
@@ -448,7 +493,7 @@ export class ReferidoWebComponent implements OnInit {
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
 
-                Ciclo: ciclo,
+                Ciclo: ciclo_vigente,
                // GUIDCiclo: (localStorage.getItem('GUIDCiclo') == null) ? null : localStorage.getItem('GUIDCiclo'),
                 GUIDCiclo: ciclo_codigounico,
             };

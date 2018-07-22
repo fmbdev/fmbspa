@@ -34,6 +34,7 @@ import { CampusCita } from '../interfaces/campus-cita';
 import { Tipificacion } from '../interfaces/tipificacion';
 import { AsesorGrupal } from '../interfaces/asesor-grupal';
 import { FuenteObtencion } from '../interfaces/fuenteobtencion';
+import { CampusCarrera } from '../interfaces/campus-carrera';
 
 import { PnnService } from '../providers/pnn.service';
 import { CsqService } from '../providers/csq.service';
@@ -126,7 +127,8 @@ export class NewRegisterComponent implements OnInit {
     asesores: Asesor[] = [];
     fuentesobtencion: FuenteObtencion[] = [];
 
-    
+    campus_carreras: CampusCarrera[] = [];
+
     carreras: Carrera[] = [];
     intereses: Interes[] = [];
     modalidades: Modalidad[] = [];
@@ -226,6 +228,12 @@ export class NewRegisterComponent implements OnInit {
             .subscribe(
                 (data: Hora[]) => this.horas = data
             )
+
+        //Se obtiene todos los campus carrera
+        this.campusCarreraServ.getAlls()
+            .subscribe(
+                (data: CampusCarrera[]) => this.campus_carreras = data
+            )    
 
         //Se obtiene todos los fuente obtencion
         this.fuenteobtencionServ.getAll()
@@ -385,11 +393,13 @@ export class NewRegisterComponent implements OnInit {
 
 
             // -------------------------------- Predictivo  ----------------------------------
-            
+            let tel_casa_predictivo = "";
+
             if (this.form.value.Telefono) {
                 const predTel = this.form.value.Telefono.substring(0,2);
                 if(predTel == 55){
                   this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+                  tel_casa_predictivo = "9"+this.form.value.Telefono;
                 }
                 this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
             }
@@ -443,58 +453,115 @@ export class NewRegisterComponent implements OnInit {
 
           let f_negocio = "";
 
-            for (let i = 0; i < this.rows.length; i++) {
+          let c = this.form.value.Canal.split('*');
+          let fuente_obtencion_nombre = "";
+          c = c[1];
+          
+          if(c == "Voz"){
+          
+              f_negocio = "INBOUND";
+              fuente_obtencion_nombre = "INBOUND";
+              console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+          
+          } else if(c == "Inbound"){
+          
+              f_negocio = "INBOUND";
+              fuente_obtencion_nombre = "INBOUND";
+              console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+          
+          }else if(c == "Chat"){
+          
+              f_negocio = "CHAT";
+              fuente_obtencion_nombre = "CHAT";
+              console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+          
+          }else if(c == "Social"){
+          
+              f_negocio = "SOCIAL";
+              fuente_obtencion_nombre = "SOCIAL";
+              console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+          
+          }else if(c == "Recuperación"){
+          
+              f_negocio = "RECUPERACION";
+              fuente_obtencion_nombre = "INBOUND";
+              console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+          
+          }else if(c == "SMS"){
+          
+              f_negocio = "SMS";
+              fuente_obtencion_nombre = "INBOUND";
+              console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+          
+          }else if(c == "WhatsApp"){
+          
+              f_negocio = "WHATSAPP";
+              fuente_obtencion_nombre = "INBOUND";
+              console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+          
+          
+          }else{
+          
+                  this.form.value.FuenteObtencion = "INBOUND";
+                  fuente_obtencion_nombre = "INBOUND";
+          
+          }
+          
+
+          let main_carrera = this.form.value.Carrera.split("*");
+
+          for (let i = 0; i < this.carreras.length; i++) {
+
+            if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
+
+            console.log("");console.log("");console.log("");console.log("");
+            console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
+            console.log("Nombre de carrera:"+this.carreras[i].name);
+            console.log("BL de Carrera:"+this.carreras[i].BL);
+            console.log("");console.log("");console.log("");console.log("");
+
+
+                /**Re calcula el team prioridad y attemp con respecto a la universidad**/
+
+                for (let j = 0; j < this.rows.length; j++) {
                 
-                nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
-
-                if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
-                    this.form.value.Team = this.rows[i].TEAM;
-                    this.form.value.Prioridad = this.rows[i].PRIORIDAD;
-                    this.form.value.Attemp = this.rows[i].ATTEMP;
-                    this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
-                    f_negocio = this.rows[i].FUENTE_NEGOCIO;
-
-
+                    nombre_ventas = (CicloV[4] == "") ? "" : CicloV[4];
+    
+                    //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
+                    if (this.rows[j].FUENTE_NEGOCIO == f_negocio && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+                      
+                        this.form.value.Team = this.rows[j].TEAM;
+                        console.log("TEAM : " + this.form.value.Team);
+                        this.form.value.Prioridad = this.rows[j].PRIORIDAD;
+                        console.log("Prioridad : " + this.form.value.Prioridad);
+                        this.form.value.Attemp = this.rows[j].ATTEMP;
+                        console.log("ATTEMP : " + this.form.value.Attemp);
+                        this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
+                        console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                        //f_negocio = this.rows[i].FUENTE_NEGOCIO;
+    
+    
+                    }
+    
                 }
 
+                /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
             }
-            
+
+        }
+
 
             ciclo = CicloV[1];
 
 /***********Fuente Obtencion Begin***********/
 
 let f_o = "";
-let fuente_obtencion_nombre = "";
-let fuente_obtencion_GUID = "";
-
 f_o = this.form.value.FuenteObtencion;
 
-let c = this.form.value.Canal.split('*');
-
-c = c[1];
+let fuente_obtencion_GUID = "";
 
 
-if(c == "Chat"){
 
-    fuente_obtencion_nombre = "CHAT";
-    console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
-
-}else if(c == "Social"){
-
-    fuente_obtencion_nombre = "SOCIAL";
-    console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
-
-}else{
-
-    /*if(f_o == "" || f_o == null){
-        fuente_obtencion_nombre = "INBOUND";
-        }else{*/
-        this.form.value.FuenteObtencion = "INBOUND";
-        fuente_obtencion_nombre = "INBOUND";
-       /* } */
-
-}
 console.log("-------------------------------");
 console.log("Valor de Canal y Fuente Obtencion: " + fuente_obtencion_nombre);
 console.log("-------------------------------");           
@@ -517,6 +584,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
     console.log("Fuente Guid: " + fuente_obtencion_GUID); 
 
 /***********Fuente Obtencion End***********/    
+
 
 
 
@@ -585,12 +653,44 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
             if(this.form.controls.Transferencia.value == true){
                 arm_bandera = "Cita-"+this.form.value.Asesor;
-                console.log("Bandera Transferencia: "+arm_bandera);
+                //console.log("Bandera Transferencia: "+arm_bandera);
 
             }else if(this.form.controls.Programacion.value == true){
                 arm_bandera = "RLL-"+this.form.value.FechaCita+"-"+this.form.value.HoraCita+"-"+this.form.value.NumeroCelular;
-                console.log("Bandera Programacion: "+arm_bandera);
+               // console.log("Bandera Programacion: "+arm_bandera);
             }
+
+
+            //console.log("CampusCita"+this.form.value.CampusCita);
+
+            let c_cita = "";
+            c_cita = this.form.value.CampusCita.split("*");
+
+            //console.log("CampusV : " + CampusV[1]+" - ID :"+CampusV[0] );
+            //console.log("Nivel : "+NivelV[1]+" - ID: "+NivelV[0]);
+            //console("Modalidad : "+ModalidadV[1]+" - ID: "+ModalidadV[0]);
+            //console("Carrera : "+CarreraV+" - ID: "+CarreraV[0] );
+
+
+           /* for(let i = 0 ; i <= this.campus_carreras.length ; i++ ){
+
+                if(this.campus_carreras[i] !== undefined){   
+                    if(this.campus_carreras[i].campusId ==  CampusV[0] && this.campus_carreras[i].carreraId == CarreraV[0] && this.campus_carreras[i].nivelId == NivelV[0] && this.campus_carreras[i].modalidadId == ModalidadV[0] ){ 
+
+                        console.log("id campus - "+this.campus_carreras[i].campusId);
+                        console.log("id carrera - "+this.campus_carreras[i].carreraId);
+                        console.log("id nivel - "+this.campus_carreras[i].nivelId);
+                        console.log("Id modalidad - "+this.campus_carreras[i].modalidadId);
+                        
+                        console.log("Coinciden los datos");
+
+                    }
+                }
+
+                
+
+            }*/
+
 
             const sendd = {
 
@@ -627,7 +727,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 //Ciclo: CicloV[1],
                 Ciclo:  ciclo,
                 
-                GUIDCampusCita: (CampusV[0] == '') ? null : CampusV[0],
+                GUIDCampusCita: (c_cita[1] == '') ? null : c_cita[1],
                 GUIDCanal: (CanalV[0]=='')? null : CanalV[0],
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
@@ -647,7 +747,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 Notas: (this.form.value.Notas == '') ? null : this.form.value.Notas,
                 
 
-                CampusCita: (this.form.value.CampusCita == undefined || this.form.value.CampusCita=="") ? null : this.form.value.CampusCita,
+                CampusCita: (c_cita[0] == "" ) ? "" : c_cita[0],
                 
                 
 
@@ -671,7 +771,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                 //Numero Telefono o Telefono Casa
                 TelefonoCasa: this.form.value.Telefono,
-                TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+                TelefonoCasaPredictivo: tel_casa_predictivo,
               
 
                 //Numero Celular Tutor
@@ -1124,7 +1224,8 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             this.form.controls.CampusCita.reset({ value: '', disabled: true });
             this.form.controls.Transferencia.reset({ value: '', disabled: true });
             console.log('activo');
-
+            //this.form.controls.FechaCita.setValue = "maxDate";
+            
             
         
         } else {

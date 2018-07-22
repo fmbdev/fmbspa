@@ -325,13 +325,17 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
 
 
           // -------------------------------- Predictivo  ----------------------------------
-            
+          let tel_casa_predictivo = "";
             const predTel = this.form.value.Telefono.substring(0,2);
             if(predTel == 55){
-              this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-            }
-            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
 
+              this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+              
+              tel_casa_predictivo = "9"+this.form.value.Telefono;
+
+            }else{
+            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+            }    
 
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
@@ -475,7 +479,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
                 TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                 //Numero Telefono o Telefono Casa
                 TelefonoCasa: this.form.value.Telefono,
-                TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
+                TelefonoCasaPredictivo: tel_casa_predictivo,
               
 
                 //Numero Celular Tutor

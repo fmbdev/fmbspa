@@ -122,8 +122,12 @@ export class CampusCarreraService {
         }
       }
     }
+    console.log(carrerasByModalidad);
+
     return carrerasByModalidad;
   }
+
+  
 
   private findCarrerasByCampus(campusId: string){
     this.carreras_campus = [];

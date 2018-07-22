@@ -92,7 +92,7 @@
                 <mat-form-field>
                     <mat-select formControlName="Carrera" placeholder="Carrera" (change)="onChangeInteres(form.controls.Carrera.value)">
                         <mat-option value="">Selecciona una opción</mat-option>
-                        <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']">
+                        <mat-option *ngFor="let carrera of carreras;" [value]="carrera['codigounico']+'*'+carrera['name']+'*'+carrera['BL']+'*'+carrera['Activo']">
                             {{ carrera['name'] }}
                         </mat-option>
                     </mat-select>
@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <!-- <mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
+        <!--<mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
             <mat-grid-tile class="le">
             </mat-grid-tile>
             <mat-grid-tile>
@@ -124,7 +124,9 @@
                 </div>
             </mat-grid-tile>
         </mat-grid-list>-->
-
+        <mat-grid-list cols="2" rowHeight="70px" style="margin-bottom: 50px;">
+            <div style="font-size: 12px; color:brown; font-weight: bold;">v. 1.0.2</div>
+        </mat-grid-list>
 
     </div>
 </form>
