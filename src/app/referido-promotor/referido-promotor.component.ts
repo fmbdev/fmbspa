@@ -406,7 +406,7 @@ export class ReferidoPromotorComponent implements OnInit {
               nombre_ventas = ciclo;
 
               //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
-              if (this.rows[j].FUENTE_NEGOCIO == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+              if ("REFERIDOS" == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
                 
                   this.form.value.Team = this.rows[j].TEAM;
                   console.log("TEAM : " + this.form.value.Team);

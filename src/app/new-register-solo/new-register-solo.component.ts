@@ -550,7 +550,7 @@ export class NewRegisterSoloComponent implements OnInit {
             Carrera: CarreraV[1],
             AreaInteres: InteresV[1],
             Ciclo:  ciclo,
-            FuenteNegocio : (f_negocio == "")? "" : f_negocio,
+            FuenteNegocio : fuente_obtencion_nombre,
             
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
             GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],

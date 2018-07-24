@@ -429,7 +429,7 @@ export class NewRegisterComponent implements OnInit {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
                 }
             }
-          let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
+          let _Ciclo =  this.form.value.Ciclo;
           let CicloV = _Ciclo.split('*');
           let ciclo = "";
           let nombre_ventas = "";
@@ -457,18 +457,25 @@ export class NewRegisterComponent implements OnInit {
           let fuente_obtencion_nombre = "";
           c = c[1];
           
+
           if(c == "Voz"){
           
               f_negocio = "INBOUND";
               fuente_obtencion_nombre = "INBOUND";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
           
-          } else if(c == "Inbound"){
+          } else if(c == "Inbound Campus"){
           
-              f_negocio = "INBOUND";
-              fuente_obtencion_nombre = "INBOUND";
+              f_negocio = "INBOUND CAMPUS";
+              fuente_obtencion_nombre = "INBOUND CAMPUS";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
           
+          }else if(c == "Inbound"){
+          
+            f_negocio = "INBOUND";
+            fuente_obtencion_nombre = "INBOUND";
+            console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
+        
           }else if(c == "Chat"){
           
               f_negocio = "CHAT";
@@ -484,19 +491,19 @@ export class NewRegisterComponent implements OnInit {
           }else if(c == "Recuperación"){
           
               f_negocio = "RECUPERACION";
-              fuente_obtencion_nombre = "INBOUND";
+              fuente_obtencion_nombre = "RECUPERACION";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
           
           }else if(c == "SMS"){
           
               f_negocio = "SMS";
-              fuente_obtencion_nombre = "INBOUND";
+              fuente_obtencion_nombre = "SMS";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
           
           }else if(c == "WhatsApp"){
           
-              f_negocio = "WHATSAPP";
-              fuente_obtencion_nombre = "INBOUND";
+              f_negocio = "WhatsApp";
+              fuente_obtencion_nombre = "WHATSAPP";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
           
           
@@ -507,6 +514,7 @@ export class NewRegisterComponent implements OnInit {
           
           }
           
+          console.log("f_negocio ==> "+f_negocio);
 
           let main_carrera = this.form.value.Carrera.split("*");
 
@@ -736,7 +744,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
-                FuenteNegocio : (f_negocio == "")? "" : f_negocio,
+                FuenteNegocio : (f_negocio == "WhatsApp")? "WHATSAPP" : fuente_obtencion_nombre,
                 
                 Banner: this.form.value.Banner,
                 Bandera: (arm_bandera == '') ? null :arm_bandera,

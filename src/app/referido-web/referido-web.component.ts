@@ -19,6 +19,7 @@ import { Modalidad } from '../interfaces/modalidad';
 import { Parentesco } from '../interfaces/parentesco';
 import { Ciclo } from '../interfaces/ciclo';
 import { FuenteObtencion } from '../interfaces/fuenteobtencion';
+import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 
 //Servicios
 import { CampusService } from '../providers/campus.service';
@@ -29,6 +30,7 @@ import { ParentescoService } from '../providers/parentesco.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
 import { CicloService } from '../providers/ciclo.service';
 import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
+import { EscuelaEmpresaService} from '../providers/escuela-empresa.service';
 
 
 @Component({
@@ -52,6 +54,8 @@ export class ReferidoWebComponent implements OnInit {
   rows = [];
   campusTxt: any;
   nivelTxt: any;
+  escuelasempresas: EscuelaEmpresa[] = [];
+
   
 
   //maxDate = new Date(2018, this.month.getMonth(),12);
@@ -99,6 +103,7 @@ export class ReferidoWebComponent implements OnInit {
     private campusCarreraServ: CampusCarreraService,
     private cicloServ: CicloService,
     private fuenteobtencionServ: FuenteObtencionService,
+    private escualempresaServ: EscuelaEmpresaService,
     private tipoRefenteServ: ParentescoService) {
 
     this.fetch((data) => {
@@ -138,6 +143,12 @@ export class ReferidoWebComponent implements OnInit {
     this.fuenteobtencionServ.getAll()
     .subscribe(
       (data: FuenteObtencion[]) => this.fuentesobtencion = data
+    )
+
+    //Se obtiene todas las escuelas empresas
+    this.escualempresaServ.getAll()
+    .subscribe(
+      (data: EscuelaEmpresa[]) => this.escuelasempresas = data
     )
 
     this.formInit();
@@ -383,6 +394,7 @@ export class ReferidoWebComponent implements OnInit {
 
       console.log("-----ciclo: "+ ciclo);
 
+
      for (let i = 0; i < this.carreras.length; i++) {
 
        if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
@@ -393,28 +405,40 @@ export class ReferidoWebComponent implements OnInit {
        console.log("BL de Carrera:"+this.carreras[i].BL);
        console.log("");console.log("");console.log("");console.log("");
 
+        for (let e = 0 ; e < this.escuelasempresas.length ; e++){
+
+            //if(this.escuelasempresas[e].id == )
+           // console.log("CAlidad: "+this.escuelasempresas[e].crmit_calidadidname);
+        }
 
            /**Re calcula el team prioridad y attemp con respecto a la universidad**/
+       /* console.log("");console.log("");console.log("");console.log("");
+        console.log("Fuente Obtencion: "+fuente_obtencion_nombre);
+        console.log("nombre_ventas : "+valor_ciclo);*/
 
            for (let j = 0; j < this.rows.length; j++) {
            
-               nombre_ventas = ciclo;
-
-               //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
-               if (this.rows[j].FUENTE_NEGOCIO == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
-                 
-                   this.form.value.Team = this.rows[j].TEAM;
-                   console.log("TEAM : " + this.form.value.Team);
-                   this.form.value.Prioridad = this.rows[j].PRIORIDAD;
-                   console.log("Prioridad : " + this.form.value.Prioridad);
-                   this.form.value.Attemp = this.rows[j].ATTEMP;
-                   console.log("ATTEMP : " + this.form.value.Attemp);
-                   this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
-                   console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
-                   f_negocio = this.rows[i].FUENTE_NEGOCIO;
+               nombre_ventas = valor_ciclo;
+              //console.log("Ciclo: "+this.rows[j].CICLO+" =  Nombre Ventas Ciclo: "+nombre_ventas);
+              // console.log(this.rows[j].FUENTE_NEGOCIO+" = "+fuente_obtencion_nombre);
 
 
-               }
+      
+               
+                  if ("REFERIDOS" == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+                    
+                      this.form.value.Team = this.rows[j].TEAM;
+                      console.log("TEAM : " + this.form.value.Team);
+                      this.form.value.Prioridad = this.rows[j].PRIORIDAD;
+                      console.log("Prioridad : " + this.form.value.Prioridad);
+                      this.form.value.Attemp = this.rows[j].ATTEMP;
+                      console.log("ATTEMP : " + this.form.value.Attemp);
+                      this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
+                      console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                      f_negocio = this.rows[j].FUENTE_NEGOCIO;
+
+
+                  }
 
            }
 
