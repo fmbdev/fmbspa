@@ -292,18 +292,23 @@ export class UploadBaseComponent implements OnInit {
                     var TEscuelaEmpresa=escuelaTM[0].Name;
                     var GUIDCalidad=escuelaTM[0].crmit_empresaescuela;
 
+
+
                     var GUIDCampus=campusTM[0].crmit_tb_campusid;
                     var campus = campusTM[0].crmi_name;
+
+
                     var GUIDCiclo=cicloTM[0].crmit_codigounico;
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
                     var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
 
+                    var GUIDUsuario = localStorage.getItem('UserId');
 
-                    for(let i=0 ; i< data.length ; i++){
+                    var u = localStorage.getItem('user');
+                    var data = JSON.parse(u);
+                    var nom_usu = data.fullname;
 
-                        console.log("data["+i+"] = "+data[i]);
 
-                    }
 
                     /* obtener nivel y modalidad */
                     var NivelInteres = "";
@@ -336,7 +341,13 @@ export class UploadBaseComponent implements OnInit {
                     let Attemp = "";
 
                     for (let i = 0; i < this.rows.length; i++) {
+                   
                       if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
+                        console.log("campus: " + this.rows[i].CAMPUS);
+                        console.log("NivelInteres: " + this.rows[i].BL);
+                        console.log("CICLO: " + cicloC);
+                        console.log("TEAM: " + this.rows[i].TEAM);
+                
                         Team = this.rows[i].TEAM;
                         Prioridad = parseInt(this.rows[i].PRIORIDAD);
                         Attemp = this.rows[i].ATTEMP;
@@ -374,7 +385,7 @@ export class UploadBaseComponent implements OnInit {
                       "GUIDCampus":GUIDCampus,
                       "Carrera":TCarrera,
                       "GUIDCarrera":GUIDCarrera,
-                      "Ciclo":key.ciclo,
+                      "Ciclo": cicloC,
                       "GUIDCiclo":GUIDCiclo,
                       "EscuelaEmpresa":TEscuelaEmpresa,
                       "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa,
