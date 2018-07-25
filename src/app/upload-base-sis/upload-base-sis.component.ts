@@ -65,7 +65,7 @@ export class UploadBaseSisComponent implements OnInit {
   carreras: Carrera[] = [];
   campusCarreras: CampusCarrera[] = [];
 
-  
+
   constructor(private sendServ: SendService, public dialog: MatDialog, private cicloServ: CicloService,
     private campusServ: CampusService,
     private campusCarreraServ: CampusCarreraService,
@@ -118,7 +118,7 @@ export class UploadBaseSisComponent implements OnInit {
   previewImage(event){
      this.newdata.filename = event.srcElement.files[0].name;
   }
-  
+
 
   fetch(cb) {
     const req = new XMLHttpRequest();
@@ -157,18 +157,18 @@ export class UploadBaseSisComponent implements OnInit {
   }
 
   checkCols(workbook)
-  { 
-      var colValues =[]; 
-      var first_sheet_name = workbook.SheetNames[0]; 
-      var worksheet = workbook.Sheets[first_sheet_name]; 
-      var cells = Object.keys(worksheet); 
-      for (var i = 0; i < Object.keys(cells).length; i++) 
-      { 
-        if( cells[i].indexOf('1') > -1) 
-        { 
-        colValues.push(worksheet[cells[i]].v); 
-        //Contails all column names 
-      } 
+  {
+      var colValues =[];
+      var first_sheet_name = workbook.SheetNames[0];
+      var worksheet = workbook.Sheets[first_sheet_name];
+      var cells = Object.keys(worksheet);
+      for (var i = 0; i < Object.keys(cells).length; i++)
+      {
+        if( cells[i].indexOf('1') > -1)
+        {
+        colValues.push(worksheet[cells[i]].v);
+        //Contails all column names
+      }
     }
 
     let col = '["Num_Persona","id_campus","nombre_corto_telemarketer","ciclo","lista_de_seguimiento","nombre_corto_asesor","fuente_obtención","clave_de_sis_carrera"]';
@@ -180,15 +180,15 @@ export class UploadBaseSisComponent implements OnInit {
       return true;
     }else{
       return false;
-    } 
-      
+    }
+
   }
 
    Upload() {
 
-     console.log('this.modalidades');
-     console.log(this.modalidades);
-    
+     //console.log('this.modalidades');
+     //console.log(this.modalidades);
+
      let count = 0;
 
          let tipo = this.Tipo.value;
@@ -206,7 +206,7 @@ export class UploadBaseSisComponent implements OnInit {
               let filas = XLSX.utils.sheet_to_json(worksheet,{raw:true});
               count =  Object.keys(filas).length;
               console.log(this.checkCols(workbook));
-              
+
               if(!this.checkCols(workbook)){
                   this.showDialog("Los titulos de la columna no coinciden");
                   this.newdata.filename ="";
@@ -216,7 +216,7 @@ export class UploadBaseSisComponent implements OnInit {
               }else{
                   this.columDistin = true;
               }
-            
+
             let f = 500;
               let x = 0;
 
@@ -229,7 +229,7 @@ export class UploadBaseSisComponent implements OnInit {
                 //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
 
                 var ciclo = cicloTM[0].crmit_name;
-                var ciclo_mocho = ciclo.split('-'); 
+                var ciclo_mocho = ciclo.split('-');
                 var cicloC = "C" + ciclo_mocho[1];
                 var GUIDCiclo = cicloTM[0].crmit_codigounico;
 
@@ -242,7 +242,7 @@ export class UploadBaseSisComponent implements OnInit {
                 /* obtener nivel y modalidad */
                 var NivelInteres = "" ;
                 var GUIDNivelInteres = "" ;
-  
+
                 var Modalidad = "" ;
                 var GUIDModalidad = "" ;
 
@@ -264,7 +264,7 @@ export class UploadBaseSisComponent implements OnInit {
                   NivelInteres = this.rowss_niv[i].crmit_name;
                 }
               }
-              
+
                 let Team = "";
                 let Prioridad = 0;
                 let Attemp = "";
@@ -300,33 +300,47 @@ export class UploadBaseSisComponent implements OnInit {
                 "EsAlumno": true,
               };
 
+
               setTimeout(() => {
                 this.sendServ.sendData7(obj2)
                   .subscribe(
+
                     (res: any) => {
                       console.log("res");
-                      console.log(res.status);
+                      console.log("res = "+res.status);
+
                       if (res.status == 200) {
                         x=x+1;
                         if (count == x) {
                           this.showDialog("Los datos se han guardado correctamente.");
                           this.newdata.filename = "";
                           this.Tipo.value = "";
-                        }  
+                          console.log("x=x+1 Guardado x = "+x);
+                        }
                       } else {
                         x=x-1;
                         this.showDialog("Error al guardar el registro");
+                        console.log("x=x-1 Error x = "+x);
+
                       }
                     },
                     error => {
+
+                      console.log("Errores = " + error.status);
+
+
                       if (error.status === 400) {
                         console.warn(error._body);
                         this.showDialog("Error al guardar el registro");
                         x--;
+                        console.log("x-- Error x = "+x);
                       }
                       else if (error.status === 500) {
                         console.warn(error._body);
                         this.showDialog("Error al guardar el registro");
+                      }else{
+                        console.warn(error._body);
+                        this.showDialog("Error en la transaccion");
                       }
                     })
               }, f);
@@ -335,21 +349,21 @@ export class UploadBaseSisComponent implements OnInit {
                   total = f * count;
 
                   console.log('X = ' + x);
-                  
+
                    setTimeout(() => {
                           if(this.columDistin){
-                            
+
                           }else{
-      
-                          }  
-                  }, total); 
-              
+
+                          }
+                  }, total);
+
           }
-          
+
           fileReader.readAsArrayBuffer(this.imgFileInput.nativeElement.files[0]);
-         
+
   }
-  
+
   getObjects(obj, key, val) {
     var objects = [];
     for (var i in obj) {
@@ -384,7 +398,7 @@ export class UploadBaseSisComponent implements OnInit {
         }
       )*/
   }
-  
+
   private showDialog(message: string){
         let dialogRef = this.dialog.open(DialogComponent, {
           height: '200px',

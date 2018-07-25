@@ -507,24 +507,24 @@ export class NewRegisterComponent implements OnInit {
           }else if(c == "Recuperación"){
 
               f_negocio = "RECUPERACION";
-              fuente_obtencion_nombre = "RECUPERACION";
+              fuente_obtencion_nombre = "INBOUND";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
 
           }else if(c == "SMS"){
 
               f_negocio = "SMS";
-              fuente_obtencion_nombre = "SMS";
+              fuente_obtencion_nombre = "INBOUND";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
 
           }else if(c == "WhatsApp"){
 
               f_negocio = "WhatsApp";
-              fuente_obtencion_nombre = "WHATSAPP";
+              fuente_obtencion_nombre = "INBOUND";
               console.log("Esta es la fuente obtencion = " + fuente_obtencion_nombre);
 
 
           }else{
-
+                  f_negocio = "INBOUND";
                   this.form.value.FuenteObtencion = "INBOUND";
                   fuente_obtencion_nombre = "INBOUND";
 
@@ -765,7 +765,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
-                FuenteNegocio : (f_negocio == "WhatsApp")? "WHATSAPP" : fuente_obtencion_nombre,
+                FuenteNegocio : (f_negocio == "")? "iNBOUND" : f_negocio,
 
                 Banner: this.form.value.Banner,
                 Bandera: (arm_bandera == '') ? null :arm_bandera,
