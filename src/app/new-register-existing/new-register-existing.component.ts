@@ -234,7 +234,7 @@ export class NewRegisterExistingComponent implements OnInit {
             );
 
 
-        //Se obtiene todas los asesores grupales    
+        //Se obtiene todas los asesores grupales
         this.asesorGrupalServ.getAll()
             .subscribe(
                 (data: AsesorGrupal[]) => this.asesoresGrupal = data
@@ -244,7 +244,7 @@ export class NewRegisterExistingComponent implements OnInit {
             this.fuenteobtencionServ.getAll()
             .subscribe(
             (data: FuenteObtencion[]) => this.fuentesobtencion = data
-            )    
+            )
 
 
         this.formInit();
@@ -263,7 +263,7 @@ export class NewRegisterExistingComponent implements OnInit {
         localStorage.setItem('bandera', '');
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
-        
+
         let userSearch = localStorage.getItem('lead_user');
         let jsonSearch = JSON.parse(userSearch);
         let U = jsonSearch.value[0];
@@ -282,7 +282,7 @@ export class NewRegisterExistingComponent implements OnInit {
 
                 }
             )
-            
+
         //CanalLead[0].crmit_codigounico + '*' + CanalLead[0].crmit_name
         this.form = new FormGroup({
             Usuario: new FormControl({ value: datos.fullname, disabled: false }),
@@ -363,7 +363,7 @@ export class NewRegisterExistingComponent implements OnInit {
                 const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
                 const modalidadObjec = this.getObjects(modalidadess, 'crmit_codigounico', U._crmit_modalidadid_value);
                 const modalidadValue = modalidadObjec[0].crmit_codigounico+'*'+modalidadObjec[0].crmit_name;
-                
+
                 //carrera
                 this.carreras = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
                 const carrerass = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
@@ -383,7 +383,7 @@ export class NewRegisterExistingComponent implements OnInit {
 
                     const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
                     const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas+'*'+cicloObjec[0].nombremes+'*'+cicloObjec[0].nombreventas;
-                   
+
                     this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
 
                 }
@@ -396,12 +396,12 @@ export class NewRegisterExistingComponent implements OnInit {
                 let attt = U._crmit_areaatencionid_value;
                 let interesObjec = this.getObjects(this.intereses, 'id', attt);
                 //console.log(interesObjec);
-                 
+
                    let peopleArray = Object.values(interesObjec[0]);
                    let interesValue = peopleArray[0]+'*'+peopleArray[1];
                    this.form.controls.AreaInteres.reset({ value: interesValue, disabled: false });
-                 
-               
+
+
             }
         )
 
@@ -478,7 +478,7 @@ export class NewRegisterExistingComponent implements OnInit {
             let fecha_cita = this.formatServ.changeFormatFecha(this.form.controls['FechaCita'].value);
 
                 this.form.controls['FechaCita'].setValue(fecha_cita);
-          
+
             if (this.sinEmail) {
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
@@ -508,10 +508,10 @@ export class NewRegisterExistingComponent implements OnInit {
                 }
             }
 
-            
+
             if (this.form.value.NumeroCelularTutor) {
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
+                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
                 if (predCelTutor == 55) {
                     this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
                 }
@@ -529,7 +529,7 @@ export class NewRegisterExistingComponent implements OnInit {
             let CicloV = _Ciclo.split('*');
             let ciclo = "";
             let nombre_ventas = "";
-  
+
 
             this.form.value.Banner = window.location.href;
             this.form.value.FuenteObtencion = "";
@@ -545,12 +545,12 @@ export class NewRegisterExistingComponent implements OnInit {
             console.log('CicloV[2] : '+CicloV[2]); //true
             console.log('CicloV[3] : '+CicloV[3]); //Mayo
             console.log('CicloV[4] : '+CicloV[4]); //C2
-           
+
 
             let f_negocio = "";
 
             for (let i = 0; i < this.rows.length; i++) {
-                
+
                 nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
 
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
@@ -564,7 +564,7 @@ export class NewRegisterExistingComponent implements OnInit {
                 }
 
             }
-            
+
 
             ciclo = CicloV[1];
 
@@ -588,19 +588,19 @@ let fo = "";
 
 for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
-  if(this.fuentesobtencion[i] !== undefined){ 
+  if(this.fuentesobtencion[i] !== undefined){
     if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
 
-      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
-          
-        }
-  } 
-            
-}
-    console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
-    console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;
 
-/***********Fuente Obtencion End***********/     
+        }
+  }
+
+}
+    console.log("Fuentes obtencion: " + fuente_obtencion_nombre);
+    console.log("Fuente Guid: " + fuente_obtencion_GUID);
+
+/***********Fuente Obtencion End***********/
 
 
             // -------------------------------- Predictivo  ----------------------------------
@@ -626,7 +626,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres;
             let _Canal = (this.form.value.Canal == null) ? "" : this.form.value.Canal;
             let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor;
-            
+
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
@@ -637,35 +637,42 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
             let CanalV = _Canal.split('*');
 
-          
+
+
+            let valor_genero  = "";
+            if(this.form.value.Genero == 1 || this.form.value.Genero == "M" ){
+                       valor_genero = "Masculino";
+                     }else if(this.form.value.Genero == 2 || this.form.value.Genero == "F"){
+                       valor_genero = "Femenino";
+                     }
 
             const sendd = {
 
               Usuario: this.form.value.Usuario,
 
-                Canal: CanalV[1],   //Se envia Canal en vez de CanalPreferido             
-              CSQ: this.form.value.CSQ, 
-              TelefonoCorreo: this.form.value.TelefonoCorreo, 
+              Canal: CanalV[1],   //Se envia Canal en vez de CanalPreferido
+              CSQ: this.form.value.CSQ,
+              TelefonoCorreo: this.form.value.TelefonoCorreo,
                 Interesa_NoInteresa: (this.form.value.Interesa_NoInteresa) ? "" : this.form.value.Interesa_NoInteresa,
 
 
-              Nombre: this.form.value.Nombre, 
-              ApellidoPaterno: this.form.value.ApellidoPaterno, 
-              ApellidoMaterno: this.form.value.ApellidoMaterno, 
-              CorreoElectronico: this.form.value.CorreoElectronico, 
+              Nombre: this.form.value.Nombre,
+              ApellidoPaterno: this.form.value.ApellidoPaterno,
+              ApellidoMaterno: this.form.value.ApellidoMaterno,
+              CorreoElectronico: this.form.value.CorreoElectronico,
 
-                Genero: (this.form.value.Genero == '') ? -1 : this.form.value.Genero,
+              Genero: (valor_genero == '')? -1 : valor_genero,
               Edad: edadT,
                 //SinCorreo: this.form.value.SinCorreo,
 
-              NombreTutor: this.form.value.NombreTutor, 
-              ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-              ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
-              CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+              NombreTutor: this.form.value.NombreTutor,
+              ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+              ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+              CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
 
                 ParentescoTutor: ParentescoV[0],
                 GUIDParentescotutor: ParentescoV[1],
-                
+
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
@@ -684,8 +691,8 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 GUIDUsuario: localStorage.getItem('UserId'),
                 GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '2e89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
                 fuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
-                
-                
+
+
                 Banner: this.form.value.Banner,
                 Bandera: "",
 
@@ -708,31 +715,31 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                
+
                 //FuenteObtencion: this.form.value.FuenteObtencion,
 
-                
+
                 //Numero Celular
                 Telefono: (this.form.value.NumeroCelular == "") ? null : this.form.value.NumeroCelular,
                 TelefonoPredictivo: (this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                 //Numero Telefono o Telefono Casa
                 TelefonoCasa: this.form.value.Telefono,
                 TelefonoCasaPredictivo: tel_casa_predictivo,
-              
+
 
                 //Numero Celular Tutor
                 NumeroCelularTutor: (this.form.value.NumeroCelularTutor == '') ? null : this.form.value.NumeroCelularTutor,
                 TelefonoCelularPredictivoTutor: (this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-                //Numero Casa Tutor                
+                //Numero Casa Tutor
                 TelefonoTutor: (this.form.value.TelefonoTutor == '') ? null : this.form.value.TelefonoTutor,
                 TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
-                // Ejecutivo: this.form.value.ParentescoTutor , 
-                // SubTipoActividad: this.form.value.ParentescoTutor , 
+                // Ejecutivo: this.form.value.ParentescoTutor ,
+                // SubTipoActividad: this.form.value.ParentescoTutor ,
                 // SubSubTipoActividad:  this.form.value.ParentescoTutor,
                 // EscuelaEmpresa:this.form.value.ParentescoTutor,
                 // Calidad:this.form.value.ParentescoTutor, this.form.value.FechaCita
-    
+
             };
 
 
@@ -1061,7 +1068,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
         }
         return objects;
     }
-    
+
     //Cambiando
     onChangeModalidad(campus: string) {
 
@@ -1091,7 +1098,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
         }
         this.csqs = this.csqServ.getCsqsByCanal(value);
     }
-    
+
     onFielCanal(campus) {
         var cadena = campus.split('*');
         var value = cadena[0];

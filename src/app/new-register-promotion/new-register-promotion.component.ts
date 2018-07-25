@@ -720,6 +720,14 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             }
             //console.log("localStorage.getItem('UserId') = "+localStorage.getItem('UserId'));
 
+
+            let valor_genero  = "";
+            if(this.form.value.Genero == 1 || this.form.value.Genero == "M" ){
+                       valor_genero = "Masculino";
+                     }else if(this.form.value.Genero == 2 || this.form.value.Genero == "F"){
+                       valor_genero = "Femenino";
+                     }
+
             if(this.form.controls.actvidadNoTradicional.value == true){
 
                  sendd = {
@@ -729,7 +737,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                     ApellidoPaterno: this.form.value.ApellidoPaterno,
                     ApellidoMaterno: this.form.value.ApellidoMaterno,
                     CorreoElectronico: this.form.value.CorreoElectronico,
-                    Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
+                    Genero: (valor_genero == '')? -1 : valor_genero,
                     Edad: edadT,
 
                     NombreTutor: this.form.value.NombreTutor,
@@ -814,7 +822,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                     ApellidoPaterno: this.form.value.ApellidoPaterno,
                     ApellidoMaterno: this.form.value.ApellidoMaterno,
                     CorreoElectronico: this.form.value.CorreoElectronico,
-                    Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
+                    Genero: (valor_genero == '')? -1 : valor_genero,
                     Edad: edadT,
 
                     NombreTutor: this.form.value.NombreTutor,

@@ -253,8 +253,8 @@ export class NewRegisterExistingSoloComponent implements OnInit {
         this.fuenteobtencionServ.getAll()
         .subscribe(
         (data: FuenteObtencion[]) => this.fuentesobtencion = data
-        )    
-          
+        )
+
         this.formInit();
     }
 
@@ -271,18 +271,18 @@ export class NewRegisterExistingSoloComponent implements OnInit {
 
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
-        
+
 
         let userSearch = localStorage.getItem('lead_user');
         let jsonSearch = JSON.parse(userSearch);
-        
+
         let U = jsonSearch.value[0];
 
-        
+
         this.form = new FormGroup({
 
             Usuario: new FormControl({ value: datos.fullname, disabled: true }),
- 
+
             SinCorreo: new FormControl(''),
 
             Nombre: new FormControl(U.firstname, [LandingValidation.palabraMalaValidator()]),
@@ -293,7 +293,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             Telefono: new FormControl(U.telephone1, [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
             Genero: new FormControl(U.crmit_sexo),
             FechaNacimiento: new FormControl(''),
-            
+
             Edad: new FormControl(U.crmit_edad, [Validators.minLength(2),LandingValidation.edadMinValidator()]),
 
 
@@ -336,13 +336,13 @@ export class NewRegisterExistingSoloComponent implements OnInit {
                 const objecNivelEstudio = this.getObjects(nivelesEstudio, 'crmit_codigounico', U._crmit_nivelinteresid_value);
                 const nivelEstudioValue = objecNivelEstudio[0].crmit_codigounico+'*'+objecNivelEstudio[0].crmit_name;
                 this.nivelTxt =objecNivelEstudio[0].crmit_name;
-                
+
                 //modalidad
                 this.modalidades = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
                 const modalidadess = this.campusCarreraServ.getModalidadesByNivel(objecNivelEstudio[0].crmit_codigounico);
                 const modalidadObjec = this.getObjects(modalidadess, 'crmit_codigounico', U._crmit_modalidadid_value);
                 const modalidadValue = modalidadObjec[0].crmit_codigounico+'*'+modalidadObjec[0].crmit_name;
-                
+
                 //carrera
                 this.carreras = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
                 const carrerass = this.campusCarreraServ.getCarrerasByModalidad(modalidadObjec[0].crmit_codigounico);
@@ -361,7 +361,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             (data: Ciclo[]) => {
                     const cicloObjec = this.getObjects(data, 'crmit_codigounico', U._crmit_ciclointeresid_value);
                     const cicloValue = cicloObjec[0].crmit_codigounico+'*'+cicloObjec[0].crmit_name+'*'+cicloObjec[0].crmit_ciclovigenteventas+'*'+cicloObjec[0].nombremes+'*'+cicloObjec[0].nombreventas;
-                   
+
                     this.form.controls.Ciclo.reset({ value: cicloValue, disabled: false });
 
                 }
@@ -382,12 +382,12 @@ export class NewRegisterExistingSoloComponent implements OnInit {
         let form = this.form;
         let pnnServ = this.pnnServ;
 
-        
+
         $('form').find(':input').each(function(){
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');
                 if(form.controls[name].value != '' && form.controls[name].value != null){
-                    
+
                     if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
                         form.controls[name].setErrors({'numInvalid': true});
                     }else{
@@ -400,7 +400,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
                 }
             }
         })
-        
+
         this.onKeyFechaNacimiento();
 
         if (this.sinEmail) {
@@ -439,7 +439,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
 
             }
             this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
-            
+
 
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
@@ -449,10 +449,10 @@ export class NewRegisterExistingSoloComponent implements OnInit {
                 }
             }
 
-            
+
             if (this.form.value.NumeroCelularTutor) {
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
+                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
                 if (predCelTutor == 55) {
                     this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
                 }
@@ -466,7 +466,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
                 }
             }
-         
+
             this.form.value.Banner = window.location.href;
             this.form.value.FuenteObtencion = "";
 
@@ -493,7 +493,7 @@ export class NewRegisterExistingSoloComponent implements OnInit {
             let f_negocio = "";
 
             for (let i = 0; i < this.rows.length; i++) {
-               
+
                 nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
 
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
@@ -543,44 +543,44 @@ if(c == "Chat"){
 }
 console.log("-------------------------------");
 console.log("Valor de Canal y Fuente Obtencion: " + fuente_obtencion_nombre);
-console.log("-------------------------------");           
+console.log("-------------------------------");
 
 
 let fo = "";
 
 for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
-  if(this.fuentesobtencion[i] !== undefined){ 
+  if(this.fuentesobtencion[i] !== undefined){
     if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
 
-      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
-          
-        }
-  } 
-            
-}
-    console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
-    console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;
 
-/***********Fuente Obtencion End***********/   
+        }
+  }
+
+}
+    console.log("Fuentes obtencion: " + fuente_obtencion_nombre);
+    console.log("Fuente Guid: " + fuente_obtencion_GUID);
+
+/***********Fuente Obtencion End***********/
 
           // -------------------------------- Predictivo  ----------------------------------
           let edadT = this.form.value.Edad;
 
             if(edadT==""){
-                edadT = 12;                
+                edadT = 12;
             }
 
             let bandera = localStorage.getItem('bandera');
-            
+
             /* Interes GUID */
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
-            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
-            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
-            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
-            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres; 
-            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor; 
-            
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel;
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad;
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
+            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres;
+            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor;
+
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
@@ -588,22 +588,30 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             let InteresV = _Interes.split('*');
             let ParentescoV = _Parentesco.split('*');
 
-            const sendd = {    
+
+            let valor_genero  = "";
+            if(this.form.value.Genero == 1 || this.form.value.Genero == "M" ){
+                       valor_genero = "Masculino";
+                     }else if(this.form.value.Genero == 2 || this.form.value.Genero == "F"){
+                       valor_genero = "Femenino";
+                     }
+
+            const sendd = {
 
             Usuario: this.form.value.Usuario,
-                    
-            Nombre: this.form.value.Nombre, 
-            ApellidoPaterno: this.form.value.ApellidoPaterno, 
-            ApellidoMaterno: this.form.value.ApellidoMaterno, 
-            CorreoElectronico: this.form.value.CorreoElectronico,
-            Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
-            Edad:edadT, 
 
-            NombreTutor: this.form.value.NombreTutor, 
-            ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-            ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
-            CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
-            
+            Nombre: this.form.value.Nombre,
+            ApellidoPaterno: this.form.value.ApellidoPaterno,
+            ApellidoMaterno: this.form.value.ApellidoMaterno,
+            CorreoElectronico: this.form.value.CorreoElectronico,
+            Genero: (valor_genero == '')? -1 : valor_genero,
+            Edad:edadT,
+
+            NombreTutor: this.form.value.NombreTutor,
+            ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+            ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+            CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
+
             ParentescoTutor: ParentescoV[0],
             GUIDParentescotutor: ParentescoV[1],
 
@@ -618,13 +626,13 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
             GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
             GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],            
+            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
             GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
             GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
             GUIDUsuario:localStorage.getItem('UserId'),
             GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3c89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
             fuenteobtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
-             
+
 
             Banner: this.form.value.Banner,
             Bandera: (bandera==null)? "" :bandera,
@@ -632,7 +640,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
             Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
             Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-            
+
 
             //Numero Celular
             Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
@@ -640,18 +648,18 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             //Numero Telefono o Telefono Casa
             TelefonoCasa: this.form.value.Telefono,
             TelefonoCasaPredictivo:tel_casa_predictivo,
-              
+
 
             //Numero Celular Tutor
             NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
             TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-            //Numero Casa Tutor                
+            //Numero Casa Tutor
             TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
            // TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
             TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
           };
-             
+
             console.log("this.conEmail");
             console.log(this.conEmail);
             if (this.conEmail) {
@@ -773,10 +781,10 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
            let asess = this.asesorGrupalServ.getAll()
             .subscribe(
                 (datat: AsesorGrupal[]) => this.asesorGrupal = datat
-            )    
+            )
             setTimeout(() => {
                 this.showDialogForm(this.asesorGrupal, "Selecciona a un Asesor Grupal", "SesiónG-");
-            }, 1000); 
+            }, 1000);
         }else{
             this.showDialogE("Seleccione un Nivel");
         }
@@ -825,7 +833,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
     }
 
     _keyPressNumA(event: any, name: any) {
-        
+
         LandingValidation.onlyNumberIgual(event, name);
     }
     _keyPressTxt(event: any) {
@@ -837,7 +845,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
         var cadena = campus.split('*');
         var word = cadena[0];
         console.log('value 2');
-       
+
         var cadena2 = value.split('*');
         var word2 = cadena2[0];
         console.log(word2);

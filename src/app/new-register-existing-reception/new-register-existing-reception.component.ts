@@ -148,7 +148,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
         private parentescoServ: ParentescoService,
         private campusCitaServ: CampusCitaService,
         private campusCarreraServ: CampusCarreraService,
-        private tipicicacionServ: TipificacionService) { 
+        private tipicicacionServ: TipificacionService) {
     this.fetch((data) => {
         this.rows = data;
       });
@@ -226,12 +226,12 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
     }
 
     formInit() {
-        
+
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
         this.form = new FormGroup({
             Usuario: new FormControl({ value: datos.fullname, disabled: true }, Validators.required),
-       
+
 
             Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
@@ -269,7 +269,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
          let form = this.form;
         let pnnServ = this.pnnServ;
 
-        
+
         $('form').find(':input').each(function(){
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');
@@ -316,7 +316,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
 
 
         if (this.form.valid) {
-            
+
             if (this.sinEmail) {
                 let tel = this.form.controls['Telefono'].value;
                 this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
@@ -330,12 +330,12 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             if(predTel == 55){
 
               this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-              
+
               tel_casa_predictivo = "9"+this.form.value.Telefono;
 
             }else{
-            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
-            }    
+            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+            }
 
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
@@ -345,10 +345,10 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
                 }
             }
 
-            
+
             if (this.form.value.NumeroCelularTutor) {
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
+                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
                 if (predCelTutor == 55) {
                     this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
                 }
@@ -362,7 +362,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
                 }
             }
-         
+
 
           if(this.form.value.Canal == 'Chat' || this.form.value.Canal == 'WhatsApp' || this.form.value.Canal == 'SMS'){
             this.form.value.CanalPreferido = 'Redes Sociales';
@@ -388,11 +388,11 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             console.log('CicloV[2] : '+CicloV[2]); //true
             console.log('CicloV[3] : '+CicloV[3]); //Mayo
             console.log('CicloV[4] : '+CicloV[4]); //C2
-           
+
 
             let f_negocio = "";
             for (let i = 0; i < this.rows.length; i++) {
-                
+
                 nombre_ventas = (CicloV[4] == "") ? "C3" : CicloV[4];
 
                 if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
@@ -417,50 +417,57 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
 
             /* Interes GUID */
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
-            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
-            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
-            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
-            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres; 
-            
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel;
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad;
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
+            let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres;
+
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
             let InteresV = _Interes.split('*');
 
+            let valor_genero  = "";
+	           if(this.form.value.Genero == 1 || this.form.value.Genero == "M" ){
+              valor_genero = "Masculino";
+            }else if(this.form.value.Genero == 2 || this.form.value.Genero == "F"){
+              valor_genero = "Femenino";
+            }
+
             const sendd = {
               Usuario: this.form.value.Usuario,
-              Canal: this.form.value.Canal, 
-              CSQ: this.form.value.CSQ, 
-              TelefonoCorreo: this.form.value.TelefonoCorreo, 
+              Canal: this.form.value.Canal,
+              CSQ: this.form.value.CSQ,
+              TelefonoCorreo: this.form.value.TelefonoCorreo,
               Interesa_NoInteresa: (this.form.value.Interesa_NoInteresa)? "" :this.form.value.Interesa_NoInteresa,
 
-              Nombre: this.form.value.Nombre, 
-              ApellidoPaterno: this.form.value.ApellidoPaterno, 
-              ApellidoMaterno: this.form.value.ApellidoMaterno, 
-              CorreoElectronico: this.form.value.CorreoElectronico, 
-              Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
-              Edad: edadT, 
+              Nombre: this.form.value.Nombre,
+              ApellidoPaterno: this.form.value.ApellidoPaterno,
+              ApellidoMaterno: this.form.value.ApellidoMaterno,
+              CorreoElectronico: this.form.value.CorreoElectronico,
+              Genero: (valor_genero == '')? -1 : valor_genero,
+              Edad: edadT,
 
-              NombreTutor: this.form.value.NombreTutor, 
-              ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-              ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
-              CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+              NombreTutor: this.form.value.NombreTutor,
+              ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+              ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+              CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
 
               FuenteNegocio : (f_negocio == "")? "" : f_negocio,
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
-               
+
                 AreaInteres: InteresV[1],
                 Ciclo: ciclo,
-                
+
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-                
+
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
@@ -473,19 +480,19 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 FuenteObtencion: this.form.value.FuenteObtencion,
-                
+
                 //Numero Celular
                 Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
                 TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                 //Numero Telefono o Telefono Casa
                 TelefonoCasa: this.form.value.Telefono,
                 TelefonoCasaPredictivo: tel_casa_predictivo,
-              
+
 
                 //Numero Celular Tutor
                 NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
                 TelefonoCelularTutorPredictivo:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-                //Numero Casa Tutor                
+                //Numero Casa Tutor
                 TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
                 TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
@@ -566,7 +573,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
     }
 
     resetForm() {
-        window.location.href = "/register-existing-reception";        
+        window.location.href = "/register-existing-reception";
         //this.form.reset();
     }
 
@@ -629,7 +636,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
         }
     }
     onChange() {
-       
+
     }
 
     onChangeInteres(value) {
@@ -809,8 +816,8 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             .subscribe(
                 (data: Asesor[]) => this.asesores = data
             );*/
-                
-            
+
+
         //this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita-");
     }
 
@@ -819,7 +826,7 @@ export class NewRegisterExistingReceptionComponent implements OnInit {
             .subscribe(
                 (data: AsesorCita[]) => this.asesores = data
             );
-        
+
         localStorage.setItem('bandera',this.form.controls.Usuario.value);
         //this.showDialogForm(this.asesores, "Selecciona a un Asesor", "Cita - Alfonso Silva");*/
     }

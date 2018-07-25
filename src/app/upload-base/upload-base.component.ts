@@ -278,7 +278,7 @@ export class UploadBaseComponent implements OnInit {
 
                     var   Genero = key.Sexo;
 
-                    if(Genero=='M'){Genero='1'; }else{Genero='2';}
+                    if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
 
                     var ciclo = cicloTM[0].crmit_name;
                     var ciclo_mocho = ciclo.split('-');
