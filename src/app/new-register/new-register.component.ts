@@ -394,41 +394,56 @@ export class NewRegisterComponent implements OnInit {
 
             // -------------------------------- Predictivo  ----------------------------------
             let tel_casa_predictivo = "";
+            if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
 
-            if (this.form.value.Telefono) {
-                const predTel = this.form.value.Telefono.substring(0,2);
-                if(predTel == 55){
-                  this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-                  tel_casa_predictivo = "9"+this.form.value.Telefono;
-                }
-                this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+                this.form.value.Telefono = "5555555555";
             }
+
+            const predTel = this.form.value.Telefono.substring(0,2);
+
+
+            if(predTel == 55){
+              this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+              tel_casa_predictivo = "9"+this.form.value.Telefono;
+             } else {
+              this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+              tel_casa_predictivo = '901'+this.form.value.Telefono;
+            }
+
 
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
                 if (predCel == 55) {
                     this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
+                } else {
+                  this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
+
                 }
             }
 
 
             if (this.form.value.NumeroCelularTutor) {
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
                 if (predCelTutor == 55) {
                     this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                }else{
+                    this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
+
                 }
 
             }
 
             if (this.form.value.TelefonoTutor) {
                 const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
-                this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+
                 if (predTelTutor == 55) {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
+                }else{
+                    this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+
                 }
             }
+
           let _Ciclo =  this.form.value.Ciclo;
           let CicloV = _Ciclo.split('*');
           let ciclo = "";

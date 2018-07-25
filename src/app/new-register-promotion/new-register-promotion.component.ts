@@ -169,9 +169,9 @@ export class NewRegisterPromotionComponent implements OnInit {
         private campusCitaServ: CampusCitaService,
         private campusCarreraServ: CampusCarreraService,
         private tipicicacionServ: TipificacionService,
-        private subSubServ: SubsubtipoActividadService,       
-        private escuelaEmpresaServ: EscuelaEmpresaService, 
-        private fuenteobtencionServ: FuenteObtencionService,        
+        private subSubServ: SubsubtipoActividadService,
+        private escuelaEmpresaServ: EscuelaEmpresaService,
+        private fuenteobtencionServ: FuenteObtencionService,
         private actividadAgendaServ: ActividadAgendaService) {
             this.fetch((data) => {
                 this.rows = data;
@@ -179,11 +179,11 @@ export class NewRegisterPromotionComponent implements OnInit {
         }
 
     ngOnInit() {
-        
+
         localStorage.setItem('bandera','');
         this.perfil_usuario = localStorage.getItem('tipo_rol');
 
-        
+
 
         this.landingService.getInit();
 
@@ -192,7 +192,7 @@ export class NewRegisterPromotionComponent implements OnInit {
 
         // Se obtienes los Subsubtipos de actividades
         this.subsub_tipos = this.subSubServ.getAllSubSubTipo();
-        
+
         // Se obtienen los turnos
         this.turnoServ.getAll()
             .subscribe(
@@ -267,7 +267,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         this.fuenteobtencionServ.getAll()
         .subscribe(
         (data: FuenteObtencion[]) => this.fuentesobtencion = data
-        )    
+        )
 
         this.formInit();
     }
@@ -283,11 +283,11 @@ export class NewRegisterPromotionComponent implements OnInit {
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
         let bandera = localStorage.getItem('bandera');
-        
+
         this.form = new FormGroup({
 
             Ejecutivo: new FormControl(''),
-            
+
             Usuario: new FormControl({ value: datos.fullname, disabled: false }, Validators.required),
             //Asesor: new FormControl(''),
 
@@ -300,7 +300,7 @@ export class NewRegisterPromotionComponent implements OnInit {
             Turno: new FormControl(''),
             Calidad: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.maxLength(5)]),
             SinCorreo:new FormControl(''),
-                
+
             Nombre: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
             ApellidoPaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
             ApellidoMaterno: new FormControl('',[Validators.required, LandingValidation.palabraMalaValidator()]),
@@ -336,7 +336,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         });
     }
 
-     
+
 
     onSubmit() {
         console.log("Entrando a Sumbit");
@@ -351,36 +351,36 @@ export class NewRegisterPromotionComponent implements OnInit {
             this.showDialogE("Ingresa tu Nombre");
             return false;
           }
-      
+
           if (this.form.value.ApellidoPaterno == "") {
             this.showDialogE("Ingresa tu Apellido Paterno");
             return false;
           }
-      
+
           if (this.form.value.ApellidoMaterno == "") {
             this.showDialogE("Ingresa tu Apellido Materno");
             return false;
           }
 
           //let main_user {} = {};
-          
+
           //main_user = localStorage.getItem('user');
 
           //console.log('Fullname ' + main_user.fullname);
          // console.log('Fullname ' + main_user.fullname);
 
-          
+
           if (this.form.value.Ejecutivo  == "" && this.perfil_usuario != 'UNTC Ejecutivo de Cuenta' ) {
             this.showDialogE("Debe seleccionar un ejecutivo");
             return false;
           }
 
-          
+
 
           let form = this.form;
           let pnnServ = this.pnnServ;
-  
-  
+
+
           $('form').find(':input').each(function () {
               if ($(this).hasClass('validPhoneNumber')) {
                   let name = $(this).attr('formControlName');
@@ -397,9 +397,9 @@ export class NewRegisterPromotionComponent implements OnInit {
                   }
               }
           })
-  
-          
-          
+
+
+
           if (this.sinEmail) {
             this.form.controls.CorreoElectronico.clearValidators();
             }else{
@@ -410,7 +410,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                 this.form.controls.Telefono.updateValueAndValidity();
             }else{
                 console.log('Entrando con correo, sin telefono');
-                
+
                 let tel = this.form.controls['Telefono'].value;
 
                 if (tel == "") {
@@ -439,11 +439,11 @@ export class NewRegisterPromotionComponent implements OnInit {
                 //this.form.controls['CorreoElectronico'].reset({ value: tel + '@unitec.edu.mx', disabled: false });
                 this.form.controls['CorreoElectronico'].reset({ value: this.form.controls['Nombre']+'@unitec.edu.mx', disabled: false });
                 this.conEmail = false;
-                
+
             }
 
 
-            
+
           // -------------------------------- Predictivo  ----------------------------------
           let tel_casa_predictivo = "";
             if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
@@ -452,78 +452,88 @@ export class NewRegisterPromotionComponent implements OnInit {
             }
 
              const predTel = this.form.value.Telefono.substring(0,2);
-             console.log(predTel);
+
+
             if(predTel == 55){
               this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
               tel_casa_predictivo = "9"+this.form.value.Telefono;
+             } else {
+              this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+              tel_casa_predictivo = '901'+this.form.value.Telefono;
             }
-            //this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono; 
 
 
             if (this.form.value.NumeroCelular){
                 const predCel = this.form.value.NumeroCelular.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
                 if (predCel == 55) {
                     this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
+                } else {
+                  this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
+
                 }
             }
 
-            
+
             if (this.form.value.NumeroCelularTutor) {
                 const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
                 if (predCelTutor == 55) {
                     this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+                }else{
+                    this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
+
                 }
 
             }
 
             if (this.form.value.TelefonoTutor) {
                 const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
-                this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+
                 if (predTelTutor == 55) {
                     this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
+                }else{
+                    this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+
                 }
             }
-            
+
             this.form.value.Banner = window.location.href;
             this.form.value.FuenteObtencion = "";
-            
+
             let _Ciclo = (this.form.value.Ciclo == null) ? "" : this.form.value.Ciclo;
             let CicloV = _Ciclo.split('*');
 
             let f_negocio = "";
 
             let _EmpresaEscuela = (this.form.value.EscuelaEmpresa==null)? "": this.form.value.EscuelaEmpresa;
-            
+
             let EmpresaEscuelaV = _EmpresaEscuela.split('*');
             let cal_empresa = EmpresaEscuelaV[3];
             let cal_status = "";
 
+
             //Validacion de calidad
-            if(cal_empresa == "H"){ 
+            if(cal_empresa == "H"){
                cal_status = "EMPRESAS";
 
             }else if(cal_empresa == "A" || cal_empresa == "B" || cal_empresa == "C" || cal_empresa == "D" ){
                 cal_status = "ESCUELA PROMOTORA";
 
-            }else if(cal_empresa == "G"){ 
+            }else if(cal_empresa == "G"){
                 cal_status = "ESCUELAS BACK UP";
- 
-             }else if(cal_empresa == "E"){ 
-                cal_status = "ESCUELAS NO ESCOLARIZADAS";
- 
-             }else if(cal_empresa == "F"){ 
-                cal_status = "SISTEMAS ABIERTOS";
- 
-             }else if(cal_empresa == "A286"){ 
-                cal_status = "ACUERDO 286";
- 
-             }else if(cal_empresa == "S/A" || this.form.value.actvidadNoTradicional == true ){ 
-                cal_status = "PROMOCION NO TRADICIONAL";
- 
-             }
 
+             }else if(cal_empresa == "E"){
+                cal_status = "ESCUELAS NO ESCOLARIZADAS";
+
+             }else if(cal_empresa == "F"){
+                cal_status = "SISTEMAS ABIERTOS";
+
+             }else if(cal_empresa == "A286"){
+                cal_status = "ACUERDO 286";
+
+             }else if(cal_empresa == "S/A" || this.form.value.actvidadNoTradicional == true ){
+                cal_status = "PROMOCION NO TRADICIONAL";
+
+             }
 
 
 
@@ -538,15 +548,15 @@ export class NewRegisterPromotionComponent implements OnInit {
 
                 let nombre_ventas = CicloV[4];
 
-                
-                
-                if (this.rows[i].FUENTE_NEGOCIO == cal_status && this.rows[i].CICLO == nombre_ventas && this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt ) {
-               
 
-                    console.log("this.form.value.Team = "+this.rows[i].TEAM);
+
+                if (this.rows[i].FUENTE_NEGOCIO == cal_status && this.rows[i].CICLO == nombre_ventas && this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt ) {
+
+
+                 /*   console.log("this.form.value.Team = "+this.rows[i].TEAM);
                     console.log("this.form.value.Prioridad = "+this.rows[i].PRIORIDAD);
                     console.log("this.form.value.Attemp = "+this.rows[i].ATTEMP);
-                    console.log("this.form.value.FuenteObtencion = "+this.rows[i].FUENTE_NEGOCIO);
+                    console.log("this.form.value.FuenteObtencion = "+this.rows[i].FUENTE_NEGOCIO);*/
 
                     this.form.value.Team = this.rows[i].TEAM;
                     this.form.value.Prioridad = this.rows[i].PRIORIDAD;
@@ -554,71 +564,73 @@ export class NewRegisterPromotionComponent implements OnInit {
                     this.form.value.FuenteObtencion = this.rows[i].FUENTE_NEGOCIO;
 
                     f_negocio = this.rows[i].FUENTE_NEGOCIO;
-                    
+
                 }
             }
             ciclo = ciclo_mocho[0]+"-"+ciclo_mocho[1];
-            console.log("------FuenteNegocio: " + f_negocio);
-            
-            
-            
+           // console.log("------FuenteNegocio: " + f_negocio);
+
 
             let main_carrera = this.form.value.Carrera.split("*");
 
             for (let i = 0; i < this.carreras.length; i++) {
-  
+
               if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
-  
-              console.log("");console.log("");console.log("");console.log("");
+
+     /*         console.log("");console.log("");console.log("");console.log("");
               console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
               console.log("Nombre de carrera:"+this.carreras[i].name);
               console.log("BL de Carrera:"+this.carreras[i].BL);
               console.log("");console.log("");console.log("");console.log("");
-  
-  
+*/
+
                   /**Re calcula el team prioridad y attemp con respecto a la universidad**/
-  
+
                   let nombre_ventas = "";
                   for (let j = 0; j < this.rows.length; j++) {
-                  
+
                       nombre_ventas = (CicloV[4] == "") ? "" : CicloV[4];
-      
+
                       //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
                       if (this.rows[j].FUENTE_NEGOCIO == f_negocio && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
-                        
+
+
                           this.form.value.Team = this.rows[j].TEAM;
-                          console.log("TEAM : " + this.form.value.Team);
+                          //console.log("TEAM : " + this.form.value.Team);
                           this.form.value.Prioridad = this.rows[j].PRIORIDAD;
-                          console.log("Prioridad : " + this.form.value.Prioridad);
+                          //console.log("Prioridad : " + this.form.value.Prioridad);
                           this.form.value.Attemp = this.rows[j].ATTEMP;
-                          console.log("ATTEMP : " + this.form.value.Attemp);
+                          //console.log("ATTEMP : " + this.form.value.Attemp);
                           this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
-                          console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                         // console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
                           //f_negocio = this.rows[i].FUENTE_NEGOCIO;
-      
-      
+
+
                       }
-      
+
                   }
-  
+
                   /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
               }
-  
+
           }
 
 
 
 
-          let edadT = this.form.value.Edad;            
+
+          let edadT = this.form.value.Edad;
             if(edadT==""){ edadT = 12; }
-            
-            this.form.value.Banner = window.location.href;          
-            
+
+            this.form.value.Banner = window.location.href;
+
 
             let bandera = localStorage.getItem('bandera');
 
+            console.log("Calidad de la Empresa de Form:"+this.form.value.Calidad+"");
+            console.log("Calidad empresa de catalogo:"+cal_empresa);
 
-            
+
 
 /***********Fuente Obtencion Begin***********/
 
@@ -627,7 +639,7 @@ let fuente_obtencion_nombre = "";
 let fuente_obtencion_GUID = "";
 
 f_o = this.form.value.FuenteObtencion;
-console.log('this.form.value.FuenteObtencion = '+this.form.value.FuenteObtencion);
+//console.log('this.form.value.FuenteObtencion = '+this.form.value.FuenteObtencion);
 if(f_o == "" || f_o == null){
   fuente_obtencion_nombre = "PROMOCION";
 }else{
@@ -640,39 +652,39 @@ let fo = "";
 
 for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
-  if(this.fuentesobtencion[i] !== undefined){ 
+  if(this.fuentesobtencion[i] !== undefined){
     if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
 
-      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
-          
+      fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;
+
         }
-  } 
-            
+  }
+
 }
-    console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
-    console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+ //   console.log("Fuentes obtencion: " + fuente_obtencion_nombre);
+  //  console.log("Fuente Guid: " + fuente_obtencion_GUID);
 
-/***********Fuente Obtencion End***********/     
+/***********Fuente Obtencion End***********/
 
 
 
-            
+
             /* Interes GUID */
-            
+
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
-            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
-            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
-            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
-            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres; 
-            let _Ejecutivo = (this.form.value.Ejecutivo == null) ? "" : this.form.value.Ejecutivo; 
-            
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel;
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad;
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
+            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres;
+            let _Ejecutivo = (this.form.value.Ejecutivo == null) ? "" : this.form.value.Ejecutivo;
+
             let _SubTipo = this.form.value.SubTipoActividad;
             let _SubSubTipo = this.form.value.SubSubTipoActividad;
 
             let _ActividadAgenda = (this.form.value.ActividadAgenda==null)? "": this.form.value.ActividadAgenda;
             //let _EmpresaEscuela = (this.form.value.EscuelaEmpresa==null)? "": this.form.value.EscuelaEmpresa;
             let _Turno = (this.form.value.Turno==null)? "": this.form.value.Turno;
-            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor; 
+            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor;
 
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
@@ -682,17 +694,17 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             let ParentescoV = _Parentesco.split('*');
 
             let EjecutivoV = _Ejecutivo.split('*');
-            
+
             let SubTipoV = _SubTipo.split('*');
             let SubSubTipoV = _SubSubTipo.split('*');
-            
+
             let ActividadAgendaV = _ActividadAgenda.split('*');
             //let EmpresaEscuelaV = _EmpresaEscuela.split('*');
             let TurnoV = _Turno.split('*');
-                    //console.log("this.form.value.Calidad");       
-                    //console.log(this.form.value.Calidad);       
+                    //console.log("this.form.value.Calidad");
+                    //console.log(this.form.value.Calidad);
 
-            let sendd = {};       
+            let sendd = {};
 
             let EjecutivoUser = "";
             let GUIDEjecutivoUser = "";
@@ -711,85 +723,84 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             if(this.form.controls.actvidadNoTradicional.value == true){
 
                  sendd = {
-                
+
                     Usuario: this.form.value.Usuario,
-                    Nombre: this.form.value.Nombre, 
-                    ApellidoPaterno: this.form.value.ApellidoPaterno, 
-                    ApellidoMaterno: this.form.value.ApellidoMaterno, 
-                    CorreoElectronico: this.form.value.CorreoElectronico, 
+                    Nombre: this.form.value.Nombre,
+                    ApellidoPaterno: this.form.value.ApellidoPaterno,
+                    ApellidoMaterno: this.form.value.ApellidoMaterno,
+                    CorreoElectronico: this.form.value.CorreoElectronico,
                     Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
                     Edad: edadT,
-                   
-                    NombreTutor: this.form.value.NombreTutor, 
-                    ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-                    ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
-                    CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
-    
+
+                    NombreTutor: this.form.value.NombreTutor,
+                    ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+                    ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+                    CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
+
                     ParentescoTutor: ParentescoV[0],
                     GUIDParentescotutor: ParentescoV[1],
-    
+
                     Ejecutivo: EjecutivoUser,
                     GUIDEjecutivo: GUIDEjecutivoUser,
                     FuenteNegocio : (f_negocio == "")? "" : f_negocio,
-    
+
                     Campus: CampusV[1],
                     Nivel: NivelV[1],
                     Modalidad:ModalidadV[1],
-                    Carrera: CarreraV[1],               
+                    Carrera: CarreraV[1],
                     AreaInteres: InteresV[1],
-                    Ciclo: CicloV[1],              
-                    
-                    
+                    Ciclo: CicloV[1],
+
+
                     ActividadAgenda: ActividadAgendaV[1],
                     SubTipoActividad:SubTipoV[1],
                     SubSubTipoActividad:SubSubTipoV[0],
-    
-                    
-    
-                    Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
-    
+
+
+
+                    Calidad:(cal_empresa == "")?"S/A":cal_empresa,
+
                     GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                     GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                     GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                    GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
+                    GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                     GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
-                    GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],                
-                    GUIDUsuario:localStorage.getItem('UserId'),                
+                    GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+                    GUIDUsuario:localStorage.getItem('UserId'),
                     GUIDActividAgenda:ActividadAgendaV[0],
-    
+
                      GUIDCalidad:EmpresaEscuelaV[2],
-                    
-                                    
+
+
                     GUIDSubTipo:SubTipoV[0],
-                    GUIDSubSubTipo:SubSubTipoV[1],  
-                    //Calidad: this.form.value.Calidad,
-                                              
+                    GUIDSubSubTipo:SubSubTipoV[1],
+
                     Banner: this.form.value.Banner,
-                    //ParentescoTutor: this.form.value.ParentescoTutor,              
-                    
+                    //ParentescoTutor: this.form.value.ParentescoTutor,
+
                     Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                     Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                     Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
-                    
+
                     GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
                     FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
-                    
+
                     //Numero Celular
                     Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
                     TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                     //Numero Telefono o Telefono Casa
                     TelefonoCasa: this.form.value.Telefono,
                     TelefonoCasaPredictivo: tel_casa_predictivo,
-                  
-    
+
+
                     //Numero Celular Tutor
                     NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
                     TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-                    //Numero Casa Tutor                
+                    //Numero Casa Tutor
                     TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
                     TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
-    
-    
+
+
                 };
 
 
@@ -797,112 +808,112 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
                   sendd = {
 
-                
+
                     Usuario: this.form.value.Usuario,
-                    Nombre: this.form.value.Nombre, 
-                    ApellidoPaterno: this.form.value.ApellidoPaterno, 
-                    ApellidoMaterno: this.form.value.ApellidoMaterno, 
-                    CorreoElectronico: this.form.value.CorreoElectronico, 
+                    Nombre: this.form.value.Nombre,
+                    ApellidoPaterno: this.form.value.ApellidoPaterno,
+                    ApellidoMaterno: this.form.value.ApellidoMaterno,
+                    CorreoElectronico: this.form.value.CorreoElectronico,
                     Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
                     Edad: edadT,
-                   
-                    NombreTutor: this.form.value.NombreTutor, 
-                    ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-                    ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
-                    CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
-    
+
+                    NombreTutor: this.form.value.NombreTutor,
+                    ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+                    ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+                    CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
+
                     ParentescoTutor: ParentescoV[0],
                     GUIDParentescotutor: ParentescoV[1],
-    
+
                     Ejecutivo: EjecutivoUser,
                     GUIDEjecutivo: GUIDEjecutivoUser,
                     FuenteNegocio : (f_negocio == "")? "" : f_negocio,
-    
+
                     Campus: CampusV[1],
                     Nivel: NivelV[1],
                     Modalidad:ModalidadV[1],
-                    Carrera: CarreraV[1],               
+                    Carrera: CarreraV[1],
                     AreaInteres: InteresV[1],
-                    Ciclo: CicloV[1],              
-                    
-                    
+                    Ciclo: CicloV[1],
+
+
                     ActividadAgenda: ActividadAgendaV[1],
                     SubTipoActividad:SubTipoV[1],
                     SubSubTipoActividad:SubSubTipoV[0],
-    
-    
-                    
+
+
+
                     EscuelaEmpresa: EmpresaEscuelaV[1],
-                    Turno: TurnoV[2],                
-                    
+                    Turno: TurnoV[2],
+
                     GUIDEscuelaEmpresa: EmpresaEscuelaV[0],
                     GUIDTurno: TurnoV[0],
-                    
-    
-                    Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
-    
+
+
+                    Calidad:(cal_empresa == "")?"S/A":cal_empresa,
+
                     GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                     GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                     GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                    GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
+                    GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                     GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
-                    GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],                
-                    GUIDUsuario:localStorage.getItem('UserId'),                
+                    GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+                    GUIDUsuario:localStorage.getItem('UserId'),
                     GUIDActividAgenda:ActividadAgendaV[0],
-    
+
                      GUIDCalidad:EmpresaEscuelaV[2],
-                    
-                                    
+
+
                     GUIDSubTipo:SubTipoV[0],
-                    GUIDSubSubTipo:SubSubTipoV[1],  
+                    GUIDSubSubTipo:SubSubTipoV[1],
                     //Calidad: this.form.value.Calidad,
-                                              
+
                     Banner: this.form.value.Banner,
-                    //ParentescoTutor: this.form.value.ParentescoTutor,              
-                    
+                    //ParentescoTutor: this.form.value.ParentescoTutor,
+
                     Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                     Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                     Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
 
                     GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3089dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
                     FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
-                    
+
                     //Numero Celular
                     Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
                     TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                     //Numero Telefono o Telefono Casa
                     TelefonoCasa: this.form.value.Telefono,
                     TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
-                  
-    
+
+
                     //Numero Celular Tutor
                     NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
                     TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-                    //Numero Casa Tutor                
+                    //Numero Casa Tutor
                     TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
                     TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
-    
-    
+
+
                 };
 
             }
 
-                
+
             /*const sendd = {
-                                
-                
+
+
                 Usuario: this.form.value.Usuario,
-                Nombre: this.form.value.Nombre, 
-                ApellidoPaterno: this.form.value.ApellidoPaterno, 
-                ApellidoMaterno: this.form.value.ApellidoMaterno, 
-                CorreoElectronico: this.form.value.CorreoElectronico, 
+                Nombre: this.form.value.Nombre,
+                ApellidoPaterno: this.form.value.ApellidoPaterno,
+                ApellidoMaterno: this.form.value.ApellidoMaterno,
+                CorreoElectronico: this.form.value.CorreoElectronico,
                 Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
                 Edad: edadT,
-               
-                NombreTutor: this.form.value.NombreTutor, 
-                ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-                ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
-                CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
+
+                NombreTutor: this.form.value.NombreTutor,
+                ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+                ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+                CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
 
                 ParentescoTutor: ParentescoV[0],
                 GUIDParentescotutor: ParentescoV[1],
@@ -914,62 +925,62 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad:ModalidadV[1],
-                Carrera: CarreraV[1],               
+                Carrera: CarreraV[1],
                 AreaInteres: InteresV[1],
-                Ciclo: CicloV[1],              
-                
-                
+                Ciclo: CicloV[1],
+
+
                 ActividadAgenda: ActividadAgendaV[1],
                 SubTipoActividad:SubTipoV[1],
                 SubSubTipoActividad:SubSubTipoV[0],
 
 
-                
+
                 EscuelaEmpresa: EmpresaEscuelaV[1],
-                Turno: TurnoV[2],                
-                
+                Turno: TurnoV[2],
+
                 GUIDEscuelaEmpresa: EmpresaEscuelaV[0],
                 GUIDTurno: TurnoV[0],
-                
+
 
                 Calidad:(this.form.value.Calidad)?null:this.form.value.Calidad,
 
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],               
+                GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
-                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],                
-                GUIDUsuario:localStorage.getItem('UserId'),                
+                GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
+                GUIDUsuario:localStorage.getItem('UserId'),
                 GUIDActividAgenda:ActividadAgendaV[0],
 
                  GUIDCalidad:EmpresaEscuelaV[2],
-                
-                                
+
+
                 GUIDSubTipo:SubTipoV[0],
-                GUIDSubSubTipo:SubSubTipoV[1],  
+                GUIDSubSubTipo:SubSubTipoV[1],
                 //Calidad: this.form.value.Calidad,
-                                          
+
                 Banner: this.form.value.Banner,
-                //ParentescoTutor: this.form.value.ParentescoTutor,              
-                
+                //ParentescoTutor: this.form.value.ParentescoTutor,
+
                 Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
                 Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
                 Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
                 FuenteObtencion: this.form.value.FuenteObtencion,
-                
+
                 //Numero Celular
                 Telefono: (this.form.value.NumeroCelular=="")?null:this.form.value.NumeroCelular,
                 TelefonoPredictivo:(this.form.value.TelefonoCelularPredictivo == "9045null") ? null : this.form.value.TelefonoCelularPredictivo,
                 //Numero Telefono o Telefono Casa
                 TelefonoCasa: this.form.value.Telefono,
                 TelefonoCasaPredictivo:this.form.value.TelefonoPredictivo,
-              
+
 
                 //Numero Celular Tutor
                 NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
                 TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-                //Numero Casa Tutor                
+                //Numero Casa Tutor
                 TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
                 TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
@@ -977,12 +988,12 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             };*/
 
 
-           
+
           // -------------------------------- Predictivo  ----------------------------------
 
            // console.log("this.conEmail");
-            console.log("Con Email - "+this.conEmail);
-            
+         //   console.log("Con Email - "+this.conEmail);
+
 
             if (this.conEmail) {
                 this.sendServ.sendData4(sendd)// this.form.value)
@@ -1049,7 +1060,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                         }
                     )
             }
-            
+
         } else {
             this.showDialogE("Error al realizar el registro *");
         }
@@ -1122,6 +1133,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
     onChange() {}
 
+
     addTradicional(isChecked) {
         if (isChecked.checked) {
             this.form.controls.EscuelaEmpresa.reset({ value: '', disabled: true });
@@ -1193,7 +1205,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
         }
         this.niveles = this.campusCarreraServ.getNivelesByCarrera(value);
     }
-    
+
     //Cambiando
     onChangeNivel(campus: string) {
         console.log(campus);
@@ -1257,11 +1269,12 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
     onChangeEscuelaEmpresa(campus: string){
         let cadena = campus.split('*');
         let value = cadena[0];
+        let cali = cadena[3];
 
-        let calidad_name = this.escuelaEmpresaServ.getCalidadByEscuelaEmpresa(value);
+        let calidad_name = cadena[0]; //this.escuelaEmpresaServ.getCalidadByEscuelaEmpresa(value);
         let calidad_id = this.escuelaEmpresaServ.getCalidadIdByEscuelaEmpresa(value);
         if(calidad_name != null){
-            this.form.controls['Calidad'].setValue(calidad_name);            
+            this.form.controls['Calidad'].setValue(cali);
         }
     }
 

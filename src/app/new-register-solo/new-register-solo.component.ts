@@ -252,8 +252,8 @@ export class NewRegisterSoloComponent implements OnInit {
         this.fuenteobtencionServ.getAll()
         .subscribe(
         (data: FuenteObtencion[]) => this.fuentesobtencion = data
-        )    
-          
+        )
+
         this.formInit();
     }
 
@@ -270,7 +270,7 @@ export class NewRegisterSoloComponent implements OnInit {
 
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
-        
+
         this.form = new FormGroup({
 
             Usuario: new FormControl({ value: datos.fullname, disabled: false }),
@@ -307,13 +307,13 @@ export class NewRegisterSoloComponent implements OnInit {
         let form = this.form;
         let pnnServ = this.pnnServ;
 
-    
+
 
         $('form').find(':input').each(function(){
             if($(this).hasClass('validPhoneNumber')){
                 let name = $(this).attr('formControlName');
                 if(form.controls[name].value != '' && form.controls[name].value != null){
-                    
+
                     if(!pnnServ.checkPnnIsValid(form.controls[name].value)){
                         form.controls[name].setErrors({'numInvalid': true});
                     }else{
@@ -326,7 +326,7 @@ export class NewRegisterSoloComponent implements OnInit {
                 }
             }
         })
-        
+
         this.onKeyFechaNacimiento();
 
         if (this.sinEmail) {
@@ -358,42 +358,57 @@ export class NewRegisterSoloComponent implements OnInit {
           // -------------------------------- Predictivo  ----------------------------------
 
           let tel_casa_predictivo = "";
+          if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
 
-             const predTel = this.form.value.Telefono.substring(0,2);
-            if(predTel == 55){
-              this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
-              tel_casa_predictivo = "9"+this.form.value.Telefono;
+              this.form.value.Telefono = "5555555555";
+          }
 
-            }
-            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono; 
+           const predTel = this.form.value.Telefono.substring(0,2);
 
 
-            if (this.form.value.NumeroCelular){
-                const predCel = this.form.value.NumeroCelular.substring(0, 2);
+          if(predTel == 55){
+            this.form.value.TelefonoPredictivo = '9'+this.form.value.Telefono;
+            tel_casa_predictivo = "9"+this.form.value.Telefono;
+           } else {
+            this.form.value.TelefonoPredictivo = '901'+this.form.value.Telefono;
+            tel_casa_predictivo = '901'+this.form.value.Telefono;
+          }
+
+
+          if (this.form.value.NumeroCelular){
+              const predCel = this.form.value.NumeroCelular.substring(0, 2);
+              if (predCel == 55) {
+                  this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
+              } else {
                 this.form.value.TelefonoCelularPredictivo = '9045' + this.form.value.NumeroCelular;
-                if (predCel == 55) {
-                    this.form.value.TelefonoCelularPredictivo = '9044' + this.form.value.NumeroCelular;
-                }
-            }
 
-            
-            if (this.form.value.NumeroCelularTutor) {
-                const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
-                this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;                
-                if (predCelTutor == 55) {
-                    this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
-                }
+              }
+          }
 
-            }
 
-            if (this.form.value.TelefonoTutor) {
-                const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
-                this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
-                if (predTelTutor == 55) {
-                    this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
-                }
-            }
-         
+          if (this.form.value.NumeroCelularTutor) {
+              const predCelTutor = this.form.value.NumeroCelularTutor.substring(0, 2);
+              if (predCelTutor == 55) {
+                  this.form.value.TelefonoCelularPredictivoTutor = '9044' + this.form.value.NumeroCelularTutor;
+              }else{
+                  this.form.value.TelefonoCelularPredictivoTutor = '9045' + this.form.value.NumeroCelularTutor;
+
+              }
+
+          }
+
+          if (this.form.value.TelefonoTutor) {
+              const predTelTutor = this.form.value.TelefonoTutor.substring(0, 2);
+
+              if (predTelTutor == 55) {
+                  this.form.value.TelefonoPredictivoTutor = '9' + this.form.value.TelefonoTutor;
+              }else{
+                  this.form.value.TelefonoPredictivoTutor = '901' + this.form.value.TelefonoTutor;
+
+              }
+          }
+
+
             this.form.value.Banner = window.location.href;
             this.form.value.FuenteObtencion = "";
 
@@ -415,29 +430,29 @@ export class NewRegisterSoloComponent implements OnInit {
 
             let f_negocio = "";
 
-     
+
             let main_carrera = this.form.value.Carrera.split("*");
 
             for (let i = 0; i < this.carreras.length; i++) {
-  
+
               if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
-  
+
               console.log("");console.log("");console.log("");console.log("");
               console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
               console.log("Nombre de carrera:"+this.carreras[i].name);
               console.log("BL de Carrera:"+this.carreras[i].BL);
               console.log("");console.log("");console.log("");console.log("");
-  
-  
+
+
                   /**Re calcula el team prioridad y attemp con respecto a la universidad**/
-  
+
                   for (let j = 0; j < this.rows.length; j++) {
-                  
+
                       nombre_ventas = (CicloV[4] == "") ? "" : CicloV[4];
-      
+
                       //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
                       if (this.rows[j].FUENTE_NEGOCIO == "SOLOVINOS" && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
-                        
+
                           this.form.value.Team = this.rows[j].TEAM;
                           console.log("TEAM : " + this.form.value.Team);
                           this.form.value.Prioridad = this.rows[j].PRIORIDAD;
@@ -447,15 +462,15 @@ export class NewRegisterSoloComponent implements OnInit {
                           this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
                           console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
                           f_negocio = this.rows[i].FUENTE_NEGOCIO;
-      
-      
+
+
                       }
-      
+
                   }
-  
+
                   /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
               }
-  
+
           }
 
             ciclo = CicloV[1];
@@ -476,48 +491,48 @@ export class NewRegisterSoloComponent implements OnInit {
         fuente_obtencion_nombre = "SOLOVINOS";
       }
 
-      
+
       let fo = "";
-      
+
       for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
-        if(this.fuentesobtencion[i] !== undefined){ 
+        if(this.fuentesobtencion[i] !== undefined){
           if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
 
-            fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
-                
+            fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;
+
               }
-        } 
-                  
+        }
+
       }
           console.log("___________________________________________");
           console.log(""); console.log(""); console.log("");
-          console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
-          console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+          console.log("Fuentes obtencion: " + fuente_obtencion_nombre);
+          console.log("Fuente Guid: " + fuente_obtencion_GUID);
           console.log("Fuente Negocio: " + f_negocio);
-          console.log("");console.log("");console.log("");  
+          console.log("");console.log("");console.log("");
           console.log("___________________________________________");
 
-     /***********Fuente Obtencion End***********/     
+     /***********Fuente Obtencion End***********/
 
 
           // -------------------------------- Predictivo  ----------------------------------
           let edadT = this.form.value.Edad;
 
             if(edadT==""){
-                edadT = 12;                
+                edadT = 12;
             }
 
             let bandera = localStorage.getItem('bandera');
-            
+
             /* Interes GUID */
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
-            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
-            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
-            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera; 
-            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres; 
-            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor; 
-            
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel;
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad;
+            let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
+            let _Interes = (this.form.value.AreaInteres == null) ? "" : this.form.value.AreaInteres;
+            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor;
+
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
@@ -525,22 +540,22 @@ export class NewRegisterSoloComponent implements OnInit {
             let InteresV = _Interes.split('*');
             let ParentescoV = _Parentesco.split('*');
 
-            const sendd = {    
+            const sendd = {
 
-            Usuario: this.form.value.Usuario, 
-                    
-            Nombre: this.form.value.Nombre, 
-            ApellidoPaterno: this.form.value.ApellidoPaterno, 
-            ApellidoMaterno: this.form.value.ApellidoMaterno, 
+            Usuario: this.form.value.Usuario,
+
+            Nombre: this.form.value.Nombre,
+            ApellidoPaterno: this.form.value.ApellidoPaterno,
+            ApellidoMaterno: this.form.value.ApellidoMaterno,
             CorreoElectronico: this.form.value.CorreoElectronico,
             Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
-            Edad:edadT, 
+            Edad:edadT,
 
-            NombreTutor: this.form.value.NombreTutor, 
-            ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor, 
-            ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor, 
-            CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor, 
-            
+            NombreTutor: this.form.value.NombreTutor,
+            ApellidoPaternoTutor: this.form.value.ApellidoPaternoTutor,
+            ApellidoMaternoTutor: this.form.value.ApellidoMaternoTutor,
+            CorreoElectronicoTutor: this.form.value.CorreoElectronicoTutor,
+
             ParentescoTutor: ParentescoV[0],
             GUIDParentescotutor: ParentescoV[1],
 
@@ -551,16 +566,16 @@ export class NewRegisterSoloComponent implements OnInit {
             AreaInteres: InteresV[1],
             Ciclo:  ciclo,
             FuenteNegocio : fuente_obtencion_nombre,
-            
+
             GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
             GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
             GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
-            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],            
+            GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
             GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
             GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
             GUIDUsuario:localStorage.getItem('UserId'),
             GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3c89dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
-             
+
 
             Banner: this.form.value.Banner,
             Bandera: (bandera==null)? "" :bandera,
@@ -576,17 +591,17 @@ export class NewRegisterSoloComponent implements OnInit {
             //Numero Telefono o Telefono Casa
             TelefonoCasa: this.form.value.Telefono,
             TelefonoCasaPredictivo: tel_casa_predictivo,
-              
+
 
             //Numero Celular Tutor
             NumeroCelularTutor:(this.form.value.NumeroCelularTutor=='')?null:this.form.value.NumeroCelularTutor,
             TelefonoCelularPredictivoTutor:(this.form.value.TelefonoCelularPredictivoTutor == "9045null") ? null : this.form.value.TelefonoCelularPredictivoTutor,
-            //Numero Casa Tutor                
+            //Numero Casa Tutor
             TelefonoTutor:(this.form.value.TelefonoTutor=='')?null:this.form.value.TelefonoTutor,
             TelefonoCasaTutorPredictivo: (this.form.value.TelefonoPredictivoTutor == "901null") ? null : this.form.value.TelefonoPredictivoTutor,
 
           };
-             
+
             //console.log("this.conEmail");
             //console.log(this.conEmail);
             if (this.conEmail) {
@@ -690,17 +705,18 @@ export class NewRegisterSoloComponent implements OnInit {
            let asess = this.asesorGrupalServ.getAll()
             .subscribe(
                 (datat: AsesorGrupal[]) => this.asesorGrupal = datat
-            )    
+            )
             setTimeout(() => {
                 this.showDialogForm(this.asesorGrupal, "Selecciona a un Asesor Grupal", "SesiónG-");
-            }, 1000); 
+            }, 1000);
         }else{
             this.showDialogE("Seleccione un Nivel");
         }
     }
 
     agruparDClick(){
-        localStorage.setItem('bandera',this.form.controls.Usuario.value);
+        //localStorage.setItem('bandera',this.form.controls.Usuario.value);
+        localStorage.setItem('bandera',"Cita -");
     }
 
 
@@ -742,7 +758,7 @@ export class NewRegisterSoloComponent implements OnInit {
     }
 
     _keyPressNumA(event: any, name: any) {
-        
+
         LandingValidation.onlyNumberIgual(event, name);
     }
     _keyPressTxt(event: any) {
