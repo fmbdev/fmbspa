@@ -242,17 +242,42 @@ export class UploadBaseComponent implements OnInit {
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
                     var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
 
-                    var GUIDUsuario = localStorage.getItem('UserId');
-
                     var u = localStorage.getItem('user');
                     var data = JSON.parse(u);
                     var nom_usu = data.fullname;
 
+  /***Team priodirdad y attemp***/
 
+                    var Team = "";
+                    var Prioridad = 0;
+                    var Attemp = "";
+
+
+                console.log("Campus:" + key.campus);
+                console.log("Ciclo: " + key.ciclo);
+
+                for (let i = 0; i < this.rows.length; i++) {
+
+                 // if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
+                   if(this.rows[i].CICLO == key.ciclo){
+                    Team = this.rows[i].TEAM;
+                     Prioridad = parseInt(this.rows[i].PRIORIDAD);
+                    Attemp = this.rows[i].ATTEMP;
+
+                    //console.log("TEAM: "+Team);
+                    //console.log("Prioridad: "+Prioridad);
+                    //console.log("Attemp: "+Attemp);
+                   }
+
+                  }
+
+
+
+/*******Team prioridad y attemp******** */
 
                     var obj2 = {
                       "Usuario":nom_usu,
-                      "GUIDUsuario":GUIDUsuario,
+                      "GUIDUsuario":localStorage.getItem('UserId'),
                       "Banner":"https://app.devmx.com.mx/upload",
                       "FuenteObtencion":"PROMOCION",
                       "GUIDFuentedeObtencion":"3089dd13-6072-e211-b35f-6cae8b2a4ddc",
@@ -280,6 +305,10 @@ export class UploadBaseComponent implements OnInit {
                       "GUIDSubSubTipo":GUIDSubSubTipo,
                       "SubTipo":key.sub_tipo,
                       "GUIDSubTipo":GUIDSubTipo,
+                      "Attemp": Attemp,
+                      "Prioridad": Prioridad,
+                      "Team": Team,
+
 
                     };
 

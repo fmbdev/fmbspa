@@ -280,9 +280,18 @@ export class UploadBaseSisComponent implements OnInit {
                   }
                 }
 
+                var u = localStorage.getItem('user');
+                var data = JSON.parse(u);
+                var nom_usu = data.fullname;
+
               var obj2 = {
+                "Usuario":nom_usu,
+                "GUIDUsuario":localStorage.getItem('UserId'),
+                "Banner":"https://app.devmx.com.mx/upload-sis",
+                "FuenteObtencion":"PROMOCION",
+                "GUIDFuentedeObtencion":"3089dd13-6072-e211-b35f-6cae8b2a4ddc",
                 "Attemp": Attemp,
-                "FuenteObtencion": this.Tipo.value,
+                "FuenteNegocio": this.Tipo.value,
                 "NumPersona": key.Num_Persona,
                 "Prioridad": Prioridad,
                 "Team": Team,
@@ -296,7 +305,6 @@ export class UploadBaseSisComponent implements OnInit {
                 "GUIDModalidad": GUIDModalidad,
                 "campus": campus,
                 "GUIDCampus": GUIDCampus,
-                "GUIDUsuario": localStorage.getItem('UserId'),
                 "EsAlumno": true,
               };
 
