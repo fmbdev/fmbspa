@@ -242,17 +242,20 @@ export class UploadBaseComponent implements OnInit {
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
                     var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
 
+                    var GUIDUsuario = localStorage.getItem('UserId');
 
-                    for(let i=0 ; i< data.length ; i++){
+                    var u = localStorage.getItem('user');
+                    var data = JSON.parse(u);
+                    var nom_usu = data.fullname;
 
-                        console.log("data["+i+"] = "+data[i]);
 
-                    }
 
                     var obj2 = {
-                      "Usuario":"",
+                      "Usuario":nom_usu,
+                      "GUIDUsuario":GUIDUsuario,
                       "Banner":"https://app.devmx.com.mx/upload",
-                      "FuenteObtencion":"BD EXTERNA",
+                      "FuenteObtencion":"PROMOCION",
+                      "GUIDFuentedeObtencion":"3089dd13-6072-e211-b35f-6cae8b2a4ddc",
                       "FuenteNegocio":this.Tipo.value,
                       "ApellidoMaterno":key.Apellido_Materno,
                       "ApellidoPaterno": key.Apellido_Paterno,
