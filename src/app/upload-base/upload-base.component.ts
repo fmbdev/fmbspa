@@ -36,7 +36,7 @@ import { DialogFormComponent } from '../dialog-form/dialog-form.component';
   styleUrls: ['./upload-base.component.scss']
 })
 export class UploadBaseComponent implements OnInit {
-  
+
   @ViewChild("imgFileInput") imgFileInput: any;
   @ViewChild("Tipo") Tipo: any;
 
@@ -57,9 +57,9 @@ export class UploadBaseComponent implements OnInit {
   escuelas_empresas: EscuelaEmpresa[] = [];
   sub_tipos: SubTipo[] = [];
   subsub_tipos: SubsubTipo[] = [];
-   
 
-  constructor(private sendServ: SendService, 
+
+  constructor(private sendServ: SendService,
               public dialog: MatDialog,
               private cicloServ: CicloService,
               private campusServ: CampusService,
@@ -111,11 +111,11 @@ export class UploadBaseComponent implements OnInit {
   }
 
   previewImage(event){
-    console.log(event.srcElement.files[0]); 
+    console.log(event.srcElement.files[0]);
      this.newdata.filename = event.srcElement.files[0].name;
   }
 
-  
+
   fetch(cb) {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/carga-externa.json`);
@@ -126,65 +126,68 @@ export class UploadBaseComponent implements OnInit {
   }
 
 
-  checkCols(workbook) //your workbook variable 
-  { 
-      var colValues =[]; 
-      var first_sheet_name = workbook.SheetNames[0]; 
-      var worksheet = workbook.Sheets[first_sheet_name]; 
-      var cells = Object.keys(worksheet); 
-      for (var i = 0; i < Object.keys(cells).length; i++) 
-      { 
-        if( cells[i].indexOf('1') > -1) 
-        { 
-        colValues.push(worksheet[cells[i]].v);         
-        } 
+
+
+
+  checkCols(workbook) //your workbook variable
+  {
+      var colValues =[];
+      var first_sheet_name = workbook.SheetNames[0];
+      var worksheet = workbook.Sheets[first_sheet_name];
+      var cells = Object.keys(worksheet);
+      for (var i = 0; i < Object.keys(cells).length; i++)
+      {
+        if( cells[i].indexOf('1') > -1)
+        {
+        colValues.push(worksheet[cells[i]].v);
+        }
       }
       let col = '["Apellido_Paterno","Apellido_Materno","Nombre","Sexo","Teléfono_Domicilio","Teléfono_Celular","Correo_Electronico","escuela_de_procedencia","sub_tipo","sub_sub_tipo","calidad","campus","carrera","ciclo","area_atención","fuente_obtención"]';
       let cColum = JSON.stringify(colValues);
-    
+
       if(col == cColum){
         return true;
       }else{
         return false;
-      }    
+      }
   }
-  
-  
+
+
   Upload() {
-    // Obtener 
+    // Obtener
 
 
      let x = 0;
      let count = 0;
-        
+
         let tipo = this.Tipo.value;
 
         let fileReader = new FileReader();
-        
+
           fileReader.onload = (e) => {
 
               this.arrayBuffer = fileReader.result;
-            
+
               var data = new Uint8Array(this.arrayBuffer);
-            
+
               var arr = new Array();
-            
+
               for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-            
+
               var bstr = arr.join("");
-            
+
               var workbook = XLSX.read(bstr, {type:"binary"});
-            
+
               var first_sheet_name = workbook.SheetNames[0];
 
               var worksheet = workbook.Sheets[first_sheet_name];
-              
+
               let filas = XLSX.utils.sheet_to_json(worksheet,{raw:true});
 
               let count=  Object.keys(filas).length;
 
               if(!this.checkCols(workbook)){
-                  this.showDialog("Los titulos de la columna no coinciden");                  
+                  this.showDialog("Los titulos de la columna no coinciden");
                   this.newdata.filename ="";
                   this.Tipo.value="";
                   this.columDistin = false;
@@ -195,7 +198,7 @@ export class UploadBaseComponent implements OnInit {
                   let f = 500;
 
                   filas.forEach((key:Upload) => {
-                    
+
                     var carreraTM = this.getObjects(this.carreras, 'id', key.carrera);
                     var escuelaTM = this.getObjects(this.escuelas_empresas, 'escuelaID', key.escuela_de_procedencia);
                     var campusTM = this.getObjects(this.campus, 'crmi_name', key.campus);
@@ -225,25 +228,37 @@ export class UploadBaseComponent implements OnInit {
                         }
 
                     var   Genero = key.Sexo;
-                          if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
+                          if(Genero=='M'){Genero='1'; }else{Genero='2';}
 
                     var GUIDCarrera=carreraTM[0].codigounico;
                     var TCarrera=carreraTM[0].name;
 
                     var GUIDEscuelaEmpresa=escuelaTM[0].crmit_empresaescuela;
                     var TEscuelaEmpresa=escuelaTM[0].Name;
+                    var GUIDCalidad=escuelaTM[0].crmit_empresaescuela;
 
                     var GUIDCampus=campusTM[0].crmit_tb_campusid;
                     var GUIDCiclo=cicloTM[0].crmit_codigounico;
-                    var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid; 
-                    var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;                 
+                    var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
+                    var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
+
+
+                    for(let i=0 ; i< data.length ; i++){
+
+                        console.log("data["+i+"] = "+data[i]);
+
+                    }
 
                     var obj2 = {
-                      "FuenteObtencion":this.Tipo.value,
+                      "Usuario":"",
+                      "Banner":"https://app.devmx.com.mx/upload",
+                      "FuenteObtencion":"BD EXTERNA",
+                      "FuenteNegocio":this.Tipo.value,
                       "ApellidoMaterno":key.Apellido_Materno,
                       "ApellidoPaterno": key.Apellido_Paterno,
                       "Genero":Genero,
                       "Calidad":key.calidad,
+                      "GUIDCalidad":GUIDCalidad,
                       "Telefono":skeyCelular,
                       "TelefonoPredictivo":TelefonoPredictivo,
                       "TelefonoCasa":skeyTelefono,
@@ -262,6 +277,7 @@ export class UploadBaseComponent implements OnInit {
                       "GUIDSubSubTipo":GUIDSubSubTipo,
                       "SubTipo":key.sub_tipo,
                       "GUIDSubTipo":GUIDSubTipo,
+
                     };
 
                     delete key.Sexo;
@@ -316,15 +332,15 @@ export class UploadBaseComponent implements OnInit {
                                 //this.showDialogE(error._body);
                               }
                           })
-                      }, f);  
-                     
-                  });   
-                  
+                      }, f);
+
+                  });
 
 
-                 
+
+
           }
-          
+
             fileReader.readAsArrayBuffer(this.imgFileInput.nativeElement.files[0]);
 
   }
@@ -333,7 +349,7 @@ export class UploadBaseComponent implements OnInit {
     /*this.sendServ.sendData('http://devmx.com.mx/fmbapp/public/api/sendData',this.form.value)
       .subscribe(
         (res: any) => {
-          if (res.status == 200) {           
+          if (res.status == 200) {
           } else {
           }
         }
