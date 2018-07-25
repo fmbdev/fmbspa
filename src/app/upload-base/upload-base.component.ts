@@ -19,6 +19,8 @@ import { Upload } from '../interfaces/upload';
 import { SubsubTipo } from '../interfaces/subsub-tipo';
 import { SubTipo } from '../interfaces/sub-tipo';
 
+
+
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
 
@@ -46,7 +48,12 @@ export class UploadBaseComponent implements OnInit {
   arrayBuffer:any;
   file:File;
   columDistin:boolean;
+
   rows = [];
+  rowss = [];
+  rowss_mod = [];
+  rowss_niv = [];
+
   campusTxt: any;
   nivelTxt: any;
 
@@ -70,6 +77,21 @@ export class UploadBaseComponent implements OnInit {
     this.fetch((data) => {
       this.rows = data;
     });
+    this.fetch((data) => {
+      this.rows = data;
+    });
+    this.fetchs((data) => {
+      this.rowss = data;
+    });
+
+    this.fetchs_modalidad((data) => {
+      this.rowss_mod = data;
+    });
+
+    this.fetchs_nivel((data) => {
+      this.rowss_niv = data;
+    });
+
   }
 
 
@@ -118,7 +140,34 @@ export class UploadBaseComponent implements OnInit {
 
   fetch(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/carga-externa.json`);
+    req.open('GET', `assets/carga-sis.json`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
+  fetchs(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://devmx.com.mx/fmbapp/public/api/campus_carreras`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
+  fetchs_modalidad(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://devmx.com.mx/fmbapp/public/api/modalidad`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
+  fetchs_nivel(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://devmx.com.mx/fmbapp/public/api/nivel_estudios`);
     req.onload = () => {
       cb(JSON.parse(req.response));
     };
@@ -228,7 +277,13 @@ export class UploadBaseComponent implements OnInit {
                         }
 
                     var   Genero = key.Sexo;
-                          if(Genero=='M'){Genero='1'; }else{Genero='2';}
+                    
+                    if(Genero=='M'){Genero='1'; }else{Genero='2';}
+                    
+                    var ciclo = cicloTM[0].crmit_name;
+                    var ciclo_mocho = ciclo.split('-');
+                    var cicloC = "C" + ciclo_mocho[1];
+                    var GUIDCiclo = cicloTM[0].crmit_codigounico;
 
                     var GUIDCarrera=carreraTM[0].codigounico;
                     var TCarrera=carreraTM[0].name;
@@ -238,6 +293,7 @@ export class UploadBaseComponent implements OnInit {
                     var GUIDCalidad=escuelaTM[0].crmit_empresaescuela;
 
                     var GUIDCampus=campusTM[0].crmit_tb_campusid;
+                    var campus = campusTM[0].crmi_name;
                     var GUIDCiclo=cicloTM[0].crmit_codigounico;
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
                     var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
@@ -249,11 +305,60 @@ export class UploadBaseComponent implements OnInit {
 
                     }
 
+                    /* obtener nivel y modalidad */
+                    var NivelInteres = "";
+                    var GUIDNivelInteres = "";
+
+                    var Modalidad = "";
+                    var GUIDModalidad = "";
+
+                    for (let i = 0; i < this.rowss.length; i++) {
+                      if (this.rowss[i].campusId == GUIDCampus && this.rowss[i].carreraId == GUIDCarrera) {
+                        GUIDModalidad = this.rowss[i].modalidadId;
+                        GUIDNivelInteres = this.rowss[i].nivelId;
+                      }
+                    }
+
+                    for (let i = 0; i < this.rowss_mod.length; i++) {
+                      if (this.rowss_mod[i].crmit_codigounico == GUIDModalidad) {
+                        Modalidad = this.rowss_mod[i].crmit_name;
+                      }
+                    }
+
+                    for (let i = 0; i < this.rowss_niv.length; i++) {
+                      if (this.rowss_niv[i].crmit_codigounico == GUIDNivelInteres) {
+                        NivelInteres = this.rowss_niv[i].crmit_name;
+                      }
+                    }
+
+                    let Team = "";
+                    let Prioridad = 0;
+                    let Attemp = "";
+
+                    for (let i = 0; i < this.rows.length; i++) {
+                      if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
+                        Team = this.rows[i].TEAM;
+                        Prioridad = parseInt(this.rows[i].PRIORIDAD);
+                        Attemp = this.rows[i].ATTEMP;
+                      } 
+                    }
+
+                    var GUIDUsuario = localStorage.getItem('UserId');
+
+                    var u = localStorage.getItem('user');
+                    var data = JSON.parse(u);
+                    var nom_usu = data.fullname;
+                    
                     var obj2 = {
-                      "Usuario":"",
+                      "Usuario":nom_usu,
+                      "GUIDUsuario": GUIDUsuario,
                       "Banner":"https://app.devmx.com.mx/upload",
-                      "FuenteObtencion":"BD EXTERNA",
+                      "FuenteObtencion":"PROMOCION",
+                      "GUIDFuenteObtencion":"2689dd13-6072-e211-b35f-6cae8b2a4ddc",
                       "FuenteNegocio":this.Tipo.value,
+                      "Attemp": Attemp,
+                      "Prioridad": Prioridad,
+                      "Team": Team,
                       "ApellidoMaterno":key.Apellido_Materno,
                       "ApellidoPaterno": key.Apellido_Paterno,
                       "Genero":Genero,
