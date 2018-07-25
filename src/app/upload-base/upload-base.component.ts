@@ -355,13 +355,17 @@ export class UploadBaseComponent implements OnInit {
                     var u = localStorage.getItem('user');
                     var data = JSON.parse(u);
                     var nom_usu = data.fullname;
+                    var guidcalidad  = escuelaTM[0].crmit_calidadid;
+
+                    console.log("Calidad: "+key.calidad);
+
 
                     var obj2 = {
                       "Usuario":nom_usu,
                       "GUIDUsuario": GUIDUsuario,
                       "Banner":"https://app.devmx.com.mx/upload",
                       "FuenteObtencion":"PROMOCION",
-                      "GUIDFuenteObtencion":"2689dd13-6072-e211-b35f-6cae8b2a4ddc",
+                      "GUIDFuentedeObtencion":"2689dd13-6072-e211-b35f-6cae8b2a4ddc",
                       "FuenteNegocio":this.Tipo.value,
                       "Attemp": Attemp,
                       "Prioridad": Prioridad,
@@ -370,7 +374,7 @@ export class UploadBaseComponent implements OnInit {
                       "ApellidoPaterno": key.Apellido_Paterno,
                       "Genero":Genero,
                       "Calidad":key.calidad,
-                      "GUIDCalidad":GUIDCalidad,
+                      "GUIDCalidad":guidcalidad,
                       "Telefono":skeyCelular,
                       "TelefonoPredictivo":TelefonoPredictivo,
                       "TelefonoCasa":skeyTelefono,
