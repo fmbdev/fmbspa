@@ -39,7 +39,7 @@ export class ReferidoReferenteComponent implements OnInit {
 
   form: FormGroup;
   conEmail = true;
-  
+
   //maxDate = new Date(2018, this.month.getMonth(),12);
   maxDate = LandingValidation.fechaLimite();
   startDate = LandingValidation.fechaInicio();
@@ -113,7 +113,7 @@ export class ReferidoReferenteComponent implements OnInit {
         .subscribe(
           (data: FuenteObtencion[]) => this.fuentesobtencion = data
         )
-    
+
 
     this.formInit();
   }
@@ -141,7 +141,7 @@ export class ReferidoReferenteComponent implements OnInit {
       Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
       extension: new FormControl(''),
       tipoCel: new FormControl(''),
-       
+
       Campus: new FormControl(''),
       Nivel: new FormControl({ value: '', disabled: true }),
       Modalidad: new FormControl({ value: '', disabled: true }),
@@ -194,7 +194,7 @@ export class ReferidoReferenteComponent implements OnInit {
         console.log('HERE');
       }
 
-    }   
+    }
 
     const predTel = this.form.value.Telefono.substring(0, 2);
 
@@ -204,7 +204,7 @@ export class ReferidoReferenteComponent implements OnInit {
 
     this.form.value.TelefonoCelular = null;
     this.form.value.TelefonoPredictivo = null;
-  
+
     this.form.value.TelefonoCasa = null;
     this.form.value.TelefonoCasaPredictivo = null;
 
@@ -239,31 +239,31 @@ export class ReferidoReferenteComponent implements OnInit {
       }
     }
 
-    
+
   /*****Si no hay ciclo, se extrae de la base de datos el ciclo*******/
 
   this.form.value.FuenteObtencion = "";
-  let ciclo_vigente = ""; 
+  let ciclo_vigente = "";
   let ciclo_codigounico = "";
   let ciclo = "";
   let ciclo_nombreventas = "";
 
 
   console.log("localStorage.getItem('ciclo_name') = " + localStorage.getItem('ciclo_name'));
-  let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
+  let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
 
 
 
   for(let i = 0 ; i <= this.ciclos.length ; i++ ){
-      if(this.ciclos[i] !== undefined){ 
+      if(this.ciclos[i] !== undefined){
         if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
 
               ciclo_vigente = this.ciclos[i].crmit_name;
               ciclo_nombreventas = this.ciclos[i].nombreventas;
               ciclo_codigounico = this.ciclos[i].crmit_codigounico;
-              
+
             }
-      }    
+      }
 
   }
 
@@ -272,7 +272,7 @@ export class ReferidoReferenteComponent implements OnInit {
 
   for (let i = 0; i < this.rows.length; i++) {
 
-       
+
     if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo_nombreventas) {
       var __ciclo = this.rows[i].CICLO;
       this.form.value.Team = this.rows[i].TEAM;
@@ -283,7 +283,7 @@ export class ReferidoReferenteComponent implements OnInit {
 
       f_negocio = this.rows[i].FUENTE_NEGOCIO;
     }
-    
+
   }
  ciclo = ciclo_vigente;
 
@@ -302,28 +302,28 @@ export class ReferidoReferenteComponent implements OnInit {
    fuente_obtencion_nombre = "REFERIDOS";
  }
 
- 
+
  let fo = "";
- 
+
  for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
-   if(this.fuentesobtencion[i] !== undefined){ 
+   if(this.fuentesobtencion[i] !== undefined){
      if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
 
-       fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
-           
-         }
-   } 
-             
- }
-     console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
-     console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+       fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;
 
-/***********Fuente Obtencion End***********/ 
+         }
+   }
+
+ }
+     console.log("Fuentes obtencion: " + fuente_obtencion_nombre);
+     console.log("Fuente Guid: " + fuente_obtencion_GUID);
+
+/***********Fuente Obtencion End***********/
 
 let main_carrera = this.form.value.Carrera.split("*");
      let nombre_ventas ="";
-     let valor_ciclo = ""; 
+     let valor_ciclo = "";
 
      if(ciclo == "19-1"){
         valor_ciclo = "C3";
@@ -354,12 +354,12 @@ let main_carrera = this.form.value.Carrera.split("*");
            /**Re calcula el team prioridad y attemp con respecto a la universidad**/
 
            for (let j = 0; j < this.rows.length; j++) {
-           
+
                nombre_ventas = ciclo;
 
                //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
                if ("REFERIDOS" == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
-                 
+
                    this.form.value.Team = this.rows[j].TEAM;
                    console.log("TEAM : " + this.form.value.Team);
                    this.form.value.Prioridad = this.rows[j].PRIORIDAD;
@@ -381,7 +381,7 @@ let main_carrera = this.form.value.Carrera.split("*");
    }
 
  // -------------------------------- Predictivo  -----------------------------------
-        
+
 
     console.log(this.form.value.TelefonoPredictivo);
             let edadT = this.form.value.Edad;
@@ -390,16 +390,16 @@ let main_carrera = this.form.value.Carrera.split("*");
                 edadT = 12;
             }
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
-            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
-            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel;
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad;
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
-            
-            
+
+
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
             let ModalidadV = _Modalidad.split('*');
             let CarreraV = _Carrera.split('*');
-             
+
 
             let u = localStorage.getItem('user');
             let data = JSON.parse(u);
@@ -412,46 +412,47 @@ let main_carrera = this.form.value.Carrera.split("*");
               TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
               TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo,
 
-                
+
 
                 Nombre: this.form.value.Nombre,
                 ApellidoPaterno: this.form.value.ApellidoPaterno,
                 ApellidoMaterno: this.form.value.ApellidoMaterno,
                 CorreoElectronico: this.form.value.CorreoElectronico,
-                
+
                 Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono:null,
-                TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null, 
-                TelefonoOficina: (this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null, 
-                
-                
-              
+                TelefonoCasa: (this.form.value.tipoCel == "Casa")? this.form.value.Telefono:null,
+                TelefonoOficina: (this.form.value.tipoCel == "Oficina")? this.form.value.Telefono:null,
+
+
+
                 Genero: (this.form.value.Genero=='')? -1 : this.form.value.Genero,
-                
+
                 Campus: CampusV[1],
                 Nivel: NivelV[1],
                 Modalidad: ModalidadV[1],
                 Carrera: CarreraV[1],
-               
-                
+
+
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
                 GUIDModalidad: (ModalidadV[0]=='')? null : ModalidadV[0],
                 GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
-                 
+
                 GUIDUsuario:localStorage.getItem('UserId'),
                 GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
 
                 Banner: this.form.value.Banner,
-                
+
               Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
               Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
               FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
 
-              FuenteNegocio : (f_negocio == "")? "" : f_negocio,
+              //FuenteNegocio : (f_negocio == "")? "" : f_negocio,
+              FuenteNegocio : (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
               Ciclo: ciclo_vigente,
               GUIDCiclo: ciclo_codigounico,
-                
+
             };
 
         console.log("this.conEmail");
@@ -474,7 +475,7 @@ let main_carrera = this.form.value.Carrera.split("*");
                         }
                       }
                     )
-    
+
                 } else {
                   this.showDialogE("Error al guardar el registro.");
                 }
@@ -506,7 +507,7 @@ let main_carrera = this.form.value.Carrera.split("*");
                         }
                       }
                     )
-    
+
                 } else {
                   this.showDialogE("Error al guardar el registro.");
                 }

@@ -41,7 +41,7 @@ export class ReferidoPromotorComponent implements OnInit {
 
   form: FormGroup;
   conEmail = true;
-  
+
   //maxDate = new Date(2018, this.month.getMonth(),12);
   maxDate = LandingValidation.fechaLimite();
   startDate = LandingValidation.fechaInicio();
@@ -59,7 +59,7 @@ export class ReferidoPromotorComponent implements OnInit {
 
   Campus: FormControl;
   //interestArea: FormControl;
-  
+
   Nivel: FormControl;
   Modalidad: FormControl;
   Carrera: FormControl;
@@ -108,7 +108,7 @@ export class ReferidoPromotorComponent implements OnInit {
     this.cicloServ.getAll()
     .subscribe(
       (data: Ciclo[]) => this.ciclos = data
-    )        
+    )
 
 
         //Se obtiene todos los fuente obtencion
@@ -116,7 +116,7 @@ export class ReferidoPromotorComponent implements OnInit {
         .subscribe(
           (data: FuenteObtencion[]) => this.fuentesobtencion = data
         )
-    
+
     this.formInit();
   }
 
@@ -133,35 +133,35 @@ export class ReferidoPromotorComponent implements OnInit {
 
   formInit() {
 
-  
+
     let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
         this.form = new FormGroup({
           Usuario: new FormControl({ value: datos.fullname, disabled: true }, Validators.required),
-    
+
           //Nombre: new FormControl('', [LandingValidation.palabraMalaValidator()]),
           //ApellidoPaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
           //ApellidoMaterno: new FormControl('', [LandingValidation.palabraMalaValidator()]),
-          
+
           Nombre: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
           ApellidoPaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
           ApellidoMaterno: new FormControl('', [Validators.required, LandingValidation.palabraMalaValidator()]),
-          
+
           CorreoElectronico: new FormControl('', [Validators.required, LandingValidation.emailMaloValidator()]),
           cel: new FormControl('', [Validators.minLength(10)]),
           Telefono: new FormControl('', [Validators.required, Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]),
           extension: new FormControl(''),
           tipoCel: new FormControl(''),
-    
-    
-    
+
+
+
           Campus: new FormControl(''),
           Nivel: new FormControl({ value: '', disabled: true }),
           Modalidad: new FormControl({ value: '', disabled: true }),
           Carrera: new FormControl({ value: '', disabled: true }),
           //Ciclo: new FormControl(''),
           tipificacion: new FormControl(''),
-    
+
         });
   }
 
@@ -194,7 +194,7 @@ export class ReferidoPromotorComponent implements OnInit {
 
     this.mostrarExtension = true;
 
-      /*********Validaciones Form***********/    
+      /*********Validaciones Form***********/
 
           /*if( this.form.controls['Nombre'].value == "" ){
 
@@ -209,7 +209,7 @@ export class ReferidoPromotorComponent implements OnInit {
           /////
 
 
-    
+
           if (this.form.controls['CorreoElectronico'].value != "") {
             this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
             this.form.controls.Telefono.clearValidators();
@@ -232,7 +232,7 @@ export class ReferidoPromotorComponent implements OnInit {
 
     console.log("predTel=" + predTel);
     this.form.value.Banner = window.location.href;
-    
+
     this.form.value.TelefonoCelular=null;
     this.form.value.TelefonoPredictivo=null;
 
@@ -286,11 +286,11 @@ export class ReferidoPromotorComponent implements OnInit {
         this.form.value.TelefonoOficinaPredictivo = '901'+this.form.value.Telefono;
       }
     }
-    
+
     /*****Si no hay ciclo, se extrae de la base de datos el ciclo*******/
 
     this.form.value.FuenteObtencion = "";
-    let ciclo_vigente = ""; 
+    let ciclo_vigente = "";
     let ciclo_codigounico = "";
     let ciclo = "";
     let ciclo_nombreventas = "";
@@ -298,20 +298,20 @@ export class ReferidoPromotorComponent implements OnInit {
 
 
     console.log("localStorage.getItem('ciclo_name') = " + localStorage.getItem('ciclo_name'));
-    let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name'); 
+    let ciclo_name = (localStorage.getItem('ciclo_name') == null) ? "18-3" : localStorage.getItem('ciclo_name');
 
-  
+
 
     for(let i = 0 ; i <= this.ciclos.length ; i++ ){
-        if(this.ciclos[i] !== undefined){ 
+        if(this.ciclos[i] !== undefined){
           if( this.ciclos[i].crmit_ciclovigenteventas == "true") {
 
                 ciclo_vigente = this.ciclos[i].crmit_name;
                 ciclo_nombreventas = this.ciclos[i].nombreventas;
                 ciclo_codigounico = this.ciclos[i].crmit_codigounico;
-                
+
               }
-        }    
+        }
 
     }
 
@@ -319,7 +319,7 @@ export class ReferidoPromotorComponent implements OnInit {
 
       for (let i = 0; i < this.rows.length; i++) {
 
-       
+
         if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == ciclo_nombreventas) {
           var __ciclo = this.rows[i].CICLO;
           this.form.value.Team = this.rows[i].TEAM;
@@ -330,10 +330,10 @@ export class ReferidoPromotorComponent implements OnInit {
           f_negocio = this.rows[i].FUENTE_NEGOCIO;
 
         }
-        
+
       }
      ciclo = ciclo_vigente;
-     
+
 
      /***********Fuente Obtencion Begin***********/
 
@@ -350,28 +350,28 @@ export class ReferidoPromotorComponent implements OnInit {
        fuente_obtencion_nombre = "REFERIDOS";
      }
 
-     
+
      let fo = "";
-     
+
      for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
-       if(this.fuentesobtencion[i] !== undefined){ 
+       if(this.fuentesobtencion[i] !== undefined){
          if( this.fuentesobtencion[i].fuente_name == fuente_obtencion_nombre) {
 
-           fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;  
-               
-             }
-       } 
-                 
-     }
-         console.log("Fuentes obtencion: " + fuente_obtencion_nombre); 
-         console.log("Fuente Guid: " + fuente_obtencion_GUID); 
+           fuente_obtencion_GUID = this.fuentesobtencion[i].fuente_GUID;
 
-    /***********Fuente Obtencion End***********/ 
+             }
+       }
+
+     }
+         console.log("Fuentes obtencion: " + fuente_obtencion_nombre);
+         console.log("Fuente Guid: " + fuente_obtencion_GUID);
+
+    /***********Fuente Obtencion End***********/
 
     let main_carrera = this.form.value.Carrera.split("*");
     let nombre_ventas ="";
-    let valor_ciclo = ""; 
+    let valor_ciclo = "";
 
     if(ciclo == "19-1"){
        valor_ciclo = "C3";
@@ -402,12 +402,12 @@ export class ReferidoPromotorComponent implements OnInit {
           /**Re calcula el team prioridad y attemp con respecto a la universidad**/
 
           for (let j = 0; j < this.rows.length; j++) {
-          
+
               nombre_ventas = ciclo;
 
               //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
               if ("REFERIDOS" == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
-                
+
                   this.form.value.Team = this.rows[j].TEAM;
                   console.log("TEAM : " + this.form.value.Team);
                   this.form.value.Prioridad = this.rows[j].PRIORIDAD;
@@ -435,8 +435,8 @@ export class ReferidoPromotorComponent implements OnInit {
                 edadT = 12;
             }
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;
-            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel; 
-            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad; 
+            let _Nivel = (this.form.value.Nivel==null)? "": this.form.value.Nivel;
+            let _Modalidad = (this.form.value.Modalidad==null)? "": this.form.value.Modalidad;
             let _Carrera = (this.form.value.Carrera == null) ? "" : this.form.value.Carrera;
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');
@@ -469,21 +469,22 @@ export class ReferidoPromotorComponent implements OnInit {
               GUIDCarrera: (CarreraV[0]=='')? null : CarreraV[0],
               GUIDUsuario:localStorage.getItem('UserId'),
               GUIDFuentedeObtencion: (fuente_obtencion_GUID == '') ? '3289dd13-6072-e211-b35f-6cae8b2a4ddc' : fuente_obtencion_GUID,
-              Banner: this.form.value.Banner,  
+              Banner: this.form.value.Banner,
 
               Team: (this.form.value.Team == undefined) ? "" : this.form.value.Team,
               Prioridad: (this.form.value.Prioridad == undefined) ? 0 : this.form.value.Prioridad,
               Attemp: (this.form.value.Attemp == undefined) ? 0 : this.form.value.Attemp,
               FuenteObtencion: (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
-              FuenteNegocio : (f_negocio == "")? "" : f_negocio,
-              
+              FuenteNegocio : (fuente_obtencion_nombre == "")? "" : fuente_obtencion_nombre,
+              //FuenteNegocio : (f_negocio == "")? "" : f_negocio,
+
               Ciclo: ciclo_vigente,
               GUIDCiclo: ciclo_codigounico,
 
               Telefono: (this.form.value.tipoCel == "Celular") ? this.form.value.Telefono : null,
               TelefonoCasa: (this.form.value.tipoCel == "Casa") ? this.form.value.Telefono : null,
               TelefonoOficina: (this.form.value.tipoCel == "Oficina") ? this.form.value.Telefono : null,
-              
+
               TelefonoPredictivo: this.form.value.TelefonoPredictivo,
               TelefonoCasaPredictivo: this.form.value.TelefonoCasaPredictivo,
               TelefonoOficinaPredictivo: this.form.value.TelefonoOficinaPredictivo
@@ -558,7 +559,7 @@ export class ReferidoPromotorComponent implements OnInit {
   }
 
   resetForm() {
-    
+
   }
 
   _keyOnly3letter(event: any, name: any) {
@@ -628,7 +629,7 @@ export class ReferidoPromotorComponent implements OnInit {
     }
   }
 
-  //Cambiado - 
+  //Cambiado -
     onChangeCampus(campus: string) {
         console.log(campus);
         let cadena = campus.split('*');

@@ -378,6 +378,7 @@ export class UploadBaseSisComponent implements OnInit {
       if (!obj.hasOwnProperty(i)) continue;
       if (typeof obj[i] == 'object') {
         objects = objects.concat(this.getObjects(obj[i], key, val));
+
       } else
         //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
         if (i == key && obj[i] == val || i == key && val == '') { //

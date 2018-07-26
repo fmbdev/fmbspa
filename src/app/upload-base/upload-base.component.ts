@@ -19,6 +19,12 @@ import { Upload } from '../interfaces/upload';
 import { SubsubTipo } from '../interfaces/subsub-tipo';
 import { SubTipo } from '../interfaces/sub-tipo';
 
+import { Interes } from '../interfaces/interes';
+import { Modalidad } from '../interfaces/modalidad';
+
+
+import { InteresService } from '../providers/interes.service';
+import { ModalidadService } from '../providers/modalidad.service';
 
 
 import { TipoActividadService } from '../providers/tipo-actividad.service';
@@ -53,6 +59,7 @@ export class UploadBaseComponent implements OnInit {
   rowss = [];
   rowss_mod = [];
   rowss_niv = [];
+  rowss_emp = [];
 
   campusTxt: any;
   nivelTxt: any;
@@ -65,6 +72,10 @@ export class UploadBaseComponent implements OnInit {
   sub_tipos: SubTipo[] = [];
   subsub_tipos: SubsubTipo[] = [];
 
+  intereses: Interes[] = [];
+  modalidades: Modalidad[] = [];
+
+
 
   constructor(private sendServ: SendService,
               public dialog: MatDialog,
@@ -72,7 +83,10 @@ export class UploadBaseComponent implements OnInit {
               private campusServ: CampusService,
               private carreraServ: CarreraService,
               private escuelaEmpresaServ: EscuelaEmpresaService,
-              private subSubServ: SubsubtipoActividadService
+              private subSubServ: SubsubtipoActividadService,
+              private interesServ: InteresService,
+              private modalidadServ: ModalidadService
+
               ) {
     this.fetch((data) => {
       this.rows = data;
@@ -90,6 +104,10 @@ export class UploadBaseComponent implements OnInit {
 
     this.fetchs_nivel((data) => {
       this.rowss_niv = data;
+    });
+
+    this.fetchs_escuela_empresa((data) => {
+      this.rowss_emp = data;
     });
 
   }
@@ -168,6 +186,15 @@ export class UploadBaseComponent implements OnInit {
   fetchs_nivel(cb) {
     const req = new XMLHttpRequest();
     req.open('GET', `https://devmx.com.mx/fmbapp/public/api/nivel_estudios`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
+
+  fetchs_escuela_empresa(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `https://devmx.com.mx/fmbapp/public/api/escuela_empresa`);
     req.onload = () => {
       cb(JSON.parse(req.response));
     };
@@ -288,10 +315,9 @@ export class UploadBaseComponent implements OnInit {
                     var GUIDCarrera=carreraTM[0].codigounico;
                     var TCarrera=carreraTM[0].name;
 
-                    var GUIDEscuelaEmpresa=escuelaTM[0].crmit_empresaescuela;
-                    var TEscuelaEmpresa=escuelaTM[0].Name;
-                    var GUIDCalidad=escuelaTM[0].crmit_empresaescuela;
-
+                    var GUIDEscuelaEmpresa = GUIDEscuelaEmpresa_;
+                   // var TEscuelaEmpresa=escuelaTM[0].Name;
+                    var GUIDCalidad=GUIDCalidadid_;
 
 
                     var GUIDCampus=campusTM[0].crmit_tb_campusid;
@@ -313,6 +339,8 @@ export class UploadBaseComponent implements OnInit {
                     var Modalidad = "";
                     var GUIDModalidad = "";
 
+
+
                     for (let i = 0; i < this.rowss.length; i++) {
                       if (this.rowss[i].campusId == GUIDCampus && this.rowss[i].carreraId == GUIDCarrera) {
                         GUIDModalidad = this.rowss[i].modalidadId;
@@ -332,6 +360,28 @@ export class UploadBaseComponent implements OnInit {
                       }
                     }
 
+
+                    var EscuelaEmpresa_ = "";
+                    var GUIDEscuelaEmpresa_ = "";
+                    var GUIDCalidadid_ = "";
+
+                   // console.log("");console.log("");console.log("");
+
+                    for (let i = 0; i < this.rowss_emp.length; i++) {
+                      console.log(this.rowss_emp[i].escuelaID +"=="+ key.escuela_de_procedencia);
+                      if (this.rowss_emp[i].escuelaID == key.escuela_de_procedencia) {
+
+                        EscuelaEmpresa_ = this.rowss_emp[i].Name;
+                        //console.log("EscuelaEmpresa_ : "+EscuelaEmpresa_);
+                        GUIDEscuelaEmpresa_ = this.rowss_emp[i].crmit_empresaescuela;
+                        //console.log("GUIDEscuelaEmpresa_ : "+GUIDEscuelaEmpresa_);
+                        GUIDCalidadid_ = this.rowss_emp[i].crmit_calidadid;
+                        //console.log("GUIDCalidadid_ :"+GUIDCalidadid_);
+                      }
+                    }
+                   // console.log("");console.log("");console.log("");
+
+
                     let Team = "";
                     let Prioridad = 0;
                     let Attemp = "";
@@ -339,10 +389,10 @@ export class UploadBaseComponent implements OnInit {
                     for (let i = 0; i < this.rows.length; i++) {
 
                       if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
-                        console.log("campus: " + this.rows[i].CAMPUS);
-                        console.log("NivelInteres: " + this.rows[i].BL);
-                        console.log("CICLO: " + cicloC);
-                        console.log("TEAM: " + this.rows[i].TEAM);
+                        //console.log("campus: " + this.rows[i].CAMPUS);
+                        //console.log("NivelInteres: " + this.rows[i].BL);
+                        //console.log("CICLO: " + cicloC);
+                        //console.log("TEAM: " + this.rows[i].TEAM);
 
                         Team = this.rows[i].TEAM;
                         Prioridad = parseInt(this.rows[i].PRIORIDAD);
@@ -355,9 +405,7 @@ export class UploadBaseComponent implements OnInit {
                     var u = localStorage.getItem('user');
                     var data = JSON.parse(u);
                     var nom_usu = data.fullname;
-                    var guidcalidad  = escuelaTM[0].crmit_calidadid;
-
-                    console.log("Calidad: "+key.calidad);
+                    var guidcalidad  = GUIDCalidadid_;
 
 
                     var obj2 = {
@@ -374,7 +422,7 @@ export class UploadBaseComponent implements OnInit {
                       "ApellidoPaterno": key.Apellido_Paterno,
                       "Genero":Genero,
                       "Calidad":key.calidad,
-                      "GUIDCalidad":guidcalidad,
+                      "GUIDCalidad":GUIDCalidadid_,
                       "Telefono":skeyCelular,
                       "TelefonoPredictivo":TelefonoPredictivo,
                       "TelefonoCasa":skeyTelefono,
@@ -387,12 +435,17 @@ export class UploadBaseComponent implements OnInit {
                       "GUIDCarrera":GUIDCarrera,
                       "Ciclo": cicloC,
                       "GUIDCiclo":GUIDCiclo,
-                      "EscuelaEmpresa":TEscuelaEmpresa,
-                      "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa,
+                      "EscuelaEmpresa":EscuelaEmpresa_,
+                      "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa_,
                       "SubSubTipo":key.sub_sub_tipo,
                       "GUIDSubSubTipo":GUIDSubSubTipo,
                       "SubTipo":key.sub_tipo,
                       "GUIDSubTipo":GUIDSubTipo,
+                      "Nivel": NivelInteres,
+                      "GUIDNivelInteres": GUIDNivelInteres,
+                      "Modalidad": Modalidad,
+                      "GUIDModalidad": GUIDModalidad,
+
 
                     };
 
@@ -522,6 +575,7 @@ export class UploadBaseComponent implements OnInit {
     if (!obj.hasOwnProperty(i)) continue;
     if (typeof obj[i] == 'object') {
       objects = objects.concat(this.getKeys(obj[i], val));
+
     } else if (obj[i] == val) {
       objects.push(i);
     }

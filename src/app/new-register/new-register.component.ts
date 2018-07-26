@@ -65,6 +65,21 @@ import { FuenteObtencionService } from '../providers/fuenteobtencion.service';
     styleUrls: ['./new-register.component.scss']
 })
 
+/*@Component({
+  selector: 'ParentescoTutor',
+  template: '
+<h4>NgIf</h4>
+<ul *ngFor="let person of people">
+  <li *ngIf="person.age < 30">
+  {{ person.name }} ({{ person.age }})
+  </li>
+</ul>
+''
+})*/
+
+
+
+
 export class NewRegisterComponent implements OnInit {
 
     form: FormGroup;
@@ -720,6 +735,11 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
 
             }*/
 
+            console.log("Campus Cita: "+c_cita[0]);
+            console.log("GUIDCampuscita: "+c_cita[1]);
+            console.log("GUIDCampuscita: "+c_cita[2]);
+
+
             let valor_genero  = "";
             if(this.form.value.Genero == 1 || this.form.value.Genero == "M" ){
                 valor_genero = "Masculino";
@@ -762,7 +782,9 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 //Ciclo: CicloV[1],
                 Ciclo:  ciclo,
 
+                CampusCita: (c_cita[0] == "" ) ? "" : c_cita[0],
                 GUIDCampusCita: (c_cita[1] == '') ? null : c_cita[1],
+
                 GUIDCanal: (CanalV[0]=='')? null : CanalV[0],
                 GUIDCampus: (CampusV[0]=='')? null : CampusV[0],
                 GUIDNivelInteres: (NivelV[0]=='')? null : NivelV[0],
@@ -771,7 +793,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 GUIDAreaInteres:(InteresV[0]=='')? null : InteresV[0],
                 GUIDCiclo:( CicloV[0]=='')? null : CicloV[0],
                 GUIDUsuario:localStorage.getItem('UserId'),
-                FuenteNegocio : (f_negocio == "")? "iNBOUND" : f_negocio,
+                FuenteNegocio : (f_negocio == "")? "INBOUND" : f_negocio,
 
                 Banner: this.form.value.Banner,
                 Bandera: (arm_bandera == '') ? null :arm_bandera,
@@ -782,7 +804,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                 Notas: (this.form.value.Notas == '') ? null : this.form.value.Notas,
 
 
-                CampusCita: (c_cita[0] == "" ) ? "" : c_cita[0],
+
 
 
 
