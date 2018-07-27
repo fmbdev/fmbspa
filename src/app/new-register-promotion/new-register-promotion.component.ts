@@ -280,6 +280,7 @@ export class NewRegisterPromotionComponent implements OnInit {
         req.send();
     }
     formInit() {
+
         let userLocal = localStorage.getItem('user');
         let datos = JSON.parse(userLocal);
         let bandera = localStorage.getItem('bandera');
@@ -442,8 +443,6 @@ export class NewRegisterPromotionComponent implements OnInit {
 
             }
 
-
-
           // -------------------------------- Predictivo  ----------------------------------
           let tel_casa_predictivo = "";
             if(this.form.value.Telefono == "" || this.form.value.Telefono == null ){
@@ -510,7 +509,6 @@ export class NewRegisterPromotionComponent implements OnInit {
             let cal_empresa = EmpresaEscuelaV[3];
             let cal_status = "";
 
-
             //Validacion de calidad
             if(cal_empresa == "H"){
                cal_status = "EMPRESAS";
@@ -534,8 +532,6 @@ export class NewRegisterPromotionComponent implements OnInit {
                 cal_status = "PROMOCION NO TRADICIONAL";
 
              }
-
-
 
 
             for (let i = 0; i < this.rows.length; i++) {
@@ -577,12 +573,12 @@ export class NewRegisterPromotionComponent implements OnInit {
 
               if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
 
-     /*         console.log("");console.log("");console.log("");console.log("");
+     /*       console.log("");console.log("");console.log("");console.log("");
               console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
               console.log("Nombre de carrera:"+this.carreras[i].name);
               console.log("BL de Carrera:"+this.carreras[i].BL);
               console.log("");console.log("");console.log("");console.log("");
-*/
+     */
 
                   /**Re calcula el team prioridad y attemp con respecto a la universidad**/
 
@@ -604,12 +600,9 @@ export class NewRegisterPromotionComponent implements OnInit {
                           this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
                          // console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
                           //f_negocio = this.rows[i].FUENTE_NEGOCIO;
-
-
                       }
 
                   }
-
                   /**TErmina calculo de team prioridad y attemp con respecto a la universidad**/
               }
 
@@ -665,10 +658,6 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
   //  console.log("Fuente Guid: " + fuente_obtencion_GUID);
 
 /***********Fuente Obtencion End***********/
-
-
-
-
             /* Interes GUID */
 
             let _Campus = (this.form.value.Campus==null)? "" : this.form.value.Campus;

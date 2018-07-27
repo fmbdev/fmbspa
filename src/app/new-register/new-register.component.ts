@@ -212,6 +212,8 @@ export class NewRegisterComponent implements OnInit {
             .subscribe(
                 (data: Parentesco[]) => this.parentescos = data
             )
+
+
         // Se obtienen todos los campus
         this.campusServ.getAll()
             .subscribe(
@@ -243,6 +245,7 @@ export class NewRegisterComponent implements OnInit {
             .subscribe(
                 (data: Hora[]) => this.horas = data
             )
+
 
         //Se obtiene todos los campus carrera
         this.campusCarreraServ.getAlls()
@@ -332,6 +335,8 @@ export class NewRegisterComponent implements OnInit {
             Asesor: new FormControl({ value: '', disabled: true })
         });
     }
+
+
 
 
 
@@ -649,7 +654,8 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
             let _Carrera = (this.form.value.Carrera==null)? "": this.form.value.Carrera;
             let _Interes =( this.form.value.AreaInteres==null)? "": this.form.value.AreaInteres;
             let _Canal = (this.form.value.Canal==null)? "": this.form.value.Canal;
-            let _Parentesco = (this.form.value.ParentescoTutor == null) ? "" : this.form.value.ParentescoTutor;
+            let _Parentesco = (this.form.value.ParentescoTutor == null ) ? "" : this.form.value.ParentescoTutor;
+
 
             let CampusV = _Campus.split('*');
             let NivelV = _Nivel.split('*');

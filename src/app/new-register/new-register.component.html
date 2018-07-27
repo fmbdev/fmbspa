@@ -200,9 +200,10 @@
                     <mat-form-field>
                         <mat-select formControlName="ParentescoTutor" placeholder="Parentesco">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_name']+'*'+parentesco['crmit_codigounico']+'*'+parentesco['tipo']">
-                                {{ parentesco['crmit_name'] }}
+                            <mat-option *ngFor="let parentesco of parentescos;" [style.display]="parentesco['tipo'] != 'TUTOR' ? 'none' : 'block'" [value]="parentesco['crmit_name']+'*'+parentesco['crmit_codigounico']+'*'+parentesco['tipo']">
+                                <!-- {{ (parentesco['tipo'] == 'TUTOR')? parentesco['crmit_name'] : "" }}-->{{parentesco['crmit_name']}}
                             </mat-option>
+
                         </mat-select>
                         <mat-error *ngIf="form.controls.ParentescoTutor.errors?.required">{{showMjs('parentesco.m1')}}</mat-error>
                     </mat-form-field>

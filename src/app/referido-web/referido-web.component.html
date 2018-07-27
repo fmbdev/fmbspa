@@ -44,7 +44,7 @@
                 <mat-grid-tile>
                     <mat-form-field>
                         <mat-select placeholder="Tipo" formControlName="tipo_ref" ng-init="parentesco['tipo']= 'TUTOR' ">
-                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_codigounico']+'*'+parentesco['crmit_name']+'*'+parentesco['tipo']">
+                            <mat-option *ngFor="let parentesco of parentescos;" [style.display]="parentesco['tipo'] == 'TUTOR' ? 'none' : 'block'" [value]="parentesco['crmit_codigounico']+'*'+parentesco['crmit_name']+'*'+parentesco['tipo']">
                                 {{ parentesco['crmit_name'] }}
                             </mat-option>
                         </mat-select>

@@ -1,7 +1,7 @@
 import { AppConfig } from './../services/constants';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response} from '@angular/http';
-import { Parentesco } from '../interfaces/parentesco'; 
+import { Parentesco } from '../interfaces/parentesco';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -14,6 +14,7 @@ export class ParentescoService {
     this.api_cnn = this.constante.api_request;
    }
 
+
   getAll() : Observable<Parentesco[]>{
     //https://devmx.com.mx/fmbapp/public/api/
 
@@ -22,5 +23,7 @@ export class ParentescoService {
                  (res: Response) => res.json()
                )
   }
+
+
 
 }

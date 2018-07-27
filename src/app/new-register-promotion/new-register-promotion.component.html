@@ -155,8 +155,19 @@
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.numberCon  &&  form.controls.NumeroCelular.errors?.minlength && !form.controls.NumeroCelular.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                         <mat-error *ngIf="form.controls.NumeroCelular.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
+                    <!-- <mat-form-field>
+                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()" class="validPhoneNumber">
+                        <mat-error *ngIf="form.controls.Telefono.errors?.required">{{showMjs('telefono.m1')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required  && !form.controls.Telefono.errors?.numberCon">{{showMjs('telefono.m2')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.aceptNumber  && !form.controls.Telefono.errors?.minlength">{{showMjs('telefono.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.numberCon  &&  form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
+                        <mat-error *ngIf="form.controls.Telefono.errors?.numInvalid">Número Invalido</mat-error>
+                    </mat-form-field>-->
+                    <!--telefono begin-->
+
+
                     <mat-form-field>
-                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required minlength="10" maxlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()"
+                        <input autocomplete="off" formControlName="Telefono" matInput placeholder="Teléfono" required maxlength="10" minlength="10" type="tel" (keypress)="_keyPress($event)" (keypress)="_keyPressNumA($event,form.controls.Telefono.value)" (change)="onChange()"
                             class="validPhoneNumber">
                         <mat-error *ngIf="form.controls.Telefono.errors?.required">{{showMjs('telefono.m1')}}</mat-error>
                         <mat-error *ngIf="form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.required  && !form.controls.Telefono.errors?.numberCon">{{showMjs('telefono.m2')}}</mat-error>
@@ -164,6 +175,10 @@
                         <mat-error *ngIf="form.controls.Telefono.errors?.numberCon  &&  form.controls.Telefono.errors?.minlength && !form.controls.Telefono.errors?.aceptNumber">{{showMjs('celular.m3')}}</mat-error>
                         <mat-error *ngIf="form.controls.Telefono.errors?.numInvalid">Número Invalido</mat-error>
                     </mat-form-field>
+
+
+
+                    <!--telefono end-->
                     <mat-form-field>
                         <mat-select formControlName="Genero" placeholder="Género">
                             <mat-option value="">Selecciona una opción</mat-option>
@@ -236,7 +251,7 @@
                     <mat-form-field>
                         <mat-select formControlName="ParentescoTutor" placeholder="Parentesco">
                             <mat-option value="">Selecciona una opción</mat-option>
-                            <mat-option *ngFor="let parentesco of parentescos;" [value]="parentesco['crmit_name']+'*'+parentesco['crmit_codigounico']">
+                            <mat-option *ngFor="let parentesco of parentescos;" [style.display]="parentesco['tipo'] != 'TUTOR' ? 'none' : 'block'" [value]="parentesco['crmit_name']+'*'+parentesco['crmit_codigounico']+'*'+parentesco['tipo']">
                                 {{ parentesco['crmit_name'] }}
                             </mat-option>
                         </mat-select>

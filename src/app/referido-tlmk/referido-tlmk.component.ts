@@ -336,20 +336,29 @@ let main_carrera = this.form.value.Carrera.split("*");
       valor_ciclo = "C2";
     }
 
-      console.log("valor ciclo: "+valor_ciclo);
-      ciclo = valor_ciclo;
+    ciclo = valor_ciclo;
 
-      console.log("-----ciclo: "+ ciclo);
+    console.log("");console.log("");
+    console.log("------------------Ciclo ----------------------");
+    console.log("");
+    console.log("Ciclo: "+ ciclo);
+    console.log("");
+    console.log("----------------------------------------------");
+
 
      for (let i = 0; i < this.carreras.length; i++) {
 
        if(this.carreras[i].BL == main_carrera[2] && this.carreras[i].codigounico == main_carrera[0]){
 
-       console.log("");console.log("");console.log("");console.log("");
-       console.log("codigo unico de carrera:"+this.carreras[i].codigounico);
-       console.log("Nombre de carrera:"+this.carreras[i].name);
-       console.log("BL de Carrera:"+this.carreras[i].BL);
-       console.log("");console.log("");console.log("");console.log("");
+        console.log("");console.log("");console.log("");
+        console.log("------------------ Datos de Empresa ----------------------");
+        console.log("");console.log("");
+        console.log("Codigo unico de carrera:"+this.carreras[i].codigounico);
+        console.log("Nombre de carrera:"+this.carreras[i].name);
+        console.log("BL de Carrera:"+this.carreras[i].BL);
+        console.log("");console.log("");
+        console.log("---------------------------------------------------------");
+        console.log("");console.log("");console.log("");console.log("");
 
 
            /**Re calcula el team prioridad y attemp con respecto a la universidad**/
@@ -359,17 +368,21 @@ let main_carrera = this.form.value.Carrera.split("*");
                nombre_ventas = ciclo;
               console.log("ciclo_vigente: "+ciclo_vigente);
                //if (this.rows[i].CAMPUS == this.campusTxt && this.rows[i].BL == this.nivelTxt && this.rows[i].CICLO == nombre_ventas) {
-               if ("REFERIDOS" == fuente_obtencion_nombre && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
+                if (this.rows[j].FUENTE_NEGOCIO == "REFERIDOS" && this.rows[j].CICLO == nombre_ventas && this.rows[j].CAMPUS == this.campusTxt && this.rows[j].BL == this.carreras[i].BL ) {
 
-                   this.form.value.Team = this.rows[j].TEAM;
-                   console.log("TEAM : " + this.form.value.Team);
-                   this.form.value.Prioridad = this.rows[j].PRIORIDAD;
-                   console.log("Prioridad : " + this.form.value.Prioridad);
-                   this.form.value.Attemp = this.rows[j].ATTEMP;
-                   console.log("ATTEMP : " + this.form.value.Attemp);
-                   this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
-                   console.log("Fuente Obtencion : " + this.form.value.FuenteObtencion);
-                   f_negocio = this.rows[i].FUENTE_NEGOCIO;
+                  console.log("------------------ TPA (Team, Prioridad y Attemp) ----------------------");
+                  console.log("");
+                  this.form.value.Team = this.rows[j].TEAM;
+                  console.log("- TEAM : " + this.form.value.Team);
+                  this.form.value.Prioridad = this.rows[j].PRIORIDAD;
+                  console.log("- Prioridad : " + this.form.value.Prioridad);
+                  this.form.value.Attemp = this.rows[j].ATTEMP;
+                  console.log("- ATTEMP : " + this.form.value.Attemp);
+                  this.form.value.FuenteObtencion = this.rows[j].FUENTE_NEGOCIO;
+                  console.log("- Fuente Obtencion : " + this.form.value.FuenteObtencion);
+                  f_negocio = this.rows[i].FUENTE_NEGOCIO;
+                  console.log("");
+                  console.log("---------------------------------------------------------");
 
 
                }
