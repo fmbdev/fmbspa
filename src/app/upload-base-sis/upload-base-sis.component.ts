@@ -229,6 +229,7 @@ export class UploadBaseSisComponent implements OnInit {
                 //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
 
                 var ciclo = cicloTM[0].crmit_name;
+                var cicloSend = cicloTM[0].crmit_name;
                 var ciclo_mocho = ciclo.split('-');
                 var cicloC = "C" + ciclo_mocho[1];
                 var GUIDCiclo = cicloTM[0].crmit_codigounico;
@@ -295,7 +296,7 @@ export class UploadBaseSisComponent implements OnInit {
                 "NumPersona": key.Num_Persona,
                 "Prioridad": Prioridad,
                 "Team": Team,
-                "Ciclo": key.ciclo,
+                "Ciclo":cicloSend,
                 "GUIDCiclo": GUIDCiclo,
                 "Carrera": TCarrera,
                 "GUIDCarrera": GUIDCarrera,
