@@ -333,9 +333,9 @@ export class NewRegisterSoloComponent implements OnInit {
             this.form.controls.CorreoElectronico.clearValidators();
         }else{
             if (this.form.controls['CorreoElectronico'].value != "") {
-                this.form.controls.Telefono.clearValidators();
+               // this.form.controls.Telefono.clearValidators();
                 this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
-                this.form.controls.Telefono.updateValueAndValidity();
+                //this.form.controls.Telefono.updateValueAndValidity();
             } else {
                 let tel = this.form.controls['Telefono'].value;
                 if (tel) {

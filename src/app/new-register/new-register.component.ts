@@ -375,8 +375,8 @@ export class NewRegisterComponent implements OnInit {
         }else{
             if (this.form.controls['CorreoElectronico'].value!=""){
                 this.form.controls.Telefono.setValidators([Validators.minLength(10), LandingValidation.aceptNumberValidator(), LandingValidation.numberConValidator()]);
-                this.form.controls.Telefono.clearValidators();
-                this.form.controls.Telefono.updateValueAndValidity();
+                //this.form.controls.Telefono.clearValidators();
+               // this.form.controls.Telefono.updateValueAndValidity();
             }else{
                 let tel = this.form.controls['Telefono'].value;
                 if (tel) {
@@ -385,7 +385,6 @@ export class NewRegisterComponent implements OnInit {
                     this.form.controls.CorreoElectronico.updateValueAndValidity();
                     this.conEmail = false;
                 }
-
             }
         }
 
