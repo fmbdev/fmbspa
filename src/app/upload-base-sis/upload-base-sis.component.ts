@@ -229,9 +229,38 @@ export class UploadBaseSisComponent implements OnInit {
                 //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
 
                 var ciclo = cicloTM[0].crmit_name;
-                var cicloSend = cicloTM[0].crmit_name;
-                var ciclo_mocho = ciclo.split('-');
-                var cicloC = "C" + ciclo_mocho[1];
+                var valor_ciclo = "";
+
+                console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
+
+
+                if(ciclo == "19-1"){
+                  valor_ciclo = "C3";
+                }else if(ciclo == "20-1"){
+                  valor_ciclo = "C3";
+                }else if(ciclo == "20-2"){
+                  valor_ciclo = "C1";
+                }else if(ciclo == "18-3"){
+                  valor_ciclo = "C2";
+                }
+
+               /* for(var i = 0; i < this.ciclos.length ; i++){
+                  if(this.ciclos[i] !== undefined){
+                    if(ciclo == this.ciclos[0].crmit_name && this.ciclos[i].crmit_ciclovigenteventas){
+
+                    console.log("ciclo: "+this.ciclos[i].crmit_name);
+                    ciclo = this.ciclos[i].crmit_name;
+                    console.log("nombreventas: "+this.ciclos[i].nombreventas);
+                    valor_ciclo = this.ciclos[i].nombreventas;
+                    }
+                  }
+                }*/
+
+
+               // ciclo = valor_ciclo;
+
+                var cicloC = valor_ciclo;
+
                 var GUIDCiclo = cicloTM[0].crmit_codigounico;
 
                 var campus = campusTM[0].crmi_name;
@@ -249,6 +278,7 @@ export class UploadBaseSisComponent implements OnInit {
 
               for (let i = 0; i < this.rowss.length; i++) {
                 if (this.rowss[i].campusId == GUIDCampus && this.rowss[i].carreraId == GUIDCarrera) {
+
                   GUIDModalidad = this.rowss[i].modalidadId;
                   GUIDNivelInteres = this.rowss[i].nivelId;
                 }
@@ -270,12 +300,31 @@ export class UploadBaseSisComponent implements OnInit {
                 let Prioridad = 0;
                 let Attemp = "";
 
+
+
                 for (let i = 0; i < this.rows.length; i++) {
 
-                  if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
+                  if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == valor_ciclo) {
+
+                    console.log("");console.log("");console.log("");
+                    console.log("---------------------------------------------------");
+                    console.log("");console.log("");
+                    console.log("IdCampus: "+GUIDCampus);
+                    console.log("NombreCampus:"+campus);
+
+                    console.log("Modalidad: "+Modalidad);
+                    console.log("NivelInteres: "+NivelInteres);
+
                     Team = this.rows[i].TEAM;
+                    console.log("TEAM: "+Team);
                     Prioridad = parseInt(this.rows[i].PRIORIDAD);
+                    console.log("PRIORIDAD: "+Prioridad);
                     Attemp = this.rows[i].ATTEMP;
+                    console.log("ATTEMP: "+Attemp);
+                    console.log("Ciclo:"+ciclo);
+                    console.log("");console.log("");
+                    console.log("---------------------------------------------------");
+                    console.log("");console.log("");console.log("");
                   }else{
 
                   }
@@ -296,7 +345,7 @@ export class UploadBaseSisComponent implements OnInit {
                 "NumPersona": key.Num_Persona,
                 "Prioridad": Prioridad,
                 "Team": Team,
-                "Ciclo":cicloSend,
+                "Ciclo":ciclo,
                 "GUIDCiclo": GUIDCiclo,
                 "Carrera": TCarrera,
                 "GUIDCarrera": GUIDCarrera,
