@@ -109,7 +109,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA",
@@ -279,7 +279,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA",
@@ -449,7 +449,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA",
@@ -619,7 +619,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA",
@@ -789,7 +789,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "PREPARATORIA",
@@ -959,7 +959,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "PREPARATORIA",
@@ -1129,7 +1129,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "PREPARATORIA",
@@ -1299,7 +1299,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "PREPARATORIA",
@@ -1469,7 +1469,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -1639,7 +1639,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -1809,7 +1809,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -1979,7 +1979,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -2149,7 +2149,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "ODONTOLOGIA",
@@ -2319,7 +2319,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "ODONTOLOGIA",
@@ -2489,7 +2489,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "ODONTOLOGIA",
@@ -2659,7 +2659,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "ODONTOLOGIA",
@@ -2829,7 +2829,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -2999,7 +2999,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -3169,7 +3169,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -3339,7 +3339,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -3509,7 +3509,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA CORP",
@@ -3679,7 +3679,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA CORP",
@@ -3849,7 +3849,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA CORP",
@@ -4019,7 +4019,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA CORP",
@@ -4189,7 +4189,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA ONLINE",
@@ -4359,7 +4359,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA ONLINE",
@@ -4529,7 +4529,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA ONLINE",
@@ -4699,7 +4699,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA ONLINE",
@@ -4869,7 +4869,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO ONLINE",
@@ -5039,7 +5039,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO ONLINE",
@@ -5209,7 +5209,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO ONLINE",
@@ -5379,7 +5379,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO ONLINE",
@@ -5549,7 +5549,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO",
@@ -5719,7 +5719,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO",
@@ -5889,7 +5889,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO",
@@ -6059,7 +6059,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO",
@@ -6229,7 +6229,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA",
@@ -6399,7 +6399,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA",
@@ -6569,7 +6569,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA",
@@ -6739,7 +6739,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA",
@@ -6909,7 +6909,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "PREPARATORIA",
@@ -7079,7 +7079,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "PREPARATORIA",
@@ -7249,7 +7249,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "PREPARATORIA",
@@ -7419,7 +7419,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "PREPARATORIA",
@@ -7589,7 +7589,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -7759,7 +7759,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -7929,7 +7929,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -8099,7 +8099,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -8269,7 +8269,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "ODONTOLOGIA",
@@ -8439,7 +8439,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "ODONTOLOGIA",
@@ -8609,7 +8609,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "ODONTOLOGIA",
@@ -8779,7 +8779,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "ODONTOLOGIA",
@@ -8949,7 +8949,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -9119,7 +9119,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -9289,7 +9289,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -9459,7 +9459,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -9629,7 +9629,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA CORP",
@@ -9799,7 +9799,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA CORP",
@@ -9969,7 +9969,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA CORP",
@@ -10139,7 +10139,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA CORP",
@@ -10309,7 +10309,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA ONLINE",
@@ -10479,7 +10479,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA ONLINE",
@@ -10649,7 +10649,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA ONLINE",
@@ -10819,7 +10819,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA ONLINE",
@@ -10989,7 +10989,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO ONLINE",
@@ -11159,7 +11159,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO ONLINE",
@@ -11329,7 +11329,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO ONLINE",
@@ -11499,7 +11499,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO ONLINE",
@@ -11669,7 +11669,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO",
@@ -11839,7 +11839,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO",
@@ -12009,7 +12009,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO",
@@ -12179,7 +12179,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO",
@@ -12349,7 +12349,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA",
@@ -12519,7 +12519,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA",
@@ -12689,7 +12689,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA",
@@ -12859,7 +12859,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA",
@@ -13029,7 +13029,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "PREPARATORIA",
@@ -13199,7 +13199,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "PREPARATORIA",
@@ -13369,7 +13369,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "PREPARATORIA",
@@ -13539,7 +13539,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "PREPARATORIA",
@@ -13709,7 +13709,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -13879,7 +13879,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -14049,7 +14049,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -14219,7 +14219,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -14389,7 +14389,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "ODONTOLOGIA",
@@ -14559,7 +14559,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "ODONTOLOGIA",
@@ -14729,7 +14729,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "ODONTOLOGIA",
@@ -14899,7 +14899,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "ODONTOLOGIA",
@@ -15069,7 +15069,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -15239,7 +15239,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -15409,7 +15409,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -15579,7 +15579,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -15749,7 +15749,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA CORP",
@@ -15919,7 +15919,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA CORP",
@@ -16089,7 +16089,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA CORP",
@@ -16259,7 +16259,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA CORP",
@@ -16429,7 +16429,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "LICENCIATURA ONLINE",
@@ -16599,7 +16599,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "LICENCIATURA ONLINE",
@@ -16769,7 +16769,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "LICENCIATURA ONLINE",
@@ -16939,7 +16939,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "LICENCIATURA ONLINE",
@@ -17109,7 +17109,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO ONLINE",
@@ -17279,7 +17279,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO ONLINE",
@@ -17449,7 +17449,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO ONLINE",
@@ -17619,7 +17619,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO ONLINE",
@@ -17789,7 +17789,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ATIZAPAN",
 		"BL": "POSGRADO",
@@ -17959,7 +17959,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "CUITLAHUAC",
 		"BL": "POSGRADO",
@@ -18129,7 +18129,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "ECATEPEC",
 		"BL": "POSGRADO",
@@ -18299,7 +18299,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "SUR",
 		"BL": "POSGRADO",
@@ -18469,7 +18469,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA",
@@ -18639,7 +18639,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "PREPARATORIA",
@@ -18809,7 +18809,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -18979,7 +18979,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "ODONTOLOGIA",
@@ -19149,7 +19149,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -19319,7 +19319,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA CORP",
@@ -19489,7 +19489,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA ONLINE",
@@ -19659,7 +19659,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO ONLINE",
@@ -19829,7 +19829,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO",
@@ -19999,7 +19999,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA",
@@ -20169,7 +20169,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "PREPARATORIA",
@@ -20339,7 +20339,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -20509,7 +20509,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "ODONTOLOGIA",
@@ -20679,7 +20679,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -20849,7 +20849,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA CORP",
@@ -21019,7 +21019,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA ONLINE",
@@ -21189,7 +21189,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO ONLINE",
@@ -21359,7 +21359,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO",
@@ -21529,7 +21529,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA",
@@ -21699,7 +21699,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "PREPARATORIA",
@@ -21869,7 +21869,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -22039,7 +22039,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "ODONTOLOGIA",
@@ -22209,7 +22209,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -22379,7 +22379,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA CORP",
@@ -22549,7 +22549,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "LICENCIATURA ONLINE",
@@ -22719,7 +22719,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO ONLINE",
@@ -22889,7 +22889,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LOS REYES",
 		"BL": "POSGRADO",
@@ -27109,7 +27109,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA",
@@ -27279,7 +27279,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "PREPARATORIA",
@@ -27449,7 +27449,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -27619,7 +27619,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "ODONTOLOGIA",
@@ -27789,7 +27789,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -27959,7 +27959,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA CORP",
@@ -28129,7 +28129,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA ONLINE",
@@ -28299,7 +28299,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO ONLINE",
@@ -28469,7 +28469,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO",
@@ -28639,7 +28639,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA",
@@ -28809,7 +28809,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "PREPARATORIA",
@@ -28979,7 +28979,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -29149,7 +29149,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "ODONTOLOGIA",
@@ -29319,7 +29319,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -29489,7 +29489,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA CORP",
@@ -29659,7 +29659,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA ONLINE",
@@ -29829,7 +29829,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO ONLINE",
@@ -29999,7 +29999,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO",
@@ -30169,7 +30169,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA",
@@ -30339,7 +30339,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "PREPARATORIA",
@@ -30509,7 +30509,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -30679,7 +30679,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "ODONTOLOGIA",
@@ -30849,7 +30849,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -31019,7 +31019,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA CORP",
@@ -31189,7 +31189,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "LICENCIATURA ONLINE",
@@ -31359,7 +31359,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO ONLINE",
@@ -31529,7 +31529,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "MARINA",
 		"BL": "POSGRADO",
@@ -32509,7 +32509,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA",
@@ -32679,7 +32679,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "PREPARATORIA",
@@ -32849,7 +32849,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -33019,7 +33019,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "ODONTOLOGIA",
@@ -33189,7 +33189,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -33359,7 +33359,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA CORP",
@@ -33529,7 +33529,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA ONLINE",
@@ -33699,7 +33699,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO ONLINE",
@@ -33869,7 +33869,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO",
@@ -34039,7 +34039,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA",
@@ -34209,7 +34209,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "PREPARATORIA",
@@ -34379,7 +34379,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -34549,7 +34549,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "ODONTOLOGIA",
@@ -34719,7 +34719,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -34889,7 +34889,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA CORP",
@@ -35059,7 +35059,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA ONLINE",
@@ -35229,7 +35229,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO ONLINE",
@@ -35399,7 +35399,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO",
@@ -35569,7 +35569,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA",
@@ -35739,7 +35739,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "PREPARATORIA",
@@ -35909,7 +35909,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -36079,7 +36079,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "ODONTOLOGIA",
@@ -36249,7 +36249,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -36419,7 +36419,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA CORP",
@@ -36589,7 +36589,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "LICENCIATURA ONLINE",
@@ -36759,7 +36759,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO ONLINE",
@@ -36929,7 +36929,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "GUADALAJARA",
 		"BL": "POSGRADO",
@@ -37909,7 +37909,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA",
@@ -38079,7 +38079,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "PREPARATORIA",
@@ -38249,7 +38249,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -38419,7 +38419,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "ODONTOLOGIA",
@@ -38589,7 +38589,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -38759,7 +38759,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA CORP",
@@ -38929,7 +38929,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA ONLINE",
@@ -39099,7 +39099,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO ONLINE",
@@ -39269,7 +39269,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO",
@@ -39439,7 +39439,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA",
@@ -39609,7 +39609,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "PREPARATORIA",
@@ -39779,7 +39779,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -39949,7 +39949,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "ODONTOLOGIA",
@@ -40119,7 +40119,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -40289,7 +40289,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA CORP",
@@ -40459,7 +40459,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA ONLINE",
@@ -40629,7 +40629,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO ONLINE",
@@ -40799,7 +40799,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO",
@@ -40969,7 +40969,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA",
@@ -41139,7 +41139,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "PREPARATORIA",
@@ -41309,7 +41309,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -41479,7 +41479,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "ODONTOLOGIA",
@@ -41649,7 +41649,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -41819,7 +41819,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA CORP",
@@ -41989,7 +41989,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "LICENCIATURA ONLINE",
@@ -42159,7 +42159,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO ONLINE",
@@ -42329,7 +42329,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "LEON",
 		"BL": "POSGRADO",
@@ -43309,7 +43309,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA",
@@ -43479,7 +43479,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "PREPARATORIA",
@@ -43649,7 +43649,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -43819,7 +43819,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "ODONTOLOGIA",
@@ -43989,7 +43989,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -44159,7 +44159,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA CORP",
@@ -44329,7 +44329,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA ONLINE",
@@ -44499,7 +44499,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO ONLINE",
@@ -44669,7 +44669,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO",
@@ -44839,7 +44839,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA",
@@ -45009,7 +45009,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "PREPARATORIA",
@@ -45179,7 +45179,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -45349,7 +45349,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "ODONTOLOGIA",
@@ -45519,7 +45519,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -45689,7 +45689,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA CORP",
@@ -45859,7 +45859,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA ONLINE",
@@ -46029,7 +46029,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO ONLINE",
@@ -46199,7 +46199,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO",
@@ -46369,7 +46369,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA",
@@ -46539,7 +46539,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "PREPARATORIA",
@@ -46709,7 +46709,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -46879,7 +46879,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "ODONTOLOGIA",
@@ -47049,7 +47049,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -47219,7 +47219,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA CORP",
@@ -47389,7 +47389,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "LICENCIATURA ONLINE",
@@ -47559,7 +47559,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO ONLINE",
@@ -47729,7 +47729,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "QUERETARO",
 		"BL": "POSGRADO",
@@ -48709,7 +48709,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA",
@@ -48879,7 +48879,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "PREPARATORIA",
@@ -49049,7 +49049,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -49219,7 +49219,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "ODONTOLOGIA",
@@ -49389,7 +49389,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -49559,7 +49559,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA CORP",
@@ -49729,7 +49729,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA ONLINE",
@@ -49899,7 +49899,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO ONLINE",
@@ -50069,7 +50069,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO",
@@ -50239,7 +50239,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA",
@@ -50409,7 +50409,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "PREPARATORIA",
@@ -50579,7 +50579,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -50749,7 +50749,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "ODONTOLOGIA",
@@ -50919,7 +50919,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -51089,7 +51089,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA CORP",
@@ -51259,7 +51259,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA ONLINE",
@@ -51429,7 +51429,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO ONLINE",
@@ -51599,7 +51599,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO",
@@ -51769,7 +51769,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA",
@@ -51939,7 +51939,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "PREPARATORIA",
@@ -52109,7 +52109,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -52279,7 +52279,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "ODONTOLOGIA",
@@ -52449,7 +52449,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -52619,7 +52619,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA CORP",
@@ -52789,7 +52789,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "LICENCIATURA ONLINE",
@@ -52959,7 +52959,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO ONLINE",
@@ -53129,7 +53129,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "TOLUCA",
 		"BL": "POSGRADO",
@@ -54109,7 +54109,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA",
@@ -54279,7 +54279,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "PREPARATORIA",
@@ -54449,7 +54449,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -54619,7 +54619,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "ODONTOLOGIA",
@@ -54789,7 +54789,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -54959,7 +54959,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA CORP",
@@ -55129,7 +55129,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA ONLINE",
@@ -55299,7 +55299,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO ONLINE",
@@ -55469,7 +55469,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C1",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO",
@@ -55639,7 +55639,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA",
@@ -55809,7 +55809,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "PREPARATORIA",
@@ -55979,7 +55979,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -56149,7 +56149,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "ODONTOLOGIA",
@@ -56319,7 +56319,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -56489,7 +56489,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA CORP",
@@ -56659,7 +56659,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA ONLINE",
@@ -56829,7 +56829,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO ONLINE",
@@ -56999,7 +56999,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C2",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO",
@@ -57169,7 +57169,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA",
@@ -57339,7 +57339,7 @@
 		"Teléfono 1": "Tel‚fono pap  o casa"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "PREPARATORIA",
@@ -57509,7 +57509,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "CIENCIAS DE LA SALUD",
@@ -57679,7 +57679,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "ODONTOLOGIA",
@@ -57849,7 +57849,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO ODONTOLOGIA",
@@ -58019,7 +58019,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA CORP",
@@ -58189,7 +58189,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "LICENCIATURA ONLINE",
@@ -58359,7 +58359,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO ONLINE",
@@ -58529,7 +58529,7 @@
 		"Teléfono 1": "celular prospecto"
 	},
 	{
-		"FUENTE_NEGOCIO": "ESCUELA PROMOTORA",
+		"FUENTE_NEGOCIO": "ESCUELAS PROVEEDORAS",
 		"CICLO": "C3",
 		"CAMPUS": "EN LINEA",
 		"BL": "POSGRADO",

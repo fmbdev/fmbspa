@@ -514,7 +514,7 @@ export class NewRegisterPromotionComponent implements OnInit {
                cal_status = "EMPRESAS";
 
             }else if(cal_empresa == "A" || cal_empresa == "B" || cal_empresa == "C" || cal_empresa == "D" ){
-                cal_status = "ESCUELA PROMOTORA";
+                cal_status = "ESCUELAS PROVEEDORAS";
 
             }else if(cal_empresa == "G"){
                 cal_status = "ESCUELAS BACK UP";

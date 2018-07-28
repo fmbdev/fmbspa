@@ -361,6 +361,7 @@ export class UploadBaseComponent implements OnInit {
                     }
 
 
+
                     var EscuelaEmpresa_ = "";
                     var GUIDEscuelaEmpresa_ = "";
                     var GUIDCalidadid_ = "";
@@ -382,21 +383,48 @@ export class UploadBaseComponent implements OnInit {
                    // console.log("");console.log("");console.log("");
 
 
+                   var ciclo = cicloTM[0].crmit_name;
+                   var valor_ciclo = "";
+
+                   console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
+
+
+                   if(ciclo == "19-1"){
+                     valor_ciclo = "C3";
+                   }else if(ciclo == "20-1"){
+                     valor_ciclo = "C3";
+                   }else if(ciclo == "20-2"){
+                     valor_ciclo = "C1";
+                   }else if(ciclo == "18-3"){
+                     valor_ciclo = "C2";
+                   }
+
                     let Team = "";
                     let Prioridad = 0;
                     let Attemp = "";
 
                     for (let i = 0; i < this.rows.length; i++) {
 
-                      if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == cicloC) {
-                        //console.log("campus: " + this.rows[i].CAMPUS);
-                        //console.log("NivelInteres: " + this.rows[i].BL);
-                        //console.log("CICLO: " + cicloC);
-                        //console.log("TEAM: " + this.rows[i].TEAM);
+                      if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == valor_ciclo) {
+                        console.log("");console.log("");console.log("");
+                        console.log("---------------------------------------------------");
+                        console.log("");console.log("");
+                        console.log("IdCampus: "+GUIDCampus);
+                        console.log("NombreCampus:"+campus);
+
+                        console.log("Modalidad: "+Modalidad);
+                        console.log("NivelInteres: "+NivelInteres);
 
                         Team = this.rows[i].TEAM;
+                        console.log("TEAM: "+Team);
                         Prioridad = parseInt(this.rows[i].PRIORIDAD);
+                        console.log("PRIORIDAD: "+Prioridad);
                         Attemp = this.rows[i].ATTEMP;
+                        console.log("ATTEMP: "+Attemp);
+                        console.log("Ciclo:"+ciclo);
+                        console.log("");console.log("");
+                        console.log("---------------------------------------------------");
+                        console.log("");console.log("");console.log("");
                       }
                     }
 
@@ -412,7 +440,7 @@ export class UploadBaseComponent implements OnInit {
                       "Usuario":nom_usu,
                       "GUIDUsuario": GUIDUsuario,
                       "Banner":"https://app.devmx.com.mx/upload",
-                      "FuenteObtencion":"PROMOCION",
+                      "FuenteObtencion":"BD EXTERNA",
                       "GUIDFuentedeObtencion":"2689dd13-6072-e211-b35f-6cae8b2a4ddc",
                       "FuenteNegocio":this.Tipo.value,
                       "Attemp": Attemp,
@@ -433,7 +461,7 @@ export class UploadBaseComponent implements OnInit {
                       "GUIDCampus":GUIDCampus,
                       "Carrera":TCarrera,
                       "GUIDCarrera":GUIDCarrera,
-                      "Ciclo": cicloC,
+                      "Ciclo": ciclo,
                       "GUIDCiclo":GUIDCiclo,
                       "EscuelaEmpresa":EscuelaEmpresa_,
                       "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa_,
