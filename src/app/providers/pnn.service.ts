@@ -37,10 +37,22 @@ export class PnnService {
 
     for(let i = 0; i < this.pnns.length; i++){
       if(serie == this.pnns[i].serie){
-           this.isValid = true; 
+           this.isValid = true;
          }
     }
-    return this.isValid; 
+    return this.isValid;
+  }
+
+  getNumeroPermtido_pnn(value: string) : boolean {
+    this.isValid = false;
+    let serie = value.substr(0,6);
+
+    for(let i = 0; i < this.pnns.length; i++){
+      if(serie == this.pnns[i].serie){
+           this.isValid = true;
+         }
+    }
+    return this.isValid;
   }
 
 }

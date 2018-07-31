@@ -10,6 +10,10 @@ import 'rxjs/Rx';
 import * as XLSX from 'xlsx';
 
 import { SendService } from '../providers/send.service';
+import { PnnService } from '../providers/pnn.service';
+
+import { LandingValidation } from '../validations/landing.validations';
+import { LandingService } from '../services/landing.service';
 
 import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
@@ -75,9 +79,12 @@ export class UploadBaseComponent implements OnInit {
   intereses: Interes[] = [];
   modalidades: Modalidad[] = [];
 
+  campos_con_error = [];
 
 
-  constructor(private sendServ: SendService,
+
+  constructor(private pnnServ: PnnService,
+              private sendServ: SendService,
               public dialog: MatDialog,
               private cicloServ: CicloService,
               private campusServ: CampusService,
@@ -213,16 +220,18 @@ export class UploadBaseComponent implements OnInit {
       var cells = Object.keys(worksheet);
       for (var i = 0; i < Object.keys(cells).length; i++)
       {
-        if( cells[i].indexOf('1') > -1)
+        if( cells[i].indexOf('1') > -1) //Hace la lectura de las cabeceras de excel y las envia para su posterior validacion con las permitidas.
         {
         colValues.push(worksheet[cells[i]].v);
+
         }
       }
       let col = '["Apellido_Paterno","Apellido_Materno","Nombre","Sexo","Teléfono_Domicilio","Teléfono_Celular","Correo_Electronico","escuela_de_procedencia","sub_tipo","sub_sub_tipo","calidad","campus","carrera","ciclo","area_atención","fuente_obtención"]';
       let cColum = JSON.stringify(colValues);
 
-      if(col == cColum){
+      if(col == cColum){ //compara si la pila de columnas es igual a la pila permitida, procede a ingreso
         return true;
+
       }else{
         return false;
       }
@@ -262,7 +271,7 @@ export class UploadBaseComponent implements OnInit {
 
               let count=  Object.keys(filas).length;
 
-              if(!this.checkCols(workbook)){
+              if(!this.checkCols(workbook)){ //Verifica la coincidencia de los cabezales de columna si estan igual, por lo contrario no se permiten
                   this.showDialog("Los titulos de la columna no coinciden");
                   this.newdata.filename ="";
                   this.Tipo.value="";
@@ -277,15 +286,16 @@ export class UploadBaseComponent implements OnInit {
 
                     var carreraTM = this.getObjects(this.carreras, 'id', key.carrera);
                     var escuelaTM = this.getObjects(this.escuelas_empresas, 'escuelaID', key.escuela_de_procedencia);
-                    var campusTM = this.getObjects(this.campus, 'crmi_name', key.campus);
+                    console.log("key.campus = "+key.campus);
+                    var campusTM = this.getObjects(this.campus, 'crmi_name', this.getValidaCampo("Campus", key.campus));
                     var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
                     var subtipoTM = this.getObjects( this.sub_tipos,'crmit_subname',key.sub_tipo);
                     var subsubtipotTM = this.getObjects( this.subsub_tipos,'crmit_subsubname',key.sub_sub_tipo);
 
                     var keyCelular = key.Teléfono_Celular;
-                    var keyTelefono = key.Teléfono_Domicilio;
-                    var skeyTelefono = keyTelefono.toString();
-                    var skeyCelular = keyCelular.toString();
+                    var keyTelefono = this.getValidaCampo("Telefono", key.Teléfono_Domicilio);
+                    var skeyTelefono =  String(keyTelefono);
+                    var skeyCelular =  String(keyCelular);
 
                         var predTel = skeyCelular.substring(0,2);
                         var TelefonoPredictivo = null;
@@ -307,7 +317,8 @@ export class UploadBaseComponent implements OnInit {
 
                     if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
 
-                    var ciclo = cicloTM[0].crmit_name;
+                   // console.log("cicloTM[0].crmit_name - "+cicloTM[0]);
+                    var ciclo = (cicloTM[0].crmit_name !== undefined)? "" : cicloTM[0].crmit_name;
                     var ciclo_mocho = ciclo.split('-');
                     var cicloC = "C" + ciclo_mocho[1];
                     var GUIDCiclo = cicloTM[0].crmit_codigounico;
@@ -319,8 +330,7 @@ export class UploadBaseComponent implements OnInit {
                    // var TEscuelaEmpresa=escuelaTM[0].Name;
                     var GUIDCalidad=GUIDCalidadid_;
 
-
-                    var GUIDCampus=campusTM[0].crmit_tb_campusid;
+                    var GUIDCampus = campusTM[0].crmit_tb_campusid;
                     var campus = campusTM[0].crmi_name;
 
 
@@ -369,7 +379,7 @@ export class UploadBaseComponent implements OnInit {
                    // console.log("");console.log("");console.log("");
 
                     for (let i = 0; i < this.rowss_emp.length; i++) {
-                      console.log(this.rowss_emp[i].escuelaID +"=="+ key.escuela_de_procedencia);
+                     // console.log(this.rowss_emp[i].escuelaID +"=="+ key.escuela_de_procedencia);
                       if (this.rowss_emp[i].escuelaID == key.escuela_de_procedencia) {
 
                         EscuelaEmpresa_ = this.rowss_emp[i].Name;
@@ -386,7 +396,7 @@ export class UploadBaseComponent implements OnInit {
                    var ciclo = cicloTM[0].crmit_name;
                    var valor_ciclo = "";
 
-                   console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
+                  // console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
 
 
                    if(ciclo == "19-1"){
@@ -406,29 +416,29 @@ export class UploadBaseComponent implements OnInit {
                     for (let i = 0; i < this.rows.length; i++) {
 
                       if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == valor_ciclo) {
-                        console.log("");console.log("");console.log("");
-                        console.log("---------------------------------------------------");
-                        console.log("");console.log("");
-                        console.log("IdCampus: "+GUIDCampus);
-                        console.log("NombreCampus:"+campus);
+                       // console.log("");console.log("");console.log("");
+                       // console.log("---------------------------------------------------");
+                       // console.log("");console.log("");
+                       // console.log("IdCampus: "+GUIDCampus);
+                       // console.log("NombreCampus:"+campus);
 
-                        console.log("Modalidad: "+Modalidad);
-                        console.log("NivelInteres: "+NivelInteres);
+                      //  console.log("Modalidad: "+Modalidad);
+                      //  console.log("NivelInteres: "+NivelInteres);
 
                         Team = this.rows[i].TEAM;
-                        console.log("TEAM: "+Team);
+                       // console.log("TEAM: "+Team);
                         Prioridad = parseInt(this.rows[i].PRIORIDAD);
-                        console.log("PRIORIDAD: "+Prioridad);
+                      //  console.log("PRIORIDAD: "+Prioridad);
                         Attemp = this.rows[i].ATTEMP;
-                        console.log("ATTEMP: "+Attemp);
-                        console.log("Ciclo:"+ciclo);
-                        console.log("");console.log("");
-                        console.log("---------------------------------------------------");
-                        console.log("");console.log("");console.log("");
+                      ///  console.log("ATTEMP: "+Attemp);
+                      //  console.log("Ciclo:"+ciclo);
+                       // console.log("");console.log("");
+                       // console.log("---------------------------------------------------");
+                       // console.log("");console.log("");console.log("");
                       }
                     }
 
-                    var GUIDUsuario = localStorage.getItem('UserId');
+                                       var GUIDUsuario = localStorage.getItem('UserId');
 
                     var u = localStorage.getItem('user');
                     var data = JSON.parse(u);
@@ -437,35 +447,35 @@ export class UploadBaseComponent implements OnInit {
 
 
                     var obj2 = {
-                      "Usuario":nom_usu,
+                      "Usuario":this.getValidaCampo("Usuario", nom_usu),
                       "GUIDUsuario": GUIDUsuario,
                       "Banner":"https://app.devmx.com.mx/upload",
-                      "FuenteObtencion":"BD EXTERNA",
+                      "FuenteObtencion":this.getValidaCampo("FuenteObtencion", "BD EXTERNA"),
                       "GUIDFuentedeObtencion":"2689dd13-6072-e211-b35f-6cae8b2a4ddc",
                       "FuenteNegocio":this.Tipo.value,
                       "Attemp": Attemp,
                       "Prioridad": Prioridad,
                       "Team": Team,
-                      "ApellidoMaterno":key.Apellido_Materno,
-                      "ApellidoPaterno": key.Apellido_Paterno,
+                      "ApellidoMaterno": this.getValidaCampo("ApellidoMaterno", key.Apellido_Materno),
+                      "ApellidoPaterno": this.getValidaCampo("ApellidoPaterno", key.Apellido_Paterno),
                       "Genero":Genero,
-                      "Calidad":key.calidad,
+                      "Calidad":this.getValidaCampo("Calidad", key.calidad),
                       "GUIDCalidad":GUIDCalidadid_,
-                      "Telefono":skeyCelular,
+                      "Telefono": skeyCelular,
                       "TelefonoPredictivo":TelefonoPredictivo,
                       "TelefonoCasa":skeyTelefono,
                       "TelefonoCasaPredictivo":TelefonoCasaPredictivo,
-                      "AreaInteres":key.area_atención,
+                      "AreaInteres":this.getValidaCampo("AreaInteres", key.area_atención),
                       "Campus": key.campus,
-                      "CorreoElectronico": key.Correo_Electronico,
+                      "CorreoElectronico": this.getValidaCampo("CorreoElectronico", key.Correo_Electronico),
                       "GUIDCampus":GUIDCampus,
-                      "Carrera":TCarrera,
+                      "Carrera":this.getValidaCampo("Carrera", TCarrera),
                       "GUIDCarrera":GUIDCarrera,
-                      "Ciclo": ciclo,
+                      "Ciclo": this.getValidaCampo("Ciclo", ciclo),
                       "GUIDCiclo":GUIDCiclo,
-                      "EscuelaEmpresa":EscuelaEmpresa_,
+                      "EscuelaEmpresa":this.getValidaCampo("EscuelaEmpresa", EscuelaEmpresa_),
                       "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa_,
-                      "SubSubTipo":key.sub_sub_tipo,
+                      "SubSubTipo":this.getValidaCampo("SubsubTipo", key.sub_sub_tipo),
                       "GUIDSubSubTipo":GUIDSubSubTipo,
                       "SubTipo":key.sub_tipo,
                       "GUIDSubTipo":GUIDSubTipo,
@@ -494,8 +504,43 @@ export class UploadBaseComponent implements OnInit {
                     delete key.Correo_Electronico;
 
 
+
                     var datos = Object.assign(key, obj2);
-                      setTimeout(() => {
+
+
+                    if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
+                       console.log("Bloquea Send");
+
+                       console.log("Campos con error = "+this.campos_con_error);
+                       this.showDialog("Hay datos incompletos o incorrectos en las columnas: "+this.campos_con_error+" .");
+
+                       this.campos_con_error.splice(0);
+                       console.log("Total de Errores:"+this.campos_con_error.length);
+
+
+                    }else{ //Si no hay errores entra a envio
+                     console.log("Inserta Send");
+
+                                  console.log("");console.log("");console.log("");
+                                  console.log("---------------------------------------------------");
+                                  console.log("");console.log("");
+                                  console.log("IdCampus: "+GUIDCampus);
+                                  console.log("NombreCampus:"+campus);
+
+                                  console.log("Modalidad: "+Modalidad);
+                                  console.log("NivelInteres: "+NivelInteres);
+
+                                  console.log("TEAM: "+Team);
+                                  console.log("PRIORIDAD: "+Prioridad);
+                                  console.log("ATTEMP: "+Attemp);
+
+                                  console.log("Ciclo:"+ciclo);
+                                  console.log("");console.log("");
+                                  console.log("---------------------------------------------------");
+                                  console.log("");console.log("");console.log("");
+
+                    //Envio de datos
+                    setTimeout(() => {
                         this.sendServ.sendData4(datos)
                           .subscribe(
                             (res: any) => {
@@ -511,6 +556,7 @@ export class UploadBaseComponent implements OnInit {
                                   );
                                 x = x + 1;
                                 if (count == x) {
+
                                   this.showDialog("Los datos se han guardado correctamente.");
                                   this.newdata.filename = "";
                                   this.Tipo.value = "";
@@ -522,14 +568,23 @@ export class UploadBaseComponent implements OnInit {
                           },
                             error => {
                               if (error.status === 400) {
-                                console.log(error);
-                                //this.showDialogE(error._body);
+                                console.warn(error._body);
+                                this.showDialog("Error al guardar el registro");
+                                x--;
+                                console.log("x-- Error x = "+x);
                               }
                               else if (error.status === 500) {
-                                //this.showDialogE(error._body);
+                                console.warn(error._body);
+                                this.showDialog("Error al guardar el registro");
+                              }else{
+                                console.warn(error._body);
+                                this.showDialog("Error en la transaccion");
                               }
                           })
                       }, f);
+
+                    }//Termina validacion de campos vacios
+
 
                   });
 
@@ -562,6 +617,66 @@ export class UploadBaseComponent implements OnInit {
         });
       }
   //return an array of objects according to key, value, or key and value matching
+
+
+getValidaCampo(campo, valor){
+
+      if(valor == "" || valor == null){ //Campo Vacio
+
+        this.campos_con_error.push(" "+campo);
+
+      }else{ //Campo No Vacio
+
+      //Valida Validacion de correo y telefono
+        if(campo == "CorreoElectronico"){ //Si es campo CorreoElectronico
+          //console.log("En validacion de Correo");
+
+           if(LandingValidation.ValidacionEmail(valor) != null){
+            this.campos_con_error.push(" "+campo);
+           }else{
+             return valor;
+           }
+
+        }else if(campo == "Telefono"){ //Si es campo Telefono
+          console.log("En validacion de Telefono");
+
+
+          if(!isNaN(valor)){ //Verifica si es numero
+              console.log("Es numero");
+              var v = String(valor);
+
+                if(v.length == 10){ //Valida el numero de caracteres, debe llevar 10
+                 console.log("Es un valor permitido global");
+
+                  //verifica si es nuero valido en black list
+
+                  let pnnServ = this.pnnServ;
+
+                  if(!pnnServ.getNumeroPermtido_pnn(String(valor))) { //Mira el json de PNN para verificar que sea un numero valido
+                      console.log("No esta permitido el numero");
+                      this.campos_con_error.push(" "+campo);
+
+                     } else {
+                      console.log("Si esta permitido el numero");
+                      return valor;
+                     }
+                }else{
+                  this.campos_con_error.push(" "+campo);
+                }
+          }else{ //En caso de no ser numero
+            console.log("No es numero");
+            this.campos_con_error.push(" "+campo);
+          }
+
+        }else{ //Si cumplen las validaciones retorna el valor
+
+          return valor;
+        }
+      }
+
+}
+
+
  getObjects(obj, key, val) {
   var objects = [];
   for (var i in obj) {
@@ -569,6 +684,9 @@ export class UploadBaseComponent implements OnInit {
     if (typeof obj[i] == 'object') {
       objects = objects.concat(this.getObjects(obj[i], key, val));
     } else
+
+      //console.log("- " + key + " : " + val);
+
       //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
       if (i == key && obj[i] == val || i == key && val == '') { //
         objects.push(obj);
