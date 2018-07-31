@@ -227,7 +227,19 @@ export class UploadBaseSisComponent implements OnInit {
                 var carreraTM = this.getObjects(this.carreras, 'id', key.clave_de_sis_carrera);
 
                 //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
-
+                if(cicloTM.length<1){
+                  this.showDialog("Formato Invalido de Ciclo");
+                  return;
+                } 
+                if(carreraTM.length<1){
+                  this.showDialog("Formato Invalido de Carrera");
+                  return;
+                }
+                if(campusTM.length<1){
+                  this.showDialog("Formato Invalido de Campus");
+                  return;
+                }
+                
                 var ciclo = cicloTM[0].crmit_name;
                 var valor_ciclo = "";
 
