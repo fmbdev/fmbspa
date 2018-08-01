@@ -515,7 +515,7 @@ export class UploadBaseComponent implements OnInit {
                       "Nivel": NivelInteres,
                       "GUIDNivelInteres": GUIDNivelInteres,
                       "Modalidad": Modalidad,
-                      "GUIDModalidad": GUIDModalidad,
+                      "GUIDModalidad": GUIDModalidad
 
                     };
 
