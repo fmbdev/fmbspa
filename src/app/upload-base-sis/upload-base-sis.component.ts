@@ -16,7 +16,6 @@ import { PnnService } from '../providers/pnn.service';
 import { LandingValidation } from '../validations/landing.validations';
 import { LandingService } from '../services/landing.service';
 
-
 import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
 import { Carrera } from '../interfaces/carrera';
@@ -24,21 +23,17 @@ import { EscuelaEmpresa } from '../interfaces/escuela-empresa';
 import { UploadSis } from '../interfaces/upload-sis';
 import { CampusCarrera } from '../interfaces/campus-carrera';
 
-
 import { Interes } from '../interfaces/interes';
 import { Modalidad } from '../interfaces/modalidad';
 
-
 import { InteresService } from '../providers/interes.service';
 import { ModalidadService } from '../providers/modalidad.service';
-
 
 import { CicloService } from '../providers/ciclo.service';
 import { CampusService } from '../providers/campus.service';
 import { CarreraService } from '../providers/carrera.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
 import { CampusCarreraService } from '../providers/campus-carrera.service';
-
 
 @Component({
   selector: 'app-upload-base-sis',
@@ -70,7 +65,6 @@ export class UploadBaseSisComponent implements OnInit {
   carreras: Carrera[] = [];
   campusCarreras: CampusCarrera[] = [];
   campos_con_error = [];
-
 
 
   constructor(
@@ -117,7 +111,6 @@ export class UploadBaseSisComponent implements OnInit {
         (data: Carrera[]) => this.carreras = data
       )
 
-
     // Se obtienen los ciclos
     this.cicloServ.getAll()
       .subscribe(
@@ -129,7 +122,6 @@ export class UploadBaseSisComponent implements OnInit {
   previewImage(event){
      this.newdata.filename = event.srcElement.files[0].name;
   }
-
 
   fetch(cb) {
     const req = new XMLHttpRequest();
@@ -233,12 +225,13 @@ export class UploadBaseSisComponent implements OnInit {
 
             filas.forEach((key: UploadSis) => {
 
+              var Nombre_del_archivo_de_carga = this.newdata.filename;
+              var extension_file = Nombre_del_archivo_de_carga.split('.');
 
                var telemarketerCampo = this.getValidaCampo("Telemarketer", key.nombre_corto_telemarketer);
                var nombre_corto_asesorCampo = this.getValidaCampo("Nombre_corto_asesor", key.nombre_corto_asesor);
                var fuente_obtencionCampo = this.getValidaCampo("Fuente Obtención", key.fuente_obtención);
                var lista_de_seguimientoCampo = this.getValidaCampo("ListadeSeguimiento", key.lista_de_seguimiento);
-              
 
 
                 var campusCampo = this.getValidaCampo("Campus", key.id_campus);
@@ -246,7 +239,6 @@ export class UploadBaseSisComponent implements OnInit {
                 if(campusCampo != "0"){
                 var campusTM = this.getObjects(this.campus, 'crmit_codigounico', key.id_campus);
                 }
-
 
                 var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
 
@@ -263,12 +255,10 @@ export class UploadBaseSisComponent implements OnInit {
 
                 var cicloCampo = this.getValidaCampo("Ciclo", key.ciclo);
 
-
                 var valor_ciclo = "";
 
                 if(cicloCampo != "0"){
                   var ciclo = cicloTM[0].crmit_name;
-
 
                     if(ciclo == "19-1"){
                       valor_ciclo = "C3";
@@ -281,7 +271,6 @@ export class UploadBaseSisComponent implements OnInit {
                     }
 
                 }
-
 
 
 
@@ -328,7 +317,6 @@ export class UploadBaseSisComponent implements OnInit {
                 let Attemp = "";
 
 
-
                 for (let i = 0; i < this.rows.length; i++) {
 
                   if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == valor_ciclo) {
@@ -353,7 +341,6 @@ export class UploadBaseSisComponent implements OnInit {
                   //  console.log("---------------------------------------------------");
                   //  console.log("");console.log("");console.log("");
                   }
-
 
                 }
 
@@ -383,10 +370,18 @@ export class UploadBaseSisComponent implements OnInit {
                 "campus": campus,
                 "GUIDCampus": GUIDCampus,
                 "EsAlumno": true,
+                "Nombredelarchivodecarga": Nombre_del_archivo_de_carga,
+                "TipodeAcción": "CREAR",
+                "TipodeProceso": "PRIMER INGRESO",
+                "Razónparaelestado":"PROCESADO",
+                "FechayHorainicioCarga":new Date(),
+                "Estado":"Activo",
+                "ModificadoPor":nom_usu,
+
               };
-
-
-              if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
+              if(extension_file[1] != "xls" || extension_file[1] != "xlsx" || extension_file[1] != "XLS" || extension_file[1] != "XLSX"){  this.showDialog("El documento "+Nombre_del_archivo_de_carga+" no es valido, \n solo se permiten xls y xlsx."); }
+                
+              else if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
                 console.log("Bloquea Send");
 
                 console.log("Campos con error = "+this.campos_con_error);
@@ -395,10 +390,8 @@ export class UploadBaseSisComponent implements OnInit {
                 this.campos_con_error.splice(0);
                 console.log("Total de Errores:"+this.campos_con_error.length);
 
-
              }else{ //Si no hay errores entra a envio
               console.log("Inserta Send");
-
 
               console.log("");console.log("");console.log("");
               console.log("---------------------------------------------------");
@@ -443,7 +436,6 @@ export class UploadBaseSisComponent implements OnInit {
 
                               console.log("Errores = " + error.status);
 
-
                               if (error.status === 400) {
                                 console.warn(error._body);
                                 this.showDialog("Error al guardar el registro");
@@ -461,14 +453,11 @@ export class UploadBaseSisComponent implements OnInit {
                       }, f);
 
 
-
                 }//Termina validacion de campos vacios
 
 
 
-
               });
-
 
                /*   let total;
                   total = f * count;
@@ -490,7 +479,6 @@ export class UploadBaseSisComponent implements OnInit {
   }
 
 
-
 //Funcion para validacion de campo
 
 getValidaCampo(campo, valor){
@@ -501,7 +489,6 @@ getValidaCampo(campo, valor){
     return '0';
   }else{ //Campo No Vacio
 
-
     if(campo == "Fuente Obtención"){ //Valida Area de Atencion
       console.log("Validacion de Fuente Obtención");
       //console.log("valor.length = " + valor);
@@ -510,7 +497,6 @@ getValidaCampo(campo, valor){
        }else{
         return valor;
        }
-
 
     }else if(campo == "AreaInteres"){ //Valida Area de Atencion
       console.log("Validacion de Area de Atencion");
@@ -521,7 +507,6 @@ getValidaCampo(campo, valor){
         return valor;
        }
 
-
     }else if(campo == "Calidad"){ //Valida Calidad
       console.log("Validacion de Calidad");
       //console.log("valor.length = " + valor);
@@ -530,7 +515,6 @@ getValidaCampo(campo, valor){
        }else{
         return valor;
        }
-
 
     }else if(campo == "Escuela"){ //Valida Escuela
       console.log("Validacion de Escuela");
@@ -541,7 +525,6 @@ getValidaCampo(campo, valor){
         return valor;
        }
 
-
     }else if(campo == "SubsubTipo"){ //Valida SubsubTipo
       console.log("Validacion de SubsubTipo");
       //console.log("valor.length = " + valor);
@@ -550,7 +533,6 @@ getValidaCampo(campo, valor){
        }else{
         return valor;
        }
-
 
     }else if(campo == "SubTipo"){ //Valida SubTipo
       console.log("Validacion de SubTipo");
@@ -561,7 +543,6 @@ getValidaCampo(campo, valor){
         return valor;
        }
 
-
     }else if(campo == "Campus"){ //Valida Campus
       console.log("Validacion de campus");
       //console.log("valor.length = " + valor);
@@ -570,7 +551,6 @@ getValidaCampo(campo, valor){
        }else{
         return valor;
        }
-
 
     }else if(campo == "Ciclo"){ //Valida Ciclo
       console.log("Validacion de ciclo");
@@ -581,7 +561,6 @@ getValidaCampo(campo, valor){
         return valor;
        }
 
-
     }else if(campo == "Carrera"){ //Valida Carrera
     console.log("Validacion de carrera");
     //console.log("valor.length = " + valor);
@@ -590,7 +569,6 @@ getValidaCampo(campo, valor){
      }else{
       return valor;
      }
-
 
   }else if(campo == "CorreoElectronico"){ //Si es campo CorreoElectronico
       console.log("En validacion de Correo");
@@ -632,10 +610,8 @@ getValidaCampo(campo, valor){
     }
 
 
-
     }else if(campo == "Telefono"){ //Si es campo Telefono
       console.log("En validacion de Telefono");
-
 
       if(!isNaN(valor)){ //Verifica si es numero
           console.log("Es numero");
@@ -671,7 +647,6 @@ getValidaCampo(campo, valor){
   }
 
 }
-
 
 
 

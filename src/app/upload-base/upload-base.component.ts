@@ -26,10 +26,8 @@ import { SubTipo } from '../interfaces/sub-tipo';
 import { Interes } from '../interfaces/interes';
 import { Modalidad } from '../interfaces/modalidad';
 
-
 import { InteresService } from '../providers/interes.service';
 import { ModalidadService } from '../providers/modalidad.service';
-
 
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
@@ -40,7 +38,6 @@ import { CarreraService } from '../providers/carrera.service';
 import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
-
 
 @Component({
   selector: 'app-upload-base',
@@ -82,7 +79,6 @@ export class UploadBaseComponent implements OnInit {
   campos_con_error = [];
 
 
-
   constructor(private pnnServ: PnnService,
               private sendServ: SendService,
               public dialog: MatDialog,
@@ -121,12 +117,10 @@ export class UploadBaseComponent implements OnInit {
 
 
 
-
   ngOnInit() {
     this.form = new FormGroup({
       datos: new FormControl(''),
     });
-
 
     // Se obtienen todos los campus
     this.campusServ.getAll()
@@ -139,7 +133,6 @@ export class UploadBaseComponent implements OnInit {
       .subscribe(
         (data: Carrera[]) => this.carreras = data
       )
-
 
     // Se obtienen los ciclos
     this.cicloServ.getAll()
@@ -161,7 +154,6 @@ export class UploadBaseComponent implements OnInit {
     console.log(event.srcElement.files[0]);
      this.newdata.filename = event.srcElement.files[0].name;
   }
-
 
   fetch(cb) {
     const req = new XMLHttpRequest();
@@ -211,7 +203,6 @@ export class UploadBaseComponent implements OnInit {
 
 
 
-
   checkCols(workbook) //your workbook variable
   {
       var colValues =[];
@@ -239,10 +230,8 @@ export class UploadBaseComponent implements OnInit {
       }
   }
 
-
   Upload() {
     // Obtener
-
 
      let x = 0;
      let count = 0;
@@ -286,15 +275,12 @@ export class UploadBaseComponent implements OnInit {
 
                   filas.forEach((key:Upload) => {
 
-                    //var archivo_cargado = XLSX;
-                    //console.log("archivo_cargado = "+archivo_cargado);
+                    var Nombre_del_archivo_de_carga = this.newdata.filename;
+                    var ext_file = Nombre_del_archivo_de_carga.split('.');
 
-<<<<<<< HEAD
+
 
                     var escuelaCampo =  key.escuela_de_procedencia;
-=======
-                   
->>>>>>> d29fe8252e9e424d09184914999e0e4d7990470a
 
                     var escuelaTM = this.getObjects(this.escuelas_empresas, 'escuelaID', key.escuela_de_procedencia);
                     // console.log("key.campus = "+key.campus);
@@ -329,21 +315,8 @@ export class UploadBaseComponent implements OnInit {
                     if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
 
                    // console.log("cicloTM[0].crmit_name - "+cicloTM[0]);
-                    var cicloCampo = this.getValidaCampo("Ciclo",key.ciclo);
-                    console.log("cicloCampo");
-                    console.log(cicloCampo);
-                    let ciclo = "ciclo";
-                    if(cicloCampo!="0"){
-                      console.log("cicloCampo!=false");
-                      let ciclo =  cicloTM[0].crmit_name;
-                      var ciclo_mocho = ciclo.split('-');
-                      var cicloC = "C" + ciclo_mocho[1];
-                      var GUIDCiclo = cicloTM[0].crmit_codigounico;
-                    }
 
-<<<<<<< HEAD
                     var cicloCampo = this.getValidaCampo("Ciclo",key.ciclo);
-
 
                     if(cicloCampo!="0"){
                       console.log("cicloCampo!=false");
@@ -354,7 +327,6 @@ export class UploadBaseComponent implements OnInit {
                     var carreraCampo =  key.carrera;
 
 
-
                       if(carreraCampo!="0"){
                         console.log("carreraCampo!=0");
 
@@ -362,20 +334,6 @@ export class UploadBaseComponent implements OnInit {
                       var GUIDCarrera = carreraTM[0].codigounico;
                       var TCarrera=carreraTM[0].name;
                     }
-
-=======
-                    var carreraCampo = this.getValidaCampo("Carrera",  key.carrera);
-                    var carreraTM = this.getObjects(this.carreras, 'id',  key.carrera);
-
-                    
-
-                    if(carreraCampo!="0"){
-                      console.log("carreraCampo!=0");
-                      var GUIDCarrera = carreraTM[0].codigounico;
-                    } 
-
-                    
->>>>>>> d29fe8252e9e424d09184914999e0e4d7990470a
 
 
                     var GUIDEscuelaEmpresa = GUIDEscuelaEmpresa_;
@@ -389,13 +347,8 @@ export class UploadBaseComponent implements OnInit {
                     var campus = campusTM[0].crmi_name;
                     }
 
-<<<<<<< HEAD
                     var subtipoCampo = this.getValidaCampo("SubTipo", key.sub_tipo);
                     if(subtipoCampo!="0"){
-=======
-
-                   
->>>>>>> d29fe8252e9e424d09184914999e0e4d7990470a
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
                     }
 
@@ -414,7 +367,6 @@ export class UploadBaseComponent implements OnInit {
 
                     var Modalidad = "";
                     var GUIDModalidad = "";
-
 
 
                     for (let i = 0; i < this.rowss.length; i++) {
@@ -436,7 +388,6 @@ export class UploadBaseComponent implements OnInit {
                       }
                     }
 
-
                     var EscuelaEmpresa_ = "";
                     var GUIDEscuelaEmpresa_ = "";
                     var GUIDCalidadid_ = "";
@@ -457,13 +408,7 @@ export class UploadBaseComponent implements OnInit {
                     }
                    // console.log("");console.log("");console.log("");
 
-<<<<<<< HEAD
-
                 /*  if(carreraTM.length<1){
-=======
-                 
-                  if(carreraTM.length<1){
->>>>>>> d29fe8252e9e424d09184914999e0e4d7990470a
                     this.showDialog("Formato Invalido de Carrera");
                     return;
                   }
@@ -472,18 +417,12 @@ export class UploadBaseComponent implements OnInit {
                     return;
                   }*/
 
-
-<<<<<<< HEAD
-=======
-                  // var ciclo = cicloTM[0].crmit_name;
->>>>>>> d29fe8252e9e424d09184914999e0e4d7990470a
                    var valor_ciclo = "";
 
                   // console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
 
                   if(cicloCampo != "0"){
                     var ciclo = cicloTM[0].crmit_name;
-
 
                      if(ciclo == "19-1"){
                        valor_ciclo = "C3";
@@ -533,7 +472,6 @@ export class UploadBaseComponent implements OnInit {
                     var fuente_obtecionCampo = this.getValidaCampo("Fuente Obtención", key.fuente_obtención);
 
 
-
                     var obj2 = {
                       "Usuario":this.getValidaCampo("Usuario", nom_usu),
                       "GUIDUsuario": GUIDUsuario,
@@ -570,11 +508,15 @@ export class UploadBaseComponent implements OnInit {
                       "Nivel": NivelInteres,
                       "GUIDNivelInteres": GUIDNivelInteres,
                       "Modalidad": Modalidad,
-<<<<<<< HEAD
                       "GUIDModalidad": GUIDModalidad,
-=======
-                      "GUIDModalidad": GUIDModalidad
->>>>>>> d29fe8252e9e424d09184914999e0e4d7990470a
+                      "Nombredelarchivodecarga": Nombre_del_archivo_de_carga,
+                      "TipodeAcción": "CREAR",
+                      "TipodeProceso": "PRIMER INGRESO",
+                      "Razónparaelestado":"PROCESADO",
+                      "FechayHorainicioCarga":new Date(),
+                      "Estado":"Activo",
+                      "ModificadoPor":nom_usu,
+
 
                     };
 
@@ -595,11 +537,10 @@ export class UploadBaseComponent implements OnInit {
                     delete key.Correo_Electronico;
 
 
-
                     var datos = Object.assign(key, obj2);
 
-
-                    if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
+                    if(ext_file[1] != "xls" || ext_file[1] != "xlsx" || ext_file[1] != "XLS" || ext_file[1] != "XLSX"){  this.showDialog("El documento "+Nombre_del_archivo_de_carga+" no es valido, solo se permiten xls y xlsx."); }
+                    else if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
                        console.log("Bloquea Send");
 
                        console.log("Campos con error = "+this.campos_con_error);
@@ -607,7 +548,6 @@ export class UploadBaseComponent implements OnInit {
 
                        this.campos_con_error.splice(0);
                        console.log("Total de Errores:"+this.campos_con_error.length);
-
 
                     }else{ //Si no hay errores entra a envio
                      console.log("Inserta Send");
@@ -676,9 +616,7 @@ export class UploadBaseComponent implements OnInit {
 
                     }//Termina validacion de campos vacios
 
-
                   });
-
 
 
 
@@ -718,7 +656,6 @@ getValidaCampo(campo, valor){
         return '0';
       }else{ //Campo No Vacio
 
-
         if(campo == "Fuente Obtención"){ //Valida Area de Atencion
           console.log("Validacion de Fuente Obtención");
           //console.log("valor.length = " + valor);
@@ -727,7 +664,6 @@ getValidaCampo(campo, valor){
            }else{
             return valor;
            }
-
 
         }else if(campo == "AreaInteres"){ //Valida Area de Atencion
           console.log("Validacion de Area de Atencion");
@@ -738,7 +674,6 @@ getValidaCampo(campo, valor){
             return valor;
            }
 
-
         }else if(campo == "Calidad"){ //Valida Calidad
           console.log("Validacion de Calidad");
           //console.log("valor.length = " + valor);
@@ -748,7 +683,6 @@ getValidaCampo(campo, valor){
             return valor;
            }
 
-
         }else if(campo == "Campus"){ //Valida Campus
           console.log("Validacion de campus");
           //console.log("valor.length = " + valor);
@@ -757,7 +691,6 @@ getValidaCampo(campo, valor){
            }else{
             return valor;
            }
-
 
         }else if(campo == "Escuela"){ //Valida Escuela
           console.log("Validacion de Escuela");
@@ -768,7 +701,6 @@ getValidaCampo(campo, valor){
             return valor;
            }
 
-
         }else if(campo == "SubsubTipo"){ //Valida SubsubTipo
           console.log("Validacion de SubsubTipo");
           //console.log("valor.length = " + valor);
@@ -777,7 +709,6 @@ getValidaCampo(campo, valor){
            }else{
             return valor;
            }
-
 
         }else if(campo == "SubTipo"){ //Valida SubTipo
           console.log("Validacion de SubTipo");
@@ -788,7 +719,6 @@ getValidaCampo(campo, valor){
             return valor;
            }
 
-
         }else if(campo == "Campus"){ //Valida Campus
           console.log("Validacion de campus");
           //console.log("valor.length = " + valor);
@@ -797,7 +727,6 @@ getValidaCampo(campo, valor){
            }else{
             return valor;
            }
-
 
         }else if(campo == "Ciclo"){ //Valida Ciclo
           console.log("Validacion de ciclo");
@@ -808,7 +737,6 @@ getValidaCampo(campo, valor){
             return valor;
            }
 
-
         }else if(campo == "Carrera"){ //Valida Carrera
         console.log("Validacion de carrera");
         //console.log("valor.length = " + valor);
@@ -817,7 +745,6 @@ getValidaCampo(campo, valor){
          }else{
           return valor;
          }
-
 
       }else if(campo == "CorreoElectronico"){ //Si es campo CorreoElectronico
           console.log("En validacion de Correo");
@@ -859,10 +786,8 @@ getValidaCampo(campo, valor){
         }
 
 
-
         }else if(campo == "Telefono"){ //Si es campo Telefono
           console.log("En validacion de Telefono");
-
 
           if(!isNaN(valor)){ //Verifica si es numero
               console.log("Es numero");
@@ -898,7 +823,6 @@ getValidaCampo(campo, valor){
       }
 
 }
-
 
  getObjects(obj, key, val) {
   var objects = [];
@@ -953,3 +877,4 @@ getValidaCampo(campo, valor){
 }
 
 }
+
