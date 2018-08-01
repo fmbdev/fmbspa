@@ -288,7 +288,8 @@ export class UploadBaseComponent implements OnInit {
 
                     //var archivo_cargado = XLSX;
                     //console.log("archivo_cargado = "+archivo_cargado);
-                    var carreraTM = this.getValidaCampo("Carrera", this.getObjects(this.carreras, 'id',  key.carrera));
+
+                   
 
                     var escuelaTM = this.getObjects(this.escuelas_empresas, 'escuelaID', key.escuela_de_procedencia);
                    // console.log("key.campus = "+key.campus);
@@ -323,18 +324,29 @@ export class UploadBaseComponent implements OnInit {
                     if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
 
                    // console.log("cicloTM[0].crmit_name - "+cicloTM[0]);
+                    var cicloCampo = this.getValidaCampo("Ciclo",key.ciclo);
+                    console.log("cicloCampo");
+                    console.log(cicloCampo);
+                    let ciclo = "ciclo";
+                    if(cicloCampo!="0"){
+                      console.log("cicloCampo!=false");
+                      let ciclo =  cicloTM[0].crmit_name;
+                      var ciclo_mocho = ciclo.split('-');
+                      var cicloC = "C" + ciclo_mocho[1];
+                      var GUIDCiclo = cicloTM[0].crmit_codigounico;
+                    }
 
-                    var ciclo =  cicloTM[0].crmit_name;
+                    var carreraCampo = this.getValidaCampo("Carrera",  key.carrera);
+                    var carreraTM = this.getObjects(this.carreras, 'id',  key.carrera);
 
-                  //var ciclo =  (cicloTM[0].crmit_name !== undefined)? "" : cicloTM[0].crmit_name;
+                    
 
-                    var ciclo_mocho = ciclo.split('-');
-                    var cicloC = "C" + ciclo_mocho[1];
-                    var GUIDCiclo = this.getValidaCampo("Ciclo", cicloTM[0].crmit_codigounico);
+                    if(carreraCampo!="0"){
+                      console.log("carreraCampo!=0");
+                      var GUIDCarrera = carreraTM[0].codigounico;
+                    } 
 
-
-
-                    var GUIDCarrera = carreraTM[0].codigounico;
+                    
 
                     var TCarrera=carreraTM[0].name;
 
@@ -346,7 +358,7 @@ export class UploadBaseComponent implements OnInit {
                     var campus = campusTM[0].crmi_name;
 
 
-                    var GUIDCiclo = cicloTM[0].crmit_codigounico;
+                   
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
                     var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
 
@@ -403,10 +415,7 @@ export class UploadBaseComponent implements OnInit {
                     }
                    // console.log("");console.log("");console.log("");
 
-                   if(cicloTM.length<1){
-                    this.showDialog("Formato Invalido de Ciclo");
-                    return;
-                  }
+                 
                   if(carreraTM.length<1){
                     this.showDialog("Formato Invalido de Carrera");
                     return;
@@ -417,7 +426,7 @@ export class UploadBaseComponent implements OnInit {
                   }
 
 
-                   var ciclo = cicloTM[0].crmit_name;
+                  // var ciclo = cicloTM[0].crmit_name;
                    var valor_ciclo = "";
 
                   // console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
@@ -507,7 +516,6 @@ export class UploadBaseComponent implements OnInit {
                       "GUIDNivelInteres": GUIDNivelInteres,
                       "Modalidad": Modalidad,
                       "GUIDModalidad": GUIDModalidad,
-
 
                     };
 
@@ -648,7 +656,7 @@ getValidaCampo(campo, valor){
       if(valor == "" || valor == null){ //Campo Vacio
 
         this.campos_con_error.push(" "+campo);
-
+        return '0';
       }else{ //Campo No Vacio
 
         if(campo == "Ciclo"){ //Valida Carrera
