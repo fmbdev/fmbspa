@@ -216,6 +216,8 @@ export class UploadBaseComponent implements OnInit {
   {
       var colValues =[];
       var first_sheet_name = workbook.SheetNames[0];
+      console.log("Hoja = " + first_sheet_name);
+     // console.log("XLSX = " + XLSX.utils);
       var worksheet = workbook.Sheets[first_sheet_name];
       var cells = Object.keys(worksheet);
       for (var i = 0; i < Object.keys(cells).length; i++)
@@ -284,15 +286,18 @@ export class UploadBaseComponent implements OnInit {
 
                   filas.forEach((key:Upload) => {
 
-                    var carreraTM = this.getObjects(this.carreras, 'id', key.carrera);
+                    //var archivo_cargado = XLSX;
+                    //console.log("archivo_cargado = "+archivo_cargado);
+                    var carreraTM = this.getValidaCampo("Carrera", this.getObjects(this.carreras, 'id',  key.carrera));
+
                     var escuelaTM = this.getObjects(this.escuelas_empresas, 'escuelaID', key.escuela_de_procedencia);
-                    console.log("key.campus = "+key.campus);
-                    var campusTM = this.getObjects(this.campus, 'crmi_name', this.getValidaCampo("Campus", key.campus));
-                    var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
+                   // console.log("key.campus = "+key.campus);
+                    var campusTM = this.getObjects(this.campus, 'crmi_name',  key.campus);
+                    var cicloTM =  this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
                     var subtipoTM = this.getObjects( this.sub_tipos,'crmit_subname',key.sub_tipo);
                     var subsubtipotTM = this.getObjects( this.subsub_tipos,'crmit_subsubname',key.sub_sub_tipo);
 
-                    var keyCelular = key.Teléfono_Celular;
+                    var keyCelular = this.getValidaCampo("Telefono Celular", key.Teléfono_Celular);
                     var keyTelefono = this.getValidaCampo("Telefono", key.Teléfono_Domicilio);
                     var skeyTelefono =  String(keyTelefono);
                     var skeyCelular =  String(keyCelular);
@@ -313,17 +318,24 @@ export class UploadBaseComponent implements OnInit {
                           TelefonoCasaPredictivo = '9'+skeyTelefono;
                         }
 
-                    var   Genero = key.Sexo;
+                    var Genero = this.getValidaCampo("Genero", key.Sexo);
 
                     if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
 
                    // console.log("cicloTM[0].crmit_name - "+cicloTM[0]);
-                    var ciclo = (cicloTM[0].crmit_name !== undefined)? "" : cicloTM[0].crmit_name;
+
+                    var ciclo =  cicloTM[0].crmit_name;
+
+                  //var ciclo =  (cicloTM[0].crmit_name !== undefined)? "" : cicloTM[0].crmit_name;
+
                     var ciclo_mocho = ciclo.split('-');
                     var cicloC = "C" + ciclo_mocho[1];
-                    var GUIDCiclo = cicloTM[0].crmit_codigounico;
+                    var GUIDCiclo = this.getValidaCampo("Ciclo", cicloTM[0].crmit_codigounico);
 
-                    var GUIDCarrera=carreraTM[0].codigounico;
+
+
+                    var GUIDCarrera = carreraTM[0].codigounico;
+
                     var TCarrera=carreraTM[0].name;
 
                     var GUIDEscuelaEmpresa = GUIDEscuelaEmpresa_;
@@ -334,7 +346,7 @@ export class UploadBaseComponent implements OnInit {
                     var campus = campusTM[0].crmi_name;
 
 
-                    var GUIDCiclo=cicloTM[0].crmit_codigounico;
+                    var GUIDCiclo = cicloTM[0].crmit_codigounico;
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
                     var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
 
@@ -371,7 +383,6 @@ export class UploadBaseComponent implements OnInit {
                     }
 
 
-
                     var EscuelaEmpresa_ = "";
                     var GUIDEscuelaEmpresa_ = "";
                     var GUIDCalidadid_ = "";
@@ -391,6 +402,19 @@ export class UploadBaseComponent implements OnInit {
                       }
                     }
                    // console.log("");console.log("");console.log("");
+
+                   if(cicloTM.length<1){
+                    this.showDialog("Formato Invalido de Ciclo");
+                    return;
+                  }
+                  if(carreraTM.length<1){
+                    this.showDialog("Formato Invalido de Carrera");
+                    return;
+                  }
+                  if(campusTM.length<1){
+                    this.showDialog("Formato Invalido de Campus");
+                    return;
+                  }
 
 
                    var ciclo = cicloTM[0].crmit_name;
@@ -466,18 +490,18 @@ export class UploadBaseComponent implements OnInit {
                       "TelefonoCasa":skeyTelefono,
                       "TelefonoCasaPredictivo":TelefonoCasaPredictivo,
                       "AreaInteres":this.getValidaCampo("AreaInteres", key.area_atención),
-                      "Campus": key.campus,
+                      "Campus": this.getValidaCampo("Campus", key.campus),
                       "CorreoElectronico": this.getValidaCampo("CorreoElectronico", key.Correo_Electronico),
                       "GUIDCampus":GUIDCampus,
-                      "Carrera":this.getValidaCampo("Carrera", TCarrera),
+                      "Carrera": TCarrera,
                       "GUIDCarrera":GUIDCarrera,
                       "Ciclo": this.getValidaCampo("Ciclo", ciclo),
                       "GUIDCiclo":GUIDCiclo,
-                      "EscuelaEmpresa":this.getValidaCampo("EscuelaEmpresa", EscuelaEmpresa_),
+                      "EscuelaEmpresa":this.getValidaCampo("Escuela de Procedencia", EscuelaEmpresa_),
                       "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa_,
                       "SubSubTipo":this.getValidaCampo("SubsubTipo", key.sub_sub_tipo),
                       "GUIDSubSubTipo":GUIDSubSubTipo,
-                      "SubTipo":key.sub_tipo,
+                      "SubTipo":this.getValidaCampo("SubTipo", key.sub_tipo),
                       "GUIDSubTipo":GUIDSubTipo,
                       "Nivel": NivelInteres,
                       "GUIDNivelInteres": GUIDNivelInteres,
@@ -627,15 +651,66 @@ getValidaCampo(campo, valor){
 
       }else{ //Campo No Vacio
 
-      //Valida Validacion de correo y telefono
-        if(campo == "CorreoElectronico"){ //Si es campo CorreoElectronico
-          //console.log("En validacion de Correo");
+        if(campo == "Ciclo"){ //Valida Carrera
+          console.log("Validacion de ciclo");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "Carrera"){ //Valida Carrera
+        console.log("Validacion de carrera");
+        //console.log("valor.length = " + valor);
+        if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+          this.campos_con_error.push(" "+campo);
+         }else{
+          return valor;
+         }
+
+
+      }else if(campo == "CorreoElectronico"){ //Si es campo CorreoElectronico
+          console.log("En validacion de Correo");
 
            if(LandingValidation.ValidacionEmail(valor) != null){
             this.campos_con_error.push(" "+campo);
            }else{
              return valor;
            }
+
+        }else if(campo == "Telefono Celular"){
+          console.log("En validacion de Telefono Celular");
+
+          if(!isNaN(valor)){ //Verifica si es numero
+            console.log("Es numero");
+            var v = String(valor);
+
+              if(v.length == 10){ //Valida el numero de caracteres, debe llevar 10
+               console.log("Es un valor permitido global");
+
+                //verifica si es nuero valido en black list
+
+                let pnnServ = this.pnnServ;
+
+                if(!pnnServ.getNumeroPermtido_pnn(String(valor))) { //Mira el json de PNN para verificar que sea un numero valido
+                    console.log("No esta permitido el numero");
+                    this.campos_con_error.push(" "+campo);
+
+                   } else {
+                    console.log("Si esta permitido el numero");
+                    return valor;
+                   }
+              }else{
+                this.campos_con_error.push(" "+campo);
+              }
+        }else{ //En caso de no ser numero
+          console.log("No es numero");
+          this.campos_con_error.push(" "+campo);
+        }
+
+
 
         }else if(campo == "Telefono"){ //Si es campo Telefono
           console.log("En validacion de Telefono");
