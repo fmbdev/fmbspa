@@ -11,6 +11,11 @@ import 'rxjs/Rx';
 import * as XLSX from 'xlsx';
 
 import { SendService } from '../providers/send.service';
+import { PnnService } from '../providers/pnn.service';
+
+import { LandingValidation } from '../validations/landing.validations';
+import { LandingService } from '../services/landing.service';
+
 
 import { Ciclo } from '../interfaces/ciclo';
 import { Campus } from '../interfaces/campus';
@@ -64,15 +69,21 @@ export class UploadBaseSisComponent implements OnInit {
   modalidades: Modalidad[] = [];
   carreras: Carrera[] = [];
   campusCarreras: CampusCarrera[] = [];
+  campos_con_error = [];
 
 
-  constructor(private sendServ: SendService, public dialog: MatDialog, private cicloServ: CicloService,
-    private campusServ: CampusService,
-    private campusCarreraServ: CampusCarreraService,
-    private interesServ: InteresService,
-    private modalidadServ: ModalidadService,
 
-    private carreraServ: CarreraService) {
+  constructor(
+                private pnnServ: PnnService,
+                private sendServ: SendService,
+                public dialog: MatDialog,
+                private cicloServ: CicloService,
+                private campusServ: CampusService,
+                private campusCarreraServ: CampusCarreraService,
+                private interesServ: InteresService,
+                private modalidadServ: ModalidadService,
+                private carreraServ: CarreraService) {
+
     this.fetch((data) => {
       this.rows = data;
     });
@@ -174,8 +185,8 @@ export class UploadBaseSisComponent implements OnInit {
     let col = '["Num_Persona","id_campus","nombre_corto_telemarketer","ciclo","lista_de_seguimiento","nombre_corto_asesor","fuente_obtención","clave_de_sis_carrera"]';
 
     let cColum = JSON.stringify(colValues);
-    console.log(cColum);
-    console.log(col);
+    //console.log(cColum);
+    //console.log(col);
     if(col == cColum){
       return true;
     }else{
@@ -205,7 +216,7 @@ export class UploadBaseSisComponent implements OnInit {
               var worksheet = workbook.Sheets[first_sheet_name];
               let filas = XLSX.utils.sheet_to_json(worksheet,{raw:true});
               count =  Object.keys(filas).length;
-              console.log(this.checkCols(workbook));
+             // console.log(this.checkCols(workbook));
 
               if(!this.checkCols(workbook)){
                   this.showDialog("Los titulos de la columna no coinciden");
@@ -222,64 +233,68 @@ export class UploadBaseSisComponent implements OnInit {
 
             filas.forEach((key: UploadSis) => {
 
+
+               var telemarketerCampo = this.getValidaCampo("Telemarketer", key.nombre_corto_telemarketer);
+               var nombre_corto_asesorCampo = this.getValidaCampo("Nombre_corto_asesor", key.nombre_corto_asesor);
+               var fuente_obtencionCampo = this.getValidaCampo("Fuente Obtención", key.fuente_obtención);
+               var lista_de_seguimientoCampo = this.getValidaCampo("ListadeSeguimiento", key.lista_de_seguimiento);
+              
+
+
+                var campusCampo = this.getValidaCampo("Campus", key.id_campus);
+
+                if(campusCampo != "0"){
                 var campusTM = this.getObjects(this.campus, 'crmit_codigounico', key.id_campus);
+                }
+
+
                 var cicloTM = this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
+
+                var carreraCampo =  this.getValidaCampo("Carrera", key.clave_de_sis_carrera);
+
+                console.log("carreraCampo: " + key.clave_de_sis_carrera);
+
+                if(carreraCampo != "0"){
                 var carreraTM = this.getObjects(this.carreras, 'id', key.clave_de_sis_carrera);
-
-                //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
-                if(cicloTM.length<1){
-                  this.showDialog("Formato Invalido de Ciclo");
-                  return;
-                } 
-                if(carreraTM.length<1){
-                  this.showDialog("Formato Invalido de Carrera");
-                  return;
-                }
-                if(campusTM.length<1){
-                  this.showDialog("Formato Invalido de Campus");
-                  return;
-                }
-                
-                var ciclo = cicloTM[0].crmit_name;
-                var valor_ciclo = "";
-
-                console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
-
-
-                if(ciclo == "19-1"){
-                  valor_ciclo = "C3";
-                }else if(ciclo == "20-1"){
-                  valor_ciclo = "C3";
-                }else if(ciclo == "20-2"){
-                  valor_ciclo = "C1";
-                }else if(ciclo == "18-3"){
-                  valor_ciclo = "C2";
-                }
-
-               /* for(var i = 0; i < this.ciclos.length ; i++){
-                  if(this.ciclos[i] !== undefined){
-                    if(ciclo == this.ciclos[0].crmit_name && this.ciclos[i].crmit_ciclovigenteventas){
-
-                    console.log("ciclo: "+this.ciclos[i].crmit_name);
-                    ciclo = this.ciclos[i].crmit_name;
-                    console.log("nombreventas: "+this.ciclos[i].nombreventas);
-                    valor_ciclo = this.ciclos[i].nombreventas;
-                    }
-                  }
-                }*/
-
-
-               // ciclo = valor_ciclo;
-
-                var cicloC = valor_ciclo;
-
-                var GUIDCiclo = cicloTM[0].crmit_codigounico;
-
-                var campus = campusTM[0].crmi_name;
-                var GUIDCampus = campusTM[0].crmit_tb_campusid;
-
                 var GUIDCarrera = carreraTM[0].codigounico;
                 var TCarrera = carreraTM[0].name;
+                }
+                //var nivelTM = this.getObjects(this.niveles, 'id', campusTM[0].crmit_tb_campusid);
+
+                var cicloCampo = this.getValidaCampo("Ciclo", key.ciclo);
+
+
+                var valor_ciclo = "";
+
+                if(cicloCampo != "0"){
+                  var ciclo = cicloTM[0].crmit_name;
+
+
+                    if(ciclo == "19-1"){
+                      valor_ciclo = "C3";
+                    }else if(ciclo == "20-1"){
+                      valor_ciclo = "C3";
+                    }else if(ciclo == "20-2"){
+                      valor_ciclo = "C1";
+                    }else if(ciclo == "18-3"){
+                      valor_ciclo = "C2";
+                    }
+
+                }
+
+
+
+
+
+
+                if(cicloCampo != "0"){
+                  var GUIDCiclo = cicloTM[0].crmit_codigounico;
+                }
+
+                if(campusCampo != "0"){
+                var campus = campusTM[0].crmi_name;
+                var GUIDCampus = campusTM[0].crmit_tb_campusid;
+                }
 
                 /* obtener nivel y modalidad */
                 var NivelInteres = "" ;
@@ -318,28 +333,28 @@ export class UploadBaseSisComponent implements OnInit {
 
                   if (this.rows[i].CAMPUS == campus && this.rows[i].BL == NivelInteres && this.rows[i].CICLO == valor_ciclo) {
 
-                    console.log("");console.log("");console.log("");
-                    console.log("---------------------------------------------------");
-                    console.log("");console.log("");
-                    console.log("IdCampus: "+GUIDCampus);
-                    console.log("NombreCampus:"+campus);
+                  //  console.log("");console.log("");console.log("");
+                  //  console.log("---------------------------------------------------");
+                  //  console.log("");console.log("");
+                  //  console.log("IdCampus: "+GUIDCampus);
+                  //  console.log("NombreCampus:"+campus);
 
-                    console.log("Modalidad: "+Modalidad);
-                    console.log("NivelInteres: "+NivelInteres);
+                  //  console.log("Modalidad: "+Modalidad);
+                  //  console.log("NivelInteres: "+NivelInteres);
 
                     Team = this.rows[i].TEAM;
-                    console.log("TEAM: "+Team);
+                  //  console.log("TEAM: "+Team);
                     Prioridad = parseInt(this.rows[i].PRIORIDAD);
-                    console.log("PRIORIDAD: "+Prioridad);
+                  //  console.log("PRIORIDAD: "+Prioridad);
                     Attemp = this.rows[i].ATTEMP;
-                    console.log("ATTEMP: "+Attemp);
-                    console.log("Ciclo:"+ciclo);
-                    console.log("");console.log("");
-                    console.log("---------------------------------------------------");
-                    console.log("");console.log("");console.log("");
-                  }else{
-
+                  //  console.log("ATTEMP: "+Attemp);
+                  //  console.log("Ciclo:"+ciclo);
+                  //  console.log("");console.log("");
+                  //  console.log("---------------------------------------------------");
+                  //  console.log("");console.log("");console.log("");
                   }
+
+
                 }
 
                 var u = localStorage.getItem('user');
@@ -354,12 +369,12 @@ export class UploadBaseSisComponent implements OnInit {
                 "GUIDFuentedeObtencion":"2489dd13-6072-e211-b35f-6cae8b2a4ddc",
                 "Attemp": Attemp,
                 "FuenteNegocio": this.Tipo.value,
-                "NumPersona": key.Num_Persona,
+                "NumPersona": this.getValidaCampo("Num_Persona", key.Num_Persona),
                 "Prioridad": Prioridad,
                 "Team": Team,
                 "Ciclo":ciclo,
                 "GUIDCiclo": GUIDCiclo,
-                "Carrera": TCarrera,
+                "Carrera":   TCarrera,
                 "GUIDCarrera": GUIDCarrera,
                 "Nivel": NivelInteres,
                 "GUIDNivelInteres": GUIDNivelInteres,
@@ -371,51 +386,91 @@ export class UploadBaseSisComponent implements OnInit {
               };
 
 
-              setTimeout(() => {
-                this.sendServ.sendData7(obj2)
-                  .subscribe(
+              if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
+                console.log("Bloquea Send");
 
-                    (res: any) => {
-                      console.log("res");
-                      console.log("res = "+res.status);
+                console.log("Campos con error = "+this.campos_con_error);
+                this.showDialog("Hay datos incompletos o incorrectos en las columnas: "+this.campos_con_error+" .");
 
-                      if (res.status == 200) {
-                        x=x+1;
-                        if (count == x) {
-                          this.showDialog("Los datos se han guardado correctamente.");
-                          this.newdata.filename = "";
-                          this.Tipo.value = "";
-                          console.log("x=x+1 Guardado x = "+x);
-                        }
-                      } else {
-                        x=x-1;
-                        this.showDialog("Error al guardar el registro");
-                        console.log("x=x-1 Error x = "+x);
-
-                      }
-                    },
-                    error => {
-
-                      console.log("Errores = " + error.status);
+                this.campos_con_error.splice(0);
+                console.log("Total de Errores:"+this.campos_con_error.length);
 
 
-                      if (error.status === 400) {
-                        console.warn(error._body);
-                        this.showDialog("Error al guardar el registro");
-                        x--;
-                        console.log("x-- Error x = "+x);
-                      }
-                      else if (error.status === 500) {
-                        console.warn(error._body);
-                        this.showDialog("Error al guardar el registro");
-                      }else{
-                        console.warn(error._body);
-                        this.showDialog("Error en la transaccion");
-                      }
-                    })
-              }, f);
+             }else{ //Si no hay errores entra a envio
+              console.log("Inserta Send");
+
+
+              console.log("");console.log("");console.log("");
+              console.log("---------------------------------------------------");
+              console.log("");console.log("");
+              console.log("IdCampus: "+GUIDCampus);
+              console.log("NombreCampus:"+campus);
+              console.log("Modalidad: "+Modalidad);
+              console.log("NivelInteres: "+NivelInteres);
+              console.log("TEAM: "+Team);
+              console.log("PRIORIDAD: "+Prioridad);
+              console.log("ATTEMP: "+Attemp);
+              console.log("Ciclo:"+ciclo);
+              console.log("");console.log("");
+              console.log("---------------------------------------------------");
+              console.log("");console.log("");console.log("");
+
+                      //Envio de los datos
+                      setTimeout(() => {
+                        this.sendServ.sendData7(obj2)
+                          .subscribe(
+
+                            (res: any) => {
+                              console.log("res");
+                              console.log("res = "+res.status);
+
+                              if (res.status == 200) {
+                                x=x+1;
+                                if (count == x) {
+                                  this.showDialog("Los datos se han guardado correctamente.");
+                                  this.newdata.filename = "";
+                                  this.Tipo.value = "";
+                                  console.log("x=x+1 Guardado x = "+x);
+                                }
+                              } else {
+                                x=x-1;
+                                this.showDialog("Error al guardar el registro");
+                                console.log("x=x-1 Error x = "+x);
+
+                              }
+                            },
+                            error => {
+
+                              console.log("Errores = " + error.status);
+
+
+                              if (error.status === 400) {
+                                console.warn(error._body);
+                                this.showDialog("Error al guardar el registro");
+                                x--;
+                                console.log("x-- Error x = "+x);
+                              }
+                              else if (error.status === 500) {
+                                console.warn(error._body);
+                                this.showDialog("Error al guardar el registro");
+                              }else{
+                                console.warn(error._body);
+                                this.showDialog("Error en la transaccion");
+                              }
+                            })
+                      }, f);
+
+
+
+                }//Termina validacion de campos vacios
+
+
+
+
               });
-                  let total;
+
+
+               /*   let total;
                   total = f * count;
 
                   console.log('X = ' + x);
@@ -426,7 +481,7 @@ export class UploadBaseSisComponent implements OnInit {
                           }else{
 
                           }
-                  }, total);
+                  }, total);*/
 
           }
 
@@ -434,6 +489,193 @@ export class UploadBaseSisComponent implements OnInit {
 
   }
 
+
+
+//Funcion para validacion de campo
+
+getValidaCampo(campo, valor){
+
+  if(valor == "" || valor == null){ //Campo Vacio
+
+    this.campos_con_error.push(" "+campo);
+    return '0';
+  }else{ //Campo No Vacio
+
+
+    if(campo == "Fuente Obtención"){ //Valida Area de Atencion
+      console.log("Validacion de Fuente Obtención");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "AreaInteres"){ //Valida Area de Atencion
+      console.log("Validacion de Area de Atencion");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "Calidad"){ //Valida Calidad
+      console.log("Validacion de Calidad");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "Escuela"){ //Valida Escuela
+      console.log("Validacion de Escuela");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "SubsubTipo"){ //Valida SubsubTipo
+      console.log("Validacion de SubsubTipo");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "SubTipo"){ //Valida SubTipo
+      console.log("Validacion de SubTipo");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "Campus"){ //Valida Campus
+      console.log("Validacion de campus");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor == undefined || valor.length == '0' || valor == null || valor == "" ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "Ciclo"){ //Valida Ciclo
+      console.log("Validacion de ciclo");
+      //console.log("valor.length = " + valor);
+      if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+        this.campos_con_error.push(" "+campo);
+       }else{
+        return valor;
+       }
+
+
+    }else if(campo == "Carrera"){ //Valida Carrera
+    console.log("Validacion de carrera");
+    //console.log("valor.length = " + valor);
+    if(valor.length < 1 || valor.length == 0 || valor == undefined || valor.length == '0' || valor == null || valor == "" ){
+      this.campos_con_error.push(" "+campo);
+     }else{
+      return valor;
+     }
+
+
+  }else if(campo == "CorreoElectronico"){ //Si es campo CorreoElectronico
+      console.log("En validacion de Correo");
+
+       if(LandingValidation.ValidacionEmail(valor) != null){
+        this.campos_con_error.push(" "+campo);
+       }else{
+         return valor;
+       }
+
+    }else if(campo == "Telefono Celular"){
+      console.log("En validacion de Telefono Celular");
+
+      if(!isNaN(valor)){ //Verifica si es numero
+        console.log("Es numero");
+        var v = String(valor);
+
+          if(v.length == 10){ //Valida el numero de caracteres, debe llevar 10
+           console.log("Es un valor permitido global");
+
+            //verifica si es nuero valido en black list
+
+            let pnnServ = this.pnnServ;
+
+            if(!pnnServ.getNumeroPermtido_pnn(String(valor))) { //Mira el json de PNN para verificar que sea un numero valido
+                console.log("No esta permitido el numero");
+                this.campos_con_error.push(" "+campo);
+
+               } else {
+                console.log("Si esta permitido el numero");
+                return valor;
+               }
+          }else{
+            this.campos_con_error.push(" "+campo);
+          }
+    }else{ //En caso de no ser numero
+      console.log("No es numero");
+      this.campos_con_error.push(" "+campo);
+    }
+
+
+
+    }else if(campo == "Telefono"){ //Si es campo Telefono
+      console.log("En validacion de Telefono");
+
+
+      if(!isNaN(valor)){ //Verifica si es numero
+          console.log("Es numero");
+          var v = String(valor);
+
+            if(v.length == 10){ //Valida el numero de caracteres, debe llevar 10
+             console.log("Es un valor permitido global");
+
+              //verifica si es nuero valido en black list
+
+              let pnnServ = this.pnnServ;
+
+              if(!pnnServ.getNumeroPermtido_pnn(String(valor))) { //Mira el json de PNN para verificar que sea un numero valido
+                  console.log("No esta permitido el numero");
+                  this.campos_con_error.push(" "+campo);
+
+                 } else {
+                  console.log("Si esta permitido el numero");
+                  return valor;
+                 }
+            }else{
+              this.campos_con_error.push(" "+campo);
+            }
+      }else{ //En caso de no ser numero
+        console.log("No es numero");
+        this.campos_con_error.push(" "+campo);
+      }
+
+    }else{ //Si cumplen las validaciones retorna el valor
+
+      return valor;
+    }
+  }
+
+}
+
+
+
+
+//Funcion para validar coincidencia de valor de columna con catalogo
   getObjects(obj, key, val) {
     var objects = [];
     for (var i in obj) {

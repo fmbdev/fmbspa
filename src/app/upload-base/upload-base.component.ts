@@ -288,10 +288,12 @@ export class UploadBaseComponent implements OnInit {
 
                     //var archivo_cargado = XLSX;
                     //console.log("archivo_cargado = "+archivo_cargado);
-                    var carreraTM = this.getValidaCampo("Carrera", this.getObjects(this.carreras, 'id',  key.carrera));
+
+
+                    var escuelaCampo =  key.escuela_de_procedencia;
 
                     var escuelaTM = this.getObjects(this.escuelas_empresas, 'escuelaID', key.escuela_de_procedencia);
-                   // console.log("key.campus = "+key.campus);
+                    // console.log("key.campus = "+key.campus);
                     var campusTM = this.getObjects(this.campus, 'crmi_name',  key.campus);
                     var cicloTM =  this.getObjects(this.ciclos, 'crmit_name', key.ciclo);
                     var subtipoTM = this.getObjects( this.sub_tipos,'crmit_subname',key.sub_tipo);
@@ -324,31 +326,49 @@ export class UploadBaseComponent implements OnInit {
 
                    // console.log("cicloTM[0].crmit_name - "+cicloTM[0]);
 
-                    var ciclo =  cicloTM[0].crmit_name;
-
-                  //var ciclo =  (cicloTM[0].crmit_name !== undefined)? "" : cicloTM[0].crmit_name;
-
-                    var ciclo_mocho = ciclo.split('-');
-                    var cicloC = "C" + ciclo_mocho[1];
-                    var GUIDCiclo = this.getValidaCampo("Ciclo", cicloTM[0].crmit_codigounico);
+                    var cicloCampo = this.getValidaCampo("Ciclo",key.ciclo);
 
 
+                    if(cicloCampo!="0"){
+                      console.log("cicloCampo!=false");
+                      let ciclo =  cicloTM[0].crmit_name;
+                      var GUIDCiclo = cicloTM[0].crmit_codigounico;
+                    }
 
-                    var GUIDCarrera = carreraTM[0].codigounico;
+                    var carreraCampo =  key.carrera;
 
-                    var TCarrera=carreraTM[0].name;
+
+
+                      if(carreraCampo!="0"){
+                        console.log("carreraCampo!=0");
+
+                      var carreraTM = this.getObjects(this.carreras, 'id',  key.carrera);
+                      var GUIDCarrera = carreraTM[0].codigounico;
+                      var TCarrera=carreraTM[0].name;
+                    }
+
+
 
                     var GUIDEscuelaEmpresa = GUIDEscuelaEmpresa_;
-                   // var TEscuelaEmpresa=escuelaTM[0].Name;
+                    // var TEscuelaEmpresa=escuelaTM[0].Name;
                     var GUIDCalidad=GUIDCalidadid_;
 
+                    var campusCampo =  this.getValidaCampo("Campus",  key.campus);
+
+                    if(campusCampo!="0"){
                     var GUIDCampus = campusTM[0].crmit_tb_campusid;
                     var campus = campusTM[0].crmi_name;
+                    }
 
-
-                    var GUIDCiclo = cicloTM[0].crmit_codigounico;
+                    var subtipoCampo = this.getValidaCampo("SubTipo", key.sub_tipo);
+                    if(subtipoCampo!="0"){
                     var GUIDSubTipo = subsubtipotTM[0].crmit_subtipoactividadid;
+                    }
+
+                    var subsubtipoCampo = this.getValidaCampo("SubsubTipo", key.sub_sub_tipo);
+                    if(subsubtipoCampo!="0"){
                     var GUIDSubSubTipo = subtipoTM[0].crmit_codigounico;
+                    }
 
                     var u = localStorage.getItem('user');
                     var data = JSON.parse(u);
@@ -396,42 +416,42 @@ export class UploadBaseComponent implements OnInit {
                         EscuelaEmpresa_ = this.rowss_emp[i].Name;
                         //console.log("EscuelaEmpresa_ : "+EscuelaEmpresa_);
                         GUIDEscuelaEmpresa_ = this.rowss_emp[i].crmit_empresaescuela;
-                        //console.log("GUIDEscuelaEmpresa_ : "+GUIDEscuelaEmpresa_);
+                            //console.log("GUIDEscuelaEmpresa_ : "+GUIDEscuelaEmpresa_);
                         GUIDCalidadid_ = this.rowss_emp[i].crmit_calidadid;
                         //console.log("GUIDCalidadid_ :"+GUIDCalidadid_);
                       }
                     }
                    // console.log("");console.log("");console.log("");
 
-                   if(cicloTM.length<1){
-                    this.showDialog("Formato Invalido de Ciclo");
-                    return;
-                  }
-                  if(carreraTM.length<1){
+
+                /*  if(carreraTM.length<1){
                     this.showDialog("Formato Invalido de Carrera");
                     return;
                   }
                   if(campusTM.length<1){
                     this.showDialog("Formato Invalido de Campus");
                     return;
-                  }
+                  }*/
 
 
-                   var ciclo = cicloTM[0].crmit_name;
                    var valor_ciclo = "";
 
                   // console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
 
+                  if(cicloCampo != "0"){
+                    var ciclo = cicloTM[0].crmit_name;
 
-                   if(ciclo == "19-1"){
-                     valor_ciclo = "C3";
-                   }else if(ciclo == "20-1"){
-                     valor_ciclo = "C3";
-                   }else if(ciclo == "20-2"){
-                     valor_ciclo = "C1";
-                   }else if(ciclo == "18-3"){
-                     valor_ciclo = "C2";
-                   }
+
+                     if(ciclo == "19-1"){
+                       valor_ciclo = "C3";
+                     }else if(ciclo == "20-1"){
+                       valor_ciclo = "C3";
+                     }else if(ciclo == "20-2"){
+                       valor_ciclo = "C1";
+                     }else if(ciclo == "18-3"){
+                       valor_ciclo = "C2";
+                     }
+                  }
 
                     let Team = "";
                     let Prioridad = 0;
@@ -462,12 +482,13 @@ export class UploadBaseComponent implements OnInit {
                       }
                     }
 
-                                       var GUIDUsuario = localStorage.getItem('UserId');
-
+                    var GUIDUsuario = localStorage.getItem('UserId');
                     var u = localStorage.getItem('user');
                     var data = JSON.parse(u);
                     var nom_usu = data.fullname;
-                    var guidcalidad  = GUIDCalidadid_;
+                    var guidcalidad  =  GUIDCalidadid_;
+                    var fuente_obtecionCampo = this.getValidaCampo("Fuente Obtención", key.fuente_obtención);
+
 
 
                     var obj2 = {
@@ -484,30 +505,29 @@ export class UploadBaseComponent implements OnInit {
                       "ApellidoPaterno": this.getValidaCampo("ApellidoPaterno", key.Apellido_Paterno),
                       "Genero":Genero,
                       "Calidad":this.getValidaCampo("Calidad", key.calidad),
-                      "GUIDCalidad":GUIDCalidadid_,
+                      "GUIDCalidad":guidcalidad,
                       "Telefono": skeyCelular,
                       "TelefonoPredictivo":TelefonoPredictivo,
                       "TelefonoCasa":skeyTelefono,
                       "TelefonoCasaPredictivo":TelefonoCasaPredictivo,
                       "AreaInteres":this.getValidaCampo("AreaInteres", key.area_atención),
-                      "Campus": this.getValidaCampo("Campus", key.campus),
+                      "Campus":  key.campus,
                       "CorreoElectronico": this.getValidaCampo("CorreoElectronico", key.Correo_Electronico),
                       "GUIDCampus":GUIDCampus,
-                      "Carrera": TCarrera,
+                      "Carrera":  this.getValidaCampo("Carrera",TCarrera),
                       "GUIDCarrera":GUIDCarrera,
-                      "Ciclo": this.getValidaCampo("Ciclo", ciclo),
+                      "Ciclo": ciclo,
                       "GUIDCiclo":GUIDCiclo,
-                      "EscuelaEmpresa":this.getValidaCampo("Escuela de Procedencia", EscuelaEmpresa_),
-                      "GUIDEscuelaEmpresa":GUIDEscuelaEmpresa_,
-                      "SubSubTipo":this.getValidaCampo("SubsubTipo", key.sub_sub_tipo),
+                      "EscuelaEmpresa": EscuelaEmpresa_,
+                      "GUIDEscuelaEmpresa":this.getValidaCampo("Escuela",GUIDEscuelaEmpresa_),
+                      "SubSubTipo": key.sub_sub_tipo,
                       "GUIDSubSubTipo":GUIDSubSubTipo,
-                      "SubTipo":this.getValidaCampo("SubTipo", key.sub_tipo),
+                      "SubTipo": key.sub_tipo,
                       "GUIDSubTipo":GUIDSubTipo,
                       "Nivel": NivelInteres,
                       "GUIDNivelInteres": GUIDNivelInteres,
                       "Modalidad": Modalidad,
                       "GUIDModalidad": GUIDModalidad,
-
 
                     };
 
@@ -642,16 +662,97 @@ export class UploadBaseComponent implements OnInit {
       }
   //return an array of objects according to key, value, or key and value matching
 
-
+//Funcion para validar campos
 getValidaCampo(campo, valor){
 
       if(valor == "" || valor == null){ //Campo Vacio
 
         this.campos_con_error.push(" "+campo);
-
+        return '0';
       }else{ //Campo No Vacio
 
-        if(campo == "Ciclo"){ //Valida Carrera
+
+        if(campo == "Fuente Obtención"){ //Valida Area de Atencion
+          console.log("Validacion de Fuente Obtención");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "AreaInteres"){ //Valida Area de Atencion
+          console.log("Validacion de Area de Atencion");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "Calidad"){ //Valida Calidad
+          console.log("Validacion de Calidad");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "Campus"){ //Valida Campus
+          console.log("Validacion de campus");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "Escuela"){ //Valida Escuela
+          console.log("Validacion de Escuela");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "SubsubTipo"){ //Valida SubsubTipo
+          console.log("Validacion de SubsubTipo");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "SubTipo"){ //Valida SubTipo
+          console.log("Validacion de SubTipo");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "Campus"){ //Valida Campus
+          console.log("Validacion de campus");
+          //console.log("valor.length = " + valor);
+          if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
+            this.campos_con_error.push(" "+campo);
+           }else{
+            return valor;
+           }
+
+
+        }else if(campo == "Ciclo"){ //Valida Ciclo
           console.log("Validacion de ciclo");
           //console.log("valor.length = " + valor);
           if(valor.length < 1 || valor.length == 0 || valor.length == undefined || valor.length == '0' || valor.length == null ){
