@@ -999,9 +999,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                             console.log(res.status);
                             if (res.status == 200) {
                                 this.showDialogE("Registro guardado con éxito.");
-                                this.sendServ.sendData6(sendd)// this.form.value)
-                                    .subscribe(
-                                        (res: any) => {
+                               /*) => {
                                             console.log(res.status);
                                             if (res.status == 200) {
                                                 this.showDialog("Los datos se han guardado correctamente.");
@@ -1009,7 +1007,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                                                 this.showDialogE("Error al guardar el registro.");
                                             }
                                         }
-                                    )
+                                    )*/
 
                             } else {
                                 this.showDialogE("Error al guardar el registro.");
@@ -1031,7 +1029,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                             console.log(res.status);
                             if (res.status == 200) {
                                 this.showDialogE("Registro guardado con éxito.");
-                                this.sendServ.sendData6(sendd)// this.form.value)
+                               /* this.sendServ.sendData6(sendd)// this.form.value)
                                     .subscribe(
                                         (res: any) => {
                                             console.log(res.status);
@@ -1041,7 +1039,7 @@ for(let i = 0 ; i <= this.fuentesobtencion.length ; i++ ){
                                                 this.showDialogE("Error al guardar el registro.2");
                                             }
                                         }
-                                    )
+                                    )*/
 
                             } else {
                                 this.showDialogE("Error al guardar el registro.");

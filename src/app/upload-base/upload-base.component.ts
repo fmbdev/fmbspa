@@ -28,7 +28,7 @@ import { Modalidad } from '../interfaces/modalidad';
 
 import { InteresService } from '../providers/interes.service';
 import { ModalidadService } from '../providers/modalidad.service';
-
+import { Injectable } from "@angular/core";
 import { TipoActividadService } from '../providers/tipo-actividad.service';
 import { SubsubtipoActividadService } from '../providers/subsubtipo-actividad.service';
 
@@ -39,11 +39,21 @@ import { EscuelaEmpresaService } from '../providers/escuela-empresa.service';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import * as $ from 'jquery';
+import * as jquery from 'jquery';
+//import { jQuery } from '@angular/jQuery';
+
+//declare var jQuery: any;
+
 @Component({
   selector: 'app-upload-base',
   templateUrl: './upload-base.component.html',
   styleUrls: ['./upload-base.component.scss']
 })
+
+@Injectable()
 export class UploadBaseComponent implements OnInit {
 
   @ViewChild("imgFileInput") imgFileInput: any;
@@ -78,6 +88,7 @@ export class UploadBaseComponent implements OnInit {
 
   campos_con_error = [];
 
+  public url: string;
 
   constructor(private pnnServ: PnnService,
               private sendServ: SendService,
@@ -88,7 +99,8 @@ export class UploadBaseComponent implements OnInit {
               private escuelaEmpresaServ: EscuelaEmpresaService,
               private subSubServ: SubsubtipoActividadService,
               private interesServ: InteresService,
-              private modalidadServ: ModalidadService
+              private modalidadServ: ModalidadService,
+              public http: HttpClient
 
               ) {
     this.fetch((data) => {
@@ -133,6 +145,12 @@ export class UploadBaseComponent implements OnInit {
       .subscribe(
         (data: Carrera[]) => this.carreras = data
       )
+
+ // Se obtienen los ciclos
+ this.interesServ.getAll()
+ .subscribe(
+   (data: Interes[]) => this.intereses = data
+ )
 
     // Se obtienen los ciclos
     this.cicloServ.getAll()
@@ -220,6 +238,8 @@ export class UploadBaseComponent implements OnInit {
         }
       }
       let col = '["Apellido_Paterno","Apellido_Materno","Nombre","Sexo","Teléfono_Domicilio","Teléfono_Celular","Correo_Electronico","escuela_de_procedencia","sub_tipo","sub_sub_tipo","calidad","campus","carrera","ciclo","area_atención","fuente_obtención"]';
+      //let col = '["Apellido_Paterno","Apellido_Materno","Nombre","Sexo","Telefono_Domicilio","Telefono_Celular","Correo_Electronico","escuela_de_procedencia","sub_tipo","sub_sub_tipo","calidad","campus","carrera","ciclo","area_atencion","fuente_obtencion"]';
+
       let cColum = JSON.stringify(colValues);
 
       if(col == cColum){ //compara si la pila de columnas es igual a la pila permitida, procede a ingreso
@@ -310,19 +330,45 @@ export class UploadBaseComponent implements OnInit {
                           TelefonoCasaPredictivo = '9'+skeyTelefono;
                         }
 
-                    var Genero = this.getValidaCampo("Genero", key.Sexo);
+                    let Genero = this.getValidaCampo("Genero", key.Sexo);
 
                     if(Genero=='M'){Genero='Masculino'; }else{Genero='Femenino';}
 
                    // console.log("cicloTM[0].crmit_name - "+cicloTM[0]);
 
-                    var cicloCampo = this.getValidaCampo("Ciclo",key.ciclo);
+                    //var cicloCampo = this.getValidaCampo("Ciclo",key.ciclo);
 
-                    if(cicloCampo!="0"){
-                      console.log("cicloCampo!=false");
-                      let ciclo =  cicloTM[0].crmit_name;
-                      var GUIDCiclo = cicloTM[0].crmit_codigounico;
+                    let cicloCampo = "";
+                    let GUIDCiclo = "";
+                    let valor_ciclo = "";
+                    let ciclo = "";
+
+
+
+                    for (let i = 0; i < this.ciclos.length; i++) {
+                      if (this.ciclos[i].crmit_name == key.ciclo) {
+                       // console.log(this.ciclos[i].crmit_name +" == "+ key.ciclo);
+
+                        cicloCampo = this.ciclos[i].crmit_name;
+                        ciclo = this.ciclos[i].crmit_name;
+                        GUIDCiclo = this.ciclos[i].crmit_codigounico;
+                        valor_ciclo = this.ciclos[i].nombreventas;
+
+                      }else if(cicloCampo == null){ cicloCampo = null;    console.log("Ciclo null: "+cicloCampo); }
                     }
+
+
+                   cicloCampo = this.getValidaCampo("Ciclo", cicloCampo);
+
+                    console.log(cicloCampo + " == " + key.ciclo);
+                    if(cicloCampo != key.ciclo ){
+                      this.showDialog("Error en el registro de "+key.Nombre+" "+key.Apellido_Paterno+" "+key.Apellido_Materno+", el ciclo es incorrecto.");
+
+                    }else{
+                      console.log("Ciclo Bien: "+cicloCampo);
+                     }
+
+
 
                     var carreraCampo =  key.carrera;
 
@@ -368,6 +414,8 @@ export class UploadBaseComponent implements OnInit {
                     var Modalidad = "";
                     var GUIDModalidad = "";
 
+                    let GUIDAreaInteres = "";
+
 
                     for (let i = 0; i < this.rowss.length; i++) {
                       if (this.rowss[i].campusId == GUIDCampus && this.rowss[i].carreraId == GUIDCarrera) {
@@ -382,9 +430,17 @@ export class UploadBaseComponent implements OnInit {
                       }
                     }
 
+
                     for (let i = 0; i < this.rowss_niv.length; i++) {
                       if (this.rowss_niv[i].crmit_codigounico == GUIDNivelInteres) {
                         NivelInteres = this.rowss_niv[i].crmit_name;
+                      }
+                    }
+
+
+                    for(let i=0 ; i < this.intereses.length ; i++ ){
+                      if(this.intereses[i].area_interes == key.area_atención){
+                        GUIDAreaInteres = this.intereses[i].id ;
                       }
                     }
 
@@ -417,11 +473,11 @@ export class UploadBaseComponent implements OnInit {
                     return;
                   }*/
 
-                   var valor_ciclo = "";
+
 
                   // console.log("cicloTM[0].crmit_name : "+cicloTM[0].crmit_name);
 
-                  if(cicloCampo != "0"){
+                /*  if(cicloCampo != "0"){
                     var ciclo = cicloTM[0].crmit_name;
 
                      if(ciclo == "19-1"){
@@ -433,7 +489,7 @@ export class UploadBaseComponent implements OnInit {
                      }else if(ciclo == "18-3"){
                        valor_ciclo = "C2";
                      }
-                  }
+                  }*/
 
                     let Team = "";
                     let Prioridad = 0;
@@ -492,6 +548,7 @@ export class UploadBaseComponent implements OnInit {
                       "TelefonoCasa":skeyTelefono,
                       "TelefonoCasaPredictivo":TelefonoCasaPredictivo,
                       "AreaInteres":this.getValidaCampo("AreaInteres", key.area_atención),
+                      "GUIDAreaInteres":GUIDAreaInteres,
                       "Campus":  key.campus,
                       "CorreoElectronico": this.getValidaCampo("CorreoElectronico", key.Correo_Electronico),
                       "GUIDCampus":GUIDCampus,
@@ -537,10 +594,17 @@ export class UploadBaseComponent implements OnInit {
                     delete key.Correo_Electronico;
 
 
-                    var datos = Object.assign(key, obj2);
+                    let datos = Object.assign(key, obj2);
 
-                    if(ext_file[1] != "xls" || ext_file[1] != "xlsx" || ext_file[1] != "XLS" || ext_file[1] != "XLSX"){  this.showDialog("El documento "+Nombre_del_archivo_de_carga+" no es valido, solo se permiten xls y xlsx."); }
-                    else if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
+                    let Archivo = Nombre_del_archivo_de_carga;
+
+
+                    /*if(ext_file[1] != "xls" || ext_file[1] != "xlsx" || ext_file[1] != "XLS" || ext_file[1] != "XLSX"){  this.showDialog("El documento "+Nombre_del_archivo_de_carga+" no es valido, solo se permiten xls y xlsx."); }
+                    else*/
+                    if( this.campos_con_error.length != 0 ){ //Verifica si hay errores
+
+
+
                        console.log("Bloquea Send");
 
                        console.log("Campos con error = "+this.campos_con_error);
@@ -548,6 +612,25 @@ export class UploadBaseComponent implements OnInit {
 
                        this.campos_con_error.splice(0);
                        console.log("Total de Errores:"+this.campos_con_error.length);
+
+                       $.ajax({
+                        type: "Post",
+                        url: "/assets/log_carga_base.php",
+                        data: {evento:"Campos con error.", data:datos },
+                        // dataType: "JSON",
+                        success: function(res) {
+                          console.log("Datos Enviados");
+                          console.log(res);
+                        },
+                        error: function(xhr, textStatus, error){
+                            console.log(xhr.statusText);
+                            console.log(textStatus);
+                            console.log(error);
+                        }
+                      });
+
+
+
 
                     }else{ //Si no hay errores entra a envio
                      console.log("Inserta Send");
@@ -578,21 +661,83 @@ export class UploadBaseComponent implements OnInit {
                               console.log("res");
                               console.log(res);
                               if (res.status == 200) {
-                                this.sendServ.sendData6(datos)
+                               /* this.sendServ.sendData6(datos)
                                   .subscribe(
                                     (ress: any) => {
                                       console.log("ress");
                                       console.log(ress);
                                     }
-                                  );
+                                  );*/
+
+                               /*   this.sendServ.sendData8(datos, Archivo) //EndPoint sendData8 para pruebas
+                                  .subscribe(
+                                    (ress: any) => {
+                                      console.log("ress");
+                                      console.log(ress);
+                                    }
+                                  );*/
+
+
+
+                                  //Envia Log
+
+                                $.ajax({
+                                  type: "Post",
+                                  url: "/assets/log_carga_base.php",
+                                  data: {evento:"200", data:datos },
+                                  // dataType: "JSON",
+                                  success: function(res) {
+                                    console.log("Datos Enviados");
+                                    console.log(res);
+                                  },
+                                  error: function(xhr, textStatus, error){
+                                      console.log(xhr.statusText);
+                                      console.log(textStatus);
+                                      console.log(error);
+                                  }
+                                });
+
                                 x = x + 1;
+
+
                                 if (count == x) {
+
+
 
                                   this.showDialog("Los datos se han guardado correctamente.");
                                   this.newdata.filename = "";
                                   this.Tipo.value = "";
                                 }
                               } else {
+
+
+                               /* let MensajeError = "ErroralGuardarElRegistro";
+                                this.sendServ.sendData8Error(datos, MensajeError, Archivo) //EndPoint sendData8 para pruebas
+                                .subscribe(
+                                  (ress: any) => {
+                                    console.log("ress");
+                                    console.log(ress);
+                                  }
+                                );*/
+
+                                //Envia Log
+
+                                $.ajax({
+                                  type: "Post",
+                                  url: "/assets/log_carga_base.php",
+                                  data: {evento:"Error al Guardar Registro", data:datos },
+                                  // dataType: "JSON",
+                                  success: function(res) {
+                                    console.log("Datos Enviados");
+                                    console.log(res);
+                                  },
+                                  error: function(xhr, textStatus, error){
+                                      console.log(xhr.statusText);
+                                      console.log(textStatus);
+                                      console.log(error);
+                                  }
+                                });
+
                                 x = x - 1;
                                 this.showDialog("Error al guardar el registro");
                               }
@@ -603,12 +748,102 @@ export class UploadBaseComponent implements OnInit {
                                 this.showDialog("Error al guardar el registro");
                                 x--;
                                 console.log("x-- Error x = "+x);
+
+
+                               /* let MensajeError = "ErroralGuardarElRegistro";
+                                this.sendServ.sendData8Error(datos, MensajeError, Archivo) //EndPoint sendData8 para pruebas
+                                .subscribe(
+                                  (ress: any) => {
+                                    console.log("ress");
+                                    console.log(ress);
+                                  }
+                                );*/
+
+
+
+                                //Envio Log
+                                $.ajax({
+                                  type: "Post",
+                                  url: "/assets/log_carga_base.php",
+                                  data: {evento:"400", data:datos },
+                                  success: function(res) {
+                                    console.log("Datos Enviados");
+                                    console.log(res);
+                                  },
+                                  error: function(xhr, textStatus, error){
+                                      console.log(xhr.statusText);
+                                      console.log(textStatus);
+                                      console.log(error);
+                                  }
+                                });
+
+
                               }
                               else if (error.status === 500) {
                                 console.warn(error._body);
+
+
+                               /* let MensajeError = "ErroralGuardarElRegistro";
+                                this.sendServ.sendData8Error(datos, MensajeError, Archivo) //EndPoint sendData8 para pruebas
+                                .subscribe(
+                                  (ress: any) => {
+                                    console.log("ress");
+                                    console.log(ress);
+                                  }
+                                );*/
+
+
+
+                                //Envia Log
+
+                                $.ajax({
+                                  type: "Post",
+                                  url: "/assets/log_carga_base.php",
+                                  data: {evento:"500", data:datos },
+                                  // dataType: "JSON",
+                                  success: function(res) {
+                                    console.log("Datos Enviados");
+                                    console.log(res);
+                                  },
+                                  error: function(xhr, textStatus, error){
+                                      console.log(xhr.statusText);
+                                      console.log(textStatus);
+                                      console.log(error);
+                                  }
+                                });
                                 this.showDialog("Error al guardar el registro");
+
                               }else{
                                 console.warn(error._body);
+
+
+                              /*  let MensajeError = "ErrorEnLaTransaccion";
+                                this.sendServ.sendData8Error(datos, MensajeError, Archivo) //EndPoint sendData8 para pruebas
+                                .subscribe(
+                                  (ress: any) => {
+                                    console.log("ress");
+                                    console.log(ress);
+                                  }
+                                );*/
+
+
+                                //Envia Log
+
+                                $.ajax({
+                                  type: "Post",
+                                  url: "/assets/log_carga_base.php",
+                                  data: {evento:"Error en la transacción", data:datos },
+                                  // dataType: "JSON",
+                                  success: function(res) {
+                                    console.log("Datos Enviados");
+                                    console.log(res);
+                                  },
+                                  error: function(xhr, textStatus, error){
+                                      console.log(xhr.statusText);
+                                      console.log(textStatus);
+                                      console.log(error);
+                                  }
+                                });
                                 this.showDialog("Error en la transaccion");
                               }
                           })

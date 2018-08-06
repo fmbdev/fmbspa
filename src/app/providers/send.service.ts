@@ -19,10 +19,10 @@ export class SendService {
     return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/7030?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, { headers: this.headers });
   }
     sendData(data) {
-                           
+
       return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/6523?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
     }
-  
+
     sendData2(data) {
       return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/5876?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, {headers: this.headers});
     }
@@ -43,5 +43,11 @@ export class SendService {
   }
   sendData7(data) {
     return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/7088?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f", data, { headers: this.headers });
+  }
+  sendData8(data, Archivo){
+    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/7618?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f&Archivo="+Archivo+"", data, { headers: this.headers });
+  }
+  sendData8Error(data, MensajeError, Archivo){
+    return this.http.post("https://endpoint.scribesoft.com/v1/orgs/27038/requests/7618?accesstoken=8d0e3e43-a352-409a-bbee-401e2ee99b9f&MensajeError="+MensajeError+"&Archivo="+Archivo, data, { headers: this.headers });
   }
 }

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule,CanActivate  } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { DialogComponent } from './dialog/dialog.component';
 
@@ -30,7 +30,7 @@ import { SearchInboundComponent } from './search-inbound/search-inbound.componen
 
 // Providers
 import { CsqService } from './providers/csq.service';
-import { PnnService } from './providers/pnn.service'; 
+import { PnnService } from './providers/pnn.service';
 import { HoraService } from './providers/hora.service';
 import { SendService } from './providers/send.service';
 //import { EquiService } from './providers/equi.service';
@@ -51,7 +51,7 @@ import { SinCorreoService } from './providers/sin-correo.service';
 import { ParentescoService } from './providers/parentesco.service';
 import { TerritorioService } from './providers/territorio.service';
 import { CampusCitaService } from './providers/campus-cita.service';
-//import { ValidationService } from './validations/validation.service'; 
+//import { ValidationService } from './validations/validation.service';
 //import { PalabramalaService } from './providers/palabramala.service';
 import { ProgramacionService } from './providers/programacion.service';
 import { TipificacionService } from './providers/tipificacion.service';
@@ -115,17 +115,18 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
     FormComponent,
     DialogComponent,
     DialogFormComponent,
-    
+
   ],
   entryComponents: [
     DialogComponent,
     DialogFormComponent
-  ],  
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
+    JsonpModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -146,20 +147,20 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatListModule, 
+    MatListModule,
     MatMenuModule,
 
-  ],  
+  ],
   providers: [CanalService, CsqService, TipificacionService, InteresService, FuenteObtencionService,
               ParentescoService, CampusService, NivelService, ModalidadService, SubsubtipoActividadService,
               CarreraService, CicloService, AsesorService,AsesorGrupalService, HoraService, PnnService, SendService, FormatService,
               CampusCitaService, CitaProspeccionService, EscuelaEmpresaService, GeneroService, PaginaLandingService,
-              ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService, TipoReferenteService, 
-              TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService, HttpService, 
+              ProgramacionService, SinCorreoService, TerritorioService, TipoActividadService, TipoReferenteService,
+              TransferenciaService, TurnoService, UsuarioService, AppConfig, GeneralService, LandingService, HttpService,
               AuthService, HomeService, CampusCarreraService, AuthGuardService, ActividadAgendaService, CalidadService, IdleUserService
             ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  
+export class AppModule {
+
 }

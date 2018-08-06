@@ -479,7 +479,7 @@ let main_carrera = this.form.value.Carrera.split("*");
                 console.log(res.status);
                 if (res.status == 200) {
                   this.showDialogE("Registro guardado con éxito.");
-                  this.sendServ.sendData6(sendd)// this.form.value)
+                /*  this.sendServ.sendData6(sendd)// this.form.value)
                     .subscribe(
                       (res: any) => {
                         console.log(res.status);
@@ -489,7 +489,7 @@ let main_carrera = this.form.value.Carrera.split("*");
                           this.showDialogE("Error al guardar el registro.");
                         }
                       }
-                    )
+                    )*/
 
                 } else {
                   this.showDialogE("Error al guardar el registro.");
@@ -511,7 +511,7 @@ let main_carrera = this.form.value.Carrera.split("*");
                 console.log(res.status);
                 if (res.status == 200) {
                   this.showDialogE("Registro guardado con éxito.");
-                  this.sendServ.sendData6(sendd)// this.form.value)
+                 /* this.sendServ.sendData6(sendd)// this.form.value)
                     .subscribe(
                       (res: any) => {
                         console.log(res.status);
@@ -521,7 +521,7 @@ let main_carrera = this.form.value.Carrera.split("*");
                           this.showDialogE("Error al guardar el registro.2");
                         }
                       }
-                    )
+                    )*/
 
                 } else {
                   this.showDialogE("Error al guardar el registro.");
